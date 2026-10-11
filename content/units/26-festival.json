@@ -1,0 +1,107 @@
+{
+  "id": "u26-festival",
+  "order": 26,
+  "title": "Festivals and free time",
+  "titleHanzi": "春节快乐",
+  "description": "Spring Festival with the grandparents, good wishes, performances and photos, hobbies, sport and the wider world.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-chunjie", "hanzi": "春节", "pinyin": "Chūnjié", "english": ["Spring Festival", "Chinese New Year"], "hsk": 0, "pos": "noun" },
+    { "id": "w-jieri", "hanzi": "节日", "pinyin": "jiérì", "english": ["festival", "holiday"], "hsk": 3, "pos": "noun" },
+    { "id": "w-zhu-wish", "hanzi": "祝", "pinyin": "zhù", "english": ["to wish"], "hsk": 3, "pos": "verb" },
+    { "id": "w-keren", "hanzi": "客人", "pinyin": "kèrén", "english": ["guest"], "hsk": 3, "pos": "noun" },
+    { "id": "w-nainai", "hanzi": "奶奶", "pinyin": "nǎinai", "english": ["grandma (dad's mother)"], "hsk": 3, "pos": "noun" },
+    { "id": "w-yeye", "hanzi": "爷爷", "pinyin": "yéye", "english": ["grandpa (dad's father)"], "hsk": 3, "pos": "noun" },
+    { "id": "w-zhaogu", "hanzi": "照顾", "pinyin": "zhàogu", "english": ["to look after", "to take care of"], "hsk": 3, "pos": "verb" },
+    { "id": "w-jiemu", "hanzi": "节目", "pinyin": "jiémù", "english": ["programme", "show", "performance"], "hsk": 3, "pos": "noun" },
+    { "id": "w-biaoyan", "hanzi": "表演", "pinyin": "biǎoyǎn", "english": ["to perform", "performance"], "hsk": 3, "pos": "verb" },
+    { "id": "w-shengyin", "hanzi": "声音", "pinyin": "shēngyīn", "english": ["sound", "voice"], "hsk": 3, "pos": "noun" },
+    { "id": "w-zhaoxiangji", "hanzi": "照相机", "pinyin": "zhàoxiàngjī", "english": ["camera"], "hsk": 3, "pos": "noun" },
+    { "id": "w-jiehun", "hanzi": "结婚", "pinyin": "jiéhūn", "english": ["to get married"], "hsk": 3, "pos": "verb" },
+    { "id": "w-juxing", "hanzi": "举行", "pinyin": "jǔxíng", "english": ["to hold (an event)"], "hsk": 3, "pos": "verb" },
+    { "id": "w-canjia", "hanzi": "参加", "pinyin": "cānjiā", "english": ["to take part in", "to attend"], "hsk": 3, "pos": "verb" },
+    { "id": "w-bisai", "hanzi": "比赛", "pinyin": "bǐsài", "english": ["match", "competition"], "hsk": 3, "pos": "noun" },
+    { "id": "w-aihao", "hanzi": "爱好", "pinyin": "àihào", "english": ["hobby"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xingqu", "hanzi": "兴趣", "pinyin": "xìngqù", "english": ["interest"], "hsk": 3, "pos": "noun" },
+    { "id": "w-youxi", "hanzi": "游戏", "pinyin": "yóuxì", "english": ["game"], "hsk": 3, "pos": "noun" },
+    { "id": "w-tiyu", "hanzi": "体育", "pinyin": "tǐyù", "english": ["sport", "PE"], "hsk": 3, "pos": "noun" },
+    { "id": "w-duanlian", "hanzi": "锻炼", "pinyin": "duànliàn", "english": ["to exercise", "to work out"], "hsk": 3, "pos": "verb" },
+    { "id": "w-gushi", "hanzi": "故事", "pinyin": "gùshi", "english": ["story"], "hsk": 3, "pos": "noun" },
+    { "id": "w-hua-paint", "hanzi": "画", "pinyin": "huà", "english": ["to draw", "to paint", "painting"], "hsk": 3, "pos": "verb" },
+    { "id": "w-shijie", "hanzi": "世界", "pinyin": "shìjiè", "english": ["world"], "hsk": 3, "pos": "noun" },
+    { "id": "w-guojia", "hanzi": "国家", "pinyin": "guójiā", "english": ["country"], "hsk": 3, "pos": "noun" }
+  ],
+  "sentences": [
+    { "id": "s26-chunjiekuaile", "hanzi": "春节快乐！", "pinyin": "Chūnjié kuàilè!", "english": "Happy Spring Festival!", "words": ["w-chunjie", "w-kuaile"] },
+    { "id": "s26-zhuninjiankang", "hanzi": "祝您身体健康！", "pinyin": "Zhù nín shēntǐ jiànkāng!", "english": "Wishing you good health!", "words": ["w-zhu-wish", "w-nin", "w-shenti", "w-jiankang"] },
+    { "id": "s26-nainai-chunjiekuaile", "hanzi": "奶奶，春节快乐！祝您身体健康！", "pinyin": "Nǎinai, Chūnjié kuàilè! Zhù nín shēntǐ jiànkāng!", "english": "Happy Spring Festival, Grandma! Wishing you good health!", "words": ["w-nainai", "w-chunjie", "w-kuaile", "w-zhu-wish", "w-nin", "w-shenti", "w-jiankang"] },
+    { "id": "s26-zhunixinnian", "hanzi": "祝你新年快乐！", "pinyin": "Zhù nǐ xīnnián kuàilè!", "english": "Happy New Year!", "words": ["w-zhu-wish", "w-ni", "w-xin", "w-nian", "w-kuaile"] },
+    { "id": "s26-tebiegaoxing", "hanzi": "谢谢！米格，你来了我们特别高兴。", "pinyin": "Xièxie! Mǐgé, nǐ lái le wǒmen tèbié gāoxìng.", "english": "Thank you! 米格, we're so happy you came.", "words": ["w-xiexie", "w-mikkel", "w-ni", "w-lai", "w-le", "w-women", "w-tebie", "w-gaoxing"] },
+    { "id": "s26-zuizhongyaojieri", "hanzi": "是啊，春节是中国最重要的节日。", "pinyin": "Shì a, Chūnjié shì Zhōngguó zuì zhòngyào de jiérì.", "english": "Yes, Spring Festival is the most important holiday in China.", "words": ["w-shi", "w-a", "w-chunjie", "w-shi", "w-zhongguo", "w-zui", "w-zhongyao", "w-de", "w-jieri"] },
+    { "id": "s26-henduokeren", "hanzi": "今天家里有很多客人！", "pinyin": "Jīntiān jiā lǐ yǒu hěn duō kèrén!", "english": "There are lots of guests here today!", "words": ["w-jintian", "w-jia", "w-li-inside", "w-you", "w-hen", "w-duo", "w-keren"] },
+    { "id": "s26-yeyenainailaile", "hanzi": "爷爷奶奶也来了。", "pinyin": "Yéye nǎinai yě lái le.", "english": "Grandpa and Grandma are here too.", "words": ["w-yeye", "w-nainai", "w-ye", "w-lai", "w-le"] },
+    { "id": "s26-nainaishi", "hanzi": "奶奶是爸爸的妈妈，姥姥是妈妈的妈妈。", "pinyin": "Nǎinai shì bàba de māma, lǎolao shì māma de māma.", "english": "奶奶 is Dad's mother; 姥姥 is Mum's mother.", "words": ["w-nainai", "w-shi", "w-baba", "w-de", "w-mama", "w-laolao", "w-shi", "w-mama", "w-de", "w-mama"] },
+    { "id": "s26-haohaozhaogu", "hanzi": "我们要好好照顾爷爷奶奶。", "pinyin": "Wǒmen yào hǎohǎo zhàogu yéye nǎinai.", "english": "We should take good care of Grandpa and Grandma.", "words": ["w-women", "w-yao", "w-hao", "w-hao", "w-zhaogu", "w-yeye", "w-nainai"] },
+    { "id": "s26-xiexiezhaogu", "hanzi": "谢谢您照顾我。", "pinyin": "Xièxie nín zhàogu wǒ.", "english": "Thank you for looking after me.", "words": ["w-xiexie", "w-nin", "w-zhaogu", "w-wo"] },
+    { "id": "s26-kanjiemu", "hanzi": "晚上我们一起看电视节目。", "pinyin": "Wǎnshang wǒmen yìqǐ kàn diànshì jiémù.", "english": "In the evening we watch TV together.", "words": ["w-wanshang", "w-women", "w-yiqi", "w-kan", "w-dianshi", "w-jiemu"] },
+    { "id": "s26-xiaoyubiaoyan", "hanzi": "晚上小雨给大家表演一个节目。", "pinyin": "Wǎnshang Xiǎoyǔ gěi dàjiā biǎoyǎn yí ge jiémù.", "english": "Tonight Xiaoyu will put on a show for everyone.", "words": ["w-wanshang", "w-xiaoyu", "w-gei", "w-dajia", "w-biaoyan", "w-yi", "w-ge", "w-jiemu"] },
+    { "id": "s26-tingbudaoshengyin", "hanzi": "我听不到你的声音。", "pinyin": "Wǒ tīng bu dào nǐ de shēngyīn.", "english": "I can't hear you.", "words": ["w-wo", "w-ting", "w-bu", "w-dao", "w-ni", "w-de", "w-shengyin"] },
+    { "id": "s26-daizhaoxiangji", "hanzi": "太好了！我带了照相机。", "pinyin": "Tài hǎo le! Wǒ dài le zhàoxiàngjī.", "english": "Great! I brought my camera.", "words": ["w-tai", "w-hao", "w-le", "w-wo", "w-dai", "w-le", "w-zhaoxiangji"] },
+    { "id": "s26-dajiayiqipaizhao", "hanzi": "好！大家一起拍照吧！", "pinyin": "Hǎo! Dàjiā yìqǐ pāizhào ba!", "english": "Good! Let's all take a photo together!", "words": ["w-hao", "w-dajia", "w-yiqi", "w-paizhao", "w-ba-particle"] },
+    { "id": "s26-jiejiejiehun", "hanzi": "她姐姐下个月结婚。", "pinyin": "Tā jiějie xià ge yuè jiéhūn.", "english": "Her older sister is getting married next month.", "words": ["w-ta-she", "w-jiejie", "w-xia", "w-ge", "w-yue", "w-jiehun"] },
+    { "id": "s26-bisaijuxing", "hanzi": "比赛在周末举行。", "pinyin": "Bǐsài zài zhōumò jǔxíng.", "english": "The match is held at the weekend.", "words": ["w-bisai", "w-zai", "w-zhoumo", "w-juxing"] },
+    { "id": "s26-canjiabisai", "hanzi": "我想参加这个比赛。", "pinyin": "Wǒ xiǎng cānjiā zhège bǐsài.", "english": "I want to take part in this competition.", "words": ["w-wo", "w-xiang", "w-canjia", "w-zhe", "w-ge", "w-bisai"] },
+    { "id": "s26-shenmeaihao", "hanzi": "你有什么爱好？", "pinyin": "Nǐ yǒu shénme àihào?", "english": "What are your hobbies?", "words": ["w-ni", "w-you", "w-shenme", "w-aihao"] },
+    { "id": "s26-aihaoshi", "hanzi": "我的爱好是踢足球和画画。", "pinyin": "Wǒ de àihào shì tī zúqiú hé huà huà.", "english": "My hobbies are football and drawing.", "words": ["w-wo", "w-de", "w-aihao", "w-shi", "w-ti-kick", "w-zuqiu", "w-he", "w-hua-paint", "w-hua-paint"] },
+    { "id": "s26-lishixingqu", "hanzi": "我对中国历史很有兴趣。", "pinyin": "Wǒ duì Zhōngguó lìshǐ hěn yǒu xìngqù.", "english": "I'm very interested in Chinese history.", "words": ["w-wo", "w-dui", "w-zhongguo", "w-lishi", "w-hen", "w-you", "w-xingqu"] },
+    { "id": "s26-wanyouxi", "hanzi": "孩子们在玩游戏。", "pinyin": "Háizimen zài wán yóuxì.", "english": "The kids are playing a game.", "words": ["w-haizi", "w-men", "w-zai", "w-wan-play", "w-youxi"] },
+    { "id": "s26-tiyuyundong", "hanzi": "你喜欢什么体育运动？", "pinyin": "Nǐ xǐhuan shénme tǐyù yùndòng?", "english": "What sports do you like?", "words": ["w-ni", "w-xihuan", "w-shenme", "w-tiyu", "w-yundong"] },
+    { "id": "s26-duanlianshenti", "hanzi": "姥爷每天早上锻炼身体。", "pinyin": "Lǎoye měitiān zǎoshang duànliàn shēntǐ.", "english": "Grandpa exercises every morning.", "words": ["w-laoye", "w-meitian", "w-zaoshang", "w-duanlian", "w-shenti"] },
+    { "id": "s26-janggushi", "hanzi": "姥爷给小雨讲故事。", "pinyin": "Lǎoye gěi Xiǎoyǔ jiǎng gùshi.", "english": "Grandpa tells Xiaoyu a story.", "words": ["w-laoye", "w-gei", "w-xiaoyu", "w-jiang", "w-gushi"] },
+    { "id": "s26-shijieguojia", "hanzi": "我想去世界上很多国家旅游。", "pinyin": "Wǒ xiǎng qù shìjiè shàng hěn duō guójiā lǚyóu.", "english": "I want to travel to lots of countries around the world.", "words": ["w-wo", "w-xiang", "w-qu", "w-shijie", "w-shang", "w-hen", "w-duo", "w-guojia", "w-lvyou"] },
+    { "id": "s26-quguojigeguojia", "hanzi": "你去过几个国家？", "pinyin": "Nǐ qù guo jǐ ge guójiā?", "english": "How many countries have you been to?", "words": ["w-ni", "w-qu", "w-guo-exp", "w-ji", "w-ge", "w-guojia"] }
+  ],
+  "exchanges": [
+    { "id": "x26-newyear", "prompt": "s26-chunjiekuaile", "reply": "s26-zhunixinnian", "wrong": ["s26-tingbudaoshengyin", "s26-wanyouxi"], "context": "A friend wishes you a happy Spring Festival." },
+    { "id": "x26-hobby", "prompt": "s26-shenmeaihao", "reply": "s26-aihaoshi", "wrong": ["s26-bisaijuxing", "s26-yeyenainailaile"], "context": "You love football and drawing." },
+    { "id": "x26-photo", "prompt": "s26-daizhaoxiangji", "reply": "s26-dajiayiqipaizhao", "wrong": ["s26-quguojigeguojia", "s26-xiexiezhaogu"], "context": "You're Grandma. 米格 has a camera and the whole family is here." },
+    { "id": "x26-thanks", "prompt": "s26-tebiegaoxing", "reply": "s26-xiexiezhaogu", "wrong": ["s26-tiyuyundong", "s26-jiejiejiehun"], "context": "Grandma welcomes you warmly. Thank her for taking care of you." },
+    { "id": "x26-countries", "prompt": "s26-quguojigeguojia", "reply": "s26-shijieguojia", "wrong": ["s26-chunjiekuaile", "s26-kanjiemu"], "context": "You haven't travelled much yet, but you'd love to." }
+  ],
+  "grammar": [
+    { "id": "g26-zhu", "title": "祝: good wishes", "body": "祝 + person + wish: 祝您身体健康 (good health, perfect for elders), 祝你新年快乐 (Happy New Year), 祝你生日快乐.", "examples": ["s26-zhuninjiankang", "s26-zhunixinnian"] },
+    { "id": "g26-nainai", "title": "奶奶 or 姥姥?", "body": "Chinese names grandparents by side: 爷爷, 奶奶 are Dad's parents; 姥爷, 姥姥 are Mum's parents (in the north; the south says 外公, 外婆).", "examples": ["s26-nainaishi", "s26-yeyenainailaile"] },
+    { "id": "g26-xingqu", "title": "对…有兴趣", "body": "对 + topic + 有兴趣: interested in. 我对中国历史很有兴趣. For hobbies: 我的爱好是….", "examples": ["s26-lishixingqu", "s26-aihaoshi"] },
+    { "id": "g26-jiemu", "title": "Performing a 节目", "body": "At family gatherings, children often perform a 节目 (a song, a dance, a poem) for everyone. Watching it with a camera ready is part of the fun.", "examples": ["s26-xiaoyubiaoyan"] }
+  ],
+  "dialogue": {
+    "id": "d26-chunjie",
+    "title": "Listening challenge: Spring Festival",
+    "setting": "New Year's Eve at her grandparents' home, full of relatives.",
+    "speakers": [
+      { "id": "N", "name": "奶奶", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "K", "sentence": "s26-nainai-chunjiekuaile" },
+      { "speaker": "N", "sentence": "s26-tebiegaoxing" },
+      { "speaker": "K", "sentence": "s26-henduokeren" },
+      { "speaker": "N", "sentence": "s26-zuizhongyaojieri" },
+      { "speaker": "N", "sentence": "s26-xiaoyubiaoyan" },
+      { "speaker": "K", "sentence": "s26-daizhaoxiangji" },
+      { "speaker": "N", "sentence": "s26-dajiayiqipaizhao" }
+    ],
+    "questions": [
+      { "q": "What does 米格 wish Grandma?", "options": ["Good health", "Lots of money", "A happy birthday"], "answer": 0 },
+      { "q": "Why are there so many people?", "options": ["It's a wedding", "It's Spring Festival", "It's Grandma's birthday"], "answer": 1 },
+      { "q": "What will Xiaoyu do tonight?", "options": ["Cook dinner", "Put on a show", "Tell a story"], "answer": 1 },
+      { "q": "What did 米格 bring?", "options": ["A cake", "Flowers", "A camera"], "answer": 2 }
+    ]
+  },
+  "nodes": [
+    { "id": "n26-festival", "title": "Spring Festival", "words": ["w-chunjie", "w-jieri", "w-zhu-wish", "w-keren", "w-nainai", "w-yeye", "w-zhaogu"], "sentences": ["s26-chunjiekuaile", "s26-zhuninjiankang", "s26-nainai-chunjiekuaile", "s26-zhunixinnian", "s26-tebiegaoxing", "s26-zuizhongyaojieri", "s26-henduokeren", "s26-yeyenainailaile", "s26-nainaishi", "s26-haohaozhaogu", "s26-xiexiezhaogu"], "exchanges": ["x26-newyear", "x26-thanks"], "grammar": ["g26-zhu", "g26-nainai"] },
+    { "id": "n26-show", "title": "The show", "words": ["w-jiemu", "w-biaoyan", "w-shengyin", "w-zhaoxiangji", "w-jiehun", "w-juxing", "w-canjia", "w-bisai"], "sentences": ["s26-kanjiemu", "s26-xiaoyubiaoyan", "s26-tingbudaoshengyin", "s26-daizhaoxiangji", "s26-dajiayiqipaizhao", "s26-jiejiejiehun", "s26-bisaijuxing", "s26-canjiabisai"], "exchanges": ["x26-photo"], "grammar": ["g26-jiemu"] },
+    { "id": "n26-hobbies", "title": "Hobbies", "words": ["w-aihao", "w-xingqu", "w-youxi", "w-tiyu", "w-duanlian", "w-gushi", "w-hua-paint", "w-shijie", "w-guojia"], "sentences": ["s26-shenmeaihao", "s26-aihaoshi", "s26-lishixingqu", "s26-wanyouxi", "s26-tiyuyundong", "s26-duanlianshenti", "s26-janggushi", "s26-shijieguojia", "s26-quguojigeguojia"], "exchanges": ["x26-hobby", "x26-countries"], "grammar": ["g26-xingqu"] },
+    { "id": "n26-story", "title": "Challenge: Spring Festival", "kind": "story", "sentences": ["s26-nainai-chunjiekuaile", "s26-tebiegaoxing", "s26-zuizhongyaojieri", "s26-xiaoyubiaoyan", "s26-dajiayiqipaizhao"] }
+  ]
+}
