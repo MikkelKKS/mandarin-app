@@ -49,7 +49,7 @@ async function step(page: Page) {
 test('complete the first lesson and see it on the path', async ({ page }) => {
   // Wrong answers now repeat until right, so the random-answer bot is graded as correct.
   await page.addInitScript(() => {
-    (window as unknown as { __e2eAlwaysCorrect: boolean }).__e2eAlwaysCorrect = true;
+    (globalThis as unknown as { __e2eAlwaysCorrect: boolean }).__e2eAlwaysCorrect = true;
   });
   await page.goto('./');
   await expect(page.getByText('Check your basics')).toBeVisible();

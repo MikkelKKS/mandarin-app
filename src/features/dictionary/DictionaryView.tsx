@@ -3,7 +3,7 @@ import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { wordByHanzi } from '../../content';
 import { dictAudioUrl, hasChineseVoice, play, playUrl, speak } from '../../lib/audio';
-import { guessHanzi, isPinyinSentence, loadDict, plecoLink, romanKey, search, type Dict, type Entry } from './dict';
+import { guessHanzi, isPinyinSentence, loadDict, plecoLink, romanKey, search, segment, type Dict, type Entry } from './dict';
 import { looksLikeEnglishSentence, translate } from './translate';
 import { addMyWord, myWordId, removeMyWord, useMyWords } from './mywords';
 
@@ -105,7 +105,7 @@ export function DictionaryView() {
       {result?.mode === 'empty' && <MyWords />}
 
       {result?.mode === 'words' && dict && dict !== 'loading' && isPinyinSentence(dq) && <PinyinSentenceCard dict={dict} q={dq} />}
-      {result?.mode === 'words' && !isPinyinSentence(dq) && looksLikeEnglishSentence(dq) && <TranslationCard text={dq} dir="en-zh" />}
+      {result?.mode === 'words' && !isPinyinSentence(dq) && looksLikeEnglishSentence(dq) && <TranslationCard text={dq} dir="en-zh" dict={dict as Dict} />}
 
       {result?.mode === 'words' && (
         <>
@@ -239,7 +239,7 @@ function MyWords() {
 }
 
 /** In-app translation (online). Chinese → English, or English → Chinese with pinyin. */
-function TranslationCard({ text, dir, sourceKey }: { text: string; dir: 'zh-en' | 'en-zh'; sourceKey?: string }) {
+function TranslationCard({ text, dir, sourceKey, dict }: { text: string; dir: 'zh-en' | 'en-zh'; sourceKey?: string; dict?: Dict }) {
   const [state, setState] = useState<{ status: 'loading' | 'done' | 'error'; text?: string; error?: string }>({ status: 'loading' });
   const [online, setOnline] = useState(navigator.onLine);
   useEffect(() => {
@@ -273,9 +273,26 @@ function TranslationCard({ text, dir, sourceKey }: { text: string; dir: 'zh-en' 
       {state.status === 'done' && !zh && <p className="mt-1 text-lg leading-snug">{state.text}</p>}
       {zh && (
         <div className="mt-1">
-          <p className="han text-2xl" lang="zh-CN">
-            {zh}
-          </p>
+          {dict ? (
+            <div className="flex flex-wrap items-end gap-x-2 gap-y-3" lang="zh-CN">
+              {segment(dict, zh).map((t, i) =>
+                t.entries.length ? (
+                  <span key={i} className="flex flex-col items-center">
+                    <TonePinyin pinyin={t.entries[0].pinyin} className="text-sm" />
+                    <ToneText hanzi={t.text} pinyin={t.entries[0].pinyin} className="han text-3xl" />
+                  </span>
+                ) : (
+                  <span key={i} className="han text-3xl text-muted">
+                    {t.text}
+                  </span>
+                ),
+              )}
+            </div>
+          ) : (
+            <p className="han text-2xl" lang="zh-CN">
+              {zh}
+            </p>
+          )}
           <div className="mt-2 flex flex-wrap gap-2">
             <button onClick={() => void saySentence(zh, [...zh].filter((c) => /\p{Script=Han}/u.test(c)))} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
               <Speaker className="h-4 w-4" /> Listen
