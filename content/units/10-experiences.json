@@ -33,7 +33,7 @@
     { "id": "s-woqunianquguobeijing", "hanzi": "我去年去过北京。", "pinyin": "Wǒ qùnián qùguo Běijīng.", "english": "I went to Beijing last year.", "words": ["w-wo", "w-qunian", "w-qu", "w-guo-exp", "w-beijing"] },
     { "id": "s-diyicilaizhongguo", "hanzi": "这是我第一次来中国。", "pinyin": "Zhè shì wǒ dì yī cì lái Zhōngguó.", "english": "This is my first time in China.", "words": ["w-zhe", "w-shi", "w-wo", "w-di-ordinal", "w-yi", "w-ci", "w-lai", "w-zhongguo"] },
     { "id": "s-shenmeshihoulaide", "hanzi": "你是什么时候来的？", "pinyin": "Nǐ shì shénme shíhou lái de?", "english": "When did you get here?", "words": ["w-ni", "w-shi", "w-shenme", "w-shihou", "w-lai", "w-de"] },
-    { "id": "s-mikkel-shenmeshihou", "hanzi": "米格，你是什么时候来的？", "pinyin": "Mǐgé, nǐ shì shénme shíhou lái de?", "english": "Mi'ge, when did you arrive?", "words": ["w-mikkel", "w-ni", "w-shi", "w-shenme", "w-shihou", "w-lai", "w-de"] },
+    { "id": "s-mikkel-shenmeshihou", "hanzi": "米格，你是什么时候来的？", "pinyin": "Mǐgé, nǐ shì shénme shíhou lái de?", "english": "米格, when did you arrive?", "words": ["w-mikkel", "w-ni", "w-shi", "w-shenme", "w-shihou", "w-lai", "w-de"] },
     { "id": "s-xingqiliulaide", "hanzi": "我是星期六来的。", "pinyin": "Wǒ shì xīngqīliù lái de.", "english": "I came on Saturday.", "words": ["w-wo", "w-shi", "w-xingqi", "w-liu", "w-lai", "w-de"] },
     { "id": "s-zenmelaide", "hanzi": "你是怎么来的？", "pinyin": "Nǐ shì zěnme lái de?", "english": "How did you get here?", "words": ["w-ni", "w-shi", "w-zenme", "w-lai", "w-de"] },
     { "id": "s-zenmelaide-feiji", "hanzi": "你是怎么来的？坐飞机来的吗？", "pinyin": "Nǐ shì zěnme lái de? Zuò fēijī lái de ma?", "english": "How did you come? By plane?", "words": ["w-ni", "w-shi", "w-zenme", "w-lai", "w-de", "w-zuo", "w-feiji", "w-lai", "w-de", "w-ma"] },
@@ -74,7 +74,7 @@
     "setting": "At a big family dinner in Beijing, her aunt has lots of questions. Natural speed. Try it without the text first.",
     "speakers": [
       { "id": "A", "name": "Her aunt", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "A", "sentence": "s-mikkel-shenmeshihou" },
@@ -89,11 +89,11 @@
       { "speaker": "K", "sentence": "s-yinwei-suoyi" }
     ],
     "questions": [
-      { "q": "When did Mikkel arrive?", "options": ["Friday", "Saturday", "Sunday"], "answer": 1 },
-      { "q": "Has Mikkel been to China before?", "options": ["No, it's his first time", "Yes, once", "Yes, he used to live there"], "answer": 0 },
+      { "q": "When did 米格 arrive?", "options": ["Friday", "Saturday", "Sunday"], "answer": 1 },
+      { "q": "Has 米格 been to China before?", "options": ["No, it's his first time", "Yes, once", "Yes, he used to live there"], "answer": 0 },
       { "q": "What does he say about Chinese food?", "options": ["It's the same as Danish food", "It's too spicy to eat", "It's different, a bit spicy, but delicious"], "answer": 2 },
       { "q": "What does the aunt say about Beijing summers?", "options": ["Much hotter than Denmark", "Colder than Denmark", "Very rainy"], "answer": 0 },
-      { "q": "Why is Mikkel learning Chinese?", "options": ["For his job", "To talk with his girlfriend's family", "Because he's moving to Beijing"], "answer": 1 }
+      { "q": "Why is 米格 learning Chinese?", "options": ["For his job", "To talk with his girlfriend's family", "Because he's moving to Beijing"], "answer": 1 }
     ]
   },
   "nodes": [

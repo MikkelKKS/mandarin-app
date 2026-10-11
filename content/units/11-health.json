@@ -27,7 +27,7 @@
   ],
   "sentences": [
     { "id": "s-nizenmele", "hanzi": "你怎么了？", "pinyin": "Nǐ zěnme le?", "english": "What's wrong?", "words": ["w-ni", "w-zenme", "w-le"], "alt": { "english": ["What's the matter?"] } },
-    { "id": "s-mikkel-zenmele", "hanzi": "米格，你怎么了？", "pinyin": "Mǐgé, nǐ zěnme le?", "english": "Mi'ge, what's wrong?", "words": ["w-mikkel", "w-ni", "w-zenme", "w-le"] },
+    { "id": "s-mikkel-zenmele", "hanzi": "米格，你怎么了？", "pinyin": "Mǐgé, nǐ zěnme le?", "english": "米格, what's wrong?", "words": ["w-mikkel", "w-ni", "w-zenme", "w-le"] },
     { "id": "s-nanalibushufu", "hanzi": "你哪里不舒服？", "pinyin": "Nǐ nǎlǐ bù shūfu?", "english": "Where don't you feel well?", "words": ["w-ni", "w-nali", "w-bu", "w-shufu"], "alt": { "english": ["What's bothering you?"] } },
     { "id": "s-wotouteng", "hanzi": "我头疼。", "pinyin": "Wǒ tóu téng.", "english": "I've got a headache.", "words": ["w-wo", "w-tou", "w-teng"] },
     { "id": "s-duziyoudianteng", "hanzi": "我肚子有点疼。", "pinyin": "Wǒ dùzi yǒudiǎn téng.", "english": "My stomach hurts a bit.", "words": ["w-wo", "w-duzi", "w-you", "w-dian", "w-teng"] },
@@ -66,10 +66,10 @@
   "dialogue": {
     "id": "d11-cold",
     "title": "Listening challenge: A cold",
-    "setting": "Mikkel isn't feeling well, and her mother calls to check on him.",
+    "setting": "米格 isn't feeling well, and her mother calls to check on him.",
     "speakers": [
       { "id": "M", "name": "Her mother", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "M", "sentence": "s-mikkel-zenmele" },
@@ -82,7 +82,7 @@
       { "speaker": "K", "sentence": "s-hao-xiexieayi" }
     ],
     "questions": [
-      { "q": "What's wrong with Mikkel?", "options": ["A stomach ache", "A cold and a headache", "Sore eyes"], "answer": 1 },
+      { "q": "What's wrong with 米格?", "options": ["A stomach ache", "A cold and a headache", "Sore eyes"], "answer": 1 },
       { "q": "Does he have a fever?", "options": ["A slight one", "No", "A high one"], "answer": 0 },
       { "q": "What does her mother advise?", "options": ["Go to work anyway", "Only take medicine", "See a doctor, drink water and rest"], "answer": 2 }
     ]

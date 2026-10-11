@@ -26,7 +26,7 @@
   ],
   "sentences": [
     { "id": "s-zhoumoyoukongma", "hanzi": "周末你有空吗？", "pinyin": "Zhōumò nǐ yǒu kòng ma?", "english": "Are you free at the weekend?", "words": ["w-zhoumo", "w-ni", "w-youkong", "w-ma"] },
-    { "id": "s-mikkel-xingqiliuyoukong", "hanzi": "米格，星期六你有空吗？", "pinyin": "Mǐgé, xīngqīliù nǐ yǒu kòng ma?", "english": "Mi'ge, are you free on Saturday?", "words": ["w-mikkel", "w-xingqi", "w-liu", "w-ni", "w-youkong", "w-ma"] },
+    { "id": "s-mikkel-xingqiliuyoukong", "hanzi": "米格，星期六你有空吗？", "pinyin": "Mǐgé, xīngqīliù nǐ yǒu kòng ma?", "english": "米格, are you free on Saturday?", "words": ["w-mikkel", "w-xingqi", "w-liu", "w-ni", "w-youkong", "w-ma"] },
     { "id": "s-youkong", "hanzi": "有空。", "pinyin": "Yǒu kòng.", "english": "Yes, I'm free.", "words": ["w-youkong"] },
     { "id": "s-youkong-dasuan", "hanzi": "有空。你打算做什么？", "pinyin": "Yǒu kòng. Nǐ dǎsuàn zuò shénme?", "english": "I'm free. What are you planning?", "words": ["w-youkong", "w-ni", "w-dasuan", "w-zuo-do", "w-shenme"] },
     { "id": "s-meiyoushijian", "hanzi": "对不起，我没有时间。", "pinyin": "Duìbuqǐ, wǒ méiyǒu shíjiān.", "english": "Sorry, I don't have time.", "words": ["w-duibuqi", "w-wo", "w-mei", "w-you", "w-shijian"] },
@@ -65,10 +65,10 @@
   "dialogue": {
     "id": "d09-coffee",
     "title": "Coffee on Saturday",
-    "setting": "Her sister rings Mikkel to make plans. Then Saturday comes.",
+    "setting": "Her sister rings 米格 to make plans. Then Saturday comes.",
     "speakers": [
       { "id": "S", "name": "Her sister", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "S", "sentence": "s-mikkel-xingqiliuyoukong" },
@@ -84,7 +84,7 @@
       { "q": "Which day do they plan to meet?", "options": ["Saturday", "Sunday", "Friday"], "answer": 0 },
       { "q": "What do they plan to do?", "options": ["Have dinner", "Have a coffee", "Go swimming"], "answer": 1 },
       { "q": "What time?", "options": ["12:00", "2 pm", "3 pm"], "answer": 1 },
-      { "q": "What happens on the day?", "options": ["Mikkel is running a bit late", "Her sister cancels", "Mikkel forgets"], "answer": 0 }
+      { "q": "What happens on the day?", "options": ["米格 is running a bit late", "Her sister cancels", "米格 forgets"], "answer": 0 }
     ]
   },
   "nodes": [

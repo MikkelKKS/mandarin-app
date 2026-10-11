@@ -6,7 +6,7 @@ This file is the brief for building a personal Mandarin Chinese learning app. Re
 
 ## 1. Goal and owner
 
-- **Single user:** Mikkel (Denmark). Personal app, not a commercial product. No multi-tenant features, no social features, no ads, no payments.
+- **Single user:** the owner (Denmark). Personal app, not a commercial product. No multi-tenant features, no social features, no ads, no payments.
 - **Current level:** knows some basics (pinyin, greetings, a handful of words). Not a complete beginner, but has no formal HSK level yet.
 - **UI and explanation language:** English.
 - **Learning priorities, in order:**

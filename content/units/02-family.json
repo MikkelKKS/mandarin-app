@@ -42,7 +42,7 @@
     { "id": "s-ayihao", "hanzi": "阿姨好！", "pinyin": "Āyí hǎo!", "english": "Hello! (to her mother)", "words": ["w-ayi", "w-hao"], "alt": { "english": ["Hello, auntie!"] } },
     { "id": "s-shushuhao-ayihao", "hanzi": "叔叔好！阿姨好！", "pinyin": "Shūshu hǎo! Āyí hǎo!", "english": "Hello! (to her father and mother)", "words": ["w-shushu", "w-hao", "w-ayi", "w-hao"] },
     { "id": "s-nijiayoujikouren", "hanzi": "你家有几口人？", "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?", "english": "How many people are in your family?", "words": ["w-ni", "w-jia", "w-you", "w-ji", "w-kou", "w-ren"] },
-    { "id": "s-mikkel-jikouren", "hanzi": "米格，你家有几口人？", "pinyin": "Mǐgé, nǐ jiā yǒu jǐ kǒu rén?", "english": "Mikkel, how many people are in your family?", "words": ["w-mikkel", "w-ni", "w-jia", "w-you", "w-ji", "w-kou", "w-ren"] },
+    { "id": "s-mikkel-jikouren", "hanzi": "米格，你家有几口人？", "pinyin": "Mǐgé, nǐ jiā yǒu jǐ kǒu rén?", "english": "米格, how many people are in your family?", "words": ["w-mikkel", "w-ni", "w-jia", "w-you", "w-ji", "w-kou", "w-ren"] },
     { "id": "s-wojiayousikouren", "hanzi": "我家有四口人。", "pinyin": "Wǒ jiā yǒu sì kǒu rén.", "english": "There are four people in my family.", "words": ["w-wo", "w-jia", "w-you", "w-si", "w-kou", "w-ren"] },
     { "id": "s-babamamagegehewo", "hanzi": "爸爸、妈妈、哥哥和我。", "pinyin": "Bàba, māma, gēge hé wǒ.", "english": "Dad, Mum, my older brother and me.", "words": ["w-baba", "w-mama", "w-gege", "w-he", "w-wo"] },
     { "id": "s-niyougegema", "hanzi": "你有哥哥吗？", "pinyin": "Nǐ yǒu gēge ma?", "english": "Do you have an older brother?", "words": ["w-ni", "w-you", "w-gege", "w-ma"] },
@@ -82,10 +82,10 @@
   "dialogue": {
     "id": "d02-photo",
     "title": "The family photo",
-    "setting": "After dinner, her mother asks Mikkel about his family back in Denmark.",
+    "setting": "After dinner, her mother asks 米格 about his family back in Denmark.",
     "speakers": [
       { "id": "M", "name": "Her mother", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "M", "sentence": "s-mikkel-jikouren" },
@@ -99,9 +99,9 @@
       { "speaker": "K", "sentence": "s-buhui" }
     ],
     "questions": [
-      { "q": "How many people are in Mikkel's family?", "options": ["Three", "Four", "Five"], "answer": 1 },
+      { "q": "How many people are in 米格's family?", "options": ["Three", "Four", "Five"], "answer": 1 },
       { "q": "Who is in the photo he points to?", "options": ["His dad and mum", "His brother and sister", "His dog"], "answer": 0 },
-      { "q": "Does Mikkel have an older brother?", "options": ["Yes", "No, but he has an older sister", "No, but he has a younger sister"], "answer": 1 },
+      { "q": "Does 米格 have an older brother?", "options": ["Yes", "No, but he has an older sister", "No, but he has a younger sister"], "answer": 1 },
       { "q": "Do his parents speak Chinese?", "options": ["Yes, both of them", "No", "Only his mum"], "answer": 1 }
     ]
   },

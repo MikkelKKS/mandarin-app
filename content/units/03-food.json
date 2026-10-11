@@ -38,7 +38,7 @@
   ],
   "sentences": [
     { "id": "s-chifanle", "hanzi": "吃饭了！", "pinyin": "Chīfàn le!", "english": "Food's ready!", "words": ["w-chi", "w-fan", "w-le"], "alt": { "english": ["Dinner's ready!", "Time to eat!"] } },
-    { "id": "s-chifanle-qingzuo", "hanzi": "吃饭了！米格，请坐。", "pinyin": "Chīfàn le! Mǐgé, qǐng zuò.", "english": "Food's ready! Mikkel, have a seat.", "words": ["w-chi", "w-fan", "w-le", "w-mikkel", "w-qing", "w-zuo"] },
+    { "id": "s-chifanle-qingzuo", "hanzi": "吃饭了！米格，请坐。", "pinyin": "Chīfàn le! Mǐgé, qǐng zuò.", "english": "Food's ready! 米格, have a seat.", "words": ["w-chi", "w-fan", "w-le", "w-mikkel", "w-qing", "w-zuo"] },
     { "id": "s-nixiangheshenme", "hanzi": "你想喝什么？", "pinyin": "Nǐ xiǎng hē shénme?", "english": "What would you like to drink?", "words": ["w-ni", "w-xiang", "w-he-drink", "w-shenme"] },
     { "id": "s-yaobuyaohecha", "hanzi": "要不要喝茶？", "pinyin": "Yào bu yào hē chá?", "english": "Would you like some tea?", "words": ["w-yao", "w-bu", "w-yao", "w-he-drink", "w-cha"] },
     { "id": "s-heshenme-yaobuyao", "hanzi": "你想喝什么？要不要喝茶？", "pinyin": "Nǐ xiǎng hē shénme? Yào bu yào hē chá?", "english": "What would you like to drink? Some tea?", "words": ["w-ni", "w-xiang", "w-he-drink", "w-shenme", "w-yao", "w-bu", "w-yao", "w-he-drink", "w-cha"] },
@@ -80,10 +80,10 @@
   "dialogue": {
     "id": "d03-dinner",
     "title": "Dinner is served",
-    "setting": "Mikkel's first family dinner. Her mother is a generous host.",
+    "setting": "米格's first family dinner. Her mother is a generous host.",
     "speakers": [
       { "id": "M", "name": "Her mother", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "M", "sentence": "s-chifanle-qingzuo" },
@@ -98,8 +98,8 @@
     ],
     "questions": [
       { "q": "What drink does the mother offer?", "options": ["Tea", "Water", "Beer"], "answer": 0 },
-      { "q": "Can Mikkel use chopsticks?", "options": ["Not at all", "A little", "Very well"], "answer": 1 },
-      { "q": "Why does Mikkel turn down another bowl?", "options": ["It's too spicy", "He doesn't like it", "He's full"], "answer": 2 }
+      { "q": "Can 米格 use chopsticks?", "options": ["Not at all", "A little", "Very well"], "answer": 1 },
+      { "q": "Why does 米格 turn down another bowl?", "options": ["It's too spicy", "He doesn't like it", "He's full"], "answer": 2 }
     ]
   },
   "nodes": [

@@ -67,10 +67,10 @@
   "dialogue": {
     "id": "d05-market",
     "title": "At the fruit stall",
-    "setting": "Mikkel buys apples at a market to bring to her parents.",
+    "setting": "米格 buys apples at a market to bring to her parents.",
     "speakers": [
       { "id": "S", "name": "Seller", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "S", "sentence": "s-niyaomaishenme" },
@@ -82,7 +82,7 @@
       { "speaker": "S", "sentence": "s-yigongshisikuai" }
     ],
     "questions": [
-      { "q": "What does Mikkel buy?", "options": ["Apples", "Clothes", "Tea"], "answer": 0 },
+      { "q": "What does 米格 buy?", "options": ["Apples", "Clothes", "Tea"], "answer": 0 },
       { "q": "What price per jin do they agree on?", "options": ["8 yuan", "7 yuan", "14 yuan"], "answer": 1 },
       { "q": "How much does he pay in total?", "options": ["14 yuan", "16 yuan", "8 yuan"], "answer": 0 }
     ]

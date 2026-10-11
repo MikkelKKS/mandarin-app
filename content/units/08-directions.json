@@ -531,7 +531,7 @@
    "id": "s-mikkel-feiji",
    "hanzi": "米格，飞机几点到？",
    "pinyin": "Mǐgé, fēijī jǐ diǎn dào?",
-   "english": "Mi'ge, what time does your plane land?",
+   "english": "米格, what time does your plane land?",
    "words": [
     "w-mikkel",
     "w-feiji",
@@ -729,7 +729,7 @@
  "dialogue": {
   "id": "d08-airport",
   "title": "From the airport",
-  "setting": "The day before his flight, her mother calls Mikkel to plan his trip from the airport.",
+  "setting": "The day before his flight, her mother calls 米格 to plan his trip from the airport.",
   "speakers": [
    {
     "id": "M",
@@ -738,7 +738,7 @@
    },
    {
     "id": "K",
-    "name": "Mikkel",
+    "name": "米格",
     "voice": "m"
    }
   ],
@@ -778,7 +778,7 @@
   ],
   "questions": [
    {
-    "q": "When does Mikkel's plane land?",
+    "q": "When does 米格's plane land?",
     "options": [
      "3 pm",
      "3:30 pm",
@@ -787,7 +787,7 @@
     "answer": 0
    },
    {
-    "q": "How does Mikkel want to travel?",
+    "q": "How does 米格 want to travel?",
     "options": [
      "By taxi",
      "By metro",

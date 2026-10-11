@@ -36,7 +36,7 @@
   "sentences": [
     { "id": "s-xiangquchangcheng", "hanzi": "我想去长城。", "pinyin": "Wǒ xiǎng qù Chángchéng.", "english": "I'd like to go to the Great Wall.", "words": ["w-wo", "w-xiang", "w-qu", "w-changcheng"] },
     { "id": "s-changchenghenyouming", "hanzi": "长城很有名。", "pinyin": "Chángchéng hěn yǒumíng.", "english": "The Great Wall is very famous.", "words": ["w-changcheng", "w-hen", "w-youming"] },
-    { "id": "s-mikkel-qunaliwan", "hanzi": "米格，你想去哪里玩？", "pinyin": "Mǐgé, nǐ xiǎng qù nǎlǐ wán?", "english": "Mi'ge, where would you like to go?", "words": ["w-mikkel", "w-ni", "w-xiang", "w-qu", "w-nali", "w-wan-play"] },
+    { "id": "s-mikkel-qunaliwan", "hanzi": "米格，你想去哪里玩？", "pinyin": "Mǐgé, nǐ xiǎng qù nǎlǐ wán?", "english": "米格, where would you like to go?", "words": ["w-mikkel", "w-ni", "w-xiang", "w-qu", "w-nali", "w-wan-play"] },
     { "id": "s-changcheng-youming", "hanzi": "我想去长城。长城很有名！", "pinyin": "Wǒ xiǎng qù Chángchéng. Chángchéng hěn yǒumíng!", "english": "I'd like to see the Great Wall. It's so famous!", "words": ["w-wo", "w-xiang", "w-qu", "w-changcheng", "w-changcheng", "w-hen", "w-youming"] },
     { "id": "s-xianqu-ranhou", "hanzi": "好啊！我们先去长城，然后去吃饭。", "pinyin": "Hǎo a! Wǒmen xiān qù Chángchéng, ránhòu qù chīfàn.", "english": "Sure! First the Great Wall, then we'll go and eat.", "words": ["w-hao", "w-a", "w-women", "w-xian", "w-qu", "w-changcheng", "w-ranhou", "w-qu", "w-chi", "w-fan"] },
     { "id": "s-xianbinguan", "hanzi": "我们先去宾馆，然后去吃饭。", "pinyin": "Wǒmen xiān qù bīnguǎn, ránhòu qù chīfàn.", "english": "First we'll go to the hotel, then go and eat.", "words": ["w-women", "w-xian", "w-qu", "w-binguan", "w-ranhou", "w-qu", "w-chi", "w-fan"] },
@@ -80,10 +80,10 @@
   "dialogue": {
     "id": "d12-greatwall",
     "title": "Listening challenge: The Great Wall",
-    "setting": "Her sister plans a day out with Mikkel. Then his passport goes missing.",
+    "setting": "Her sister plans a day out with 米格. Then his passport goes missing.",
     "speakers": [
       { "id": "S", "name": "Her sister", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "S", "sentence": "s-mikkel-qunaliwan" },
@@ -96,10 +96,10 @@
       { "speaker": "K", "sentence": "s-xiexie-nizhenhao" }
     ],
     "questions": [
-      { "q": "Where does Mikkel want to go?", "options": ["Shanghai", "The Great Wall", "A restaurant"], "answer": 1 },
+      { "q": "Where does 米格 want to go?", "options": ["Shanghai", "The Great Wall", "A restaurant"], "answer": 1 },
       { "q": "What will they do afterwards?", "options": ["Go to eat", "Go shopping", "Go back to the hotel"], "answer": 0 },
-      { "q": "What can't Mikkel find?", "options": ["His phone", "His wallet", "His passport"], "answer": 2 },
-      { "q": "Who finds it?", "options": ["Her sister", "Mikkel", "Nobody"], "answer": 0 }
+      { "q": "What can't 米格 find?", "options": ["His phone", "His wallet", "His passport"], "answer": 2 },
+      { "q": "Who finds it?", "options": ["Her sister", "米格", "Nobody"], "answer": 0 }
     ]
   },
   "nodes": [

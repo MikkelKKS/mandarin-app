@@ -39,7 +39,7 @@
     { "id": "s-wozuixihuankandianying", "hanzi": "我最喜欢看电影。", "pinyin": "Wǒ zuì xǐhuan kàn diànyǐng.", "english": "Watching films is my favourite.", "words": ["w-wo", "w-zui", "w-xihuan", "w-kan", "w-dianying"] },
     { "id": "s-wobuhuidalanqiu", "hanzi": "我不会打篮球。", "pinyin": "Wǒ bú huì dǎ lánqiú.", "english": "I can't play basketball.", "words": ["w-wo", "w-bu", "w-hui", "w-dalanqiu"] },
     { "id": "s-zhoumonizuoshenme", "hanzi": "周末你做什么？", "pinyin": "Zhōumò nǐ zuò shénme?", "english": "What do you do at the weekend?", "words": ["w-zhoumo", "w-ni", "w-zuo-do", "w-shenme"] },
-    { "id": "s-mikkel-zhoumo", "hanzi": "米格，周末你做什么？", "pinyin": "Mǐgé, zhōumò nǐ zuò shénme?", "english": "Mi'ge, what do you do at the weekend?", "words": ["w-mikkel", "w-zhoumo", "w-ni", "w-zuo-do", "w-shenme"] },
+    { "id": "s-mikkel-zhoumo", "hanzi": "米格，周末你做什么？", "pinyin": "Mǐgé, zhōumò nǐ zuò shénme?", "english": "米格, what do you do at the weekend?", "words": ["w-mikkel", "w-zhoumo", "w-ni", "w-zuo-do", "w-shenme"] },
     { "id": "s-zhoumopaobu", "hanzi": "周末我常常去跑步。", "pinyin": "Zhōumò wǒ chángcháng qù pǎobù.", "english": "At weekends I often go running.", "words": ["w-zhoumo", "w-wo", "w-changchang", "w-qu", "w-paobu"] },
     { "id": "s-zhoumopaobu-nine", "hanzi": "周末我常常去跑步。你呢？", "pinyin": "Zhōumò wǒ chángcháng qù pǎobù. Nǐ ne?", "english": "At weekends I often go running. And you?", "words": ["w-zhoumo", "w-wo", "w-changchang", "w-qu", "w-paobu", "w-ni", "w-ne"] },
     { "id": "s-babamamaxihuanlvyou", "hanzi": "我爸爸妈妈很喜欢旅游。", "pinyin": "Wǒ bàba māma hěn xǐhuan lǚyóu.", "english": "My parents love travelling.", "words": ["w-wo", "w-baba", "w-mama", "w-hen", "w-xihuan", "w-lvyou"] },
@@ -68,10 +68,10 @@
   "dialogue": {
     "id": "d06-mahjong",
     "title": "An invitation",
-    "setting": "Her younger sister chats with Mikkel about the weekend.",
+    "setting": "Her younger sister chats with 米格 about the weekend.",
     "speakers": [
       { "id": "S", "name": "Her sister", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "S", "sentence": "s-mikkel-zhoumo" },
@@ -83,9 +83,9 @@
       { "speaker": "K", "sentence": "s-haoa" }
     ],
     "questions": [
-      { "q": "What does Mikkel often do at weekends?", "options": ["Go running", "Go swimming", "Watch films"], "answer": 0 },
+      { "q": "What does 米格 often do at weekends?", "options": ["Go running", "Go swimming", "Watch films"], "answer": 0 },
       { "q": "What does her sister like best?", "options": ["Music", "Films", "Mahjong"], "answer": 1 },
-      { "q": "Can Mikkel play mahjong?", "options": ["Yes, well", "No, but he wants to learn", "A little"], "answer": 1 },
+      { "q": "Can 米格 play mahjong?", "options": ["Yes, well", "No, but he wants to learn", "A little"], "answer": 1 },
       { "q": "Who plays mahjong in her family?", "options": ["Her mum and dad", "Only her dad", "Her brother"], "answer": 0 }
     ]
   },

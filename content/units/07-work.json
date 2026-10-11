@@ -25,7 +25,7 @@
   ],
   "sentences": [
     { "id": "s-nizuoshenmegongzuo", "hanzi": "你做什么工作？", "pinyin": "Nǐ zuò shénme gōngzuò?", "english": "What do you do for work?", "words": ["w-ni", "w-zuo-do", "w-shenme", "w-gongzuo"], "alt": { "english": ["What's your job?"] } },
-    { "id": "s-mikkel-gongzuo", "hanzi": "米格，你做什么工作？", "pinyin": "Mǐgé, nǐ zuò shénme gōngzuò?", "english": "Mi'ge, what do you do for work?", "words": ["w-mikkel", "w-ni", "w-zuo-do", "w-shenme", "w-gongzuo"] },
+    { "id": "s-mikkel-gongzuo", "hanzi": "米格，你做什么工作？", "pinyin": "Mǐgé, nǐ zuò shénme gōngzuò?", "english": "米格, what do you do for work?", "words": ["w-mikkel", "w-ni", "w-zuo-do", "w-shenme", "w-gongzuo"] },
     { "id": "s-wozaidaxuegongzuo", "hanzi": "我在大学工作。", "pinyin": "Wǒ zài dàxué gōngzuò.", "english": "I work at a university.", "words": ["w-wo", "w-zai", "w-daxue", "w-gongzuo"] },
     { "id": "s-woshixuesheng", "hanzi": "我是学生。", "pinyin": "Wǒ shì xuésheng.", "english": "I'm a student.", "words": ["w-wo", "w-shi", "w-xuesheng"] },
     { "id": "s-tamamashiyisheng", "hanzi": "她妈妈是医生。", "pinyin": "Tā māma shì yīshēng.", "english": "Her mum is a doctor.", "words": ["w-ta-she", "w-mama", "w-shi", "w-yisheng"] },
@@ -63,10 +63,10 @@
   "dialogue": {
     "id": "d07-job",
     "title": "So, what do you do?",
-    "setting": "Over tea, her mother asks Mikkel about his life in Denmark.",
+    "setting": "Over tea, her mother asks 米格 about his life in Denmark.",
     "speakers": [
       { "id": "M", "name": "Her mother", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "M", "sentence": "s-mikkel-gongzuo" },
@@ -79,7 +79,7 @@
       { "speaker": "K", "sentence": "s-jiudianshangban" }
     ],
     "questions": [
-      { "q": "Where does Mikkel work?", "options": ["At a university", "At a hospital", "At a bank"], "answer": 0 },
+      { "q": "Where does 米格 work?", "options": ["At a university", "At a hospital", "At a bank"], "answer": 0 },
       { "q": "Where does he live?", "options": ["Beijing", "Copenhagen", "Aarhus"], "answer": 1 },
       { "q": "How does he describe his work?", "options": ["Boring", "Busy but interesting", "Too tiring"], "answer": 1 },
       { "q": "What time does he start work?", "options": ["8:00", "9:00", "10:00"], "answer": 1 }

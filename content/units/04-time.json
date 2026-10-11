@@ -49,7 +49,7 @@
     { "id": "s-wodeshengri", "hanzi": "我的生日是三月二十号。", "pinyin": "Wǒ de shēngrì shì sān yuè èrshí hào.", "english": "My birthday is on the 20th of March.", "words": ["w-wo", "w-de", "w-shengri", "w-shi", "w-san", "w-yue", "w-er", "w-shi2", "w-hao4"] },
     { "id": "s-shengrikuaile", "hanzi": "生日快乐！", "pinyin": "Shēngrì kuàilè!", "english": "Happy birthday!", "words": ["w-shengri", "w-kuaile"] },
     { "id": "s-shouji", "hanzi": "你的手机号码是多少？", "pinyin": "Nǐ de shǒujī hàomǎ shì duōshao?", "english": "What's your phone number?", "words": ["w-ni", "w-de", "w-shouji", "w-haoma", "w-shi", "w-duoshao"] },
-    { "id": "s-mingtianshiwodeshengri", "hanzi": "米格，明天是我的生日。", "pinyin": "Mǐgé, míngtiān shì wǒ de shēngrì.", "english": "Mi'ge, tomorrow is my birthday.", "words": ["w-mikkel", "w-mingtian", "w-shi", "w-wo", "w-de", "w-shengri"] },
+    { "id": "s-mingtianshiwodeshengri", "hanzi": "米格，明天是我的生日。", "pinyin": "Mǐgé, míngtiān shì wǒ de shēngrì.", "english": "米格, tomorrow is my birthday.", "words": ["w-mikkel", "w-mingtian", "w-shi", "w-wo", "w-de", "w-shengri"] },
     { "id": "s-shima-shengrikuaile", "hanzi": "是吗？生日快乐！", "pinyin": "Shì ma? Shēngrì kuàilè!", "english": "Really? Happy birthday!", "words": ["w-shi", "w-ma", "w-shengri", "w-kuaile"] },
     { "id": "s-xiexie-yiqichifan", "hanzi": "谢谢！明天晚上我们一起吃饭吧。", "pinyin": "Xièxie! Míngtiān wǎnshang wǒmen yìqǐ chīfàn ba.", "english": "Thanks! Let's have dinner together tomorrow evening.", "words": ["w-xiexie", "w-mingtian", "w-wanshang", "w-women", "w-yiqi", "w-chi", "w-fan", "w-ba-particle"] },
     { "id": "s-haoa-jidian", "hanzi": "好啊！几点？", "pinyin": "Hǎo a! Jǐ diǎn?", "english": "Sure! What time?", "words": ["w-hao", "w-a", "w-ji", "w-dian"] }
@@ -71,10 +71,10 @@
   "dialogue": {
     "id": "d04-birthday",
     "title": "A birthday dinner",
-    "setting": "Her mother calls Mikkel the day before her birthday.",
+    "setting": "Her mother calls 米格 the day before her birthday.",
     "speakers": [
       { "id": "M", "name": "Her mother", "voice": "f" },
-      { "id": "K", "name": "Mikkel", "voice": "m" }
+      { "id": "K", "name": "米格", "voice": "m" }
     ],
     "lines": [
       { "speaker": "M", "sentence": "s-mingtianshiwodeshengri" },
@@ -85,7 +85,7 @@
       { "speaker": "K", "sentence": "s-hao-mingtianjian" }
     ],
     "questions": [
-      { "q": "Whose birthday is it tomorrow?", "options": ["The mother's", "Mikkel's", "Her father's"], "answer": 0 },
+      { "q": "Whose birthday is it tomorrow?", "options": ["The mother's", "米格's", "Her father's"], "answer": 0 },
       { "q": "What are they doing tomorrow evening?", "options": ["Going shopping", "Having dinner together", "Watching a film"], "answer": 1 },
       { "q": "What time?", "options": ["6:00", "6:30", "7:30"], "answer": 1 }
     ]
