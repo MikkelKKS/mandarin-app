@@ -8,3 +8,5 @@ Items a native speaker (e.g. your girlfriend) should glance at. Remove an entry 
 | u01-greetings | 哪里哪里！ as a reply to a compliment | The classic modest reply, but some younger speakers find it a bit old-fashioned and just say 谢谢 or 没有没有. Still useful to recognise. |
 | u00-basics | 你好吗？ | Common in textbooks; in real life friends more often skip it or say 最近怎么样？ Kept because it's universally understood. |
 | u00-basics | 啊，对不起！ written À | The tone of 啊 varies with the speaker's mood; the audio may not match the tone mark exactly. |
+| u10-experiences | 北京人很多，哥本哈根安静多了。 | Meant as "Beijing is crowded; Copenhagen is much quieter". Check it sounds natural; 北京人太多了 may be more idiomatic. |
+| u10-experiences | 过 tagged HSK 4, 对 tagged HSK 4 | The downloaded HSK list puts these standalone characters at level 4, although they're used much earlier. Harmless; just a label. |

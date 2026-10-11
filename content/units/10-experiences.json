@@ -1,0 +1,106 @@
+{
+  "id": "u10-experiences",
+  "order": 10,
+  "title": "Experiences & comparisons",
+  "titleHanzi": "你去过中国吗？",
+  "description": "HSK 3: talk about what you've done (过, 是…的), compare Denmark and China (比, 跟…一样) and give reasons (因为…所以, 虽然…但是). Ends with a longer listening challenge.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-guo-exp", "hanzi": "过", "pinyin": "guo", "english": ["(have) ever — experience marker"], "hsk": 4, "pos": "particle", "note": "After a verb: 去过 = have been to. Usually unstressed." },
+    { "id": "w-beijing", "hanzi": "北京", "pinyin": "Běijīng", "english": ["Beijing"], "hsk": 1, "pos": "name" },
+    { "id": "w-qunian", "hanzi": "去年", "pinyin": "qùnián", "english": ["last year"], "hsk": 2, "pos": "time" },
+    { "id": "w-di-ordinal", "hanzi": "第", "pinyin": "dì", "english": ["(ordinal prefix) -th"], "hsk": 0, "pos": "particle", "note": "第一次 = the first time, 第二 = second." },
+    { "id": "w-shihou", "hanzi": "时候", "pinyin": "shíhou", "english": ["time", "moment"], "hsk": 1, "pos": "noun" },
+    { "id": "w-dui", "hanzi": "对", "pinyin": "duì", "english": ["right", "correct", "yes"], "hsk": 4, "pos": "adjective" },
+    { "id": "w-bi", "hanzi": "比", "pinyin": "bǐ", "english": ["than (comparisons)"], "hsk": 2, "pos": "preposition" },
+    { "id": "w-re", "hanzi": "热", "pinyin": "rè", "english": ["hot"], "hsk": 1, "pos": "adjective" },
+    { "id": "w-leng", "hanzi": "冷", "pinyin": "lěng", "english": ["cold"], "hsk": 1, "pos": "adjective" },
+    { "id": "w-xiatian", "hanzi": "夏天", "pinyin": "xiàtiān", "english": ["summer"], "hsk": 0, "pos": "time" },
+    { "id": "w-xiayu", "hanzi": "下雨", "pinyin": "xià yǔ", "english": ["to rain"], "hsk": 1, "pos": "verb" },
+    { "id": "w-anjing", "hanzi": "安静", "pinyin": "ānjìng", "english": ["quiet", "peaceful"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-gen", "hanzi": "跟", "pinyin": "gēn", "english": ["with", "and (as in compared with)"], "hsk": 3, "pos": "preposition" },
+    { "id": "w-yiyang", "hanzi": "一样", "pinyin": "yíyàng", "english": ["the same"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-suiran", "hanzi": "虽然", "pinyin": "suīrán", "english": ["although"], "hsk": 3, "pos": "conjunction" },
+    { "id": "w-danshi", "hanzi": "但是", "pinyin": "dànshì", "english": ["but"], "hsk": 2, "pos": "conjunction" },
+    { "id": "w-yinwei", "hanzi": "因为", "pinyin": "yīnwèi", "english": ["because"], "hsk": 2, "pos": "conjunction" },
+    { "id": "w-suoyi", "hanzi": "所以", "pinyin": "suǒyǐ", "english": ["so", "therefore"], "hsk": 2, "pos": "conjunction" },
+    { "id": "w-weishenme", "hanzi": "为什么", "pinyin": "wèishénme", "english": ["why"], "hsk": 3, "pos": "question" },
+    { "id": "w-xiguan", "hanzi": "习惯", "pinyin": "xíguàn", "english": ["to be used to", "habit"], "hsk": 3, "pos": "verb" }
+  ],
+  "sentences": [
+    { "id": "s-niquguozhongguoma", "hanzi": "你去过中国吗？", "pinyin": "Nǐ qùguo Zhōngguó ma?", "english": "Have you been to China?", "words": ["w-ni", "w-qu", "w-guo-exp", "w-zhongguo", "w-ma"] },
+    { "id": "s-quguoyici", "hanzi": "去过一次。", "pinyin": "Qùguo yí cì.", "english": "Once.", "words": ["w-qu", "w-guo-exp", "w-yi", "w-ci"], "alt": { "english": ["I've been once."] } },
+    { "id": "s-woqunianquguobeijing", "hanzi": "我去年去过北京。", "pinyin": "Wǒ qùnián qùguo Běijīng.", "english": "I went to Beijing last year.", "words": ["w-wo", "w-qunian", "w-qu", "w-guo-exp", "w-beijing"] },
+    { "id": "s-diyicilaizhongguo", "hanzi": "这是我第一次来中国。", "pinyin": "Zhè shì wǒ dì yī cì lái Zhōngguó.", "english": "This is my first time in China.", "words": ["w-zhe", "w-shi", "w-wo", "w-di-ordinal", "w-yi", "w-ci", "w-lai", "w-zhongguo"] },
+    { "id": "s-shenmeshihoulaide", "hanzi": "你是什么时候来的？", "pinyin": "Nǐ shì shénme shíhou lái de?", "english": "When did you get here?", "words": ["w-ni", "w-shi", "w-shenme", "w-shihou", "w-lai", "w-de"] },
+    { "id": "s-mikkel-shenmeshihou", "hanzi": "米格，你是什么时候来的？", "pinyin": "Mǐgé, nǐ shì shénme shíhou lái de?", "english": "Mi'ge, when did you arrive?", "words": ["w-mikkel", "w-ni", "w-shi", "w-shenme", "w-shihou", "w-lai", "w-de"] },
+    { "id": "s-xingqiliulaide", "hanzi": "我是星期六来的。", "pinyin": "Wǒ shì xīngqīliù lái de.", "english": "I came on Saturday.", "words": ["w-wo", "w-shi", "w-xingqi", "w-liu", "w-lai", "w-de"] },
+    { "id": "s-zenmelaide", "hanzi": "你是怎么来的？", "pinyin": "Nǐ shì zěnme lái de?", "english": "How did you get here?", "words": ["w-ni", "w-shi", "w-zenme", "w-lai", "w-de"] },
+    { "id": "s-zenmelaide-feiji", "hanzi": "你是怎么来的？坐飞机来的吗？", "pinyin": "Nǐ shì zěnme lái de? Zuò fēijī lái de ma?", "english": "How did you come? By plane?", "words": ["w-ni", "w-shi", "w-zenme", "w-lai", "w-de", "w-zuo", "w-feiji", "w-lai", "w-de", "w-ma"] },
+    { "id": "s-zuofeijilaide", "hanzi": "我是坐飞机来的。", "pinyin": "Wǒ shì zuò fēijī lái de.", "english": "I came by plane.", "words": ["w-wo", "w-shi", "w-zuo", "w-feiji", "w-lai", "w-de"] },
+    { "id": "s-dui-diyici", "hanzi": "对，我是坐飞机来的。这是我第一次来中国。", "pinyin": "Duì, wǒ shì zuò fēijī lái de. Zhè shì wǒ dì yī cì lái Zhōngguó.", "english": "Yes, I flew. It's my first time in China.", "words": ["w-dui", "w-wo", "w-shi", "w-zuo", "w-feiji", "w-lai", "w-de", "w-zhe", "w-shi", "w-wo", "w-di-ordinal", "w-yi", "w-ci", "w-lai", "w-zhongguo"] },
+    { "id": "s-beijingxiatianbidanmaire", "hanzi": "北京的夏天比丹麦热多了。", "pinyin": "Běijīng de xiàtiān bǐ Dānmài rè duō le.", "english": "Summer in Beijing is much hotter than in Denmark.", "words": ["w-beijing", "w-de", "w-xiatian", "w-bi", "w-danmai", "w-re", "w-duo", "w-le"] },
+    { "id": "s-xiatian-xiguan", "hanzi": "北京的夏天比丹麦热多了。你习惯了吗？", "pinyin": "Běijīng de xiàtiān bǐ Dānmài rè duō le. Nǐ xíguàn le ma?", "english": "Beijing summers are much hotter than Denmark's. Are you used to it?", "words": ["w-beijing", "w-de", "w-xiatian", "w-bi", "w-danmai", "w-re", "w-duo", "w-le", "w-ni", "w-xiguan", "w-le", "w-ma"] },
+    { "id": "s-danmaibizhongguolengma", "hanzi": "丹麦比中国冷吗？", "pinyin": "Dānmài bǐ Zhōngguó lěng ma?", "english": "Is Denmark colder than China?", "words": ["w-danmai", "w-bi", "w-zhongguo", "w-leng", "w-ma"] },
+    { "id": "s-gebenhagenanjing", "hanzi": "北京人很多，哥本哈根安静多了。", "pinyin": "Běijīng rén hěn duō, Gēběnhāgēn ānjìng duō le.", "english": "Beijing is so crowded — Copenhagen is much quieter.", "words": ["w-beijing", "w-ren", "w-hen", "w-duo", "w-gebenhagen", "w-anjing", "w-duo", "w-le"] },
+    { "id": "s-danmaichangchangxiayu", "hanzi": "丹麦常常下雨。", "pinyin": "Dānmài chángcháng xià yǔ.", "english": "It often rains in Denmark.", "words": ["w-danmai", "w-changchang", "w-xiayu"] },
+    { "id": "s-zhongguocaibuyiyang", "hanzi": "中国菜跟丹麦菜不一样。", "pinyin": "Zhōngguó cài gēn Dānmài cài bù yíyàng.", "english": "Chinese food is different from Danish food.", "words": ["w-zhongguo", "w-cai", "w-gen", "w-danmai", "w-cai", "w-bu", "w-yiyang"] },
+    { "id": "s-suiranla-danshihaochi", "hanzi": "虽然有点辣，但是很好吃。", "pinyin": "Suīrán yǒudiǎn là, dànshì hěn hǎochī.", "english": "It's a bit spicy, but it's delicious.", "words": ["w-suiran", "w-you", "w-dian", "w-la", "w-danshi", "w-hen", "w-haochi"] },
+    { "id": "s-buyiyang-haochi", "hanzi": "中国菜跟丹麦菜不一样。虽然有点辣，但是很好吃！", "pinyin": "Zhōngguó cài gēn Dānmài cài bù yíyàng. Suīrán yǒudiǎn là, dànshì hěn hǎochī!", "english": "Chinese food is different from Danish food. A bit spicy, but delicious!", "words": ["w-zhongguo", "w-cai", "w-gen", "w-danmai", "w-cai", "w-bu", "w-yiyang", "w-suiran", "w-you", "w-dian", "w-la", "w-danshi", "w-hen", "w-haochi"] },
+    { "id": "s-juedezhongguocai", "hanzi": "你觉得中国菜怎么样？", "pinyin": "Nǐ juéde Zhōngguó cài zěnmeyàng?", "english": "What do you think of Chinese food?", "words": ["w-ni", "w-juede", "w-zhongguo", "w-cai", "w-zenmeyang"] },
+    { "id": "s-nixiguanlema", "hanzi": "你习惯了吗？", "pinyin": "Nǐ xíguàn le ma?", "english": "Have you got used to it?", "words": ["w-ni", "w-xiguan", "w-le", "w-ma"] },
+    { "id": "s-yijingxiguanle", "hanzi": "已经习惯了。", "pinyin": "Yǐjīng xíguàn le.", "english": "I'm used to it now.", "words": ["w-yijing", "w-xiguan", "w-le"] },
+    { "id": "s-weishenmexuezhongwen", "hanzi": "你为什么学中文？", "pinyin": "Nǐ wèishénme xué Zhōngwén?", "english": "Why are you learning Chinese?", "words": ["w-ni", "w-weishenme", "w-xue", "w-zhongwen"] },
+    { "id": "s-yinwei-suoyi", "hanzi": "因为我的女朋友是中国人，所以我想跟她的家人说中文。", "pinyin": "Yīnwèi wǒ de nǚpéngyou shì Zhōngguó rén, suǒyǐ wǒ xiǎng gēn tā de jiārén shuō Zhōngwén.", "english": "Because my girlfriend is Chinese, I want to speak Chinese with her family.", "words": ["w-yinwei", "w-wo", "w-de", "w-nvpengyou", "w-shi", "w-zhongguo", "w-ren", "w-suoyi", "w-wo", "w-xiang", "w-gen", "w-ta-she", "w-de", "w-jia", "w-ren", "w-shuo", "w-zhongwen"] }
+  ],
+  "exchanges": [
+    { "id": "x-beenchina", "prompt": "s-niquguozhongguoma", "reply": "s-quguoyici", "wrong": ["s-woshixuesheng", "s-taihaole"], "context": "Someone asks about your travels." },
+    { "id": "x-whenarrive", "prompt": "s-shenmeshihoulaide", "reply": "s-xingqiliulaide", "wrong": ["s-zuofeijilaide", "s-xiaciba"], "context": "Listen carefully: when, or how?" },
+    { "id": "x-howarrive", "prompt": "s-zenmelaide", "reply": "s-zuofeijilaide", "wrong": ["s-xingqiliulaide", "s-meiwenti"], "context": "Listen carefully: when, or how?" },
+    { "id": "x-whychinese", "prompt": "s-weishenmexuezhongwen", "reply": "s-yinwei-suoyi", "wrong": ["s-quguoyici", "s-danmaichangchangxiayu"], "context": "The question everyone asks." },
+    { "id": "x-usedto", "prompt": "s-nixiguanlema", "reply": "s-yijingxiguanle", "wrong": ["s-bukeqi", "s-yigongshisikuai"], "context": "A relative checks how you're settling in." },
+    { "id": "x-foodopinion", "prompt": "s-juedezhongguocai", "reply": "s-suiranla-danshihaochi", "wrong": ["s-qingjin", "s-zuofeijilaide"], "context": "At dinner they want your honest opinion." }
+  ],
+  "grammar": [
+    { "id": "g-guo", "title": "过 = have ever done", "body": "Verb + 过 talks about experience: 我去过北京 = I've been to Beijing. Negative: 我没去过 (never 不去过). Ask: 你去过…吗？", "examples": ["s-niquguozhongguoma", "s-woqunianquguobeijing"] },
+    { "id": "g-shide", "title": "是…的 for details of the past", "body": "When something already happened and you ask about when, how or where, wrap the detail in 是…的: 你是什么时候来的？ 我是坐飞机来的. In speech, 是 is often dropped, but 的 stays.", "examples": ["s-shenmeshihoulaide", "s-zuofeijilaide"] },
+    { "id": "g-bi", "title": "Comparing with 比", "body": "A 比 B + adjective: 北京比丹麦热. Add 多了 for 'much more' or 一点 for 'a bit'. Don't use 很 in a 比 sentence.", "examples": ["s-beijingxiatianbidanmaire", "s-danmaibizhongguolengma"] },
+    { "id": "g-yiyang", "title": "A 跟 B (不)一样", "body": "A 跟 B 一样 = A is the same as B; 不一样 = different. You can add an adjective: 跟…一样好.", "examples": ["s-zhongguocaibuyiyang"] },
+    { "id": "g-suiran", "title": "虽然…但是… / 因为…所以…", "body": "Chinese uses both halves of these pairs: 虽然有点辣，但是很好吃 (although…, (but)…), 因为…，所以… (because…, (so)…). In casual speech one half is often dropped.", "examples": ["s-suiranla-danshihaochi", "s-yinwei-suoyi"] }
+  ],
+  "dialogue": {
+    "id": "d10-aunt",
+    "title": "Listening challenge: Questions from her aunt",
+    "setting": "At a big family dinner in Beijing, her aunt has lots of questions. Natural speed — try it without the text first.",
+    "speakers": [
+      { "id": "A", "name": "Her aunt", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "A", "sentence": "s-mikkel-shenmeshihou" },
+      { "speaker": "K", "sentence": "s-xingqiliulaide" },
+      { "speaker": "A", "sentence": "s-zenmelaide-feiji" },
+      { "speaker": "K", "sentence": "s-dui-diyici" },
+      { "speaker": "A", "sentence": "s-juedezhongguocai" },
+      { "speaker": "K", "sentence": "s-buyiyang-haochi" },
+      { "speaker": "A", "sentence": "s-xiatian-xiguan" },
+      { "speaker": "K", "sentence": "s-yijingxiguanle" },
+      { "speaker": "A", "sentence": "s-weishenmexuezhongwen" },
+      { "speaker": "K", "sentence": "s-yinwei-suoyi" }
+    ],
+    "questions": [
+      { "q": "When did Mikkel arrive?", "options": ["Friday", "Saturday", "Sunday"], "answer": 1 },
+      { "q": "Has Mikkel been to China before?", "options": ["No, it's his first time", "Yes, once", "Yes, he used to live there"], "answer": 0 },
+      { "q": "What does he say about Chinese food?", "options": ["It's the same as Danish food", "It's too spicy to eat", "It's different, a bit spicy, but delicious"], "answer": 2 },
+      { "q": "What does the aunt say about Beijing summers?", "options": ["Much hotter than Denmark", "Colder than Denmark", "Very rainy"], "answer": 0 },
+      { "q": "Why is Mikkel learning Chinese?", "options": ["For his job", "To talk with his girlfriend's family", "Because he's moving to Beijing"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n10-guo", "title": "Have you ever…? (过)", "words": ["w-guo-exp", "w-beijing", "w-qunian", "w-di-ordinal"], "sentences": ["s-niquguozhongguoma", "s-quguoyici", "s-woqunianquguobeijing", "s-diyicilaizhongguo"], "exchanges": ["x-beenchina"], "grammar": ["g-guo"] },
+    { "id": "n10-shide", "title": "When & how? (是…的)", "words": ["w-shihou", "w-dui"], "sentences": ["s-shenmeshihoulaide", "s-xingqiliulaide", "s-zenmelaide", "s-zuofeijilaide"], "exchanges": ["x-whenarrive", "x-howarrive"], "grammar": ["g-shide"] },
+    { "id": "n10-bi", "title": "Comparing (比, 一样)", "words": ["w-bi", "w-re", "w-leng", "w-xiatian", "w-xiayu", "w-anjing", "w-gen", "w-yiyang"], "sentences": ["s-beijingxiatianbidanmaire", "s-danmaibizhongguolengma", "s-gebenhagenanjing", "s-danmaichangchangxiayu", "s-zhongguocaibuyiyang"], "grammar": ["g-bi", "g-yiyang"] },
+    { "id": "n10-reasons", "title": "Because, although", "words": ["w-suiran", "w-danshi", "w-yinwei", "w-suoyi", "w-weishenme", "w-xiguan"], "sentences": ["s-suiranla-danshihaochi", "s-juedezhongguocai", "s-nixiguanlema", "s-yijingxiguanle", "s-weishenmexuezhongwen", "s-yinwei-suoyi"], "exchanges": ["x-whychinese", "x-usedto", "x-foodopinion"], "grammar": ["g-suiran"] },
+    { "id": "n10-story", "title": "Challenge: Questions from her aunt", "kind": "story", "sentences": ["s-mikkel-shenmeshihou", "s-zenmelaide-feiji", "s-dui-diyici", "s-buyiyang-haochi", "s-xiatian-xiguan"] }
+  ]
+}
