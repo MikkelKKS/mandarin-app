@@ -16,7 +16,8 @@
         "u03-food",
         "u04-time",
         "u05-shopping",
-        "u06-hobbies"
+        "u06-hobbies",
+        "u07-work"
       ]
     }
   ],
@@ -24,10 +25,6 @@
     {
       "title": "Directions & transport",
       "titleHanzi": "怎么走？"
-    },
-    {
-      "title": "Work & study",
-      "titleHanzi": "你做什么工作？"
     },
     {
       "title": "Plans & invitations",

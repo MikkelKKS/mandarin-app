@@ -1,0 +1,95 @@
+{
+  "id": "u07-work",
+  "order": 7,
+  "title": "Work & study",
+  "titleHanzi": "你做什么工作？",
+  "description": "Say what you do, where you live, and how busy work is — the questions every family asks.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-gongzuo", "hanzi": "工作", "pinyin": "gōngzuò", "english": ["work", "job", "to work"], "hsk": 1, "pos": "noun" },
+    { "id": "w-gongsi", "hanzi": "公司", "pinyin": "gōngsī", "english": ["company"], "hsk": 2, "pos": "noun" },
+    { "id": "w-xuexiao", "hanzi": "学校", "pinyin": "xuéxiào", "english": ["school"], "hsk": 1, "pos": "noun" },
+    { "id": "w-daxue", "hanzi": "大学", "pinyin": "dàxué", "english": ["university"], "hsk": 0, "pos": "noun" },
+    { "id": "w-xuesheng", "hanzi": "学生", "pinyin": "xuésheng", "english": ["student"], "hsk": 1, "pos": "noun" },
+    { "id": "w-laoshi", "hanzi": "老师", "pinyin": "lǎoshī", "english": ["teacher"], "hsk": 1, "pos": "noun" },
+    { "id": "w-yisheng", "hanzi": "医生", "pinyin": "yīshēng", "english": ["doctor"], "hsk": 1, "pos": "noun" },
+    { "id": "w-zhu", "hanzi": "住", "pinyin": "zhù", "english": ["to live (somewhere)"], "hsk": 1, "pos": "verb" },
+    { "id": "w-gebenhagen", "hanzi": "哥本哈根", "pinyin": "Gēběnhāgēn", "english": ["Copenhagen"], "hsk": 0, "pos": "name" },
+    { "id": "w-shangban", "hanzi": "上班", "pinyin": "shàngbān", "english": ["to go to work", "to start work"], "hsk": 2, "pos": "verb" },
+    { "id": "w-mang", "hanzi": "忙", "pinyin": "máng", "english": ["busy"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-lei", "hanzi": "累", "pinyin": "lèi", "english": ["tired"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-meitian", "hanzi": "每天", "pinyin": "měitiān", "english": ["every day"], "hsk": 0, "pos": "time" },
+    { "id": "w-shuxue", "hanzi": "数学", "pinyin": "shùxué", "english": ["maths", "mathematics"], "hsk": 3, "pos": "noun" },
+    { "id": "w-nan2", "hanzi": "难", "pinyin": "nán", "english": ["difficult", "hard"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-diannao", "hanzi": "电脑", "pinyin": "diànnǎo", "english": ["computer"], "hsk": 1, "pos": "noun" }
+  ],
+  "sentences": [
+    { "id": "s-nizuoshenmegongzuo", "hanzi": "你做什么工作？", "pinyin": "Nǐ zuò shénme gōngzuò?", "english": "What do you do for work?", "words": ["w-ni", "w-zuo-do", "w-shenme", "w-gongzuo"], "alt": { "english": ["What's your job?"] } },
+    { "id": "s-mikkel-gongzuo", "hanzi": "米格，你做什么工作？", "pinyin": "Mǐgé, nǐ zuò shénme gōngzuò?", "english": "Mi'ge, what do you do for work?", "words": ["w-mikkel", "w-ni", "w-zuo-do", "w-shenme", "w-gongzuo"] },
+    { "id": "s-wozaidaxuegongzuo", "hanzi": "我在大学工作。", "pinyin": "Wǒ zài dàxué gōngzuò.", "english": "I work at a university.", "words": ["w-wo", "w-zai", "w-daxue", "w-gongzuo"] },
+    { "id": "s-woshixuesheng", "hanzi": "我是学生。", "pinyin": "Wǒ shì xuésheng.", "english": "I'm a student.", "words": ["w-wo", "w-shi", "w-xuesheng"] },
+    { "id": "s-tamamashiyisheng", "hanzi": "她妈妈是医生。", "pinyin": "Tā māma shì yīshēng.", "english": "Her mum is a doctor.", "words": ["w-ta-she", "w-mama", "w-shi", "w-yisheng"] },
+    { "id": "s-tababashilaoshi", "hanzi": "他爸爸是老师。", "pinyin": "Tā bàba shì lǎoshī.", "english": "His dad is a teacher.", "words": ["w-ta-he", "w-baba", "w-shi", "w-laoshi"] },
+    { "id": "s-gegezaigongsigongzuo", "hanzi": "我哥哥在公司工作。", "pinyin": "Wǒ gēge zài gōngsī gōngzuò.", "english": "My older brother works at a company.", "words": ["w-wo", "w-gege", "w-zai", "w-gongsi", "w-gongzuo"] },
+    { "id": "s-meimeizaixuexiao", "hanzi": "我妹妹在学校。", "pinyin": "Wǒ mèimei zài xuéxiào.", "english": "My younger sister is at school.", "words": ["w-wo", "w-meimei", "w-zai", "w-xuexiao"] },
+    { "id": "s-nizainaligongzuo", "hanzi": "你在哪里工作？", "pinyin": "Nǐ zài nǎlǐ gōngzuò?", "english": "Where do you work?", "words": ["w-ni", "w-zai", "w-nali", "w-gongzuo"] },
+    { "id": "s-nizhuzainali", "hanzi": "你住在哪里？", "pinyin": "Nǐ zhù zài nǎlǐ?", "english": "Where do you live?", "words": ["w-ni", "w-zhu", "w-zai", "w-nali"] },
+    { "id": "s-wozhuzaigebenhagen", "hanzi": "我住在哥本哈根。", "pinyin": "Wǒ zhù zài Gēběnhāgēn.", "english": "I live in Copenhagen.", "words": ["w-wo", "w-zhu", "w-zai", "w-gebenhagen"] },
+    { "id": "s-gongzuomangbumang", "hanzi": "工作忙不忙？", "pinyin": "Gōngzuò máng bu máng?", "english": "Is work busy?", "words": ["w-gongzuo", "w-mang", "w-bu", "w-mang"] },
+    { "id": "s-youyidianmang", "hanzi": "有一点忙。", "pinyin": "Yǒu yìdiǎn máng.", "english": "A bit busy.", "words": ["w-you", "w-yidian", "w-mang"] },
+    { "id": "s-mang-youyisi", "hanzi": "有一点忙。可是我的工作很有意思。", "pinyin": "Yǒu yìdiǎn máng. Kěshì wǒ de gōngzuò hěn yǒuyìsi.", "english": "A bit busy. But my work is really interesting.", "words": ["w-you", "w-yidian", "w-mang", "w-keshi", "w-wo", "w-de", "w-gongzuo", "w-hen", "w-youyisi"] },
+    { "id": "s-wodegongzuohenyouyisi", "hanzi": "我的工作很有意思。", "pinyin": "Wǒ de gōngzuò hěn yǒuyìsi.", "english": "My work is really interesting.", "words": ["w-wo", "w-de", "w-gongzuo", "w-hen", "w-youyisi"] },
+    { "id": "s-nimeitianjidianshangban", "hanzi": "你每天几点上班？", "pinyin": "Nǐ měitiān jǐ diǎn shàngbān?", "english": "What time do you start work every day?", "words": ["w-ni", "w-meitian", "w-ji", "w-dian", "w-shangban"] },
+    { "id": "s-jiudianshangban", "hanzi": "我每天九点上班。", "pinyin": "Wǒ měitiān jiǔ diǎn shàngbān.", "english": "I start work at nine every day.", "words": ["w-wo", "w-meitian", "w-jiu", "w-dian", "w-shangban"] },
+    { "id": "s-jintianhenlei", "hanzi": "我今天很累。", "pinyin": "Wǒ jīntiān hěn lèi.", "english": "I'm really tired today.", "words": ["w-wo", "w-jintian", "w-hen", "w-lei"] },
+    { "id": "s-woxueshuxue", "hanzi": "我学数学。", "pinyin": "Wǒ xué shùxué.", "english": "I study maths.", "words": ["w-wo", "w-xue", "w-shuxue"] },
+    { "id": "s-shuxuenanbunan", "hanzi": "数学难不难？", "pinyin": "Shùxué nán bu nán?", "english": "Is maths hard?", "words": ["w-shuxue", "w-nan2", "w-bu", "w-nan2"] },
+    { "id": "s-butainan", "hanzi": "不太难。", "pinyin": "Bú tài nán.", "english": "Not too hard.", "words": ["w-bu", "w-tai", "w-nan2"] },
+    { "id": "s-meitianyongdiannao", "hanzi": "我每天都用电脑。", "pinyin": "Wǒ měitiān dōu yòng diànnǎo.", "english": "I use a computer every day.", "words": ["w-wo", "w-meitian", "w-dou", "w-yong", "w-diannao"] }
+  ],
+  "exchanges": [
+    { "id": "x-job", "prompt": "s-nizuoshenmegongzuo", "reply": "s-wozaidaxuegongzuo", "wrong": ["s-wozuixihuanyouyong", "s-taiguile"], "context": "Her father asks about your job." },
+    { "id": "x-live", "prompt": "s-nizhuzainali", "reply": "s-wozhuzaigebenhagen", "wrong": ["s-xianzailiangdian", "s-woxueshuxue"], "context": "They ask where you live." },
+    { "id": "x-busy", "prompt": "s-gongzuomangbumang", "reply": "s-youyidianmang", "wrong": ["s-nitaikeqile", "s-zaoshanghao"], "context": "Small talk about work." },
+    { "id": "x-start", "prompt": "s-nimeitianjidianshangban", "reply": "s-jiudianshangban", "wrong": ["s-jintianxingqiliu", "s-woyaoliangjin"], "context": "They're curious about your day." },
+    { "id": "x-hard", "prompt": "s-shuxuenanbunan", "reply": "s-butainan", "wrong": ["s-taiguile", "s-woshixuesheng"], "context": "Someone hears you work with maths." }
+  ],
+  "grammar": [
+    { "id": "g-zaiplace", "title": "Where comes before the verb", "body": "在 + place goes before the verb: 我在大学工作 = I work at a university (lit. I at university work). Same for 你在哪里工作？", "examples": ["s-wozaidaxuegongzuo", "s-nizainaligongzuo"] },
+    { "id": "g-zhuzai", "title": "住在 = live in", "body": "With 住 (live), the place comes after 在: 我住在哥本哈根. Ask with 你住在哪里？", "examples": ["s-nizhuzainali", "s-wozhuzaigebenhagen"] },
+    { "id": "g-adjanota", "title": "忙不忙？ questions", "body": "Adjective + 不 + adjective makes a yes/no question: 忙不忙 (busy?), 难不难 (hard?). Answer with the adjective: 很忙, 不太难.", "examples": ["s-gongzuomangbumang", "s-shuxuenanbunan"] },
+    { "id": "g-butai", "title": "不太 = not very", "body": "不太 + adjective softens a 'no': 不太难 = not too hard, 不太忙 = not very busy. More polite than a flat 不.", "examples": ["s-butainan"] }
+  ],
+  "dialogue": {
+    "id": "d07-job",
+    "title": "So, what do you do?",
+    "setting": "Over tea, her mother asks Mikkel about his life in Denmark.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "M", "sentence": "s-mikkel-gongzuo" },
+      { "speaker": "K", "sentence": "s-wozaidaxuegongzuo" },
+      { "speaker": "M", "sentence": "s-nizhuzainali" },
+      { "speaker": "K", "sentence": "s-wozhuzaigebenhagen" },
+      { "speaker": "M", "sentence": "s-gongzuomangbumang" },
+      { "speaker": "K", "sentence": "s-mang-youyisi" },
+      { "speaker": "M", "sentence": "s-nimeitianjidianshangban" },
+      { "speaker": "K", "sentence": "s-jiudianshangban" }
+    ],
+    "questions": [
+      { "q": "Where does Mikkel work?", "options": ["At a university", "At a hospital", "At a bank"], "answer": 0 },
+      { "q": "Where does he live?", "options": ["Beijing", "Copenhagen", "Aarhus"], "answer": 1 },
+      { "q": "How does he describe his work?", "options": ["Boring", "Busy but interesting", "Too tiring"], "answer": 1 },
+      { "q": "What time does he start work?", "options": ["8:00", "9:00", "10:00"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n07-jobs", "title": "Jobs", "words": ["w-gongzuo", "w-gongsi", "w-daxue", "w-xuesheng", "w-laoshi", "w-yisheng", "w-xuexiao"], "sentences": ["s-nizuoshenmegongzuo", "s-wozaidaxuegongzuo", "s-woshixuesheng", "s-tamamashiyisheng", "s-tababashilaoshi", "s-gegezaigongsigongzuo", "s-meimeizaixuexiao", "s-nizainaligongzuo"], "exchanges": ["x-job"], "grammar": ["g-zaiplace"] },
+    { "id": "n07-home", "title": "Where you live", "words": ["w-zhu", "w-gebenhagen"], "sentences": ["s-nizhuzainali", "s-wozhuzaigebenhagen"], "exchanges": ["x-live"], "grammar": ["g-zhuzai"] },
+    { "id": "n07-busy", "title": "Busy days", "words": ["w-shangban", "w-mang", "w-lei", "w-meitian", "w-diannao"], "sentences": ["s-gongzuomangbumang", "s-youyidianmang", "s-wodegongzuohenyouyisi", "s-nimeitianjidianshangban", "s-jiudianshangban", "s-jintianhenlei", "s-meitianyongdiannao"], "exchanges": ["x-busy", "x-start"], "grammar": ["g-adjanota"] },
+    { "id": "n07-study", "title": "Studying", "words": ["w-shuxue", "w-nan2"], "sentences": ["s-woxueshuxue", "s-shuxuenanbunan", "s-butainan"], "exchanges": ["x-hard"], "grammar": ["g-butai"] },
+    { "id": "n07-story", "title": "Story: So, what do you do?", "kind": "story", "sentences": ["s-mikkel-gongzuo", "s-mang-youyisi"] }
+  ]
+}
