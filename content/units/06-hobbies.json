@@ -1,0 +1,98 @@
+{
+  "id": "u06-hobbies",
+  "order": 6,
+  "title": "Hobbies & free time",
+  "titleHanzi": "你喜欢做什么？",
+  "description": "Talk about what you like doing, make weekend plans, and get invited to a game of mahjong.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-zuo-do", "hanzi": "做", "pinyin": "zuò", "english": ["to do", "to make"], "hsk": 1, "pos": "verb", "note": "Same sound as 坐 (to sit)." },
+    { "id": "w-shu", "hanzi": "书", "pinyin": "shū", "english": ["book"], "hsk": 1, "pos": "noun", "measure": "w-ben" },
+    { "id": "w-ben", "hanzi": "本", "pinyin": "běn", "english": ["(measure word for books)"], "hsk": 1, "pos": "measure" },
+    { "id": "w-dianying", "hanzi": "电影", "pinyin": "diànyǐng", "english": ["film", "movie"], "hsk": 1, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-dianshi", "hanzi": "电视", "pinyin": "diànshì", "english": ["TV"], "hsk": 1, "pos": "noun" },
+    { "id": "w-ting", "hanzi": "听", "pinyin": "tīng", "english": ["to listen"], "hsk": 1, "pos": "verb" },
+    { "id": "w-yinyue", "hanzi": "音乐", "pinyin": "yīnyuè", "english": ["music"], "hsk": 3, "pos": "noun" },
+    { "id": "w-changge", "hanzi": "唱歌", "pinyin": "chànggē", "english": ["to sing"], "hsk": 2, "pos": "verb" },
+    { "id": "w-yundong", "hanzi": "运动", "pinyin": "yùndòng", "english": ["sport", "exercise", "to work out"], "hsk": 2, "pos": "noun" },
+    { "id": "w-youyong", "hanzi": "游泳", "pinyin": "yóuyǒng", "english": ["to swim", "swimming"], "hsk": 2, "pos": "verb" },
+    { "id": "w-paobu", "hanzi": "跑步", "pinyin": "pǎobù", "english": ["to run", "running"], "hsk": 2, "pos": "verb" },
+    { "id": "w-dalanqiu", "hanzi": "打篮球", "pinyin": "dǎ lánqiú", "english": ["to play basketball"], "hsk": 2, "pos": "phrase" },
+    { "id": "w-damajiang", "hanzi": "打麻将", "pinyin": "dǎ májiàng", "english": ["to play mahjong"], "hsk": 0, "pos": "phrase" },
+    { "id": "w-lvyou", "hanzi": "旅游", "pinyin": "lǚyóu", "english": ["to travel", "travel"], "hsk": 2, "pos": "verb" },
+    { "id": "w-wan-play", "hanzi": "玩", "pinyin": "wán", "english": ["to have fun", "to play", "to hang out"], "hsk": 2, "pos": "verb", "note": "Same sound as 碗 wǎn (bowl) apart from the tone." },
+    { "id": "w-zhoumo", "hanzi": "周末", "pinyin": "zhōumò", "english": ["weekend"], "hsk": 3, "pos": "time" },
+    { "id": "w-changchang", "hanzi": "常常", "pinyin": "chángcháng", "english": ["often"], "hsk": 0, "pos": "adverb" },
+    { "id": "w-zui", "hanzi": "最", "pinyin": "zuì", "english": ["most", "-est"], "hsk": 2, "pos": "adverb" },
+    { "id": "w-juede", "hanzi": "觉得", "pinyin": "juéde", "english": ["to think", "to feel (an opinion)"], "hsk": 2, "pos": "verb" },
+    { "id": "w-youyisi", "hanzi": "有意思", "pinyin": "yǒuyìsi", "english": ["interesting", "fun"], "hsk": 0, "pos": "adjective" },
+    { "id": "w-keshi", "hanzi": "可是", "pinyin": "kěshì", "english": ["but"], "hsk": 0, "pos": "conjunction" }
+  ],
+  "sentences": [
+    { "id": "s-nixihuanzuoshenme", "hanzi": "你喜欢做什么？", "pinyin": "Nǐ xǐhuan zuò shénme?", "english": "What do you like doing?", "words": ["w-ni", "w-xihuan", "w-zuo-do", "w-shenme"] },
+    { "id": "s-woxihuankanshu", "hanzi": "我喜欢看书。", "pinyin": "Wǒ xǐhuan kàn shū.", "english": "I like reading.", "words": ["w-wo", "w-xihuan", "w-kan", "w-shu"], "alt": { "english": ["I like reading books."] } },
+    { "id": "s-wohenxihuankandianying", "hanzi": "我很喜欢看电影。", "pinyin": "Wǒ hěn xǐhuan kàn diànyǐng.", "english": "I really like watching films.", "words": ["w-wo", "w-hen", "w-xihuan", "w-kan", "w-dianying"] },
+    { "id": "s-woxihuantingyinyue", "hanzi": "我喜欢听音乐。", "pinyin": "Wǒ xǐhuan tīng yīnyuè.", "english": "I like listening to music.", "words": ["w-wo", "w-xihuan", "w-ting", "w-yinyue"] },
+    { "id": "s-tahenxihuanchangge", "hanzi": "她很喜欢唱歌。", "pinyin": "Tā hěn xǐhuan chànggē.", "english": "She loves singing.", "words": ["w-ta-she", "w-hen", "w-xihuan", "w-changge"] },
+    { "id": "s-nixihuanyundongma", "hanzi": "你喜欢运动吗？", "pinyin": "Nǐ xǐhuan yùndòng ma?", "english": "Do you like sport?", "words": ["w-ni", "w-xihuan", "w-yundong", "w-ma"] },
+    { "id": "s-wozuixihuanyouyong", "hanzi": "我最喜欢游泳。", "pinyin": "Wǒ zuì xǐhuan yóuyǒng.", "english": "Swimming is my favourite.", "words": ["w-wo", "w-zui", "w-xihuan", "w-youyong"], "alt": { "english": ["I like swimming best."] } },
+    { "id": "s-wozuixihuankandianying", "hanzi": "我最喜欢看电影。", "pinyin": "Wǒ zuì xǐhuan kàn diànyǐng.", "english": "Watching films is my favourite.", "words": ["w-wo", "w-zui", "w-xihuan", "w-kan", "w-dianying"] },
+    { "id": "s-wobuhuidalanqiu", "hanzi": "我不会打篮球。", "pinyin": "Wǒ bú huì dǎ lánqiú.", "english": "I can't play basketball.", "words": ["w-wo", "w-bu", "w-hui", "w-dalanqiu"] },
+    { "id": "s-zhoumonizuoshenme", "hanzi": "周末你做什么？", "pinyin": "Zhōumò nǐ zuò shénme?", "english": "What do you do at the weekend?", "words": ["w-zhoumo", "w-ni", "w-zuo-do", "w-shenme"] },
+    { "id": "s-mikkel-zhoumo", "hanzi": "米格，周末你做什么？", "pinyin": "Mǐgé, zhōumò nǐ zuò shénme?", "english": "Mi'ge, what do you do at the weekend?", "words": ["w-mikkel", "w-zhoumo", "w-ni", "w-zuo-do", "w-shenme"] },
+    { "id": "s-zhoumopaobu", "hanzi": "周末我常常去跑步。", "pinyin": "Zhōumò wǒ chángcháng qù pǎobù.", "english": "At weekends I often go running.", "words": ["w-zhoumo", "w-wo", "w-changchang", "w-qu", "w-paobu"] },
+    { "id": "s-zhoumopaobu-nine", "hanzi": "周末我常常去跑步。你呢？", "pinyin": "Zhōumò wǒ chángcháng qù pǎobù. Nǐ ne?", "english": "At weekends I often go running. And you?", "words": ["w-zhoumo", "w-wo", "w-changchang", "w-qu", "w-paobu", "w-ni", "w-ne"] },
+    { "id": "s-babamamaxihuanlvyou", "hanzi": "我爸爸妈妈很喜欢旅游。", "pinyin": "Wǒ bàba māma hěn xǐhuan lǚyóu.", "english": "My parents love travelling.", "words": ["w-wo", "w-baba", "w-mama", "w-hen", "w-xihuan", "w-lvyou"] },
+    { "id": "s-nihuidamajiangma", "hanzi": "你会打麻将吗？", "pinyin": "Nǐ huì dǎ májiàng ma?", "english": "Can you play mahjong?", "words": ["w-ni", "w-hui", "w-damajiang", "w-ma"] },
+    { "id": "s-buhui-xiangxue", "hanzi": "不会，可是我想学！", "pinyin": "Bú huì, kěshì wǒ xiǎng xué!", "english": "No, but I'd like to learn!", "words": ["w-bu", "w-hui", "w-keshi", "w-wo", "w-xiang", "w-xue"] },
+    { "id": "s-dianyinghenyouyisi", "hanzi": "这个电影很有意思。", "pinyin": "Zhège diànyǐng hěn yǒuyìsi.", "english": "This film is really interesting.", "words": ["w-zhe", "w-ge", "w-dianying", "w-hen", "w-youyisi"] },
+    { "id": "s-dianying-nijuedene", "hanzi": "这个电影很有意思，你觉得呢？", "pinyin": "Zhège diànyǐng hěn yǒuyìsi, nǐ juéde ne?", "english": "This film is really good — what do you think?", "words": ["w-zhe", "w-ge", "w-dianying", "w-hen", "w-youyisi", "w-ni", "w-juede", "w-ne"] },
+    { "id": "s-wojuedehenyouyisi", "hanzi": "我也觉得很有意思。", "pinyin": "Wǒ yě juéde hěn yǒuyìsi.", "english": "I think it's really good too.", "words": ["w-wo", "w-ye", "w-juede", "w-hen", "w-youyisi"] },
+    { "id": "s-yiqikandianshi", "hanzi": "我们一起看电视吧。", "pinyin": "Wǒmen yìqǐ kàn diànshì ba.", "english": "Let's watch TV together.", "words": ["w-women", "w-yiqi", "w-kan", "w-dianshi", "w-ba-particle"] },
+    { "id": "s-laiwojiawan", "hanzi": "周末来我家玩吧！", "pinyin": "Zhōumò lái wǒ jiā wán ba!", "english": "Come over to our place at the weekend!", "words": ["w-zhoumo", "w-lai", "w-wo", "w-jia", "w-wan-play", "w-ba-particle"] },
+    { "id": "s-laiwojiawan-majiang", "hanzi": "周末来我家玩吧！我爸爸妈妈都会打麻将。", "pinyin": "Zhōumò lái wǒ jiā wán ba! Wǒ bàba māma dōu huì dǎ májiàng.", "english": "Come over at the weekend! My mum and dad both play mahjong.", "words": ["w-zhoumo", "w-lai", "w-wo", "w-jia", "w-wan-play", "w-ba-particle", "w-wo", "w-baba", "w-mama", "w-dou", "w-hui", "w-damajiang"] }
+  ],
+  "exchanges": [
+    { "id": "x-hobby", "prompt": "s-nixihuanzuoshenme", "reply": "s-woxihuankanshu", "wrong": ["s-wochibaole", "s-zhegeduoshaoqian"], "context": "Her parents want to get to know you." },
+    { "id": "x-weekend", "prompt": "s-zhoumonizuoshenme", "reply": "s-zhoumopaobu", "wrong": ["s-xianzailiangdian", "s-nijiaoshenmemingzi"], "context": "Small talk about weekends." },
+    { "id": "x-mahjong", "prompt": "s-nihuidamajiangma", "reply": "s-buhui-xiangxue", "wrong": ["s-taiguile", "s-zaoshanghao"], "context": "The family is setting up the mahjong table." },
+    { "id": "x-opinion", "prompt": "s-dianying-nijuedene", "reply": "s-wojuedehenyouyisi", "wrong": ["s-shengrikuaile", "s-woyaoliangjin"], "context": "After watching a film together." },
+    { "id": "x-invite", "prompt": "s-laiwojiawan", "reply": "s-haoa", "wrong": ["s-yigongshisikuai", "s-nijiaoshenmemingzi"], "context": "Someone invites you over." }
+  ],
+  "grammar": [
+    { "id": "g-xihuan", "title": "喜欢 + activity", "body": "Put the whole activity after 喜欢: 我喜欢看书 (I like reading), 我喜欢听音乐 (I like listening to music). Add 很 for 'really': 我很喜欢…", "examples": ["s-woxihuankanshu", "s-wohenxihuankandianying"] },
+    { "id": "g-zui", "title": "最 = most / favourite", "body": "最 before a verb or adjective: 我最喜欢游泳 = I like swimming best / swimming is my favourite.", "examples": ["s-wozuixihuanyouyong"] },
+    { "id": "g-juede", "title": "Opinions with 觉得", "body": "我觉得… = I think / I feel… Ask someone's view with 你觉得呢？ (what do you think?).", "examples": ["s-dianying-nijuedene", "s-wojuedehenyouyisi"] },
+    { "id": "g-frequency", "title": "How often: before the verb", "body": "Words like 常常 (often) go before the verb, after the subject: 周末我常常去跑步.", "examples": ["s-zhoumopaobu"] }
+  ],
+  "dialogue": {
+    "id": "d06-mahjong",
+    "title": "An invitation",
+    "setting": "Her younger sister chats with Mikkel about the weekend.",
+    "speakers": [
+      { "id": "S", "name": "Her sister", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "S", "sentence": "s-mikkel-zhoumo" },
+      { "speaker": "K", "sentence": "s-zhoumopaobu-nine" },
+      { "speaker": "S", "sentence": "s-wozuixihuankandianying" },
+      { "speaker": "S", "sentence": "s-nihuidamajiangma" },
+      { "speaker": "K", "sentence": "s-buhui-xiangxue" },
+      { "speaker": "S", "sentence": "s-laiwojiawan-majiang" },
+      { "speaker": "K", "sentence": "s-haoa" }
+    ],
+    "questions": [
+      { "q": "What does Mikkel often do at weekends?", "options": ["Go running", "Go swimming", "Watch films"], "answer": 0 },
+      { "q": "What does her sister like best?", "options": ["Music", "Films", "Mahjong"], "answer": 1 },
+      { "q": "Can Mikkel play mahjong?", "options": ["Yes, well", "No, but he wants to learn", "A little"], "answer": 1 },
+      { "q": "Who plays mahjong in her family?", "options": ["Her mum and dad", "Only her dad", "Her brother"], "answer": 0 }
+    ]
+  },
+  "nodes": [
+    { "id": "n06-likes", "title": "What do you like?", "words": ["w-zuo-do", "w-shu", "w-ben", "w-dianying", "w-dianshi", "w-ting", "w-yinyue", "w-changge"], "sentences": ["s-nixihuanzuoshenme", "s-woxihuankanshu", "s-wohenxihuankandianying", "s-woxihuantingyinyue", "s-tahenxihuanchangge"], "exchanges": ["x-hobby"], "grammar": ["g-xihuan"] },
+    { "id": "n06-sport", "title": "Sport & weekends", "words": ["w-yundong", "w-youyong", "w-paobu", "w-dalanqiu", "w-zhoumo", "w-changchang", "w-zui"], "sentences": ["s-nixihuanyundongma", "s-wozuixihuanyouyong", "s-wobuhuidalanqiu", "s-zhoumonizuoshenme", "s-zhoumopaobu"], "exchanges": ["x-weekend"], "grammar": ["g-zui", "g-frequency"] },
+    { "id": "n06-together", "title": "Fun together", "words": ["w-damajiang", "w-lvyou", "w-wan-play", "w-juede", "w-youyisi", "w-keshi"], "sentences": ["s-babamamaxihuanlvyou", "s-nihuidamajiangma", "s-buhui-xiangxue", "s-dianyinghenyouyisi", "s-dianying-nijuedene", "s-wojuedehenyouyisi", "s-yiqikandianshi", "s-laiwojiawan"], "exchanges": ["x-mahjong", "x-opinion", "x-invite"], "grammar": ["g-juede"] },
+    { "id": "n06-story", "title": "Story: An invitation", "kind": "story", "sentences": ["s-mikkel-zhoumo", "s-zhoumopaobu-nine", "s-laiwojiawan-majiang"] }
+  ]
+}
