@@ -118,3 +118,33 @@ describe('checkPinyinAnswer', () => {
     expect(check('nǐ4 hao3', nihao).verdict).toBe('wrong');
   });
 });
+
+import { alignToHanzi } from './pinyin';
+import { checkPinyinAgainstHanzi } from '../content/check';
+
+describe('erhua (儿化)', () => {
+  it('parses and marks erhua syllables', () => {
+    expect(parsePinyin('nǎr')).toEqual([{ base: 'na', tone: 3, erhua: true }]);
+    expect(markSyllable({ base: 'na', tone: 3, erhua: true })).toBe('nǎr');
+    expect(toNumeric('yìdiǎnr')).toBe('yi4dianr3');
+    expect(parsePinyin('ér')).toEqual([{ base: 'er', tone: 2 }]);
+  });
+  it('aligns 儿 with the previous syllable, but not in 女儿 or 儿子', () => {
+    expect(alignToHanzi('哪儿', 'nǎr')?.charSyl).toEqual([0, 0]);
+    expect(alignToHanzi('一点儿', 'yìdiǎnr')?.charSyl).toEqual([0, 1, 1]);
+    expect(alignToHanzi('女儿', "nǚ'ér")?.charSyl).toEqual([0, 1]);
+    expect(alignToHanzi('你去哪儿玩儿？', 'Nǐ qù nǎr wánr?')?.syls.length).toBe(4);
+  });
+  it('validates erhua content', () => {
+    expect(checkPinyinAgainstHanzi('哪儿', 'nǎr')).toBeNull();
+    expect(checkPinyinAgainstHanzi('一会儿', 'yíhuìr')).toBeNull();
+    expect(checkPinyinAgainstHanzi('女儿', "nǚ'ér")).toBeNull();
+  });
+  it('accepts erhua answers with or without the r', () => {
+    const exp = { hanzi: '你去哪儿？', pinyin: 'Nǐ qù nǎr?' };
+    for (const input of ['ni3 qu4 nar3', 'nǐ qù nǎr', 'ni3 qu4 na3r', 'ni3 qu4 na3']) {
+      expect(check(input, exp).verdict, input).toBe('correct');
+    }
+    expect(check('ni3 qu4 nar4', exp).verdict).toBe('wrong');
+  });
+});

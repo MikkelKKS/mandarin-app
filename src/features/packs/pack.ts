@@ -6,7 +6,7 @@
 import { z } from 'zod';
 import { exchanges, sentences, words, dialogues } from '../../content';
 import { DialogueSchema, ExchangeSchema, GrammarNoteSchema, SentenceSchema, WordSchema, type Word } from '../../content/schema';
-import { toNumeric, hanziOnly, parsePinyin } from '../../lib/pinyin';
+import { alignToHanzi, toNumeric, hanziOnly } from '../../lib/pinyin';
 
 export const PACK_FORMAT = 'mandarin-practice-pack/1';
 const packId = z.string().regex(/^p-[a-z0-9-]+$/, 'ids in a pack must start with "p-" and use lowercase letters, digits and dashes');
@@ -55,7 +55,7 @@ export function validatePack(text: string): PackCheck {
   }
   pack.words.forEach((w, i) => {
     if (words.has(w.id)) errors.push(`words[${i}]: id "${w.id}" already exists`);
-    if (!parsePinyin(w.pinyin, [...hanziOnly(w.hanzi)].length)) errors.push(`words[${i}] (${w.hanzi}): pinyin "${w.pinyin}" doesn't match the number of characters`);
+    if (!alignToHanzi(w.hanzi, w.pinyin)) errors.push(`words[${i}] (${w.hanzi}): pinyin "${w.pinyin}" doesn't match the number of characters`);
   });
   const wordHanzi = (id: string) => packWords.get(id)?.hanzi ?? words.get(id)?.hanzi;
   pack.sentences.forEach((s, i) => {
@@ -68,7 +68,7 @@ export function validatePack(text: string): PackCheck {
       else spelled += hz;
     }
     if (spelled && hanziOnly(spelled) !== hanziOnly(s.hanzi)) errors.push(`${where}: the word ids spell "${spelled}", not the sentence`);
-    if (!parsePinyin(s.pinyin, [...hanziOnly(s.hanzi)].length)) errors.push(`${where}: pinyin "${s.pinyin}" doesn't match the number of characters`);
+    if (!alignToHanzi(s.hanzi, s.pinyin)) errors.push(`${where}: pinyin "${s.pinyin}" doesn't match the number of characters`);
   });
   const sentenceExists = (id: string) => packSentences.has(id) || sentences.has(id);
   pack.exchanges.forEach((x, i) => {

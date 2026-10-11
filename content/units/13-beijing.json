@@ -1,0 +1,99 @@
+{
+  "id": "u13-beijing",
+  "order": 10,
+  "title": "Beijing flavour",
+  "titleHanzi": "您吃了吗？",
+  "description": "How Beijingers actually talk: the -r sound (哪儿, 一会儿, 玩儿), 咱们, 您, 吃了吗, and a stroll through the hutongs with Grandma.",
+  "hsk": 2,
+  "words": [
+    { "id": "w-nar", "hanzi": "哪儿", "pinyin": "nǎr", "english": ["where (Beijing style)"], "hsk": 0, "pos": "question", "note": "Same as 哪里. The 儿 is not a separate syllable: it adds an r sound." },
+    { "id": "w-zher", "hanzi": "这儿", "pinyin": "zhèr", "english": ["here (Beijing style)"], "hsk": 0, "pos": "pronoun" },
+    { "id": "w-nar4", "hanzi": "那儿", "pinyin": "nàr", "english": ["there (Beijing style)"], "hsk": 0, "pos": "pronoun" },
+    { "id": "w-yihuir", "hanzi": "一会儿", "pinyin": "yíhuìr", "english": ["a moment", "a little while"], "hsk": 3, "pos": "time" },
+    { "id": "w-haowanr", "hanzi": "好玩儿", "pinyin": "hǎowánr", "english": ["fun"], "hsk": 0, "pos": "adjective" },
+    { "id": "w-meishir", "hanzi": "没事儿", "pinyin": "méishìr", "english": ["no worries", "it's nothing", "I'm fine"], "hsk": 0, "pos": "phrase" },
+    { "id": "w-liuwanr", "hanzi": "遛弯儿", "pinyin": "liùwānr", "english": ["to go for a stroll"], "hsk": 0, "pos": "verb" },
+    { "id": "w-beir", "hanzi": "倍儿", "pinyin": "bèir", "english": ["super", "really (Beijing slang)"], "hsk": 0, "pos": "adverb" },
+    { "id": "w-zanmen", "hanzi": "咱们", "pinyin": "zánmen", "english": ["we (including you)", "us"], "hsk": 4, "pos": "pronoun" },
+    { "id": "w-hutong", "hanzi": "胡同", "pinyin": "hútòng", "english": ["hutong (old Beijing alley)"], "hsk": 5, "pos": "noun" },
+    { "id": "w-didao", "hanzi": "地道", "pinyin": "dìdao", "english": ["authentic", "genuine"], "hsk": 5, "pos": "adjective" },
+    { "id": "w-beng", "hanzi": "甭", "pinyin": "béng", "english": ["don't (Beijing for 不用)"], "hsk": 6, "pos": "adverb" },
+    { "id": "w-delei", "hanzi": "得嘞", "pinyin": "dé lei", "english": ["you got it!", "righto!"], "hsk": 0, "pos": "interjection" },
+    { "id": "w-laolao", "hanzi": "姥姥", "pinyin": "lǎolao", "english": ["grandma (mum's mother)"], "hsk": 5, "pos": "noun" },
+    { "id": "w-laoye", "hanzi": "姥爷", "pinyin": "lǎoye", "english": ["grandpa (mum's father)"], "hsk": 0, "pos": "noun" },
+    { "id": "w-manzou", "hanzi": "慢走", "pinyin": "màn zǒu", "english": ["take care (to a leaving guest)"], "hsk": 0, "pos": "phrase" }
+  ],
+  "sentences": [
+    { "id": "s-ninchilema", "hanzi": "您吃了吗？", "pinyin": "Nín chī le ma?", "english": "Have you eaten? (a greeting)", "words": ["w-nin", "w-chi", "w-le", "w-ma"] },
+    { "id": "s-chile-ninne", "hanzi": "吃了，您呢？", "pinyin": "Chī le, nín ne?", "english": "Yes, I have. And you?", "words": ["w-chi", "w-le", "w-nin", "w-ne"] },
+    { "id": "s-mige-chilema", "hanzi": "米格，你吃了吗？", "pinyin": "Mǐgé, nǐ chī le ma?", "english": "米格, have you eaten?", "words": ["w-mikkel", "w-ni", "w-chi", "w-le", "w-ma"] },
+    { "id": "s-chile-laolao", "hanzi": "吃了，姥姥您呢？", "pinyin": "Chī le, lǎolao nín ne?", "english": "Yes, Grandma. Have you?", "words": ["w-chi", "w-le", "w-laolao", "w-nin", "w-ne"] },
+    { "id": "s-niqunar", "hanzi": "你去哪儿？", "pinyin": "Nǐ qù nǎr?", "english": "Where are you going?", "words": ["w-ni", "w-qu", "w-nar"], "alt": { "pinyin": ["Nǐ qù nǎlǐ?"] } },
+    { "id": "s-woquliuwanr", "hanzi": "我去遛弯儿。", "pinyin": "Wǒ qù liùwānr.", "english": "I'm going for a stroll.", "words": ["w-wo", "w-qu", "w-liuwanr"] },
+    { "id": "s-zanmenquliuwanr", "hanzi": "咱们去遛弯儿吧。", "pinyin": "Zánmen qù liùwānr ba.", "english": "Let's go for a stroll.", "words": ["w-zanmen", "w-qu", "w-liuwanr", "w-ba-particle"] },
+    { "id": "s-yechile-liuwanr", "hanzi": "我也吃了。咱们去遛弯儿吧！", "pinyin": "Wǒ yě chī le. Zánmen qù liùwānr ba!", "english": "Me too. Let's go for a stroll!", "words": ["w-wo", "w-ye", "w-chi", "w-le", "w-zanmen", "w-qu", "w-liuwanr", "w-ba-particle"] },
+    { "id": "s-wozaizherne", "hanzi": "我在这儿呢。", "pinyin": "Wǒ zài zhèr ne.", "english": "I'm over here.", "words": ["w-wo", "w-zai", "w-zher", "w-ne"] },
+    { "id": "s-tazainar", "hanzi": "他在那儿。", "pinyin": "Tā zài nàr.", "english": "He's over there.", "words": ["w-ta-he", "w-zai", "w-nar4"] },
+    { "id": "s-dengyihuir", "hanzi": "等一会儿。", "pinyin": "Děng yíhuìr.", "english": "Wait a moment.", "words": ["w-deng", "w-yihuir"] },
+    { "id": "s-zherzhenhaowanr", "hanzi": "这儿真好玩儿！", "pinyin": "Zhèr zhēn hǎowánr!", "english": "It's so much fun here!", "words": ["w-zher", "w-zhen", "w-haowanr"] },
+    { "id": "s-meishir", "hanzi": "没事儿。", "pinyin": "Méishìr.", "english": "No worries.", "words": ["w-meishir"], "alt": { "english": ["It's nothing.", "I'm fine."] } },
+    { "id": "s-caihendidao", "hanzi": "这个菜很地道。", "pinyin": "Zhège cài hěn dìdao.", "english": "This dish is really authentic.", "words": ["w-zhe", "w-ge", "w-cai", "w-hen", "w-didao"] },
+    { "id": "s-bengkeqi", "hanzi": "甭客气！", "pinyin": "Béng kèqi!", "english": "Don't mention it!", "words": ["w-beng", "w-keqi"] },
+    { "id": "s-delei", "hanzi": "得嘞！", "pinyin": "Dé lei!", "english": "You got it!", "words": ["w-delei"], "alt": { "english": ["Righto!"] } },
+    { "id": "s-xihuanhutong", "hanzi": "我很喜欢胡同。", "pinyin": "Wǒ hěn xǐhuan hútòng.", "english": "I really like the hutongs.", "words": ["w-wo", "w-hen", "w-xihuan", "w-hutong"] },
+    { "id": "s-zhershiwomendehutong", "hanzi": "你看，这儿就是我们的胡同。", "pinyin": "Nǐ kàn, zhèr jiù shì wǒmen de hútòng.", "english": "Look, this is our hutong.", "words": ["w-ni", "w-kan", "w-zher", "w-jiu-just", "w-shi", "w-women", "w-de", "w-hutong"] },
+    { "id": "s-zanmenyiqichifan", "hanzi": "咱们一起吃饭吧。", "pinyin": "Zánmen yìqǐ chīfàn ba.", "english": "Let's eat together.", "words": ["w-zanmen", "w-yiqi", "w-chi", "w-fan", "w-ba-particle"] },
+    { "id": "s-laolaohao", "hanzi": "姥姥好！", "pinyin": "Lǎolao hǎo!", "english": "Hello, Grandma!", "words": ["w-laolao", "w-hao"] },
+    { "id": "s-laoye-ninhao", "hanzi": "姥爷，您好！", "pinyin": "Lǎoye, nín hǎo!", "english": "Hello, Grandpa!", "words": ["w-laoye", "w-nin", "w-hao"] },
+    { "id": "s-wozoule", "hanzi": "我走了。", "pinyin": "Wǒ zǒu le.", "english": "I'm off now.", "words": ["w-wo", "w-zou", "w-le"] },
+    { "id": "s-ninmanzou", "hanzi": "您慢走！", "pinyin": "Nín màn zǒu!", "english": "Take care!", "words": ["w-nin", "w-manzou"] },
+    { "id": "s-leibulei-zuo", "hanzi": "累不累？咱们坐一会儿吧。", "pinyin": "Lèi bu lèi? Zánmen zuò yíhuìr ba.", "english": "Tired? Let's sit for a bit.", "words": ["w-lei", "w-bu", "w-lei", "w-zanmen", "w-zuo", "w-yihuir", "w-ba-particle"] },
+    { "id": "s-meishir-beirhao", "hanzi": "没事儿，我倍儿好！", "pinyin": "Méishìr, wǒ bèir hǎo!", "english": "No worries, I feel great!", "words": ["w-meishir", "w-wo", "w-beir", "w-hao"] }
+  ],
+  "exchanges": [
+    { "id": "x-chilema", "prompt": "s-ninchilema", "reply": "s-chile-ninne", "wrong": ["s-taiguile", "s-wobuzhidao"], "context": "A neighbour greets you in the morning. It's a greeting, not an invitation." },
+    { "id": "x-whereto", "prompt": "s-niqunar", "reply": "s-woquliuwanr", "wrong": ["s-meishir", "s-bengkeqi"], "context": "You meet a neighbour on the way out." },
+    { "id": "x-thanks-bj", "prompt": "s-xiexieni", "reply": "s-bengkeqi", "wrong": ["s-ninmanzou", "s-zherzhenhaowanr"], "context": "You helped Grandma carry the shopping." },
+    { "id": "x-guestleaving", "prompt": "s-wozoule", "reply": "s-ninmanzou", "wrong": ["s-huanying", "s-ninchilema"], "context": "A guest is leaving your home." },
+    { "id": "x-sorry-bj", "prompt": "s-duibuqi", "reply": "s-meishir", "wrong": ["s-zanmenquliuwanr", "s-ninchilema"], "context": "Someone bumps into you." },
+    { "id": "x-letsgo", "prompt": "s-zanmenquliuwanr", "reply": "s-delei", "wrong": ["s-tazainar", "s-caihendidao"], "context": "Grandma suggests a walk." }
+  ],
+  "grammar": [
+    { "id": "g-erhua", "title": "The Beijing -r (儿化)", "body": "Beijingers add an r to many words: 哪儿 nǎr (= 哪里), 这儿 zhèr, 那儿 nàr, 一会儿 yíhuìr, 玩儿 wánr. The 儿 isn't a separate syllable; it curls the end of the one before. When you type, nǎr and nǎ are both accepted.", "examples": ["s-niqunar", "s-wozaizherne", "s-dengyihuir"] },
+    { "id": "g-zanmen", "title": "咱们 vs 我们", "body": "咱们 means 'we, including you'. Beijingers use it all the time for suggestions: 咱们去遛弯儿吧. 我们 can leave the listener out.", "examples": ["s-zanmenquliuwanr", "s-zanmenyiqichifan"] },
+    { "id": "g-chilema", "title": "您吃了吗？", "body": "A classic way to say hello, especially from older people. It isn't an invitation: just answer 吃了 and ask back. Beijingers also use 您 a lot with elders.", "examples": ["s-ninchilema", "s-chile-ninne"] },
+    { "id": "g-grandparents", "title": "Grandparents", "body": "In the north, your mum's parents are 姥姥 (grandma) and 姥爷 (grandpa). Your dad's parents are 奶奶 and 爷爷. In the south people say 外婆 and 外公.", "examples": ["s-laolaohao", "s-laoye-ninhao"] },
+    { "id": "g-bjwords", "title": "Beijing words", "body": "甭 = 不用 (甭客气 = don't mention it). 得嘞 = you got it. 倍儿 = super (倍儿好). 地道 = authentic. 慢走 = take care, said to a guest who's leaving.", "examples": ["s-bengkeqi", "s-delei", "s-ninmanzou"] }
+  ],
+  "dialogue": {
+    "id": "d13-hutong",
+    "title": "Listening challenge: A walk with Grandma",
+    "setting": "Early morning in Beijing. Her grandma (姥姥) takes 米格 for a walk through the hutong.",
+    "speakers": [
+      { "id": "L", "name": "姥姥", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "L", "sentence": "s-mige-chilema" },
+      { "speaker": "K", "sentence": "s-chile-laolao" },
+      { "speaker": "L", "sentence": "s-yechile-liuwanr" },
+      { "speaker": "K", "sentence": "s-delei" },
+      { "speaker": "L", "sentence": "s-zhershiwomendehutong" },
+      { "speaker": "K", "sentence": "s-zherzhenhaowanr" },
+      { "speaker": "L", "sentence": "s-leibulei-zuo" },
+      { "speaker": "K", "sentence": "s-meishir-beirhao" }
+    ],
+    "questions": [
+      { "q": "What does Grandma suggest?", "options": ["Going for a stroll", "Having breakfast", "Going shopping"], "answer": 0 },
+      { "q": "Where are they?", "options": ["In a park", "In their hutong", "At the market"], "answer": 1 },
+      { "q": "Does 米格 want to sit down?", "options": ["Yes, he's tired", "He's hungry", "No, he feels great"], "answer": 2 }
+    ]
+  },
+  "nodes": [
+    { "id": "n13-erhua", "title": "The Beijing -r", "words": ["w-nar", "w-zher", "w-nar4", "w-yihuir", "w-haowanr"], "sentences": ["s-niqunar", "s-wozaizherne", "s-tazainar", "s-dengyihuir", "s-zherzhenhaowanr"], "grammar": ["g-erhua"] },
+    { "id": "n13-greetings", "title": "您吃了吗？", "words": ["w-meishir", "w-liuwanr", "w-zanmen", "w-manzou"], "sentences": ["s-ninchilema", "s-chile-ninne", "s-woquliuwanr", "s-zanmenquliuwanr", "s-meishir", "s-wozoule", "s-ninmanzou"], "exchanges": ["x-chilema", "x-whereto", "x-sorry-bj", "x-guestleaving"], "grammar": ["g-chilema", "g-zanmen"] },
+    { "id": "n13-family", "title": "Grandma & Grandpa", "words": ["w-laolao", "w-laoye", "w-hutong"], "sentences": ["s-laolaohao", "s-laoye-ninhao", "s-xihuanhutong", "s-zanmenyiqichifan"], "grammar": ["g-grandparents"] },
+    { "id": "n13-slang", "title": "Talk like a local", "words": ["w-beng", "w-delei", "w-beir", "w-didao"], "sentences": ["s-bengkeqi", "s-delei", "s-caihendidao", "s-meishir-beirhao"], "exchanges": ["x-thanks-bj", "x-letsgo"], "grammar": ["g-bjwords"] },
+    { "id": "n13-story", "title": "Challenge: A walk with Grandma", "kind": "story", "sentences": ["s-mige-chilema", "s-yechile-liuwanr", "s-zhershiwomendehutong", "s-leibulei-zuo"] }
+  ]
+}

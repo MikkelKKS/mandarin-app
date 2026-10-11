@@ -4,7 +4,7 @@
  */
 import type { Exchange, Sentence, Word } from '../../content/schema';
 import type { Voice } from '../../content/audioPaths';
-import { parsePinyin, hanziOnly } from '../../lib/pinyin';
+import { alignToHanzi, parsePinyin, hanziOnly } from '../../lib/pinyin';
 import { shuffle, pick, sample } from '../../lib/random';
 import { AUDIO_ONLY, type Exercise, type ExerciseKind } from './types';
 
@@ -199,7 +199,7 @@ function make(kind: ExerciseKind, t: Target | null, inp: GenInput, rnd: () => nu
     }
     case 'tone-id': {
       if (!word) return null;
-      const syl = parsePinyin(word.pinyin, syllableCount(word.hanzi));
+      const syl = alignToHanzi(word.hanzi, word.pinyin)?.syls;
       if (!syl || syl.length > 2 || syl.every((s) => s.tone === 5)) return null;
       return { kind, key: key(kind), itemId: word.id, voice: voice() };
     }

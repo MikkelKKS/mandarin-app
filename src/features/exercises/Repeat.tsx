@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { sentences, words } from '../../content';
 import { SentenceText } from '../../components/Hanzi';
-import { hanziOnly, parsePinyin, type Tone } from '../../lib/pinyin';
+import { alignToHanzi, type Tone } from '../../lib/pinyin';
 import { listen, similarity, toneShape, type PitchPoint, type Recording } from '../../lib/speech';
 import { useCheck } from '../lesson/context';
 import type { Exercise } from '../lesson/types';
@@ -14,7 +14,7 @@ export function Repeat({ ex }: { ex: Of<'repeat'> }) {
   const item = sentences.get(ex.itemId) ?? words.get(ex.itemId)!;
   const hanzi = item.hanzi;
   const pinyin = item.pinyin;
-  const tones = (parsePinyin(pinyin, [...hanziOnly(hanzi)].length) ?? []).map((s) => s.tone);
+  const tones = (alignToHanzi(hanzi, pinyin)?.syls ?? []).map((s) => s.tone);
   const [rec, setRec] = useState<Recording | null>(null);
   const [res, setRes] = useState<{ transcript: string; pitch: PitchPoint[]; error?: string } | null>(null);
   useCheck(() => ({ verdict: 'correct', items: [] }), [ex.key]);

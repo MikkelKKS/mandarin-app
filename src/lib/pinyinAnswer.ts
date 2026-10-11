@@ -8,6 +8,7 @@
  */
 import citation from 'virtual:citation-tones';
 import {
+  alignToHanzi,
   type Letter,
   type Syllable,
   type Tone,
@@ -54,13 +55,13 @@ function citationTones(ch: string): Tone[] {
 }
 
 export function buildExpected(exp: ExpectedPinyin): ExpectedSyllable[] | null {
-  const chars = exp.hanzi ? [...hanziOnly(exp.hanzi)] : [];
-  let syl = chars.length ? parsePinyin(exp.pinyin, chars.length) : null;
-  const aligned = !!syl;
-  if (!syl) syl = parsePinyin(exp.pinyin);
+  const al = exp.hanzi ? alignToHanzi(exp.hanzi, exp.pinyin) : null;
+  const syl = al ? al.syls : parsePinyin(exp.pinyin);
   if (!syl) return null;
+  // First character of each syllable (a merged 儿 belongs to the previous one).
+  const firstChar = (i: number) => (al ? al.chars[al.charSyl.indexOf(i)] : undefined);
   return syl.map((s, i) => {
-    const hz = aligned ? chars[i] : undefined;
+    const hz = firstChar(i);
     const accepted = new Set<Tone>([s.tone]);
     if (hz === '不') [2, 4].forEach((t) => accepted.add(t as Tone));
     if (hz === '一') [1, 2, 4].forEach((t) => accepted.add(t as Tone));
@@ -96,7 +97,13 @@ function checkOne(letters: Letter[], exp: ExpectedPinyin, strict: boolean): Piny
   if (!expected) return { verdict: 'wrong', reason: 'mismatch', correction };
 
   const typed = letters.map((l) => l.ch).join('');
-  const target = expected.map((s) => s.base).join('');
+  let target = expected.map((s) => s.base + (s.erhua ? 'r' : '')).join('');
+  // 儿化 is optional when typing: nǎr and nǎ both count.
+  let withR = true;
+  if (typed !== target && expected.some((s) => s.erhua) && typed === expected.map((s) => s.base).join('')) {
+    target = typed;
+    withR = false;
+  }
 
   if (typed !== target) {
     if (expected.length >= 4 && levenshtein(typed, target) <= 1) {
@@ -111,8 +118,9 @@ function checkOne(letters: Letter[], exp: ExpectedPinyin, strict: boolean): Piny
   let missing = 0;
   let wrong = 0;
   for (const s of expected) {
-    const range: [number, number] = [pos, pos + s.base.length];
-    pos += s.base.length;
+    const len = s.base.length + (s.erhua && withR ? 1 : 0);
+    const range: [number, number] = [pos, pos + len];
+    pos += len;
     const t = rangeTone(letters, range);
     let status: SyllableFeedback['status'];
     if (t === 'conflict') status = 'wrong-tone';

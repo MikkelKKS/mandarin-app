@@ -8,8 +8,10 @@ import { SYLLABLES } from './syllables.generated';
 export type Tone = 1 | 2 | 3 | 4 | 5; // 5 = neutral
 
 export interface Syllable {
-  base: string; // toneless, lowercase, ü as v (e.g. "nv", "hao")
+  base: string; // toneless, lowercase, ü as v (e.g. "nv", "hao"); without the erhua r
   tone: Tone;
+  /** 儿化: the syllable ends in an extra r (哪儿 nǎr). */
+  erhua?: boolean;
 }
 
 /** One letter of input with the tone information attached to it. */
@@ -80,7 +82,7 @@ export function toLetters(input: string): Letter[] {
  * If `count` is given, only segmentations with exactly that many syllables count.
  * Among candidates, prefers the fewest syllables. Returns syllable ranges.
  */
-export function segmentLetters(letters: Letter[], count?: number): Array<[number, number]> | null {
+export function segmentLetters(letters: Letter[], count?: number, erhua = false): Array<[number, number]> | null {
   const n = letters.length;
   if (n === 0) return count === undefined || count === 0 ? [] : null;
   // best[i] = map from syllable count -> previous index, for reaching position i
@@ -90,14 +92,14 @@ export function segmentLetters(letters: Letter[], count?: number): Array<[number
     if (reach[i].size === 0) continue;
     let base = '';
     let marks = 0;
-    for (let j = i; j < n && j - i < 6; j++) {
+    for (let j = i; j < n && j - i < 7; j++) {
       if (j > i && letters[j].boundaryBefore) break;
       if (j > i && letters[j - 1].digit !== undefined) break;
       base += letters[j].ch;
       if (letters[j].mark) marks++;
       if (marks > 1) break;
       const end = j + 1;
-      if (SYLLABLES.has(base)) {
+      if (SYLLABLES.has(base) || (erhua && isErhua(base))) {
         for (const [k] of reach[i]) {
           if (count !== undefined && k + 1 > count) continue;
           if (!reach[end].has(k + 1)) reach[end].set(k + 1, i);
@@ -126,6 +128,15 @@ export function segmentLetters(letters: Letter[], count?: number): Array<[number
   return ranges;
 }
 
+/** "nar" = 哪儿-style syllable: a valid syllable plus a final r (but not "er" itself). */
+export function isErhua(full: string): boolean {
+  return full.length > 2 && full.endsWith('r') && !SYLLABLES.has(full) && SYLLABLES.has(full.slice(0, -1));
+}
+
+function toSyllable(full: string, tone: Tone): Syllable {
+  return isErhua(full) ? { base: full.slice(0, -1), tone, erhua: true } : { base: full, tone };
+}
+
 /** Tone of a letter range: diacritic or typed digit, or null when absent. */
 export function rangeTone(letters: Letter[], [s, e]: [number, number]): Tone | null | 'conflict' {
   const tones = new Set<Tone>();
@@ -143,20 +154,60 @@ export function rangeTone(letters: Letter[], [s, e]: [number, number]): Tone | n
  * neutral). Returns null if it cannot be segmented (into `count` syllables).
  */
 export function parsePinyin(text: string, count?: number): Syllable[] | null {
+  return parseWith(text, count, false) ?? parseWith(text, count, true);
+}
+
+/** Parse with erhua syllables allowed or not. */
+function parseWith(text: string, count: number | undefined, erhua: boolean): Syllable[] | null {
   const letters = toLetters(text);
-  const ranges = segmentLetters(letters, count);
+  const ranges = segmentLetters(letters, count, erhua);
   if (!ranges) return null;
   const out: Syllable[] = [];
   for (const r of ranges) {
     const t = rangeTone(letters, r);
     if (t === 'conflict') return null;
-    out.push({ base: letters.slice(r[0], r[1]).map((l) => l.ch).join(''), tone: t ?? 5 });
+    out.push(toSyllable(letters.slice(r[0], r[1]).map((l) => l.ch).join(''), t ?? 5));
   }
+  if (!erhua && out.some((x) => x.erhua)) return null;
   return out;
 }
 
+/**
+ * Pair the characters of `hanzi` with the syllables of `pinyin`, allowing
+ * 儿化: a 儿 after another character may share that character's syllable.
+ * `charSyl[i]` is the syllable index for character i.
+ */
+export function alignToHanzi(hanzi: string, pinyin: string): { syls: Syllable[]; chars: string[]; charSyl: number[] } | null {
+  const chars = [...hanziOnly(hanzi)];
+  const erCount = chars.filter((c, i) => c === '儿' && i > 0).length;
+  for (let merged = 0; merged <= erCount; merged++) {
+    // Only use erhua syllables when a 儿 is actually being merged.
+    const syls = parseWith(pinyin, chars.length - merged, merged > 0);
+    if (!syls || syls.filter((x) => x.erhua).length !== merged) continue;
+    const charSyl: number[] = [];
+    let si = 0;
+    let left = merged;
+    let ok = true;
+    for (let ci = 0; ci < chars.length; ci++) {
+      if (left > 0 && chars[ci] === '儿' && ci > 0 && syls[si - 1]?.erhua && charSyl[ci - 1] === si - 1) {
+        charSyl.push(si - 1);
+        left--;
+      } else {
+        if (si >= syls.length) {
+          ok = false;
+          break;
+        }
+        charSyl.push(si++);
+      }
+    }
+    if (ok && si === syls.length && left === 0) return { syls, chars, charSyl };
+  }
+  return null;
+}
+
 /** Put the tone mark on the right vowel: a/e first, then o in "ou", else last vowel. */
-export function markSyllable({ base, tone }: Syllable): string {
+export function markSyllable({ base, tone, erhua }: Syllable): string {
+  if (erhua) return markSyllable({ base, tone }) + 'r';
   const display = (s: string) => s.replace(/v/g, 'ü');
   if (tone === 5) return display(base);
   let idx = base.search(/[ae]/);
@@ -174,8 +225,8 @@ export function markSyllable({ base, tone }: Syllable): string {
   return display(base.slice(0, idx) + marked + base.slice(idx + 1));
 }
 
-export function syllableToNumeric({ base, tone }: Syllable): string {
-  return base + tone;
+export function syllableToNumeric({ base, tone, erhua }: Syllable): string {
+  return base + (erhua ? 'r' : '') + tone;
 }
 
 /** "nǐ hǎo" -> "ni3 hao3"; keeps word grouping by spaces. */

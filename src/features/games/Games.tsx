@@ -4,7 +4,7 @@ import type { Sentence, Word } from '../../content/schema';
 import { ToneText } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { play } from '../../lib/audio';
-import { hanziOnly, parsePinyin, type Tone } from '../../lib/pinyin';
+import { alignToHanzi, hanziOnly, parsePinyin, type Tone } from '../../lib/pinyin';
 import { shuffle, sample, pick } from '../../lib/random';
 import { sfx } from '../../lib/sfx';
 import { useNumberKeys } from '../lesson/context';
@@ -37,7 +37,7 @@ function toneItems(pool: Pool): ToneItem[] {
   const fromSounds = sounds.syllables.map((s) => ({ id: s.id, hanzi: s.hanzi, pinyin: s.pinyin, tone: parsePinyin(s.pinyin)![0].tone }));
   const fromWords = pool.words
     .filter((w) => syllableCount(w) === 1)
-    .map((w) => ({ id: w.id, hanzi: w.hanzi, pinyin: w.pinyin, tone: parsePinyin(w.pinyin, 1)?.[0]?.tone ?? 5 }))
+    .map((w) => ({ id: w.id, hanzi: w.hanzi, pinyin: w.pinyin, tone: alignToHanzi(w.hanzi, w.pinyin)?.syls[0]?.tone ?? 5 }))
     .filter((w) => w.tone !== 5);
   return [...fromSounds, ...fromWords] as ToneItem[];
 }
@@ -420,7 +420,7 @@ export function TonePairs({ pool }: { pool: Pool }) {
   const items = useMemo<PairItem[]>(
     () =>
       pool.words
-        .map((w) => ({ id: w.id, hanzi: w.hanzi, pinyin: w.pinyin, tones: parsePinyin(w.pinyin, syllableCount(w))?.map((s) => s.tone) ?? [] }))
+        .map((w) => ({ id: w.id, hanzi: w.hanzi, pinyin: w.pinyin, tones: alignToHanzi(w.hanzi, w.pinyin)?.syls.map((s) => s.tone) ?? [] }))
         .filter((w) => w.tones.length === 2),
     [pool],
   );

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { exchanges, lookup, sentences, soundById, words } from '../../content';
 import { SentenceText, ToneText } from '../../components/Hanzi';
-import { hanziOnly, markSyllable, parsePinyin, type Tone } from '../../lib/pinyin';
+import { alignToHanzi, markSyllable, type Tone } from '../../lib/pinyin';
 import { useSettings } from '../../lib/settings';
 import { useCheck, useLesson, useNumberKeys } from '../lesson/context';
 import type { Exercise, Outcome } from '../lesson/types';
@@ -106,7 +106,7 @@ const TONE_LABELS: Array<{ tone: Tone; label: string; hint: string }> = [
 
 export function ToneId({ ex }: { ex: Of<'tone-id'> }) {
   const w = words.get(ex.itemId)!;
-  const syl = parsePinyin(w.pinyin, [...hanziOnly(w.hanzi)].length) ?? [];
+  const syl = alignToHanzi(w.hanzi, w.pinyin)?.syls ?? [];
   const [picked, setPicked] = useState<Array<Tone | null>>(syl.map(() => null));
   const { locked } = useLesson();
   const active = picked.findIndex((p) => p === null);

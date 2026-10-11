@@ -5,7 +5,7 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import { sentenceTokens, wordByHanzi } from '../content';
 import type { Sentence, Word } from '../content/schema';
-import { hanziOnly, isHanzi, markSyllable, parsePinyin, type Tone } from '../lib/pinyin';
+import { alignToHanzi, hanziOnly, isHanzi, markSyllable, parsePinyin, type Tone } from '../lib/pinyin';
 import { useSettings } from '../lib/settings';
 import { play } from '../lib/audio';
 import { Speaker } from './icons';
@@ -26,13 +26,17 @@ interface Syl {
 
 /** Pair each character of `hanzi` with its syllable from `pinyin`. Non-Han chars pass through. */
 export function alignSyllables(hanzi: string, pinyin: string): Syl[] {
-  const count = [...hanziOnly(hanzi)].length;
-  const syl = parsePinyin(pinyin, count);
+  const al = alignToHanzi(hanzi, pinyin);
   let k = 0;
   return [...hanzi].map((ch) => {
     if (!isHanzi(ch)) return { ch };
-    const s = syl?.[k++];
-    return s ? { ch, pinyin: markSyllable(s), tone: s.tone } : { ch };
+    const ci = k++;
+    if (!al) return { ch };
+    const si = al.charSyl[ci];
+    const s = al.syls[si];
+    // A merged 儿 takes the colour of its syllable but shows no pinyin of its own.
+    if (ci > 0 && al.charSyl[ci - 1] === si) return { ch, pinyin: '', tone: s.tone };
+    return { ch, pinyin: markSyllable(s), tone: s.tone };
   });
 }
 
@@ -213,7 +217,7 @@ function Ruby({ s, showPinyin, toneColors }: { s: Syl; showPinyin: boolean; tone
   return (
     <span className="inline-flex flex-col items-center leading-none">
       {showPinyin && (
-        <span className={`mb-1 font-sans text-[0.42em] leading-none ${s.pinyin ? color : 'invisible'}`}>{s.pinyin ?? '·'}</span>
+        <span className={`mb-1 font-sans text-[0.42em] leading-none ${s.pinyin ? color : 'invisible'}`}>{s.pinyin || '·'}</span>
       )}
       <span className={color}>{s.ch}</span>
     </span>

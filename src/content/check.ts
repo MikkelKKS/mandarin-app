@@ -3,7 +3,7 @@
  * Pure: the caller supplies parsed files and an audio-exists function.
  */
 import { polyphonic } from 'pinyin-pro';
-import { hanziOnly, parsePinyin } from '../lib/pinyin';
+import { alignToHanzi, hanziOnly } from '../lib/pinyin';
 import { CourseSchema, SoundsSchema, UnitSchema, type Course, type Sounds, type Unit } from './schema';
 import { audioFilesFor } from './audioPaths';
 
@@ -20,12 +20,15 @@ function readingsOf(ch: string): string[] {
 
 /** Is `pinyinText` a plausible reading of `hanziText`? Returns an error message or null. */
 export function checkPinyinAgainstHanzi(hanziText: string, pinyinText: string): string | null {
-  const chars = [...hanziOnly(hanziText)];
-  const syl = parsePinyin(pinyinText, chars.length);
-  if (!syl) return `pinyin "${pinyinText}" can't be split into ${chars.length} syllables for "${hanziText}"`;
+  const al = alignToHanzi(hanziText, pinyinText);
+  const n = [...hanziOnly(hanziText)].length;
+  if (!al) return `pinyin "${pinyinText}" can't be split into ${n} syllables for "${hanziText}"`;
+  const { chars, syls: syl, charSyl } = al;
   for (let i = 0; i < chars.length; i++) {
     const ch = chars[i];
-    const s = syl[i];
+    // A 儿 merged into the previous syllable (哪儿 nǎr) has no syllable of its own.
+    if (i > 0 && charSyl[i] === charSyl[i - 1]) continue;
+    const s = syl[charSyl[i]];
     const readings = readingsOf(ch);
     if (readings.length === 0) continue; // unknown to the dictionary; skip
     const bases = readings.map((r) => r.replace(/\d$/, ''));
