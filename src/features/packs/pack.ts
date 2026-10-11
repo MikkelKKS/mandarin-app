@@ -94,7 +94,3 @@ export function registerPack(storeId: string, pack: Pack): void {
   for (const x of pack.exchanges) exchanges.set(x.id, { ...x, unit });
   if (pack.dialogue) dialogues.set(pack.dialogue.id, { ...pack.dialogue, unit });
 }
-
-export function isPackItem(id: string): boolean {
-  return id.startsWith('p-');
-}

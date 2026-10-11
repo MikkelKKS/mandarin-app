@@ -1,5 +1,5 @@
 /** Skill-path progress: mastery per node, unlocking and test-outs. */
-import { getUnit, nodeOrder, nodes, units } from '../content';
+import { getUnit, nodeOrder, nodes } from '../content';
 import { db, type ProgressRow } from '../db/db';
 
 export const MAX_MASTERY = 5;
@@ -23,11 +23,6 @@ export function computeStates(order: string[], rows: Map<string, ProgressRow>): 
     out.set(id, { status: mastery >= 1 ? 'done' : open ? 'open' : 'locked', mastery });
   });
   return out;
-}
-
-export async function progressMap(): Promise<Map<string, ProgressRow>> {
-  const rows = await db.progress.toArray();
-  return new Map(rows.map((r) => [r.id, r]));
 }
 
 /** Pure: new row after finishing a lesson. Every completion counts; mastery only goes up. */
@@ -98,4 +93,3 @@ export function unitComplete(unitId: string, states: Map<string, NodeState>): bo
   return getUnit(unitId)!.nodes.every((n) => states.get(n.id)?.status === 'done');
 }
 
-export { units };

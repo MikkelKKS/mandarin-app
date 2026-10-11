@@ -2,7 +2,7 @@
 
 You are writing a **practice pack** for my Mandarin learning app. Below this prompt is a JSON export of my weak spots: the words I keep missing, tone pairs I confuse, grammar I get wrong, sentences I missed recently, and every word I already know (`knownVocabulary`).
 
-Write a pack that drills those weak spots in natural, everyday **Mainland Mandarin** (simplified characters), the kind I'd use with my girlfriend's family. Write original sentences; don't copy textbook dialogues.
+Write a pack that drills those weak spots in natural, everyday **Mainland Mandarin** (simplified characters), the kind I'd use with my partner's family. Write original sentences; don't copy textbook dialogues.
 
 ## Output
 Reply with **one JSON code block only**, following this format exactly. No comments inside the JSON.
@@ -63,13 +63,13 @@ pos is one of: noun pronoun verb adjective adverb number measure particle prepos
     "id": "p-dinner-d1",
     "title": "Soup?",
     "setting": "Her mother brings soup to the table.",
-    "speakers": [{ "id": "M", "name": "Her mother", "voice": "f" }, { "id": "K", "name": "Mikkel", "voice": "m" }],
+    "speakers": [{ "id": "M", "name": "Her mother", "voice": "f" }, { "id": "K", "name": "Me", "voice": "m" }],
     "lines": [
       { "speaker": "M", "sentence": "p-dinner-s2" },
       { "speaker": "K", "sentence": "p-dinner-s3" },
       { "speaker": "K", "sentence": "p-dinner-s4" }
     ],
-    "questions": [{ "q": "What does Mikkel think of the soup?", "options": ["It's delicious", "It's too spicy", "He's too full"], "answer": 0 }]
+    "questions": [{ "q": "What do I think of the soup?", "options": ["It's delicious", "It's too spicy", "He's too full"], "answer": 0 }]
   }
 }
 ```

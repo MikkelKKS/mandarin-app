@@ -23,12 +23,7 @@ export type Exercise =
   | (Base & { kind: 'match-pairs'; wordIds: string[]; mode: 'pinyin' | 'meaning' })
   | (Base & { kind: 'pick-character'; wordId: string; options: string[]; answer: number })
   | (Base & { kind: 'read-sentence'; sentenceId: string; options: string[]; answer: number })
-  | (Base & { kind: 'repeat'; itemId: string })
-  | (Base & {
-      kind: 'dialogue-question';
-      dialogueId: string;
-      question: number;
-    });
+  | (Base & { kind: 'repeat'; itemId: string });
 
 export type ExerciseKind = Exercise['kind'];
 
@@ -59,7 +54,6 @@ export const CATEGORY: Record<ExerciseKind, 'listening' | 'pinyin' | 'recognitio
   'match-pairs': 'recognition',
   'pick-character': 'recognition',
   'read-sentence': 'recognition',
-  'dialogue-question': 'listening',
   repeat: 'other',
 };
 

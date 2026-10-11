@@ -189,8 +189,3 @@ export function toNumeric(text: string): string {
     })
     .join(' ');
 }
-
-/** Tone of each syllable in a content pinyin string. */
-export function tonesOf(text: string, count?: number): Tone[] {
-  return (parsePinyin(text, count) ?? []).map((s) => s.tone);
-}
