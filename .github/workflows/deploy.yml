@@ -26,17 +26,28 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/audio
-          if git diff --cached --quiet; then echo "No new audio"; exit 0; fi
-          git commit -m "Generate audio [skip ci]"
-          for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
+          if git diff --cached --quiet; then
+            echo "No new audio"
+          else
+            git commit -m "Generate audio [skip ci]"
+            for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
+          fi
+      # Hand the audio straight to the build, so it builds exactly this push's content.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audio
+          path: public/audio
+          retention-days: 1
 
   build:
     needs: audio
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
         with:
-          ref: main
+          name: audio
+          path: public/audio
       - uses: actions/setup-node@v4
         with:
           node-version: 22
