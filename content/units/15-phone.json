@@ -1,0 +1,103 @@
+{
+  "id": "u15-phone",
+  "order": 7,
+  "title": "Calls and classes",
+  "titleHanzi": "打电话",
+  "description": "Phone calls, studying, characters, dates and meeting at the station.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-dadianhua", "hanzi": "打电话", "pinyin": "dǎ diànhuà", "english": ["to make a phone call", "to call"], "hsk": 1, "pos": "verb" },
+    { "id": "w-wei", "hanzi": "喂", "pinyin": "wèi", "english": ["hello? (on the phone)"], "hsk": 1, "pos": "interjection", "note": "Only on the phone, often said rising: wéi. Face to face it sounds rude." },
+    { "id": "w-shuohua", "hanzi": "说话", "pinyin": "shuōhuà", "english": ["to talk", "to speak"], "hsk": 1, "pos": "verb" },
+    { "id": "w-neng", "hanzi": "能", "pinyin": "néng", "english": ["can", "to be able to"], "hsk": 1, "pos": "verb" },
+    { "id": "w-xiansheng", "hanzi": "先生", "pinyin": "xiānsheng", "english": ["sir", "Mr.", "husband"], "hsk": 1, "pos": "noun" },
+    { "id": "w-xiaojie", "hanzi": "小姐", "pinyin": "xiǎojiě", "english": ["Miss", "madam"], "hsk": 1, "pos": "noun", "note": "Fine in hotels and offices. To call a waitress, say 服务员 instead." },
+    { "id": "w-tongxue", "hanzi": "同学", "pinyin": "tóngxué", "english": ["classmate"], "hsk": 1, "pos": "noun" },
+    { "id": "w-xuexi", "hanzi": "学习", "pinyin": "xuéxí", "english": ["to study", "to learn"], "hsk": 1, "pos": "verb" },
+    { "id": "w-du", "hanzi": "读", "pinyin": "dú", "english": ["to read (aloud)", "to study"], "hsk": 1, "pos": "verb" },
+    { "id": "w-xie-write", "hanzi": "写", "pinyin": "xiě", "english": ["to write"], "hsk": 1, "pos": "verb" },
+    { "id": "w-zi", "hanzi": "字", "pinyin": "zì", "english": ["character", "word"], "hsk": 1, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-nian", "hanzi": "年", "pinyin": "nián", "english": ["year"], "hsk": 1, "pos": "time" },
+    { "id": "w-ri", "hanzi": "日", "pinyin": "rì", "english": ["day (of the month)", "date"], "hsk": 1, "pos": "time" },
+    { "id": "w-ling", "hanzi": "零", "pinyin": "líng", "english": ["zero"], "hsk": 1, "pos": "number" },
+    { "id": "w-shangwu", "hanzi": "上午", "pinyin": "shàngwǔ", "english": ["morning (before noon)"], "hsk": 1, "pos": "time" },
+    { "id": "w-zhongwu", "hanzi": "中午", "pinyin": "zhōngwǔ", "english": ["noon", "lunchtime"], "hsk": 1, "pos": "time" },
+    { "id": "w-huochezhan", "hanzi": "火车站", "pinyin": "huǒchēzhàn", "english": ["train station"], "hsk": 1, "pos": "noun" }
+  ],
+  "sentences": [
+    { "id": "s15-wei-ninhao", "hanzi": "喂，您好！", "pinyin": "Wèi, nín hǎo!", "english": "Hello? (on the phone)", "words": ["w-wei", "w-nin", "w-hao"] },
+    { "id": "s15-wei-shimige", "hanzi": "喂，是米格吗？", "pinyin": "Wèi, shì Mǐgé ma?", "english": "Hello, is that 米格?", "words": ["w-wei", "w-shi", "w-mikkel", "w-ma"] },
+    { "id": "s15-shiwo", "hanzi": "是我。", "pinyin": "Shì wǒ.", "english": "It's me.", "words": ["w-shi", "w-wo"], "alt": { "english": ["Speaking."] } },
+    { "id": "s15-shiwo-nihao", "hanzi": "是我。你好！", "pinyin": "Shì wǒ. Nǐ hǎo!", "english": "It's me. Hi!", "words": ["w-shi", "w-wo", "w-nihao"] },
+    { "id": "s15-geimamadadianhua", "hanzi": "我给妈妈打电话。", "pinyin": "Wǒ gěi māma dǎ diànhuà.", "english": "I'm calling Mum.", "words": ["w-wo", "w-gei", "w-mama", "w-dadianhua"] },
+    { "id": "s15-mingtiandadianhua", "hanzi": "明天给我打电话吧。", "pinyin": "Míngtiān gěi wǒ dǎ diànhuà ba.", "english": "Call me tomorrow.", "words": ["w-mingtian", "w-gei", "w-wo", "w-dadianhua", "w-ba-particle"] },
+    { "id": "s15-shangwushidian", "hanzi": "我上午十点给你打电话。", "pinyin": "Wǒ shàngwǔ shí diǎn gěi nǐ dǎ diànhuà.", "english": "I'll call you at ten in the morning.", "words": ["w-wo", "w-shangwu", "w-shi2", "w-dian", "w-gei", "w-ni", "w-dadianhua"] },
+    { "id": "s15-nengshuomanyidian", "hanzi": "你能说慢一点吗？", "pinyin": "Nǐ néng shuō màn yìdiǎn ma?", "english": "Could you speak a bit slower?", "words": ["w-ni", "w-neng", "w-shuo", "w-man", "w-yidian", "w-ma"] },
+    { "id": "s15-duibuqi-man", "hanzi": "对不起，你能说慢一点吗？", "pinyin": "Duìbuqǐ, nǐ néng shuō màn yìdiǎn ma?", "english": "Sorry, could you speak a bit slower?", "words": ["w-duibuqi", "w-ni", "w-neng", "w-shuo", "w-man", "w-yidian", "w-ma"] },
+    { "id": "s15-jintianbunengqu", "hanzi": "我今天不能去。", "pinyin": "Wǒ jīntiān bù néng qù.", "english": "I can't go today.", "words": ["w-wo", "w-jintian", "w-bu", "w-neng", "w-qu"] },
+    { "id": "s15-buxihuanshuohua", "hanzi": "他不喜欢说话。", "pinyin": "Tā bù xǐhuan shuōhuà.", "english": "He doesn't like to talk much.", "words": ["w-ta-he", "w-bu", "w-xihuan", "w-shuohua"] },
+    { "id": "s15-xiansheng-ninhao", "hanzi": "先生，您好！", "pinyin": "Xiānsheng, nín hǎo!", "english": "Hello, sir!", "words": ["w-xiansheng", "w-nin", "w-hao"] },
+    { "id": "s15-xiaojie-ninhao", "hanzi": "小姐，您好！", "pinyin": "Xiǎojiě, nín hǎo!", "english": "Hello, madam!", "words": ["w-xiaojie", "w-nin", "w-hao"] },
+    { "id": "s15-taxiansheng", "hanzi": "她先生是丹麦人。", "pinyin": "Tā xiānsheng shì Dānmài rén.", "english": "Her husband is Danish.", "words": ["w-ta-she", "w-xiansheng", "w-shi", "w-danmai", "w-ren"] },
+    { "id": "s15-xuexizhongwen", "hanzi": "我在学习中文。", "pinyin": "Wǒ zài xuéxí Zhōngwén.", "english": "I'm studying Chinese.", "words": ["w-wo", "w-zai", "w-xuexi", "w-zhongwen"] },
+    { "id": "s15-zaixuexima", "hanzi": "你在学习中文吗？", "pinyin": "Nǐ zài xuéxí Zhōngwén ma?", "english": "Are you studying Chinese?", "words": ["w-ni", "w-zai", "w-xuexi", "w-zhongwen", "w-ma"] },
+    { "id": "s15-xueleyinian", "hanzi": "我学了一年中文。", "pinyin": "Wǒ xué le yì nián Zhōngwén.", "english": "I've studied Chinese for a year.", "words": ["w-wo", "w-xue", "w-le", "w-yi", "w-nian", "w-zhongwen"] },
+    { "id": "s15-tongxue", "hanzi": "她是我的同学。", "pinyin": "Tā shì wǒ de tóngxué.", "english": "She's my classmate.", "words": ["w-ta-she", "w-shi", "w-wo", "w-de", "w-tongxue"] },
+    { "id": "s15-xiemingzi", "hanzi": "我会写我的中文名字。", "pinyin": "Wǒ huì xiě wǒ de Zhōngwén míngzi.", "english": "I can write my Chinese name.", "words": ["w-wo", "w-hui", "w-xie-write", "w-wo", "w-de", "w-zhongwen", "w-mingzi"] },
+    { "id": "s15-shenmezi", "hanzi": "这是什么字？", "pinyin": "Zhè shì shénme zì?", "english": "What character is this?", "words": ["w-zhe", "w-shi", "w-shenme", "w-zi"] },
+    { "id": "s15-nengduzhegezi", "hanzi": "妈妈，您能读这个字吗？", "pinyin": "Māma, nín néng dú zhège zì ma?", "english": "Mum, can you read this character?", "words": ["w-mama", "w-nin", "w-neng", "w-du", "w-zhe", "w-ge", "w-zi", "w-ma"] },
+    { "id": "s15-shengrishiri", "hanzi": "我的生日是三月十日。", "pinyin": "Wǒ de shēngrì shì sān yuè shí rì.", "english": "My birthday is on the 10th of March.", "words": ["w-wo", "w-de", "w-shengri", "w-shi", "w-san", "w-yue", "w-shi2", "w-ri"] },
+    { "id": "s15-ererlingliu", "hanzi": "现在是二零二六年。", "pinyin": "Xiànzài shì èr líng èr liù nián.", "english": "It's 2026 now.", "words": ["w-xianzai", "w-shi", "w-er", "w-ling", "w-er", "w-liu", "w-nian"] },
+    { "id": "s15-huochezhanzainali", "hanzi": "火车站在哪里？", "pinyin": "Huǒchēzhàn zài nǎlǐ?", "english": "Where's the train station?", "words": ["w-huochezhan", "w-zai", "w-nali"] },
+    { "id": "s15-shangwuquhuochezhan", "hanzi": "我上午去火车站。", "pinyin": "Wǒ shàngwǔ qù huǒchēzhàn.", "english": "I'm going to the train station in the morning.", "words": ["w-wo", "w-shangwu", "w-qu", "w-huochezhan"] },
+    { "id": "s15-zhongwuyiqichifan", "hanzi": "中午一起吃饭吧。", "pinyin": "Zhōngwǔ yìqǐ chīfàn ba.", "english": "Let's have lunch together.", "words": ["w-zhongwu", "w-yiqi", "w-chi", "w-fan", "w-ba-particle"] },
+    { "id": "s15-mingtianzhongwu", "hanzi": "明天中午一起吃饭吧！", "pinyin": "Míngtiān zhōngwǔ yìqǐ chīfàn ba!", "english": "Let's have lunch together tomorrow!", "words": ["w-mingtian", "w-zhongwu", "w-yiqi", "w-chi", "w-fan", "w-ba-particle"] },
+    { "id": "s15-shangwuhuochezhan-zhongwukeyi", "hanzi": "我明天上午去火车站，中午可以。", "pinyin": "Wǒ míngtiān shàngwǔ qù huǒchēzhàn, zhōngwǔ kěyǐ.", "english": "I'm going to the train station tomorrow morning, but lunch works.", "words": ["w-wo", "w-mingtian", "w-shangwu", "w-qu", "w-huochezhan", "w-zhongwu", "w-keyi"] },
+    { "id": "s15-shierdianjian", "hanzi": "那我们十二点在火车站见。", "pinyin": "Nà wǒmen shí'èr diǎn zài huǒchēzhàn jiàn.", "english": "Then let's meet at the train station at twelve.", "words": ["w-na4", "w-women", "w-shi2", "w-er", "w-dian", "w-zai", "w-huochezhan", "w-jian"] },
+    { "id": "s15-shierdian-huochezhanjian", "hanzi": "十二点，火车站见！", "pinyin": "Shí'èr diǎn, huǒchēzhàn jiàn!", "english": "Twelve o'clock, see you at the station!", "words": ["w-shi2", "w-er", "w-dian", "w-huochezhan", "w-jian"] },
+    { "id": "s15-hao-mingtianjian", "hanzi": "好，明天见！", "pinyin": "Hǎo, míngtiān jiàn!", "english": "OK, see you tomorrow!", "words": ["w-hao", "w-mingtian", "w-jian"] }
+  ],
+  "exchanges": [
+    { "id": "x15-isit", "prompt": "s15-wei-shimige", "reply": "s15-shiwo", "wrong": ["s15-tongxue", "s15-huochezhanzainali"], "context": "Your phone rings and someone asks for you." },
+    { "id": "x15-lunch", "prompt": "s15-mingtianzhongwu", "reply": "s15-hao-mingtianjian", "wrong": ["s15-shenmezi", "s15-xueleyinian"], "context": "Her sister invites you to lunch tomorrow. You're free." },
+    { "id": "x15-slow", "prompt": "s15-shierdianjian", "reply": "s15-duibuqi-man", "wrong": ["s14-xiangshuijiao", "s15-shiwo"], "context": "She said it too fast and you didn't catch it." },
+    { "id": "x15-studying", "prompt": "s15-zaixuexima", "reply": "s15-xueleyinian", "wrong": ["s14-jiudiankai", "s15-taxiansheng"], "context": "A neighbour hears you speak Chinese." },
+    { "id": "x15-cantgo", "prompt": "s15-zhongwuyiqichifan", "reply": "s15-jintianbunengqu", "wrong": ["s15-xiaojie-ninhao", "s15-ererlingliu"], "context": "A friend suggests lunch, but you're busy today." }
+  ],
+  "grammar": [
+    { "id": "g15-neng", "title": "能 or 会?", "body": "会 is a skill you have learned: 我会写我的中文名字. 能 is being able to right now, or being allowed: 我今天不能去.\n你能…吗？ is a polite way to ask for something.", "examples": ["s15-nengshuomanyidian", "s15-jintianbunengqu", "s15-xiemingzi"] },
+    { "id": "g15-dates", "title": "Dates go big to small", "body": "Year, then month, then day: 二零二六年三月十日. Read years digit by digit, with 零 for 0.\n日 is written; in speech people usually say 号: 三月十号.", "examples": ["s15-ererlingliu", "s15-shengrishiri"] },
+    { "id": "g15-wei", "title": "喂 on the phone", "body": "Answer the phone with 喂 (written wèi, usually said rising: wéi), like \"hello?\". Don't use it face to face: it sounds like \"hey, you!\".", "examples": ["s15-wei-ninhao", "s15-wei-shimige"] }
+  ],
+  "dialogue": {
+    "id": "d15-call",
+    "title": "Listening challenge: A phone call",
+    "setting": "Her sister calls 米格 to make plans.",
+    "speakers": [
+      { "id": "S", "name": "Her sister", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "S", "sentence": "s15-wei-shimige" },
+      { "speaker": "K", "sentence": "s15-shiwo-nihao" },
+      { "speaker": "S", "sentence": "s15-mingtianzhongwu" },
+      { "speaker": "K", "sentence": "s15-shangwuhuochezhan-zhongwukeyi" },
+      { "speaker": "S", "sentence": "s15-shierdianjian" },
+      { "speaker": "K", "sentence": "s15-duibuqi-man" },
+      { "speaker": "S", "sentence": "s15-shierdian-huochezhanjian" },
+      { "speaker": "K", "sentence": "s15-hao-mingtianjian" }
+    ],
+    "questions": [
+      { "q": "Who is calling?", "options": ["Her sister", "Her mother", "A classmate"], "answer": 0 },
+      { "q": "When will they meet?", "options": ["Tomorrow morning", "Tomorrow at noon", "Tonight"], "answer": 1 },
+      { "q": "Where will they meet?", "options": ["At a restaurant", "At home", "At the train station"], "answer": 2 },
+      { "q": "What does 米格 ask her to do?", "options": ["Speak more slowly", "Call back later", "Write it down"], "answer": 0 }
+    ]
+  },
+  "nodes": [
+    { "id": "n15-phone", "title": "On the phone", "words": ["w-dadianhua", "w-wei", "w-shuohua", "w-neng", "w-xiansheng", "w-xiaojie"], "sentences": ["s15-wei-ninhao", "s15-wei-shimige", "s15-shiwo", "s15-geimamadadianhua", "s15-mingtiandadianhua", "s15-nengshuomanyidian", "s15-jintianbunengqu", "s15-buxihuanshuohua", "s15-xiansheng-ninhao", "s15-xiaojie-ninhao", "s15-taxiansheng"], "exchanges": ["x15-isit"], "grammar": ["g15-wei", "g15-neng"] },
+    { "id": "n15-study", "title": "Studying", "words": ["w-tongxue", "w-xuexi", "w-du", "w-xie-write", "w-zi"], "sentences": ["s15-xuexizhongwen", "s15-zaixuexima", "s15-tongxue", "s15-xiemingzi", "s15-shenmezi", "s15-nengduzhegezi"], "exchanges": ["x15-studying"] },
+    { "id": "n15-dates", "title": "Dates and times", "words": ["w-nian", "w-ri", "w-ling", "w-shangwu", "w-zhongwu", "w-huochezhan"], "sentences": ["s15-xueleyinian", "s15-shengrishiri", "s15-ererlingliu", "s15-shangwushidian", "s15-huochezhanzainali", "s15-shangwuquhuochezhan", "s15-zhongwuyiqichifan", "s15-mingtianzhongwu"], "exchanges": ["x15-lunch", "x15-cantgo", "x15-slow"], "grammar": ["g15-dates"] },
+    { "id": "n15-story", "title": "Challenge: A phone call", "kind": "story", "sentences": ["s15-shiwo-nihao", "s15-shangwuhuochezhan-zhongwukeyi", "s15-shierdianjian", "s15-shierdian-huochezhanjian", "s15-duibuqi-man"] }
+  ]
+}
