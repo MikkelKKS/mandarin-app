@@ -12,7 +12,7 @@ and add **one unit per file per response**.
 - `REVIEW_NEEDED.md` — anything you're unsure about.
 
 ## IDs
-Lowercase with dashes, globally unique across all files. Use a `w-` prefix for words (`w-chi`), `s-` for sentences (`s-wochibaole`), `x-` for exchanges, `g-` for grammar, `n<unit>-` for nodes and `d<unit>-` for dialogues. For homographs and homophones, add a hint: `w-ta-he`, `w-ta-she`, `w-zai-again`.
+Lowercase with dashes, globally unique across all files. Use a `w-` prefix for words (`w-chi`), `s-` for sentences (`s-wochibaole`), `x-` for exchanges, `g-` for grammar, `n<unit>-` for nodes and `d<unit>-` for dialogues. Many words share a pinyin spelling (会/回, 进/斤, 碗/玩), so search the existing units before choosing an id, and give the newer word a meaning hint: `w-ta-she`, `w-zai-again`, `w-hui-return`, `w-wan-play`. The validator reports any clash.
 
 ## Words
 `{ id, hanzi, pinyin, english[], hsk, pos, note?, measure?, examples? }`
