@@ -1,6 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
 import { Cog, Gamepad, Path, Refresh } from './components/icons';
+import { GameRunner, GamesView } from './features/games/GamesView';
 import { NodeRunner, PracticeRunner, TestOutRunner } from './features/lesson/Runners';
 import { PathView, useNodeStates } from './features/path/PathView';
 import { About } from './features/settings/About';
@@ -37,8 +38,14 @@ export default function App() {
           <PracticeRunner />
         </WordPopupProvider>
       );
+    case 'game':
+      return (
+        <WordPopupProvider>
+          <GameRunner key={arg} id={arg} />
+        </WordPopupProvider>
+      );
     case 'games':
-      body = <GamesSoon />;
+      body = <GamesView />;
       break;
     case 'settings':
       body = <SettingsView />;
@@ -92,16 +99,6 @@ function Shell({ active, children }: { active: string; children: ReactNode }) {
         })}
       </nav>
       <main className="mx-auto w-full max-w-xl px-4 pb-28 pt-[max(1.25rem,env(safe-area-inset-top))] md:pb-10 md:pt-10">{children}</main>
-    </div>
-  );
-}
-
-function GamesSoon() {
-  return (
-    <div className="pt-6 text-center">
-      <p className="han text-6xl">游戏</p>
-      <h1 className="mt-4 text-2xl font-bold">Games are on their way</h1>
-      <p className="mx-auto mt-2 max-w-sm text-muted">Tone Sort, Listening Blitz and Pair Rush arrive in a coming update — unlimited plays, personal bests, and they count as study.</p>
     </div>
   );
 }

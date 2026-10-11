@@ -71,3 +71,15 @@ test('keyboard only: Enter continues through intro cards', async ({ page }) => {
   await expect(page.getByText('New word')).toBeVisible();
   await page.keyboard.press('Enter');
 });
+
+test('play a few rounds of Listening Blitz', async ({ page }) => {
+  await page.goto('./#/games');
+  await page.getByRole('button', { name: /Listening Blitz/ }).click();
+  await page.getByRole('button', { name: 'Play' }).click();
+  await expect(page.getByLabel('Score')).toHaveText('0');
+  for (let i = 0; i < 4; i++) {
+    await page.keyboard.press(String((i % 4) + 1));
+    await page.waitForTimeout(1300);
+  }
+  await expect(page.getByLabel('Seconds left')).toBeVisible();
+});
