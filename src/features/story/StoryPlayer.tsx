@@ -138,23 +138,31 @@ export function StoryPlayer({ dialogue, onExit, onFinish }: { dialogue: Dialogue
 }
 
 function Questions({ dialogue, onExit, onDone }: { dialogue: Dialogue; onExit: () => void; onDone: (accuracy: number) => void }) {
-  const [qi, setQi] = useState(0);
+  // Wrong answers come back at the end until answered correctly.
+  const [order, setOrder] = useState<number[]>(() => dialogue.questions.map((_, i) => i));
+  const [pos, setPos] = useState(0);
   const [sel, setSel] = useState<number | null>(null);
   const [locked, setLocked] = useState(false);
-  const correct = useRef(0);
+  const firstTry = useRef(new Map<number, boolean>());
+  const qi = order[pos];
   const q = dialogue.questions[qi];
   const check = () => {
     if (sel === null || locked) return;
     setLocked(true);
-    if (sel === q.answer) {
-      correct.current++;
-      sfx.correct();
-    } else sfx.wrong();
+    const ok = sel === q.answer;
+    if (!firstTry.current.has(qi)) firstTry.current.set(qi, ok);
+    if (ok) sfx.correct();
+    else {
+      sfx.wrong();
+      setOrder((o) => [...o, qi]);
+    }
   };
   const next = () => {
-    if (qi + 1 >= dialogue.questions.length) onDone(correct.current / dialogue.questions.length);
-    else {
-      setQi(qi + 1);
+    if (pos + 1 >= order.length) {
+      const right = [...firstTry.current.values()].filter(Boolean).length;
+      onDone(right / dialogue.questions.length);
+    } else {
+      setPos(pos + 1);
       setSel(null);
       setLocked(false);
     }
@@ -178,7 +186,7 @@ function Questions({ dialogue, onExit, onDone }: { dialogue: Dialogue; onExit: (
           <Close className="h-6 w-6" />
         </button>
         <p className="text-sm text-muted">
-          Question {qi + 1} of {dialogue.questions.length}
+          {pos < dialogue.questions.length ? `Question ${pos + 1} of ${dialogue.questions.length}` : 'One more try'}
         </p>
       </header>
       <h2 className="mb-5 mt-6 text-xl font-semibold">{q.q}</h2>

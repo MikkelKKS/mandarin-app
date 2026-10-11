@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { dialogues, getUnit, nodes } from '../../content';
 import { db } from '../../db/db';
-import { recordLesson, recordTestOut, TESTOUT_PASS } from '../../lib/progress';
+import { recordLesson, recordTestOut } from '../../lib/progress';
 import { go } from '../../lib/router';
 import { useQuietUntil } from '../../lib/settings';
 import { practiceItems } from '../../lib/srs';
@@ -46,7 +46,6 @@ export function NodeRunner({ nodeId }: { nodeId: string }) {
     return (
       <EndScreen
         result={result}
-        heading={node.kind === 'story' ? 'Story complete' : undefined}
         onContinue={() => go('')}
         onAgain={() => {
           setResult(null);
@@ -81,7 +80,7 @@ export function TestOutRunner({ unitId }: { unitId: string }) {
       <EndScreen
         result={result.r}
         heading={result.passed ? `You tested out of “${unit.title}”` : 'Not quite yet'}
-        extra={result.passed ? 'The next unit is open. Its skills stay replayable whenever you like.' : `You need ${Math.round(TESTOUT_PASS * 100)}% to test out. Try again any time, or work through the skills.`}
+        extra={result.passed ? 'The next unit is open. Its skills stay replayable whenever you like.' : 'To test out, most answers need to be right first time. Try again any time, or work through the skills.'}
         onContinue={() => go('')}
         onAgain={() => {
           setResult(null);
@@ -110,7 +109,6 @@ export function PracticeRunner() {
     return (
       <EndScreen
         result={result}
-        heading="Practice done"
         onContinue={() => go('')}
         onAgain={() => {
           setResult(null);
@@ -148,7 +146,6 @@ export function PackRunner({ id, story }: { id: string; story: boolean }) {
     return (
       <EndScreen
         result={result}
-        heading={story ? 'Story complete' : 'Custom practice done'}
         onContinue={() => go('')}
         onAgain={() => {
           setResult(null);

@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 
 /** Answer whatever exercise is on screen (correctness doesn't matter: wrong answers are re-queued, then pass). */
 async function step(page: Page) {
-  const done = page.getByRole('heading', { name: /complete/i });
+  const done = page.getByText('Fixed along the way');
   if (await done.isVisible()) return true;
 
   const cont = page.getByRole('button', { name: /^(Continue|Got it)$/ });
@@ -47,6 +47,10 @@ async function step(page: Page) {
 }
 
 test('complete the first lesson and see it on the path', async ({ page }) => {
+  // Wrong answers now repeat until right, so the random-answer bot is graded as correct.
+  await page.addInitScript(() => {
+    (window as unknown as { __e2eAlwaysCorrect: boolean }).__e2eAlwaysCorrect = true;
+  });
   await page.goto('./');
   await expect(page.getByText('Check your basics')).toBeVisible();
   await page.getByRole('button', { name: /Hello & how are you/ }).click();
@@ -56,7 +60,7 @@ test('complete the first lesson and see it on the path', async ({ page }) => {
   let finished = false;
   for (let i = 0; i < 400 && !finished; i++) finished = await step(page);
   expect(finished).toBe(true);
-  await expect(page.getByText('Accuracy')).toBeVisible();
+  await expect(page.getByText('Fixed along the way')).toBeVisible();
 
   await page.getByRole('button', { name: 'Continue' }).click();
   await expect(page.getByRole('button', { name: /Hello & how are you, level 1 of 5/ })).toBeVisible();

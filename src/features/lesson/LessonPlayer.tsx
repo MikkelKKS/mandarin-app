@@ -5,6 +5,7 @@ import { preload, play, stop } from '../../lib/audio';
 import { isPass, type Verdict } from '../../lib/pinyinAnswer';
 import { setQuietUntil, setSpeakPausedUntil, useQuietUntil } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
+import { shuffle } from '../../lib/random';
 import { recordAnswer } from '../../lib/srs';
 import { audioOf, ExerciseView, itemsOf } from '../exercises/ExerciseView';
 import { LessonCtx, type LessonApi } from './context';
@@ -24,7 +25,17 @@ interface Entry {
   retry: number;
 }
 
-const MAX_RETRIES = 2;
+/** A retried exercise gets its options shuffled, so the answer can't be remembered by position. */
+function reshuffle(ex: Exercise, key: string): Exercise {
+  if ('options' in ex && 'answer' in ex && Array.isArray(ex.options)) {
+    const right = ex.options[ex.answer];
+    const options = shuffle(ex.options);
+    return { ...ex, key, options, answer: options.indexOf(right) } as Exercise;
+  }
+  if (ex.kind === 'minimal-pair' && Math.random() < 0.5) return { ...ex, key, a: ex.b, b: ex.a, answer: ex.answer === 0 ? 1 : 0 };
+  if ('tiles' in ex) return { ...ex, key, tiles: shuffle(ex.tiles) } as Exercise;
+  return { ...ex, key };
+}
 
 export function LessonPlayer({
   title,
@@ -96,6 +107,8 @@ export function LessonPlayer({
         advance();
         return;
       }
+      // End-to-end tests answer at random; this flag (set only by the tests) treats every answer as right.
+      if ((window as unknown as { __e2eAlwaysCorrect?: boolean }).__e2eAlwaysCorrect) o = { ...o, verdict: 'correct' };
       if (o.verdict === 'wrong') sfx.wrong();
       else if (o.verdict === 'almost') sfx.almost();
       else sfx.correct();
@@ -108,10 +121,10 @@ export function LessonPlayer({
       for (const it of items) if (it.verdict === 'wrong') mistakes.current.add(it.id);
 
       if (isPass(o.verdict) || mode === 'testout') passed.current.add(origin);
-      else if (retry < MAX_RETRIES) {
-        // Re-queue the same exercise at the end of the lesson.
-        setQueue((q) => [...q, { ex: { ...ex, key: `${ex.key}-r${retry + 1}` }, origin, retry: retry + 1 }]);
-      } else passed.current.add(origin);
+      else {
+        // Wrong: it comes back at the end until it's answered correctly.
+        setQueue((q) => [...q, { ex: reshuffle(ex, `${origin}-r${retry + 1}`), origin, retry: retry + 1 }]);
+      }
       setOutcome(o);
     },
     [current, outcome, advance, mode, nodeId],

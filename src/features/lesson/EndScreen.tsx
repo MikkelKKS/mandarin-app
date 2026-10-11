@@ -3,11 +3,13 @@ import { lookup, words } from '../../content';
 import { ToneText } from '../../components/Hanzi';
 import type { LessonResult } from './LessonPlayer';
 
-function verdictText(acc: number): { hanzi: string; pinyin: string; line: string } {
-  if (acc >= 0.95) return { hanzi: '太棒了', pinyin: 'tài bàng le', line: 'Brilliant, almost no slips.' };
-  if (acc >= 0.8) return { hanzi: '很好', pinyin: 'hěn hǎo', line: 'Very good. Keep it rolling.' };
-  if (acc >= 0.5) return { hanzi: '不错', pinyin: 'bú cuò', line: 'Not bad! The mistakes will come back in Practice.' };
-  return { hanzi: '加油', pinyin: 'jiā yóu', line: "Tough one. Replay it as often as you like." };
+/** A verdict in words, based on how many answers were right first time. */
+export function verdictText(firstTry: number): { hanzi: string; pinyin: string; title: string; line: string } {
+  if (firstTry >= 0.95) return { hanzi: '完美', pinyin: 'wánměi', title: 'Flawless', line: 'Every answer right on the first go.' };
+  if (firstTry >= 0.8) return { hanzi: '很棒', pinyin: 'hěn bàng', title: 'Strong work', line: 'A few slips, and you fixed every one.' };
+  if (firstTry >= 0.6) return { hanzi: '不错', pinyin: 'búcuò', title: 'Solid progress', line: 'You stuck with the tricky ones until they clicked.' };
+  if (firstTry >= 0.4) return { hanzi: '有进步', pinyin: 'yǒu jìnbù', title: 'Good effort', line: 'Lots of new material here. The next round will feel easier.' };
+  return { hanzi: '加油', pinyin: 'jiāyóu', title: 'You got through it', line: 'A tough one, and you finished it. The tricky words are waiting in Practice.' };
 }
 
 export function EndScreen({
@@ -24,6 +26,7 @@ export function EndScreen({
   onAgain: () => void;
 }) {
   const v = verdictText(result.accuracy);
+  const fixed = result.mistakes.length;
   const btn = useRef<HTMLButtonElement>(null);
   useEffect(() => btn.current?.focus(), []);
   const mins = Math.floor(result.ms / 60000);
@@ -37,20 +40,20 @@ export function EndScreen({
           <span className="han text-4xl font-bold leading-tight">{v.hanzi}</span>
         </div>
         <p className="mt-2 text-sm text-muted">{v.pinyin}</p>
-        <h1 className="mt-4 text-2xl font-bold">{heading ?? 'Lesson complete'}</h1>
+        <h1 className="mt-4 text-2xl font-bold">{heading ?? v.title}</h1>
         <p className="mt-1 text-muted">{extra ?? v.line}</p>
       </div>
 
       <dl className="mt-8 grid grid-cols-2 gap-3 text-center">
         <div className="rounded-2xl bg-surface p-4">
-          <dt className="text-sm text-muted">Accuracy</dt>
-          <dd className="text-3xl font-bold text-jade">{Math.round(result.accuracy * 100)}%</dd>
-        </div>
-        <div className="rounded-2xl bg-surface p-4">
           <dt className="text-sm text-muted">Time</dt>
-          <dd className="text-3xl font-bold">
+          <dd className="text-2xl font-bold">
             {mins}:{String(secs).padStart(2, '0')}
           </dd>
+        </div>
+        <div className="rounded-2xl bg-surface p-4">
+          <dt className="text-sm text-muted">Fixed along the way</dt>
+          <dd className="text-2xl font-bold">{fixed === 0 ? 'Nothing' : fixed === 1 ? '1 item' : `${fixed} items`}</dd>
         </div>
       </dl>
 
@@ -70,7 +73,7 @@ export function EndScreen({
 
       {review.length > 0 && (
         <section className="mt-6">
-          <h2 className="mb-2 font-semibold">To review</h2>
+          <h2 className="mb-2 font-semibold">Coming back in Practice</h2>
           <ul className="flex flex-col gap-2">
             {review.slice(0, 8).map((r) => (
               <li key={r.id} className="rounded-xl bg-surface px-3 py-2">
@@ -80,7 +83,6 @@ export function EndScreen({
               </li>
             ))}
           </ul>
-          <p className="mt-2 text-sm text-muted">These come back in Practice.</p>
         </section>
       )}
 
