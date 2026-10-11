@@ -7,7 +7,8 @@ import { go } from '../../lib/router';
 import { useQuietUntil } from '../../lib/settings';
 import { practiceItems } from '../../lib/srs';
 import { StoryPlayer } from '../story/StoryPlayer';
-import { buildNodeLesson, buildPractice, buildTestOut } from './build';
+import { buildNodeLesson, buildPackLesson, buildPractice, buildTestOut } from './build';
+import { getPack } from '../packs/store';
 import { EndScreen } from './EndScreen';
 import { LessonPlayer, type LessonResult } from './LessonPlayer';
 import type { Exercise } from './types';
@@ -130,4 +131,37 @@ export function PracticeRunner() {
       </div>
     );
   return <LessonPlayer key={exercises[0]?.key} title="Practice" exercises={exercises} mode="practice" onExit={() => go('')} onFinish={setResult} />;
+}
+
+/** Lesson or story from an imported practice pack. */
+export function PackRunner({ id, story }: { id: string; story: boolean }) {
+  const quiet = useQuietUntil() > Date.now();
+  const [result, setResult] = useState<LessonResult | null>(null);
+  const [data, again] = useRun(async () => {
+    const p = await getPack(id);
+    if (!p) return 'missing' as const;
+    const prog = await db.progress.get(`pack:${id}`);
+    const ex = buildPackLesson(p.pack, quiet).filter((e) => e.kind !== 'intro' || !prog);
+    return { p, ex };
+  }, [id]);
+  if (result)
+    return (
+      <EndScreen
+        result={result}
+        heading={story ? 'Story complete' : 'Custom practice done'}
+        onContinue={() => go('')}
+        onAgain={() => {
+          setResult(null);
+          again();
+        }}
+      />
+    );
+  if (data === null) return <Loading />;
+  if (data === 'missing') return <p className="p-8">This practice pack isn't on this device.</p>;
+  const finish = async (r: LessonResult) => {
+    await recordLesson(`pack:${id}`, r.accuracy);
+    setResult(r);
+  };
+  if (story && data.p.pack.dialogue) return <StoryPlayer dialogue={data.p.pack.dialogue} onExit={() => go('')} onFinish={finish} />;
+  return <LessonPlayer key={data.ex[0]?.key} title={data.p.title} exercises={data.ex} mode="practice" onExit={() => go('')} onFinish={finish} />;
 }

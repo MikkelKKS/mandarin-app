@@ -2,7 +2,7 @@ import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
 import { Cog, Gamepad, Path, Refresh } from './components/icons';
 import { GameRunner, GamesView } from './features/games/GamesView';
-import { NodeRunner, PracticeRunner, TestOutRunner } from './features/lesson/Runners';
+import { NodeRunner, PackRunner, PracticeRunner, TestOutRunner } from './features/lesson/Runners';
 import { PathView, useNodeStates } from './features/path/PathView';
 import { About } from './features/settings/About';
 import { SettingsView } from './features/settings/SettingsView';
@@ -36,6 +36,12 @@ export default function App() {
       return (
         <WordPopupProvider>
           <PracticeRunner />
+        </WordPopupProvider>
+      );
+    case 'pack':
+      return (
+        <WordPopupProvider>
+          <PackRunner key={route.join('/')} id={arg} story={route[2] === 'story'} />
         </WordPopupProvider>
       );
     case 'game':

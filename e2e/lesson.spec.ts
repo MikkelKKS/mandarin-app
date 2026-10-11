@@ -83,3 +83,22 @@ test('play a few rounds of Listening Blitz', async ({ page }) => {
   }
   await expect(page.getByLabel('Seconds left')).toBeVisible();
 });
+
+test('import a practice pack and play it', async ({ page }) => {
+  const { readFileSync } = await import('node:fs');
+  const prompt = readFileSync('content/practice-pack-prompt.md', 'utf8');
+  const example = prompt.match(/```json\n([\s\S]*?)```/)![1];
+  await page.goto('./#/settings');
+  await page.getByLabel('Practice pack JSON').fill(example);
+  await page.getByRole('button', { name: 'Import practice pack' }).click();
+  await expect(page.getByText(/Imported “Third tones at the dinner table”/)).toBeVisible();
+  await page.getByRole('button', { name: 'Go to the path' }).click();
+  await expect(page.getByText('Custom practice')).toBeVisible();
+  await page.getByRole('button', { name: 'Practise' }).click();
+  await expect(page.getByRole('progressbar')).toBeVisible();
+  // A bad pack shows specific errors.
+  await page.goto('./#/settings');
+  await page.getByLabel('Practice pack JSON').fill(example.replace('"w-bao"', '"w-nope"'));
+  await page.getByRole('button', { name: 'Import practice pack' }).click();
+  await expect(page.getByRole('alert')).toContainText('unknown word id "w-nope"');
+});

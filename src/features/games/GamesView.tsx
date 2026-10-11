@@ -6,6 +6,7 @@ import { useLive } from '../../lib/useLive';
 import { useNodeStates } from '../path/PathView';
 import { GAMES, ListeningBlitz, MeasureMatch, PairRush, SentenceScramble, ToneSort } from './Games';
 import { usePool } from './shared';
+import { packItemIds, usePacks } from '../packs/store';
 
 export function GamesView() {
   const scores = useLive(() => db.gameScores.toArray(), [], []);
@@ -39,7 +40,8 @@ export function GamesView() {
 
 export function GameRunner({ id }: { id: string }) {
   const states = useNodeStates();
-  const ids = useMemo(() => unlockedItemIds(states), [states]);
+  const packs = usePacks();
+  const ids = useMemo(() => [...unlockedItemIds(states), ...packItemIds(packs)], [states, packs]);
   const pool = usePool(ids);
   if (!pool) return <p className="p-8 text-center text-muted">Loading…</p>;
   switch (id) {

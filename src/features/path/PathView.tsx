@@ -10,6 +10,7 @@ import { useLive } from '../../lib/useLive';
 import { hanziOnly } from '../../lib/pinyin';
 import { nodeOrder } from '../../content';
 import { InstallBanner } from '../settings/install';
+import { PacksOnPath } from '../packs/PacksOnPath';
 import { dueCount } from '../../lib/srs';
 
 export function useNodeStates(): Map<string, NodeState> {
@@ -44,6 +45,8 @@ export function PathView() {
           <span className="block text-sm text-muted">{due > 0 ? `${due} item${due === 1 ? '' : 's'} due for review` : 'Reviews and recent mistakes'}</span>
         </span>
       </button>
+
+      <PacksOnPath />
 
       {course.sections.map((sec) => (
         <section key={sec.id} className="mb-10">

@@ -58,6 +58,11 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   stop();
   const voice = opts.voice ?? pickVoice();
   const slow = opts.slow ?? currentSettings().audioSpeed === 'slow';
+  if (id.startsWith('p-')) {
+    // Practice-pack items have no recordings: use the browser's voice.
+    const text = lookup(id)?.hanzi;
+    return text ? speak(text, { slow, voice }) : Promise.resolve();
+  }
   const a = player();
   const src = urlFor(id, voice, slow);
   return new Promise<void>((resolve) => {
@@ -98,7 +103,7 @@ export function speak(text: string, opts: PlayOptions = {}): Promise<void> {
 
 /** Warm the cache for upcoming audio (goes through the service worker cache). */
 export function preload(ids: string[], voice?: Voice): void {
-  for (const id of ids) {
+  for (const id of ids.filter((i) => !i.startsWith('p-'))) {
     for (const v of voice ? [voice] : (['f', 'm'] as Voice[])) {
       fetch(urlFor(id, v, false), { priority: 'low' } as RequestInit).catch(() => {});
     }
@@ -107,7 +112,7 @@ export function preload(ids: string[], voice?: Voice): void {
 
 /** Download all audio for a set of items in the background, for offline use. */
 export async function prefetchForOffline(ids: string[]): Promise<void> {
-  const urls = ids.flatMap((id) => {
+  const urls = ids.filter((i) => !i.startsWith('p-')).flatMap((id) => {
     const list = [urlFor(id, 'f', false), urlFor(id, 'm', false)];
     if (sentences.has(id)) list.push(urlFor(id, 'f', true), urlFor(id, 'm', true));
     return list;

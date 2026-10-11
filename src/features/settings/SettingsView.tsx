@@ -4,6 +4,7 @@ import { setQuietUntil, updateSettings, useQuietUntil, useSettings } from '../..
 import type { Settings } from '../../db/db';
 import { isStandalone, useInstall } from './install';
 import { BackupSection, SyncSection } from './Account';
+import { PacksSection } from '../packs/PacksSection';
 
 function Segmented<T extends string>({ value, options, onChange, label }: { value: T; options: Array<{ v: T; label: string }>; onChange: (v: T) => void; label: string }) {
   return (
@@ -148,6 +149,11 @@ export function SettingsView() {
           <p className="pt-4 font-medium">Backup</p>
           <BackupSection />
         </div>
+      </section>
+
+      <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">AI practice packs</h2>
+      <section className="rounded-2xl bg-surface px-4">
+        <PacksSection />
       </section>
 
       <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">App</h2>

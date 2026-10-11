@@ -51,6 +51,24 @@ export function buildTestOut(unitId: string, quiet: boolean): Exercise[] {
   });
 }
 
+/** Lesson from an imported practice pack. */
+export function buildPackLesson(pack: import('../packs/pack').Pack, quiet: boolean): Exercise[] {
+  const tokenIds = new Set([...pack.words.map((w) => w.id), ...pack.sentences.flatMap((s) => s.words)]);
+  const packWords = get(words, [...tokenIds]);
+  const maxOrder = Math.max(0, ...packWords.map((w) => getUnit(w.unit)?.order ?? 0));
+  const base = baseInput(maxOrder, quiet);
+  return generateLesson({
+    ...base,
+    poolWords: [...base.poolWords, ...packWords.filter((w) => !base.poolWords.includes(w))],
+    poolSentences: [...base.poolSentences, ...get(sentences, pack.sentences.map((s) => s.id))],
+    words: packWords,
+    sentences: get(sentences, pack.sentences.map((s) => s.id)),
+    exchanges: pack.exchanges,
+    introduce: pack.words.map((w) => w.id),
+    length: 14,
+  });
+}
+
 /** Practice from specific items (due reviews and recent mistakes). */
 export function buildPractice(itemIds: string[], quiet: boolean, length = 12): Exercise[] {
   const ws = get(words, itemIds);
