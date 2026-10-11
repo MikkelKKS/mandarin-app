@@ -59,7 +59,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: public/dict
-          key: cedict-${{ steps.week.outputs.week }}
+          key: cedict-v2-${{ steps.week.outputs.week }}
       - name: Build dictionary (CC-CEDICT)
         run: test -s public/dict/cedict.tsv || npm run dict:build
       - name: Validate content

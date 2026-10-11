@@ -50,6 +50,7 @@ export function parseCedict(text: string, hsk: Map<string, number>): string[] {
     const m = line.match(/^(\S+) (\S+) \[([^\]]*)\] \/(.*)\/\s*$/);
     if (!m) continue;
     const [, , simp, py, defsRaw] = m;
+    if (!/^[\p{Script=Han}]+$/u.test(simp)) continue; // skip "11区", "AA制" etc.
     const defs = defsRaw.split('/').filter((d) => d && !VARIANT.test(d));
     if (!defs.length) continue;
     const key = `${simp}|${py}`;
