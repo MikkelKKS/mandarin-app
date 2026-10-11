@@ -1,0 +1,112 @@
+{
+  "id": "u24-office",
+  "order": 24,
+  "title": "Work and errands",
+  "titleHanzi": "有办法",
+  "description": "Meetings and managers, solving problems, the bank, the news, telling time with 刻, and calling a taxi driver 师傅.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-bangongshi", "hanzi": "办公室", "pinyin": "bàngōngshì", "english": ["office"], "hsk": 3, "pos": "noun" },
+    { "id": "w-huiyi", "hanzi": "会议", "pinyin": "huìyì", "english": ["meeting"], "hsk": 3, "pos": "noun" },
+    { "id": "w-jingli", "hanzi": "经理", "pinyin": "jīnglǐ", "english": ["manager"], "hsk": 3, "pos": "noun" },
+    { "id": "w-tongshi", "hanzi": "同事", "pinyin": "tóngshì", "english": ["colleague"], "hsk": 3, "pos": "noun" },
+    { "id": "w-yaoqiu", "hanzi": "要求", "pinyin": "yāoqiú", "english": ["demand", "to require"], "hsk": 3, "pos": "noun" },
+    { "id": "w-zhongyao", "hanzi": "重要", "pinyin": "zhòngyào", "english": ["important"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-jieshu", "hanzi": "结束", "pinyin": "jiéshù", "english": ["to end", "to finish"], "hsk": 3, "pos": "verb" },
+    { "id": "w-ke-quarter", "hanzi": "刻", "pinyin": "kè", "english": ["quarter (of an hour)"], "hsk": 3, "pos": "measure" },
+    { "id": "w-wancheng", "hanzi": "完成", "pinyin": "wánchéng", "english": ["to complete"], "hsk": 3, "pos": "verb" },
+    { "id": "w-jiejue", "hanzi": "解决", "pinyin": "jiějué", "english": ["to solve"], "hsk": 3, "pos": "verb" },
+    { "id": "w-banfa", "hanzi": "办法", "pinyin": "bànfǎ", "english": ["way", "means", "solution"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xuyao", "hanzi": "需要", "pinyin": "xūyào", "english": ["to need"], "hsk": 3, "pos": "verb" },
+    { "id": "w-jueding", "hanzi": "决定", "pinyin": "juédìng", "english": ["to decide", "decision"], "hsk": 3, "pos": "verb" },
+    { "id": "w-zhuyao", "hanzi": "主要", "pinyin": "zhǔyào", "english": ["main", "mainly"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-jihui", "hanzi": "机会", "pinyin": "jīhuì", "english": ["chance", "opportunity"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xuanze", "hanzi": "选择", "pinyin": "xuǎnzé", "english": ["to choose", "choice"], "hsk": 3, "pos": "verb" },
+    { "id": "w-jiancha", "hanzi": "检查", "pinyin": "jiǎnchá", "english": ["to check", "to examine"], "hsk": 3, "pos": "verb" },
+    { "id": "w-yinhang", "hanzi": "银行", "pinyin": "yínháng", "english": ["bank"], "hsk": 3, "pos": "noun" },
+    { "id": "w-wan-tenthousand", "hanzi": "万", "pinyin": "wàn", "english": ["ten thousand"], "hsk": 3, "pos": "number" },
+    { "id": "w-jie-borrow", "hanzi": "借", "pinyin": "jiè", "english": ["to borrow", "to lend"], "hsk": 3, "pos": "verb" },
+    { "id": "w-siji", "hanzi": "司机", "pinyin": "sījī", "english": ["driver"], "hsk": 3, "pos": "noun" },
+    { "id": "w-shifu", "hanzi": "师傅", "pinyin": "shīfu", "english": ["master (polite way to address drivers, workers)"], "hsk": 0, "pos": "noun", "note": "In Beijing you call taxi drivers, cooks and repair workers 师傅." },
+    { "id": "w-shangwang", "hanzi": "上网", "pinyin": "shàngwǎng", "english": ["to go online"], "hsk": 3, "pos": "verb" },
+    { "id": "w-xinwen", "hanzi": "新闻", "pinyin": "xīnwén", "english": ["news"], "hsk": 3, "pos": "noun" },
+    { "id": "w-dianzi", "hanzi": "电子", "pinyin": "diànzǐ", "english": ["electronic"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-xin-letter", "hanzi": "信", "pinyin": "xìn", "english": ["letter"], "hsk": 3, "pos": "noun" }
+  ],
+  "sentences": [
+    { "id": "s24-zaiyinhanggongzuo", "hanzi": "她在银行工作。", "pinyin": "Tā zài yínháng gōngzuò.", "english": "She works at a bank.", "words": ["w-ta-she", "w-zai", "w-yinhang", "w-gongzuo"] },
+    { "id": "s24-bangongshishiceng", "hanzi": "我的办公室在十层。", "pinyin": "Wǒ de bàngōngshì zài shí céng.", "english": "My office is on the tenth floor.", "words": ["w-wo", "w-de", "w-bangongshi", "w-zai", "w-shi2", "w-ceng"] },
+    { "id": "s24-huiyihenzhongyao", "hanzi": "今天的会议很重要。", "pinyin": "Jīntiān de huìyì hěn zhòngyào.", "english": "Today's meeting is important.", "words": ["w-jintian", "w-de", "w-huiyi", "w-hen", "w-zhongyao"] },
+    { "id": "s24-huiyijidianjieshu", "hanzi": "会议几点结束？", "pinyin": "Huìyì jǐ diǎn jiéshù?", "english": "What time does the meeting end?", "words": ["w-huiyi", "w-ji", "w-dian", "w-jieshu"] },
+    { "id": "s24-sandianyike", "hanzi": "三点一刻结束。", "pinyin": "Sān diǎn yí kè jiéshù.", "english": "It ends at a quarter past three.", "words": ["w-san", "w-dian", "w-yi", "w-ke-quarter", "w-jieshu"] },
+    { "id": "s24-badianyike", "hanzi": "现在八点一刻。", "pinyin": "Xiànzài bā diǎn yí kè.", "english": "It's a quarter past eight.", "words": ["w-xianzai", "w-ba", "w-dian", "w-yi", "w-ke-quarter"] },
+    { "id": "s24-jingliyaoqiugao", "hanzi": "我们经理要求很高。", "pinyin": "Wǒmen jīnglǐ yāoqiú hěn gāo.", "english": "Our manager is very demanding.", "words": ["w-women", "w-jingli", "w-yaoqiu", "w-hen", "w-gao"] },
+    { "id": "s24-tongshidouhenhao", "hanzi": "我的同事都很好。", "pinyin": "Wǒ de tóngshì dōu hěn hǎo.", "english": "My colleagues are all nice.", "words": ["w-wo", "w-de", "w-tongshi", "w-dou", "w-hen", "w-hao"] },
+    { "id": "s24-jintiantailei", "hanzi": "今天太累了！", "pinyin": "Jīntiān tài lèi le!", "english": "Today was exhausting!", "words": ["w-jintian", "w-tai", "w-lei", "w-le"] },
+    { "id": "s24-zenmele", "hanzi": "怎么了？", "pinyin": "Zěnme le?", "english": "What's wrong?", "words": ["w-zenme", "w-le"], "alt": { "english": ["What happened?"] } },
+    { "id": "s24-huiyi-jingli", "hanzi": "今天的会议很重要，我们经理要求很高。", "pinyin": "Jīntiān de huìyì hěn zhòngyào, wǒmen jīnglǐ yāoqiú hěn gāo.", "english": "Today's meeting was important, and our manager is very demanding.", "words": ["w-jintian", "w-de", "w-huiyi", "w-hen", "w-zhongyao", "w-women", "w-jingli", "w-yaoqiu", "w-hen", "w-gao"] },
+    { "id": "s24-xuyaobangmang", "hanzi": "你需要帮忙吗？", "pinyin": "Nǐ xūyào bāngmáng ma?", "english": "Do you need any help?", "words": ["w-ni", "w-xuyao", "w-bangmang", "w-ma"] },
+    { "id": "s24-haimeijiejue", "hanzi": "有一个问题我还没解决。", "pinyin": "Yǒu yí ge wèntí wǒ hái méi jiějué.", "english": "There's one problem I still haven't solved.", "words": ["w-you", "w-yi", "w-ge", "w-wenti", "w-wo", "w-hai-still", "w-mei", "w-jiejue"] },
+    { "id": "s24-zenmejiejue", "hanzi": "这个问题怎么解决？", "pinyin": "Zhège wèntí zěnme jiějué?", "english": "How do we solve this problem?", "words": ["w-zhe", "w-ge", "w-wenti", "w-zenme", "w-jiejue"] },
+    { "id": "s24-yidingyoubanfa", "hanzi": "别担心，我们一定有办法。", "pinyin": "Bié dānxīn, wǒmen yídìng yǒu bànfǎ.", "english": "Don't worry, we'll find a way.", "words": ["w-bie", "w-danxin", "w-women", "w-yiding", "w-you", "w-banfa"] },
+    { "id": "s24-meibanfa", "hanzi": "没办法。", "pinyin": "Méi bànfǎ.", "english": "Nothing we can do.", "words": ["w-mei", "w-banfa"], "alt": { "english": ["There's no way."] } },
+    { "id": "s24-xiexie-zhenhao", "hanzi": "谢谢你！你真好。", "pinyin": "Xièxie nǐ! Nǐ zhēn hǎo.", "english": "Thank you! You're so kind.", "words": ["w-xiexie", "w-ni", "w-ni", "w-zhen", "w-hao"] },
+    { "id": "s24-gongzuowanchengle", "hanzi": "今天的工作我完成了。", "pinyin": "Jīntiān de gōngzuò wǒ wánchéng le.", "english": "I've finished today's work.", "words": ["w-jintian", "w-de", "w-gongzuo", "w-wo", "w-wancheng", "w-le"] },
+    { "id": "s24-juedingqubeijing", "hanzi": "我决定去北京工作。", "pinyin": "Wǒ juédìng qù Běijīng gōngzuò.", "english": "I've decided to work in Beijing.", "words": ["w-wo", "w-jueding", "w-qu", "w-beijing", "w-gongzuo"] },
+    { "id": "s24-zhuyaoshi", "hanzi": "我学中文，主要是想跟她家人说话。", "pinyin": "Wǒ xué Zhōngwén, zhǔyào shì xiǎng gēn tā jiārén shuōhuà.", "english": "I'm learning Chinese mainly to talk with her family.", "words": ["w-wo", "w-xue", "w-zhongwen", "w-zhuyao", "w-shi", "w-xiang", "w-gen", "w-ta-she", "w-jia", "w-ren", "w-shuohua"] },
+    { "id": "s24-haojihui", "hanzi": "这是一个很好的机会。", "pinyin": "Zhè shì yí ge hěn hǎo de jīhuì.", "english": "This is a great opportunity.", "words": ["w-zhe", "w-shi", "w-yi", "w-ge", "w-hen", "w-hao", "w-de", "w-jihui"] },
+    { "id": "s24-xuanzenage", "hanzi": "你选择哪个？", "pinyin": "Nǐ xuǎnzé nǎ ge?", "english": "Which one do you choose?", "words": ["w-ni", "w-xuanze", "w-na3", "w-ge"] },
+    { "id": "s24-jianchashenti", "hanzi": "医生给我检查身体。", "pinyin": "Yīshēng gěi wǒ jiǎnchá shēntǐ.", "english": "The doctor is giving me a check-up.", "words": ["w-yisheng", "w-gei", "w-wo", "w-jiancha", "w-shenti"] },
+    { "id": "s24-fujinyinhang", "hanzi": "附近有银行吗？", "pinyin": "Fùjìn yǒu yínháng ma?", "english": "Is there a bank nearby?", "words": ["w-fujin", "w-you", "w-yinhang", "w-ma"] },
+    { "id": "s24-yiwankuai", "hanzi": "这块手表一万块！", "pinyin": "Zhè kuài shǒubiǎo yíwàn kuài!", "english": "This watch costs ten thousand kuai!", "words": ["w-zhe", "w-kuai", "w-shoubiao", "w-yi", "w-wan-tenthousand", "w-kuai"] },
+    { "id": "s24-jiezixingche", "hanzi": "我可以借你的自行车吗？", "pinyin": "Wǒ kěyǐ jiè nǐ de zìxíngchē ma?", "english": "Can I borrow your bike?", "words": ["w-wo", "w-keyi", "w-jie-borrow", "w-ni", "w-de", "w-zixingche", "w-ma"] },
+    { "id": "s24-shifuquhuochezhan", "hanzi": "师傅，去火车站。", "pinyin": "Shīfu, qù huǒchēzhàn.", "english": "To the train station, please. (to a taxi driver)", "words": ["w-shifu", "w-qu", "w-huochezhan"] },
+    { "id": "s24-tababa-siji", "hanzi": "他爸爸是出租车司机。", "pinyin": "Tā bàba shì chūzūchē sījī.", "english": "His dad is a taxi driver.", "words": ["w-ta-he", "w-baba", "w-shi", "w-chuzuche", "w-siji"] },
+    { "id": "s24-shangwangkanxinwen", "hanzi": "我每天上网看新闻。", "pinyin": "Wǒ měitiān shàngwǎng kàn xīnwén.", "english": "I read the news online every day.", "words": ["w-wo", "w-meitian", "w-shangwang", "w-kan", "w-xinwen"] },
+    { "id": "s24-dianzishu", "hanzi": "我喜欢看电子书。", "pinyin": "Wǒ xǐhuan kàn diànzǐ shū.", "english": "I like reading e-books.", "words": ["w-wo", "w-xihuan", "w-kan", "w-dianzi", "w-shu"] },
+    { "id": "s24-laoyexiexin", "hanzi": "姥爷还在写信。", "pinyin": "Lǎoye hái zài xiě xìn.", "english": "Grandpa still writes letters.", "words": ["w-laoye", "w-hai-still", "w-zai", "w-xie-write", "w-xin-letter"] }
+  ],
+  "exchanges": [
+    { "id": "x24-wrong", "prompt": "s24-jintiantailei", "reply": "s24-zenmele", "wrong": ["s24-dianzishu", "s24-yiwankuai"], "context": "Your girlfriend's sister comes home and sighs." },
+    { "id": "x24-worry", "prompt": "s24-haimeijiejue", "reply": "s24-yidingyoubanfa", "wrong": ["s24-badianyike", "s24-shangwangkanxinwen"], "context": "She's stuck on a work problem. Reassure her." },
+    { "id": "x24-meeting", "prompt": "s24-huiyijidianjieshu", "reply": "s24-sandianyike", "wrong": ["s24-tongshidouhenhao", "s24-jiezixingche"], "context": "The meeting ends at 3:15." },
+    { "id": "x24-taxi", "prompt": "s24-xuyaobangmang", "reply": "s24-xiexie-zhenhao", "wrong": ["s24-meibanfa", "s24-xuanzenage"], "context": "A colleague offers help when you're swamped. You're grateful." },
+    { "id": "x24-why", "prompt": "s23-huishuoputonghua", "reply": "s24-zhuyaoshi", "wrong": ["s24-laoyexiexin", "s24-tababa-siji"], "context": "Someone asks about your Chinese and why you're learning." }
+  ],
+  "grammar": [
+    { "id": "g24-ke", "title": "一刻: a quarter", "body": "一刻 is a quarter of an hour: 八点一刻 (8:15). 三刻 is 45 minutes, but 八点四十五 is more common. 半 is half: 八点半.", "examples": ["s24-badianyike", "s24-sandianyike"] },
+    { "id": "g24-banfa", "title": "有办法, 没办法", "body": "办法 is a way to deal with something. 有办法: there's a way. 没办法: nothing can be done, a very common sigh.", "examples": ["s24-yidingyoubanfa", "s24-meibanfa"] },
+    { "id": "g24-shifu", "title": "师傅 for drivers and workers", "body": "In Beijing, call a taxi driver, a cook or a repair worker 师傅. Just say 师傅, then where you're going: 师傅，去火车站.", "examples": ["s24-shifuquhuochezhan"] },
+    { "id": "g24-wan", "title": "万: ten thousand", "body": "Chinese counts big numbers in ten-thousands: 一万 (10,000), 十万 (100,000). So 20,000 is 两万, not \"twenty thousand\".", "examples": ["s24-yiwankuai"] }
+  ],
+  "dialogue": {
+    "id": "d24-longday",
+    "title": "Listening challenge: A long day",
+    "setting": "Her sister gets home late from the bank.",
+    "speakers": [
+      { "id": "S", "name": "Her sister", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "S", "sentence": "s24-jintiantailei" },
+      { "speaker": "K", "sentence": "s24-zenmele" },
+      { "speaker": "S", "sentence": "s24-huiyi-jingli" },
+      { "speaker": "K", "sentence": "s24-xuyaobangmang" },
+      { "speaker": "S", "sentence": "s24-haimeijiejue" },
+      { "speaker": "K", "sentence": "s24-yidingyoubanfa" },
+      { "speaker": "S", "sentence": "s24-xiexie-zhenhao" }
+    ],
+    "questions": [
+      { "q": "How does her sister feel?", "options": ["Excited", "Exhausted", "Bored"], "answer": 1 },
+      { "q": "What was the meeting like?", "options": ["Important", "Short", "Cancelled"], "answer": 0 },
+      { "q": "What's her manager like?", "options": ["Relaxed", "Very demanding", "New"], "answer": 1 },
+      { "q": "What does 米格 say?", "options": ["She should quit", "They'll find a way", "He's too tired to help"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n24-office", "title": "At the office", "words": ["w-bangongshi", "w-huiyi", "w-jingli", "w-tongshi", "w-yaoqiu", "w-zhongyao", "w-jieshu", "w-ke-quarter"], "sentences": ["s24-zaiyinhanggongzuo", "s24-bangongshishiceng", "s24-huiyihenzhongyao", "s24-huiyijidianjieshu", "s24-sandianyike", "s24-badianyike", "s24-jingliyaoqiugao", "s24-tongshidouhenhao", "s24-jintiantailei", "s24-zenmele", "s24-huiyi-jingli"], "exchanges": ["x24-wrong", "x24-meeting"], "grammar": ["g24-ke"] },
+    { "id": "n24-solve", "title": "Finding a way", "words": ["w-wancheng", "w-jiejue", "w-banfa", "w-xuyao", "w-jueding", "w-zhuyao", "w-jihui", "w-xuanze", "w-jiancha"], "sentences": ["s24-xuyaobangmang", "s24-haimeijiejue", "s24-zenmejiejue", "s24-yidingyoubanfa", "s24-meibanfa", "s24-xiexie-zhenhao", "s24-gongzuowanchengle", "s24-juedingqubeijing", "s24-zhuyaoshi", "s24-haojihui", "s24-xuanzenage", "s24-jianchashenti"], "exchanges": ["x24-worry", "x24-taxi", "x24-why"], "grammar": ["g24-banfa"] },
+    { "id": "n24-errands", "title": "Errands", "words": ["w-yinhang", "w-wan-tenthousand", "w-jie-borrow", "w-siji", "w-shifu", "w-shangwang", "w-xinwen", "w-dianzi", "w-xin-letter"], "sentences": ["s24-fujinyinhang", "s24-yiwankuai", "s24-jiezixingche", "s24-shifuquhuochezhan", "s24-tababa-siji", "s24-shangwangkanxinwen", "s24-dianzishu", "s24-laoyexiexin"], "grammar": ["g24-shifu", "g24-wan"] },
+    { "id": "n24-story", "title": "Challenge: A long day", "kind": "story", "sentences": ["s24-jintiantailei", "s24-huiyi-jingli", "s24-haimeijiejue", "s24-yidingyoubanfa", "s24-xiexie-zhenhao"] }
+  ]
+}
