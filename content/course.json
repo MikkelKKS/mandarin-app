@@ -15,17 +15,20 @@
         "u02-family",
         "u03-food",
         "u04-time",
-        "u05-shopping",
+        "u05-shopping"
+      ]
+    },
+    {
+      "id": "hsk2",
+      "title": "HSK 2 — everyday life",
+      "units": [
         "u06-hobbies",
-        "u07-work"
+        "u07-work",
+        "u08-directions"
       ]
     }
   ],
   "upcoming": [
-    {
-      "title": "Directions & transport",
-      "titleHanzi": "怎么走？"
-    },
     {
       "title": "Plans & invitations",
       "titleHanzi": "周末有空吗？"

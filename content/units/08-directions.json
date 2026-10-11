@@ -1,0 +1,936 @@
+{
+ "id": "u08-directions",
+ "order": 8,
+ "title": "Directions & transport",
+ "titleHanzi": "怎么走？",
+ "description": "Find the toilet, ask the way, take the metro or a taxi, and get from the airport to the family's door.",
+ "hsk": 1,
+ "words": [
+  {
+   "id": "w-qingwen",
+   "hanzi": "请问",
+   "pinyin": "qǐngwèn",
+   "english": [
+    "excuse me (before a question)"
+   ],
+   "hsk": 0,
+   "pos": "phrase"
+  },
+  {
+   "id": "w-xishoujian",
+   "hanzi": "洗手间",
+   "pinyin": "xǐshǒujiān",
+   "english": [
+    "toilet",
+    "restroom"
+   ],
+   "hsk": 3,
+   "pos": "noun"
+  },
+  {
+   "id": "w-zenme",
+   "hanzi": "怎么",
+   "pinyin": "zěnme",
+   "english": [
+    "how"
+   ],
+   "hsk": 1,
+   "pos": "question"
+  },
+  {
+   "id": "w-zou",
+   "hanzi": "走",
+   "pinyin": "zǒu",
+   "english": [
+    "to walk",
+    "to go",
+    "to leave"
+   ],
+   "hsk": 2,
+   "pos": "verb"
+  },
+  {
+   "id": "w-wang",
+   "hanzi": "往",
+   "pinyin": "wǎng",
+   "english": [
+    "towards"
+   ],
+   "hsk": 0,
+   "pos": "preposition"
+  },
+  {
+   "id": "w-zuobian",
+   "hanzi": "左边",
+   "pinyin": "zuǒbian",
+   "english": [
+    "left",
+    "left side"
+   ],
+   "hsk": 2,
+   "pos": "noun"
+  },
+  {
+   "id": "w-youbian",
+   "hanzi": "右边",
+   "pinyin": "yòubian",
+   "english": [
+    "right",
+    "right side"
+   ],
+   "hsk": 2,
+   "pos": "noun"
+  },
+  {
+   "id": "w-qianmian",
+   "hanzi": "前面",
+   "pinyin": "qiánmiàn",
+   "english": [
+    "ahead",
+    "in front"
+   ],
+   "hsk": 1,
+   "pos": "noun"
+  },
+  {
+   "id": "w-pangbian",
+   "hanzi": "旁边",
+   "pinyin": "pángbiān",
+   "english": [
+    "next to",
+    "beside"
+   ],
+   "hsk": 2,
+   "pos": "noun"
+  },
+  {
+   "id": "w-yizhi",
+   "hanzi": "一直",
+   "pinyin": "yìzhí",
+   "english": [
+    "straight (on)",
+    "all the way"
+   ],
+   "hsk": 3,
+   "pos": "adverb"
+  },
+  {
+   "id": "w-ranhou",
+   "hanzi": "然后",
+   "pinyin": "ránhòu",
+   "english": [
+    "then",
+    "after that"
+   ],
+   "hsk": 3,
+   "pos": "conjunction"
+  },
+  {
+   "id": "w-jiu-just",
+   "hanzi": "就",
+   "pinyin": "jiù",
+   "english": [
+    "just",
+    "right (there)",
+    "then"
+   ],
+   "hsk": 2,
+   "pos": "adverb",
+   "note": "Sounds like 九 (nine)."
+  },
+  {
+   "id": "w-yuan",
+   "hanzi": "远",
+   "pinyin": "yuǎn",
+   "english": [
+    "far"
+   ],
+   "hsk": 2,
+   "pos": "adjective"
+  },
+  {
+   "id": "w-jin-near",
+   "hanzi": "近",
+   "pinyin": "jìn",
+   "english": [
+    "near",
+    "close"
+   ],
+   "hsk": 2,
+   "pos": "adjective"
+  },
+  {
+   "id": "w-li-from",
+   "hanzi": "离",
+   "pinyin": "lí",
+   "english": [
+    "(distance) from"
+   ],
+   "hsk": 2,
+   "pos": "preposition"
+  },
+  {
+   "id": "w-zheli",
+   "hanzi": "这里",
+   "pinyin": "zhèlǐ",
+   "english": [
+    "here"
+   ],
+   "hsk": 0,
+   "pos": "pronoun"
+  },
+  {
+   "id": "w-ditie",
+   "hanzi": "地铁",
+   "pinyin": "dìtiě",
+   "english": [
+    "metro",
+    "subway"
+   ],
+   "hsk": 3,
+   "pos": "noun"
+  },
+  {
+   "id": "w-zhan",
+   "hanzi": "站",
+   "pinyin": "zhàn",
+   "english": [
+    "station",
+    "stop"
+   ],
+   "hsk": 3,
+   "pos": "noun"
+  },
+  {
+   "id": "w-chuzuche",
+   "hanzi": "出租车",
+   "pinyin": "chūzūchē",
+   "english": [
+    "taxi"
+   ],
+   "hsk": 1,
+   "pos": "noun"
+  },
+  {
+   "id": "w-feiji",
+   "hanzi": "飞机",
+   "pinyin": "fēijī",
+   "english": [
+    "plane"
+   ],
+   "hsk": 1,
+   "pos": "noun"
+  },
+  {
+   "id": "w-jichang",
+   "hanzi": "机场",
+   "pinyin": "jīchǎng",
+   "english": [
+    "airport"
+   ],
+   "hsk": 2,
+   "pos": "noun"
+  },
+  {
+   "id": "w-dao",
+   "hanzi": "到",
+   "pinyin": "dào",
+   "english": [
+    "to arrive",
+    "to",
+    "until"
+   ],
+   "hsk": 2,
+   "pos": "verb"
+  },
+  {
+   "id": "w-cong",
+   "hanzi": "从",
+   "pinyin": "cóng",
+   "english": [
+    "from"
+   ],
+   "hsk": 2,
+   "pos": "preposition"
+  },
+  {
+   "id": "w-xiaoshi",
+   "hanzi": "小时",
+   "pinyin": "xiǎoshí",
+   "english": [
+    "hour"
+   ],
+   "hsk": 2,
+   "pos": "noun",
+   "measure": "w-ge"
+  },
+  {
+   "id": "w-fenzhong",
+   "hanzi": "分钟",
+   "pinyin": "fēnzhōng",
+   "english": [
+    "minute (duration)"
+   ],
+   "hsk": 1,
+   "pos": "noun"
+  },
+  {
+   "id": "w-yiyuan",
+   "hanzi": "医院",
+   "pinyin": "yīyuàn",
+   "english": [
+    "hospital"
+   ],
+   "hsk": 1,
+   "pos": "noun"
+  },
+  {
+   "id": "w-zhidao",
+   "hanzi": "知道",
+   "pinyin": "zhīdào",
+   "english": [
+    "to know (a fact)"
+   ],
+   "hsk": 2,
+   "pos": "verb"
+  }
+ ],
+ "sentences": [
+  {
+   "id": "s-qingwenxishoujian",
+   "hanzi": "请问，洗手间在哪里？",
+   "pinyin": "Qǐngwèn, xǐshǒujiān zài nǎlǐ?",
+   "english": "Excuse me, where's the toilet?",
+   "words": [
+    "w-qingwen",
+    "w-xishoujian",
+    "w-zai",
+    "w-nali"
+   ]
+  },
+  {
+   "id": "s-zaiyoubian",
+   "hanzi": "在右边。",
+   "pinyin": "Zài yòubian.",
+   "english": "On the right.",
+   "words": [
+    "w-zai",
+    "w-youbian"
+   ]
+  },
+  {
+   "id": "s-zaizuobian",
+   "hanzi": "在左边。",
+   "pinyin": "Zài zuǒbian.",
+   "english": "On the left.",
+   "words": [
+    "w-zai",
+    "w-zuobian"
+   ]
+  },
+  {
+   "id": "s-jiuzaiqianmian",
+   "hanzi": "就在前面。",
+   "pinyin": "Jiù zài qiánmiàn.",
+   "english": "It's just ahead.",
+   "words": [
+    "w-jiu-just",
+    "w-zai",
+    "w-qianmian"
+   ]
+  },
+  {
+   "id": "s-zaiyiyuanpangbian",
+   "hanzi": "在医院旁边。",
+   "pinyin": "Zài yīyuàn pángbiān.",
+   "english": "Next to the hospital.",
+   "words": [
+    "w-zai",
+    "w-yiyuan",
+    "w-pangbian"
+   ]
+  },
+  {
+   "id": "s-ditiezhanzenmezou",
+   "hanzi": "地铁站怎么走？",
+   "pinyin": "Dìtiězhàn zěnme zǒu?",
+   "english": "How do I get to the metro station?",
+   "words": [
+    "w-ditie",
+    "w-zhan",
+    "w-zenme",
+    "w-zou"
+   ]
+  },
+  {
+   "id": "s-nizhidaoditiezhanma",
+   "hanzi": "你知道地铁站在哪里吗？",
+   "pinyin": "Nǐ zhīdào dìtiězhàn zài nǎlǐ ma?",
+   "english": "Do you know where the metro station is?",
+   "words": [
+    "w-ni",
+    "w-zhidao",
+    "w-ditie",
+    "w-zhan",
+    "w-zai",
+    "w-nali",
+    "w-ma"
+   ]
+  },
+  {
+   "id": "s-yizhizou",
+   "hanzi": "一直走。",
+   "pinyin": "Yìzhí zǒu.",
+   "english": "Go straight on.",
+   "words": [
+    "w-yizhi",
+    "w-zou"
+   ]
+  },
+  {
+   "id": "s-wangzuobianzou",
+   "hanzi": "往左边走。",
+   "pinyin": "Wǎng zuǒbian zǒu.",
+   "english": "Go left.",
+   "words": [
+    "w-wang",
+    "w-zuobian",
+    "w-zou"
+   ]
+  },
+  {
+   "id": "s-yizhizou-wangyou",
+   "hanzi": "一直走，然后往右边走。",
+   "pinyin": "Yìzhí zǒu, ránhòu wǎng yòubian zǒu.",
+   "english": "Go straight, then turn right.",
+   "words": [
+    "w-yizhi",
+    "w-zou",
+    "w-ranhou",
+    "w-wang",
+    "w-youbian",
+    "w-zou"
+   ]
+  },
+  {
+   "id": "s-yuanbuyuan",
+   "hanzi": "远不远？",
+   "pinyin": "Yuǎn bu yuǎn?",
+   "english": "Is it far?",
+   "words": [
+    "w-yuan",
+    "w-bu",
+    "w-yuan"
+   ]
+  },
+  {
+   "id": "s-buyuan-wufenzhong",
+   "hanzi": "不远，走五分钟就到了。",
+   "pinyin": "Bù yuǎn, zǒu wǔ fēnzhōng jiù dào le.",
+   "english": "Not far — it's five minutes on foot.",
+   "words": [
+    "w-bu",
+    "w-yuan",
+    "w-zou",
+    "w-wu",
+    "w-fenzhong",
+    "w-jiu-just",
+    "w-dao",
+    "w-le"
+   ]
+  },
+  {
+   "id": "s-lizhelihenjin",
+   "hanzi": "离这里很近。",
+   "pinyin": "Lí zhèlǐ hěn jìn.",
+   "english": "It's close to here.",
+   "words": [
+    "w-li-from",
+    "w-zheli",
+    "w-hen",
+    "w-jin-near"
+   ]
+  },
+  {
+   "id": "s-wobuzhidao",
+   "hanzi": "我不知道。",
+   "pinyin": "Wǒ bù zhīdào.",
+   "english": "I don't know.",
+   "words": [
+    "w-wo",
+    "w-bu",
+    "w-zhidao"
+   ]
+  },
+  {
+   "id": "s-zuoditiequba",
+   "hanzi": "我们坐地铁去吧。",
+   "pinyin": "Wǒmen zuò dìtiě qù ba.",
+   "english": "Let's take the metro.",
+   "words": [
+    "w-women",
+    "w-zuo",
+    "w-ditie",
+    "w-qu",
+    "w-ba-particle"
+   ]
+  },
+  {
+   "id": "s-zuochuzuchequjichang",
+   "hanzi": "我们坐出租车去机场。",
+   "pinyin": "Wǒmen zuò chūzūchē qù jīchǎng.",
+   "english": "We're taking a taxi to the airport.",
+   "words": [
+    "w-women",
+    "w-zuo",
+    "w-chuzuche",
+    "w-qu",
+    "w-jichang"
+   ]
+  },
+  {
+   "id": "s-congjichangdaonijia",
+   "hanzi": "从机场到你家远吗？",
+   "pinyin": "Cóng jīchǎng dào nǐ jiā yuǎn ma?",
+   "english": "Is it far from the airport to your place?",
+   "words": [
+    "w-cong",
+    "w-jichang",
+    "w-dao",
+    "w-ni",
+    "w-jia",
+    "w-yuan",
+    "w-ma"
+   ]
+  },
+  {
+   "id": "s-yaobangexiaoshi",
+   "hanzi": "要半个小时。",
+   "pinyin": "Yào bàn ge xiǎoshí.",
+   "english": "It takes half an hour.",
+   "words": [
+    "w-yao",
+    "w-ban",
+    "w-ge",
+    "w-xiaoshi"
+   ]
+  },
+  {
+   "id": "s-feijijidiandao",
+   "hanzi": "飞机几点到？",
+   "pinyin": "Fēijī jǐ diǎn dào?",
+   "english": "What time does the plane land?",
+   "words": [
+    "w-feiji",
+    "w-ji",
+    "w-dian",
+    "w-dao"
+   ]
+  },
+  {
+   "id": "s-mikkel-feiji",
+   "hanzi": "米格，飞机几点到？",
+   "pinyin": "Mǐgé, fēijī jǐ diǎn dào?",
+   "english": "Mi'ge, what time does your plane land?",
+   "words": [
+    "w-mikkel",
+    "w-feiji",
+    "w-ji",
+    "w-dian",
+    "w-dao"
+   ]
+  },
+  {
+   "id": "s-xiawusandiandao",
+   "hanzi": "下午三点到。",
+   "pinyin": "Xiàwǔ sān diǎn dào.",
+   "english": "At three in the afternoon.",
+   "words": [
+    "w-xiawu",
+    "w-san",
+    "w-dian",
+    "w-dao"
+   ]
+  },
+  {
+   "id": "s-jichang-chuzuche",
+   "hanzi": "从机场到我们家很远，你坐出租车来吧。",
+   "pinyin": "Cóng jīchǎng dào wǒmen jiā hěn yuǎn, nǐ zuò chūzūchē lái ba.",
+   "english": "It's a long way from the airport to us — take a taxi.",
+   "words": [
+    "w-cong",
+    "w-jichang",
+    "w-dao",
+    "w-women",
+    "w-jia",
+    "w-hen",
+    "w-yuan",
+    "w-ni",
+    "w-zuo",
+    "w-chuzuche",
+    "w-lai",
+    "w-ba-particle"
+   ]
+  },
+  {
+   "id": "s-zuoditiekeyima",
+   "hanzi": "坐地铁可以吗？",
+   "pinyin": "Zuò dìtiě kěyǐ ma?",
+   "english": "Can I take the metro?",
+   "words": [
+    "w-zuo",
+    "w-ditie",
+    "w-keyi",
+    "w-ma"
+   ]
+  },
+  {
+   "id": "s-ditiezhanjiuzaijichang",
+   "hanzi": "可以。地铁站就在机场。",
+   "pinyin": "Kěyǐ. Dìtiězhàn jiù zài jīchǎng.",
+   "english": "Sure. The metro station is right at the airport.",
+   "words": [
+    "w-keyi",
+    "w-ditie",
+    "w-zhan",
+    "w-jiu-just",
+    "w-zai",
+    "w-jichang"
+   ]
+  },
+  {
+   "id": "s-yaojigexiaoshi",
+   "hanzi": "要几个小时？",
+   "pinyin": "Yào jǐ ge xiǎoshí?",
+   "english": "How many hours does it take?",
+   "words": [
+    "w-yao",
+    "w-ji",
+    "w-ge",
+    "w-xiaoshi"
+   ]
+  },
+  {
+   "id": "s-yigexiaoshi-jin",
+   "hanzi": "一个小时。我们家离地铁站很近。",
+   "pinyin": "Yí ge xiǎoshí. Wǒmen jiā lí dìtiězhàn hěn jìn.",
+   "english": "One hour. Our home is close to the station.",
+   "words": [
+    "w-yi",
+    "w-ge",
+    "w-xiaoshi",
+    "w-women",
+    "w-jia",
+    "w-li-from",
+    "w-ditie",
+    "w-zhan",
+    "w-hen",
+    "w-jin-near"
+   ]
+  }
+ ],
+ "exchanges": [
+  {
+   "id": "x-toilet",
+   "prompt": "s-qingwenxishoujian",
+   "reply": "s-zaiyoubian",
+   "wrong": [
+    "s-zaoshanghao",
+    "s-taiguile"
+   ],
+   "context": "A guest asks you — you know the way."
+  },
+  {
+   "id": "x-far",
+   "prompt": "s-yuanbuyuan",
+   "reply": "s-buyuan-wufenzhong",
+   "wrong": [
+    "s-sandianban",
+    "s-woyaoliangjin"
+   ],
+   "context": "Someone asks about the distance."
+  },
+  {
+   "id": "x-metro",
+   "prompt": "s-ditiezhanzenmezou",
+   "reply": "s-yizhizou",
+   "wrong": [
+    "s-wochibaole",
+    "s-niyaomaishenme"
+   ],
+   "context": "A tourist asks you the way."
+  },
+  {
+   "id": "x-landing",
+   "prompt": "s-feijijidiandao",
+   "reply": "s-xiawusandiandao",
+   "wrong": [
+    "s-jintianxingqiliu",
+    "s-yaobangexiaoshi"
+   ],
+   "context": "Her family wants to know when you arrive."
+  },
+  {
+   "id": "x-dontknow",
+   "prompt": "s-nizhidaoditiezhanma",
+   "reply": "s-wobuzhidao",
+   "wrong": [
+    "s-shengrikuaile",
+    "s-nitaikeqile"
+   ],
+   "context": "You're new in town too."
+  }
+ ],
+ "grammar": [
+  {
+   "id": "g-zenmezou",
+   "title": "怎么 + verb = how to",
+   "body": "怎么走？ = how do I get there? (lit. how walk). Put the place first: 地铁站怎么走？",
+   "examples": [
+    "s-ditiezhanzenmezou"
+   ]
+  },
+  {
+   "id": "g-wang",
+   "title": "往 + direction + 走",
+   "body": "往左边走 = go left, 往右边走 = go right. 一直走 = go straight on.",
+   "examples": [
+    "s-wangzuobianzou",
+    "s-yizhizou"
+   ]
+  },
+  {
+   "id": "g-li",
+   "title": "Distance with 离",
+   "body": "A 离 B 很近/很远 = A is close to / far from B: 我们家离地铁站很近.",
+   "examples": [
+    "s-lizhelihenjin",
+    "s-yigexiaoshi-jin"
+   ]
+  },
+  {
+   "id": "g-congdao",
+   "title": "从…到… = from…to…",
+   "body": "从机场到你家 = from the airport to your home. Works for places and times.",
+   "examples": [
+    "s-congjichangdaonijia"
+   ]
+  },
+  {
+   "id": "g-zuo-transport",
+   "title": "坐 = take (transport)",
+   "body": "坐 (sit) is also how you 'take' transport: 坐地铁 (metro), 坐出租车 (taxi), 坐飞机 (plane).",
+   "examples": [
+    "s-zuoditiequba",
+    "s-zuochuzuchequjichang"
+   ]
+  }
+ ],
+ "dialogue": {
+  "id": "d08-airport",
+  "title": "From the airport",
+  "setting": "The day before his flight, her mother calls Mikkel to plan his trip from the airport.",
+  "speakers": [
+   {
+    "id": "M",
+    "name": "Her mother",
+    "voice": "f"
+   },
+   {
+    "id": "K",
+    "name": "Mikkel",
+    "voice": "m"
+   }
+  ],
+  "lines": [
+   {
+    "speaker": "M",
+    "sentence": "s-mikkel-feiji"
+   },
+   {
+    "speaker": "K",
+    "sentence": "s-xiawusandiandao"
+   },
+   {
+    "speaker": "M",
+    "sentence": "s-jichang-chuzuche"
+   },
+   {
+    "speaker": "K",
+    "sentence": "s-zuoditiekeyima"
+   },
+   {
+    "speaker": "M",
+    "sentence": "s-ditiezhanjiuzaijichang"
+   },
+   {
+    "speaker": "K",
+    "sentence": "s-yaojigexiaoshi"
+   },
+   {
+    "speaker": "M",
+    "sentence": "s-yigexiaoshi-jin"
+   },
+   {
+    "speaker": "K",
+    "sentence": "s-hao-mingtianjian"
+   }
+  ],
+  "questions": [
+   {
+    "q": "When does Mikkel's plane land?",
+    "options": [
+     "3 pm",
+     "3:30 pm",
+     "In the morning"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "How does Mikkel want to travel?",
+    "options": [
+     "By taxi",
+     "By metro",
+     "By bus"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "How long does the trip take?",
+    "options": [
+     "Half an hour",
+     "One hour",
+     "Two hours"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Where is the family's home?",
+    "options": [
+     "Close to the metro station",
+     "Next to the airport",
+     "Far from the metro"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ "nodes": [
+  {
+   "id": "n08-where",
+   "title": "Where is it?",
+   "words": [
+    "w-qingwen",
+    "w-xishoujian",
+    "w-zuobian",
+    "w-youbian",
+    "w-qianmian",
+    "w-pangbian",
+    "w-jiu-just",
+    "w-yiyuan"
+   ],
+   "sentences": [
+    "s-qingwenxishoujian",
+    "s-zaiyoubian",
+    "s-zaizuobian",
+    "s-jiuzaiqianmian",
+    "s-zaiyiyuanpangbian"
+   ],
+   "exchanges": [
+    "x-toilet"
+   ]
+  },
+  {
+   "id": "n08-way",
+   "title": "Asking the way",
+   "words": [
+    "w-zenme",
+    "w-zou",
+    "w-wang",
+    "w-yizhi",
+    "w-ranhou",
+    "w-zhidao"
+   ],
+   "sentences": [
+    "s-ditiezhanzenmezou",
+    "s-nizhidaoditiezhanma",
+    "s-yizhizou",
+    "s-wangzuobianzou",
+    "s-yizhizou-wangyou",
+    "s-wobuzhidao"
+   ],
+   "exchanges": [
+    "x-metro",
+    "x-dontknow"
+   ],
+   "grammar": [
+    "g-zenmezou",
+    "g-wang"
+   ]
+  },
+  {
+   "id": "n08-distance",
+   "title": "Near or far?",
+   "words": [
+    "w-yuan",
+    "w-jin-near",
+    "w-li-from",
+    "w-zheli",
+    "w-fenzhong",
+    "w-xiaoshi",
+    "w-dao"
+   ],
+   "sentences": [
+    "s-yuanbuyuan",
+    "s-buyuan-wufenzhong",
+    "s-lizhelihenjin",
+    "s-yaobangexiaoshi",
+    "s-yaojigexiaoshi"
+   ],
+   "exchanges": [
+    "x-far"
+   ],
+   "grammar": [
+    "g-li"
+   ]
+  },
+  {
+   "id": "n08-transport",
+   "title": "Metro, taxi, plane",
+   "words": [
+    "w-ditie",
+    "w-zhan",
+    "w-chuzuche",
+    "w-feiji",
+    "w-jichang",
+    "w-cong"
+   ],
+   "sentences": [
+    "s-zuoditiequba",
+    "s-zuochuzuchequjichang",
+    "s-congjichangdaonijia",
+    "s-feijijidiandao",
+    "s-xiawusandiandao",
+    "s-zuoditiekeyima"
+   ],
+   "exchanges": [
+    "x-landing"
+   ],
+   "grammar": [
+    "g-congdao",
+    "g-zuo-transport"
+   ]
+  },
+  {
+   "id": "n08-story",
+   "title": "Story: From the airport",
+   "kind": "story",
+   "sentences": [
+    "s-mikkel-feiji",
+    "s-jichang-chuzuche",
+    "s-ditiezhanjiuzaijichang",
+    "s-yigexiaoshi-jin"
+   ]
+  }
+ ]
+}
