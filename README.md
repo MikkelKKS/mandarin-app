@@ -6,13 +6,17 @@ A personal Mandarin app for Mikkel: listening first, then knowing what to say, w
 
 ## What's in it now
 
-- A skill path: *Check your basics* plus three HSK 1 units (Greetings & introductions, Family, Food & drink). Each unit ends with a listening story.
-- 14 exercise types: listening (meaning, which sentence, word tiles, dictation, tones, minimal pairs, "What would you say?"), pinyin writing (English → pinyin, fill the gap, sentence building, typed replies) and character recognition (match pairs, pick the character, read the sentence).
-- Pinyin answers accept tone marks or numbers, `v`/`u:` for ü, and any spacing. They are lenient about 不/一 and 3rd-tone changes, and missing tones count as "almost".
-- Spaced repetition (FSRS) and a **Practice** button for due reviews and recent mistakes.
-- Test-outs for every unit, tips cards, tap-any-word look-ups, tone colours, dark mode, and "Can't listen now".
+- **Skill path:** *Check your basics* plus seven HSK 1 units: Greetings & introductions, Family, Food & drink, Numbers & time, Shopping & prices, Hobbies, and Work & study. Each unit ends with a listening story. Every unit has a test-out.
+- **Lessons:** 14 exercise types, about half of them listening, including "What would you say?" conversation practice. There are no limits: replay anything as often as you like.
+- **Pinyin typing:** tone marks or numbers both work, `v`/`u:` stand for ü, and spacing doesn't matter. Tone changes on 不/一 and 3rd tones are accepted, and missing tones count as "almost".
+- **Practice:** a spaced-repetition review queue (FSRS) plus your recent mistakes.
+- **Games:** Tone Sort, Listening Blitz, Pair Rush, Sentence Scramble and Measure Word Match, each with a personal best. Games count as review.
+- **Sync:** your progress syncs between phone and PC through Supabase (sign in with an email link), and you can export or restore a backup file.
+- **AI practice packs:** copy your weak spots, paste them into Claude, then paste Claude's answer back. The result is a custom lesson and story at the top of the path.
+- **Speaking (optional, off by default):** repeat-after-me with speech recognition and a pitch chart. There are also "Can't speak now" and "Can't listen now" switches.
+- **Everything else:** works offline, installable on phone and PC, dark mode, tone colours, and tap any word to look it up.
 
-Coming next (see CLAUDE.md §11): sync between devices (phase 4), mini-games (5), more units (6), AI practice packs (7), optional speaking (8).
+Next up: the remaining HSK 1–3 topics (directions & transport, plans & invitations, health, travel), added one unit at a time following `content/CONTENT_GUIDE.md`.
 
 ## Things you (Mikkel) need to do
 
