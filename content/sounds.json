@@ -1,0 +1,263 @@
+{
+ "syllables": [
+  {
+   "id": "t-ma1",
+   "hanzi": "妈",
+   "pinyin": "mā"
+  },
+  {
+   "id": "t-ma2",
+   "hanzi": "麻",
+   "pinyin": "má"
+  },
+  {
+   "id": "t-ma3",
+   "hanzi": "马",
+   "pinyin": "mǎ"
+  },
+  {
+   "id": "t-ma4",
+   "hanzi": "骂",
+   "pinyin": "mà"
+  },
+  {
+   "id": "t-ba1",
+   "hanzi": "八",
+   "pinyin": "bā"
+  },
+  {
+   "id": "t-ba2",
+   "hanzi": "拔",
+   "pinyin": "bá"
+  },
+  {
+   "id": "t-ba3",
+   "hanzi": "把",
+   "pinyin": "bǎ"
+  },
+  {
+   "id": "t-ba4",
+   "hanzi": "爸",
+   "pinyin": "bà"
+  },
+  {
+   "id": "t-yi1",
+   "hanzi": "衣",
+   "pinyin": "yī"
+  },
+  {
+   "id": "t-yi2",
+   "hanzi": "姨",
+   "pinyin": "yí"
+  },
+  {
+   "id": "t-yi3",
+   "hanzi": "椅",
+   "pinyin": "yǐ"
+  },
+  {
+   "id": "t-yi4",
+   "hanzi": "意",
+   "pinyin": "yì"
+  },
+  {
+   "id": "t-shi1",
+   "hanzi": "诗",
+   "pinyin": "shī"
+  },
+  {
+   "id": "t-shi2",
+   "hanzi": "十",
+   "pinyin": "shí"
+  },
+  {
+   "id": "t-shi3",
+   "hanzi": "史",
+   "pinyin": "shǐ"
+  },
+  {
+   "id": "t-shi4",
+   "hanzi": "是",
+   "pinyin": "shì"
+  },
+  {
+   "id": "t-tang1",
+   "hanzi": "汤",
+   "pinyin": "tāng"
+  },
+  {
+   "id": "t-tang2",
+   "hanzi": "糖",
+   "pinyin": "táng"
+  },
+  {
+   "id": "t-tang3",
+   "hanzi": "躺",
+   "pinyin": "tǎng"
+  },
+  {
+   "id": "t-tang4",
+   "hanzi": "烫",
+   "pinyin": "tàng"
+  },
+  {
+   "id": "t-mai3",
+   "hanzi": "买",
+   "pinyin": "mǎi"
+  },
+  {
+   "id": "t-mai4",
+   "hanzi": "卖",
+   "pinyin": "mài"
+  },
+  {
+   "id": "t-wen2",
+   "hanzi": "文",
+   "pinyin": "wén"
+  },
+  {
+   "id": "t-wen4",
+   "hanzi": "问",
+   "pinyin": "wèn"
+  },
+  {
+   "id": "t-xiang1",
+   "hanzi": "香",
+   "pinyin": "xiāng"
+  },
+  {
+   "id": "t-xiang3",
+   "hanzi": "想",
+   "pinyin": "xiǎng"
+  },
+  {
+   "id": "t-zhi1",
+   "hanzi": "知",
+   "pinyin": "zhī"
+  },
+  {
+   "id": "t-zi1",
+   "hanzi": "资",
+   "pinyin": "zī"
+  },
+  {
+   "id": "t-chi1",
+   "hanzi": "吃",
+   "pinyin": "chī"
+  },
+  {
+   "id": "t-qi1",
+   "hanzi": "七",
+   "pinyin": "qī"
+  },
+  {
+   "id": "t-xi1",
+   "hanzi": "西",
+   "pinyin": "xī"
+  },
+  {
+   "id": "t-zi4",
+   "hanzi": "字",
+   "pinyin": "zì"
+  },
+  {
+   "id": "t-ci4",
+   "hanzi": "次",
+   "pinyin": "cì"
+  },
+  {
+   "id": "t-nv3",
+   "hanzi": "女",
+   "pinyin": "nǚ"
+  },
+  {
+   "id": "t-nu3",
+   "hanzi": "努",
+   "pinyin": "nǔ"
+  },
+  {
+   "id": "t-lv4",
+   "hanzi": "绿",
+   "pinyin": "lǜ"
+  },
+  {
+   "id": "t-lu4",
+   "hanzi": "路",
+   "pinyin": "lù"
+  }
+ ],
+ "minimalPairs": [
+  {
+   "a": "t-zhi1",
+   "b": "t-zi1",
+   "kind": "initial",
+   "hint": "zh curls the tongue back; z keeps it behind the teeth"
+  },
+  {
+   "a": "t-chi1",
+   "b": "t-qi1",
+   "kind": "initial",
+   "hint": "ch is retroflex; q is made with the tongue flat, lips spread"
+  },
+  {
+   "a": "t-shi1",
+   "b": "t-xi1",
+   "kind": "initial",
+   "hint": "sh curls the tongue back; x is flat and hissy"
+  },
+  {
+   "a": "t-zi4",
+   "b": "t-ci4",
+   "kind": "initial",
+   "hint": "c has a strong puff of air; z has none"
+  },
+  {
+   "a": "t-nv3",
+   "b": "t-nu3",
+   "kind": "final",
+   "hint": "ü is 'ee' with rounded lips; u is 'oo'"
+  },
+  {
+   "a": "t-lv4",
+   "b": "t-lu4",
+   "kind": "final",
+   "hint": "ü is 'ee' with rounded lips; u is 'oo'"
+  },
+  {
+   "a": "t-mai3",
+   "b": "t-mai4",
+   "kind": "tone",
+   "hint": "3rd tone dips low; 4th falls sharply"
+  },
+  {
+   "a": "t-wen2",
+   "b": "t-wen4",
+   "kind": "tone",
+   "hint": "2nd tone rises; 4th falls"
+  },
+  {
+   "a": "t-xiang1",
+   "b": "t-xiang3",
+   "kind": "tone",
+   "hint": "1st tone is high and flat; 3rd dips low"
+  },
+  {
+   "a": "t-tang1",
+   "b": "t-tang2",
+   "kind": "tone",
+   "hint": "1st is high and level; 2nd rises like a question"
+  },
+  {
+   "a": "t-ma2",
+   "b": "t-ma3",
+   "kind": "tone",
+   "hint": "2nd rises steadily; 3rd dips low first"
+  },
+  {
+   "a": "t-yi2",
+   "b": "t-yi4",
+   "kind": "tone",
+   "hint": "2nd rises; 4th falls"
+  }
+ ]
+}

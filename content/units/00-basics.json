@@ -1,0 +1,95 @@
+{
+  "id": "u00-basics",
+  "order": 0,
+  "title": "Check your basics",
+  "titleHanzi": "你好！",
+  "description": "Greetings, polite phrases and the numbers one to ten. Already know these? Take the test-out.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-ni", "hanzi": "你", "pinyin": "nǐ", "english": ["you"], "hsk": 1, "pos": "pronoun" },
+    { "id": "w-hao", "hanzi": "好", "pinyin": "hǎo", "english": ["good", "well", "fine"], "hsk": 1, "pos": "adjective" },
+    { "id": "w-nihao", "hanzi": "你好", "pinyin": "nǐ hǎo", "english": ["hello", "hi"], "hsk": 0, "pos": "phrase", "note": "Literally 'you good'." },
+    { "id": "w-wo", "hanzi": "我", "pinyin": "wǒ", "english": ["I", "me"], "hsk": 1, "pos": "pronoun" },
+    { "id": "w-hen", "hanzi": "很", "pinyin": "hěn", "english": ["very", "quite"], "hsk": 1, "pos": "adverb", "note": "Often just links a subject to an adjective: 我很好 = I'm fine." },
+    { "id": "w-ma", "hanzi": "吗", "pinyin": "ma", "english": ["(question particle)"], "hsk": 1, "pos": "particle", "note": "Put it at the end to turn a statement into a yes/no question." },
+    { "id": "w-ne", "hanzi": "呢", "pinyin": "ne", "english": ["and you?", "(follow-up question particle)"], "hsk": 1, "pos": "particle" },
+    { "id": "w-ye", "hanzi": "也", "pinyin": "yě", "english": ["also", "too"], "hsk": 2, "pos": "adverb" },
+    { "id": "w-zaijian", "hanzi": "再见", "pinyin": "zàijiàn", "english": ["goodbye", "see you"], "hsk": 1, "pos": "phrase" },
+    { "id": "w-xiexie", "hanzi": "谢谢", "pinyin": "xièxie", "english": ["thank you", "thanks"], "hsk": 1, "pos": "verb" },
+    { "id": "w-bukeqi", "hanzi": "不客气", "pinyin": "bú kèqi", "english": ["you're welcome"], "hsk": 1, "pos": "phrase" },
+    { "id": "w-duibuqi", "hanzi": "对不起", "pinyin": "duìbuqǐ", "english": ["sorry", "excuse me"], "hsk": 1, "pos": "phrase" },
+    { "id": "w-meiguanxi", "hanzi": "没关系", "pinyin": "méi guānxi", "english": ["it's okay", "no problem", "never mind"], "hsk": 1, "pos": "phrase" },
+    { "id": "w-shi", "hanzi": "是", "pinyin": "shì", "english": ["to be", "yes"], "hsk": 1, "pos": "verb" },
+    { "id": "w-bu", "hanzi": "不", "pinyin": "bù", "english": ["not", "no"], "hsk": 1, "pos": "adverb", "note": "Becomes bú before a 4th tone: 不是 bú shì." },
+    { "id": "w-a", "hanzi": "啊", "pinyin": "a", "english": ["ah", "oh"], "hsk": 3, "pos": "interjection" },
+    { "id": "w-yi", "hanzi": "一", "pinyin": "yī", "english": ["one"], "hsk": 1, "pos": "number" },
+    { "id": "w-er", "hanzi": "二", "pinyin": "èr", "english": ["two"], "hsk": 1, "pos": "number" },
+    { "id": "w-san", "hanzi": "三", "pinyin": "sān", "english": ["three"], "hsk": 1, "pos": "number" },
+    { "id": "w-si", "hanzi": "四", "pinyin": "sì", "english": ["four"], "hsk": 1, "pos": "number" },
+    { "id": "w-wu", "hanzi": "五", "pinyin": "wǔ", "english": ["five"], "hsk": 1, "pos": "number" },
+    { "id": "w-liu", "hanzi": "六", "pinyin": "liù", "english": ["six"], "hsk": 1, "pos": "number" },
+    { "id": "w-qi", "hanzi": "七", "pinyin": "qī", "english": ["seven"], "hsk": 1, "pos": "number" },
+    { "id": "w-ba", "hanzi": "八", "pinyin": "bā", "english": ["eight"], "hsk": 1, "pos": "number" },
+    { "id": "w-jiu", "hanzi": "九", "pinyin": "jiǔ", "english": ["nine"], "hsk": 1, "pos": "number" },
+    { "id": "w-shi2", "hanzi": "十", "pinyin": "shí", "english": ["ten"], "hsk": 1, "pos": "number" }
+  ],
+  "sentences": [
+    { "id": "s-nihao", "hanzi": "你好！", "pinyin": "Nǐ hǎo!", "english": "Hello!", "words": ["w-nihao"], "alt": { "english": ["Hi!"] } },
+    { "id": "s-nihaoma", "hanzi": "你好吗？", "pinyin": "Nǐ hǎo ma?", "english": "How are you?", "words": ["w-ni", "w-hao", "w-ma"] },
+    { "id": "s-nihao-nihaoma", "hanzi": "你好！你好吗？", "pinyin": "Nǐ hǎo! Nǐ hǎo ma?", "english": "Hi! How are you?", "words": ["w-nihao", "w-ni", "w-hao", "w-ma"] },
+    { "id": "s-wohenhao", "hanzi": "我很好。", "pinyin": "Wǒ hěn hǎo.", "english": "I'm fine.", "words": ["w-wo", "w-hen", "w-hao"], "alt": { "english": ["I'm good.", "I'm well."] } },
+    { "id": "s-wohenhao-nine", "hanzi": "我很好，你呢？", "pinyin": "Wǒ hěn hǎo, nǐ ne?", "english": "I'm fine, and you?", "words": ["w-wo", "w-hen", "w-hao", "w-ni", "w-ne"] },
+    { "id": "s-woyehenhao-xiexie", "hanzi": "我也很好，谢谢！", "pinyin": "Wǒ yě hěn hǎo, xièxie!", "english": "I'm fine too, thanks!", "words": ["w-wo", "w-ye", "w-hen", "w-hao", "w-xiexie"] },
+    { "id": "s-xiexieni", "hanzi": "谢谢你！", "pinyin": "Xièxie nǐ!", "english": "Thank you!", "words": ["w-xiexie", "w-ni"] },
+    { "id": "s-bukeqi", "hanzi": "不客气。", "pinyin": "Bú kèqi.", "english": "You're welcome.", "words": ["w-bukeqi"] },
+    { "id": "s-a-duibuqi", "hanzi": "啊，对不起！", "pinyin": "À, duìbuqǐ!", "english": "Oh, sorry!", "words": ["w-a", "w-duibuqi"] },
+    { "id": "s-duibuqi", "hanzi": "对不起！", "pinyin": "Duìbuqǐ!", "english": "Sorry!", "words": ["w-duibuqi"] },
+    { "id": "s-meiguanxi", "hanzi": "没关系。", "pinyin": "Méi guānxi.", "english": "It's okay.", "words": ["w-meiguanxi"], "alt": { "english": ["No problem.", "Never mind."] } },
+    { "id": "s-zaijian", "hanzi": "再见！", "pinyin": "Zàijiàn!", "english": "Goodbye!", "words": ["w-zaijian"], "alt": { "english": ["Bye!", "See you!"] } },
+    { "id": "s-shima", "hanzi": "是吗？", "pinyin": "Shì ma?", "english": "Really?", "words": ["w-shi", "w-ma"] },
+    { "id": "s-bushi", "hanzi": "不是。", "pinyin": "Bú shì.", "english": "No, it isn't.", "words": ["w-bu", "w-shi"] },
+    { "id": "s-buhao", "hanzi": "不好。", "pinyin": "Bù hǎo.", "english": "Not good.", "words": ["w-bu", "w-hao"] }
+  ],
+  "exchanges": [
+    { "id": "x-hello", "prompt": "s-nihao", "reply": "s-nihao", "wrong": ["s-meiguanxi", "s-bukeqi"], "context": "Someone greets you." },
+    { "id": "x-howareyou", "prompt": "s-nihaoma", "reply": "s-wohenhao-nine", "wrong": ["s-meiguanxi", "s-zaijian"], "context": "A neighbour asks how you are." },
+    { "id": "x-thanks", "prompt": "s-xiexieni", "reply": "s-bukeqi", "wrong": ["s-duibuqi", "s-nihao"], "context": "You helped someone and they thank you." },
+    { "id": "x-sorry", "prompt": "s-duibuqi", "reply": "s-meiguanxi", "wrong": ["s-bukeqi", "s-xiexieni"], "context": "Someone bumps into you and apologises." },
+    { "id": "x-bye", "prompt": "s-zaijian", "reply": "s-zaijian", "wrong": ["s-nihao", "s-bushi"], "context": "Someone is leaving." }
+  ],
+  "grammar": [
+    { "id": "g-ma", "title": "Yes/no questions with 吗", "body": "Add 吗 (ma) to the end of any statement to make it a yes/no question. The word order doesn't change.\n你好 = hello → 你好吗？ = how are you?\n是 = it is → 是吗？ = is that so? / really?", "examples": ["s-nihaoma", "s-shima"] },
+    { "id": "g-ne", "title": "Bouncing a question back with 呢", "body": "After answering, put 呢 (ne) after a person to ask them the same thing: 我很好，你呢？ = I'm fine, and you?", "examples": ["s-wohenhao-nine"] },
+    { "id": "g-bu", "title": "不 changes its tone", "body": "不 is normally 4th tone (bù), but before another 4th tone it becomes 2nd tone: 不是 bú shì, 不客气 bú kèqi. The app accepts either when you type it.", "examples": ["s-bushi", "s-buhao"] }
+  ],
+  "dialogue": {
+    "id": "d00-lift",
+    "title": "Outside the lift",
+    "setting": "Two neighbours run into each other in the hallway of their building.",
+    "speakers": [
+      { "id": "A", "name": "Neighbour (woman)", "voice": "f" },
+      { "id": "B", "name": "Neighbour (man)", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "A", "sentence": "s-nihao" },
+      { "speaker": "B", "sentence": "s-nihao-nihaoma" },
+      { "speaker": "A", "sentence": "s-wohenhao-nine" },
+      { "speaker": "B", "sentence": "s-woyehenhao-xiexie" },
+      { "speaker": "B", "sentence": "s-a-duibuqi" },
+      { "speaker": "A", "sentence": "s-meiguanxi" },
+      { "speaker": "B", "sentence": "s-zaijian" },
+      { "speaker": "A", "sentence": "s-zaijian" }
+    ],
+    "questions": [
+      { "q": "How is the woman doing?", "options": ["She's fine", "Not so good", "She doesn't say"], "answer": 0 },
+      { "q": "What does the woman say after the man apologises?", "options": ["Thank you", "It's okay", "You're welcome"], "answer": 1 },
+      { "q": "How does the conversation end?", "options": ["They introduce themselves", "They say goodbye", "The man says thank you"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n00-hello", "title": "Hello & how are you", "words": ["w-ni", "w-hao", "w-nihao", "w-wo", "w-hen", "w-ma", "w-ne", "w-ye", "w-zaijian"], "sentences": ["s-nihao", "s-nihaoma", "s-wohenhao", "s-wohenhao-nine", "s-zaijian"], "exchanges": ["x-hello", "x-howareyou", "x-bye"], "grammar": ["g-ma", "g-ne"] },
+    { "id": "n00-polite", "title": "Thanks & sorry", "words": ["w-xiexie", "w-bukeqi", "w-duibuqi", "w-meiguanxi", "w-shi", "w-bu", "w-a"], "sentences": ["s-xiexieni", "s-bukeqi", "s-duibuqi", "s-meiguanxi", "s-shima", "s-bushi", "s-buhao"], "exchanges": ["x-thanks", "x-sorry"], "grammar": ["g-bu"] },
+    { "id": "n00-numbers", "title": "One to ten", "words": ["w-yi", "w-er", "w-san", "w-si", "w-wu", "w-liu", "w-qi", "w-ba", "w-jiu", "w-shi2"] },
+    { "id": "n00-story", "title": "Story: Outside the lift", "kind": "story", "sentences": ["s-nihao-nihaoma", "s-woyehenhao-xiexie", "s-a-duibuqi"] }
+  ]
+}

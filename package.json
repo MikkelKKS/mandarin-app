@@ -13,7 +13,8 @@
     "content:build": "tsx scripts/build-content.ts",
     "audio:generate": "python3 scripts/generate-audio.py",
     "typecheck": "tsc -b",
-    "syllables:build": "tsx scripts/build-syllables.ts"
+    "syllables:build": "tsx scripts/build-syllables.ts",
+    "hsk:fetch": "tsx scripts/fetch-hsk.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",
