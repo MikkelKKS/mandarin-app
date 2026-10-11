@@ -1,0 +1,107 @@
+{
+  "id": "u28-oneyear",
+  "order": 28,
+  "title": "One year later",
+  "titleHanzi": "为了你们",
+  "description": "Linking ideas: if, except, in order to, and also. Comparing Denmark and China, and looking back on a year of Chinese.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-bianhua", "hanzi": "变化", "pinyin": "biànhuà", "english": ["change", "to change"], "hsk": 3, "pos": "noun" },
+    { "id": "w-cha-short", "hanzi": "差", "pinyin": "chà", "english": ["to lack", "short of", "poor"], "hsk": 3, "pos": "verb" },
+    { "id": "w-jihu", "hanzi": "几乎", "pinyin": "jīhū", "english": ["almost", "nearly"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-chule", "hanzi": "除了", "pinyin": "chúle", "english": ["except", "besides"], "hsk": 3, "pos": "preposition" },
+    { "id": "w-ruguo", "hanzi": "如果", "pinyin": "rúguǒ", "english": ["if"], "hsk": 3, "pos": "conjunction" },
+    { "id": "w-weile", "hanzi": "为了", "pinyin": "wèile", "english": ["in order to", "for"], "hsk": 3, "pos": "preposition" },
+    { "id": "w-zhuyi", "hanzi": "注意", "pinyin": "zhùyì", "english": ["to pay attention", "to take care"], "hsk": 3, "pos": "verb" },
+    { "id": "w-ziji", "hanzi": "自己", "pinyin": "zìjǐ", "english": ["oneself", "by yourself"], "hsk": 3, "pos": "pronoun" },
+    { "id": "w-erqie", "hanzi": "而且", "pinyin": "érqiě", "english": ["and also", "moreover"], "hsk": 3, "pos": "conjunction" },
+    { "id": "w-bijiao", "hanzi": "比较", "pinyin": "bǐjiào", "english": ["fairly", "rather", "to compare"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-bixu", "hanzi": "必须", "pinyin": "bìxū", "english": ["must"], "hsk": 3, "pos": "verb" },
+    { "id": "w-biaoshi", "hanzi": "表示", "pinyin": "biǎoshì", "english": ["to show", "to express"], "hsk": 3, "pos": "verb" },
+    { "id": "w-bieren", "hanzi": "别人", "pinyin": "biéren", "english": ["other people"], "hsk": 3, "pos": "pronoun" },
+    { "id": "w-chuxian", "hanzi": "出现", "pinyin": "chūxiàn", "english": ["to appear", "to show up"], "hsk": 3, "pos": "verb" },
+    { "id": "w-di-low", "hanzi": "低", "pinyin": "dī", "english": ["low", "quiet (voice)"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-de-adverb", "hanzi": "地", "pinyin": "de", "english": ["(turns a word into \"-ly\": 高兴地)"], "hsk": 3, "pos": "particle" },
+    { "id": "w-genju", "hanzi": "根据", "pinyin": "gēnjù", "english": ["according to"], "hsk": 3, "pos": "preposition" },
+    { "id": "w-guanxi", "hanzi": "关系", "pinyin": "guānxi", "english": ["relationship", "connection"], "hsk": 3, "pos": "noun" },
+    { "id": "w-guanyu", "hanzi": "关于", "pinyin": "guānyú", "english": ["about", "on (a topic)"], "hsk": 3, "pos": "preposition" },
+    { "id": "w-xiangtong", "hanzi": "相同", "pinyin": "xiāngtóng", "english": ["the same", "identical"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-yingxiang", "hanzi": "影响", "pinyin": "yǐngxiǎng", "english": ["to affect", "to disturb", "influence"], "hsk": 3, "pos": "verb" },
+    { "id": "w-shi-make", "hanzi": "使", "pinyin": "shǐ", "english": ["to make (someone feel)", "to cause"], "hsk": 3, "pos": "verb" },
+    { "id": "w-zuoyong", "hanzi": "作用", "pinyin": "zuòyòng", "english": ["effect", "use"], "hsk": 3, "pos": "noun" }
+  ],
+  "sentences": [
+    { "id": "s28-bianhuahenda", "hanzi": "米格，这一年你的变化很大！", "pinyin": "Mǐgé, zhè yì nián nǐ de biànhuà hěn dà!", "english": "米格, you've changed so much this year!", "words": ["w-mikkel", "w-zhe", "w-yi", "w-nian", "w-ni", "w-de", "w-bianhua", "w-hen", "w-da"] },
+    { "id": "s28-chadeyuan", "hanzi": "真的吗？我的中文还差得远呢。", "pinyin": "Zhēn de ma? Wǒ de Zhōngwén hái chà de yuǎn ne.", "english": "Really? My Chinese still has a long way to go.", "words": ["w-zhen", "w-de", "w-ma", "w-wo", "w-de", "w-zhongwen", "w-hai-still", "w-cha-short", "w-de-particle", "w-yuan", "w-ne"] },
+    { "id": "s28-haichadeyuan", "hanzi": "我的中文还差得远呢。", "pinyin": "Wǒ de Zhōngwén hái chà de yuǎn ne.", "english": "My Chinese still has a long way to go.", "words": ["w-wo", "w-de", "w-zhongwen", "w-hai-still", "w-cha-short", "w-de-particle", "w-yuan", "w-ne"] },
+    { "id": "s28-jihutingdedong", "hanzi": "哪里！现在你几乎都听得懂了。", "pinyin": "Nǎlǐ! Xiànzài nǐ jīhū dōu tīng de dǒng le.", "english": "Not at all! Now you understand almost everything.", "words": ["w-nali", "w-xianzai", "w-ni", "w-jihu", "w-dou", "w-ting", "w-de-particle", "w-dong", "w-le"] },
+    { "id": "s28-chulebeijinghua", "hanzi": "除了姥姥说的北京话！", "pinyin": "Chúle lǎolao shuō de Běijīng huà!", "english": "Except Grandma's Beijing slang!", "words": ["w-chule", "w-laolao", "w-shuo", "w-de", "w-beijing", "w-hua-speech"] },
+    { "id": "s28-chawufenbadian", "hanzi": "现在差五分八点。", "pinyin": "Xiànzài chà wǔ fēn bā diǎn.", "english": "It's five to eight.", "words": ["w-xianzai", "w-cha-short", "w-wu", "w-fen", "w-ba", "w-dian"] },
+    { "id": "s28-ruguotingbudong", "hanzi": "如果你听不懂，就问我。", "pinyin": "Rúguǒ nǐ tīng bu dǒng, jiù wèn wǒ.", "english": "If you don't understand, just ask me.", "words": ["w-ruguo", "w-ni", "w-ting", "w-bu", "w-dong", "w-jiu-just", "w-wen", "w-wo"] },
+    { "id": "s28-ruguomingtianxiayu", "hanzi": "如果明天下雨，我们就不去了。", "pinyin": "Rúguǒ míngtiān xià yǔ, wǒmen jiù bú qù le.", "english": "If it rains tomorrow, we won't go.", "words": ["w-ruguo", "w-mingtian", "w-xiayu", "w-women", "w-jiu-just", "w-bu", "w-qu", "w-le"] },
+    { "id": "s28-weile", "hanzi": "为了跟你们说话，我每天学习中文。", "pinyin": "Wèile gēn nǐmen shuōhuà, wǒ měitiān xuéxí Zhōngwén.", "english": "I study Chinese every day so I can talk with all of you.", "words": ["w-weile", "w-gen", "w-ni", "w-men", "w-shuohua", "w-wo", "w-meitian", "w-xuexi", "w-zhongwen"] },
+    { "id": "s28-zhuyishenti", "hanzi": "你真好。天冷了，注意身体！", "pinyin": "Nǐ zhēn hǎo. Tiān lěng le, zhùyì shēntǐ!", "english": "You're so sweet. It's getting cold, look after yourself!", "words": ["w-ni", "w-zhen", "w-hao", "w-tian", "w-leng", "w-le", "w-zhuyi", "w-shenti"] },
+    { "id": "s28-tianleng-zhuyi", "hanzi": "天冷了，注意身体！", "pinyin": "Tiān lěng le, zhùyì shēntǐ!", "english": "It's getting cold, look after yourself!", "words": ["w-tian", "w-leng", "w-le", "w-zhuyi", "w-shenti"] },
+    { "id": "s28-zijiqumai", "hanzi": "我想自己去买东西。", "pinyin": "Wǒ xiǎng zìjǐ qù mǎi dōngxi.", "english": "I want to go shopping by myself.", "words": ["w-wo", "w-xiang", "w-ziji", "w-qu", "w-mai3", "w-dongxi"] },
+    { "id": "s28-zijizuode", "hanzi": "这是你自己做的吗？", "pinyin": "Zhè shì nǐ zìjǐ zuò de ma?", "english": "Did you make this yourself?", "words": ["w-zhe", "w-shi", "w-ni", "w-ziji", "w-zuo-do", "w-de", "w-ma"] },
+    { "id": "s28-congmingerqienuli", "hanzi": "她很聪明，而且很努力。", "pinyin": "Tā hěn cōngming, érqiě hěn nǔlì.", "english": "She's clever, and hard-working too.", "words": ["w-ta-she", "w-hen", "w-congming", "w-erqie", "w-hen", "w-nuli"] },
+    { "id": "s28-bijiaoleng", "hanzi": "今天比较冷。", "pinyin": "Jīntiān bǐjiào lěng.", "english": "It's rather cold today.", "words": ["w-jintian", "w-bijiao", "w-leng"] },
+    { "id": "s28-bixuduochi", "hanzi": "你必须多吃点！", "pinyin": "Nǐ bìxū duō chī diǎn!", "english": "You must eat more!", "words": ["w-ni", "w-bixu", "w-duo", "w-chi", "w-dian"] },
+    { "id": "s28-biaoshixihuan", "hanzi": "他送你礼物，表示他很喜欢你。", "pinyin": "Tā sòng nǐ lǐwù, biǎoshì tā hěn xǐhuan nǐ.", "english": "He gave you a present. That shows he really likes you.", "words": ["w-ta-he", "w-song", "w-ni", "w-liwu", "w-biaoshi", "w-ta-he", "w-hen", "w-xihuan", "w-ni"] },
+    { "id": "s28-biedanxinbieren", "hanzi": "别担心别人怎么想。", "pinyin": "Bié dānxīn biéren zěnme xiǎng.", "english": "Don't worry about what other people think.", "words": ["w-bie", "w-danxin", "w-bieren", "w-zenme", "w-xiang"] },
+    { "id": "s28-turanchuxian", "hanzi": "他突然出现了！", "pinyin": "Tā tūrán chūxiàn le!", "english": "He suddenly showed up!", "words": ["w-ta-he", "w-turan", "w-chuxian", "w-le"] },
+    { "id": "s28-shengyintaidi", "hanzi": "你的声音太低了，我听不到。", "pinyin": "Nǐ de shēngyīn tài dī le, wǒ tīng bu dào.", "english": "You're speaking too quietly. I can't hear you.", "words": ["w-ni", "w-de", "w-shengyin", "w-tai", "w-di-low", "w-le", "w-wo", "w-ting", "w-bu", "w-dao"] },
+    { "id": "s28-gaoxingdexiao", "hanzi": "姥姥高兴地笑了。", "pinyin": "Lǎolao gāoxìng de xiào le.", "english": "Grandma smiled happily.", "words": ["w-laolao", "w-gaoxing", "w-de-adverb", "w-xiao-laugh", "w-le"] },
+    { "id": "s28-genjuditu", "hanzi": "根据地图，饭馆就在前面。", "pinyin": "Gēnjù dìtú, fànguǎn jiù zài qiánmiàn.", "english": "According to the map, the restaurant is just ahead.", "words": ["w-genju", "w-ditu", "w-fanguan", "w-jiu-just", "w-zai", "w-qianmian"] },
+    { "id": "s28-shenmeguanxi", "hanzi": "你们是什么关系？", "pinyin": "Nǐmen shì shénme guānxi?", "english": "How do you two know each other?", "words": ["w-ni", "w-men", "w-shi", "w-shenme", "w-guanxi"] },
+    { "id": "s28-guanxihenhao", "hanzi": "我们的关系很好。", "pinyin": "Wǒmen de guānxi hěn hǎo.", "english": "We get on very well.", "words": ["w-women", "w-de", "w-guanxi", "w-hen", "w-hao"] },
+    { "id": "s28-guanyubeijing", "hanzi": "这是一本关于北京历史的书。", "pinyin": "Zhè shì yì běn guānyú Běijīng lìshǐ de shū.", "english": "This is a book about Beijing's history.", "words": ["w-zhe", "w-shi", "w-yi", "w-ben", "w-guanyu", "w-beijing", "w-lishi", "w-de", "w-shu"] },
+    { "id": "s28-xiangtongdedifang", "hanzi": "丹麦和中国有很多相同的地方。", "pinyin": "Dānmài hé Zhōngguó yǒu hěn duō xiāngtóng de dìfang.", "english": "Denmark and China have a lot in common.", "words": ["w-danmai", "w-he", "w-zhongguo", "w-you", "w-hen", "w-duo", "w-xiangtong", "w-de", "w-difang"] },
+    { "id": "s28-bieyingxiang", "hanzi": "别影响她学习。", "pinyin": "Bié yǐngxiǎng tā xuéxí.", "english": "Don't disturb her studying.", "words": ["w-bie", "w-yingxiang", "w-ta-she", "w-xuexi"] },
+    { "id": "s28-shiwogengliaojie", "hanzi": "学中文使我更了解她的家人。", "pinyin": "Xué Zhōngwén shǐ wǒ gèng liǎojiě tā de jiārén.", "english": "Learning Chinese helps me understand her family better.", "words": ["w-xue", "w-zhongwen", "w-shi-make", "w-wo", "w-geng", "w-liaojie", "w-ta-she", "w-de", "w-jia", "w-ren"] },
+    { "id": "s28-yaozuoyong", "hanzi": "这个药有什么作用？", "pinyin": "Zhège yào yǒu shénme zuòyòng?", "english": "What does this medicine do?", "words": ["w-zhe", "w-ge", "w-yao-medicine", "w-you", "w-shenme", "w-zuoyong"] }
+  ],
+  "exchanges": [
+    { "id": "x28-modest", "prompt": "s28-bianhuahenda", "reply": "s28-chadeyuan", "wrong": ["s28-bieyingxiang", "s28-genjuditu"], "context": "Her mother praises your progress. Be modest." },
+    { "id": "x28-cold", "prompt": "s28-tianleng-zhuyi", "reply": "s16-hao-chuan", "wrong": ["s28-turanchuxian", "s28-guanyubeijing"], "context": "Grandma reminds you to look after yourself in the cold." },
+    { "id": "x28-know", "prompt": "s28-shenmeguanxi", "reply": "s28-guanxihenhao", "wrong": ["s28-bixuduochi", "s28-yaozuoyong"], "context": "A stranger asks about you and an old friend. Say you get on well." },
+    { "id": "x28-quiet", "prompt": "s15-wei-ninhao", "reply": "s28-shengyintaidi", "wrong": ["s28-zijizuode", "s28-congmingerqienuli"], "context": "On a bad phone line you can barely hear the caller." },
+    { "id": "x28-ask", "prompt": "s28-chulebeijinghua", "reply": "s28-ruguotingbudong", "wrong": ["s28-bijiaoleng", "s28-biedanxinbieren"], "context": "You're her mother. 米格 jokes he can't follow Grandma's slang." }
+  ],
+  "grammar": [
+    { "id": "g28-weile", "title": "为了: in order to", "body": "为了 + goal, then what you do: 为了跟你们说话，我每天学习中文.", "examples": ["s28-weile"] },
+    { "id": "g28-ruguo", "title": "如果…就…: if... then", "body": "如果 + condition, 就 + result: 如果你听不懂，就问我. In speech 如果 is sometimes dropped.", "examples": ["s28-ruguotingbudong", "s28-ruguomingtianxiayu"] },
+    { "id": "g28-chule", "title": "除了: except, besides", "body": "除了 X means \"except X\" or \"besides X\". 除了姥姥说的北京话: except Grandma's Beijing slang.", "examples": ["s28-chulebeijinghua"] },
+    { "id": "g28-de", "title": "Three kinds of de: 的, 得, 地", "body": "All are said de. 的 links to a noun (我的书). 得 says how well a verb is done (说得很好). 地 says how an action is done (高兴地笑了).", "examples": ["s28-gaoxingdexiao", "s17-shuodehenhao"] },
+    { "id": "g28-cha", "title": "差: short of", "body": "差 means \"short of\": 差五分八点 (five to eight). 还差得远 (still far off) is the modest answer to praise.", "examples": ["s28-chawufenbadian", "s28-haichadeyuan"] }
+  ],
+  "dialogue": {
+    "id": "d28-oneyear",
+    "title": "Listening challenge: One year later",
+    "setting": "A year after his first visit, 米格 chats with her mother in the kitchen.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "M", "sentence": "s28-bianhuahenda" },
+      { "speaker": "K", "sentence": "s28-chadeyuan" },
+      { "speaker": "M", "sentence": "s28-jihutingdedong" },
+      { "speaker": "K", "sentence": "s28-chulebeijinghua" },
+      { "speaker": "M", "sentence": "s28-ruguotingbudong" },
+      { "speaker": "K", "sentence": "s28-weile" },
+      { "speaker": "M", "sentence": "s28-zhuyishenti" }
+    ],
+    "questions": [
+      { "q": "What has changed about 米格?", "options": ["His job", "His Chinese", "His hair"], "answer": 1 },
+      { "q": "What can he still not follow?", "options": ["The TV news", "Grandma's Beijing slang", "Xiaoyu's homework"], "answer": 1 },
+      { "q": "Why does he study every day?", "options": ["For an exam", "For work", "To talk with the family"], "answer": 2 }
+    ]
+  },
+  "nodes": [
+    { "id": "n28-progress", "title": "Look how far you've come", "words": ["w-bianhua", "w-cha-short", "w-jihu", "w-chule", "w-ruguo", "w-weile"], "sentences": ["s28-bianhuahenda", "s28-chadeyuan", "s28-haichadeyuan", "s28-jihutingdedong", "s28-chulebeijinghua", "s28-chawufenbadian", "s28-ruguotingbudong", "s28-ruguomingtianxiayu", "s28-weile"], "exchanges": ["x28-modest", "x28-ask"], "grammar": ["g28-weile", "g28-ruguo", "g28-chule", "g28-cha"] },
+    { "id": "n28-yourself", "title": "Look after yourself", "words": ["w-zhuyi", "w-ziji", "w-erqie", "w-bijiao", "w-bixu", "w-biaoshi", "w-bieren"], "sentences": ["s28-tianleng-zhuyi", "s28-zhuyishenti", "s28-zijiqumai", "s28-zijizuode", "s28-congmingerqienuli", "s28-bijiaoleng", "s28-bixuduochi", "s28-biaoshixihuan", "s28-biedanxinbieren"], "exchanges": ["x28-cold"] },
+    { "id": "n28-connect", "title": "Making connections", "words": ["w-chuxian", "w-di-low", "w-de-adverb", "w-genju", "w-guanxi", "w-guanyu", "w-xiangtong", "w-yingxiang", "w-shi-make", "w-zuoyong"], "sentences": ["s28-turanchuxian", "s28-shengyintaidi", "s28-gaoxingdexiao", "s28-genjuditu", "s28-shenmeguanxi", "s28-guanxihenhao", "s28-guanyubeijing", "s28-xiangtongdedifang", "s28-bieyingxiang", "s28-shiwogengliaojie", "s28-yaozuoyong"], "exchanges": ["x28-know", "x28-quiet"], "grammar": ["g28-de"] },
+    { "id": "n28-story", "title": "Challenge: One year later", "kind": "story", "sentences": ["s28-bianhuahenda", "s28-jihutingdedong", "s28-chulebeijinghua", "s28-ruguotingbudong", "s28-weile"] }
+  ]
+}

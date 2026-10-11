@@ -48,3 +48,9 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Typed answers (English to pinyin, typing a reply) now allow sentences up to 14 syllables instead of 8.
 - When a lesson targets a new word, "write this in pinyin" uses a known sentence containing that word 60% of the time, so vocabulary is produced in context.
 - Role-play mode for every story (and for practice packs with a dialogue): the learner picks a part (米格 by default), the other lines play as audio, and their own lines are typed in pinyin from the English. Wrong lines are retyped until right; the first attempt is recorded for reviews.
+
+## Full HSK 1–3 vocabulary (owner request)
+- 15 new units (u14–u28) cover every remaining HSK 1–3 word (HSK 2.0 lists: 150 / 150 / 300). New units are added at the end of their HSK section; unit `order` is renumbered to match the path.
+- Her family is from Beijing, so later units use Beijing forms where natural (哪儿, 这儿, 咱们, 您 for elders), plus a few local words that aren't on HSK lists: 涮羊肉, 炸酱面, 广场舞, 师傅, 刷碗.
+- A few words are introduced earlier than their HSK level because natural sentences need them (骑, 戴, 们, 天, 风, 北, 话).
+- Sentence, exchange and grammar ids now carry the unit number (s14-…) to avoid clashes.

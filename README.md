@@ -6,9 +6,11 @@ A listening-first Mandarin Chinese course that runs in the browser and installs 
 
 ## Features
 
-- **Skill path** from the basics to HSK 3: greetings, family, food, time, shopping, hobbies, work, directions, plans, health, travel and more. Every unit ends with a listening story, and every unit has a test-out.
+- **Skill path** covering all HSK 1–3 vocabulary in 29 themed units, set around family life in Beijing: greetings, food, shopping, phone calls, school, moving in, seasons, festivals, feelings and more. Every unit ends with a listening story, and every unit has a test-out.
+- **Beijing flavour**: the -r sound (哪儿, 一会儿), 咱们, 您 for elders and local words, alongside standard Mandarin.
+- **Role-play**: take one part in any story and type your lines while the other person speaks.
 - **Listening first**: about half of each lesson is audio, recorded with natural neural voices, with a slow version of every sentence.
-- **Conversation practice**: hear what someone says and pick or type the right reply.
+- **Conversation practice**: hear what someone says and pick or type the right reply. Lots of typing whole sentences, using new words in context.
 - **Pinyin typing** with tone marks or numbers, lenient about tone changes, with clear feedback on tones.
 - **Tone training**: tone exercises in every lesson, plus the Tone Sort and Tone Pairs games.
 - **Spaced repetition** (FSRS) for reviews and recent mistakes.
