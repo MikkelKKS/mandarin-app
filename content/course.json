@@ -32,15 +32,12 @@
       "id": "hsk3",
       "title": "HSK 3 — real conversations",
       "units": [
-        "u10-experiences"
+        "u10-experiences",
+        "u11-health"
       ]
     }
   ],
   "upcoming": [
-    {
-      "title": "Health",
-      "titleHanzi": "你哪里不舒服？"
-    },
     {
       "title": "Travel",
       "titleHanzi": "一路平安"

@@ -1,0 +1,97 @@
+{
+  "id": "u11-health",
+  "order": 11,
+  "title": "Health",
+  "titleHanzi": "你哪里不舒服？",
+  "description": "Say what hurts, understand advice (应该, 多…, 别…), and ask after an elder's health — and wish them well.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-shufu", "hanzi": "舒服", "pinyin": "shūfu", "english": ["comfortable", "well"], "hsk": 3, "pos": "adjective", "note": "不舒服 = unwell, not feeling right." },
+    { "id": "w-shenti", "hanzi": "身体", "pinyin": "shēntǐ", "english": ["body", "health"], "hsk": 2, "pos": "noun" },
+    { "id": "w-jiankang", "hanzi": "健康", "pinyin": "jiànkāng", "english": ["healthy", "health"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-tou", "hanzi": "头", "pinyin": "tóu", "english": ["head"], "hsk": 0, "pos": "noun" },
+    { "id": "w-duzi", "hanzi": "肚子", "pinyin": "dùzi", "english": ["stomach", "belly"], "hsk": 4, "pos": "noun" },
+    { "id": "w-yanjing", "hanzi": "眼睛", "pinyin": "yǎnjing", "english": ["eye", "eyes"], "hsk": 2, "pos": "noun" },
+    { "id": "w-teng", "hanzi": "疼", "pinyin": "téng", "english": ["to hurt", "sore"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-ganmao", "hanzi": "感冒", "pinyin": "gǎnmào", "english": ["(to have) a cold"], "hsk": 3, "pos": "verb" },
+    { "id": "w-fashao", "hanzi": "发烧", "pinyin": "fāshāo", "english": ["to have a fever"], "hsk": 3, "pos": "verb" },
+    { "id": "w-shengbing", "hanzi": "生病", "pinyin": "shēngbìng", "english": ["to get ill", "to be sick"], "hsk": 2, "pos": "verb" },
+    { "id": "w-yao-medicine", "hanzi": "药", "pinyin": "yào", "english": ["medicine"], "hsk": 2, "pos": "noun", "note": "Same sound as 要 (want)." },
+    { "id": "w-xiuxi", "hanzi": "休息", "pinyin": "xiūxi", "english": ["to rest"], "hsk": 2, "pos": "verb" },
+    { "id": "w-yinggai", "hanzi": "应该", "pinyin": "yīnggāi", "english": ["should", "ought to"], "hsk": 3, "pos": "verb" },
+    { "id": "w-danxin", "hanzi": "担心", "pinyin": "dānxīn", "english": ["to worry"], "hsk": 3, "pos": "verb" },
+    { "id": "w-fangxin", "hanzi": "放心", "pinyin": "fàngxīn", "english": ["to be at ease", "don't worry"], "hsk": 3, "pos": "verb" },
+    { "id": "w-shi-matter", "hanzi": "事", "pinyin": "shì", "english": ["matter", "thing", "problem"], "hsk": 0, "pos": "noun", "note": "没事 = it's nothing / I'm fine." },
+    { "id": "w-xiaoxin", "hanzi": "小心", "pinyin": "xiǎoxīn", "english": ["careful", "be careful"], "hsk": 3, "pos": "verb" },
+    { "id": "w-xiwang", "hanzi": "希望", "pinyin": "xīwàng", "english": ["to hope", "to wish"], "hsk": 2, "pos": "verb" }
+  ],
+  "sentences": [
+    { "id": "s-nizenmele", "hanzi": "你怎么了？", "pinyin": "Nǐ zěnme le?", "english": "What's wrong?", "words": ["w-ni", "w-zenme", "w-le"], "alt": { "english": ["What's the matter?"] } },
+    { "id": "s-mikkel-zenmele", "hanzi": "米格，你怎么了？", "pinyin": "Mǐgé, nǐ zěnme le?", "english": "Mi'ge, what's wrong?", "words": ["w-mikkel", "w-ni", "w-zenme", "w-le"] },
+    { "id": "s-nanalibushufu", "hanzi": "你哪里不舒服？", "pinyin": "Nǐ nǎlǐ bù shūfu?", "english": "Where don't you feel well?", "words": ["w-ni", "w-nali", "w-bu", "w-shufu"], "alt": { "english": ["What's bothering you?"] } },
+    { "id": "s-wotouteng", "hanzi": "我头疼。", "pinyin": "Wǒ tóu téng.", "english": "I've got a headache.", "words": ["w-wo", "w-tou", "w-teng"] },
+    { "id": "s-duziyoudianteng", "hanzi": "我肚子有点疼。", "pinyin": "Wǒ dùzi yǒudiǎn téng.", "english": "My stomach hurts a bit.", "words": ["w-wo", "w-duzi", "w-you", "w-dian", "w-teng"] },
+    { "id": "s-yanjingbushufu", "hanzi": "我眼睛不舒服。", "pinyin": "Wǒ yǎnjing bù shūfu.", "english": "My eyes are bothering me.", "words": ["w-wo", "w-yanjing", "w-bu", "w-shufu"] },
+    { "id": "s-woganmaole", "hanzi": "我感冒了。", "pinyin": "Wǒ gǎnmào le.", "english": "I've caught a cold.", "words": ["w-wo", "w-ganmao", "w-le"] },
+    { "id": "s-ganmao-touteng", "hanzi": "我感冒了，头有点疼。", "pinyin": "Wǒ gǎnmào le, tóu yǒudiǎn téng.", "english": "I've got a cold and a bit of a headache.", "words": ["w-wo", "w-ganmao", "w-le", "w-tou", "w-you", "w-dian", "w-teng"] },
+    { "id": "s-woshengbingle", "hanzi": "我生病了。", "pinyin": "Wǒ shēngbìng le.", "english": "I'm ill.", "words": ["w-wo", "w-shengbing", "w-le"] },
+    { "id": "s-nifashaolema", "hanzi": "你发烧了吗？", "pinyin": "Nǐ fāshāo le ma?", "english": "Do you have a fever?", "words": ["w-ni", "w-fashao", "w-le", "w-ma"] },
+    { "id": "s-youyidianfashao", "hanzi": "有一点发烧。", "pinyin": "Yǒu yìdiǎn fāshāo.", "english": "A bit of a fever.", "words": ["w-you", "w-yidian", "w-fashao"] },
+    { "id": "s-yinggaikanyisheng", "hanzi": "你应该去看医生。", "pinyin": "Nǐ yīnggāi qù kàn yīshēng.", "english": "You should see a doctor.", "words": ["w-ni", "w-yinggai", "w-qu", "w-kan", "w-yisheng"] },
+    { "id": "s-chidianyaoba", "hanzi": "吃点药吧。", "pinyin": "Chī diǎn yào ba.", "english": "Take some medicine.", "words": ["w-chi", "w-dian", "w-yao-medicine", "w-ba-particle"] },
+    { "id": "s-duoheshui", "hanzi": "多喝水，多休息。", "pinyin": "Duō hē shuǐ, duō xiūxi.", "english": "Drink lots of water and get plenty of rest.", "words": ["w-duo", "w-he-drink", "w-shui", "w-duo", "w-xiuxi"] },
+    { "id": "s-kanyisheng-duoheshui", "hanzi": "你应该去看医生。多喝水，多休息！", "pinyin": "Nǐ yīnggāi qù kàn yīshēng. Duō hē shuǐ, duō xiūxi!", "english": "You should see a doctor. Drink lots of water and rest!", "words": ["w-ni", "w-yinggai", "w-qu", "w-kan", "w-yisheng", "w-duo", "w-he-drink", "w-shui", "w-duo", "w-xiuxi"] },
+    { "id": "s-haohaoxiuxi", "hanzi": "你今天好好休息吧。", "pinyin": "Nǐ jīntiān hǎohǎo xiūxi ba.", "english": "Get some proper rest today.", "words": ["w-ni", "w-jintian", "w-hao", "w-hao", "w-xiuxi", "w-ba-particle"] },
+    { "id": "s-biedanxin", "hanzi": "别担心，我没事。", "pinyin": "Bié dānxīn, wǒ méi shì.", "english": "Don't worry, I'm fine.", "words": ["w-bie", "w-danxin", "w-wo", "w-mei", "w-shi-matter"] },
+    { "id": "s-fangxinba", "hanzi": "放心吧！", "pinyin": "Fàngxīn ba!", "english": "Don't worry!", "words": ["w-fangxin", "w-ba-particle"], "alt": { "english": ["Rest assured!"] } },
+    { "id": "s-xiaoxin", "hanzi": "小心！", "pinyin": "Xiǎoxīn!", "english": "Careful!", "words": ["w-xiaoxin"] },
+    { "id": "s-nishentizenmeyang", "hanzi": "您身体怎么样？", "pinyin": "Nín shēntǐ zěnmeyàng?", "english": "How is your health? (polite)", "words": ["w-nin", "w-shenti", "w-zenmeyang"] },
+    { "id": "s-shentihenhao", "hanzi": "我身体很好，谢谢。", "pinyin": "Wǒ shēntǐ hěn hǎo, xièxie.", "english": "I'm in good health, thank you.", "words": ["w-wo", "w-shenti", "w-hen", "w-hao", "w-xiexie"] },
+    { "id": "s-xiwangshentijiankang", "hanzi": "希望您身体健康！", "pinyin": "Xīwàng nín shēntǐ jiànkāng!", "english": "Wishing you good health!", "words": ["w-xiwang", "w-nin", "w-shenti", "w-jiankang"] },
+    { "id": "s-hao-xiexieayi", "hanzi": "好，谢谢阿姨。", "pinyin": "Hǎo, xièxie āyí.", "english": "OK, thank you.", "words": ["w-hao", "w-xiexie", "w-ayi"] }
+  ],
+  "exchanges": [
+    { "id": "x-whatswrong", "prompt": "s-nizenmele", "reply": "s-wotouteng", "wrong": ["s-taihaole", "s-quguoyici"], "context": "You look pale and someone asks." },
+    { "id": "x-fever", "prompt": "s-nifashaolema", "reply": "s-youyidianfashao", "wrong": ["s-yijingxiguanle", "s-xingqiliulaide"], "context": "You're unwell and her mother checks." },
+    { "id": "x-gotcold", "prompt": "s-woganmaole", "reply": "s-duoheshui", "wrong": ["s-shengrikuaile", "s-taihaole"], "context": "A friend tells you they're ill." },
+    { "id": "x-elderhealth", "prompt": "s-nishentizenmeyang", "reply": "s-shentihenhao", "wrong": ["s-xiaciba", "s-zaiyoubian"], "context": "Someone asks how you're keeping." },
+    { "id": "x-doctor", "prompt": "s-yinggaikanyisheng", "reply": "s-biedanxin", "wrong": ["s-xiaoxin", "s-yigongshisikuai"], "context": "You have a mild cold, but she's worried." }
+  ],
+  "grammar": [
+    { "id": "g-teng", "title": "What hurts: body part + 疼", "body": "头疼 = headache, 肚子疼 = stomach ache. Soften with 有点: 我肚子有点疼. 有点 + adjective is for things you don't like (有点辣, 有点累).", "examples": ["s-wotouteng", "s-duziyoudianteng"] },
+    { "id": "g-yinggai", "title": "应该 = should", "body": "应该 + verb gives advice: 你应该去看医生.", "examples": ["s-yinggaikanyisheng"] },
+    { "id": "g-duobie", "title": "多… and 别…", "body": "多 + verb = do more of it: 多喝水，多休息. 别 + verb = don't: 别担心 (don't worry).", "examples": ["s-duoheshui", "s-biedanxin"] },
+    { "id": "g-shenti", "title": "Health wishes for elders", "body": "Ask older relatives 您身体怎么样？ and wish them 身体健康 (good health), e.g. 希望您身体健康！ It's a classic toast at family dinners.", "examples": ["s-nishentizenmeyang", "s-xiwangshentijiankang"] }
+  ],
+  "dialogue": {
+    "id": "d11-cold",
+    "title": "Listening challenge: A cold",
+    "setting": "Mikkel isn't feeling well, and her mother calls to check on him.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "M", "sentence": "s-mikkel-zenmele" },
+      { "speaker": "K", "sentence": "s-ganmao-touteng" },
+      { "speaker": "M", "sentence": "s-nifashaolema" },
+      { "speaker": "K", "sentence": "s-youyidianfashao" },
+      { "speaker": "M", "sentence": "s-kanyisheng-duoheshui" },
+      { "speaker": "K", "sentence": "s-biedanxin" },
+      { "speaker": "M", "sentence": "s-haohaoxiuxi" },
+      { "speaker": "K", "sentence": "s-hao-xiexieayi" }
+    ],
+    "questions": [
+      { "q": "What's wrong with Mikkel?", "options": ["A stomach ache", "A cold and a headache", "Sore eyes"], "answer": 1 },
+      { "q": "Does he have a fever?", "options": ["A slight one", "No", "A high one"], "answer": 0 },
+      { "q": "What does her mother advise?", "options": ["Go to work anyway", "Only take medicine", "See a doctor, drink water and rest"], "answer": 2 }
+    ]
+  },
+  "nodes": [
+    { "id": "n11-hurts", "title": "What hurts?", "words": ["w-shufu", "w-tou", "w-duzi", "w-yanjing", "w-teng"], "sentences": ["s-nizenmele", "s-nanalibushufu", "s-wotouteng", "s-duziyoudianteng", "s-yanjingbushufu"], "exchanges": ["x-whatswrong"], "grammar": ["g-teng"] },
+    { "id": "n11-ill", "title": "Colds & fevers", "words": ["w-ganmao", "w-fashao", "w-shengbing", "w-yao-medicine"], "sentences": ["s-woganmaole", "s-woshengbingle", "s-nifashaolema", "s-youyidianfashao", "s-chidianyaoba"], "exchanges": ["x-fever"] },
+    { "id": "n11-advice", "title": "Advice & worries", "words": ["w-xiuxi", "w-yinggai", "w-danxin", "w-fangxin", "w-shi-matter", "w-xiaoxin"], "sentences": ["s-yinggaikanyisheng", "s-duoheshui", "s-haohaoxiuxi", "s-biedanxin", "s-fangxinba", "s-xiaoxin"], "exchanges": ["x-gotcold", "x-doctor"], "grammar": ["g-yinggai", "g-duobie"] },
+    { "id": "n11-wishes", "title": "Good health!", "words": ["w-shenti", "w-jiankang", "w-xiwang"], "sentences": ["s-nishentizenmeyang", "s-shentihenhao", "s-xiwangshentijiankang"], "exchanges": ["x-elderhealth"], "grammar": ["g-shenti"] },
+    { "id": "n11-story", "title": "Challenge: A cold", "kind": "story", "sentences": ["s-mikkel-zenmele", "s-ganmao-touteng", "s-kanyisheng-duoheshui"] }
+  ]
+}
