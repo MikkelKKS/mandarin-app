@@ -53,6 +53,15 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Weekly cache key for the dictionary download
+        id: week
+        run: echo "week=$(date +%G-%V)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: public/dict
+          key: cedict-${{ steps.week.outputs.week }}
+      - name: Build dictionary (CC-CEDICT)
+        run: test -s public/dict/cedict.tsv || npm run dict:build
       - name: Validate content
         run: npm run content:validate
       - name: Unit tests

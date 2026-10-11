@@ -14,7 +14,8 @@
     "audio:generate": "python3 scripts/generate-audio.py",
     "typecheck": "tsc -b",
     "syllables:build": "tsx scripts/build-syllables.ts",
-    "hsk:fetch": "tsx scripts/fetch-hsk.ts"
+    "hsk:fetch": "tsx scripts/fetch-hsk.ts",
+    "dict:build": "tsx scripts/build-dictionary.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",

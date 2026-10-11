@@ -66,6 +66,13 @@ export function WordPopupProvider({ children }: { children: ReactNode }) {
             <p className="mt-2 text-lg text-muted">{word.pinyin}</p>
             <p className="mt-1 text-lg">{word.english.join('; ')}</p>
             {word.note && <p className="mt-3 text-sm text-muted">{word.note}</p>}
+            <a
+              href={`#/dictionary?q=${encodeURIComponent(word.hanzi)}`}
+              onClick={() => setWord(null)}
+              className="mt-3 inline-block text-sm text-jade underline underline-offset-2"
+            >
+              More in the dictionary
+            </a>
             <button className="mt-4 w-full rounded-xl bg-sunk py-3 font-medium" onClick={() => setWord(null)} autoFocus>
               Close
             </button>

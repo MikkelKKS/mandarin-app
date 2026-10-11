@@ -118,7 +118,8 @@ export function checkContent(
         if (!allSentenceIds.has(ex)) errors.push(`${file}: word ${w.id}: unknown example sentence "${ex}"`);
       }
       if (hskLevels) {
-        const lvl = hskLevels.get(w.hanzi);
+        const found = hskLevels.get(w.hanzi);
+        const lvl = found && found <= 3 ? found : undefined;
         if (w.hsk >= 1 && w.hsk <= 3 && lvl !== w.hsk) {
           warnings.push(`${file}: word ${w.id} (${w.hanzi}) marked HSK ${w.hsk}, HSK list says ${lvl ?? 'not in HSK 1–3'}`);
         }

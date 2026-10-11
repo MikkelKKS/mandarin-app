@@ -1,5 +1,5 @@
 /**
- * Downloads the HSK 2.0 (levels 1–3) vocabulary from the open
+ * Downloads the HSK 2.0 (levels 1–6) vocabulary from the open
  * drkameleon/complete-hsk-vocabulary repo (MIT licence —
  * https://github.com/drkameleon/complete-hsk-vocabulary) and writes a compact
  * index to content/hsk/hsk-levels.json, used to check/assign HSK levels.
@@ -27,7 +27,7 @@ async function load(level: number): Promise<SourceEntry[]> {
 }
 
 const out: Array<{ h: string; p: string; l: number; e: string }> = [];
-for (const level of [1, 2, 3]) {
+for (const level of [1, 2, 3, 4, 5, 6]) {
   for (const entry of await load(level)) {
     const form = entry.forms[0];
     out.push({ h: entry.simplified, p: form.transcriptions.pinyin, l: level, e: form.meanings[0] ?? '' });
@@ -39,4 +39,4 @@ writeFileSync(
   join(dir, 'hsk-levels.json'),
   JSON.stringify({ source: 'https://github.com/drkameleon/complete-hsk-vocabulary (MIT)', words: out }) + '\n',
 );
-console.log(`Wrote ${out.length} entries (HSK 1–3) to content/hsk/hsk-levels.json`);
+console.log(`Wrote ${out.length} entries (HSK 1–6) to content/hsk/hsk-levels.json`);

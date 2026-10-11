@@ -8,7 +8,7 @@ export function useRoute(): string[] {
     window.addEventListener('hashchange', h);
     return () => window.removeEventListener('hashchange', h);
   }, []);
-  return hash.replace(/^#\/?/, '').split('/').filter(Boolean).map(decodeURIComponent);
+  return hash.replace(/^#\/?/, '').split('?')[0].split('/').filter(Boolean).map(decodeURIComponent);
 }
 
 export function go(path: string): void {

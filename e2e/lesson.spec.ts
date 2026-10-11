@@ -102,3 +102,13 @@ test('import a practice pack and play it', async ({ page }) => {
   await page.getByRole('button', { name: 'Import practice pack' }).click();
   await expect(page.getByRole('alert')).toContainText('unknown word id "w-nope"');
 });
+
+test('dictionary: search and add a word to practice', async ({ page }) => {
+  await page.goto('./#/dictionary');
+  await page.getByLabel('Search the dictionary').fill('nihao');
+  await expect(page.getByText('hello / hi').or(page.getByText('hello; hi'))).toBeVisible();
+  await page.getByRole('button', { name: '+ Add to my practice' }).first().click();
+  await expect(page.getByRole('button', { name: '✓ In my practice' }).first()).toBeVisible();
+  await page.getByLabel('Search the dictionary').fill('');
+  await expect(page.getByText('My words')).toBeVisible();
+});

@@ -1,6 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
-import { Cog, Gamepad, Path, Refresh } from './components/icons';
+import { Book, Cog, Gamepad, Path, Refresh } from './components/icons';
+import { DictionaryView } from './features/dictionary/DictionaryView';
 import { GameRunner, GamesView } from './features/games/GamesView';
 import { NodeRunner, PackRunner, PracticeRunner, TestOutRunner } from './features/lesson/Runners';
 import { PathView, useNodeStates } from './features/path/PathView';
@@ -53,6 +54,9 @@ export default function App() {
     case 'games':
       body = <GamesView />;
       break;
+    case 'dictionary':
+      body = <DictionaryView />;
+      break;
     case 'settings':
       body = <SettingsView />;
       break;
@@ -74,6 +78,7 @@ const TABS = [
   { id: '', label: 'Learn', icon: Path },
   { id: 'practice', label: 'Practice', icon: Refresh },
   { id: 'games', label: 'Games', icon: Gamepad },
+  { id: 'dictionary', label: 'Dictionary', icon: Book },
   { id: 'settings', label: 'Settings', icon: Cog },
 ];
 

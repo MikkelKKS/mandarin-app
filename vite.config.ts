@@ -50,6 +50,11 @@ export default defineConfig({
             },
           },
           {
+            urlPattern: ({ url }) => url.pathname.endsWith('/dict/cedict.tsv'),
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'dictionary', cacheableResponse: { statuses: [200] } },
+          },
+          {
             urlPattern: ({ url }) => url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com',
             handler: 'CacheFirst',
             options: { cacheName: 'fonts', expiration: { maxEntries: 300 }, cacheableResponse: { statuses: [0, 200] } },

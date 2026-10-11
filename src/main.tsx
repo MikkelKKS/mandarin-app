@@ -5,10 +5,12 @@ import App from './App';
 import { startSync } from './sync';
 import { loadSpeakPause } from './lib/settings';
 import { startPackRegistry } from './features/packs/store';
+import { startMyWordsRegistry } from './features/dictionary/mywords';
 import './index.css';
 
 registerSW({ immediate: true });
 startPackRegistry();
+startMyWordsRegistry();
 void loadSpeakPause();
 void startSync();
 
