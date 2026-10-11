@@ -3,6 +3,7 @@ import { go } from '../../lib/router';
 import { setQuietUntil, updateSettings, useQuietUntil, useSettings } from '../../lib/settings';
 import type { Settings } from '../../db/db';
 import { isStandalone, useInstall } from './install';
+import { BackupSection, SyncSection } from './Account';
 
 function Segmented<T extends string>({ value, options, onChange, label }: { value: T; options: Array<{ v: T; label: string }>; onChange: (v: T) => void; label: string }) {
   return (
@@ -137,6 +138,18 @@ export function SettingsView() {
         </Row>
       </section>
 
+      <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">Sync & backup</h2>
+      <section className="rounded-2xl bg-surface px-4">
+        <div className="border-b border-line">
+          <p className="pt-4 font-medium">Sync between devices</p>
+          <SyncSection />
+        </div>
+        <div>
+          <p className="pt-4 font-medium">Backup</p>
+          <BackupSection />
+        </div>
+      </section>
+
       <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">App</h2>
       <section className="rounded-2xl bg-surface px-4">
         {!isStandalone() && (
@@ -148,9 +161,6 @@ export function SettingsView() {
             )}
           </Row>
         )}
-        <Row title="Sync, backup and practice packs" hint="Sign-in to sync between phone and PC, backups and AI practice packs are coming in the next updates.">
-          <span className="text-sm text-muted">Your progress is saved on this device.</span>
-        </Row>
         <Row title="About">
           <button onClick={() => go('about')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
             Credits & licences

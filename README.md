@@ -27,10 +27,16 @@ From then on, every change pushed to `main` is published automatically in about 
 - **PC (Chrome or Edge):** open the link and click the install icon at the right end of the address bar, or menu → **Install Mandarin**.
 - Open the app once while online. After that, lessons work offline, and audio for unlocked units downloads in the background.
 
-### Later, for sync between phone and PC (phase 4, not built yet)
-- Create a free Supabase project and put `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the repo settings. Exact click-by-click steps will be added here when sync is built.
-- Run the SQL migrations in `/supabase`.
-- Free Supabase projects **pause after about a week without use**. The app keeps working on each device; to sync again, open the Supabase dashboard and press **Resume project**.
+### Sync between phone and PC (Supabase, free)
+1. Create a free project at https://supabase.com (sign in with GitHub → **New project** → region in Europe → **Free**).
+2. **Authentication → URL Configuration:** set **Site URL** to `https://mikkelkks.github.io/mandarin-app/`. Under **Redirect URLs**, add `https://mikkelkks.github.io/mandarin-app/**`.
+3. **SQL Editor → New query:** paste all of `supabase/migrations/001_init.sql` and press **Run**. It's safe to run again.
+4. Put the **Project URL** and the **anon / publishable key** in `.env.production` (`VITE_SUPABASE_URL=…`, `VITE_SUPABASE_ANON_KEY=…`) and push. These two values are public by design: your data is protected by the row-level security rules in the SQL.
+5. In the app: **Settings → Sync between devices**, enter your email, and tap the link in the email **on the same device**. Do this once on the phone and once on the PC.
+
+**Supabase pauses free projects after about a week without use.** The app keeps working offline on each device. To sync again, open https://supabase.com/dashboard, pick the project and press **Resume project**. Everything catches up on the next sync.
+
+Optional, to sign in with a code instead of the link: **Authentication → Emails → Magic Link** template, add `{{ .Token }}` to the email body. The app has a box for the code.
 
 ## Ask a native speaker
 `content/REVIEW_NEEDED.md` lists a few phrases to double-check, including the Chinese version of your name.
