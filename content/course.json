@@ -1,16 +1,51 @@
 {
   "sections": [
-    { "id": "start", "title": "Start here", "units": ["u00-basics"] },
-    { "id": "hsk1", "title": "HSK 1 — first conversations", "units": ["u01-greetings", "u02-family", "u03-food"] }
+    {
+      "id": "start",
+      "title": "Start here",
+      "units": [
+        "u00-basics"
+      ]
+    },
+    {
+      "id": "hsk1",
+      "title": "HSK 1 — first conversations",
+      "units": [
+        "u01-greetings",
+        "u02-family",
+        "u03-food",
+        "u04-time"
+      ]
+    }
   ],
   "upcoming": [
-    { "title": "Numbers & time", "titleHanzi": "几点了？" },
-    { "title": "Shopping & prices", "titleHanzi": "多少钱？" },
-    { "title": "Directions & transport", "titleHanzi": "怎么走？" },
-    { "title": "Hobbies", "titleHanzi": "你喜欢做什么？" },
-    { "title": "Work & study", "titleHanzi": "你做什么工作？" },
-    { "title": "Plans & invitations", "titleHanzi": "周末有空吗？" },
-    { "title": "Health", "titleHanzi": "你哪里不舒服？" },
-    { "title": "Travel", "titleHanzi": "一路平安" }
+    {
+      "title": "Shopping & prices",
+      "titleHanzi": "多少钱？"
+    },
+    {
+      "title": "Directions & transport",
+      "titleHanzi": "怎么走？"
+    },
+    {
+      "title": "Hobbies",
+      "titleHanzi": "你喜欢做什么？"
+    },
+    {
+      "title": "Work & study",
+      "titleHanzi": "你做什么工作？"
+    },
+    {
+      "title": "Plans & invitations",
+      "titleHanzi": "周末有空吗？"
+    },
+    {
+      "title": "Health",
+      "titleHanzi": "你哪里不舒服？"
+    },
+    {
+      "title": "Travel",
+      "titleHanzi": "一路平安"
+    }
   ]
 }

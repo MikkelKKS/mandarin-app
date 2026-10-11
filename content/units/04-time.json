@@ -1,0 +1,100 @@
+{
+  "id": "u04-time",
+  "order": 4,
+  "title": "Numbers & time",
+  "titleHanzi": "现在几点了？",
+  "description": "Ask the time, name the days, make plans and wish someone a happy birthday.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-xianzai", "hanzi": "现在", "pinyin": "xiànzài", "english": ["now"], "hsk": 1, "pos": "time" },
+    { "id": "w-fen", "hanzi": "分", "pinyin": "fēn", "english": ["minute (on the clock)"], "hsk": 3, "pos": "measure" },
+    { "id": "w-ban", "hanzi": "半", "pinyin": "bàn", "english": ["half", "half past"], "hsk": 3, "pos": "number" },
+    { "id": "w-jintian", "hanzi": "今天", "pinyin": "jīntiān", "english": ["today"], "hsk": 1, "pos": "time" },
+    { "id": "w-mingtian", "hanzi": "明天", "pinyin": "míngtiān", "english": ["tomorrow"], "hsk": 1, "pos": "time" },
+    { "id": "w-zuotian", "hanzi": "昨天", "pinyin": "zuótiān", "english": ["yesterday"], "hsk": 1, "pos": "time" },
+    { "id": "w-xingqi", "hanzi": "星期", "pinyin": "xīngqī", "english": ["week", "(day of the week, with a number)"], "hsk": 1, "pos": "time", "note": "星期一 is Monday, 星期二 Tuesday … 星期六 Saturday. Sunday is 星期天 or 星期日." },
+    { "id": "w-zaoshang", "hanzi": "早上", "pinyin": "zǎoshang", "english": ["morning"], "hsk": 2, "pos": "time" },
+    { "id": "w-xiawu", "hanzi": "下午", "pinyin": "xiàwǔ", "english": ["afternoon"], "hsk": 1, "pos": "time" },
+    { "id": "w-wanshang", "hanzi": "晚上", "pinyin": "wǎnshang", "english": ["evening", "night"], "hsk": 2, "pos": "time" },
+    { "id": "w-jian", "hanzi": "见", "pinyin": "jiàn", "english": ["to see", "to meet"], "hsk": 0, "pos": "verb" },
+    { "id": "w-hui-return", "hanzi": "回", "pinyin": "huí", "english": ["to return", "to go back"], "hsk": 1, "pos": "verb" },
+    { "id": "w-qu", "hanzi": "去", "pinyin": "qù", "english": ["to go"], "hsk": 1, "pos": "verb" },
+    { "id": "w-yiqi", "hanzi": "一起", "pinyin": "yìqǐ", "english": ["together"], "hsk": 2, "pos": "adverb" },
+    { "id": "w-shengri", "hanzi": "生日", "pinyin": "shēngrì", "english": ["birthday"], "hsk": 2, "pos": "noun" },
+    { "id": "w-kuaile", "hanzi": "快乐", "pinyin": "kuàilè", "english": ["happy"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-yue", "hanzi": "月", "pinyin": "yuè", "english": ["month"], "hsk": 1, "pos": "time" },
+    { "id": "w-hao4", "hanzi": "号", "pinyin": "hào", "english": ["day of the month", "number"], "hsk": 2, "pos": "noun" },
+    { "id": "w-shouji", "hanzi": "手机", "pinyin": "shǒujī", "english": ["mobile phone"], "hsk": 2, "pos": "noun" },
+    { "id": "w-haoma", "hanzi": "号码", "pinyin": "hàomǎ", "english": ["number (phone, etc.)"], "hsk": 0, "pos": "noun" },
+    { "id": "w-duoshao", "hanzi": "多少", "pinyin": "duōshao", "english": ["how much", "how many", "what (number)"], "hsk": 1, "pos": "question" }
+  ],
+  "sentences": [
+    { "id": "s-xianzaijidianle", "hanzi": "现在几点了？", "pinyin": "Xiànzài jǐ diǎn le?", "english": "What time is it now?", "words": ["w-xianzai", "w-ji", "w-dian", "w-le"], "alt": { "english": ["What time is it?"] } },
+    { "id": "s-xianzailiangdian", "hanzi": "现在两点。", "pinyin": "Xiànzài liǎng diǎn.", "english": "It's two o'clock.", "words": ["w-xianzai", "w-liang", "w-dian"] },
+    { "id": "s-sandianban", "hanzi": "三点半。", "pinyin": "Sān diǎn bàn.", "english": "Half past three.", "words": ["w-san", "w-dian", "w-ban"] },
+    { "id": "s-qidianshifen", "hanzi": "七点十分。", "pinyin": "Qī diǎn shí fēn.", "english": "Ten past seven.", "words": ["w-qi", "w-dian", "w-shi2", "w-fen"], "alt": { "english": ["7:10."] } },
+    { "id": "s-womenjidianchifan", "hanzi": "我们几点吃饭？", "pinyin": "Wǒmen jǐ diǎn chīfàn?", "english": "What time are we eating?", "words": ["w-women", "w-ji", "w-dian", "w-chi", "w-fan"] },
+    { "id": "s-wanshangliudian", "hanzi": "晚上六点。", "pinyin": "Wǎnshang liù diǎn.", "english": "Six in the evening.", "words": ["w-wanshang", "w-liu", "w-dian"], "alt": { "english": ["6 pm."] } },
+    { "id": "s-wanshangliudianban", "hanzi": "晚上六点半。", "pinyin": "Wǎnshang liù diǎn bàn.", "english": "Half past six in the evening.", "words": ["w-wanshang", "w-liu", "w-dian", "w-ban"] },
+    { "id": "s-jintianxingqiji", "hanzi": "今天星期几？", "pinyin": "Jīntiān xīngqī jǐ?", "english": "What day is it today?", "words": ["w-jintian", "w-xingqi", "w-ji"] },
+    { "id": "s-jintianxingqiliu", "hanzi": "今天星期六。", "pinyin": "Jīntiān xīngqīliù.", "english": "It's Saturday today.", "words": ["w-jintian", "w-xingqi", "w-liu"] },
+    { "id": "s-zuotianshixingqiwu", "hanzi": "昨天是星期五。", "pinyin": "Zuótiān shì xīngqīwǔ.", "english": "Yesterday was Friday.", "words": ["w-zuotian", "w-shi", "w-xingqi", "w-wu"] },
+    { "id": "s-zaoshanghao", "hanzi": "早上好！", "pinyin": "Zǎoshang hǎo!", "english": "Good morning!", "words": ["w-zaoshang", "w-hao"] },
+    { "id": "s-mingtianjian", "hanzi": "明天见！", "pinyin": "Míngtiān jiàn!", "english": "See you tomorrow!", "words": ["w-mingtian", "w-jian"] },
+    { "id": "s-hao-mingtianjian", "hanzi": "好，明天见！", "pinyin": "Hǎo, míngtiān jiàn!", "english": "Great, see you tomorrow!", "words": ["w-hao", "w-mingtian", "w-jian"] },
+    { "id": "s-mingtianxiawuwohuijia", "hanzi": "明天下午我回家。", "pinyin": "Míngtiān xiàwǔ wǒ huí jiā.", "english": "I'm going home tomorrow afternoon.", "words": ["w-mingtian", "w-xiawu", "w-wo", "w-hui-return", "w-jia"] },
+    { "id": "s-nijidianhuilai", "hanzi": "你几点回来？", "pinyin": "Nǐ jǐ diǎn huílai?", "english": "What time will you be back?", "words": ["w-ni", "w-ji", "w-dian", "w-hui-return", "w-lai"] },
+    { "id": "s-womenyiqiquba", "hanzi": "我们一起去吧！", "pinyin": "Wǒmen yìqǐ qù ba!", "english": "Let's go together!", "words": ["w-women", "w-yiqi", "w-qu", "w-ba-particle"] },
+    { "id": "s-nideshengri", "hanzi": "你的生日是几月几号？", "pinyin": "Nǐ de shēngrì shì jǐ yuè jǐ hào?", "english": "When is your birthday?", "words": ["w-ni", "w-de", "w-shengri", "w-shi", "w-ji", "w-yue", "w-ji", "w-hao4"] },
+    { "id": "s-wodeshengri", "hanzi": "我的生日是三月二十号。", "pinyin": "Wǒ de shēngrì shì sān yuè èrshí hào.", "english": "My birthday is on the 20th of March.", "words": ["w-wo", "w-de", "w-shengri", "w-shi", "w-san", "w-yue", "w-er", "w-shi2", "w-hao4"] },
+    { "id": "s-shengrikuaile", "hanzi": "生日快乐！", "pinyin": "Shēngrì kuàilè!", "english": "Happy birthday!", "words": ["w-shengri", "w-kuaile"] },
+    { "id": "s-shouji", "hanzi": "你的手机号码是多少？", "pinyin": "Nǐ de shǒujī hàomǎ shì duōshao?", "english": "What's your phone number?", "words": ["w-ni", "w-de", "w-shouji", "w-haoma", "w-shi", "w-duoshao"] },
+    { "id": "s-mingtianshiwodeshengri", "hanzi": "米格，明天是我的生日。", "pinyin": "Mǐgé, míngtiān shì wǒ de shēngrì.", "english": "Mi'ge, tomorrow is my birthday.", "words": ["w-mikkel", "w-mingtian", "w-shi", "w-wo", "w-de", "w-shengri"] },
+    { "id": "s-shima-shengrikuaile", "hanzi": "是吗？生日快乐！", "pinyin": "Shì ma? Shēngrì kuàilè!", "english": "Really? Happy birthday!", "words": ["w-shi", "w-ma", "w-shengri", "w-kuaile"] },
+    { "id": "s-xiexie-yiqichifan", "hanzi": "谢谢！明天晚上我们一起吃饭吧。", "pinyin": "Xièxie! Míngtiān wǎnshang wǒmen yìqǐ chīfàn ba.", "english": "Thanks! Let's have dinner together tomorrow evening.", "words": ["w-xiexie", "w-mingtian", "w-wanshang", "w-women", "w-yiqi", "w-chi", "w-fan", "w-ba-particle"] },
+    { "id": "s-haoa-jidian", "hanzi": "好啊！几点？", "pinyin": "Hǎo a! Jǐ diǎn?", "english": "Sure! What time?", "words": ["w-hao", "w-a", "w-ji", "w-dian"] }
+  ],
+  "exchanges": [
+    { "id": "x-time", "prompt": "s-xianzaijidianle", "reply": "s-xianzailiangdian", "wrong": ["s-jintianxingqiliu", "s-shengrikuaile"], "context": "Someone asks you the time." },
+    { "id": "x-dinnertime", "prompt": "s-womenjidianchifan", "reply": "s-wanshangliudian", "wrong": ["s-zuotianshixingqiwu", "s-zaoshanghao"], "context": "You ask when dinner is — what might the answer be?" },
+    { "id": "x-day", "prompt": "s-jintianxingqiji", "reply": "s-jintianxingqiliu", "wrong": ["s-sandianban", "s-mingtianjian"], "context": "Someone has lost track of the days." },
+    { "id": "x-birthday", "prompt": "s-nideshengri", "reply": "s-wodeshengri", "wrong": ["s-qidianshifen", "s-shengrikuaile"], "context": "Her mother asks about your birthday." },
+    { "id": "x-together", "prompt": "s-womenyiqiquba", "reply": "s-haoa", "wrong": ["s-mingtianjian", "s-zuotianshixingqiwu"], "context": "A friend suggests going together." },
+    { "id": "x-morning", "prompt": "s-zaoshanghao", "reply": "s-zaoshanghao", "wrong": ["s-mingtianjian", "s-shengrikuaile"], "context": "First thing in the morning at her parents' place." }
+  ],
+  "grammar": [
+    { "id": "g-clock", "title": "Telling the time: 点, 分, 半", "body": "Hour + 点: 两点 = two o'clock (use 两, not 二). Add minutes with 分: 七点十分 = 7:10. Half past is 半: 三点半 = 3:30.", "examples": ["s-xianzailiangdian", "s-qidianshifen", "s-sandianban"] },
+    { "id": "g-ji", "title": "几 for number questions", "body": "几 asks for a small number and sits where the number would go: 几点 (what time), 星期几 (which weekday), 几月几号 (which date).", "examples": ["s-xianzaijidianle", "s-jintianxingqiji", "s-nideshengri"] },
+    { "id": "g-timeorder", "title": "When comes before the verb", "body": "Time words go near the front, before the verb: 明天下午我回家 = tomorrow afternoon I go home. Never at the end like in English.", "examples": ["s-mingtianxiawuwohuijia", "s-womenjidianchifan"] },
+    { "id": "g-dates", "title": "Dates go big to small", "body": "Month then day: 三月二十号 = 20 March. Weekdays are 星期 + number: 星期一 Monday … 星期六 Saturday; Sunday is 星期天.", "examples": ["s-wodeshengri", "s-jintianxingqiliu"] }
+  ],
+  "dialogue": {
+    "id": "d04-birthday",
+    "title": "A birthday dinner",
+    "setting": "Her mother calls Mikkel the day before her birthday.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "M", "sentence": "s-mingtianshiwodeshengri" },
+      { "speaker": "K", "sentence": "s-shima-shengrikuaile" },
+      { "speaker": "M", "sentence": "s-xiexie-yiqichifan" },
+      { "speaker": "K", "sentence": "s-haoa-jidian" },
+      { "speaker": "M", "sentence": "s-wanshangliudianban" },
+      { "speaker": "K", "sentence": "s-hao-mingtianjian" }
+    ],
+    "questions": [
+      { "q": "Whose birthday is it tomorrow?", "options": ["The mother's", "Mikkel's", "Her father's"], "answer": 0 },
+      { "q": "What are they doing tomorrow evening?", "options": ["Going shopping", "Having dinner together", "Watching a film"], "answer": 1 },
+      { "q": "What time?", "options": ["6:00", "6:30", "7:30"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n04-clock", "title": "What time is it?", "words": ["w-xianzai", "w-fen", "w-ban"], "sentences": ["s-xianzaijidianle", "s-xianzailiangdian", "s-sandianban", "s-qidianshifen", "s-wanshangliudianban"], "exchanges": ["x-time"], "grammar": ["g-clock", "g-ji"] },
+    { "id": "n04-days", "title": "Days of the week", "words": ["w-jintian", "w-mingtian", "w-zuotian", "w-xingqi", "w-zaoshang", "w-jian"], "sentences": ["s-jintianxingqiji", "s-jintianxingqiliu", "s-zuotianshixingqiwu", "s-zaoshanghao", "s-mingtianjian"], "exchanges": ["x-day", "x-morning"] },
+    { "id": "n04-plans", "title": "Making plans", "words": ["w-xiawu", "w-wanshang", "w-hui-return", "w-qu", "w-yiqi"], "sentences": ["s-womenjidianchifan", "s-wanshangliudian", "s-mingtianxiawuwohuijia", "s-nijidianhuilai", "s-womenyiqiquba"], "exchanges": ["x-dinnertime", "x-together"], "grammar": ["g-timeorder"] },
+    { "id": "n04-birthday", "title": "Birthdays & numbers", "words": ["w-shengri", "w-kuaile", "w-yue", "w-hao4", "w-shouji", "w-haoma", "w-duoshao"], "sentences": ["s-nideshengri", "s-wodeshengri", "s-shengrikuaile", "s-shouji"], "exchanges": ["x-birthday"], "grammar": ["g-dates"] },
+    { "id": "n04-story", "title": "Story: A birthday dinner", "kind": "story", "sentences": ["s-mingtianshiwodeshengri", "s-xiexie-yiqichifan", "s-haoa-jidian"] }
+  ]
+}
