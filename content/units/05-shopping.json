@@ -1,0 +1,96 @@
+{
+  "id": "u05-shopping",
+  "order": 5,
+  "title": "Shopping & prices",
+  "titleHanzi": "多少钱？",
+  "description": "Ask prices, bargain a little at the market, and bring a gift the polite way.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-mai3", "hanzi": "买", "pinyin": "mǎi", "english": ["to buy"], "hsk": 1, "pos": "verb" },
+    { "id": "w-mai4", "hanzi": "卖", "pinyin": "mài", "english": ["to sell"], "hsk": 2, "pos": "verb", "note": "Only the tone separates 买 mǎi (buy) and 卖 mài (sell)!" },
+    { "id": "w-qian", "hanzi": "钱", "pinyin": "qián", "english": ["money"], "hsk": 1, "pos": "noun" },
+    { "id": "w-kuai", "hanzi": "块", "pinyin": "kuài", "english": ["yuan (spoken)", "piece"], "hsk": 1, "pos": "measure", "note": "Price tags say 元 (yuán); people say 块." },
+    { "id": "w-gui", "hanzi": "贵", "pinyin": "guì", "english": ["expensive"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-pianyi", "hanzi": "便宜", "pinyin": "piányi", "english": ["cheap"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-keyi", "hanzi": "可以", "pinyin": "kěyǐ", "english": ["can", "OK", "may"], "hsk": 2, "pos": "verb" },
+    { "id": "w-jin-weight", "hanzi": "斤", "pinyin": "jīn", "english": ["jin (half a kilo)"], "hsk": 0, "pos": "measure" },
+    { "id": "w-yigong", "hanzi": "一共", "pinyin": "yígòng", "english": ["altogether", "in total"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-shuiguo", "hanzi": "水果", "pinyin": "shuǐguǒ", "english": ["fruit"], "hsk": 1, "pos": "noun" },
+    { "id": "w-pingguo", "hanzi": "苹果", "pinyin": "píngguǒ", "english": ["apple"], "hsk": 1, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-shangdian", "hanzi": "商店", "pinyin": "shāngdiàn", "english": ["shop", "store"], "hsk": 1, "pos": "noun" },
+    { "id": "w-yifu", "hanzi": "衣服", "pinyin": "yīfu", "english": ["clothes", "a piece of clothing"], "hsk": 1, "pos": "noun", "measure": "w-jian-item" },
+    { "id": "w-jian-item", "hanzi": "件", "pinyin": "jiàn", "english": ["(measure word for clothes, matters)"], "hsk": 2, "pos": "measure" },
+    { "id": "w-piaoliang", "hanzi": "漂亮", "pinyin": "piàoliang", "english": ["pretty", "beautiful", "nice-looking"], "hsk": 1, "pos": "adjective" },
+    { "id": "w-song", "hanzi": "送", "pinyin": "sòng", "english": ["to give (as a gift)"], "hsk": 2, "pos": "verb" },
+    { "id": "w-liwu", "hanzi": "礼物", "pinyin": "lǐwù", "english": ["gift", "present"], "hsk": 3, "pos": "noun", "measure": "w-ge" }
+  ],
+  "sentences": [
+    { "id": "s-zhegeduoshaoqian", "hanzi": "这个多少钱？", "pinyin": "Zhège duōshao qián?", "english": "How much is this?", "words": ["w-zhe", "w-ge", "w-duoshao", "w-qian"] },
+    { "id": "s-wushikuai", "hanzi": "五十块。", "pinyin": "Wǔshí kuài.", "english": "Fifty yuan.", "words": ["w-wu", "w-shi2", "w-kuai"] },
+    { "id": "s-taiguile", "hanzi": "太贵了！", "pinyin": "Tài guì le!", "english": "That's too expensive!", "words": ["w-tai", "w-gui", "w-le"] },
+    { "id": "s-pianyiyidianba", "hanzi": "便宜一点吧！", "pinyin": "Piányi yìdiǎn ba!", "english": "Make it a bit cheaper!", "words": ["w-pianyi", "w-yidian", "w-ba-particle"], "alt": { "english": ["A bit cheaper, please!"] } },
+    { "id": "s-taigui-pianyi", "hanzi": "太贵了！便宜一点吧！", "pinyin": "Tài guì le! Piányi yìdiǎn ba!", "english": "Too expensive! Make it a bit cheaper!", "words": ["w-tai", "w-gui", "w-le", "w-pianyi", "w-yidian", "w-ba-particle"] },
+    { "id": "s-sishikuaikeyima", "hanzi": "四十块可以吗？", "pinyin": "Sìshí kuài kěyǐ ma?", "english": "Is forty OK?", "words": ["w-si", "w-shi2", "w-kuai", "w-keyi", "w-ma"] },
+    { "id": "s-keyi", "hanzi": "可以。", "pinyin": "Kěyǐ.", "english": "OK.", "words": ["w-keyi"], "alt": { "english": ["Sure.", "That works."] } },
+    { "id": "s-niyaomaishenme", "hanzi": "你要买什么？", "pinyin": "Nǐ yào mǎi shénme?", "english": "What would you like to buy?", "words": ["w-ni", "w-yao", "w-mai3", "w-shenme"] },
+    { "id": "s-woyaomaipingguo", "hanzi": "我要买苹果。", "pinyin": "Wǒ yào mǎi píngguǒ.", "english": "I'd like to buy apples.", "words": ["w-wo", "w-yao", "w-mai3", "w-pingguo"] },
+    { "id": "s-pingguoduoshaoqianyijin", "hanzi": "苹果多少钱一斤？", "pinyin": "Píngguǒ duōshao qián yì jīn?", "english": "How much are the apples per jin?", "words": ["w-pingguo", "w-duoshao", "w-qian", "w-yi", "w-jin-weight"] },
+    { "id": "s-maipingguo-duoshao", "hanzi": "我要买苹果。苹果多少钱一斤？", "pinyin": "Wǒ yào mǎi píngguǒ. Píngguǒ duōshao qián yì jīn?", "english": "I'd like some apples. How much are they per jin?", "words": ["w-wo", "w-yao", "w-mai3", "w-pingguo", "w-pingguo", "w-duoshao", "w-qian", "w-yi", "w-jin-weight"] },
+    { "id": "s-yijinbakuai", "hanzi": "一斤八块。", "pinyin": "Yì jīn bā kuài.", "english": "Eight yuan a jin.", "words": ["w-yi", "w-jin-weight", "w-ba", "w-kuai"] },
+    { "id": "s-qikuaikeyima", "hanzi": "七块，可以吗？", "pinyin": "Qī kuài, kěyǐ ma?", "english": "Seven yuan, OK?", "words": ["w-qi", "w-kuai", "w-keyi", "w-ma"] },
+    { "id": "s-niyaojijin", "hanzi": "你要几斤？", "pinyin": "Nǐ yào jǐ jīn?", "english": "How many jin would you like?", "words": ["w-ni", "w-yao", "w-ji", "w-jin-weight"] },
+    { "id": "s-woyaoliangjin", "hanzi": "我要两斤。", "pinyin": "Wǒ yào liǎng jīn.", "english": "I'll take two jin.", "words": ["w-wo", "w-yao", "w-liang", "w-jin-weight"] },
+    { "id": "s-keyi-liangjin", "hanzi": "可以。我要两斤。", "pinyin": "Kěyǐ. Wǒ yào liǎng jīn.", "english": "OK. I'll take two jin.", "words": ["w-keyi", "w-wo", "w-yao", "w-liang", "w-jin-weight"] },
+    { "id": "s-yigongshisikuai", "hanzi": "一共十四块。", "pinyin": "Yígòng shísì kuài.", "english": "That's fourteen yuan altogether.", "words": ["w-yigong", "w-shi2", "w-si", "w-kuai"] },
+    { "id": "s-yigongshiliukuai", "hanzi": "一共十六块。", "pinyin": "Yígòng shíliù kuài.", "english": "That's sixteen yuan altogether.", "words": ["w-yigong", "w-shi2", "w-liu", "w-kuai"] },
+    { "id": "s-womenqushangdianba", "hanzi": "我们去商店吧。", "pinyin": "Wǒmen qù shāngdiàn ba.", "english": "Let's go to the shop.", "words": ["w-women", "w-qu", "w-shangdian", "w-ba-particle"] },
+    { "id": "s-maishuiguo", "hanzi": "我想买水果。", "pinyin": "Wǒ xiǎng mǎi shuǐguǒ.", "english": "I'd like to buy some fruit.", "words": ["w-wo", "w-xiang", "w-mai3", "w-shuiguo"] },
+    { "id": "s-zhejianyifu", "hanzi": "这件衣服很漂亮。", "pinyin": "Zhè jiàn yīfu hěn piàoliang.", "english": "This top is really nice.", "words": ["w-zhe", "w-jian-item", "w-yifu", "w-hen", "w-piaoliang"], "alt": { "english": ["This piece of clothing is really pretty."] } },
+    { "id": "s-zheshigeinindeliwu", "hanzi": "这是给您的礼物。", "pinyin": "Zhè shì gěi nín de lǐwù.", "english": "This is a present for you.", "words": ["w-zhe", "w-shi", "w-gei", "w-nin", "w-de", "w-liwu"] },
+    { "id": "s-nitaikeqile", "hanzi": "你太客气了！", "pinyin": "Nǐ tài kèqi le!", "english": "You shouldn't have!", "words": ["w-ni", "w-tai", "w-keqi", "w-le"], "alt": { "english": ["You're too kind!"] } },
+    { "id": "s-woxiangsongtamenshuiguo", "hanzi": "我想送水果。", "pinyin": "Wǒ xiǎng sòng shuǐguǒ.", "english": "I'd like to give fruit (as a gift).", "words": ["w-wo", "w-xiang", "w-song", "w-shuiguo"] },
+    { "id": "s-shangdianmaishenme", "hanzi": "这个商店卖什么？", "pinyin": "Zhège shāngdiàn mài shénme?", "english": "What does this shop sell?", "words": ["w-zhe", "w-ge", "w-shangdian", "w-mai4", "w-shenme"] }
+  ],
+  "exchanges": [
+    { "id": "x-price", "prompt": "s-zhegeduoshaoqian", "reply": "s-wushikuai", "wrong": ["s-keyi", "s-woyaoliangjin"], "context": "You're the seller and a customer points at something." },
+    { "id": "x-haggle", "prompt": "s-wushikuai", "reply": "s-taiguile", "wrong": ["s-nitaikeqile", "s-niyaomaishenme"], "context": "The price seems far too high." },
+    { "id": "x-whatbuy", "prompt": "s-niyaomaishenme", "reply": "s-woyaomaipingguo", "wrong": ["s-taiguile", "s-yigongshiliukuai"], "context": "A market seller greets you." },
+    { "id": "x-howmuchjin", "prompt": "s-niyaojijin", "reply": "s-woyaoliangjin", "wrong": ["s-wushikuai", "s-zhegeduoshaoqian"], "context": "The seller asks how much fruit you want." },
+    { "id": "x-gift", "prompt": "s-zheshigeinindeliwu", "reply": "s-nitaikeqile", "wrong": ["s-bukeqi", "s-taiguile"], "context": "Someone hands you a present." }
+  ],
+  "grammar": [
+    { "id": "g-price", "title": "Asking the price", "body": "这个多少钱？ = how much is this? Prices are said with 块 (kuài): 五十块 = 50 yuan. Shops write 元, but nobody says it.", "examples": ["s-zhegeduoshaoqian", "s-wushikuai"] },
+    { "id": "g-perunit", "title": "Price per unit", "body": "At markets, fruit and vegetables are priced per 斤 (jīn, half a kilo): 苹果多少钱一斤？ → 一斤八块 (eight yuan a jin).", "examples": ["s-pingguoduoshaoqianyijin", "s-yijinbakuai"] },
+    { "id": "g-maimai", "title": "买 mǎi vs 卖 mài", "body": "Buy and sell differ only in tone: 买 mǎi (3rd, buy) and 卖 mài (4th, sell). A great test for your ear!", "examples": ["s-woyaomaipingguo", "s-shangdianmaishenme"] },
+    { "id": "g-gift", "title": "Giving and receiving gifts", "body": "Bring fruit or something small when visiting family. When you're given something, 你太客气了 (you're too kind) is the classic polite reply.", "examples": ["s-zheshigeinindeliwu", "s-nitaikeqile"] }
+  ],
+  "dialogue": {
+    "id": "d05-market",
+    "title": "At the fruit stall",
+    "setting": "Mikkel buys apples at a market to bring to her parents.",
+    "speakers": [
+      { "id": "S", "name": "Seller", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "S", "sentence": "s-niyaomaishenme" },
+      { "speaker": "K", "sentence": "s-maipingguo-duoshao" },
+      { "speaker": "S", "sentence": "s-yijinbakuai" },
+      { "speaker": "K", "sentence": "s-taigui-pianyi" },
+      { "speaker": "S", "sentence": "s-qikuaikeyima" },
+      { "speaker": "K", "sentence": "s-keyi-liangjin" },
+      { "speaker": "S", "sentence": "s-yigongshisikuai" }
+    ],
+    "questions": [
+      { "q": "What does Mikkel buy?", "options": ["Apples", "Clothes", "Tea"], "answer": 0 },
+      { "q": "What price per jin do they agree on?", "options": ["8 yuan", "7 yuan", "14 yuan"], "answer": 1 },
+      { "q": "How much does he pay in total?", "options": ["14 yuan", "16 yuan", "8 yuan"], "answer": 0 }
+    ]
+  },
+  "nodes": [
+    { "id": "n05-price", "title": "How much?", "words": ["w-qian", "w-kuai", "w-gui", "w-pianyi", "w-keyi"], "sentences": ["s-zhegeduoshaoqian", "s-wushikuai", "s-taiguile", "s-pianyiyidianba", "s-sishikuaikeyima", "s-keyi"], "exchanges": ["x-price", "x-haggle"], "grammar": ["g-price"] },
+    { "id": "n05-market", "title": "At the market", "words": ["w-mai3", "w-mai4", "w-shuiguo", "w-pingguo", "w-jin-weight", "w-yigong"], "sentences": ["s-niyaomaishenme", "s-woyaomaipingguo", "s-pingguoduoshaoqianyijin", "s-yijinbakuai", "s-niyaojijin", "s-woyaoliangjin", "s-yigongshiliukuai"], "exchanges": ["x-whatbuy", "x-howmuchjin"], "grammar": ["g-perunit", "g-maimai"] },
+    { "id": "n05-gifts", "title": "Shops & gifts", "words": ["w-shangdian", "w-yifu", "w-jian-item", "w-piaoliang", "w-song", "w-liwu"], "sentences": ["s-womenqushangdianba", "s-maishuiguo", "s-zhejianyifu", "s-zheshigeinindeliwu", "s-nitaikeqile", "s-woxiangsongtamenshuiguo", "s-shangdianmaishenme"], "exchanges": ["x-gift"], "grammar": ["g-gift"] },
+    { "id": "n05-story", "title": "Story: At the fruit stall", "kind": "story", "sentences": ["s-maipingguo-duoshao", "s-taigui-pianyi", "s-qikuaikeyima", "s-keyi-liangjin", "s-yigongshisikuai"] }
+  ]
+}

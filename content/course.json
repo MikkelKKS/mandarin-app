@@ -14,15 +14,12 @@
         "u01-greetings",
         "u02-family",
         "u03-food",
-        "u04-time"
+        "u04-time",
+        "u05-shopping"
       ]
     }
   ],
   "upcoming": [
-    {
-      "title": "Shopping & prices",
-      "titleHanzi": "多少钱？"
-    },
     {
       "title": "Directions & transport",
       "titleHanzi": "怎么走？"
