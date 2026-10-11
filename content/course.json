@@ -24,15 +24,12 @@
       "units": [
         "u06-hobbies",
         "u07-work",
-        "u08-directions"
+        "u08-directions",
+        "u09-plans"
       ]
     }
   ],
   "upcoming": [
-    {
-      "title": "Plans & invitations",
-      "titleHanzi": "周末有空吗？"
-    },
     {
       "title": "Health",
       "titleHanzi": "你哪里不舒服？"

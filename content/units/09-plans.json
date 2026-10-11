@@ -1,0 +1,97 @@
+{
+  "id": "u09-plans",
+  "order": 9,
+  "title": "Plans & invitations",
+  "titleHanzi": "周末有空吗？",
+  "description": "Suggest a coffee, agree on a time, say maybe or definitely — and apologise for running late.",
+  "hsk": 2,
+  "words": [
+    { "id": "w-youkong", "hanzi": "有空", "pinyin": "yǒu kòng", "english": ["to be free (have time)"], "hsk": 0, "pos": "phrase" },
+    { "id": "w-shijian", "hanzi": "时间", "pinyin": "shíjiān", "english": ["time"], "hsk": 2, "pos": "noun" },
+    { "id": "w-dasuan", "hanzi": "打算", "pinyin": "dǎsuàn", "english": ["to plan to", "plan"], "hsk": 3, "pos": "verb" },
+    { "id": "w-jianmian", "hanzi": "见面", "pinyin": "jiànmiàn", "english": ["to meet (up)"], "hsk": 3, "pos": "verb" },
+    { "id": "w-zenmeyang", "hanzi": "怎么样", "pinyin": "zěnmeyàng", "english": ["how about it?", "how is it?"], "hsk": 1, "pos": "question" },
+    { "id": "w-fanguan", "hanzi": "饭馆", "pinyin": "fànguǎn", "english": ["restaurant"], "hsk": 1, "pos": "noun" },
+    { "id": "w-kafei", "hanzi": "咖啡", "pinyin": "kāfēi", "english": ["coffee"], "hsk": 2, "pos": "noun", "measure": "w-bei" },
+    { "id": "w-keneng", "hanzi": "可能", "pinyin": "kěnéng", "english": ["maybe", "might", "possible"], "hsk": 2, "pos": "adverb" },
+    { "id": "w-yiding", "hanzi": "一定", "pinyin": "yídìng", "english": ["definitely", "surely"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-wenti", "hanzi": "问题", "pinyin": "wèntí", "english": ["problem", "question"], "hsk": 2, "pos": "noun" },
+    { "id": "w-xia", "hanzi": "下", "pinyin": "xià", "english": ["next", "below", "down"], "hsk": 1, "pos": "noun" },
+    { "id": "w-ci", "hanzi": "次", "pinyin": "cì", "english": ["time (occurrence)"], "hsk": 2, "pos": "measure" },
+    { "id": "w-deng", "hanzi": "等", "pinyin": "děng", "english": ["to wait"], "hsk": 0, "pos": "verb" },
+    { "id": "w-mashang", "hanzi": "马上", "pinyin": "mǎshàng", "english": ["right away", "immediately"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-chidao", "hanzi": "迟到", "pinyin": "chídào", "english": ["to be late"], "hsk": 3, "pos": "verb" },
+    { "id": "w-yijing", "hanzi": "已经", "pinyin": "yǐjīng", "english": ["already"], "hsk": 2, "pos": "adverb" },
+    { "id": "w-zhunbei", "hanzi": "准备", "pinyin": "zhǔnbèi", "english": ["to prepare", "to get ready"], "hsk": 2, "pos": "verb" }
+  ],
+  "sentences": [
+    { "id": "s-zhoumoyoukongma", "hanzi": "周末你有空吗？", "pinyin": "Zhōumò nǐ yǒu kòng ma?", "english": "Are you free at the weekend?", "words": ["w-zhoumo", "w-ni", "w-youkong", "w-ma"] },
+    { "id": "s-mikkel-xingqiliuyoukong", "hanzi": "米格，星期六你有空吗？", "pinyin": "Mǐgé, xīngqīliù nǐ yǒu kòng ma?", "english": "Mi'ge, are you free on Saturday?", "words": ["w-mikkel", "w-xingqi", "w-liu", "w-ni", "w-youkong", "w-ma"] },
+    { "id": "s-youkong", "hanzi": "有空。", "pinyin": "Yǒu kòng.", "english": "Yes, I'm free.", "words": ["w-youkong"] },
+    { "id": "s-youkong-dasuan", "hanzi": "有空。你打算做什么？", "pinyin": "Yǒu kòng. Nǐ dǎsuàn zuò shénme?", "english": "I'm free. What are you planning?", "words": ["w-youkong", "w-ni", "w-dasuan", "w-zuo-do", "w-shenme"] },
+    { "id": "s-meiyoushijian", "hanzi": "对不起，我没有时间。", "pinyin": "Duìbuqǐ, wǒ méiyǒu shíjiān.", "english": "Sorry, I don't have time.", "words": ["w-duibuqi", "w-wo", "w-mei", "w-you", "w-shijian"] },
+    { "id": "s-qufanguanchifan", "hanzi": "我们去饭馆吃饭吧。", "pinyin": "Wǒmen qù fànguǎn chīfàn ba.", "english": "Let's eat out at a restaurant.", "words": ["w-women", "w-qu", "w-fanguan", "w-chi", "w-fan", "w-ba-particle"] },
+    { "id": "s-hebeikafei", "hanzi": "我们去喝杯咖啡，怎么样？", "pinyin": "Wǒmen qù hē bēi kāfēi, zěnmeyàng?", "english": "How about going for a coffee?", "words": ["w-women", "w-qu", "w-he-drink", "w-bei", "w-kafei", "w-zenmeyang"] },
+    { "id": "s-taihaole", "hanzi": "太好了！", "pinyin": "Tài hǎo le!", "english": "Great!", "words": ["w-tai", "w-hao", "w-le"] },
+    { "id": "s-taihaole-jidian", "hanzi": "太好了！几点见面？", "pinyin": "Tài hǎo le! Jǐ diǎn jiànmiàn?", "english": "Great! What time shall we meet?", "words": ["w-tai", "w-hao", "w-le", "w-ji", "w-dian", "w-jianmian"] },
+    { "id": "s-xingqiliujianmian", "hanzi": "我们星期六见面吧。", "pinyin": "Wǒmen xīngqīliù jiànmiàn ba.", "english": "Let's meet on Saturday.", "words": ["w-women", "w-xingqi", "w-liu", "w-jianmian", "w-ba-particle"] },
+    { "id": "s-jidianjianmian", "hanzi": "几点见面？", "pinyin": "Jǐ diǎn jiànmiàn?", "english": "What time shall we meet?", "words": ["w-ji", "w-dian", "w-jianmian"] },
+    { "id": "s-xiawuliangdianba", "hanzi": "下午两点吧。", "pinyin": "Xiàwǔ liǎng diǎn ba.", "english": "Let's say two in the afternoon.", "words": ["w-xiawu", "w-liang", "w-dian", "w-ba-particle"] },
+    { "id": "s-nidasuanzuoshenme", "hanzi": "明天你打算做什么？", "pinyin": "Míngtiān nǐ dǎsuàn zuò shénme?", "english": "What are you planning to do tomorrow?", "words": ["w-mingtian", "w-ni", "w-dasuan", "w-zuo-do", "w-shenme"] },
+    { "id": "s-wokenengquyouyong", "hanzi": "我可能去游泳。", "pinyin": "Wǒ kěnéng qù yóuyǒng.", "english": "I might go swimming.", "words": ["w-wo", "w-keneng", "w-qu", "w-youyong"] },
+    { "id": "s-meiwenti", "hanzi": "没问题！", "pinyin": "Méi wèntí!", "english": "No problem!", "words": ["w-mei", "w-wenti"] },
+    { "id": "s-woyidinglai", "hanzi": "我一定来！", "pinyin": "Wǒ yídìng lái!", "english": "I'll definitely come!", "words": ["w-wo", "w-yiding", "w-lai"] },
+    { "id": "s-xiaciba", "hanzi": "下次吧。", "pinyin": "Xià cì ba.", "english": "Next time, then.", "words": ["w-xia", "w-ci", "w-ba-particle"] },
+    { "id": "s-dengwowufenzhong", "hanzi": "等我五分钟。", "pinyin": "Děng wǒ wǔ fēnzhōng.", "english": "Give me five minutes.", "words": ["w-deng", "w-wo", "w-wu", "w-fenzhong"] },
+    { "id": "s-duibuqiwomashangdao", "hanzi": "对不起，我马上到！", "pinyin": "Duìbuqǐ, wǒ mǎshàng dào!", "english": "Sorry, I'll be right there!", "words": ["w-duibuqi", "w-wo", "w-mashang", "w-dao"] },
+    { "id": "s-duibuqiwochidaole", "hanzi": "对不起，我迟到了。", "pinyin": "Duìbuqǐ, wǒ chídào le.", "english": "Sorry I'm late.", "words": ["w-duibuqi", "w-wo", "w-chidao", "w-le"] },
+    { "id": "s-niyijingdaolema", "hanzi": "你已经到了吗？", "pinyin": "Nǐ yǐjīng dào le ma?", "english": "Are you there already?", "words": ["w-ni", "w-yijing", "w-dao", "w-le", "w-ma"] },
+    { "id": "s-zhunbeihaolema", "hanzi": "准备好了吗？", "pinyin": "Zhǔnbèi hǎo le ma?", "english": "Are you ready?", "words": ["w-zhunbei", "w-hao", "w-le", "w-ma"] }
+  ],
+  "exchanges": [
+    { "id": "x-free", "prompt": "s-zhoumoyoukongma", "reply": "s-youkong", "wrong": ["s-yigongshisikuai", "s-zaiyoubian"], "context": "A friend checks if you're free." },
+    { "id": "x-coffee", "prompt": "s-hebeikafei", "reply": "s-taihaole", "wrong": ["s-taiguile", "s-zaizuobian"], "context": "Her sister suggests coffee." },
+    { "id": "x-late", "prompt": "s-duibuqiwochidaole", "reply": "s-meiguanxi", "wrong": ["s-bukeqi", "s-taihaole"], "context": "Your friend arrives late and apologises." },
+    { "id": "x-meettime", "prompt": "s-jidianjianmian", "reply": "s-xiawuliangdianba", "wrong": ["s-xiaciba", "s-meiwenti"], "context": "You're fixing a time." },
+    { "id": "x-plan", "prompt": "s-nidasuanzuoshenme", "reply": "s-wokenengquyouyong", "wrong": ["s-meiwenti", "s-zaiyoubian"], "context": "Someone asks about your plans." },
+    { "id": "x-arrived", "prompt": "s-niyijingdaolema", "reply": "s-duibuqiwomashangdao", "wrong": ["s-shengrikuaile", "s-wohechaba"], "context": "You're running a bit late and your phone rings." }
+  ],
+  "grammar": [
+    { "id": "g-youkong", "title": "有空 = to be free", "body": "你有空吗？ = are you free? Answer 有空 (yes) or 没空 / 没有时间 (no time).", "examples": ["s-zhoumoyoukongma", "s-meiyoushijian"] },
+    { "id": "g-zenmeyang", "title": "Suggestions with 怎么样 and 吧", "body": "Make a suggestion and add 怎么样？ (how about it?): 我们去喝杯咖啡，怎么样？ Or end it with 吧 (let's): 我们星期六见面吧.", "examples": ["s-hebeikafei", "s-xingqiliujianmian"] },
+    { "id": "g-keneng", "title": "可能 vs 一定", "body": "Both go before the verb: 我可能去 (I might go) vs 我一定来 (I'll definitely come).", "examples": ["s-wokenengquyouyong", "s-woyidinglai"] },
+    { "id": "g-le", "title": "了 for something that has happened", "body": "了 after a verb shows it has happened or changed: 我迟到了 (I'm late — it's happened), 你已经到了吗？ (have you arrived already?).", "examples": ["s-duibuqiwochidaole", "s-niyijingdaolema"] }
+  ],
+  "dialogue": {
+    "id": "d09-coffee",
+    "title": "Coffee on Saturday",
+    "setting": "Her sister rings Mikkel to make plans — and then Saturday comes.",
+    "speakers": [
+      { "id": "S", "name": "Her sister", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "S", "sentence": "s-mikkel-xingqiliuyoukong" },
+      { "speaker": "K", "sentence": "s-youkong-dasuan" },
+      { "speaker": "S", "sentence": "s-hebeikafei" },
+      { "speaker": "K", "sentence": "s-taihaole-jidian" },
+      { "speaker": "S", "sentence": "s-xiawuliangdianba" },
+      { "speaker": "S", "sentence": "s-niyijingdaolema" },
+      { "speaker": "K", "sentence": "s-duibuqiwomashangdao" },
+      { "speaker": "S", "sentence": "s-meiwenti" }
+    ],
+    "questions": [
+      { "q": "Which day do they plan to meet?", "options": ["Saturday", "Sunday", "Friday"], "answer": 0 },
+      { "q": "What do they plan to do?", "options": ["Have dinner", "Have a coffee", "Go swimming"], "answer": 1 },
+      { "q": "What time?", "options": ["12:00", "2 pm", "3 pm"], "answer": 1 },
+      { "q": "What happens on the day?", "options": ["Mikkel is running a bit late", "Her sister cancels", "Mikkel forgets"], "answer": 0 }
+    ]
+  },
+  "nodes": [
+    { "id": "n09-free", "title": "Are you free?", "words": ["w-youkong", "w-shijian", "w-dasuan", "w-xia", "w-ci"], "sentences": ["s-zhoumoyoukongma", "s-youkong", "s-meiyoushijian", "s-nidasuanzuoshenme", "s-xiaciba"], "exchanges": ["x-free", "x-plan"], "grammar": ["g-youkong"] },
+    { "id": "n09-suggest", "title": "How about…?", "words": ["w-zenmeyang", "w-fanguan", "w-kafei", "w-jianmian"], "sentences": ["s-qufanguanchifan", "s-hebeikafei", "s-taihaole", "s-xingqiliujianmian", "s-jidianjianmian", "s-xiawuliangdianba"], "exchanges": ["x-coffee", "x-meettime"], "grammar": ["g-zenmeyang"] },
+    { "id": "n09-maybe", "title": "Maybe, definitely", "words": ["w-keneng", "w-yiding", "w-wenti", "w-zhunbei"], "sentences": ["s-wokenengquyouyong", "s-woyidinglai", "s-meiwenti", "s-zhunbeihaolema"], "grammar": ["g-keneng"] },
+    { "id": "n09-late", "title": "Running late", "words": ["w-deng", "w-mashang", "w-chidao", "w-yijing"], "sentences": ["s-dengwowufenzhong", "s-duibuqiwomashangdao", "s-duibuqiwochidaole", "s-niyijingdaolema"], "exchanges": ["x-late", "x-arrived"], "grammar": ["g-le"] },
+    { "id": "n09-story", "title": "Story: Coffee on Saturday", "kind": "story", "sentences": ["s-mikkel-xingqiliuyoukong", "s-youkong-dasuan", "s-taihaole-jidian"] }
+  ]
+}
