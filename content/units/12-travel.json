@@ -1,0 +1,112 @@
+{
+  "id": "u12-travel",
+  "order": 12,
+  "title": "Travel",
+  "titleHanzi": "一路平安！",
+  "description": "HSK 3: plan a trip to the Great Wall, lose (and find) your passport. Grammar: 把, 被, 越来越, 一边…一边, 先…然后, and 找不到 / 找到了.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-ba-object", "hanzi": "把", "pinyin": "bǎ", "english": ["(moves the object before the verb)"], "hsk": 3, "pos": "preposition", "note": "Sounds like 八 (eight) and 吧 without tone." },
+    { "id": "w-bei-passive", "hanzi": "被", "pinyin": "bèi", "english": ["by (passive)"], "hsk": 3, "pos": "preposition" },
+    { "id": "w-yuelaiyue", "hanzi": "越来越", "pinyin": "yuèláiyuè", "english": ["more and more"], "hsk": 0, "pos": "adverb" },
+    { "id": "w-yibian", "hanzi": "一边", "pinyin": "yìbiān", "english": ["while (doing two things at once)"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-xian", "hanzi": "先", "pinyin": "xiān", "english": ["first"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-tianqi", "hanzi": "天气", "pinyin": "tiānqì", "english": ["weather"], "hsk": 1, "pos": "noun" },
+    { "id": "w-changcheng", "hanzi": "长城", "pinyin": "Chángchéng", "english": ["the Great Wall"], "hsk": 4, "pos": "name" },
+    { "id": "w-youming", "hanzi": "有名", "pinyin": "yǒumíng", "english": ["famous"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-paizhao", "hanzi": "拍照", "pinyin": "pāizhào", "english": ["to take photos"], "hsk": 0, "pos": "verb" },
+    { "id": "w-binguan", "hanzi": "宾馆", "pinyin": "bīnguǎn", "english": ["hotel"], "hsk": 3, "pos": "noun" },
+    { "id": "w-fangjian", "hanzi": "房间", "pinyin": "fángjiān", "english": ["room"], "hsk": 2, "pos": "noun" },
+    { "id": "w-ding", "hanzi": "订", "pinyin": "dìng", "english": ["to book", "to reserve"], "hsk": 0, "pos": "verb" },
+    { "id": "w-huzhao", "hanzi": "护照", "pinyin": "hùzhào", "english": ["passport"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xingli", "hanzi": "行李", "pinyin": "xíngli", "english": ["luggage"], "hsk": 0, "pos": "noun" },
+    { "id": "w-qianbao", "hanzi": "钱包", "pinyin": "qiánbāo", "english": ["wallet"], "hsk": 0, "pos": "noun" },
+    { "id": "w-wangji", "hanzi": "忘记", "pinyin": "wàngjì", "english": ["to forget"], "hsk": 3, "pos": "verb" },
+    { "id": "w-dai", "hanzi": "带", "pinyin": "dài", "english": ["to bring", "to take along"], "hsk": 3, "pos": "verb" },
+    { "id": "w-diu", "hanzi": "丢", "pinyin": "diū", "english": ["to lose (something)"], "hsk": 4, "pos": "verb" },
+    { "id": "w-zhao", "hanzi": "找", "pinyin": "zhǎo", "english": ["to look for"], "hsk": 2, "pos": "verb" },
+    { "id": "w-na-take", "hanzi": "拿", "pinyin": "ná", "english": ["to take", "to pick up"], "hsk": 3, "pos": "verb" },
+    { "id": "w-fang-put", "hanzi": "放", "pinyin": "fàng", "english": ["to put", "to leave (somewhere)"], "hsk": 3, "pos": "verb" },
+    { "id": "w-bang", "hanzi": "帮", "pinyin": "bāng", "english": ["to help"], "hsk": 0, "pos": "verb" },
+    { "id": "w-bangmang", "hanzi": "帮忙", "pinyin": "bāngmáng", "english": ["to help out", "a hand"], "hsk": 3, "pos": "verb" },
+    { "id": "w-gangcai", "hanzi": "刚才", "pinyin": "gāngcái", "english": ["just now"], "hsk": 3, "pos": "time" },
+    { "id": "w-hai-still", "hanzi": "还", "pinyin": "hái", "english": ["still", "also"], "hsk": 2, "pos": "adverb" },
+    { "id": "w-yilupingan", "hanzi": "一路平安", "pinyin": "yílù píng'ān", "english": ["have a safe trip"], "hsk": 0, "pos": "phrase" }
+  ],
+  "sentences": [
+    { "id": "s-xiangquchangcheng", "hanzi": "我想去长城。", "pinyin": "Wǒ xiǎng qù Chángchéng.", "english": "I'd like to go to the Great Wall.", "words": ["w-wo", "w-xiang", "w-qu", "w-changcheng"] },
+    { "id": "s-changchenghenyouming", "hanzi": "长城很有名。", "pinyin": "Chángchéng hěn yǒumíng.", "english": "The Great Wall is very famous.", "words": ["w-changcheng", "w-hen", "w-youming"] },
+    { "id": "s-mikkel-qunaliwan", "hanzi": "米格，你想去哪里玩？", "pinyin": "Mǐgé, nǐ xiǎng qù nǎlǐ wán?", "english": "Mi'ge, where would you like to go?", "words": ["w-mikkel", "w-ni", "w-xiang", "w-qu", "w-nali", "w-wan-play"] },
+    { "id": "s-changcheng-youming", "hanzi": "我想去长城。长城很有名！", "pinyin": "Wǒ xiǎng qù Chángchéng. Chángchéng hěn yǒumíng!", "english": "I'd like to see the Great Wall. It's so famous!", "words": ["w-wo", "w-xiang", "w-qu", "w-changcheng", "w-changcheng", "w-hen", "w-youming"] },
+    { "id": "s-xianqu-ranhou", "hanzi": "好啊！我们先去长城，然后去吃饭。", "pinyin": "Hǎo a! Wǒmen xiān qù Chángchéng, ránhòu qù chīfàn.", "english": "Sure! First the Great Wall, then we'll go and eat.", "words": ["w-hao", "w-a", "w-women", "w-xian", "w-qu", "w-changcheng", "w-ranhou", "w-qu", "w-chi", "w-fan"] },
+    { "id": "s-xianbinguan", "hanzi": "我们先去宾馆，然后去吃饭。", "pinyin": "Wǒmen xiān qù bīnguǎn, ránhòu qù chīfàn.", "english": "First we'll go to the hotel, then go and eat.", "words": ["w-women", "w-xian", "w-qu", "w-binguan", "w-ranhou", "w-qu", "w-chi", "w-fan"] },
+    { "id": "s-nidingfangjianlema", "hanzi": "你订房间了吗？", "pinyin": "Nǐ dìng fángjiān le ma?", "english": "Have you booked a room?", "words": ["w-ni", "w-ding", "w-fangjian", "w-le", "w-ma"] },
+    { "id": "s-yijingdinghaole", "hanzi": "我已经订好了。", "pinyin": "Wǒ yǐjīng dìng hǎo le.", "english": "I've already booked it.", "words": ["w-wo", "w-yijing", "w-ding", "w-hao", "w-le"] },
+    { "id": "s-biewangjidaihuzhao", "hanzi": "别忘记带护照！", "pinyin": "Bié wàngjì dài hùzhào!", "english": "Don't forget your passport!", "words": ["w-bie", "w-wangji", "w-dai", "w-huzhao"] },
+    { "id": "s-bahuzhaogeini", "hanzi": "我把护照给你。", "pinyin": "Wǒ bǎ hùzhào gěi nǐ.", "english": "Here, I'll give you the passport.", "words": ["w-wo", "w-ba-object", "w-huzhao", "w-gei", "w-ni"] },
+    { "id": "s-bazhaopiangeiwokan", "hanzi": "请把照片给我看看。", "pinyin": "Qǐng bǎ zhàopiàn gěi wǒ kànkan.", "english": "Show me the photos, please.", "words": ["w-qing", "w-ba-object", "w-zhaopian", "w-gei", "w-wo", "w-kan", "w-kan"] },
+    { "id": "s-qianbaodiule", "hanzi": "我的钱包丢了！", "pinyin": "Wǒ de qiánbāo diū le!", "english": "I've lost my wallet!", "words": ["w-wo", "w-de", "w-qianbao", "w-diu", "w-le"] },
+    { "id": "s-shoujibeimeimeinazoule", "hanzi": "我的手机被我妹妹拿走了。", "pinyin": "Wǒ de shǒujī bèi wǒ mèimei ná zǒu le.", "english": "My phone was taken by my little sister.", "words": ["w-wo", "w-de", "w-shouji", "w-bei-passive", "w-wo", "w-meimei", "w-na-take", "w-zou", "w-le"] },
+    { "id": "s-xinglibeifangzaibinguan", "hanzi": "行李被我放在宾馆了。", "pinyin": "Xíngli bèi wǒ fàng zài bīnguǎn le.", "english": "I left the luggage at the hotel.", "words": ["w-xingli", "w-bei-passive", "w-wo", "w-fang-put", "w-zai", "w-binguan", "w-le"] },
+    { "id": "s-zhaobudaohuzhao", "hanzi": "我找不到我的护照。", "pinyin": "Wǒ zhǎo bu dào wǒ de hùzhào.", "english": "I can't find my passport.", "words": ["w-wo", "w-zhao", "w-bu", "w-dao", "w-wo", "w-de", "w-huzhao"] },
+    { "id": "s-a-zhaobudao", "hanzi": "啊，我找不到我的护照！", "pinyin": "À, wǒ zhǎo bu dào wǒ de hùzhào!", "english": "Oh no, I can't find my passport!", "words": ["w-a", "w-wo", "w-zhao", "w-bu", "w-dao", "w-wo", "w-de", "w-huzhao"] },
+    { "id": "s-biedanxin-bangnizhao", "hanzi": "别担心，我帮你找吧！", "pinyin": "Bié dānxīn, wǒ bāng nǐ zhǎo ba!", "english": "Don't worry, I'll help you look!", "words": ["w-bie", "w-danxin", "w-wo", "w-bang", "w-ni", "w-zhao", "w-ba-particle"] },
+    { "id": "s-bangnizhaoba", "hanzi": "我帮你找吧！", "pinyin": "Wǒ bāng nǐ zhǎo ba!", "english": "I'll help you look!", "words": ["w-wo", "w-bang", "w-ni", "w-zhao", "w-ba-particle"] },
+    { "id": "s-zhaodaole-zaizheli", "hanzi": "找到了！在这里。", "pinyin": "Zhǎodào le! Zài zhèlǐ.", "english": "Found it! It's here.", "words": ["w-zhao", "w-dao", "w-le", "w-zai", "w-zheli"] },
+    { "id": "s-gangcaihaizaizheli", "hanzi": "刚才还在这里！", "pinyin": "Gāngcái hái zài zhèlǐ!", "english": "It was right here a moment ago!", "words": ["w-gangcai", "w-hai-still", "w-zai", "w-zheli"] },
+    { "id": "s-xiexie-nizhenhao", "hanzi": "谢谢！你真好！", "pinyin": "Xièxie! Nǐ zhēn hǎo!", "english": "Thanks! You're so kind!", "words": ["w-xiexie", "w-ni", "w-zhen", "w-hao"] },
+    { "id": "s-yaobangmangma", "hanzi": "要帮忙吗？", "pinyin": "Yào bāngmáng ma?", "english": "Do you need a hand?", "words": ["w-yao", "w-bangmang", "w-ma"] },
+    { "id": "s-tianqiyuelaiyuere", "hanzi": "天气越来越热了。", "pinyin": "Tiānqì yuèláiyuè rè le.", "english": "It's getting hotter and hotter.", "words": ["w-tianqi", "w-yuelaiyue", "w-re", "w-le"] },
+    { "id": "s-zhongwenyuelaiyuehao", "hanzi": "你的中文越来越好了！", "pinyin": "Nǐ de Zhōngwén yuèláiyuè hǎo le!", "english": "Your Chinese is getting better and better!", "words": ["w-ni", "w-de", "w-zhongwen", "w-yuelaiyue", "w-hao", "w-le"] },
+    { "id": "s-yibianzouyibianpaizhao", "hanzi": "我们一边走一边拍照。", "pinyin": "Wǒmen yìbiān zǒu yìbiān pāizhào.", "english": "We took photos as we walked.", "words": ["w-women", "w-yibian", "w-zou", "w-yibian", "w-paizhao"] },
+    { "id": "s-mingtianhuidanmai", "hanzi": "我明天回丹麦。", "pinyin": "Wǒ míngtiān huí Dānmài.", "english": "I'm going back to Denmark tomorrow.", "words": ["w-wo", "w-mingtian", "w-hui-return", "w-danmai"] },
+    { "id": "s-yilupingan", "hanzi": "一路平安！", "pinyin": "Yílù píng'ān!", "english": "Have a safe trip!", "words": ["w-yilupingan"] }
+  ],
+  "exchanges": [
+    { "id": "x-needhand", "prompt": "s-yaobangmangma", "reply": "s-haoa", "wrong": ["s-yilupingan", "s-changchenghenyouming"], "context": "You're struggling with heavy bags." },
+    { "id": "x-passport", "prompt": "s-biewangjidaihuzhao", "reply": "s-fangxinba", "wrong": ["s-shengrikuaile", "s-yigongshisikuai"], "context": "Packing the night before the trip." },
+    { "id": "x-leaving", "prompt": "s-mingtianhuidanmai", "reply": "s-yilupingan", "wrong": ["s-shengrikuaile", "s-huanying"], "context": "Someone is about to travel home." },
+    { "id": "x-lostwallet", "prompt": "s-qianbaodiule", "reply": "s-bangnizhaoba", "wrong": ["s-changchenghenyouming", "s-taihaole"], "context": "Your friend panics." },
+    { "id": "x-better", "prompt": "s-zhongwenyuelaiyuehao", "reply": "s-nalinali", "wrong": ["s-zhaodaole-zaizheli", "s-yaobangmangma"], "context": "A compliment — stay modest." },
+    { "id": "x-booked", "prompt": "s-nidingfangjianlema", "reply": "s-yijingdinghaole", "wrong": ["s-yibianzouyibianpaizhao", "s-xiaoxin"], "context": "Planning where to stay." }
+  ],
+  "grammar": [
+    { "id": "g-ba", "title": "把: doing something to an object", "body": "把 + object + verb + more: 请把照片给我看看 (show me the photos), 我把护照给你 (I'll give you the passport). Use it when you do something definite to a specific thing. The verb can't stand alone; it needs something after it (给你, 看看, 放在…).", "examples": ["s-bazhaopiangeiwokan", "s-bahuzhaogeini"] },
+    { "id": "g-bei", "title": "被: the passive", "body": "Thing + 被 + (who) + verb + result: 我的手机被我妹妹拿走了 (my phone was taken by my sister). Often used for things that went wrong.", "examples": ["s-shoujibeimeimeinazoule", "s-xinglibeifangzaibinguan"] },
+    { "id": "g-result", "title": "找到了 / 找不到", "body": "Verb + result: 找到 = look for + reach = find. Put 不 in the middle for 'can't': 找不到 = can't find. 找到了！ = found it!", "examples": ["s-zhaobudaohuzhao", "s-zhaodaole-zaizheli"] },
+    { "id": "g-yuelaiyue", "title": "越来越 = more and more", "body": "越来越 + adjective + 了: 天气越来越热了 (it's getting hotter), 你的中文越来越好了.", "examples": ["s-tianqiyuelaiyuere", "s-zhongwenyuelaiyuehao"] },
+    { "id": "g-yibian", "title": "一边…一边… and 先…然后…", "body": "一边A一边B = doing A and B at the same time: 一边走一边拍照. 先A，然后B = first A, then B.", "examples": ["s-yibianzouyibianpaizhao", "s-xianbinguan"] }
+  ],
+  "dialogue": {
+    "id": "d12-greatwall",
+    "title": "Listening challenge: The Great Wall",
+    "setting": "Her sister plans a day out with Mikkel — and then his passport goes missing.",
+    "speakers": [
+      { "id": "S", "name": "Her sister", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "S", "sentence": "s-mikkel-qunaliwan" },
+      { "speaker": "K", "sentence": "s-changcheng-youming" },
+      { "speaker": "S", "sentence": "s-xianqu-ranhou" },
+      { "speaker": "K", "sentence": "s-taihaole" },
+      { "speaker": "K", "sentence": "s-a-zhaobudao" },
+      { "speaker": "S", "sentence": "s-biedanxin-bangnizhao" },
+      { "speaker": "S", "sentence": "s-zhaodaole-zaizheli" },
+      { "speaker": "K", "sentence": "s-xiexie-nizhenhao" }
+    ],
+    "questions": [
+      { "q": "Where does Mikkel want to go?", "options": ["Shanghai", "The Great Wall", "A restaurant"], "answer": 1 },
+      { "q": "What will they do afterwards?", "options": ["Go to eat", "Go shopping", "Go back to the hotel"], "answer": 0 },
+      { "q": "What can't Mikkel find?", "options": ["His phone", "His wallet", "His passport"], "answer": 2 },
+      { "q": "Who finds it?", "options": ["Her sister", "Mikkel", "Nobody"], "answer": 0 }
+    ]
+  },
+  "nodes": [
+    { "id": "n12-plans", "title": "Trip plans (先…然后)", "words": ["w-xian", "w-changcheng", "w-youming", "w-binguan", "w-fangjian", "w-ding"], "sentences": ["s-xiangquchangcheng", "s-changchenghenyouming", "s-xianbinguan", "s-nidingfangjianlema", "s-yijingdinghaole"], "exchanges": ["x-booked"], "grammar": ["g-yibian"] },
+    { "id": "n12-ba", "title": "把 and packing", "words": ["w-ba-object", "w-huzhao", "w-wangji", "w-dai", "w-yilupingan"], "sentences": ["s-biewangjidaihuzhao", "s-bahuzhaogeini", "s-bazhaopiangeiwokan", "s-mingtianhuidanmai", "s-yilupingan"], "exchanges": ["x-passport", "x-leaving"], "grammar": ["g-ba"] },
+    { "id": "n12-lost", "title": "Lost & found (被, 找不到)", "words": ["w-bei-passive", "w-xingli", "w-qianbao", "w-diu", "w-zhao", "w-na-take", "w-fang-put", "w-gangcai", "w-hai-still"], "sentences": ["s-qianbaodiule", "s-shoujibeimeimeinazoule", "s-xinglibeifangzaibinguan", "s-zhaobudaohuzhao", "s-zhaodaole-zaizheli", "s-gangcaihaizaizheli"], "grammar": ["g-bei", "g-result"] },
+    { "id": "n12-better", "title": "More and more (越来越)", "words": ["w-yuelaiyue", "w-yibian", "w-tianqi", "w-paizhao", "w-bang", "w-bangmang"], "sentences": ["s-tianqiyuelaiyuere", "s-zhongwenyuelaiyuehao", "s-yibianzouyibianpaizhao", "s-yaobangmangma", "s-bangnizhaoba"], "exchanges": ["x-needhand", "x-lostwallet", "x-better"], "grammar": ["g-yuelaiyue"] },
+    { "id": "n12-story", "title": "Challenge: The Great Wall", "kind": "story", "sentences": ["s-mikkel-qunaliwan", "s-xianqu-ranhou", "s-a-zhaobudao", "s-biedanxin-bangnizhao"] }
+  ]
+}

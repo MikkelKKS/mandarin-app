@@ -58,7 +58,7 @@ export function PathView() {
         </section>
       ))}
 
-      <section>
+      {course.upcoming.length > 0 && <section>
         <h2 className="mb-4 text-sm font-semibold text-muted">Coming next</h2>
         <ul className="flex flex-col gap-2">
           {course.upcoming.map((u) => (
@@ -68,7 +68,7 @@ export function PathView() {
             </li>
           ))}
         </ul>
-      </section>
+      </section>}
 
       {sheet && <NodeSheet nodeId={sheet} state={states.get(sheet)!} onClose={() => setSheet(null)} />}
     </div>

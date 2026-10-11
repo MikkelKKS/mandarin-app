@@ -33,14 +33,10 @@
       "title": "HSK 3 — real conversations",
       "units": [
         "u10-experiences",
-        "u11-health"
+        "u11-health",
+        "u12-travel"
       ]
     }
   ],
-  "upcoming": [
-    {
-      "title": "Travel",
-      "titleHanzi": "一路平安"
-    }
-  ]
+  "upcoming": []
 }

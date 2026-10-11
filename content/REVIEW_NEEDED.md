@@ -10,3 +10,4 @@ Items a native speaker (e.g. your girlfriend) should glance at. Remove an entry 
 | u00-basics | 啊，对不起！ written À | The tone of 啊 varies with the speaker's mood; the audio may not match the tone mark exactly. |
 | u10-experiences | 北京人很多，哥本哈根安静多了。 | Meant as "Beijing is crowded; Copenhagen is much quieter". Check it sounds natural; 北京人太多了 may be more idiomatic. |
 | u10-experiences | 过 tagged HSK 4, 对 tagged HSK 4 | The downloaded HSK list puts these standalone characters at level 4, although they're used much earlier. Harmless; just a label. |
+| u12-travel | 行李被我放在宾馆了。 | A 被 example with yourself as the doer; 我把行李放在宾馆了 is the more everyday way to say it. Kept to show the pattern; check it doesn't sound odd. |
