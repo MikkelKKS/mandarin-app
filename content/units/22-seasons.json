@@ -1,0 +1,111 @@
+{
+  "id": "u22-seasons",
+  "order": 22,
+  "title": "Seasons and nature",
+  "titleHanzi": "北京的秋天",
+  "description": "The four seasons, wind and sun, parks and animals, and Beijing-style directions: north, south, east and west.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-jijie", "hanzi": "季节", "pinyin": "jìjié", "english": ["season"], "hsk": 3, "pos": "noun" },
+    { "id": "w-chun", "hanzi": "春", "pinyin": "chūn", "english": ["spring"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xia-summer", "hanzi": "夏", "pinyin": "xià", "english": ["summer"], "hsk": 3, "pos": "noun" },
+    { "id": "w-qiu", "hanzi": "秋", "pinyin": "qiū", "english": ["autumn"], "hsk": 3, "pos": "noun" },
+    { "id": "w-dong-winter", "hanzi": "冬", "pinyin": "dōng", "english": ["winter"], "hsk": 3, "pos": "noun" },
+    { "id": "w-gua", "hanzi": "刮", "pinyin": "guā", "english": ["to blow (wind)", "to scrape"], "hsk": 3, "pos": "verb" },
+    { "id": "w-feng", "hanzi": "风", "pinyin": "fēng", "english": ["wind"], "hsk": 0, "pos": "noun" },
+    { "id": "w-taiyang", "hanzi": "太阳", "pinyin": "tàiyáng", "english": ["sun"], "hsk": 3, "pos": "noun" },
+    { "id": "w-yun", "hanzi": "云", "pinyin": "yún", "english": ["cloud"], "hsk": 3, "pos": "noun" },
+    { "id": "w-yueliang", "hanzi": "月亮", "pinyin": "yuèliang", "english": ["moon"], "hsk": 3, "pos": "noun" },
+    { "id": "w-gongyuan", "hanzi": "公园", "pinyin": "gōngyuán", "english": ["park"], "hsk": 3, "pos": "noun" },
+    { "id": "w-cao", "hanzi": "草", "pinyin": "cǎo", "english": ["grass"], "hsk": 3, "pos": "noun" },
+    { "id": "w-shu-tree", "hanzi": "树", "pinyin": "shù", "english": ["tree"], "hsk": 3, "pos": "noun" },
+    { "id": "w-hua-flower", "hanzi": "花", "pinyin": "huā", "english": ["flower", "to spend"], "hsk": 3, "pos": "noun" },
+    { "id": "w-huayuan", "hanzi": "花园", "pinyin": "huāyuán", "english": ["garden"], "hsk": 3, "pos": "noun" },
+    { "id": "w-he-river", "hanzi": "河", "pinyin": "hé", "english": ["river"], "hsk": 3, "pos": "noun", "measure": "w-tiao" },
+    { "id": "w-niao", "hanzi": "鸟", "pinyin": "niǎo", "english": ["bird"], "hsk": 3, "pos": "noun", "measure": "w-zhi" },
+    { "id": "w-dongwu", "hanzi": "动物", "pinyin": "dòngwù", "english": ["animal"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xiongmao", "hanzi": "熊猫", "pinyin": "xióngmāo", "english": ["panda"], "hsk": 3, "pos": "noun", "measure": "w-zhi" },
+    { "id": "w-ma-horse", "hanzi": "马", "pinyin": "mǎ", "english": ["horse"], "hsk": 3, "pos": "noun" },
+    { "id": "w-pashan", "hanzi": "爬山", "pinyin": "páshān", "english": ["to climb a mountain", "to go hiking"], "hsk": 3, "pos": "verb" },
+    { "id": "w-dong-east", "hanzi": "东", "pinyin": "dōng", "english": ["east"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xi-west", "hanzi": "西", "pinyin": "xī", "english": ["west"], "hsk": 3, "pos": "noun" },
+    { "id": "w-nan-south", "hanzi": "南", "pinyin": "nán", "english": ["south"], "hsk": 3, "pos": "noun" },
+    { "id": "w-bei-north", "hanzi": "北", "pinyin": "běi", "english": ["north"], "hsk": 0, "pos": "noun" },
+    { "id": "w-beifang", "hanzi": "北方", "pinyin": "běifāng", "english": ["the north", "northern China"], "hsk": 3, "pos": "noun" }
+  ],
+  "sentences": [
+    { "id": "s22-nageijijie", "hanzi": "米格，你最喜欢哪个季节？", "pinyin": "Mǐgé, nǐ zuì xǐhuan nǎ ge jìjié?", "english": "米格, which season do you like best?", "words": ["w-mikkel", "w-ni", "w-zui", "w-xihuan", "w-na3", "w-ge", "w-jijie"] },
+    { "id": "s22-zuixihuanqiutian", "hanzi": "我最喜欢秋天。", "pinyin": "Wǒ zuì xǐhuan qiūtiān.", "english": "I like autumn best.", "words": ["w-wo", "w-zui", "w-xihuan", "w-qiu", "w-tian"] },
+    { "id": "s22-qiutianzuipiaoliang", "hanzi": "我也是！北京的秋天最漂亮。", "pinyin": "Wǒ yě shì! Běijīng de qiūtiān zuì piàoliang.", "english": "Me too! Autumn is the most beautiful season in Beijing.", "words": ["w-wo", "w-ye", "w-shi", "w-beijing", "w-de", "w-qiu", "w-tian", "w-zui", "w-piaoliang"] },
+    { "id": "s22-chuntianne", "hanzi": "春天呢？", "pinyin": "Chūntiān ne?", "english": "And spring?", "words": ["w-chun", "w-tian", "w-ne"] },
+    { "id": "s22-chuntianguafeng", "hanzi": "北京的春天常常刮风。", "pinyin": "Běijīng de chūntiān chángcháng guā fēng.", "english": "Spring in Beijing is often windy.", "words": ["w-beijing", "w-de", "w-chun", "w-tian", "w-changchang", "w-gua", "w-feng"] },
+    { "id": "s22-dongtianxiatian", "hanzi": "冬天很冷，夏天很热。", "pinyin": "Dōngtiān hěn lěng, xiàtiān hěn rè.", "english": "Winters are cold and summers are hot.", "words": ["w-dong-winter", "w-tian", "w-hen", "w-leng", "w-xiatian", "w-hen", "w-re"] },
+    { "id": "s22-guadafeng", "hanzi": "今天刮大风，别出去了。", "pinyin": "Jīntiān guā dà fēng, bié chūqù le.", "english": "It's really windy today. Don't go out.", "words": ["w-jintian", "w-gua", "w-da", "w-feng", "w-bie", "w-chu", "w-qu", "w-le"] },
+    { "id": "s22-taiyangchulaile", "hanzi": "太阳出来了！", "pinyin": "Tàiyáng chūlái le!", "english": "The sun's come out!", "words": ["w-taiyang", "w-chu", "w-lai", "w-le"] },
+    { "id": "s22-henduoyun", "hanzi": "天上有很多云。", "pinyin": "Tiān shàng yǒu hěn duō yún.", "english": "There are lots of clouds in the sky.", "words": ["w-tian", "w-shang", "w-you", "w-hen", "w-duo", "w-yun"] },
+    { "id": "s22-yueliangpiaoliang", "hanzi": "今天晚上的月亮真漂亮！", "pinyin": "Jīntiān wǎnshang de yuèliang zhēn piàoliang!", "english": "The moon is beautiful tonight!", "words": ["w-jintian", "w-wanshang", "w-de", "w-yueliang", "w-zhen", "w-piaoliang"] },
+    { "id": "s22-qugongyuan", "hanzi": "咱们去公园走走吧。", "pinyin": "Zánmen qù gōngyuán zǒuzou ba.", "english": "Let's go for a walk in the park.", "words": ["w-zanmen", "w-qu", "w-gongyuan", "w-zou", "w-zou", "w-ba-particle"] },
+    { "id": "s22-caohenlv", "hanzi": "公园里的草很绿。", "pinyin": "Gōngyuán lǐ de cǎo hěn lǜ.", "english": "The grass in the park is very green.", "words": ["w-gongyuan", "w-li-inside", "w-de", "w-cao", "w-hen", "w-lv"] },
+    { "id": "s22-henduoshu", "hanzi": "公园里有很多树。", "pinyin": "Gōngyuán lǐ yǒu hěn duō shù.", "english": "There are lots of trees in the park.", "words": ["w-gongyuan", "w-li-inside", "w-you", "w-hen", "w-duo", "w-shu-tree"] },
+    { "id": "s22-huakaile", "hanzi": "花园里的花开了。", "pinyin": "Huāyuán lǐ de huā kāi le.", "english": "The flowers in the garden are out.", "words": ["w-huayuan", "w-li-inside", "w-de", "w-hua-flower", "w-kai", "w-le"] },
+    { "id": "s22-maihua", "hanzi": "我给阿姨买了一些花。", "pinyin": "Wǒ gěi āyí mǎi le yìxiē huā.", "english": "I bought some flowers for her mother.", "words": ["w-wo", "w-gei", "w-ayi", "w-mai3", "w-le", "w-yi", "w-xie", "w-hua-flower"] },
+    { "id": "s22-heshangchuan", "hanzi": "河上有一条船。", "pinyin": "Hé shàng yǒu yì tiáo chuán.", "english": "There's a boat on the river.", "words": ["w-he-river", "w-shang", "w-you", "w-yi", "w-tiao", "w-chuan-boat"] },
+    { "id": "s22-shushangniao", "hanzi": "树上有一只鸟。", "pinyin": "Shù shàng yǒu yì zhī niǎo.", "english": "There's a bird in the tree.", "words": ["w-shu-tree", "w-shang", "w-you", "w-yi", "w-zhi", "w-niao"] },
+    { "id": "s22-shenmedongwu", "hanzi": "你喜欢什么动物？", "pinyin": "Nǐ xǐhuan shénme dòngwù?", "english": "What animals do you like?", "words": ["w-ni", "w-xihuan", "w-shenme", "w-dongwu"] },
+    { "id": "s22-zuixihuanxiongmao", "hanzi": "我最喜欢熊猫。", "pinyin": "Wǒ zuì xǐhuan xióngmāo.", "english": "I like pandas best.", "words": ["w-wo", "w-zui", "w-xihuan", "w-xiongmao"] },
+    { "id": "s22-xiongmaokeai", "hanzi": "熊猫太可爱了！", "pinyin": "Xióngmāo tài kě'ài le!", "english": "Pandas are so cute!", "words": ["w-xiongmao", "w-tai", "w-keai", "w-le"] },
+    { "id": "s22-qiguoma", "hanzi": "你骑过马吗？", "pinyin": "Nǐ qí guo mǎ ma?", "english": "Have you ever ridden a horse?", "words": ["w-ni", "w-qi-ride", "w-guo-exp", "w-ma-horse", "w-ma"] },
+    { "id": "s22-qupashan", "hanzi": "周末我们去爬山吧！", "pinyin": "Zhōumò wǒmen qù páshān ba!", "english": "Let's go hiking this weekend!", "words": ["w-zhoumo", "w-women", "w-qu", "w-pashan", "w-ba-particle"] },
+    { "id": "s22-wangxizou", "hanzi": "好啊！往西走，一个小时就到了。", "pinyin": "Hǎo a! Wǎng xī zǒu, yí ge xiǎoshí jiù dào le.", "english": "Sure! Head west, it's only an hour.", "words": ["w-hao", "w-a", "w-wang", "w-xi-west", "w-zou", "w-yi", "w-ge", "w-xiaoshi", "w-jiu-just", "w-dao", "w-le"] },
+    { "id": "s22-taihaole", "hanzi": "太好了！", "pinyin": "Tài hǎo le!", "english": "Great!", "words": ["w-tai", "w-hao", "w-le"] },
+    { "id": "s22-wangdongnan", "hanzi": "往东走，然后往南走。", "pinyin": "Wǎng dōng zǒu, ránhòu wǎng nán zǒu.", "english": "Go east, then go south.", "words": ["w-wang", "w-dong-east", "w-zou", "w-ranhou", "w-wang", "w-nan-south", "w-zou"] },
+    { "id": "s22-dongnanxibei", "hanzi": "北京人说路的时候，常常说东南西北。", "pinyin": "Běijīng rén shuō lù de shíhou, chángcháng shuō dōng nán xī běi.", "english": "When Beijingers give directions, they often use north, south, east and west.", "words": ["w-beijing", "w-ren", "w-shuo", "w-lu", "w-de", "w-shihou", "w-changchang", "w-shuo", "w-dong-east", "w-nan-south", "w-xi-west", "w-bei-north"] },
+    { "id": "s22-beijingzaibeifang", "hanzi": "北京在中国的北方。", "pinyin": "Běijīng zài Zhōngguó de běifāng.", "english": "Beijing is in the north of China.", "words": ["w-beijing", "w-zai", "w-zhongguo", "w-de", "w-beifang"] },
+    { "id": "s22-beifangrenmiantiao", "hanzi": "北方人很喜欢吃面条。", "pinyin": "Běifāng rén hěn xǐhuan chī miàntiáo.", "english": "Northerners love noodles.", "words": ["w-beifang", "w-ren", "w-hen", "w-xihuan", "w-chi", "w-miantiao"] }
+  ],
+  "exchanges": [
+    { "id": "x22-season", "prompt": "s22-nageijijie", "reply": "s22-zuixihuanqiutian", "wrong": ["s22-shushangniao", "s22-taiyangchulaile"], "context": "Autumn is your favourite season." },
+    { "id": "x22-hike", "prompt": "s22-qupashan", "reply": "s22-wangxizou", "wrong": ["s22-caohenlv", "s22-beijingzaibeifang"], "context": "You're a Beijing local. The hills are an hour west." },
+    { "id": "x22-animal", "prompt": "s22-shenmedongwu", "reply": "s22-zuixihuanxiongmao", "wrong": ["s22-guadafeng", "s22-maihua"], "context": "Pandas are your favourite." },
+    { "id": "x22-wind", "prompt": "s22-guadafeng", "reply": "s14-xiangshuijiao", "wrong": ["s22-qiguoma", "s22-heshangchuan"], "context": "It's too windy to go out, so you'll have an early night." },
+    { "id": "x22-park", "prompt": "s22-qugongyuan", "reply": "s22-taihaole", "wrong": ["s22-dongtianxiatian", "s22-beifangrenmiantiao"], "context": "You'd love a walk." }
+  ],
+  "grammar": [
+    { "id": "g22-seasons", "title": "The four seasons", "body": "Season + 天: 春天 (spring), 夏天 (summer), 秋天 (autumn), 冬天 (winter). Beijing's autumn is short and famously lovely.", "examples": ["s22-zuixihuanqiutian", "s22-dongtianxiatian"] },
+    { "id": "g22-directions", "title": "Beijing directions: 东南西北", "body": "Beijing's streets run north-south and east-west, so locals give directions with compass points: 往东走 (go east), 往南走 (go south). The order is 东南西北.", "examples": ["s22-wangdongnan", "s22-dongnanxibei", "s22-wangxizou"] },
+    { "id": "g22-weather", "title": "刮风, 出太阳", "body": "Wind \"blows\": 刮风. The sun \"comes out\": 太阳出来了. Compare 下雨 and 下雪.", "examples": ["s22-chuntianguafeng", "s22-taiyangchulaile"] },
+    { "id": "g22-shang", "title": "天上, 树上, 河上", "body": "Noun + 上 gives a place: 天上 (in the sky), 树上 (in the tree), 河上 (on the river).", "examples": ["s22-henduoyun", "s22-shushangniao", "s22-heshangchuan"] }
+  ],
+  "dialogue": {
+    "id": "d22-autumn",
+    "title": "Listening challenge: Autumn plans",
+    "setting": "A clear October day. Her mother and 米格 chat on the balcony.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "M", "sentence": "s22-nageijijie" },
+      { "speaker": "K", "sentence": "s22-zuixihuanqiutian" },
+      { "speaker": "M", "sentence": "s22-qiutianzuipiaoliang" },
+      { "speaker": "K", "sentence": "s22-chuntianne" },
+      { "speaker": "M", "sentence": "s22-chuntianguafeng" },
+      { "speaker": "K", "sentence": "s22-qupashan" },
+      { "speaker": "M", "sentence": "s22-wangxizou" },
+      { "speaker": "K", "sentence": "s22-taihaole" }
+    ],
+    "questions": [
+      { "q": "Which season do they both like best?", "options": ["Spring", "Summer", "Autumn"], "answer": 2 },
+      { "q": "What's spring in Beijing like?", "options": ["Windy", "Rainy", "Very hot"], "answer": 0 },
+      { "q": "What will they do at the weekend?", "options": ["Go to the zoo", "Go hiking", "Go boating"], "answer": 1 },
+      { "q": "Which way is it?", "options": ["East", "West", "South"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n22-seasons", "title": "Seasons", "words": ["w-jijie", "w-chun", "w-xia-summer", "w-qiu", "w-dong-winter", "w-gua", "w-feng"], "sentences": ["s22-nageijijie", "s22-zuixihuanqiutian", "s22-qiutianzuipiaoliang", "s22-chuntianne", "s22-chuntianguafeng", "s22-dongtianxiatian", "s22-guadafeng"], "exchanges": ["x22-season", "x22-wind"], "grammar": ["g22-seasons"] },
+    { "id": "n22-sky", "title": "Sun, clouds and moon", "words": ["w-taiyang", "w-yun", "w-yueliang", "w-gongyuan", "w-cao", "w-shu-tree"], "sentences": ["s22-taiyangchulaile", "s22-henduoyun", "s22-yueliangpiaoliang", "s22-qugongyuan", "s22-caohenlv", "s22-henduoshu", "s22-taihaole"], "exchanges": ["x22-park"], "grammar": ["g22-weather", "g22-shang"] },
+    { "id": "n22-nature", "title": "Flowers and animals", "words": ["w-hua-flower", "w-huayuan", "w-he-river", "w-niao", "w-dongwu", "w-xiongmao", "w-ma-horse"], "sentences": ["s22-huakaile", "s22-maihua", "s22-heshangchuan", "s22-shushangniao", "s22-shenmedongwu", "s22-zuixihuanxiongmao", "s22-xiongmaokeai", "s22-qiguoma"], "exchanges": ["x22-animal"] },
+    { "id": "n22-compass", "title": "North, south, east, west", "words": ["w-pashan", "w-dong-east", "w-xi-west", "w-nan-south", "w-bei-north", "w-beifang"], "sentences": ["s22-qupashan", "s22-wangxizou", "s22-wangdongnan", "s22-dongnanxibei", "s22-beijingzaibeifang", "s22-beifangrenmiantiao"], "exchanges": ["x22-hike"], "grammar": ["g22-directions"] },
+    { "id": "n22-story", "title": "Challenge: Autumn plans", "kind": "story", "sentences": ["s22-nageijijie", "s22-qiutianzuipiaoliang", "s22-chuntianguafeng", "s22-qupashan", "s22-wangxizou"] }
+  ]
+}
