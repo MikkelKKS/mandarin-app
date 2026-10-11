@@ -24,7 +24,7 @@ OUT = ROOT / "public" / "audio"
 VOICES = {"f": "zh-CN-XiaoxiaoNeural", "m": "zh-CN-YunxiNeural"}
 SLOW_RATE = "-25%"
 WORD_RATE = "-10%"  # single words a touch slower than conversational speed
-CONCURRENCY = 6
+CONCURRENCY = 8
 # Pad every clip with a little silence: some browsers (Firefox) drop the last
 # fraction of a second of these MP3s, and Bluetooth/USB audio can swallow the start.
 PAD_BEFORE_MS = 150
@@ -77,6 +77,24 @@ async def synth(text, voice, rate, dest, sem):
 MANIFEST = OUT / "manifest.json"
 
 
+def dict_key(hanzi):
+    """File name for dictionary audio: hex code points joined by '_' (matches src/lib/audio.ts)."""
+    return "_".join(format(ord(c), "x") for c in hanzi)
+
+
+def dict_jobs():
+    """Every HSK 1-6 word, for the dictionary (one voice, no slow version)."""
+    path = ROOT / "content" / "hsk" / "hsk-levels.json"
+    if not path.exists():
+        return []
+    seen = set()
+    for w in json.loads(path.read_text(encoding="utf-8"))["words"]:
+        h = w["h"]
+        if h not in seen and all("\u4e00" <= c <= "\u9fff" for c in h):
+            seen.add(h)
+            yield h
+
+
 async def main():
     force = "--force" in sys.argv
     sem = asyncio.Semaphore(CONCURRENCY)
@@ -103,6 +121,11 @@ async def main():
                 dest = OUT / v / f"{item_id}{suffix}.mp3"
                 if stale or not dest.exists() or (suffix == ".slow" and slow_stale):
                     tasks.append(synth(text, voice, rate, dest, sem))
+    (OUT / "dict").mkdir(parents=True, exist_ok=True)
+    for h in dict_jobs():
+        dest = OUT / "dict" / f"{dict_key(h)}.mp3"
+        if force or not dest.exists():
+            tasks.append(synth(h, VOICES["f"], WORD_RATE, dest, sem))
     print(f"{len(tasks)} file(s) to generate")
     started = time.time()
     results = await asyncio.gather(*tasks)

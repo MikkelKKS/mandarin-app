@@ -135,3 +135,35 @@ export async function prefetchForOffline(ids: string[]): Promise<void> {
     }
   }
 }
+
+/** URL of the pre-recorded dictionary clip for an HSK 1-6 word. */
+export function dictAudioUrl(hanzi: string): string {
+  const key = [...hanzi].map((c) => c.codePointAt(0)!.toString(16)).join('_');
+  return `${BASE}audio/dict/${key}.mp3?v=${AUDIO_FORMAT}`;
+}
+
+/** Play a URL; resolves true if it played, false if it failed to load. */
+export function playUrl(url: string): Promise<boolean> {
+  stop();
+  const a = new Audio(url);
+  el = a;
+  return new Promise((resolve) => {
+    a.onended = () => resolve(true);
+    a.onerror = () => resolve(false);
+    a.play().catch((e: DOMException) => resolve(e?.name === 'AbortError'));
+  });
+}
+
+/** Does this browser have a Chinese text-to-speech voice? (Firefox on Windows often doesn't.) */
+export function hasChineseVoice(): Promise<boolean> {
+  if (typeof speechSynthesis === 'undefined') return Promise.resolve(false);
+  const check = () => speechSynthesis.getVoices().some((v) => v.lang.replace('_', '-').toLowerCase().startsWith('zh'));
+  if (speechSynthesis.getVoices().length) return Promise.resolve(check());
+  return new Promise((resolve) => {
+    const t = setTimeout(() => resolve(check()), 1200);
+    speechSynthesis.addEventListener('voiceschanged', () => {
+      clearTimeout(t);
+      resolve(check());
+    }, { once: true });
+  });
+}

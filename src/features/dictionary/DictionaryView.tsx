@@ -2,15 +2,41 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { wordByHanzi } from '../../content';
-import { play, speak } from '../../lib/audio';
+import { dictAudioUrl, hasChineseVoice, play, playUrl, speak } from '../../lib/audio';
 import { guessHanzi, isPinyinSentence, loadDict, plecoLink, romanKey, search, type Dict, type Entry } from './dict';
 import { looksLikeEnglishSentence, translate } from './translate';
 import { addMyWord, myWordId, removeMyWord, useMyWords } from './mywords';
 
-function say(hanzi: string) {
+let showNoVoice: (v: boolean) => void = () => {};
+
+/** Play a word: course recording, then dictionary recording, then the browser's voice. */
+async function sayWord(hanzi: string): Promise<boolean> {
   const known = wordByHanzi(hanzi);
-  if (known) void play(known.id);
-  else void speak(hanzi);
+  if (known) {
+    void play(known.id);
+    return true;
+  }
+  if (await playUrl(dictAudioUrl(hanzi))) return true;
+  if (await hasChineseVoice()) {
+    void speak(hanzi);
+    return true;
+  }
+  return false;
+}
+
+async function say(hanzi: string) {
+  showNoVoice(!(await sayWord(hanzi)));
+}
+
+/** A sentence: the browser's voice if it has Chinese, otherwise the words' recordings one by one. */
+async function saySentence(text: string, words: string[]) {
+  if (await hasChineseVoice()) {
+    void speak(text);
+    return;
+  }
+  let ok = words.length > 0;
+  for (const w of words) ok = (await sayWord(w)) && ok;
+  showNoVoice(!ok);
 }
 
 function useDebounced<T>(v: T, ms: number): T {
@@ -29,6 +55,8 @@ export function DictionaryView() {
   const input = useRef<HTMLInputElement>(null);
   const mine = useMyWords();
   const mineIds = useMemo(() => new Set(mine.map((w) => w.id)), [mine]);
+  const [noVoice, setNoVoice] = useState(false);
+  showNoVoice = setNoVoice;
 
   useEffect(() => {
     void loadDict().then(setDict);
@@ -62,6 +90,11 @@ export function DictionaryView() {
         />
       </div>
 
+      {noVoice && (
+        <p className="mt-2 rounded-2xl bg-amber-soft p-3 text-sm" role="status">
+          No recording for this one, and your browser has no Chinese voice. On Windows, add one in Settings → Time &amp; language → Speech → Add voices → Chinese (Simplified), then restart the browser.
+        </p>
+      )}
       {dict === 'loading' && <p className="mt-6 text-muted">Loading the dictionary…</p>}
       {dict === null && (
         <p className="mt-6 rounded-2xl bg-amber-soft p-4 text-sm">
@@ -103,7 +136,10 @@ export function DictionaryView() {
               )}
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
-              <button onClick={() => void speak(q)} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-2 text-sm font-medium">
+              <button
+                onClick={() => void saySentence(q, result.tokens.filter((t) => t.entries.length).map((t) => t.text))}
+                className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-2 text-sm font-medium"
+              >
                 <Speaker className="h-4 w-4" /> Listen
               </button>
               <a href={plecoLink(q)} className="rounded-xl border-2 border-line px-3 py-2 text-sm font-medium">
@@ -241,7 +277,7 @@ function TranslationCard({ text, dir, sourceKey }: { text: string; dir: 'zh-en' 
             {zh}
           </p>
           <div className="mt-2 flex flex-wrap gap-2">
-            <button onClick={() => void speak(zh)} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+            <button onClick={() => void saySentence(zh, [...zh].filter((c) => /\p{Script=Han}/u.test(c)))} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
               <Speaker className="h-4 w-4" /> Listen
             </button>
             <a href={`#/dictionary?q=${encodeURIComponent(zh)}`} className="rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
@@ -267,7 +303,7 @@ function PinyinSentenceCard({ dict, q }: { dict: Dict; q: string }) {
         </p>
         {!guess.complete && <p className="mt-1 text-xs text-muted">Some syllables didn't match a word. Check the spelling or add tone numbers (ni3 hao3).</p>}
         <div className="mt-3 flex flex-wrap gap-2">
-          <button onClick={() => void speak(guess.hanzi)} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+          <button onClick={() => void saySentence(guess.hanzi, [...guess.hanzi])} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
             <Speaker className="h-4 w-4" /> Listen
           </button>
           <a href={`#/dictionary?q=${encodeURIComponent(guess.hanzi)}`} className="rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">

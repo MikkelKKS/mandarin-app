@@ -194,12 +194,8 @@ export function MinimalPair({ ex }: { ex: Of<'minimal-pair'> }) {
         selected={sel}
         onSelect={setSel}
         stateOf={choiceStates(sel, ex.answer, locked)}
-        render={(i) => (
-          <span className="flex items-center justify-between gap-2">
-            <span className="text-3xl font-semibold">{opts[i].pinyin}</span>
-            {locked && <MiniPlay id={opts[i].id} voice={ex.voice} label={`Play ${opts[i].pinyin}`} />}
-          </span>
-        )}
+        render={(i) => <span className="text-3xl font-semibold">{opts[i].pinyin}</span>}
+        aside={locked ? (i) => <MiniPlay id={opts[i].id} voice={ex.voice} label={`Play ${opts[i].pinyin}`} /> : undefined}
       />
       {locked && <p className="mt-4 text-sm text-muted">Tap the speakers to compare.</p>}
     </div>
@@ -255,16 +251,14 @@ export function WhatWouldYouSay({ ex }: { ex: Of<'what-would-you-say'> }) {
         render={(i) => {
           const s = sentences.get(ex.options[i])!;
           return (
-            <span className="flex items-center gap-3">
-              <span className="flex min-w-0 flex-1 flex-col">
-                <ToneText hanzi={s.hanzi} pinyin={s.pinyin} className="han text-xl" />
-                {pinyinDisplay !== 'never' && <span className="text-sm text-muted">{s.pinyin}</span>}
-                {locked && <span className="text-sm text-muted">{s.english}</span>}
-              </span>
-              <MiniPlay id={s.id} voice={ex.voice === 'f' ? 'm' : 'f'} label="Hear this reply" />
+            <span className="flex min-w-0 flex-col">
+              <ToneText hanzi={s.hanzi} pinyin={s.pinyin} className="han text-xl" />
+              {pinyinDisplay !== 'never' && <span className="text-sm text-muted">{s.pinyin}</span>}
+              {locked && <span className="text-sm text-muted">{s.english}</span>}
             </span>
           );
         }}
+        aside={(i) => <MiniPlay id={ex.options[i]} voice={ex.voice === 'f' ? 'm' : 'f'} label="Hear this reply" />}
       />
     </div>
   );

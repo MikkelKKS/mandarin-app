@@ -93,6 +93,7 @@ export function Options({
   render,
   stateOf,
   grid = false,
+  aside,
 }: {
   count: number;
   selected: number | null;
@@ -100,6 +101,8 @@ export function Options({
   render: (i: number) => ReactNode;
   stateOf?: (i: number) => OptionState;
   grid?: boolean;
+  /** Controls shown beside each option (e.g. a play button). Kept outside the option button so they stay clickable. */
+  aside?: (i: number) => ReactNode;
 }) {
   const { locked } = useLesson();
   useNumberKeys(count, onSelect, !locked);
@@ -107,7 +110,8 @@ export function Options({
     <div className={grid ? 'grid grid-cols-2 gap-3' : 'flex flex-col gap-3'} role="listbox">
       {Array.from({ length: count }, (_, i) => {
         const st = stateOf?.(i) ?? (selected === i ? 'selected' : 'idle');
-        return (
+        const extra = aside?.(i);
+        const btn = (
           <button
             key={i}
             type="button"
@@ -115,11 +119,19 @@ export function Options({
             aria-selected={selected === i}
             disabled={locked}
             onClick={() => onSelect(i)}
-            className={`flex min-h-14 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left transition active:scale-[0.99] ${optionClass(st)}`}
+            className={`flex min-h-14 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left transition active:scale-[0.99] ${extra ? 'flex-1' : ''} ${optionClass(st)}`}
           >
             <span className="hidden h-6 w-6 shrink-0 items-center justify-center rounded-md border border-line text-xs text-muted sm:flex">{i + 1}</span>
             <span className="min-w-0 flex-1">{render(i)}</span>
           </button>
+        );
+        return extra ? (
+          <div key={i} className="flex items-center gap-2">
+            {btn}
+            {extra}
+          </div>
+        ) : (
+          btn
         );
       })}
     </div>
