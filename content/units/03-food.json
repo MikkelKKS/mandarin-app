@@ -38,7 +38,7 @@
   ],
   "sentences": [
     { "id": "s-chifanle", "hanzi": "吃饭了！", "pinyin": "Chīfàn le!", "english": "Food's ready!", "words": ["w-chi", "w-fan", "w-le"], "alt": { "english": ["Dinner's ready!", "Time to eat!"] } },
-    { "id": "s-chifanle-qingzuo", "hanzi": "吃饭了！米克尔，请坐。", "pinyin": "Chīfàn le! Mǐkè'ěr, qǐng zuò.", "english": "Food's ready! Mikkel, have a seat.", "words": ["w-chi", "w-fan", "w-le", "w-mikkel", "w-qing", "w-zuo"] },
+    { "id": "s-chifanle-qingzuo", "hanzi": "吃饭了！米格，请坐。", "pinyin": "Chīfàn le! Mǐgé, qǐng zuò.", "english": "Food's ready! Mikkel, have a seat.", "words": ["w-chi", "w-fan", "w-le", "w-mikkel", "w-qing", "w-zuo"] },
     { "id": "s-nixiangheshenme", "hanzi": "你想喝什么？", "pinyin": "Nǐ xiǎng hē shénme?", "english": "What would you like to drink?", "words": ["w-ni", "w-xiang", "w-he-drink", "w-shenme"] },
     { "id": "s-yaobuyaohecha", "hanzi": "要不要喝茶？", "pinyin": "Yào bu yào hē chá?", "english": "Would you like some tea?", "words": ["w-yao", "w-bu", "w-yao", "w-he-drink", "w-cha"] },
     { "id": "s-heshenme-yaobuyao", "hanzi": "你想喝什么？要不要喝茶？", "pinyin": "Nǐ xiǎng hē shénme? Yào bu yào hē chá?", "english": "What would you like to drink? Some tea?", "words": ["w-ni", "w-xiang", "w-he-drink", "w-shenme", "w-yao", "w-bu", "w-yao", "w-he-drink", "w-cha"] },

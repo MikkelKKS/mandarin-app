@@ -28,9 +28,17 @@ export function pickVoice(): Voice {
   return alternateFlip ? 'f' : 'm';
 }
 
+/** Short hash of the spoken text, so edited items get fresh audio past any cache. */
+function textVersion(id: string): string {
+  const t = lookup(id)?.hanzi ?? '';
+  let h = 5381;
+  for (const ch of t) h = ((h * 33) ^ ch.codePointAt(0)!) >>> 0;
+  return h.toString(36);
+}
+
 export function urlFor(id: string, voice: Voice, slow: boolean): string {
   const hasSlowFile = sentences.has(id);
-  return BASE + audioPath(id, voice, slow && hasSlowFile);
+  return `${BASE}${audioPath(id, voice, slow && hasSlowFile)}?v=${textVersion(id)}`;
 }
 
 export interface PlayOptions {

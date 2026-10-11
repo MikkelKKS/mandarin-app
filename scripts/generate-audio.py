@@ -52,11 +52,20 @@ async def synth(text, voice, rate, dest, sem):
         return False
 
 
+MANIFEST = OUT / "manifest.json"
+
+
 async def main():
     force = "--force" in sys.argv
     sem = asyncio.Semaphore(CONCURRENCY)
     tasks = []
-    for item_id, text, is_sentence in jobs():
+    # manifest: id -> text the audio was generated from. When the text changes
+    # (e.g. a sentence is edited), the audio is regenerated.
+    first_run = not MANIFEST.exists()
+    manifest = {} if first_run else json.loads(MANIFEST.read_text(encoding="utf-8"))
+    items = list(jobs())
+    for item_id, text, is_sentence in items:
+        stale = force or (not first_run and manifest.get(item_id) != text)
         for v, voice in VOICES.items():
             (OUT / v).mkdir(parents=True, exist_ok=True)
             variants = [("", "+0%" if is_sentence else WORD_RATE)]
@@ -64,11 +73,13 @@ async def main():
                 variants.append((".slow", SLOW_RATE))
             for suffix, rate in variants:
                 dest = OUT / v / f"{item_id}{suffix}.mp3"
-                if force or not dest.exists():
+                if stale or not dest.exists():
                     tasks.append(synth(text, voice, rate, dest, sem))
     print(f"{len(tasks)} file(s) to generate")
     results = await asyncio.gather(*tasks)
     failed = results.count(False)
+    if not failed:
+        MANIFEST.write_text(json.dumps({i: t for i, t, _ in items}, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
     print(f"done: {len(results) - failed} generated, {failed} failed")
     sys.exit(1 if failed else 0)
 
