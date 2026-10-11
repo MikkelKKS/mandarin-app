@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
-import { Close, Headphones, Speaker } from '../../components/icons';
+import { Close, Headphones, MicOff, Speaker } from '../../components/icons';
 import { preload, play, stop } from '../../lib/audio';
 import { isPass, type Verdict } from '../../lib/pinyinAnswer';
-import { setQuietUntil, useQuietUntil } from '../../lib/settings';
+import { setQuietUntil, setSpeakPausedUntil, useQuietUntil } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
 import { recordAnswer } from '../../lib/srs';
 import { audioOf, ExerciseView, itemsOf } from '../exercises/ExerciseView';
@@ -54,7 +54,7 @@ export function LessonPlayer({
   const quietUntil = useQuietUntil();
   const quiet = quietUntil > Date.now();
 
-  const scoredTotal = useMemo(() => exercises.filter((e) => e.kind !== 'intro').length, [exercises]);
+  const scoredTotal = useMemo(() => exercises.filter((e) => e.kind !== 'intro' && e.kind !== 'repeat').length, [exercises]);
   const current = queue[pos];
 
   // Preload the next exercise's audio.
@@ -91,7 +91,7 @@ export function LessonPlayer({
     (o: Outcome) => {
       if (!current || outcome) return;
       const { ex, origin, retry } = current;
-      if (ex.kind === 'intro') {
+      if (ex.kind === 'intro' || ex.kind === 'repeat') {
         passed.current.add(origin);
         advance();
         return;
@@ -175,10 +175,24 @@ export function LessonPlayer({
     }
   };
 
+  const noSpeaking = async () => {
+    await setSpeakPausedUntil(Date.now() + 3600_000);
+    stop();
+    setQueue((q) => {
+      const next = q.filter((e, i) => i < pos || e.ex.kind !== 'repeat');
+      for (const e of q) if (e.ex.kind === 'repeat') passed.current.add(e.origin);
+      if (pos >= next.length) setTimeout(finish, 0);
+      return next;
+    });
+    setCanCheck(false);
+    checkRef.current = null;
+  };
+
   const progress = exercises.length ? passed.current.size / exercises.length : 0;
 
   if (!current) return null;
-  const isIntro = current.ex.kind === 'intro';
+  const isIntro = current.ex.kind === 'intro' || current.ex.kind === 'repeat';
+  const hasSpeaking = queue.slice(pos).some((e) => e.ex.kind === 'repeat');
 
   return (
     <LessonCtx.Provider value={api}>
@@ -190,6 +204,11 @@ export function LessonPlayer({
           <div className="h-3 flex-1 overflow-hidden rounded-full bg-sunk" role="progressbar" aria-label={title} aria-valuenow={Math.round(progress * 100)} aria-valuemin={0} aria-valuemax={100}>
             <div className="h-full rounded-full bg-jade transition-all duration-500" style={{ width: `${Math.max(4, progress * 100)}%` }} />
           </div>
+          {hasSpeaking && (
+            <button onClick={noSpeaking} title="Can't speak now (1 hour)" aria-label="Can't speak now — skip speaking exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
+              <MicOff className="h-6 w-6" />
+            </button>
+          )}
           {!quiet && (
             <button onClick={goQuiet} title="Can't listen now (1 hour)" aria-label="Can't listen now — skip audio exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
               <Headphones className="h-6 w-6" />

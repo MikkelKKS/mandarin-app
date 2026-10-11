@@ -114,6 +114,7 @@ export const ExerciseType = z.enum([
   'match-pairs',
   'pick-character',
   'read-sentence',
+  'repeat',
 ]);
 
 export const ExerciseSpecSchema = z.object({

@@ -3,6 +3,7 @@ import type { Exercise } from '../lesson/types';
 import { BuildSentence, EnToPinyin, FillGap, ListenTiles } from './Building';
 import { Dictation, ListenMeaning, ListenSentence, MinimalPair, ReplyType, ToneId, WhatWouldYouSay } from './Listening';
 import { Intro, MatchPairs, PickCharacter, ReadSentence } from './Recognition';
+import { Repeat } from './Repeat';
 
 export function ExerciseView({ ex }: { ex: Exercise }) {
   switch (ex.kind) {
@@ -36,6 +37,8 @@ export function ExerciseView({ ex }: { ex: Exercise }) {
       return <PickCharacter ex={ex} />;
     case 'read-sentence':
       return <ReadSentence ex={ex} />;
+    case 'repeat':
+      return <Repeat ex={ex} />;
     default:
       return null;
   }

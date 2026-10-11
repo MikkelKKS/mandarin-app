@@ -26,6 +26,8 @@ export interface GenInput {
   introduce: string[]; // word ids to show intro cards for
   length: number;
   quiet: boolean; // "can't listen now"
+  /** Add optional repeat-after-me exercises. */
+  speaking?: boolean;
   voice: () => Voice;
   rnd?: () => number;
 }
@@ -107,6 +109,13 @@ export function generateLesson(input: GenInput): Exercise[] {
       }
     }
     if (made) out.push(made);
+  }
+  if (input.speaking) {
+    const candidates = [...input.sentences, ...input.words].filter((x) => syllableCount(x.hanzi) <= 8);
+    for (const item of sample(candidates, Math.min(2, candidates.length), rnd)) {
+      const at = input.introduce.length + 1 + Math.floor(rnd() * Math.max(1, out.length - input.introduce.length - 1));
+      out.splice(Math.min(at, out.length), 0, { kind: 'repeat', key: key('repeat'), itemId: item.id, voice: input.voice() });
+    }
   }
   return out;
 }

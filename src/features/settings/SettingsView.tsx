@@ -133,9 +133,17 @@ export function SettingsView() {
         </Row>
         <Row
           title="Speaking exercises"
-          hint={speechSupported ? 'Optional repeat-after-me practice. Arrives in a later update.' : 'This browser has no speech recognition, so speaking exercises are unavailable here.'}
+          hint={
+            speechSupported
+              ? 'Adds a couple of repeat-after-me exercises to lessons, with a pitch chart for your tones. Just feedback — never blocks progress. Uses the browser\'s speech recognition (needs internet).'
+              : 'This browser has no speech recognition, so speaking exercises are unavailable here. Chrome on Android and Chrome/Edge on PC support it.'
+          }
         >
-          <Segmented label="Speaking exercises" value="off" onChange={() => {}} options={[{ v: 'off', label: 'Off' }]} />
+          {speechSupported ? (
+            <Segmented label="Speaking exercises" value={s.speaking ? 'on' : 'off'} onChange={(v) => set({ speaking: v === 'on' })} options={[...onOff]} />
+          ) : (
+            <Segmented label="Speaking exercises" value="off" onChange={() => {}} options={[{ v: 'off', label: 'Unavailable' }]} />
+          )}
         </Row>
       </section>
 

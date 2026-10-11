@@ -3,6 +3,7 @@ import { exchanges, nodes, sentences, sounds, units, words, getUnit } from '../.
 import type { Exchange, Sentence, Word } from '../../content/schema';
 import { pickVoice } from '../../lib/audio';
 import { generateLesson, type GenInput } from './generator';
+import { speakingActive } from '../../lib/settings';
 import type { Exercise } from './types';
 
 function poolUpTo(unitOrder: number): { poolWords: Word[]; poolSentences: Sentence[] } {
@@ -16,6 +17,7 @@ function poolUpTo(unitOrder: number): { poolWords: Word[]; poolSentences: Senten
 
 function baseInput(unitOrder: number, quiet: boolean): Omit<GenInput, 'words' | 'sentences' | 'exchanges' | 'introduce' | 'length'> {
   return {
+    speaking: speakingActive(),
     ...poolUpTo(unitOrder),
     allSentences: sentences,
     minimalPairs: sounds.minimalPairs,

@@ -76,3 +76,8 @@ export const Bolt = ({ className }: P) => (
     <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
   </svg>
 );
+export const MicOff = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="M3 3l18 18M9 9v2a3 3 0 0 0 5.1 2.1M15 9.3V6a3 3 0 0 0-5.7-1.3M19 11a7 7 0 0 1-1.2 3.9M5 11a7 7 0 0 0 10.6 6M12 18v3" />
+  </svg>
+);

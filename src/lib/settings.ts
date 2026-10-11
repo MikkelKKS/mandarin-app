@@ -41,6 +41,23 @@ export async function setQuietUntil(until: number): Promise<void> {
   await db.meta.put({ key: 'quietUntil', value: until });
 }
 
+/** Speaking exercises are on, supported, and not paused with "Can't speak now". */
+let speakPausedUntil = 0;
+export function speakingActive(): boolean {
+  const supported = typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
+  return cached.speaking && supported && Date.now() > speakPausedUntil;
+}
+export async function setSpeakPausedUntil(until: number): Promise<void> {
+  speakPausedUntil = until;
+  await db.meta.put({ key: 'speakPausedUntil', value: until });
+}
+export async function loadSpeakPause(): Promise<void> {
+  speakPausedUntil = ((await db.meta.get('speakPausedUntil'))?.value as number) ?? 0;
+}
+export function useSpeakPausedUntil(): number {
+  return useLive(async () => ((await db.meta.get('speakPausedUntil'))?.value as number) ?? 0, [], 0);
+}
+
 export function useQuietUntil(): number {
   return useLive(async () => ((await db.meta.get('quietUntil'))?.value as number) ?? 0, [], 0);
 }
