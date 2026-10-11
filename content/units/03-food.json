@@ -1,0 +1,112 @@
+{
+  "id": "u03-food",
+  "order": 3,
+  "title": "Food & drink",
+  "titleHanzi": "多吃点！",
+  "description": "Dinner with the family: accept tea, praise the food, handle chopsticks questions and say you're full — politely.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-chi", "hanzi": "吃", "pinyin": "chī", "english": ["to eat"], "hsk": 1, "pos": "verb" },
+    { "id": "w-he-drink", "hanzi": "喝", "pinyin": "hē", "english": ["to drink"], "hsk": 1, "pos": "verb" },
+    { "id": "w-fan", "hanzi": "饭", "pinyin": "fàn", "english": ["meal", "cooked rice"], "hsk": 0, "pos": "noun" },
+    { "id": "w-cai", "hanzi": "菜", "pinyin": "cài", "english": ["dish", "food", "vegetables"], "hsk": 1, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-cha", "hanzi": "茶", "pinyin": "chá", "english": ["tea"], "hsk": 1, "pos": "noun", "measure": "w-bei" },
+    { "id": "w-shui", "hanzi": "水", "pinyin": "shuǐ", "english": ["water"], "hsk": 1, "pos": "noun", "measure": "w-bei" },
+    { "id": "w-bei", "hanzi": "杯", "pinyin": "bēi", "english": ["cup", "glass (measure word)"], "hsk": 0, "pos": "measure" },
+    { "id": "w-wan", "hanzi": "碗", "pinyin": "wǎn", "english": ["bowl (measure word)"], "hsk": 3, "pos": "measure" },
+    { "id": "w-haochi", "hanzi": "好吃", "pinyin": "hǎochī", "english": ["delicious", "tasty"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-zhen", "hanzi": "真", "pinyin": "zhēn", "english": ["really", "truly"], "hsk": 2, "pos": "adverb" },
+    { "id": "w-xiang", "hanzi": "想", "pinyin": "xiǎng", "english": ["would like to", "to want to", "to think"], "hsk": 1, "pos": "verb" },
+    { "id": "w-yao", "hanzi": "要", "pinyin": "yào", "english": ["to want", "will"], "hsk": 2, "pos": "verb" },
+    { "id": "w-ba-particle", "hanzi": "吧", "pinyin": "ba", "english": ["(softens a suggestion)", "I suppose", "let's"], "hsk": 2, "pos": "particle" },
+    { "id": "w-zai-again", "hanzi": "再", "pinyin": "zài", "english": ["again", "another"], "hsk": 2, "pos": "adverb", "note": "Same sound as 在 (in / at) — different word." },
+    { "id": "w-lai", "hanzi": "来", "pinyin": "lái", "english": ["to come", "(to have/take, when offering food)"], "hsk": 1, "pos": "verb" },
+    { "id": "w-bao", "hanzi": "饱", "pinyin": "bǎo", "english": ["full (after eating)"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-e", "hanzi": "饿", "pinyin": "è", "english": ["hungry"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-xihuan", "hanzi": "喜欢", "pinyin": "xǐhuan", "english": ["to like"], "hsk": 1, "pos": "verb" },
+    { "id": "w-tai", "hanzi": "太", "pinyin": "tài", "english": ["too", "so (very)"], "hsk": 1, "pos": "adverb" },
+    { "id": "w-la", "hanzi": "辣", "pinyin": "là", "english": ["spicy"], "hsk": 0, "pos": "adjective" },
+    { "id": "w-jiaozi", "hanzi": "饺子", "pinyin": "jiǎozi", "english": ["dumplings"], "hsk": 0, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-yu", "hanzi": "鱼", "pinyin": "yú", "english": ["fish"], "hsk": 2, "pos": "noun", "measure": "w-zhi" },
+    { "id": "w-kuaizi", "hanzi": "筷子", "pinyin": "kuàizi", "english": ["chopsticks"], "hsk": 3, "pos": "noun" },
+    { "id": "w-yong", "hanzi": "用", "pinyin": "yòng", "english": ["to use"], "hsk": 3, "pos": "verb" },
+    { "id": "w-gei", "hanzi": "给", "pinyin": "gěi", "english": ["to give", "for"], "hsk": 2, "pos": "verb" },
+    { "id": "w-bie", "hanzi": "别", "pinyin": "bié", "english": ["don't"], "hsk": 2, "pos": "adverb" },
+    { "id": "w-keqi", "hanzi": "客气", "pinyin": "kèqi", "english": ["polite", "standing on ceremony"], "hsk": 0, "pos": "adjective" },
+    { "id": "w-dian", "hanzi": "点", "pinyin": "diǎn", "english": ["a bit (short for 一点)", "o'clock"], "hsk": 1, "pos": "measure" },
+    { "id": "w-man", "hanzi": "慢", "pinyin": "màn", "english": ["slow"], "hsk": 2, "pos": "adjective" }
+  ],
+  "sentences": [
+    { "id": "s-chifanle", "hanzi": "吃饭了！", "pinyin": "Chīfàn le!", "english": "Food's ready!", "words": ["w-chi", "w-fan", "w-le"], "alt": { "english": ["Dinner's ready!", "Time to eat!"] } },
+    { "id": "s-chifanle-qingzuo", "hanzi": "吃饭了！米克尔，请坐。", "pinyin": "Chīfàn le! Mǐkè'ěr, qǐng zuò.", "english": "Food's ready! Mikkel, have a seat.", "words": ["w-chi", "w-fan", "w-le", "w-mikkel", "w-qing", "w-zuo"] },
+    { "id": "s-nixiangheshenme", "hanzi": "你想喝什么？", "pinyin": "Nǐ xiǎng hē shénme?", "english": "What would you like to drink?", "words": ["w-ni", "w-xiang", "w-he-drink", "w-shenme"] },
+    { "id": "s-yaobuyaohecha", "hanzi": "要不要喝茶？", "pinyin": "Yào bu yào hē chá?", "english": "Would you like some tea?", "words": ["w-yao", "w-bu", "w-yao", "w-he-drink", "w-cha"] },
+    { "id": "s-heshenme-yaobuyao", "hanzi": "你想喝什么？要不要喝茶？", "pinyin": "Nǐ xiǎng hē shénme? Yào bu yào hē chá?", "english": "What would you like to drink? Some tea?", "words": ["w-ni", "w-xiang", "w-he-drink", "w-shenme", "w-yao", "w-bu", "w-yao", "w-he-drink", "w-cha"] },
+    { "id": "s-wohechaba", "hanzi": "我喝茶吧。", "pinyin": "Wǒ hē chá ba.", "english": "I'll have tea, I think.", "words": ["w-wo", "w-he-drink", "w-cha", "w-ba-particle"], "alt": { "english": ["I'll have tea."] } },
+    { "id": "s-haoa", "hanzi": "好啊！", "pinyin": "Hǎo a!", "english": "Sure!", "words": ["w-hao", "w-a"], "alt": { "english": ["Okay!", "Yes, please!"] } },
+    { "id": "s-haoa-xiexieayi", "hanzi": "好啊，谢谢阿姨！", "pinyin": "Hǎo a, xièxie āyí!", "english": "Yes please, thank you!", "words": ["w-hao", "w-a", "w-xiexie", "w-ayi"] },
+    { "id": "s-geiwoyibeishui", "hanzi": "请给我一杯水。", "pinyin": "Qǐng gěi wǒ yì bēi shuǐ.", "english": "Could I have a glass of water, please?", "words": ["w-qing", "w-gei", "w-wo", "w-yi", "w-bei", "w-shui"] },
+    { "id": "s-nihuiyongkuaizima", "hanzi": "你会用筷子吗？", "pinyin": "Nǐ huì yòng kuàizi ma?", "english": "Can you use chopsticks?", "words": ["w-ni", "w-hui", "w-yong", "w-kuaizi", "w-ma"] },
+    { "id": "s-wohuiyidian", "hanzi": "我会一点。", "pinyin": "Wǒ huì yìdiǎn.", "english": "A little.", "words": ["w-wo", "w-hui", "w-yidian"], "alt": { "english": ["I can a little."] } },
+    { "id": "s-bieqikeqi", "hanzi": "别客气，多吃点！", "pinyin": "Bié kèqi, duō chī diǎn!", "english": "Don't be shy, eat more!", "words": ["w-bie", "w-keqi", "w-duo", "w-chi", "w-dian"], "alt": { "english": ["Help yourself, have some more!"] } },
+    { "id": "s-duochidian", "hanzi": "多吃点！", "pinyin": "Duō chī diǎn!", "english": "Eat more!", "words": ["w-duo", "w-chi", "w-dian"], "alt": { "english": ["Have some more!"] } },
+    { "id": "s-zhegecaizhenhaochi", "hanzi": "这个菜真好吃！", "pinyin": "Zhège cài zhēn hǎochī!", "english": "This dish is really delicious!", "words": ["w-zhe", "w-ge", "w-cai", "w-zhen", "w-haochi"] },
+    { "id": "s-nixihuanchijiaozima", "hanzi": "你喜欢吃饺子吗？", "pinyin": "Nǐ xǐhuan chī jiǎozi ma?", "english": "Do you like dumplings?", "words": ["w-ni", "w-xihuan", "w-chi", "w-jiaozi", "w-ma"] },
+    { "id": "s-wohenxihuan", "hanzi": "我很喜欢！", "pinyin": "Wǒ hěn xǐhuan!", "english": "I really like them!", "words": ["w-wo", "w-hen", "w-xihuan"], "alt": { "english": ["I like it a lot!"] } },
+    { "id": "s-nichiyuma", "hanzi": "你吃鱼吗？", "pinyin": "Nǐ chī yú ma?", "english": "Do you eat fish?", "words": ["w-ni", "w-chi", "w-yu", "w-ma"] },
+    { "id": "s-chi", "hanzi": "吃！", "pinyin": "Chī!", "english": "Yes, I do!", "words": ["w-chi"] },
+    { "id": "s-taila", "hanzi": "太辣了！", "pinyin": "Tài là le!", "english": "It's too spicy!", "words": ["w-tai", "w-la", "w-le"] },
+    { "id": "s-woele", "hanzi": "我饿了。", "pinyin": "Wǒ è le.", "english": "I'm hungry.", "words": ["w-wo", "w-e", "w-le"] },
+    { "id": "s-zailaiyiwanba", "hanzi": "再来一碗吧！", "pinyin": "Zài lái yì wǎn ba!", "english": "Have another bowl!", "words": ["w-zai-again", "w-lai", "w-yi", "w-wan", "w-ba-particle"] },
+    { "id": "s-wochibaole", "hanzi": "我吃饱了。", "pinyin": "Wǒ chī bǎo le.", "english": "I'm full.", "words": ["w-wo", "w-chi", "w-bao", "w-le"] },
+    { "id": "s-xiexieayi-chibaole", "hanzi": "谢谢阿姨，我吃饱了。", "pinyin": "Xièxie āyí, wǒ chī bǎo le.", "english": "Thank you, but I'm full.", "words": ["w-xiexie", "w-ayi", "w-wo", "w-chi", "w-bao", "w-le"] },
+    { "id": "s-manmanchi", "hanzi": "慢慢吃！", "pinyin": "Mànmàn chī!", "english": "Take your time!", "words": ["w-man", "w-man", "w-chi"], "alt": { "english": ["Enjoy your meal!"] } }
+  ],
+  "exchanges": [
+    { "id": "x-drink", "prompt": "s-nixiangheshenme", "reply": "s-wohechaba", "wrong": ["s-wochibaole", "s-taila"], "context": "You're asked what you'd like to drink." },
+    { "id": "x-tea", "prompt": "s-yaobuyaohecha", "reply": "s-haoa", "wrong": ["s-bieqikeqi", "s-nikan"], "context": "You're offered tea." },
+    { "id": "x-chopsticks", "prompt": "s-nihuiyongkuaizima", "reply": "s-wohuiyidian", "wrong": ["s-wochibaole", "s-nihuishuozhongwenma"], "context": "Someone wonders if you can use chopsticks." },
+    { "id": "x-fish", "prompt": "s-nichiyuma", "reply": "s-chi", "wrong": ["s-wohechaba", "s-bushi"], "context": "The host checks what you eat." },
+    { "id": "x-eatmore", "prompt": "s-duochidian", "reply": "s-zhegecaizhenhaochi", "wrong": ["s-bukeqi", "s-nijiaoshenmemingzi"], "context": "The host urges you to keep eating." },
+    { "id": "x-anotherbowl", "prompt": "s-zailaiyiwanba", "reply": "s-xiexieayi-chibaole", "wrong": ["s-zheshishei", "s-qingjin"], "context": "You've eaten plenty, but the host offers more." }
+  ],
+  "grammar": [
+    { "id": "g-yesverb", "title": "Saying yes: repeat the verb", "body": "Chinese has no single word for 'yes'. Answer with the verb from the question: 你吃鱼吗？ → 吃！ (yes) or 不吃 (no). 你会用筷子吗？ → 会！", "examples": ["s-nichiyuma", "s-chi"] },
+    { "id": "g-anota", "title": "要不要…? questions", "body": "Say a verb, then 不, then the verb again for a friendly yes/no question: 要不要喝茶？ = want some tea? You don't need 吗 with this pattern.", "examples": ["s-yaobuyaohecha"] },
+    { "id": "g-taile", "title": "太…了 = too …", "body": "Wrap an adjective in 太…了: 太辣了 = too spicy. It can also be a happy 'so…!': 太好了！ = great!", "examples": ["s-taila"] },
+    { "id": "g-xiang", "title": "想 + verb = would like to", "body": "想 before a verb is a soft way to say what you'd like: 你想喝什么？ = what would you like to drink?", "examples": ["s-nixiangheshenme"] },
+    { "id": "g-hosting", "title": "Table manners in words", "body": "Hosts keep offering: 多吃点！(eat more), 别客气！(don't be shy), 再来一碗吧！(another bowl). Praise the food — 真好吃！— and when you're done, thank them and say 我吃饱了 (I'm full). It's normal to be offered again; a smile and 吃饱了 is enough.", "examples": ["s-bieqikeqi", "s-xiexieayi-chibaole"] }
+  ],
+  "dialogue": {
+    "id": "d03-dinner",
+    "title": "Dinner is served",
+    "setting": "Mikkel's first family dinner. Her mother is a generous host.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "M", "sentence": "s-chifanle-qingzuo" },
+      { "speaker": "M", "sentence": "s-heshenme-yaobuyao" },
+      { "speaker": "K", "sentence": "s-haoa-xiexieayi" },
+      { "speaker": "M", "sentence": "s-nihuiyongkuaizima" },
+      { "speaker": "K", "sentence": "s-wohuiyidian" },
+      { "speaker": "M", "sentence": "s-bieqikeqi" },
+      { "speaker": "K", "sentence": "s-zhegecaizhenhaochi" },
+      { "speaker": "M", "sentence": "s-zailaiyiwanba" },
+      { "speaker": "K", "sentence": "s-xiexieayi-chibaole" }
+    ],
+    "questions": [
+      { "q": "What drink does the mother offer?", "options": ["Tea", "Water", "Beer"], "answer": 0 },
+      { "q": "Can Mikkel use chopsticks?", "options": ["Not at all", "A little", "Very well"], "answer": 1 },
+      { "q": "Why does Mikkel turn down another bowl?", "options": ["It's too spicy", "He doesn't like it", "He's full"], "answer": 2 }
+    ]
+  },
+  "nodes": [
+    { "id": "n03-drinks", "title": "Something to drink?", "words": ["w-he-drink", "w-cha", "w-shui", "w-bei", "w-xiang", "w-yao", "w-ba-particle", "w-gei"], "sentences": ["s-nixiangheshenme", "s-yaobuyaohecha", "s-wohechaba", "s-haoa", "s-geiwoyibeishui"], "exchanges": ["x-drink", "x-tea"], "grammar": ["g-xiang", "g-anota"] },
+    { "id": "n03-eating", "title": "Let's eat", "words": ["w-chi", "w-fan", "w-yu", "w-jiaozi", "w-xihuan", "w-kuaizi", "w-yong", "w-e"], "sentences": ["s-chifanle", "s-nixihuanchijiaozima", "s-wohenxihuan", "s-nichiyuma", "s-chi", "s-nihuiyongkuaizima", "s-wohuiyidian", "s-woele"], "exchanges": ["x-chopsticks", "x-fish"], "grammar": ["g-yesverb"] },
+    { "id": "n03-delicious", "title": "Delicious!", "words": ["w-cai", "w-zhen", "w-haochi", "w-tai", "w-la", "w-bie", "w-keqi", "w-dian", "w-man"], "sentences": ["s-zhegecaizhenhaochi", "s-taila", "s-duochidian", "s-bieqikeqi", "s-manmanchi"], "exchanges": ["x-eatmore"], "grammar": ["g-taile"] },
+    { "id": "n03-full", "title": "I'm full", "words": ["w-zai-again", "w-lai", "w-wan", "w-bao"], "sentences": ["s-zailaiyiwanba", "s-wochibaole", "s-xiexieayi-chibaole"], "exchanges": ["x-anotherbowl"], "grammar": ["g-hosting"] },
+    { "id": "n03-story", "title": "Story: Dinner is served", "kind": "story", "sentences": ["s-chifanle-qingzuo", "s-heshenme-yaobuyao", "s-haoa-xiexieayi"] }
+  ]
+}
