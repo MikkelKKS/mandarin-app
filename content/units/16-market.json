@@ -1,0 +1,111 @@
+{
+  "id": "u16-market",
+  "order": 13,
+  "title": "Market, clothes and weather",
+  "titleHanzi": "涮羊肉",
+  "description": "Prices in the hundreds, food at the market, colours and clothes, and a snowy Beijing evening.",
+  "hsk": 2,
+  "words": [
+    { "id": "w-bai3", "hanzi": "百", "pinyin": "bǎi", "english": ["hundred"], "hsk": 2, "pos": "number" },
+    { "id": "w-qian-thousand", "hanzi": "千", "pinyin": "qiān", "english": ["thousand"], "hsk": 2, "pos": "number" },
+    { "id": "w-yuan-money", "hanzi": "元", "pinyin": "yuán", "english": ["yuan (written form of 块)"], "hsk": 2, "pos": "measure" },
+    { "id": "w-gongjin", "hanzi": "公斤", "pinyin": "gōngjīn", "english": ["kilo", "kilogram"], "hsk": 2, "pos": "measure" },
+    { "id": "w-xigua", "hanzi": "西瓜", "pinyin": "xīguā", "english": ["watermelon"], "hsk": 2, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-jidan", "hanzi": "鸡蛋", "pinyin": "jīdàn", "english": ["egg"], "hsk": 2, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-niunai", "hanzi": "牛奶", "pinyin": "niúnǎi", "english": ["milk"], "hsk": 2, "pos": "noun", "measure": "w-bei" },
+    { "id": "w-yangrou", "hanzi": "羊肉", "pinyin": "yángròu", "english": ["lamb", "mutton"], "hsk": 2, "pos": "noun" },
+    { "id": "w-shuanyangrou", "hanzi": "涮羊肉", "pinyin": "shuànyángròu", "english": ["Beijing lamb hot pot"], "hsk": 0, "pos": "noun", "note": "Thin lamb slices dipped in a copper pot. A classic Beijing winter meal." },
+    { "id": "w-bai-white", "hanzi": "白", "pinyin": "bái", "english": ["white"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-hei", "hanzi": "黑", "pinyin": "hēi", "english": ["black", "dark"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-hong", "hanzi": "红", "pinyin": "hóng", "english": ["red"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-yanse", "hanzi": "颜色", "pinyin": "yánsè", "english": ["colour"], "hsk": 2, "pos": "noun" },
+    { "id": "w-chuan", "hanzi": "穿", "pinyin": "chuān", "english": ["to wear", "to put on"], "hsk": 2, "pos": "verb" },
+    { "id": "w-xin", "hanzi": "新", "pinyin": "xīn", "english": ["new"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-chang-long", "hanzi": "长", "pinyin": "cháng", "english": ["long"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-shoubiao", "hanzi": "手表", "pinyin": "shǒubiǎo", "english": ["watch (on the wrist)"], "hsk": 2, "pos": "noun", "measure": "w-kuai" },
+    { "id": "w-zhang", "hanzi": "张", "pinyin": "zhāng", "english": ["(measure word for flat things: photos, tables, tickets)"], "hsk": 2, "pos": "measure" },
+    { "id": "w-tian", "hanzi": "天", "pinyin": "tiān", "english": ["day", "sky"], "hsk": 0, "pos": "noun" },
+    { "id": "w-qing-sunny", "hanzi": "晴", "pinyin": "qíng", "english": ["sunny", "clear"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-yin", "hanzi": "阴", "pinyin": "yīn", "english": ["cloudy", "overcast"], "hsk": 2, "pos": "adjective" },
+    { "id": "w-xue-snow", "hanzi": "雪", "pinyin": "xuě", "english": ["snow"], "hsk": 2, "pos": "noun" }
+  ],
+  "sentences": [
+    { "id": "s16-xiguaduoshao", "hanzi": "西瓜多少钱一斤？", "pinyin": "Xīguā duōshao qián yì jīn?", "english": "How much is the watermelon per jin?", "words": ["w-xigua", "w-duoshao", "w-qian", "w-yi", "w-jin-weight"] },
+    { "id": "s16-sankuaiyijin", "hanzi": "三块一斤。", "pinyin": "Sān kuài yì jīn.", "english": "Three kuai a jin.", "words": ["w-san", "w-kuai", "w-yi", "w-jin-weight"] },
+    { "id": "s16-yangrouduoshao", "hanzi": "羊肉多少钱一斤？", "pinyin": "Yángròu duōshao qián yì jīn?", "english": "How much is the lamb per jin?", "words": ["w-yangrou", "w-duoshao", "w-qian", "w-yi", "w-jin-weight"] },
+    { "id": "s16-sishikuai", "hanzi": "四十块一斤。", "pinyin": "Sìshí kuài yì jīn.", "english": "Forty kuai a jin.", "words": ["w-si", "w-shi2", "w-kuai", "w-yi", "w-jin-weight"] },
+    { "id": "s16-gongjinshiliangjin", "hanzi": "一公斤是两斤。", "pinyin": "Yì gōngjīn shì liǎng jīn.", "english": "A kilo is two jin.", "words": ["w-yi", "w-gongjin", "w-shi", "w-liang", "w-jin-weight"] },
+    { "id": "s16-maiyigexigua", "hanzi": "我要买一个西瓜。", "pinyin": "Wǒ yào mǎi yí ge xīguā.", "english": "I'd like to buy a watermelon.", "words": ["w-wo", "w-yao", "w-mai3", "w-yi", "w-ge", "w-xigua"] },
+    { "id": "s16-shigejidan", "hanzi": "我买了十个鸡蛋。", "pinyin": "Wǒ mǎi le shí ge jīdàn.", "english": "I bought ten eggs.", "words": ["w-wo", "w-mai3", "w-le", "w-shi2", "w-ge", "w-jidan"] },
+    { "id": "s16-heniunaima", "hanzi": "你喝牛奶吗？", "pinyin": "Nǐ hē niúnǎi ma?", "english": "Do you drink milk?", "words": ["w-ni", "w-he-drink", "w-niunai", "w-ma"] },
+    { "id": "s16-xihuanyangrou", "hanzi": "我很喜欢吃羊肉。", "pinyin": "Wǒ hěn xǐhuan chī yángròu.", "english": "I really like lamb.", "words": ["w-wo", "w-hen", "w-xihuan", "w-chi", "w-yangrou"] },
+    { "id": "s16-taihaole-yangrou", "hanzi": "太好了！我很喜欢吃羊肉。", "pinyin": "Tài hǎo le! Wǒ hěn xǐhuan chī yángròu.", "english": "Great! I really like lamb.", "words": ["w-tai", "w-hao", "w-le", "w-wo", "w-hen", "w-xihuan", "w-chi", "w-yangrou"] },
+    { "id": "s16-zanmenchishuanyangrou", "hanzi": "米格，今天晚上咱们吃涮羊肉吧！", "pinyin": "Mǐgé, jīntiān wǎnshang zánmen chī shuànyángròu ba!", "english": "米格, let's have lamb hot pot tonight!", "words": ["w-mikkel", "w-jintian", "w-wanshang", "w-zanmen", "w-chi", "w-shuanyangrou", "w-ba-particle"] },
+    { "id": "s16-maiyangrou-jidan", "hanzi": "咱们去买两公斤羊肉，再买点鸡蛋和牛奶。", "pinyin": "Zánmen qù mǎi liǎng gōngjīn yángròu, zài mǎi diǎn jīdàn hé niúnǎi.", "english": "Let's buy two kilos of lamb, and some eggs and milk too.", "words": ["w-zanmen", "w-qu", "w-mai3", "w-liang", "w-gongjin", "w-yangrou", "w-zai-again", "w-mai3", "w-dian", "w-jidan", "w-he", "w-niunai"] },
+    { "id": "s16-yigongduoshao", "hanzi": "一共多少钱？", "pinyin": "Yígòng duōshao qián?", "english": "How much is it altogether?", "words": ["w-yigong", "w-duoshao", "w-qian"] },
+    { "id": "s16-yibaibashiyuan", "hanzi": "一共一百八十元。", "pinyin": "Yígòng yìbǎi bāshí yuán.", "english": "180 yuan altogether.", "words": ["w-yigong", "w-yi", "w-bai3", "w-ba", "w-shi2", "w-yuan-money"] },
+    { "id": "s16-wolaiba", "hanzi": "我来吧！", "pinyin": "Wǒ lái ba!", "english": "Let me (pay)!", "words": ["w-wo", "w-lai", "w-ba-particle"], "alt": { "english": ["Let me do it!", "I'll get it!"] } },
+    { "id": "s16-shoubiaoyiqian", "hanzi": "这块手表一千块。", "pinyin": "Zhè kuài shǒubiǎo yìqiān kuài.", "english": "This watch costs a thousand kuai.", "words": ["w-zhe", "w-kuai", "w-shoubiao", "w-yi", "w-qian-thousand", "w-kuai"] },
+    { "id": "s16-wodeshoubiao", "hanzi": "我的手表是新的。", "pinyin": "Wǒ de shǒubiǎo shì xīn de.", "english": "My watch is new.", "words": ["w-wo", "w-de", "w-shoubiao", "w-shi", "w-xin", "w-de"] },
+    { "id": "s16-zhangzhaopian", "hanzi": "这张照片真漂亮。", "pinyin": "Zhè zhāng zhàopiàn zhēn piàoliang.", "english": "This photo is really beautiful.", "words": ["w-zhe", "w-zhang", "w-zhaopian", "w-zhen", "w-piaoliang"] },
+    { "id": "s16-yizhangdazhuozi", "hanzi": "家里有一张大桌子。", "pinyin": "Jiā lǐ yǒu yì zhāng dà zhuōzi.", "english": "There's a big table at home.", "words": ["w-jia", "w-li-inside", "w-you", "w-yi", "w-zhang", "w-da", "w-zhuozi"] },
+    { "id": "s16-xihuanshenmeyanse", "hanzi": "你喜欢什么颜色？", "pinyin": "Nǐ xǐhuan shénme yánsè?", "english": "What colour do you like?", "words": ["w-ni", "w-xihuan", "w-shenme", "w-yanse"] },
+    { "id": "s16-woyaohongde", "hanzi": "我要红的。", "pinyin": "Wǒ yào hóng de.", "english": "I'd like the red one.", "words": ["w-wo", "w-yao", "w-hong", "w-de"] },
+    { "id": "s16-youbaidema", "hanzi": "有白的吗？", "pinyin": "Yǒu bái de ma?", "english": "Do you have a white one?", "words": ["w-you", "w-bai-white", "w-de", "w-ma"] },
+    { "id": "s16-heidetaigui", "hanzi": "黑的太贵了。", "pinyin": "Hēi de tài guì le.", "english": "The black one is too expensive.", "words": ["w-hei", "w-de", "w-tai", "w-gui", "w-le"] },
+    { "id": "s16-chuanhongyifu", "hanzi": "她今天穿了一件红衣服。", "pinyin": "Tā jīntiān chuān le yí jiàn hóng yīfu.", "english": "She's wearing a red top today.", "words": ["w-ta-she", "w-jintian", "w-chuan", "w-le", "w-yi", "w-jian-item", "w-hong", "w-yifu"] },
+    { "id": "s16-yifushixinde", "hanzi": "这件衣服是新的。", "pinyin": "Zhè jiàn yīfu shì xīn de.", "english": "This piece of clothing is new.", "words": ["w-zhe", "w-jian-item", "w-yifu", "w-shi", "w-xin", "w-de"] },
+    { "id": "s16-yifutaichang", "hanzi": "这件衣服太长了。", "pinyin": "Zhè jiàn yīfu tài cháng le.", "english": "This is too long.", "words": ["w-zhe", "w-jian-item", "w-yifu", "w-tai", "w-chang-long", "w-le"] },
+    { "id": "s16-qingtian", "hanzi": "今天是晴天。", "pinyin": "Jīntiān shì qíngtiān.", "english": "It's sunny today.", "words": ["w-jintian", "w-shi", "w-qing-sunny", "w-tian"] },
+    { "id": "s16-yintian", "hanzi": "今天阴天，可能会下雪。", "pinyin": "Jīntiān yīntiān, kěnéng huì xià xuě.", "english": "It's cloudy today. It might snow.", "words": ["w-jintian", "w-yin", "w-tian", "w-keneng", "w-hui", "w-xia", "w-xue-snow"] },
+    { "id": "s16-mingtianxiaxue", "hanzi": "明天会下雪。", "pinyin": "Míngtiān huì xià xuě.", "english": "It's going to snow tomorrow.", "words": ["w-mingtian", "w-hui", "w-xia", "w-xue-snow"] },
+    { "id": "s16-duochuandian", "hanzi": "下雪了，多穿点衣服！", "pinyin": "Xià xuě le, duō chuān diǎn yīfu!", "english": "It's snowing, wrap up warm!", "words": ["w-xia", "w-xue-snow", "w-le", "w-duo", "w-chuan", "w-dian", "w-yifu"], "alt": { "english": ["It's snowing, put on more clothes!"] } },
+    { "id": "s16-xiaxue-huijia", "hanzi": "下雪了！咱们回家吧。", "pinyin": "Xià xuě le! Zánmen huí jiā ba.", "english": "It's snowing! Let's go home.", "words": ["w-xia", "w-xue-snow", "w-le", "w-zanmen", "w-hui-return", "w-jia", "w-ba-particle"] },
+    { "id": "s16-hao-chuan", "hanzi": "好，我多穿点。", "pinyin": "Hǎo, wǒ duō chuān diǎn.", "english": "OK, I'll wrap up.", "words": ["w-hao", "w-wo", "w-duo", "w-chuan", "w-dian"] }
+  ],
+  "exchanges": [
+    { "id": "x16-price", "prompt": "s16-yangrouduoshao", "reply": "s16-sishikuai", "wrong": ["s16-qingtian", "s16-woyaohongde"], "context": "You're the butcher. Lamb is forty kuai a jin." },
+    { "id": "x16-colour", "prompt": "s16-xihuanshenmeyanse", "reply": "s16-woyaohongde", "wrong": ["s16-shigejidan", "s16-mingtianxiaxue"], "context": "A shop assistant asks which colour you want. You like the red one." },
+    { "id": "x16-pay", "prompt": "s16-yibaibashiyuan", "reply": "s16-wolaiba", "wrong": ["s16-heniunaima", "s16-yifutaichang"], "context": "Grandma is about to pay. You want to pay instead." },
+    { "id": "x16-snow", "prompt": "s16-duochuandian", "reply": "s16-hao-chuan", "wrong": ["s16-youbaidema", "s16-gongjinshiliangjin"], "context": "Her mother sees you leaving in a thin jacket." },
+    { "id": "x16-hotpot", "prompt": "s16-zanmenchishuanyangrou", "reply": "s16-taihaole-yangrou", "wrong": ["s16-heidetaigui", "s16-yintian"], "context": "Grandma suggests hot pot tonight. You love lamb." }
+  ],
+  "grammar": [
+    { "id": "g16-yuan", "title": "元 and 块, and big numbers", "body": "元 is written on price tags; people say 块. Both mean yuan.\nBig numbers build like this: 一百 (100), 一百八十 (180), 一千 (1000). Prices per weight put the unit last: 三块一斤 (3 kuai a jin). One jin is half a kilo.", "examples": ["s16-yibaibashiyuan", "s16-sankuaiyijin", "s16-gongjinshiliangjin"] },
+    { "id": "g16-de-one", "title": "红的: the red one", "body": "Adjective + 的 stands for \"the ... one\": 红的 (the red one), 新的 (a new one), 黑的 (the black one).", "examples": ["s16-woyaohongde", "s16-youbaidema", "s16-wodeshoubiao"] },
+    { "id": "g16-zhang", "title": "张 for flat things", "body": "Use 张 for things with a flat surface: photos, tables, tickets, paper. 一张照片, 一张桌子.", "examples": ["s16-zhangzhaopian", "s16-yizhangdazhuozi"] },
+    { "id": "g16-weather", "title": "Talking about the weather", "body": "晴天 (sunny day), 阴天 (cloudy day). Snow and rain \"come down\": 下雪, 下雨. Add 了 when it has started: 下雪了!", "examples": ["s16-qingtian", "s16-yintian", "s16-duochuandian"] }
+  ],
+  "dialogue": {
+    "id": "d16-hotpot",
+    "title": "Listening challenge: Hot pot night",
+    "setting": "A cold afternoon in Beijing. Grandma takes 米格 to the market.",
+    "speakers": [
+      { "id": "L", "name": "姥姥", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "L", "sentence": "s16-zanmenchishuanyangrou" },
+      { "speaker": "K", "sentence": "s16-taihaole-yangrou" },
+      { "speaker": "L", "sentence": "s16-maiyangrou-jidan" },
+      { "speaker": "K", "sentence": "s16-yangrouduoshao" },
+      { "speaker": "L", "sentence": "s16-sishikuai" },
+      { "speaker": "K", "sentence": "s16-yigongduoshao" },
+      { "speaker": "L", "sentence": "s16-yibaibashiyuan" },
+      { "speaker": "K", "sentence": "s16-wolaiba" },
+      { "speaker": "L", "sentence": "s16-xiaxue-huijia" }
+    ],
+    "questions": [
+      { "q": "What will they eat tonight?", "options": ["Lamb hot pot", "Dumplings", "Fish"], "answer": 0 },
+      { "q": "How much lamb do they buy?", "options": ["One jin", "Two kilos", "Ten kilos"], "answer": 1 },
+      { "q": "How much do they pay?", "options": ["40 yuan", "120 yuan", "180 yuan"], "answer": 2 },
+      { "q": "Why do they go home?", "options": ["It's snowing", "They're tired", "The shop closes"], "answer": 0 }
+    ]
+  },
+  "nodes": [
+    { "id": "n16-market", "title": "At the market", "words": ["w-bai3", "w-qian-thousand", "w-yuan-money", "w-gongjin", "w-xigua", "w-jidan", "w-niunai", "w-yangrou", "w-shuanyangrou"], "sentences": ["s16-xiguaduoshao", "s16-sankuaiyijin", "s16-yangrouduoshao", "s16-sishikuai", "s16-gongjinshiliangjin", "s16-maiyigexigua", "s16-shigejidan", "s16-heniunaima", "s16-xihuanyangrou", "s16-zanmenchishuanyangrou", "s16-yibaibashiyuan", "s16-wolaiba"], "exchanges": ["x16-price", "x16-pay", "x16-hotpot"], "grammar": ["g16-yuan"] },
+    { "id": "n16-clothes", "title": "Colours and clothes", "words": ["w-bai-white", "w-hei", "w-hong", "w-yanse", "w-chuan", "w-xin", "w-chang-long", "w-shoubiao", "w-zhang"], "sentences": ["s16-xihuanshenmeyanse", "s16-woyaohongde", "s16-youbaidema", "s16-heidetaigui", "s16-chuanhongyifu", "s16-yifushixinde", "s16-yifutaichang", "s16-shoubiaoyiqian", "s16-wodeshoubiao", "s16-zhangzhaopian", "s16-yizhangdazhuozi"], "exchanges": ["x16-colour"], "grammar": ["g16-de-one", "g16-zhang"] },
+    { "id": "n16-weather", "title": "Sun and snow", "words": ["w-tian", "w-qing-sunny", "w-yin", "w-xue-snow"], "sentences": ["s16-qingtian", "s16-yintian", "s16-mingtianxiaxue", "s16-duochuandian", "s16-xiaxue-huijia", "s16-hao-chuan"], "exchanges": ["x16-snow"], "grammar": ["g16-weather"] },
+    { "id": "n16-story", "title": "Challenge: Hot pot night", "kind": "story", "sentences": ["s16-zanmenchishuanyangrou", "s16-maiyangrou-jidan", "s16-yangrouduoshao", "s16-yibaibashiyuan", "s16-xiaxue-huijia"] }
+  ]
+}
