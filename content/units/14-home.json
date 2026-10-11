@@ -1,0 +1,106 @@
+{
+  "id": "u14-home",
+  "order": 6,
+  "title": "Around the house",
+  "titleHanzi": "在家里",
+  "description": "Things at home, saying where they are, and family at the dinner table.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-dongxi", "hanzi": "东西", "pinyin": "dōngxi", "english": ["thing", "stuff"], "hsk": 1, "pos": "noun" },
+    { "id": "w-beizi", "hanzi": "杯子", "pinyin": "bēizi", "english": ["cup", "glass"], "hsk": 1, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-zhuozi", "hanzi": "桌子", "pinyin": "zhuōzi", "english": ["table", "desk"], "hsk": 1, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-yizi", "hanzi": "椅子", "pinyin": "yǐzi", "english": ["chair"], "hsk": 1, "pos": "noun", "measure": "w-ba-object" },
+    { "id": "w-shang", "hanzi": "上", "pinyin": "shàng", "english": ["on", "above", "up"], "hsk": 1, "pos": "noun" },
+    { "id": "w-li-inside", "hanzi": "里", "pinyin": "lǐ", "english": ["in", "inside"], "hsk": 1, "pos": "noun" },
+    { "id": "w-houmian", "hanzi": "后面", "pinyin": "hòumiàn", "english": ["behind", "at the back"], "hsk": 1, "pos": "noun" },
+    { "id": "w-kanjian", "hanzi": "看见", "pinyin": "kànjiàn", "english": ["to see", "to spot"], "hsk": 1, "pos": "verb" },
+    { "id": "w-mao", "hanzi": "猫", "pinyin": "māo", "english": ["cat"], "hsk": 1, "pos": "noun", "measure": "w-zhi" },
+    { "id": "w-xiao", "hanzi": "小", "pinyin": "xiǎo", "english": ["small", "little"], "hsk": 1, "pos": "adjective" },
+    { "id": "w-xie", "hanzi": "些", "pinyin": "xiē", "english": ["some", "these/those (with 这/那)"], "hsk": 1, "pos": "measure" },
+    { "id": "w-shuijiao", "hanzi": "睡觉", "pinyin": "shuìjiào", "english": ["to sleep", "to go to bed"], "hsk": 1, "pos": "verb" },
+    { "id": "w-ai", "hanzi": "爱", "pinyin": "ài", "english": ["to love"], "hsk": 1, "pos": "verb" },
+    { "id": "w-erzi", "hanzi": "儿子", "pinyin": "érzi", "english": ["son"], "hsk": 1, "pos": "noun" },
+    { "id": "w-nver", "hanzi": "女儿", "pinyin": "nǚ'ér", "english": ["daughter"], "hsk": 1, "pos": "noun" },
+    { "id": "w-mifan", "hanzi": "米饭", "pinyin": "mǐfàn", "english": ["rice (cooked)"], "hsk": 1, "pos": "noun", "measure": "w-wan" },
+    { "id": "w-shao", "hanzi": "少", "pinyin": "shǎo", "english": ["few", "little (amount)"], "hsk": 1, "pos": "adjective" },
+    { "id": "w-kai", "hanzi": "开", "pinyin": "kāi", "english": ["to open", "to turn on", "to drive"], "hsk": 1, "pos": "verb" }
+  ],
+  "sentences": [
+    { "id": "s14-beizizaizhuozishang", "hanzi": "杯子在桌子上。", "pinyin": "Bēizi zài zhuōzi shàng.", "english": "The cup is on the table.", "words": ["w-beizi", "w-zai", "w-zhuozi", "w-shang"] },
+    { "id": "s14-zaizhuozishang", "hanzi": "在桌子上。", "pinyin": "Zài zhuōzi shàng.", "english": "On the table.", "words": ["w-zai", "w-zhuozi", "w-shang"], "alt": { "english": ["It's on the table."] } },
+    { "id": "s14-beiziliyoucha", "hanzi": "杯子里有茶。", "pinyin": "Bēizi lǐ yǒu chá.", "english": "There's tea in the cup.", "words": ["w-beizi", "w-li-inside", "w-you", "w-cha"] },
+    { "id": "s14-jialiyouhenduodongxi", "hanzi": "家里有很多东西。", "pinyin": "Jiā lǐ yǒu hěn duō dōngxi.", "english": "There's a lot of stuff at home.", "words": ["w-jia", "w-li-inside", "w-you", "w-hen", "w-duo", "w-dongxi"] },
+    { "id": "s14-maidiandongxi", "hanzi": "我们去买点东西吧。", "pinyin": "Wǒmen qù mǎi diǎn dōngxi ba.", "english": "Let's go and buy a few things.", "words": ["w-women", "w-qu", "w-mai3", "w-dian", "w-dongxi", "w-ba-particle"] },
+    { "id": "s14-kanjianshoujilema", "hanzi": "你看见我的手机了吗？", "pinyin": "Nǐ kànjiàn wǒ de shǒujī le ma?", "english": "Have you seen my phone?", "words": ["w-ni", "w-kanjian", "w-wo", "w-de", "w-shouji", "w-le", "w-ma"] },
+    { "id": "s14-ayi-kanjian", "hanzi": "阿姨，您看见我的手机了吗？", "pinyin": "Āyí, nín kànjiàn wǒ de shǒujī le ma?", "english": "Auntie, have you seen my phone?", "words": ["w-ayi", "w-nin", "w-kanjian", "w-wo", "w-de", "w-shouji", "w-le", "w-ma"] },
+    { "id": "s14-meikanjian", "hanzi": "没看见。", "pinyin": "Méi kànjiàn.", "english": "I haven't seen it.", "words": ["w-mei", "w-kanjian"], "alt": { "english": ["No, I haven't."] } },
+    { "id": "s14-meikanjian-zhuozi", "hanzi": "没看见。在桌子上吗？", "pinyin": "Méi kànjiàn. Zài zhuōzi shàng ma?", "english": "I haven't seen it. Is it on the table?", "words": ["w-mei", "w-kanjian", "w-zai", "w-zhuozi", "w-shang", "w-ma"] },
+    { "id": "s14-zhuozishangmeiyou", "hanzi": "桌子上没有。", "pinyin": "Zhuōzi shàng méiyǒu.", "english": "It's not on the table.", "words": ["w-zhuozi", "w-shang", "w-mei", "w-you"] },
+    { "id": "s14-zaizhuozihoumian", "hanzi": "在桌子后面。", "pinyin": "Zài zhuōzi hòumiàn.", "english": "Behind the table.", "words": ["w-zai", "w-zhuozi", "w-houmian"] },
+    { "id": "s14-maozaiyizishang", "hanzi": "猫在椅子上睡觉。", "pinyin": "Māo zài yǐzi shàng shuìjiào.", "english": "The cat is sleeping on the chair.", "words": ["w-mao", "w-zai", "w-yizi", "w-shang", "w-shuijiao"] },
+    { "id": "s14-shoujizaimaohoumian", "hanzi": "你看，猫在椅子上睡觉。手机在猫后面！", "pinyin": "Nǐ kàn, māo zài yǐzi shàng shuìjiào. Shǒujī zài māo hòumiàn!", "english": "Look, the cat is sleeping on the chair. The phone is behind the cat!", "words": ["w-ni", "w-kan", "w-mao", "w-zai", "w-yizi", "w-shang", "w-shuijiao", "w-shouji", "w-zai", "w-mao", "w-houmian"] },
+    { "id": "s14-zhexiedongxi", "hanzi": "这些东西是你的吗？", "pinyin": "Zhèxiē dōngxi shì nǐ de ma?", "english": "Are these things yours?", "words": ["w-zhe", "w-xie", "w-dongxi", "w-shi", "w-ni", "w-de", "w-ma"] },
+    { "id": "s14-xiaomao", "hanzi": "这只小猫很漂亮。", "pinyin": "Zhè zhī xiǎo māo hěn piàoliang.", "english": "This kitten is very pretty.", "words": ["w-zhe", "w-zhi", "w-xiao", "w-mao", "w-hen", "w-piaoliang"] },
+    { "id": "s14-beizitaixiao", "hanzi": "这个杯子太小了。", "pinyin": "Zhège bēizi tài xiǎo le.", "english": "This cup is too small.", "words": ["w-zhe", "w-ge", "w-beizi", "w-tai", "w-xiao", "w-le"] },
+    { "id": "s14-xiangshuijiao", "hanzi": "我想睡觉了。", "pinyin": "Wǒ xiǎng shuìjiào le.", "english": "I want to go to bed.", "words": ["w-wo", "w-xiang", "w-shuijiao", "w-le"], "alt": { "english": ["I'm ready for bed."] } },
+    { "id": "s14-jidianshuijiao", "hanzi": "你几点睡觉？", "pinyin": "Nǐ jǐ diǎn shuìjiào?", "english": "What time do you go to bed?", "words": ["w-ni", "w-ji", "w-dian", "w-shuijiao"] },
+    { "id": "s14-wanshangshidian", "hanzi": "晚上十点。", "pinyin": "Wǎnshang shí diǎn.", "english": "Ten in the evening.", "words": ["w-wanshang", "w-shi2", "w-dian"], "alt": { "english": ["10 pm."] } },
+    { "id": "s14-erzinver", "hanzi": "我姐姐有一个儿子和一个女儿。", "pinyin": "Wǒ jiějie yǒu yí ge érzi hé yí ge nǚ'ér.", "english": "My older sister has a son and a daughter.", "words": ["w-wo", "w-jiejie", "w-you", "w-yi", "w-ge", "w-erzi", "w-he", "w-yi", "w-ge", "w-nver"] },
+    { "id": "s14-nversansui", "hanzi": "她女儿三岁了。", "pinyin": "Tā nǚ'ér sān suì le.", "english": "Her daughter is three.", "words": ["w-ta-she", "w-nver", "w-san", "w-sui", "w-le"] },
+    { "id": "s14-erzijiaoshenme", "hanzi": "您儿子叫什么名字？", "pinyin": "Nín érzi jiào shénme míngzi?", "english": "What's your son's name?", "words": ["w-nin", "w-erzi", "w-jiao", "w-shenme", "w-mingzi"] },
+    { "id": "s14-woaini", "hanzi": "我爱你。", "pinyin": "Wǒ ài nǐ.", "english": "I love you.", "words": ["w-wo", "w-ai", "w-ni"] },
+    { "id": "s14-aichijiaozi", "hanzi": "她很爱吃饺子。", "pinyin": "Tā hěn ài chī jiǎozi.", "english": "She loves eating dumplings.", "words": ["w-ta-she", "w-hen", "w-ai", "w-chi", "w-jiaozi"] },
+    { "id": "s14-chimifanma", "hanzi": "你吃米饭吗？", "pinyin": "Nǐ chī mǐfàn ma?", "english": "Would you like some rice?", "words": ["w-ni", "w-chi", "w-mifan", "w-ma"], "alt": { "english": ["Do you eat rice?"] } },
+    { "id": "s14-yaoyidian", "hanzi": "要一点，谢谢。", "pinyin": "Yào yìdiǎn, xièxie.", "english": "Just a little, thanks.", "words": ["w-yao", "w-yidian", "w-xiexie"] },
+    { "id": "s14-chitaishaole", "hanzi": "你吃太少了！", "pinyin": "Nǐ chī tài shǎo le!", "english": "You're eating too little!", "words": ["w-ni", "w-chi", "w-tai", "w-shao", "w-le"] },
+    { "id": "s14-baole-xiexieayi", "hanzi": "我饱了，谢谢阿姨。", "pinyin": "Wǒ bǎo le, xièxie āyí.", "english": "I'm full, thank you, Auntie.", "words": ["w-wo", "w-bao", "w-le", "w-xiexie", "w-ayi"] },
+    { "id": "s14-renduorenshao", "hanzi": "中国人很多，丹麦人很少。", "pinyin": "Zhōngguó rén hěn duō, Dānmài rén hěn shǎo.", "english": "There are lots of Chinese people and very few Danes.", "words": ["w-zhongguo", "w-ren", "w-hen", "w-duo", "w-danmai", "w-ren", "w-hen", "w-shao"] },
+    { "id": "s14-shangdianjidiankai", "hanzi": "商店几点开？", "pinyin": "Shāngdiàn jǐ diǎn kāi?", "english": "What time does the shop open?", "words": ["w-shangdian", "w-ji", "w-dian", "w-kai"] },
+    { "id": "s14-jiudiankai", "hanzi": "九点开。", "pinyin": "Jiǔ diǎn kāi.", "english": "It opens at nine.", "words": ["w-jiu", "w-dian", "w-kai"] },
+    { "id": "s14-taihaole-xiexie", "hanzi": "太好了！谢谢阿姨！", "pinyin": "Tài hǎo le! Xièxie āyí!", "english": "Great! Thank you, Auntie!", "words": ["w-tai", "w-hao", "w-le", "w-xiexie", "w-ayi"] },
+    { "id": "s14-bukeqi-mifan", "hanzi": "不客气。你吃米饭吗？", "pinyin": "Bú kèqi. Nǐ chī mǐfàn ma?", "english": "You're welcome. Would you like some rice?", "words": ["w-bukeqi", "w-ni", "w-chi", "w-mifan", "w-ma"] }
+  ],
+  "exchanges": [
+    { "id": "x14-phone", "prompt": "s14-kanjianshoujilema", "reply": "s14-zaizhuozishang", "wrong": ["s14-woaini", "s14-xiangshuijiao"], "context": "You saw your friend's phone a minute ago." },
+    { "id": "x14-rice", "prompt": "s14-chimifanma", "reply": "s14-yaoyidian", "wrong": ["s14-zaizhuozihoumian", "s14-jiudiankai"], "context": "Her mother offers you rice at dinner. You'd like some." },
+    { "id": "x14-toolittle", "prompt": "s14-chitaishaole", "reply": "s14-baole-xiexieayi", "wrong": ["s14-meikanjian", "s14-nversansui"], "context": "Her mother thinks you haven't eaten enough. You're full." },
+    { "id": "x14-bedtime", "prompt": "s14-jidianshuijiao", "reply": "s14-wanshangshidian", "wrong": ["s14-zaizhuozishang", "s14-beiziliyoucha"], "context": "You usually go to bed at ten." },
+    { "id": "x14-shop", "prompt": "s14-shangdianjidiankai", "reply": "s14-jiudiankai", "wrong": ["s14-woaini", "s14-erzinver"], "context": "The shop opens at nine." }
+  ],
+  "grammar": [
+    { "id": "g14-location", "title": "Where things are", "body": "Say where something is with 在 + place + position word: 在桌子上 (on the table), 在杯子里 (in the cup), 在桌子后面 (behind the table).\nThe position word comes after the thing, the opposite of English.", "examples": ["s14-beizizaizhuozishang", "s14-beiziliyoucha", "s14-zaizhuozihoumian"] },
+    { "id": "g14-xie", "title": "These and those: 这些, 那些", "body": "Add 些 to 这 or 那 to talk about several things: 这些东西 (these things). No other measure word is needed.", "examples": ["s14-zhexiedongxi"] },
+    { "id": "g14-ai", "title": "爱 for things you love doing", "body": "爱 is not only for people. 爱吃 means \"love to eat\", like a stronger 喜欢吃.", "examples": ["s14-aichijiaozi", "s14-woaini"] }
+  ],
+  "dialogue": {
+    "id": "d14-phone",
+    "title": "Listening challenge: The missing phone",
+    "setting": "米格 can't find his phone at her parents' home. Her mother helps him look.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "K", "sentence": "s14-ayi-kanjian" },
+      { "speaker": "M", "sentence": "s14-meikanjian-zhuozi" },
+      { "speaker": "K", "sentence": "s14-zhuozishangmeiyou" },
+      { "speaker": "M", "sentence": "s14-shoujizaimaohoumian" },
+      { "speaker": "K", "sentence": "s14-taihaole-xiexie" },
+      { "speaker": "M", "sentence": "s14-bukeqi-mifan" },
+      { "speaker": "K", "sentence": "s14-yaoyidian" },
+      { "speaker": "M", "sentence": "s14-chitaishaole" },
+      { "speaker": "K", "sentence": "s14-baole-xiexieayi" }
+    ],
+    "questions": [
+      { "q": "What is 米格 looking for?", "options": ["His phone", "The cat", "A cup"], "answer": 0 },
+      { "q": "Where was it?", "options": ["On the table", "Behind the cat", "In a cup"], "answer": 1 },
+      { "q": "What does her mother think?", "options": ["He eats too little", "He eats too much", "He should go to bed"], "answer": 0 }
+    ]
+  },
+  "nodes": [
+    { "id": "n14-things", "title": "Things at home", "words": ["w-dongxi", "w-beizi", "w-zhuozi", "w-yizi", "w-shang", "w-li-inside"], "sentences": ["s14-beizizaizhuozishang", "s14-zaizhuozishang", "s14-beiziliyoucha", "s14-jialiyouhenduodongxi", "s14-maidiandongxi"], "grammar": ["g14-location"] },
+    { "id": "n14-where", "title": "Where is it?", "words": ["w-houmian", "w-kanjian", "w-mao", "w-xiao", "w-xie", "w-shuijiao"], "sentences": ["s14-kanjianshoujilema", "s14-meikanjian", "s14-zaizhuozihoumian", "s14-maozaiyizishang", "s14-zhexiedongxi", "s14-xiaomao", "s14-beizitaixiao", "s14-xiangshuijiao", "s14-jidianshuijiao", "s14-wanshangshidian"], "exchanges": ["x14-phone", "x14-bedtime"], "grammar": ["g14-xie"] },
+    { "id": "n14-family", "title": "At the dinner table", "words": ["w-ai", "w-erzi", "w-nver", "w-mifan", "w-shao", "w-kai"], "sentences": ["s14-erzinver", "s14-nversansui", "s14-erzijiaoshenme", "s14-woaini", "s14-aichijiaozi", "s14-chimifanma", "s14-yaoyidian", "s14-chitaishaole", "s14-baole-xiexieayi", "s14-renduorenshao", "s14-shangdianjidiankai", "s14-jiudiankai"], "exchanges": ["x14-rice", "x14-toolittle", "x14-shop"], "grammar": ["g14-ai"] },
+    { "id": "n14-story", "title": "Challenge: The missing phone", "kind": "story", "sentences": ["s14-ayi-kanjian", "s14-meikanjian-zhuozi", "s14-zhuozishangmeiyou", "s14-shoujizaimaohoumian", "s14-taihaole-xiexie", "s14-bukeqi-mifan"] }
+  ]
+}

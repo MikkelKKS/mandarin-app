@@ -26,7 +26,8 @@ Lowercase with dashes, globally unique across all files. Use a `w-` prefix for w
 `{ id, hanzi, pinyin, english, words[], alt? }`
 - `words` are word ids **in order**, and their characters must spell the sentence exactly (punctuation aside). Every word must be defined in this unit or an earlier one.
 - Write pinyin the way it's spoken for 不/一 (`bú shì`, `yí ge`). Leave 3rd-tone sandhi unmarked (`nǐ hǎo`).
-- Avoid erhua (儿) for now: use 哪里 rather than 哪儿, and 一点 rather than 一点儿.
+- Her family is from Beijing. In units after "Beijing flavour" (u13), use Beijing forms where natural: 哪儿, 这儿, 那儿, 一会儿, 咱们, and 您 for elders. Earlier units use 哪里 and 一点.
+- Sentence ids start with the unit number (`s14-...`, `x14-...`, `g14-...`) to avoid clashes.
 - Use natural everyday Mainland Mandarin, simplified characters. Prefer contexts from life with a partner's family.
 - Dialogue lines that combine two short sentences need their own combined sentence entry.
 - `alt.english` / `alt.pinyin` list other acceptable answers.
