@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import { citationTones } from './scripts/vite-citation-tones';
 
 // Served from https://<user>.github.io/mandarin-app/
 const base = process.env.BASE_PATH ?? '/mandarin-app/';
@@ -11,6 +12,7 @@ export default defineConfig({
   base,
   plugins: [
     react(),
+    citationTones(import.meta.dirname),
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
@@ -56,6 +58,7 @@ export default defineConfig({
       },
     }),
   ],
+  build: { chunkSizeWarningLimit: 800 },
   test: {
     include: ['src/**/*.test.ts', 'scripts/**/*.test.ts'],
     environment: 'node',

@@ -6,7 +6,7 @@
  * sandhi. Missing tones are a soft error ("almost") unless strict mode is on.
  * One-letter slips on long answers pass as "typo" with the correction shown.
  */
-import { pinyin as pinyinPro } from 'pinyin-pro';
+import citation from 'virtual:citation-tones';
 import {
   type Letter,
   type Syllable,
@@ -48,17 +48,9 @@ interface ExpectedSyllable extends Syllable {
   accepted: Set<Tone>;
 }
 
-const citationCache = new Map<string, Tone[]>();
+/** Dictionary tones of a character (precomputed at build time for all content). */
 function citationTones(ch: string): Tone[] {
-  let t = citationCache.get(ch);
-  if (!t) {
-    const readings = pinyinPro(ch, { toneType: 'num', type: 'array', toneSandhi: false }) as string[];
-    t = readings
-      .map((r) => Number(r.slice(-1)))
-      .filter((n) => n >= 1 && n <= 4) as Tone[];
-    citationCache.set(ch, t);
-  }
-  return t;
+  return (citation[ch] ?? []) as Tone[];
 }
 
 export function buildExpected(exp: ExpectedPinyin): ExpectedSyllable[] | null {
