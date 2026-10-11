@@ -116,3 +116,27 @@ test('dictionary: search and add a word to practice', async ({ page }) => {
   await page.getByLabel('Search the dictionary').fill('');
   await expect(page.getByText('My words')).toBeVisible();
 });
+
+test('role-play a story by typing one part', async ({ page }) => {
+  const { readFileSync } = await import('node:fs');
+  const unit = JSON.parse(readFileSync('content/units/00-basics.json', 'utf8'));
+  const pinyin = new Map<string, string>(unit.sentences.map((s: { id: string; pinyin: string }) => [s.id, s.pinyin]));
+  const role = unit.dialogue.speakers[unit.dialogue.speakers.length - 1];
+  const mine: string[] = unit.dialogue.lines.filter((l: { speaker: string }) => l.speaker === role.id).map((l: { sentence: string }) => pinyin.get(l.sentence)!);
+  await page.goto('./#/lesson/n00-story/roleplay');
+  await page.getByRole('button', { name: `Play as ${role.name}` }).click();
+  for (const [i, p] of mine.entries()) {
+    const input = page.getByLabel('Your answer in pinyin');
+    await expect(input).toBeVisible({ timeout: 30_000 });
+    // First line: a wrong try, then the retry.
+    if (i === 0) {
+      await input.fill('zzz');
+      await page.getByRole('button', { name: 'Check' }).click();
+      await page.getByRole('button', { name: 'Try again' }).click();
+    }
+    await input.fill(p);
+    await page.getByRole('button', { name: 'Check' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+  }
+  await expect(page.getByText('Fixed along the way')).toBeVisible({ timeout: 30_000 });
+});

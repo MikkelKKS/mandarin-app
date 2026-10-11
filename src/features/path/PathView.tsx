@@ -217,6 +217,11 @@ function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeStat
               {state.mastery === 0 ? 'Start' : state.mastery >= MAX_MASTERY ? 'Play again' : 'Level up'}
             </button>
           )}
+          {!locked && n.kind === 'story' && (
+            <button onClick={() => go(`lesson/${nodeId}/roleplay`)} className="flex h-12 items-center justify-center gap-2 rounded-2xl border-2 border-line font-medium">
+              Role-play
+            </button>
+          )}
           {locked && (
             <button onClick={() => go(`testout/${nodes.get(nodeId)!.unit}`)} className="h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
               Take the test-out

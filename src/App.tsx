@@ -24,7 +24,7 @@ export default function App() {
     case 'lesson':
       return (
         <WordPopupProvider>
-          <NodeRunner key={arg} nodeId={arg} />
+          <NodeRunner key={route.join('/')} nodeId={arg} roleplay={route[2] === 'roleplay'} />
         </WordPopupProvider>
       );
     case 'testout':
@@ -42,7 +42,7 @@ export default function App() {
     case 'pack':
       return (
         <WordPopupProvider>
-          <PackRunner key={route.join('/')} id={arg} story={route[2] === 'story'} />
+          <PackRunner key={route.join('/')} id={arg} story={route[2] === 'story'} roleplay={route[2] === 'roleplay'} />
         </WordPopupProvider>
       );
     case 'game':

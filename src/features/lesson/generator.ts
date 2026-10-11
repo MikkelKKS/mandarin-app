@@ -1,6 +1,7 @@
 /**
  * Builds lessons from a set of words, sentences and exchanges.
- * Target mix (CLAUDE.md §5): ~50% listening, ~25% pinyin, ~15% recognition, ~10% other.
+ * Target mix: ~45% listening, ~35% production (typing pinyin, building sentences),
+ * ~12% recognition, the rest other. Shifted from CLAUDE.md §5 at the owner's request (see DECISIONS.md).
  */
 import type { Exchange, Sentence, Word } from '../../content/schema';
 import type { Voice } from '../../content/audioPaths';
@@ -40,6 +41,8 @@ let counter = 0;
 const key = (k: string) => `${k}-${++counter}`;
 
 const syllableCount = (hz: string) => [...hanziOnly(hz)].length;
+/** Longest sentence the learner is asked to type. */
+export const MAX_TYPED = 14;
 const tonelessCache = new Map<string, string>();
 const toneless = (p: string) => {
   let t = tonelessCache.get(p);
@@ -52,9 +55,9 @@ const toneless = (p: string) => {
 
 /** Weighted plan of categories for a lesson of n exercises. */
 export function categoryPlan(n: number, rnd = Math.random): Array<'listening' | 'pinyin' | 'recognition' | 'other'> {
-  const listening = Math.round(n * 0.5);
-  const pinyin = Math.round(n * 0.25);
-  const recognition = Math.max(1, Math.round(n * 0.15));
+  const listening = Math.round(n * 0.45);
+  const pinyin = Math.round(n * 0.35);
+  const recognition = Math.max(1, Math.round(n * 0.12));
   const other = Math.max(0, n - listening - pinyin - recognition);
   const plan = [
     ...Array(listening).fill('listening'),
@@ -67,7 +70,7 @@ export function categoryPlan(n: number, rnd = Math.random): Array<'listening' | 
 
 const BY_CATEGORY: Record<string, ExerciseKind[]> = {
   listening: ['listen-meaning', 'listen-sentence', 'listen-tiles', 'dictation', 'what-would-you-say', 'tone-id'],
-  pinyin: ['en-to-pinyin', 'fill-gap', 'build-sentence', 'reply-type'],
+  pinyin: ['en-to-pinyin', 'en-to-pinyin', 'fill-gap', 'build-sentence', 'reply-type', 'reply-type'],
   recognition: ['pick-character', 'read-sentence', 'match-pairs'],
   other: ['minimal-pair', 'tone-id', 'match-pairs'],
   tones: ['tone-id', 'tone-id', 'minimal-pair', 'dictation'],
@@ -216,11 +219,17 @@ function make(kind: ExerciseKind, t: Target | null, inp: GenInput, rnd: () => nu
     case 'reply-type': {
       if (!exchange) return null;
       const reply = inp.allSentences.get(exchange.reply);
-      if (!reply || syllableCount(reply.hanzi) > 8) return null;
+      if (!reply || syllableCount(reply.hanzi) > MAX_TYPED) return null;
       return { kind, key: key(kind), exchangeId: exchange.id, voice: voice() };
     }
     case 'en-to-pinyin': {
-      if (!item || syllableCount(item.hanzi) > 8) return null;
+      if (!item) return null;
+      // New words are often practised inside a whole sentence that uses them.
+      if (word && rnd() < 0.6) {
+        const using = inp.poolSentences.filter((s) => s.words.includes(word.id) && syllableCount(s.hanzi) >= 3 && syllableCount(s.hanzi) <= MAX_TYPED);
+        if (using.length) return { kind, key: key(kind), itemId: pick(using, rnd).id };
+      }
+      if (syllableCount(item.hanzi) > MAX_TYPED) return null;
       return { kind, key: key(kind), itemId: item.id };
     }
     case 'fill-gap': {

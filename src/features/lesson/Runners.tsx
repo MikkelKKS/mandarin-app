@@ -7,6 +7,7 @@ import { go } from '../../lib/router';
 import { useQuietUntil } from '../../lib/settings';
 import { practiceItems } from '../../lib/srs';
 import { StoryPlayer } from '../story/StoryPlayer';
+import { RolePlayPlayer } from '../story/RolePlay';
 import { buildNodeLesson, buildPackLesson, buildPractice, buildTestOut } from './build';
 import { getPack } from '../packs/store';
 import { EndScreen } from './EndScreen';
@@ -30,7 +31,7 @@ function useRun<T>(make: () => Promise<T> | T, deps: unknown[]): [T | null, () =
 
 const Loading = () => <div className="p-8 text-center text-muted">Loading…</div>;
 
-export function NodeRunner({ nodeId }: { nodeId: string }) {
+export function NodeRunner({ nodeId, roleplay = false }: { nodeId: string; roleplay?: boolean }) {
   const node = nodes.get(nodeId);
   const quiet = useQuietUntil() > Date.now();
   const [result, setResult] = useState<LessonResult | null>(null);
@@ -64,6 +65,7 @@ export function NodeRunner({ nodeId }: { nodeId: string }) {
     const unit = getUnit(node.unit)!;
     const d = unit.dialogue ? dialogues.get(unit.dialogue.id)! : null;
     if (!d) return <p className="p-8">Story missing.</p>;
+    if (roleplay) return <RolePlayPlayer dialogue={d} nodeId={nodeId} onExit={() => go('')} onFinish={finish} />;
     return <StoryPlayer dialogue={d} onExit={() => go('')} onFinish={finish} />;
   }
   return <LessonPlayer key={exercises[0]?.key} title={node.title} exercises={exercises} nodeId={nodeId} onExit={() => go('')} onFinish={finish} />;
@@ -132,7 +134,7 @@ export function PracticeRunner() {
 }
 
 /** Lesson or story from an imported practice pack. */
-export function PackRunner({ id, story }: { id: string; story: boolean }) {
+export function PackRunner({ id, story, roleplay = false }: { id: string; story: boolean; roleplay?: boolean }) {
   const quiet = useQuietUntil() > Date.now();
   const [result, setResult] = useState<LessonResult | null>(null);
   const [data, again] = useRun(async () => {
@@ -159,6 +161,7 @@ export function PackRunner({ id, story }: { id: string; story: boolean }) {
     await recordLesson(`pack:${id}`, r.accuracy);
     setResult(r);
   };
+  if (roleplay && data.p.pack.dialogue) return <RolePlayPlayer dialogue={data.p.pack.dialogue} onExit={() => go('')} onFinish={finish} />;
   if (story && data.p.pack.dialogue) return <StoryPlayer dialogue={data.p.pack.dialogue} onExit={() => go('')} onFinish={finish} />;
   return <LessonPlayer key={data.ex[0]?.key} title={data.p.title} exercises={data.ex} mode="practice" onExit={() => go('')} onFinish={finish} />;
 }

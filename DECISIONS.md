@@ -42,3 +42,9 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Speaking:** off by default and never affects progress or reviews. It uses the browser's Web Speech API (zh-CN) plus pitch detection with `pitchy`, drawn against stylised tone shapes.
 - **CI:** the audio job passes the generated MP3s to the build job as an artifact. Each deploy then builds exactly the pushed commit, with no race against newer pushes.
 - **Content ids:** several words clashed on the same pinyin id (会/回, 进/斤, 碗/玩). The validator caught each one, and the newer word gets a meaning suffix.
+
+## More sentence production, role-play (owner request)
+- The owner asked for more sentence production. The lesson mix moves from 50/25/15/10 to about 45% listening, 35% production, 12% recognition and the rest other. Listening is still the largest share.
+- Typed answers (English to pinyin, typing a reply) now allow sentences up to 14 syllables instead of 8.
+- When a lesson targets a new word, "write this in pinyin" uses a known sentence containing that word 60% of the time, so vocabulary is produced in context.
+- Role-play mode for every story (and for practice packs with a dialogue): the learner picks a part (米格 by default), the other lines play as audio, and their own lines are typed in pinyin from the English. Wrong lines are retyped until right; the first attempt is recorded for reviews.

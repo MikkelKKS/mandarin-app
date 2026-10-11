@@ -27,6 +27,11 @@ export function PacksOnPath() {
                   Story
                 </button>
               )}
+              {p.pack.dialogue && (
+                <button onClick={() => go(`pack/${p.id}/roleplay`)} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
+                  Role-play
+                </button>
+              )}
               {confirm === p.id ? (
                 <button onClick={() => deletePack(p.id)} className="rounded-xl bg-cinnabar-soft px-4 py-2 font-medium text-cinnabar">
                   Tap again to remove
