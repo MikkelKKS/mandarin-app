@@ -11,10 +11,13 @@ export async function loadSettings(): Promise<Settings> {
 
 /** One-off changes to saved settings when defaults change (runs once per device). */
 export async function migrateSettings(): Promise<void> {
-  if ((await db.meta.get('migrated:slow-default'))?.value) return;
-  await db.meta.put({ key: 'migrated:slow-default', value: true });
+  // v1 (11 Oct) briefly switched everyone to slow audio; v2 switches it back now the cut-off is fixed.
+  if ((await db.meta.get('migrated:normal-again'))?.value) return;
+  await db.meta.put({ key: 'migrated:normal-again', value: true });
   const row = await db.settings.get('me');
-  if (row && row.audioSpeed === 'normal') await updateSettings({ audioSpeed: 'slow', toneFocus: true });
+  const v1 = (await db.meta.get('migrated:slow-default'))?.value;
+  if (row && v1 && row.audioSpeed === 'slow') await updateSettings({ audioSpeed: 'normal' });
+  if (row && row.toneFocus === undefined) await updateSettings({ toneFocus: true });
 }
 
 /** Last known settings, for non-React code (audio, sound effects). */

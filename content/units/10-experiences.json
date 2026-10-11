@@ -6,7 +6,7 @@
   "description": "HSK 3: talk about what you've done (过, 是…的), compare Denmark and China (比, 跟…一样) and give reasons (因为…所以, 虽然…但是). Ends with a longer listening challenge.",
   "hsk": 3,
   "words": [
-    { "id": "w-guo-exp", "hanzi": "过", "pinyin": "guo", "english": ["(have) ever — experience marker"], "hsk": 4, "pos": "particle", "note": "After a verb: 去过 = have been to. Usually unstressed." },
+    { "id": "w-guo-exp", "hanzi": "过", "pinyin": "guo", "english": ["(have) ever, experience marker"], "hsk": 4, "pos": "particle", "note": "After a verb: 去过 = have been to. Usually unstressed." },
     { "id": "w-beijing", "hanzi": "北京", "pinyin": "Běijīng", "english": ["Beijing"], "hsk": 1, "pos": "name" },
     { "id": "w-qunian", "hanzi": "去年", "pinyin": "qùnián", "english": ["last year"], "hsk": 2, "pos": "time" },
     { "id": "w-di-ordinal", "hanzi": "第", "pinyin": "dì", "english": ["(ordinal prefix) -th"], "hsk": 0, "pos": "particle", "note": "第一次 = the first time, 第二 = second." },
@@ -42,7 +42,7 @@
     { "id": "s-beijingxiatianbidanmaire", "hanzi": "北京的夏天比丹麦热多了。", "pinyin": "Běijīng de xiàtiān bǐ Dānmài rè duō le.", "english": "Summer in Beijing is much hotter than in Denmark.", "words": ["w-beijing", "w-de", "w-xiatian", "w-bi", "w-danmai", "w-re", "w-duo", "w-le"] },
     { "id": "s-xiatian-xiguan", "hanzi": "北京的夏天比丹麦热多了。你习惯了吗？", "pinyin": "Běijīng de xiàtiān bǐ Dānmài rè duō le. Nǐ xíguàn le ma?", "english": "Beijing summers are much hotter than Denmark's. Are you used to it?", "words": ["w-beijing", "w-de", "w-xiatian", "w-bi", "w-danmai", "w-re", "w-duo", "w-le", "w-ni", "w-xiguan", "w-le", "w-ma"] },
     { "id": "s-danmaibizhongguolengma", "hanzi": "丹麦比中国冷吗？", "pinyin": "Dānmài bǐ Zhōngguó lěng ma?", "english": "Is Denmark colder than China?", "words": ["w-danmai", "w-bi", "w-zhongguo", "w-leng", "w-ma"] },
-    { "id": "s-gebenhagenanjing", "hanzi": "北京人很多，哥本哈根安静多了。", "pinyin": "Běijīng rén hěn duō, Gēběnhāgēn ānjìng duō le.", "english": "Beijing is so crowded — Copenhagen is much quieter.", "words": ["w-beijing", "w-ren", "w-hen", "w-duo", "w-gebenhagen", "w-anjing", "w-duo", "w-le"] },
+    { "id": "s-gebenhagenanjing", "hanzi": "北京人很多，哥本哈根安静多了。", "pinyin": "Běijīng rén hěn duō, Gēběnhāgēn ānjìng duō le.", "english": "Beijing is so crowded. Copenhagen is much quieter.", "words": ["w-beijing", "w-ren", "w-hen", "w-duo", "w-gebenhagen", "w-anjing", "w-duo", "w-le"] },
     { "id": "s-danmaichangchangxiayu", "hanzi": "丹麦常常下雨。", "pinyin": "Dānmài chángcháng xià yǔ.", "english": "It often rains in Denmark.", "words": ["w-danmai", "w-changchang", "w-xiayu"] },
     { "id": "s-zhongguocaibuyiyang", "hanzi": "中国菜跟丹麦菜不一样。", "pinyin": "Zhōngguó cài gēn Dānmài cài bù yíyàng.", "english": "Chinese food is different from Danish food.", "words": ["w-zhongguo", "w-cai", "w-gen", "w-danmai", "w-cai", "w-bu", "w-yiyang"] },
     { "id": "s-suiranla-danshihaochi", "hanzi": "虽然有点辣，但是很好吃。", "pinyin": "Suīrán yǒudiǎn là, dànshì hěn hǎochī.", "english": "It's a bit spicy, but it's delicious.", "words": ["w-suiran", "w-you", "w-dian", "w-la", "w-danshi", "w-hen", "w-haochi"] },
@@ -71,7 +71,7 @@
   "dialogue": {
     "id": "d10-aunt",
     "title": "Listening challenge: Questions from her aunt",
-    "setting": "At a big family dinner in Beijing, her aunt has lots of questions. Natural speed — try it without the text first.",
+    "setting": "At a big family dinner in Beijing, her aunt has lots of questions. Natural speed. Try it without the text first.",
     "speakers": [
       { "id": "A", "name": "Her aunt", "voice": "f" },
       { "id": "K", "name": "Mikkel", "voice": "m" }

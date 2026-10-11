@@ -1,4 +1,6 @@
-# Content guide — adding a unit
+# Content guide: adding a unit
+
+**Style:** keep all English text short and plain. Never use em dashes (—) in anything shown in the app; the validator rejects them.
 
 Read CLAUDE.md §4 first, especially **"Rules for producing content and data"**:
 write all sentences and dialogues yourself, never type out existing lists or texts,

@@ -9,7 +9,7 @@
     },
     {
       "id": "hsk1",
-      "title": "HSK 1 — first conversations",
+      "title": "HSK 1: first conversations",
       "units": [
         "u01-greetings",
         "u02-family",
@@ -20,7 +20,7 @@
     },
     {
       "id": "hsk2",
-      "title": "HSK 2 — everyday life",
+      "title": "HSK 2: everyday life",
       "units": [
         "u06-hobbies",
         "u07-work",
@@ -30,7 +30,7 @@
     },
     {
       "id": "hsk3",
-      "title": "HSK 3 — real conversations",
+      "title": "HSK 3: real conversations",
       "units": [
         "u10-experiences",
         "u11-health",

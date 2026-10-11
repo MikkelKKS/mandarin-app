@@ -3,7 +3,7 @@
   "order": 9,
   "title": "Plans & invitations",
   "titleHanzi": "周末有空吗？",
-  "description": "Suggest a coffee, agree on a time, say maybe or definitely — and apologise for running late.",
+  "description": "Suggest a coffee, agree on a time, say maybe or definitely, and apologise for running late.",
   "hsk": 2,
   "words": [
     { "id": "w-youkong", "hanzi": "有空", "pinyin": "yǒu kòng", "english": ["to be free (have time)"], "hsk": 0, "pos": "phrase" },
@@ -60,12 +60,12 @@
     { "id": "g-youkong", "title": "有空 = to be free", "body": "你有空吗？ = are you free? Answer 有空 (yes) or 没空 / 没有时间 (no time).", "examples": ["s-zhoumoyoukongma", "s-meiyoushijian"] },
     { "id": "g-zenmeyang", "title": "Suggestions with 怎么样 and 吧", "body": "Make a suggestion and add 怎么样？ (how about it?): 我们去喝杯咖啡，怎么样？ Or end it with 吧 (let's): 我们星期六见面吧.", "examples": ["s-hebeikafei", "s-xingqiliujianmian"] },
     { "id": "g-keneng", "title": "可能 vs 一定", "body": "Both go before the verb: 我可能去 (I might go) vs 我一定来 (I'll definitely come).", "examples": ["s-wokenengquyouyong", "s-woyidinglai"] },
-    { "id": "g-le", "title": "了 for something that has happened", "body": "了 after a verb shows it has happened or changed: 我迟到了 (I'm late — it's happened), 你已经到了吗？ (have you arrived already?).", "examples": ["s-duibuqiwochidaole", "s-niyijingdaolema"] }
+    { "id": "g-le", "title": "了 for something that has happened", "body": "了 after a verb shows it has happened or changed: 我迟到了 (I'm late, it has happened), 你已经到了吗？ (have you arrived already?).", "examples": ["s-duibuqiwochidaole", "s-niyijingdaolema"] }
   ],
   "dialogue": {
     "id": "d09-coffee",
     "title": "Coffee on Saturday",
-    "setting": "Her sister rings Mikkel to make plans — and then Saturday comes.",
+    "setting": "Her sister rings Mikkel to make plans. Then Saturday comes.",
     "speakers": [
       { "id": "S", "name": "Her sister", "voice": "f" },
       { "id": "K", "name": "Mikkel", "voice": "m" }

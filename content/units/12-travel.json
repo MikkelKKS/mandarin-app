@@ -67,7 +67,7 @@
     { "id": "x-passport", "prompt": "s-biewangjidaihuzhao", "reply": "s-fangxinba", "wrong": ["s-shengrikuaile", "s-yigongshisikuai"], "context": "Packing the night before the trip." },
     { "id": "x-leaving", "prompt": "s-mingtianhuidanmai", "reply": "s-yilupingan", "wrong": ["s-shengrikuaile", "s-huanying"], "context": "Someone is about to travel home." },
     { "id": "x-lostwallet", "prompt": "s-qianbaodiule", "reply": "s-bangnizhaoba", "wrong": ["s-changchenghenyouming", "s-taihaole"], "context": "Your friend panics." },
-    { "id": "x-better", "prompt": "s-zhongwenyuelaiyuehao", "reply": "s-nalinali", "wrong": ["s-zhaodaole-zaizheli", "s-yaobangmangma"], "context": "A compliment — stay modest." },
+    { "id": "x-better", "prompt": "s-zhongwenyuelaiyuehao", "reply": "s-nalinali", "wrong": ["s-zhaodaole-zaizheli", "s-yaobangmangma"], "context": "A compliment. Stay modest." },
     { "id": "x-booked", "prompt": "s-nidingfangjianlema", "reply": "s-yijingdinghaole", "wrong": ["s-yibianzouyibianpaizhao", "s-xiaoxin"], "context": "Planning where to stay." }
   ],
   "grammar": [
@@ -80,7 +80,7 @@
   "dialogue": {
     "id": "d12-greatwall",
     "title": "Listening challenge: The Great Wall",
-    "setting": "Her sister plans a day out with Mikkel — and then his passport goes missing.",
+    "setting": "Her sister plans a day out with Mikkel. Then his passport goes missing.",
     "speakers": [
       { "id": "S", "name": "Her sister", "voice": "f" },
       { "id": "K", "name": "Mikkel", "voice": "m" }

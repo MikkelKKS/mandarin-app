@@ -3,7 +3,7 @@
   "order": 11,
   "title": "Health",
   "titleHanzi": "你哪里不舒服？",
-  "description": "Say what hurts, understand advice (应该, 多…, 别…), and ask after an elder's health — and wish them well.",
+  "description": "Say what hurts, understand advice (应该, 多…, 别…), ask after an elder's health and wish them well.",
   "hsk": 3,
   "words": [
     { "id": "w-shufu", "hanzi": "舒服", "pinyin": "shūfu", "english": ["comfortable", "well"], "hsk": 3, "pos": "adjective", "note": "不舒服 = unwell, not feeling right." },

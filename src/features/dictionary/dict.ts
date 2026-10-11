@@ -157,3 +157,69 @@ function englishSearch(dict: Dict, q: string, limit: number): Entry[] {
 export function plecoLink(hanzi: string): string {
   return `plecoapi://x-callback-url/s?q=${encodeURIComponent(hanzi)}`;
 }
+
+/**
+ * Best-guess characters for a pinyin sentence (like a tiny input method):
+ * greedily match the longest run of syllables to a common dictionary word.
+ */
+export function guessHanzi(dict: Dict, pinyinText: string): { hanzi: string; complete: boolean } | null {
+  const letters = toLetters(pinyinText);
+  const ranges = segmentLetters(letters);
+  if (!ranges || ranges.length < 2) return null;
+  const syl = ranges.map((r) => ({ base: letters.slice(r[0], r[1]).map((l) => l.ch).join(''), tone: rangeTone(letters, r) }));
+  const byKey = keyIndex(dict);
+  let out = '';
+  let complete = true;
+  let i = 0;
+  while (i < syl.length) {
+    let picked: Entry | null = null;
+    let len = 0;
+    for (let n = Math.min(4, syl.length - i); n >= 1 && !picked; n--) {
+      const part = syl.slice(i, i + n);
+      const cands = (byKey.get(part.map((p) => p.base).join('')) ?? []).filter(
+        (e) => e.tones.length === n && part.every((p, k) => p.tone === null || p.tone === 'conflict' || String(p.tone) === e.tones[k] || e.tones[k] === '5'),
+      );
+      if (cands.length) {
+        picked = [...cands].sort((a, b) => rank(a) - rank(b))[0];
+        len = n;
+      }
+    }
+    if (picked) {
+      out += picked.hanzi;
+      i += len;
+    } else {
+      out += syl[i].base;
+      complete = false;
+      i++;
+    }
+  }
+  return { hanzi: out, complete };
+}
+
+let keyCache: { dict: Dict; map: Map<string, Entry[]> } | null = null;
+function keyIndex(dict: Dict): Map<string, Entry[]> {
+  if (keyCache?.dict === dict) return keyCache.map;
+  const map = new Map<string, Entry[]>();
+  for (const e of dict.entries) {
+    const list = map.get(e.key);
+    if (list) list.push(e);
+    else map.set(e.key, [e]);
+  }
+  keyCache = { dict, map };
+  return map;
+}
+
+/** Is this input a pinyin sentence (several syllables, all valid pinyin)? */
+export function isPinyinSentence(q: string): boolean {
+  if (hanziOnly(q)) return false;
+  const letters = toLetters(q);
+  const ranges = segmentLetters(letters);
+  return !!ranges && ranges.length >= 3;
+}
+
+/** Toneless pinyin of Chinese text (via the dictionary), for spotting "translations" that are only pinyin. */
+export function romanKey(dict: Dict, text: string): string {
+  return segment(dict, text)
+    .map((t) => t.entries[0]?.key ?? '')
+    .join('');
+}

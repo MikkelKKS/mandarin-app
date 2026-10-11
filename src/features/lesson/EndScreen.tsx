@@ -4,10 +4,10 @@ import { ToneText } from '../../components/Hanzi';
 import type { LessonResult } from './LessonPlayer';
 
 function verdictText(acc: number): { hanzi: string; pinyin: string; line: string } {
-  if (acc >= 0.95) return { hanzi: '太棒了', pinyin: 'tài bàng le', line: 'Brilliant — almost no slips.' };
+  if (acc >= 0.95) return { hanzi: '太棒了', pinyin: 'tài bàng le', line: 'Brilliant, almost no slips.' };
   if (acc >= 0.8) return { hanzi: '很好', pinyin: 'hěn hǎo', line: 'Very good. Keep it rolling.' };
   if (acc >= 0.5) return { hanzi: '不错', pinyin: 'bú cuò', line: 'Not bad! The mistakes will come back in Practice.' };
-  return { hanzi: '加油', pinyin: 'jiā yóu', line: "Tough one — replay it as often as you like." };
+  return { hanzi: '加油', pinyin: 'jiā yóu', line: "Tough one. Replay it as often as you like." };
 }
 
 export function EndScreen({

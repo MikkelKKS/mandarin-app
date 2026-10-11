@@ -29,7 +29,7 @@ export function GamesView() {
               </span>
               <span className="text-right">
                 <span className="block text-xs text-muted">Best</span>
-                <span className="block text-xl font-bold tabular-nums">{best.get(g.id)?.best ?? '–'}</span>
+                <span className="block text-xl font-bold tabular-nums">{best.get(g.id)?.best ?? 0}</span>
               </span>
             </button>
           </li>

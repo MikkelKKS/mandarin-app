@@ -61,14 +61,13 @@ export function Repeat({ ex }: { ex: Of<'repeat'> }) {
               <p className="han text-2xl">{res.transcript || '…'}</p>
               {score !== null && (
                 <p className="mt-1 text-sm">
-                  {score >= 0.99 ? 'Spot on!' : score >= 0.6 ? 'Close — most of it came through.' : 'Not quite recognised — listen again and have another go.'}{' '}
+                  {score >= 0.99 ? 'Spot on!' : score >= 0.6 ? 'Close. Most of it came through.' : 'Not recognised. Listen again and try once more.'}{' '}
                   <span className="text-muted">({Math.round(score * 100)}% of the characters matched)</span>
                 </p>
               )}
             </>
           )}
           {res.pitch.length > 5 && <PitchChart points={res.pitch} tones={tones} />}
-          <p className="mt-3 text-xs text-muted">Just for feedback — this never affects your progress.</p>
         </div>
       )}
     </div>

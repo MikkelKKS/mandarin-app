@@ -14,12 +14,12 @@ export function checkTyped(
     case 'correct':
       return { verdict: 'correct', answer };
     case 'typo':
-      return { verdict: 'typo', answer, note: `Small typo — you wrote “${input.trim()}”.` };
+      return { verdict: 'typo', answer, note: `Small typo. You wrote “${input.trim()}”.` };
     case 'almost':
       return { verdict: 'almost', answer, note: 'Almost! Remember the tones:' };
     default: {
       let note: string | undefined;
-      if (r.reason === 'missing-tones') note = 'Strict tones are on — the tones are needed.';
+      if (r.reason === 'missing-tones') note = 'Strict tones are on, so tones are required.';
       else if (r.reason === 'wrong-tones') {
         const bad = r.syllables?.filter((s) => s.status === 'wrong-tone').map((s) => s.expected);
         note = bad?.length ? `Check the tone on ${bad.join(', ')}.` : 'Check the tones.';

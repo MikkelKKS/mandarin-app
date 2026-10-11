@@ -47,7 +47,7 @@ export function listen(): Recording {
         .join('');
     };
     rec.onerror = (e) => {
-      error = e.error === 'not-allowed' ? 'Microphone access was blocked. Allow it in the browser settings.' : e.error === 'no-speech' ? "Didn't hear anything — try again a bit closer to the mic." : `Speech recognition error: ${e.error}`;
+      error = e.error === 'not-allowed' ? 'Microphone access was blocked. Allow it in the browser settings.' : e.error === 'no-speech' ? "Didn't hear anything. Try again a bit closer to the mic." : `Speech recognition error: ${e.error}`;
     };
     rec.onend = async () => resolve({ transcript, pitch: await pitch.stop(), error });
   });

@@ -238,7 +238,7 @@ export function WhatWouldYouSay({ ex }: { ex: Of<'what-would-you-say'> }) {
       : (): Outcome => ({
           verdict: sel === ex.answer ? 'correct' : 'wrong',
           answer: { hanzi: reply.hanzi, pinyin: reply.pinyin, english: reply.english },
-          note: `They said: ${prompt.hanzi} — “${prompt.english}”`,
+          note: `They said: ${prompt.hanzi} (“${prompt.english}”)`,
           items: [{ id: reply.id, verdict: sel === ex.answer ? 'correct' : 'wrong' }],
         }),
     [sel],

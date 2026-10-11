@@ -187,7 +187,7 @@ export function GameFrame({
               Play
             </button>
           ) : (
-            <p className="mt-8 rounded-2xl bg-sunk p-4 text-sm">Unlock a few more skills on the path first — this game needs more words to play with.</p>
+            <p className="mt-8 rounded-2xl bg-sunk p-4 text-sm">Unlock a few more skills on the path first. This game needs more words.</p>
           )}
         </div>
       )}

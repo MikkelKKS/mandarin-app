@@ -427,7 +427,7 @@
    "id": "s-buyuan-wufenzhong",
    "hanzi": "不远，走五分钟就到了。",
    "pinyin": "Bù yuǎn, zǒu wǔ fēnzhōng jiù dào le.",
-   "english": "Not far — it's five minutes on foot.",
+   "english": "Not far, it's five minutes on foot.",
    "words": [
     "w-bu",
     "w-yuan",
@@ -556,7 +556,7 @@
    "id": "s-jichang-chuzuche",
    "hanzi": "从机场到我们家很远，你坐出租车来吧。",
    "pinyin": "Cóng jīchǎng dào wǒmen jiā hěn yuǎn, nǐ zuò chūzūchē lái ba.",
-   "english": "It's a long way from the airport to us — take a taxi.",
+   "english": "It's a long way from the airport to us. Take a taxi.",
    "words": [
     "w-cong",
     "w-jichang",
@@ -638,7 +638,7 @@
     "s-zaoshanghao",
     "s-taiguile"
    ],
-   "context": "A guest asks you — you know the way."
+   "context": "A guest asks the way, and you know it."
   },
   {
    "id": "x-far",

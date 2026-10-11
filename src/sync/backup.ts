@@ -34,7 +34,7 @@ export async function importBackup(text: string): Promise<number> {
   try {
     parsed = JSON.parse(text);
   } catch {
-    throw new Error("That file isn't valid JSON — pick a file exported from this app.");
+    throw new Error("That file isn't valid JSON. Pick a file exported from this app.");
   }
   const r = BackupSchema.safeParse(parsed);
   if (!r.success) throw new Error("That file isn't a backup from this app.");

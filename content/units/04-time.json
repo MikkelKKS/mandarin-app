@@ -56,7 +56,7 @@
   ],
   "exchanges": [
     { "id": "x-time", "prompt": "s-xianzaijidianle", "reply": "s-xianzailiangdian", "wrong": ["s-jintianxingqiliu", "s-shengrikuaile"], "context": "Someone asks you the time." },
-    { "id": "x-dinnertime", "prompt": "s-womenjidianchifan", "reply": "s-wanshangliudian", "wrong": ["s-zuotianshixingqiwu", "s-zaoshanghao"], "context": "You ask when dinner is — what might the answer be?" },
+    { "id": "x-dinnertime", "prompt": "s-womenjidianchifan", "reply": "s-wanshangliudian", "wrong": ["s-zuotianshixingqiwu", "s-zaoshanghao"], "context": "You ask when dinner is. What might the answer be?" },
     { "id": "x-day", "prompt": "s-jintianxingqiji", "reply": "s-jintianxingqiliu", "wrong": ["s-sandianban", "s-mingtianjian"], "context": "Someone has lost track of the days." },
     { "id": "x-birthday", "prompt": "s-nideshengri", "reply": "s-wodeshengri", "wrong": ["s-qidianshifen", "s-shengrikuaile"], "context": "Her mother asks about your birthday." },
     { "id": "x-together", "prompt": "s-womenyiqiquba", "reply": "s-haoa", "wrong": ["s-mingtianjian", "s-zuotianshixingqiwu"], "context": "A friend suggests going together." },

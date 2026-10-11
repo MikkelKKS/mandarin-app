@@ -30,9 +30,11 @@ function textVersion(id: string): string {
   return h.toString(36);
 }
 
+const SLOW_VERSION = 2; // matches SLOW_VERSION in scripts/generate-audio.py
+
 export function urlFor(id: string, voice: Voice, slow: boolean): string {
-  const hasSlowFile = sentences.has(id);
-  return `${BASE}${audioPath(id, voice, slow && hasSlowFile)}?v=${textVersion(id)}`;
+  const slowFile = slow && sentences.has(id);
+  return `${BASE}${audioPath(id, voice, slowFile)}?v=${textVersion(id)}${slowFile ? `s${SLOW_VERSION}` : ''}`;
 }
 
 export interface PlayOptions {
@@ -65,7 +67,7 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   const a = new Audio(urlFor(id, voice, slow));
   a.preload = 'auto';
   // Words have no separate slow file: slow them down instead (pitch preserved).
-  const rate = slow && !sentences.has(id) ? 0.75 : 1;
+  const rate = slow && !sentences.has(id) ? 0.8 : 1;
   a.defaultPlaybackRate = rate;
   a.playbackRate = rate;
   el = a;

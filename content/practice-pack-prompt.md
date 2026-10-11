@@ -1,4 +1,4 @@
-# Mandarin practice pack — prompt for Claude
+# Mandarin practice pack: prompt for Claude
 
 You are writing a **practice pack** for my Mandarin learning app. Below this prompt is a JSON export of my weak spots: the words I keep missing, tone pairs I confuse, grammar I get wrong, sentences I missed recently, and every word I already know (`knownVocabulary`).
 
@@ -35,7 +35,8 @@ pos is one of: noun pronoun verb adjective adverb number measure particle prepos
 4. **Mostly known words:** at most 6 new words. Build the rest from `knownVocabulary`.
 5. Exchanges and dialogue lines refer to sentences by id. They can be this pack's sentences or ids listed in my export.
 6. In each exchange, the `wrong` replies must be clearly wrong in context, not just less polite.
-7. Aim at my weak spots: reuse weak words in new sentences, contrast confused tones (e.g. pair words with tones 2 and 3), and give 2–3 sentences per hard grammar point.
+7. Keep English text short and plain. Never use em dashes (—).
+8. Aim at my weak spots: reuse weak words in new sentences, contrast confused tones (e.g. pair words with tones 2 and 3), and give 2–3 sentences per hard grammar point.
 
 ## Example (for format only; write different content)
 ```json

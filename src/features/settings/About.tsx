@@ -2,7 +2,7 @@ import { go } from '../../lib/router';
 
 const CREDITS: Array<{ name: string; what: string; licence: string; url: string }> = [
   { name: 'HSK vocabulary lists', what: 'HSK levels for vocabulary (drkameleon/complete-hsk-vocabulary)', licence: 'MIT', url: 'https://github.com/drkameleon/complete-hsk-vocabulary' },
-  { name: 'CC-CEDICT', what: 'Chinese–English dictionary data (used for look-ups as the dictionary grows)', licence: 'CC BY-SA 4.0', url: 'https://www.mdbg.net/chinese/dictionary?page=cc-cedict' },
+  { name: 'CC-CEDICT', what: 'Dictionary data', licence: 'CC BY-SA 4.0', url: 'https://www.mdbg.net/chinese/dictionary?page=cc-cedict' },
   { name: 'MyMemory', what: 'Online sentence translation in the dictionary', licence: 'free API, see their terms', url: 'https://mymemory.translated.net/doc/spec.php' },
   { name: 'pinyin-pro', what: 'Pinyin conversion and the syllable list', licence: 'MIT', url: 'https://github.com/zh-lx/pinyin-pro' },
   { name: 'ts-fsrs', what: 'Spaced-repetition scheduling', licence: 'MIT', url: 'https://github.com/open-spaced-repetition/ts-fsrs' },

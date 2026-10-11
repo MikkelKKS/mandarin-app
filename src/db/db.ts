@@ -8,9 +8,9 @@ import type { Verdict } from '../lib/pinyinAnswer';
 export interface ProgressRow {
   id: string; // node id, or "unit:<unitId>"
   kind: 'node' | 'unit';
-  mastery: number; // 0–5 for nodes
+  mastery: number; // 0 to 5 for nodes
   completions: number;
-  bestAccuracy: number; // 0–1
+  bestAccuracy: number; // 0 to 1
   testedOut?: boolean;
   updatedAt: number;
 }
@@ -90,7 +90,7 @@ export const DEFAULT_SETTINGS: Settings = {
   speaking: false,
   pinyinDisplay: 'always',
   strictTones: false,
-  audioSpeed: 'slow',
+  audioSpeed: 'normal',
   voice: 'alternate',
   sound: true,
   toneColors: true,

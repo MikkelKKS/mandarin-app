@@ -14,7 +14,7 @@ import { GameFrame, pickWeighted, useStudyRecorder, type GameDef, type Pool } fr
 export const GAMES: GameDef[] = [
   { id: 'tone-sort', title: 'Tone Sort', hanzi: '声调', blurb: 'Hear a syllable, sort it into the right tone. Train your ear for the four tones.', seconds: 60, unit: 'tones sorted' },
   { id: 'tone-pairs', title: 'Tone Pairs', hanzi: '双调', blurb: 'Hear a two-syllable word and pick its tone pattern. Where most tone mistakes happen.', seconds: 60, unit: 'tone pairs heard' },
-  { id: 'listening-blitz', title: 'Listening Blitz', hanzi: '快听', blurb: 'Hear a word, pick its meaning — as many as you can before time runs out.', seconds: 60, unit: 'words understood' },
+  { id: 'listening-blitz', title: 'Listening Blitz', hanzi: '快听', blurb: 'Hear a word and pick its meaning, as many as you can before time runs out.', seconds: 60, unit: 'words understood' },
   { id: 'pair-rush', title: 'Pair Rush', hanzi: '配对', blurb: 'Clear boards of characters and meanings. A fresh board appears each time you finish one.', seconds: 60, unit: 'pairs matched' },
   { id: 'sentence-scramble', title: 'Sentence Scramble', hanzi: '组句', blurb: 'Build the Chinese sentence from tiles, in order, against the clock.', seconds: 90, unit: 'sentences built' },
   { id: 'measure-match', title: 'Measure Word Match', hanzi: '量词', blurb: 'Two dogs, a cup of tea: pick the right measure word (个, 只, 杯…).', seconds: 60, unit: 'correct picks' },

@@ -46,7 +46,7 @@
     { "id": "s-nihuidamajiangma", "hanzi": "你会打麻将吗？", "pinyin": "Nǐ huì dǎ májiàng ma?", "english": "Can you play mahjong?", "words": ["w-ni", "w-hui", "w-damajiang", "w-ma"] },
     { "id": "s-buhui-xiangxue", "hanzi": "不会，可是我想学！", "pinyin": "Bú huì, kěshì wǒ xiǎng xué!", "english": "No, but I'd like to learn!", "words": ["w-bu", "w-hui", "w-keshi", "w-wo", "w-xiang", "w-xue"] },
     { "id": "s-dianyinghenyouyisi", "hanzi": "这个电影很有意思。", "pinyin": "Zhège diànyǐng hěn yǒuyìsi.", "english": "This film is really interesting.", "words": ["w-zhe", "w-ge", "w-dianying", "w-hen", "w-youyisi"] },
-    { "id": "s-dianying-nijuedene", "hanzi": "这个电影很有意思，你觉得呢？", "pinyin": "Zhège diànyǐng hěn yǒuyìsi, nǐ juéde ne?", "english": "This film is really good — what do you think?", "words": ["w-zhe", "w-ge", "w-dianying", "w-hen", "w-youyisi", "w-ni", "w-juede", "w-ne"] },
+    { "id": "s-dianying-nijuedene", "hanzi": "这个电影很有意思，你觉得呢？", "pinyin": "Zhège diànyǐng hěn yǒuyìsi, nǐ juéde ne?", "english": "This film is really good. What do you think?", "words": ["w-zhe", "w-ge", "w-dianying", "w-hen", "w-youyisi", "w-ni", "w-juede", "w-ne"] },
     { "id": "s-wojuedehenyouyisi", "hanzi": "我也觉得很有意思。", "pinyin": "Wǒ yě juéde hěn yǒuyìsi.", "english": "I think it's really good too.", "words": ["w-wo", "w-ye", "w-juede", "w-hen", "w-youyisi"] },
     { "id": "s-yiqikandianshi", "hanzi": "我们一起看电视吧。", "pinyin": "Wǒmen yìqǐ kàn diànshì ba.", "english": "Let's watch TV together.", "words": ["w-women", "w-yiqi", "w-kan", "w-dianshi", "w-ba-particle"] },
     { "id": "s-laiwojiawan", "hanzi": "周末来我家玩吧！", "pinyin": "Zhōumò lái wǒ jiā wán ba!", "english": "Come over to our place at the weekend!", "words": ["w-zhoumo", "w-lai", "w-wo", "w-jia", "w-wan-play", "w-ba-particle"] },

@@ -66,7 +66,7 @@ export function SyncSection() {
 
   return (
     <div className="py-4">
-      <p className="text-sm text-muted">Sign in to keep your phone and PC in sync. No password — we email you a sign-in link.</p>
+      <p className="text-sm text-muted">Sign in to sync your phone and PC. We email you a sign-in link.</p>
       {!sent ? (
         <form
           className="mt-3 flex flex-col gap-2 sm:flex-row"
@@ -150,7 +150,7 @@ export function BackupSection() {
             if (!f) return;
             try {
               const n = await importBackup(await f.text());
-              setMsg(n ? `Restored — ${n} item${n === 1 ? '' : 's'} updated.` : 'Nothing new in that backup.');
+              setMsg(n ? `Restored ${n} item${n === 1 ? '' : 's'}.` : 'Nothing new in that backup.');
             } catch (err) {
               setMsg((err as Error).message);
             }

@@ -53,6 +53,14 @@ export function checkContent(
   const errors: string[] = [];
   const warnings: string[] = [];
 
+  // House style: no em dashes in any text shown in the app.
+  const dashCheck = (file: string, data: unknown) => {
+    const s = JSON.stringify(data);
+    if (s.includes('—')) errors.push(`${file}: contains an em dash (—). Rephrase with a comma, colon or full stop.`);
+  };
+  dashCheck('course.json', rawCourse);
+  rawUnits.forEach((u) => dashCheck(u.file, u.data));
+
   const courseRes = CourseSchema.safeParse(rawCourse);
   if (!courseRes.success) errors.push(...zodIssues('course.json', courseRes.error));
   const soundsRes = SoundsSchema.safeParse(rawSounds);
@@ -121,7 +129,7 @@ export function checkContent(
         const found = hskLevels.get(w.hanzi);
         const lvl = found && found <= 3 ? found : undefined;
         if (w.hsk >= 1 && w.hsk <= 3 && lvl !== w.hsk) {
-          warnings.push(`${file}: word ${w.id} (${w.hanzi}) marked HSK ${w.hsk}, HSK list says ${lvl ?? 'not in HSK 1–3'}`);
+          warnings.push(`${file}: word ${w.id} (${w.hanzi}) marked HSK ${w.hsk}, HSK list says ${lvl ?? 'not in HSK 1-3'}`);
         }
         if (w.hsk === 0 && lvl) warnings.push(`${file}: word ${w.id} (${w.hanzi}) marked HSK 0 but is HSK ${lvl}`);
       }
@@ -200,7 +208,7 @@ export function checkContent(
   }
   sounds.syllables.forEach((s) => need(audioFilesFor(s.id, false)));
   if (missing.length) {
-    errors.push(`${missing.length} audio file(s) missing, e.g. ${missing.slice(0, 3).join(', ')} — run npm run audio:generate`);
+    errors.push(`${missing.length} audio file(s) missing, e.g. ${missing.slice(0, 3).join(', ')} (run npm run audio:generate)`);
   }
 
   return { errors, warnings };

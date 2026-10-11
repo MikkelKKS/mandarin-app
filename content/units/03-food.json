@@ -3,7 +3,7 @@
   "order": 3,
   "title": "Food & drink",
   "titleHanzi": "多吃点！",
-  "description": "Dinner with the family: accept tea, praise the food, handle chopsticks questions and say you're full — politely.",
+  "description": "Dinner with the family: accept tea, praise the food, handle chopsticks questions and politely say you're full.",
   "hsk": 1,
   "words": [
     { "id": "w-chi", "hanzi": "吃", "pinyin": "chī", "english": ["to eat"], "hsk": 1, "pos": "verb" },
@@ -19,7 +19,7 @@
     { "id": "w-xiang", "hanzi": "想", "pinyin": "xiǎng", "english": ["would like to", "to want to", "to think"], "hsk": 1, "pos": "verb" },
     { "id": "w-yao", "hanzi": "要", "pinyin": "yào", "english": ["to want", "will"], "hsk": 2, "pos": "verb" },
     { "id": "w-ba-particle", "hanzi": "吧", "pinyin": "ba", "english": ["(softens a suggestion)", "I suppose", "let's"], "hsk": 2, "pos": "particle" },
-    { "id": "w-zai-again", "hanzi": "再", "pinyin": "zài", "english": ["again", "another"], "hsk": 2, "pos": "adverb", "note": "Same sound as 在 (in / at) — different word." },
+    { "id": "w-zai-again", "hanzi": "再", "pinyin": "zài", "english": ["again", "another"], "hsk": 2, "pos": "adverb", "note": "Same sound as 在 (in, at), but a different word." },
     { "id": "w-lai", "hanzi": "来", "pinyin": "lái", "english": ["to come", "(to have/take, when offering food)"], "hsk": 1, "pos": "verb" },
     { "id": "w-bao", "hanzi": "饱", "pinyin": "bǎo", "english": ["full (after eating)"], "hsk": 3, "pos": "adjective" },
     { "id": "w-e", "hanzi": "饿", "pinyin": "è", "english": ["hungry"], "hsk": 3, "pos": "adjective" },
@@ -75,7 +75,7 @@
     { "id": "g-anota", "title": "要不要…? questions", "body": "Say a verb, then 不, then the verb again for a friendly yes/no question: 要不要喝茶？ = want some tea? You don't need 吗 with this pattern.", "examples": ["s-yaobuyaohecha"] },
     { "id": "g-taile", "title": "太…了 = too …", "body": "Wrap an adjective in 太…了: 太辣了 = too spicy. It can also be a happy 'so…!': 太好了！ = great!", "examples": ["s-taila"] },
     { "id": "g-xiang", "title": "想 + verb = would like to", "body": "想 before a verb is a soft way to say what you'd like: 你想喝什么？ = what would you like to drink?", "examples": ["s-nixiangheshenme"] },
-    { "id": "g-hosting", "title": "Table manners in words", "body": "Hosts keep offering: 多吃点！(eat more), 别客气！(don't be shy), 再来一碗吧！(another bowl). Praise the food — 真好吃！— and when you're done, thank them and say 我吃饱了 (I'm full). It's normal to be offered again; a smile and 吃饱了 is enough.", "examples": ["s-bieqikeqi", "s-xiexieayi-chibaole"] }
+    { "id": "g-hosting", "title": "Table manners in words", "body": "Hosts keep offering: 多吃点！(eat more), 别客气！(don't be shy), 再来一碗吧！(another bowl). Praise the food (真好吃！), and when you're done, thank them and say 我吃饱了 (I'm full). It's normal to be offered again; a smile and 吃饱了 is enough.", "examples": ["s-bieqikeqi", "s-xiexieayi-chibaole"] }
   ],
   "dialogue": {
     "id": "d03-dinner",

@@ -139,7 +139,7 @@ function NodeCoin({ nodeId, state, isNext, onClick }: { nodeId: string; state: N
   const fill =
     state.status === 'done' ? 'bg-jade text-jade-ink' : state.status === 'open' ? 'bg-surface text-jade border-4 border-jade' : 'bg-sunk text-muted';
   return (
-    <button onClick={onClick} className="group flex flex-col items-center" aria-label={`${n.title} — ${state.status === 'locked' ? 'locked' : `level ${state.mastery} of ${MAX_MASTERY}`}`}>
+    <button onClick={onClick} className="group flex flex-col items-center" aria-label={`${n.title}, ${state.status === 'locked' ? 'locked' : `level ${state.mastery} of ${MAX_MASTERY}`}`}>
       <span className="relative flex h-24 w-24 items-center justify-center">
         <svg className="absolute inset-0 -rotate-90" viewBox="0 0 100 100" aria-hidden>
           <circle cx="50" cy="50" r={r} fill="none" stroke="var(--line)" strokeWidth="6" />
@@ -193,7 +193,7 @@ function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeStat
           </div>
         )}
         {locked ? (
-          <p className="mt-5 text-muted">Finish the skill before this one to open it — or take the unit's test-out to jump ahead.</p>
+          <p className="mt-5 text-muted">Finish the skill before this one, or take the unit's test-out to jump ahead.</p>
         ) : null}
 
         {tips && (

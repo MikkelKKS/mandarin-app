@@ -123,7 +123,7 @@ export function SettingsView() {
 
       <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">Situations</h2>
       <section className="rounded-2xl bg-surface px-4">
-        <Row title="Can't listen now" hint="Swaps listening exercises for reading ones for the next hour — handy without headphones.">
+        <Row title="Can't listen now" hint="Swaps listening exercises for reading ones for an hour.">
           {quiet ? (
             <button onClick={() => setQuietUntil(0)} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
               Turn listening back on (until {new Date(quietUntil).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })})
@@ -138,7 +138,7 @@ export function SettingsView() {
           title="Speaking exercises"
           hint={
             speechSupported
-              ? 'Adds a couple of repeat-after-me exercises to lessons, with a pitch chart for your tones. Just feedback — never blocks progress. Uses the browser\'s speech recognition (needs internet).'
+              ? 'Adds repeat-after-me exercises with a pitch chart for your tones. Never affects your progress.'
               : 'This browser has no speech recognition, so speaking exercises are unavailable here. Chrome on Android and Chrome/Edge on PC support it.'
           }
         >

@@ -3,7 +3,7 @@ import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { wordByHanzi } from '../../content';
 import { play, speak } from '../../lib/audio';
-import { loadDict, plecoLink, search, type Dict, type Entry } from './dict';
+import { guessHanzi, isPinyinSentence, loadDict, plecoLink, romanKey, search, type Dict, type Entry } from './dict';
 import { looksLikeEnglishSentence, translate } from './translate';
 import { addMyWord, myWordId, removeMyWord, useMyWords } from './mywords';
 
@@ -53,7 +53,7 @@ export function DictionaryView() {
           ref={input}
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Characters, pinyin or English — or paste a sentence"
+          placeholder="Characters, pinyin, English or a sentence"
           aria-label="Search the dictionary"
           autoCapitalize="off"
           autoCorrect="off"
@@ -62,16 +62,17 @@ export function DictionaryView() {
         />
       </div>
 
-      {dict === 'loading' && <p className="mt-6 text-muted">Loading the dictionary (first time only — it's saved for offline use)…</p>}
+      {dict === 'loading' && <p className="mt-6 text-muted">Loading the dictionary…</p>}
       {dict === null && (
         <p className="mt-6 rounded-2xl bg-amber-soft p-4 text-sm">
-          The dictionary couldn't be loaded. Check your connection — after the first successful load it works offline.
+          The dictionary couldn't be loaded. Check your connection. After the first load it works offline.
         </p>
       )}
 
       {result?.mode === 'empty' && <MyWords />}
 
-      {result?.mode === 'words' && looksLikeEnglishSentence(dq) && <TranslationCard text={dq} dir="en-zh" />}
+      {result?.mode === 'words' && dict && dict !== 'loading' && isPinyinSentence(dq) && <PinyinSentenceCard dict={dict} q={dq} />}
+      {result?.mode === 'words' && !isPinyinSentence(dq) && looksLikeEnglishSentence(dq) && <TranslationCard text={dq} dir="en-zh" />}
 
       {result?.mode === 'words' && (
         <>
@@ -110,7 +111,7 @@ export function DictionaryView() {
               </a>
             </div>
           </div>
-          <TranslationCard text={dq} dir="zh-en" />
+          <TranslationCard text={dq} dir="zh-en" sourceKey={romanKey(dict as Dict, dq)} />
           <ul className="mt-4 flex flex-col gap-2">
             {result.tokens.map((t, i) =>
               t.entries.length ? (
@@ -146,7 +147,7 @@ function EntryCard({ e, more = [], added }: { e: Entry; more?: Entry[]; added: b
           <p className="mt-1 text-sm leading-relaxed">{e.defs.slice(0, 6).join('; ')}</p>
           {more.length > 0 && (
             <p className="mt-1 text-xs text-muted">
-              Also: {more.slice(0, 3).map((m) => `${m.pinyin} — ${m.defs[0]}`).join(' · ')}
+              Also: {more.slice(0, 3).map((m) => `${m.pinyin}: ${m.defs[0]}`).join(' · ')}
             </p>
           )}
         </div>
@@ -202,7 +203,7 @@ function MyWords() {
 }
 
 /** In-app translation (online). Chinese → English, or English → Chinese with pinyin. */
-function TranslationCard({ text, dir }: { text: string; dir: 'zh-en' | 'en-zh' }) {
+function TranslationCard({ text, dir, sourceKey }: { text: string; dir: 'zh-en' | 'en-zh'; sourceKey?: string }) {
   const [state, setState] = useState<{ status: 'loading' | 'done' | 'error'; text?: string; error?: string }>({ status: 'loading' });
   const [online, setOnline] = useState(navigator.onLine);
   useEffect(() => {
@@ -218,7 +219,7 @@ function TranslationCard({ text, dir }: { text: string; dir: 'zh-en' | 'en-zh' }
     const ctl = new AbortController();
     setState({ status: 'loading' });
     const t = setTimeout(() => {
-      translate(text, dir, ctl.signal)
+      translate(text, dir, ctl.signal, sourceKey)
         .then((r) => setState({ status: 'done', text: r.text }))
         .catch((e: Error) => e.name !== 'AbortError' && setState({ status: 'error', error: e.message }));
     }, 500);
@@ -249,7 +250,32 @@ function TranslationCard({ text, dir }: { text: string; dir: 'zh-en' | 'en-zh' }
           </div>
         </div>
       )}
-      <p className="mt-2 text-xs text-muted">Machine translation by MyMemory (needs internet) — good for the gist, not always perfect.</p>
     </section>
+  );
+}
+
+/** Pinyin typed as a sentence: best-guess characters, then a translation. */
+function PinyinSentenceCard({ dict, q }: { dict: Dict; q: string }) {
+  const guess = useMemo(() => guessHanzi(dict, q), [dict, q]);
+  if (!guess) return null;
+  return (
+    <>
+      <section className="mt-3 rounded-2xl bg-surface p-4">
+        <p className="text-xs font-semibold text-muted">In characters (best guess)</p>
+        <p className="han mt-1 text-3xl" lang="zh-CN">
+          {guess.hanzi}
+        </p>
+        {!guess.complete && <p className="mt-1 text-xs text-muted">Some syllables didn't match a word. Check the spelling or add tone numbers (ni3 hao3).</p>}
+        <div className="mt-3 flex flex-wrap gap-2">
+          <button onClick={() => void speak(guess.hanzi)} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+            <Speaker className="h-4 w-4" /> Listen
+          </button>
+          <a href={`#/dictionary?q=${encodeURIComponent(guess.hanzi)}`} className="rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+            Break it down
+          </a>
+        </div>
+      </section>
+      {guess.complete && <TranslationCard text={guess.hanzi} dir="zh-en" sourceKey={romanKey(dict, guess.hanzi)} />}
+    </>
   );
 }

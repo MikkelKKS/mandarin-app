@@ -68,3 +68,25 @@ describe('dictionary search', () => {
     if (r.mode === 'sentence') expect(r.tokens.filter((t) => t.entries.length).map((t) => t.text)).toEqual(['我', '很', '好', '你好']);
   });
 });
+
+import { guessHanzi, isPinyinSentence, romanKey } from './dict';
+import { looksLikeRomanization } from './translate';
+
+describe('pinyin sentences and translation sanity', () => {
+  it('guesses characters for a pinyin sentence', () => {
+    expect(guessHanzi(dict, 'ni hao wo hen hao')?.hanzi).toBe('你好我很好');
+    expect(guessHanzi(dict, 'ni3 hao3 ma1')?.hanzi).toBe('你好妈');
+    expect(isPinyinSentence('wo hen hao')).toBe(true);
+    expect(isPinyinSentence('I am fine')).toBe(false);
+    expect(isPinyinSentence('你好')).toBe(false);
+  });
+  it('spots a "translation" that is only pinyin', () => {
+    const key = romanKey(dict, '你好');
+    expect(key).toBe('nihao');
+    expect(looksLikeRomanization('ni hao', key)).toBe(true);
+    expect(looksLikeRomanization('Nǐ hǎo', key)).toBe(true);
+    expect(looksLikeRomanization('Hello', key)).toBe(false);
+    expect(looksLikeRomanization('wo hen hao')).toBe(true);
+    expect(looksLikeRomanization('I am very well')).toBe(false);
+  });
+});

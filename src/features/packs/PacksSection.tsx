@@ -24,7 +24,7 @@ export function PacksSection() {
       setCopied('Copied! Paste it into a new chat at claude.ai.');
     } catch {
       downloadBlob(new Blob([t], { type: 'text/markdown' }), 'practice-pack-request.md');
-      setCopied("Couldn't use the clipboard, so it was saved as a file instead — open it and paste the contents into Claude.");
+      setCopied("Couldn't use the clipboard, so it was saved as a file. Open it and paste the contents into Claude.");
     }
   };
 

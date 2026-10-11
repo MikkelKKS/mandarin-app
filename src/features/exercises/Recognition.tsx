@@ -96,7 +96,7 @@ export function MatchPairs({ ex }: { ex: Of<'match-pairs'> }) {
   useEffect(() => {
     if (matched.length === ex.wordIds.length && !locked) {
       const items = ex.wordIds.map((id) => ({ id, verdict: (missed.includes(id) ? 'wrong' : 'correct') as Verdict }));
-      answer({ verdict: missed.length === 0 ? 'correct' : 'almost', items, note: missed.length ? 'All matched — a few took a second try.' : undefined });
+      answer({ verdict: missed.length === 0 ? 'correct' : 'almost', items, note: missed.length ? 'All matched, with a few second tries.' : undefined });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matched.length]);

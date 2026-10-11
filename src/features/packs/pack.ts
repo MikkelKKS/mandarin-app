@@ -35,7 +35,8 @@ export function validatePack(text: string): PackCheck {
   const body = fenced ? fenced[1] : trimmed.slice(trimmed.indexOf('{'), trimmed.lastIndexOf('}') + 1);
   let raw: unknown;
   try {
-    raw = JSON.parse(body);
+    // House style: no em dashes in anything shown in the app.
+    raw = JSON.parse(body.replace(/\s*—\s*/g, ', '));
   } catch (e) {
     return { errors: [`This isn't valid JSON (${(e as Error).message}). Copy the whole JSON block Claude gave you.`] };
   }
@@ -63,7 +64,7 @@ export function validatePack(text: string): PackCheck {
     let spelled = '';
     for (const id of s.words) {
       const hz = wordHanzi(id);
-      if (hz === undefined) errors.push(`${where}: unknown word id "${id}" — add it to "words" or use an id from the vocabulary list`);
+      if (hz === undefined) errors.push(`${where}: unknown word id "${id}". Add it to "words" or use an id from the vocabulary list`);
       else spelled += hz;
     }
     if (spelled && hanziOnly(spelled) !== hanziOnly(s.hanzi)) errors.push(`${where}: the word ids spell "${spelled}", not the sentence`);

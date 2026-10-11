@@ -22,7 +22,7 @@ import edge_tts
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "public" / "audio"
 VOICES = {"f": "zh-CN-XiaoxiaoNeural", "m": "zh-CN-YunxiNeural"}
-SLOW_RATE = "-35%"
+SLOW_RATE = "-25%"
 WORD_RATE = "-10%"  # single words a touch slower than conversational speed
 CONCURRENCY = 6
 # Pad every clip with a little silence: some browsers (Firefox) drop the last
@@ -30,6 +30,7 @@ CONCURRENCY = 6
 PAD_BEFORE_MS = 150
 PAD_AFTER_S = 0.4
 AUDIO_FORMAT = 2  # bump to re-process all existing files
+SLOW_VERSION = 2  # bump to re-record slow sentence files (e.g. after changing SLOW_RATE)
 
 
 def jobs():
@@ -89,6 +90,7 @@ async def main():
     # Format 1 was a flat {id: text}; format 2 is {"_format": 2, "items": {...}}.
     fmt = raw.get("_format", 1) if isinstance(raw.get("_format"), int) else 1
     manifest = raw.get("items", raw) if fmt >= 2 else raw
+    slow_stale = raw.get("_slow", 1) != SLOW_VERSION
     items = list(jobs())
     for item_id, text, is_sentence in items:
         stale = force or (not first_run and manifest.get(item_id) != text)
@@ -99,7 +101,7 @@ async def main():
                 variants.append((".slow", SLOW_RATE))
             for suffix, rate in variants:
                 dest = OUT / v / f"{item_id}{suffix}.mp3"
-                if stale or not dest.exists():
+                if stale or not dest.exists() or (suffix == ".slow" and slow_stale):
                     tasks.append(synth(text, voice, rate, dest, sem))
     print(f"{len(tasks)} file(s) to generate")
     started = time.time()
@@ -119,7 +121,7 @@ async def main():
         await asyncio.gather(*(pad_one(p) for p in old))
     if not failed:
         MANIFEST.write_text(
-            json.dumps({"_format": AUDIO_FORMAT, "items": {i: t for i, t, _ in items}}, ensure_ascii=False, indent=0, sort_keys=True),
+            json.dumps({"_format": AUDIO_FORMAT, "_slow": SLOW_VERSION, "items": {i: t for i, t, _ in items}}, ensure_ascii=False, indent=0, sort_keys=True),
             encoding="utf-8",
         )
     print(f"done: {len(results) - failed} generated, {failed} failed")

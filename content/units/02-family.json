@@ -73,7 +73,7 @@
     { "id": "x-whothis", "prompt": "s-zheshishei", "reply": "s-zheshiwobaba", "wrong": ["s-wojiayousikouren", "s-niyougegema"], "context": "Someone points at a person in your photo." }
   ],
   "grammar": [
-    { "id": "g-you", "title": "有 and 没有", "body": "有 = to have / there is. The negative is always 没有 — never 不有.\n我有一个姐姐 = I have an older sister. 我没有弟弟 = I don't have a younger brother.", "examples": ["s-woyouyigejiejie", "s-womeiyoudidi"] },
+    { "id": "g-you", "title": "有 and 没有", "body": "有 = to have / there is. The negative is always 没有, never 不有.\n我有一个姐姐 = I have an older sister. 我没有弟弟 = I don't have a younger brother.", "examples": ["s-woyouyigejiejie", "s-womeiyoudidi"] },
     { "id": "g-measure", "title": "Number + measure word + noun", "body": "Between a number and a noun you need a measure word. 个 is the all-rounder: 一个姐姐. Family size uses 口: 四口人. Animals often take 只: 一只狗.", "examples": ["s-woyouyigejiejie", "s-wojiayousikouren", "s-wojiayouyizhigou"] },
     { "id": "g-liang", "title": "两 vs 二", "body": "When counting things, 'two' is 两 (liǎng): 两个妹妹. 二 (èr) is for counting out loud, phone numbers and inside bigger numbers like 十二.", "examples": ["s-tayouliangge-meimei"] },
     { "id": "g-dou", "title": "都 = both / all", "body": "都 goes right before the verb or adjective, after everyone it covers: 我爸爸妈妈都很好.", "examples": ["s-babamamadouhenhao"] },

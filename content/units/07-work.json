@@ -3,7 +3,7 @@
   "order": 7,
   "title": "Work & study",
   "titleHanzi": "你做什么工作？",
-  "description": "Say what you do, where you live, and how busy work is — the questions every family asks.",
+  "description": "Say what you do, where you live, and how busy work is: the questions every family asks.",
   "hsk": 1,
   "words": [
     { "id": "w-gongzuo", "hanzi": "工作", "pinyin": "gōngzuò", "english": ["work", "job", "to work"], "hsk": 1, "pos": "noun" },

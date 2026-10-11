@@ -11,7 +11,7 @@ import { LessonCtx, type LessonApi } from './context';
 import { AUDIO_ONLY, type Exercise, type Outcome } from './types';
 
 export interface LessonResult {
-  accuracy: number; // first-attempt pass rate, 0–1
+  accuracy: number; // first-attempt pass rate, 0 to 1
   ms: number;
   newWords: string[];
   mistakes: string[]; // item ids answered wrong at least once
@@ -205,12 +205,12 @@ export function LessonPlayer({
             <div className="h-full rounded-full bg-jade transition-all duration-500" style={{ width: `${Math.max(4, progress * 100)}%` }} />
           </div>
           {hasSpeaking && (
-            <button onClick={noSpeaking} title="Can't speak now (1 hour)" aria-label="Can't speak now — skip speaking exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
+            <button onClick={noSpeaking} title="Can't speak now (1 hour)" aria-label="Can't speak now: skip speaking exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
               <MicOff className="h-6 w-6" />
             </button>
           )}
           {!quiet && (
-            <button onClick={goQuiet} title="Can't listen now (1 hour)" aria-label="Can't listen now — skip audio exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
+            <button onClick={goQuiet} title="Can't listen now (1 hour)" aria-label="Can't listen now: skip audio exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
               <Headphones className="h-6 w-6" />
             </button>
           )}
@@ -244,7 +244,7 @@ export function LessonPlayer({
 
 const TONE: Record<Verdict, { title: string; cls: string; btn: string }> = {
   correct: { title: 'Correct!', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink' },
-  typo: { title: 'Correct — mind the typo', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink' },
+  typo: { title: 'Correct, but mind the typo', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink' },
   almost: { title: 'Almost!', cls: 'bg-amber-soft', btn: 'bg-gold text-white dark:text-black' },
   wrong: { title: 'Not quite', cls: 'bg-cinnabar-soft', btn: 'bg-cinnabar text-white dark:text-black' },
 };

@@ -103,7 +103,7 @@ export async function syncNow(): Promise<void> {
     } catch (e) {
       console.warn('sync failed', e);
       const msg = navigator.onLine
-        ? "Couldn't reach the sync server. If you haven't used the app for a week or more, the free Supabase project may be paused — open supabase.com, pick the project and press Resume. Your progress is safe on this device."
+        ? "Couldn't reach the sync server. If you haven't used the app for a week or more, the free Supabase project may be paused. Open supabase.com, pick the project and press Resume. Your progress is safe on this device."
         : "You're offline. Progress is saved on this device and will sync when you're back online.";
       setStatus({ state: 'error', error: msg });
     } finally {
