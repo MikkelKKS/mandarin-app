@@ -1,0 +1,113 @@
+{
+  "id": "u27-arrival",
+  "order": 27,
+  "title": "Arriving in Beijing",
+  "titleHanzi": "好久不见",
+  "description": "Airport pick-ups, luggage and umbrellas, then and now, again and again, and finding your way around the city.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-jie-pickup", "hanzi": "接", "pinyin": "jiē", "english": ["to pick up (someone)", "to meet", "to answer (the phone)"], "hsk": 3, "pos": "verb" },
+    { "id": "w-jiu-longtime", "hanzi": "久", "pinyin": "jiǔ", "english": ["long (time)"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-zuijin", "hanzi": "最近", "pinyin": "zuìjìn", "english": ["recently", "lately"], "hsk": 3, "pos": "time" },
+    { "id": "w-xinglixiang", "hanzi": "行李箱", "pinyin": "xínglixiāng", "english": ["suitcase"], "hsk": 3, "pos": "noun" },
+    { "id": "w-cai-only", "hanzi": "才", "pinyin": "cái", "english": ["only then", "not until"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-liang-vehicle", "hanzi": "辆", "pinyin": "liàng", "english": ["(measure word for vehicles)"], "hsk": 3, "pos": "measure" },
+    { "id": "w-jingguo", "hanzi": "经过", "pinyin": "jīngguò", "english": ["to pass by", "to go through"], "hsk": 3, "pos": "verb" },
+    { "id": "w-tiananmen", "hanzi": "天安门", "pinyin": "Tiān'ānmén", "english": ["Tiananmen"], "hsk": 0, "pos": "name" },
+    { "id": "w-chengshi", "hanzi": "城市", "pinyin": "chéngshì", "english": ["city"], "hsk": 3, "pos": "noun" },
+    { "id": "w-yiqian", "hanzi": "以前", "pinyin": "yǐqián", "english": ["before", "in the past"], "hsk": 3, "pos": "time" },
+    { "id": "w-yihou", "hanzi": "以后", "pinyin": "yǐhòu", "english": ["after", "in the future"], "hsk": 3, "pos": "time" },
+    { "id": "w-geng", "hanzi": "更", "pinyin": "gèng", "english": ["even more"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-yue-more", "hanzi": "越", "pinyin": "yuè", "english": ["the more (越…越…)"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-jingchang", "hanzi": "经常", "pinyin": "jīngcháng", "english": ["often"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-zongshi", "hanzi": "总是", "pinyin": "zǒngshì", "english": ["always"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-you-again", "hanzi": "又", "pinyin": "yòu", "english": ["again (already happened)"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-san-umbrella", "hanzi": "伞", "pinyin": "sǎn", "english": ["umbrella"], "hsk": 3, "pos": "noun" },
+    { "id": "w-difang", "hanzi": "地方", "pinyin": "dìfang", "english": ["place"], "hsk": 3, "pos": "noun" },
+    { "id": "w-ditu", "hanzi": "地图", "pinyin": "dìtú", "english": ["map"], "hsk": 3, "pos": "noun" },
+    { "id": "w-guoqu", "hanzi": "过去", "pinyin": "guòqù", "english": ["to go over", "the past"], "hsk": 3, "pos": "verb" },
+    { "id": "w-mi-meter", "hanzi": "米", "pinyin": "mǐ", "english": ["metre"], "hsk": 3, "pos": "measure" },
+    { "id": "w-likai", "hanzi": "离开", "pinyin": "líkāi", "english": ["to leave"], "hsk": 3, "pos": "verb" },
+    { "id": "w-yudao", "hanzi": "遇到", "pinyin": "yùdào", "english": ["to run into", "to come across"], "hsk": 3, "pos": "verb" },
+    { "id": "w-wei-person", "hanzi": "位", "pinyin": "wèi", "english": ["(polite measure word for people)"], "hsk": 3, "pos": "measure" },
+    { "id": "w-duan-section", "hanzi": "段", "pinyin": "duàn", "english": ["period", "section"], "hsk": 3, "pos": "measure" }
+  ],
+  "sentences": [
+    { "id": "s27-qujichangjieni", "hanzi": "我去机场接你。", "pinyin": "Wǒ qù jīchǎng jiē nǐ.", "english": "I'll pick you up at the airport.", "words": ["w-wo", "w-qu", "w-jichang", "w-jie-pickup", "w-ni"] },
+    { "id": "s27-mige-haojiubujian", "hanzi": "米格！好久不见！", "pinyin": "Mǐgé! Hǎojiǔ bú jiàn!", "english": "米格! Long time no see!", "words": ["w-mikkel", "w-hao", "w-jiu-longtime", "w-bu", "w-jian"] },
+    { "id": "s27-haojiu-zuijin", "hanzi": "好久不见！你最近怎么样？", "pinyin": "Hǎojiǔ bú jiàn! Nǐ zuìjìn zěnmeyàng?", "english": "Long time no see! How have you been?", "words": ["w-hao", "w-jiu-longtime", "w-bu", "w-jian", "w-ni", "w-zuijin", "w-zenmeyang"] },
+    { "id": "s27-zuijinzenmeyang", "hanzi": "你最近怎么样？", "pinyin": "Nǐ zuìjìn zěnmeyàng?", "english": "How have you been lately?", "words": ["w-ni", "w-zuijin", "w-zenmeyang"] },
+    { "id": "s27-bangnina", "hanzi": "很好！我来帮你拿行李箱。", "pinyin": "Hěn hǎo! Wǒ lái bāng nǐ ná xínglixiāng.", "english": "Great! Let me take your suitcase.", "words": ["w-hen", "w-hao", "w-wo", "w-lai", "w-bang", "w-ni", "w-na-take", "w-xinglixiang"] },
+    { "id": "s27-xinglixiangzhenda", "hanzi": "你的行李箱真大！", "pinyin": "Nǐ de xínglixiāng zhēn dà!", "english": "Your suitcase is huge!", "words": ["w-ni", "w-de", "w-xinglixiang", "w-zhen", "w-da"] },
+    { "id": "s27-shiyidiancaidao", "hanzi": "谢谢！飞机十一点才到，你等了很久吧？", "pinyin": "Xièxie! Fēijī shíyī diǎn cái dào, nǐ děng le hěn jiǔ ba?", "english": "Thanks! The plane didn't land until eleven. You must have waited ages?", "words": ["w-xiexie", "w-feiji", "w-shi2", "w-yi", "w-dian", "w-cai-only", "w-dao", "w-ni", "w-deng", "w-le", "w-hen", "w-jiu-longtime", "w-ba-particle"] },
+    { "id": "s27-feijicaidao", "hanzi": "飞机十一点才到。", "pinyin": "Fēijī shíyī diǎn cái dào.", "english": "The plane didn't land until eleven.", "words": ["w-feiji", "w-shi2", "w-yi", "w-dian", "w-cai-only", "w-dao"] },
+    { "id": "s27-chuzuche-zou", "hanzi": "没事儿！门外有一辆出租车，我们走吧。", "pinyin": "Méishìr! Mén wài yǒu yí liàng chūzūchē, wǒmen zǒu ba.", "english": "No problem! There's a taxi outside. Let's go.", "words": ["w-meishir", "w-men-door", "w-wai", "w-you", "w-yi", "w-liang-vehicle", "w-chuzuche", "w-women", "w-zou", "w-ba-particle"] },
+    { "id": "s27-yiliangchuzuche", "hanzi": "门外有一辆出租车。", "pinyin": "Mén wài yǒu yí liàng chūzūchē.", "english": "There's a taxi outside.", "words": ["w-men-door", "w-wai", "w-you", "w-yi", "w-liang-vehicle", "w-chuzuche"] },
+    { "id": "s27-jingguotiananmen", "hanzi": "你看，我们经过天安门了！", "pinyin": "Nǐ kàn, wǒmen jīngguò Tiān'ānmén le!", "english": "Look, we're passing Tiananmen!", "words": ["w-ni", "w-kan", "w-women", "w-jingguo", "w-tiananmen", "w-le"] },
+    { "id": "s27-gengpiaoliang", "hanzi": "北京比以前更漂亮了！", "pinyin": "Běijīng bǐ yǐqián gèng piàoliang le!", "english": "Beijing is even more beautiful than before!", "words": ["w-beijing", "w-bi", "w-yiqian", "w-geng", "w-piaoliang", "w-le"] },
+    { "id": "s27-dachengshi", "hanzi": "北京是一个很大的城市。", "pinyin": "Běijīng shì yí ge hěn dà de chéngshì.", "english": "Beijing is a huge city.", "words": ["w-beijing", "w-shi", "w-yi", "w-ge", "w-hen", "w-da", "w-de", "w-chengshi"] },
+    { "id": "s27-yiqianmeilaiguo", "hanzi": "我以前没来过北京。", "pinyin": "Wǒ yǐqián méi lái guo Běijīng.", "english": "I'd never been to Beijing before.", "words": ["w-wo", "w-yiqian", "w-mei", "w-lai", "w-guo-exp", "w-beijing"] },
+    { "id": "s27-yihoujingchanglai", "hanzi": "以后我们经常来吧！", "pinyin": "Yǐhòu wǒmen jīngcháng lái ba!", "english": "Let's come often from now on!", "words": ["w-yihou", "w-women", "w-jingchang", "w-lai", "w-ba-particle"] },
+    { "id": "s27-zongshirangwochi", "hanzi": "姥姥总是让我多吃。", "pinyin": "Lǎolao zǒngshì ràng wǒ duō chī.", "english": "Grandma always makes me eat more.", "words": ["w-laolao", "w-zongshi", "w-rang", "w-wo", "w-duo", "w-chi"] },
+    { "id": "s27-yuexueyuexihuan", "hanzi": "我越学越喜欢中文。", "pinyin": "Wǒ yuè xué yuè xǐhuan Zhōngwén.", "english": "The more I learn, the more I like Chinese.", "words": ["w-wo", "w-yue-more", "w-xue", "w-yue-more", "w-xihuan", "w-zhongwen"] },
+    { "id": "s27-youxiayule", "hanzi": "又下雨了！", "pinyin": "Yòu xià yǔ le!", "english": "It's raining again!", "words": ["w-you-again", "w-xiayu", "w-le"] },
+    { "id": "s27-daisanlema", "hanzi": "你带伞了吗？", "pinyin": "Nǐ dài sǎn le ma?", "english": "Did you bring an umbrella?", "words": ["w-ni", "w-dai", "w-san-umbrella", "w-le", "w-ma"] },
+    { "id": "s27-meidaisan", "hanzi": "我没带伞。", "pinyin": "Wǒ méi dài sǎn.", "english": "I didn't bring an umbrella.", "words": ["w-wo", "w-mei", "w-dai", "w-san-umbrella"] },
+    { "id": "s27-zhegedifang", "hanzi": "这个地方真漂亮。", "pinyin": "Zhège dìfang zhēn piàoliang.", "english": "This place is beautiful.", "words": ["w-zhe", "w-ge", "w-difang", "w-zhen", "w-piaoliang"] },
+    { "id": "s27-qushenmedifang", "hanzi": "你想去什么地方？", "pinyin": "Nǐ xiǎng qù shénme dìfang?", "english": "Where would you like to go?", "words": ["w-ni", "w-xiang", "w-qu", "w-shenme", "w-difang"] },
+    { "id": "s27-shoujiditu", "hanzi": "我手机上有地图。", "pinyin": "Wǒ shǒujī shàng yǒu dìtú.", "english": "I've got a map on my phone.", "words": ["w-wo", "w-shouji", "w-shang", "w-you", "w-ditu"] },
+    { "id": "s27-zouguoqu", "hanzi": "饭馆就在前面，我们走过去吧。", "pinyin": "Fànguǎn jiù zài qiánmiàn, wǒmen zǒu guòqù ba.", "english": "The restaurant is just ahead. Let's walk over.", "words": ["w-fanguan", "w-jiu-just", "w-zai", "w-qianmian", "w-women", "w-zou", "w-guoqu", "w-ba-particle"] },
+    { "id": "s27-yibaimi", "hanzi": "再走一百米就到了。", "pinyin": "Zài zǒu yìbǎi mǐ jiù dào le.", "english": "Another hundred metres and we're there.", "words": ["w-zai-again", "w-zou", "w-yi", "w-bai3", "w-mi-meter", "w-jiu-just", "w-dao", "w-le"] },
+    { "id": "s27-mingtianlikai", "hanzi": "我们明天离开北京。", "pinyin": "Wǒmen míngtiān líkāi Běijīng.", "english": "We leave Beijing tomorrow.", "words": ["w-women", "w-mingtian", "w-likai", "w-beijing"] },
+    { "id": "s27-yudaolaoshi", "hanzi": "我在地铁上遇到了我的老师。", "pinyin": "Wǒ zài dìtiě shàng yùdào le wǒ de lǎoshī.", "english": "I ran into my teacher on the subway.", "words": ["w-wo", "w-zai", "w-ditie", "w-shang", "w-yudao", "w-le", "w-wo", "w-de", "w-laoshi"] },
+    { "id": "s27-zheweishilaoye", "hanzi": "这位是我的姥爷。", "pinyin": "Zhè wèi shì wǒ de lǎoye.", "english": "This is my grandpa.", "words": ["w-zhe", "w-wei-person", "w-shi", "w-wo", "w-de", "w-laoye"] },
+    { "id": "s27-jiwei", "hanzi": "您好，几位？", "pinyin": "Nín hǎo, jǐ wèi?", "english": "Hello, how many of you?", "words": ["w-nin", "w-hao", "w-ji", "w-wei-person"] },
+    { "id": "s27-liangwei", "hanzi": "两位。", "pinyin": "Liǎng wèi.", "english": "Two, please.", "words": ["w-liang", "w-wei-person"] },
+    { "id": "s27-zheduanshijian", "hanzi": "这段时间我很忙。", "pinyin": "Zhè duàn shíjiān wǒ hěn máng.", "english": "I've been busy lately.", "words": ["w-zhe", "w-duan-section", "w-shijian", "w-wo", "w-hen", "w-mang"] }
+  ],
+  "exchanges": [
+    { "id": "x27-longtime", "prompt": "s27-mige-haojiubujian", "reply": "s27-haojiu-zuijin", "wrong": ["s27-liangwei", "s27-meidaisan"], "context": "Her sister greets you at the airport after a year." },
+    { "id": "x27-table", "prompt": "s27-jiwei", "reply": "s27-liangwei", "wrong": ["s27-shoujiditu", "s27-zhegedifang"], "context": "A waiter greets you and your girlfriend at a restaurant." },
+    { "id": "x27-umbrella", "prompt": "s27-daisanlema", "reply": "s27-meidaisan", "wrong": ["s27-yuexueyuexihuan", "s27-jingguotiananmen"], "context": "It's pouring, and you left your umbrella at home." },
+    { "id": "x27-lately", "prompt": "s27-zuijinzenmeyang", "reply": "s27-zheduanshijian", "wrong": ["s27-xinglixiangzhenda", "s27-mingtianlikai"], "context": "A friend asks how you've been. Work has been hectic." },
+    { "id": "x27-where", "prompt": "s27-qushenmedifang", "reply": "s27-zouguoqu", "wrong": ["s27-youxiayule", "s27-zongshirangwochi"], "context": "You both want dinner, and the restaurant is close." }
+  ],
+  "grammar": [
+    { "id": "g27-cai", "title": "才: later than expected", "body": "才 before the verb shows something happened later than expected: 十一点才到 (didn't land until eleven). 就 is the opposite: sooner than expected.", "examples": ["s27-feijicaidao", "s27-shiyidiancaidao"] },
+    { "id": "g27-yue", "title": "越…越…: the more, the more", "body": "越 + A + 越 + B: the more A, the more B. 我越学越喜欢中文.", "examples": ["s27-yuexueyuexihuan"] },
+    { "id": "g27-youzai", "title": "又 or 再: again", "body": "又 is for something that has happened again: 又下雨了! 再 is for doing it again in the future: 再说一次.", "examples": ["s27-youxiayule", "s23-meitingqingchu"] },
+    { "id": "g27-wei", "title": "位: polite people", "body": "位 is a polite measure word for people: 这位是我的姥爷. Waiters ask 几位? (how many of you?).", "examples": ["s27-zheweishilaoye", "s27-jiwei"] },
+    { "id": "g27-yiqian", "title": "以前 and 以后", "body": "以前: before, in the past. 以后: after, from now on. Both can go at the start: 以后我们经常来吧!", "examples": ["s27-yiqianmeilaiguo", "s27-yihoujingchanglai", "s27-gengpiaoliang"] }
+  ],
+  "dialogue": {
+    "id": "d27-airport",
+    "title": "Listening challenge: Back in Beijing",
+    "setting": "Late at night at Beijing airport. Her sister has come to pick 米格 up.",
+    "speakers": [
+      { "id": "S", "name": "Her sister", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "S", "sentence": "s27-mige-haojiubujian" },
+      { "speaker": "K", "sentence": "s27-haojiu-zuijin" },
+      { "speaker": "S", "sentence": "s27-bangnina" },
+      { "speaker": "K", "sentence": "s27-shiyidiancaidao" },
+      { "speaker": "S", "sentence": "s27-chuzuche-zou" },
+      { "speaker": "S", "sentence": "s27-jingguotiananmen" },
+      { "speaker": "K", "sentence": "s27-gengpiaoliang" }
+    ],
+    "questions": [
+      { "q": "Where are they at the start?", "options": ["At the airport", "At the train station", "At home"], "answer": 0 },
+      { "q": "When did the plane land?", "options": ["At ten", "At eleven", "At noon"], "answer": 1 },
+      { "q": "How do they get into the city?", "options": ["By subway", "By bus", "By taxi"], "answer": 2 },
+      { "q": "What does 米格 think of Beijing now?", "options": ["Even more beautiful than before", "Too busy", "Just the same"], "answer": 0 }
+    ]
+  },
+  "nodes": [
+    { "id": "n27-pickup", "title": "At the airport", "words": ["w-jie-pickup", "w-jiu-longtime", "w-zuijin", "w-xinglixiang", "w-cai-only", "w-liang-vehicle"], "sentences": ["s27-qujichangjieni", "s27-mige-haojiubujian", "s27-haojiu-zuijin", "s27-zuijinzenmeyang", "s27-bangnina", "s27-xinglixiangzhenda", "s27-feijicaidao", "s27-shiyidiancaidao", "s27-yiliangchuzuche", "s27-chuzuche-zou"], "exchanges": ["x27-longtime"], "grammar": ["g27-cai"] },
+    { "id": "n27-thennow", "title": "Then and now", "words": ["w-jingguo", "w-tiananmen", "w-chengshi", "w-yiqian", "w-yihou", "w-geng", "w-yue-more"], "sentences": ["s27-jingguotiananmen", "s27-gengpiaoliang", "s27-dachengshi", "s27-yiqianmeilaiguo", "s27-yihoujingchanglai", "s27-yuexueyuexihuan"], "grammar": ["g27-yue", "g27-yiqian"] },
+    { "id": "n27-again", "title": "Again and always", "words": ["w-jingchang", "w-zongshi", "w-you-again", "w-san-umbrella", "w-duan-section"], "sentences": ["s27-zongshirangwochi", "s27-youxiayule", "s27-daisanlema", "s27-meidaisan", "s27-zheduanshijian", "s27-yihoujingchanglai"], "exchanges": ["x27-umbrella", "x27-lately"], "grammar": ["g27-youzai"] },
+    { "id": "n27-around", "title": "Getting around", "words": ["w-difang", "w-ditu", "w-guoqu", "w-mi-meter", "w-likai", "w-yudao", "w-wei-person"], "sentences": ["s27-zhegedifang", "s27-qushenmedifang", "s27-shoujiditu", "s27-zouguoqu", "s27-yibaimi", "s27-mingtianlikai", "s27-yudaolaoshi", "s27-zheweishilaoye", "s27-jiwei", "s27-liangwei"], "exchanges": ["x27-table", "x27-where"], "grammar": ["g27-wei"] },
+    { "id": "n27-story", "title": "Challenge: Back in Beijing", "kind": "story", "sentences": ["s27-mige-haojiubujian", "s27-bangnina", "s27-shiyidiancaidao", "s27-chuzuche-zou", "s27-gengpiaoliang"] }
+  ]
+}
