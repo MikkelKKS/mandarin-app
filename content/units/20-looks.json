@@ -1,0 +1,111 @@
+{
+  "id": "u20-looks",
+  "order": 20,
+  "title": "Looks and clothes",
+  "titleHanzi": "她像妈妈",
+  "description": "Faces and bodies, who looks like whom, clothes and colours, and the family photo album.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-lian", "hanzi": "脸", "pinyin": "liǎn", "english": ["face"], "hsk": 3, "pos": "noun" },
+    { "id": "w-bizi", "hanzi": "鼻子", "pinyin": "bízi", "english": ["nose"], "hsk": 3, "pos": "noun" },
+    { "id": "w-erduo", "hanzi": "耳朵", "pinyin": "ěrduo", "english": ["ear"], "hsk": 3, "pos": "noun" },
+    { "id": "w-toufa", "hanzi": "头发", "pinyin": "tóufa", "english": ["hair (on the head)"], "hsk": 3, "pos": "noun" },
+    { "id": "w-jiao-foot", "hanzi": "脚", "pinyin": "jiǎo", "english": ["foot"], "hsk": 3, "pos": "noun" },
+    { "id": "w-tui", "hanzi": "腿", "pinyin": "tuǐ", "english": ["leg"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xiang-like", "hanzi": "像", "pinyin": "xiàng", "english": ["to look like", "to resemble"], "hsk": 3, "pos": "verb" },
+    { "id": "w-keai", "hanzi": "可爱", "pinyin": "kě'ài", "english": ["cute", "lovely"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-congming", "hanzi": "聪明", "pinyin": "cōngming", "english": ["clever", "smart"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-pang", "hanzi": "胖", "pinyin": "pàng", "english": ["fat", "chubby"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-shou", "hanzi": "瘦", "pinyin": "shòu", "english": ["thin", "slim"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-ai-short", "hanzi": "矮", "pinyin": "ǎi", "english": ["short (height)"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-nianqing", "hanzi": "年轻", "pinyin": "niánqīng", "english": ["young"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-lao", "hanzi": "老", "pinyin": "lǎo", "english": ["old (people)"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-yanjing-glasses", "hanzi": "眼镜", "pinyin": "yǎnjìng", "english": ["glasses"], "hsk": 3, "pos": "noun" },
+    { "id": "w-maozi", "hanzi": "帽子", "pinyin": "màozi", "english": ["hat", "cap"], "hsk": 3, "pos": "noun" },
+    { "id": "w-dai-wear", "hanzi": "戴", "pinyin": "dài", "english": ["to wear (hats, glasses, watches)"], "hsk": 4, "pos": "verb" },
+    { "id": "w-chenshan", "hanzi": "衬衫", "pinyin": "chènshān", "english": ["shirt"], "hsk": 3, "pos": "noun", "measure": "w-jian-item" },
+    { "id": "w-kuzi", "hanzi": "裤子", "pinyin": "kùzi", "english": ["trousers"], "hsk": 3, "pos": "noun", "measure": "w-tiao" },
+    { "id": "w-qunzi", "hanzi": "裙子", "pinyin": "qúnzi", "english": ["skirt", "dress"], "hsk": 3, "pos": "noun", "measure": "w-tiao" },
+    { "id": "w-xie-shoe", "hanzi": "鞋", "pinyin": "xié", "english": ["shoe"], "hsk": 3, "pos": "noun", "measure": "w-shuang" },
+    { "id": "w-shuang", "hanzi": "双", "pinyin": "shuāng", "english": ["pair (measure word)"], "hsk": 3, "pos": "measure" },
+    { "id": "w-tiao", "hanzi": "条", "pinyin": "tiáo", "english": ["(measure word for long things: trousers, roads, fish)"], "hsk": 3, "pos": "measure" },
+    { "id": "w-duan", "hanzi": "短", "pinyin": "duǎn", "english": ["short (length)"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-lan", "hanzi": "蓝", "pinyin": "lán", "english": ["blue"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-lv", "hanzi": "绿", "pinyin": "lǜ", "english": ["green"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-huang", "hanzi": "黄", "pinyin": "huáng", "english": ["yellow"], "hsk": 3, "pos": "adjective" }
+  ],
+  "sentences": [
+    { "id": "s20-xiaoshihouzhaopian", "hanzi": "米格，你看，这是她小时候的照片。", "pinyin": "Mǐgé, nǐ kàn, zhè shì tā xiǎo shíhou de zhàopiàn.", "english": "米格, look, this is a photo of her as a child.", "words": ["w-mikkel", "w-ni", "w-kan", "w-zhe", "w-shi", "w-ta-she", "w-xiao", "w-shihou", "w-de", "w-zhaopian"] },
+    { "id": "s20-xiaoshihoukeai", "hanzi": "她小时候真可爱！", "pinyin": "Tā xiǎo shíhou zhēn kě'ài!", "english": "She was so cute as a child!", "words": ["w-ta-she", "w-xiao", "w-shihou", "w-zhen", "w-keai"] },
+    { "id": "s20-xiangmama", "hanzi": "她很像她妈妈。", "pinyin": "Tā hěn xiàng tā māma.", "english": "She looks a lot like her mum.", "words": ["w-ta-she", "w-hen", "w-xiang-like", "w-ta-she", "w-mama"] },
+    { "id": "s20-yanjingbizi", "hanzi": "她的眼睛像她爸爸，鼻子像我。", "pinyin": "Tā de yǎnjing xiàng tā bàba, bízi xiàng wǒ.", "english": "She has her dad's eyes and my nose.", "words": ["w-ta-she", "w-de", "w-yanjing", "w-xiang-like", "w-ta-she", "w-baba", "w-bizi", "w-xiang-like", "w-wo"] },
+    { "id": "s20-toufahenchang", "hanzi": "她头发很长。", "pinyin": "Tā tóufa hěn cháng.", "english": "She has long hair.", "words": ["w-ta-she", "w-toufa", "w-hen", "w-chang-long"] },
+    { "id": "s20-lianhongle", "hanzi": "她脸红了。", "pinyin": "Tā liǎn hóng le.", "english": "She blushed.", "words": ["w-ta-she", "w-lian", "w-hong", "w-le"] },
+    { "id": "s20-erduoteng", "hanzi": "太冷了，我的耳朵很疼！", "pinyin": "Tài lěng le, wǒ de ěrduo hěn téng!", "english": "It's so cold my ears hurt!", "words": ["w-tai", "w-leng", "w-le", "w-wo", "w-de", "w-erduo", "w-hen", "w-teng"] },
+    { "id": "s20-jiaoteng", "hanzi": "我的脚很疼。", "pinyin": "Wǒ de jiǎo hěn téng.", "english": "My feet hurt.", "words": ["w-wo", "w-de", "w-jiao-foot", "w-hen", "w-teng"] },
+    { "id": "s20-tuihenlei", "hanzi": "走了一天，腿很累。", "pinyin": "Zǒu le yì tiān, tuǐ hěn lèi.", "english": "We walked all day. My legs are tired.", "words": ["w-zou", "w-le", "w-yi", "w-tian", "w-tui", "w-hen", "w-lei"] },
+    { "id": "s20-nvercongming", "hanzi": "您的女儿很聪明。", "pinyin": "Nín de nǚ'ér hěn cōngming.", "english": "Your daughter is very clever.", "words": ["w-nin", "w-de", "w-nver", "w-hen", "w-congming"] },
+    { "id": "s20-nipangle", "hanzi": "你胖了！", "pinyin": "Nǐ pàng le!", "english": "You've put on weight!", "words": ["w-ni", "w-pang", "w-le"] },
+    { "id": "s20-nishoule", "hanzi": "你瘦了！", "pinyin": "Nǐ shòu le!", "english": "You've lost weight!", "words": ["w-ni", "w-shou", "w-le"] },
+    { "id": "s20-nashihouhenshou", "hanzi": "对，那时候他很瘦！", "pinyin": "Duì, nà shíhou tā hěn shòu!", "english": "Yes, he was so thin back then!", "words": ["w-dui", "w-na4", "w-shihou", "w-ta-he", "w-hen", "w-shou"] },
+    { "id": "s20-bigegeai", "hanzi": "我比我哥哥矮。", "pinyin": "Wǒ bǐ wǒ gēge ǎi.", "english": "I'm shorter than my older brother.", "words": ["w-wo", "w-bi", "w-wo", "w-gege", "w-ai-short"] },
+    { "id": "s20-gaoai", "hanzi": "米格很高，姥姥很矮。", "pinyin": "Mǐgé hěn gāo, lǎolao hěn ǎi.", "english": "米格 is tall and Grandma is short.", "words": ["w-mikkel", "w-hen", "w-gao", "w-laolao", "w-hen", "w-ai-short"] },
+    { "id": "s20-ninzhennianqing", "hanzi": "您真年轻！", "pinyin": "Nín zhēn niánqīng!", "english": "You look so young!", "words": ["w-nin", "w-zhen", "w-nianqing"] },
+    { "id": "s20-xianzaiyenianqing", "hanzi": "阿姨，您现在也很年轻！", "pinyin": "Āyí, nín xiànzài yě hěn niánqīng!", "english": "Auntie, you still look young now!", "words": ["w-ayi", "w-nin", "w-xianzai", "w-ye", "w-hen", "w-nianqing"] },
+    { "id": "s20-zhenhuishuohua", "hanzi": "你真会说话！", "pinyin": "Nǐ zhēn huì shuōhuà!", "english": "You're such a sweet talker!", "words": ["w-ni", "w-zhen", "w-hui", "w-shuohua"] },
+    { "id": "s20-wolaole", "hanzi": "我老了。", "pinyin": "Wǒ lǎo le.", "english": "I'm getting old.", "words": ["w-wo", "w-lao", "w-le"] },
+    { "id": "s20-ninbulao", "hanzi": "您不老！", "pinyin": "Nín bù lǎo!", "english": "You're not old!", "words": ["w-nin", "w-bu", "w-lao"] },
+    { "id": "s20-yanjingne", "hanzi": "我的眼镜呢？", "pinyin": "Wǒ de yǎnjìng ne?", "english": "Where are my glasses?", "words": ["w-wo", "w-de", "w-yanjing-glasses", "w-ne"] },
+    { "id": "s20-daimaozi", "hanzi": "今天很冷，戴帽子吧。", "pinyin": "Jīntiān hěn lěng, dài màozi ba.", "english": "It's cold today. Wear a hat.", "words": ["w-jintian", "w-hen", "w-leng", "w-dai-wear", "w-maozi", "w-ba-particle"] },
+    { "id": "s20-lanchenshan", "hanzi": "那个穿蓝衬衫的男人是叔叔吗？", "pinyin": "Nà ge chuān lán chènshān de nánrén shì shūshu ma?", "english": "Is the man in the blue shirt her dad?", "words": ["w-na4", "w-ge", "w-chuan", "w-lan", "w-chenshan", "w-de", "w-nanren", "w-shi", "w-shushu", "w-ma"], "alt": { "english": ["Is the man in the blue shirt Uncle?"] } },
+    { "id": "s20-huangchenshan", "hanzi": "这件黄衬衫很漂亮。", "pinyin": "Zhè jiàn huáng chènshān hěn piàoliang.", "english": "This yellow shirt is lovely.", "words": ["w-zhe", "w-jian-item", "w-huang", "w-chenshan", "w-hen", "w-piaoliang"] },
+    { "id": "s20-yishuangxie", "hanzi": "我想买一双鞋。", "pinyin": "Wǒ xiǎng mǎi yì shuāng xié.", "english": "I'd like to buy a pair of shoes.", "words": ["w-wo", "w-xiang", "w-mai3", "w-yi", "w-shuang", "w-xie-shoe"] },
+    { "id": "s20-kuzitaichang", "hanzi": "这条裤子太长了。", "pinyin": "Zhè tiáo kùzi tài cháng le.", "english": "These trousers are too long.", "words": ["w-zhe", "w-tiao", "w-kuzi", "w-tai", "w-chang-long", "w-le"] },
+    { "id": "s20-qunzitaiduan", "hanzi": "这条裙子太短了。", "pinyin": "Zhè tiáo qúnzi tài duǎn le.", "english": "This skirt is too short.", "words": ["w-zhe", "w-tiao", "w-qunzi", "w-tai", "w-duan", "w-le"] },
+    { "id": "s20-lvqunzi", "hanzi": "我喜欢那条绿裙子。", "pinyin": "Wǒ xǐhuan nà tiáo lǜ qúnzi.", "english": "I like that green dress.", "words": ["w-wo", "w-xihuan", "w-na4", "w-tiao", "w-lv", "w-qunzi"] }
+  ],
+  "exchanges": [
+    { "id": "x20-old", "prompt": "s20-wolaole", "reply": "s20-ninbulao", "wrong": ["s20-nipangle", "s20-qunzitaiduan"], "context": "Grandma sighs about her age. Cheer her up." },
+    { "id": "x20-photo", "prompt": "s20-xiaoshihouzhaopian", "reply": "s20-xiaoshihoukeai", "wrong": ["s20-jiaoteng", "s20-yanjingne"], "context": "Her mother shows you a childhood photo of your girlfriend." },
+    { "id": "x20-compliment", "prompt": "s20-xianzaiyenianqing", "reply": "s20-zhenhuishuohua", "wrong": ["s20-yishuangxie", "s20-erduoteng"], "context": "You're her mother. 米格 just paid you a compliment." },
+    { "id": "x20-shopping", "prompt": "s20-kuzitaichang", "reply": "s19-huanjianyifu", "wrong": ["s20-nvercongming", "s20-ninzhennianqing"], "context": "You tried on trousers that don't fit. You'll try something else." },
+    { "id": "x20-cold", "prompt": "s20-daimaozi", "reply": "s16-hao-chuan", "wrong": ["s20-lianhongle", "s20-bigegeai"], "context": "Her mother worries you'll be cold." }
+  ],
+  "grammar": [
+    { "id": "g20-xiang", "title": "像: looks like", "body": "A 像 B: A looks like B. 她很像她妈妈. Use it for parts too: 眼睛像爸爸 (has her dad's eyes).", "examples": ["s20-xiangmama", "s20-yanjingbizi"] },
+    { "id": "g20-measures", "title": "Measure words for clothes", "body": "件 for tops and coats (一件衬衫), 条 for long things like trousers and skirts (一条裤子), 双 for pairs (一双鞋).", "examples": ["s20-huangchenshan", "s20-kuzitaichang", "s20-yishuangxie"] },
+    { "id": "g20-dai", "title": "穿 or 戴?", "body": "穿 for clothes and shoes. 戴 for things you put on: hats, glasses, watches.", "examples": ["s20-daimaozi", "s20-lanchenshan"] },
+    { "id": "g20-pang", "title": "你胖了! is small talk", "body": "Relatives often greet you with 你胖了 (you've gained weight) or 你瘦了 (you've lost weight). It's friendly concern, not rude. Smile and say something about the good food.", "examples": ["s20-nipangle", "s20-nishoule"] }
+  ],
+  "dialogue": {
+    "id": "d20-album",
+    "title": "Listening challenge: The photo album",
+    "setting": "After dinner, her mother brings out the old family photo album.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "M", "sentence": "s20-xiaoshihouzhaopian" },
+      { "speaker": "K", "sentence": "s20-xiaoshihoukeai" },
+      { "speaker": "M", "sentence": "s20-yanjingbizi" },
+      { "speaker": "K", "sentence": "s20-lanchenshan" },
+      { "speaker": "M", "sentence": "s20-nashihouhenshou" },
+      { "speaker": "K", "sentence": "s20-xianzaiyenianqing" },
+      { "speaker": "M", "sentence": "s20-zhenhuishuohua" }
+    ],
+    "questions": [
+      { "q": "What's in the photo?", "options": ["Her wedding", "Her daughter as a child", "Grandma's house"], "answer": 1 },
+      { "q": "What did the girl get from her mother?", "options": ["Her nose", "Her eyes", "Her hair"], "answer": 0 },
+      { "q": "What's surprising about her dad in the photo?", "options": ["He was very thin", "He had long hair", "He wore glasses"], "answer": 0 },
+      { "q": "How does her mother react to 米格's compliment?", "options": ["She's offended", "She calls him a sweet talker", "She doesn't hear it"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n20-face", "title": "Faces and bodies", "words": ["w-lian", "w-bizi", "w-erduo", "w-toufa", "w-jiao-foot", "w-tui", "w-xiang-like"], "sentences": ["s20-xiangmama", "s20-yanjingbizi", "s20-toufahenchang", "s20-lianhongle", "s20-erduoteng", "s20-jiaoteng", "s20-tuihenlei"], "grammar": ["g20-xiang"] },
+    { "id": "n20-people", "title": "Describing people", "words": ["w-keai", "w-congming", "w-pang", "w-shou", "w-ai-short", "w-nianqing", "w-lao"], "sentences": ["s20-xiaoshihouzhaopian", "s20-xiaoshihoukeai", "s20-nvercongming", "s20-nipangle", "s20-nishoule", "s20-nashihouhenshou", "s20-bigegeai", "s20-gaoai", "s20-ninzhennianqing", "s20-xianzaiyenianqing", "s20-zhenhuishuohua", "s20-wolaole", "s20-ninbulao"], "exchanges": ["x20-old", "x20-photo", "x20-compliment"], "grammar": ["g20-pang"] },
+    { "id": "n20-wear", "title": "Hats and glasses", "words": ["w-yanjing-glasses", "w-maozi", "w-dai-wear", "w-chenshan", "w-lan", "w-huang"], "sentences": ["s20-yanjingne", "s20-daimaozi", "s20-lanchenshan", "s20-huangchenshan"], "exchanges": ["x20-cold"], "grammar": ["g20-dai"] },
+    { "id": "n20-clothes", "title": "Trying things on", "words": ["w-kuzi", "w-qunzi", "w-xie-shoe", "w-shuang", "w-tiao", "w-duan", "w-lv"], "sentences": ["s20-yishuangxie", "s20-kuzitaichang", "s20-qunzitaiduan", "s20-lvqunzi"], "exchanges": ["x20-shopping"], "grammar": ["g20-measures"] },
+    { "id": "n20-story", "title": "Challenge: The photo album", "kind": "story", "sentences": ["s20-xiaoshihouzhaopian", "s20-yanjingbizi", "s20-lanchenshan", "s20-nashihouhenshou", "s20-zhenhuishuohua"] }
+  ]
+}
