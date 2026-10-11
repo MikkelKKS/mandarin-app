@@ -12,7 +12,9 @@ Runs automatically in GitHub Actions (see .github/workflows/deploy.yml).
 """
 import asyncio
 import json
+import shutil
 import sys
+import time
 from pathlib import Path
 
 import edge_tts
@@ -23,6 +25,11 @@ VOICES = {"f": "zh-CN-XiaoxiaoNeural", "m": "zh-CN-YunxiNeural"}
 SLOW_RATE = "-35%"
 WORD_RATE = "-10%"  # single words a touch slower than conversational speed
 CONCURRENCY = 6
+# Pad every clip with a little silence: some browsers (Firefox) drop the last
+# fraction of a second of these MP3s, and Bluetooth/USB audio can swallow the start.
+PAD_BEFORE_MS = 150
+PAD_AFTER_S = 0.4
+AUDIO_FORMAT = 2  # bump to re-process all existing files
 
 
 def jobs():
@@ -38,6 +45,19 @@ def jobs():
         yield s["id"], s["hanzi"], False
 
 
+async def pad(path):
+    """Re-encode with silence before/after (gapless LAME header included)."""
+    tmp = path.with_suffix(".pad.mp3")
+    proc = await asyncio.create_subprocess_exec(
+        "ffmpeg", "-nostdin", "-loglevel", "error", "-y", "-i", str(path),
+        "-af", f"adelay={PAD_BEFORE_MS}:all=1,apad=pad_dur={PAD_AFTER_S}",
+        "-ar", "24000", "-ac", "1", "-c:a", "libmp3lame", "-b:a", "48k", str(tmp),
+    )
+    if await proc.wait() != 0:
+        raise RuntimeError(f"ffmpeg failed for {path.name}")
+    tmp.replace(path)
+
+
 async def synth(text, voice, rate, dest, sem):
     async with sem:
         for attempt in range(4):
@@ -45,6 +65,7 @@ async def synth(text, voice, rate, dest, sem):
                 tmp = dest.with_suffix(".tmp")
                 await edge_tts.Communicate(text, voice, rate=rate).save(str(tmp))
                 tmp.replace(dest)
+                await pad(dest)
                 return True
             except Exception as e:  # network hiccups: retry with backoff
                 print(f"  retry {attempt + 1} for {dest.name}: {e}", file=sys.stderr)
@@ -61,8 +82,13 @@ async def main():
     tasks = []
     # manifest: id -> text the audio was generated from. When the text changes
     # (e.g. a sentence is edited), the audio is regenerated.
+    if not shutil.which("ffmpeg"):
+        sys.exit("ffmpeg is required (sudo apt-get install ffmpeg)")
     first_run = not MANIFEST.exists()
-    manifest = {} if first_run else json.loads(MANIFEST.read_text(encoding="utf-8"))
+    raw = {} if first_run else json.loads(MANIFEST.read_text(encoding="utf-8"))
+    # Format 1 was a flat {id: text}; format 2 is {"_format": 2, "items": {...}}.
+    fmt = raw.get("_format", 1) if isinstance(raw.get("_format"), int) else 1
+    manifest = raw.get("items", raw) if fmt >= 2 else raw
     items = list(jobs())
     for item_id, text, is_sentence in items:
         stale = force or (not first_run and manifest.get(item_id) != text)
@@ -76,10 +102,26 @@ async def main():
                 if stale or not dest.exists():
                     tasks.append(synth(text, voice, rate, dest, sem))
     print(f"{len(tasks)} file(s) to generate")
+    started = time.time()
     results = await asyncio.gather(*tasks)
     failed = results.count(False)
+    if fmt < AUDIO_FORMAT:
+        # One-off: pad every file that was made before padding existed.
+        # Files generated in this run are already padded.
+        old = [p for p in OUT.glob("*/*.mp3") if p.stat().st_mtime < started]
+        print(f"padding {len(old)} existing file(s)")
+        psem = asyncio.Semaphore(8)
+
+        async def pad_one(p):
+            async with psem:
+                await pad(p)
+
+        await asyncio.gather(*(pad_one(p) for p in old))
     if not failed:
-        MANIFEST.write_text(json.dumps({i: t for i, t, _ in items}, ensure_ascii=False, indent=0, sort_keys=True), encoding="utf-8")
+        MANIFEST.write_text(
+            json.dumps({"_format": AUDIO_FORMAT, "items": {i: t for i, t, _ in items}}, ensure_ascii=False, indent=0, sort_keys=True),
+            encoding="utf-8",
+        )
     print(f"done: {len(results) - failed} generated, {failed} failed")
     sys.exit(1 if failed else 0)
 

@@ -1,7 +1,8 @@
 /**
  * Audio playback. Uses the pre-generated MP3s; falls back to the browser's
- * speech synthesis (zh-CN) when a file is missing. One shared <audio>
- * element is reused, which keeps mobile browsers happy after the first tap.
+ * speech synthesis (zh-CN) only when a file is genuinely missing. Each clip
+ * gets a fresh <audio> element: swapping the source of a playing element
+ * caused glitches in Firefox.
  */
 import { audioPath, type Voice } from '../content/audioPaths';
 import { lookup, sentences } from '../content';
@@ -12,14 +13,6 @@ let el: HTMLAudioElement | null = null;
 let alternateFlip = false;
 let currentResolve: (() => void) | null = null;
 
-function player(): HTMLAudioElement {
-  if (!el) {
-    el = new Audio();
-    el.preload = 'auto';
-  }
-  return el;
-}
-
 /** Choose a voice according to settings ("alternate" flips each call). */
 export function pickVoice(): Voice {
   const pref = currentSettings().voice;
@@ -29,8 +22,9 @@ export function pickVoice(): Voice {
 }
 
 /** Short hash of the spoken text, so edited items get fresh audio past any cache. */
+const AUDIO_FORMAT = 2; // matches scripts/generate-audio.py (2 = padded with silence)
 function textVersion(id: string): string {
-  const t = lookup(id)?.hanzi ?? '';
+  const t = `${AUDIO_FORMAT}:${lookup(id)?.hanzi ?? ''}`;
   let h = 5381;
   for (const ch of t) h = ((h * 33) ^ ch.codePointAt(0)!) >>> 0;
   return h.toString(36);
@@ -47,7 +41,12 @@ export interface PlayOptions {
 }
 
 export function stop(): void {
-  if (el) el.pause();
+  if (el) {
+    el.onended = el.onerror = null;
+    el.pause();
+    el.removeAttribute('src');
+    el = null;
+  }
   if (typeof speechSynthesis !== 'undefined') speechSynthesis.cancel();
   currentResolve?.();
   currentResolve = null;
@@ -63,8 +62,13 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
     const text = lookup(id)?.hanzi;
     return text ? speak(text, { slow, voice }) : Promise.resolve();
   }
-  const a = player();
-  const src = urlFor(id, voice, slow);
+  const a = new Audio(urlFor(id, voice, slow));
+  a.preload = 'auto';
+  // Words have no separate slow file: slow them down instead (pitch preserved).
+  const rate = slow && !sentences.has(id) ? 0.75 : 1;
+  a.defaultPlaybackRate = rate;
+  a.playbackRate = rate;
+  el = a;
   return new Promise<void>((resolve) => {
     currentResolve = resolve;
     const done = () => {
@@ -73,16 +77,18 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
       resolve();
     };
     a.onended = done;
+    // Only a real loading error (e.g. file missing) falls back to the browser's voice.
     a.onerror = () => {
       a.onended = a.onerror = null;
+      if (el !== a) return done();
       const text = lookup(id)?.hanzi;
       if (text) speak(text, { slow, voice }).then(done);
       else done();
     };
-    a.src = src;
-    // Words have no separate slow file: slow them down instead.
-    a.playbackRate = slow && !sentences.has(id) ? 0.7 : 1;
-    a.play().catch(() => a.onerror?.(new Event('error')));
+    a.play().catch((e: DOMException) => {
+      // AbortError: we moved on to another clip. NotAllowedError: no tap yet. Neither is a missing file.
+      if (e?.name === 'AbortError' || e?.name === 'NotAllowedError') done();
+    });
   });
 }
 

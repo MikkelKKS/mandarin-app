@@ -13,11 +13,14 @@ import { GameFrame, pickWeighted, useStudyRecorder, type GameDef, type Pool } fr
 
 export const GAMES: GameDef[] = [
   { id: 'tone-sort', title: 'Tone Sort', hanzi: '声调', blurb: 'Hear a syllable, sort it into the right tone. Train your ear for the four tones.', seconds: 60, unit: 'tones sorted' },
+  { id: 'tone-pairs', title: 'Tone Pairs', hanzi: '双调', blurb: 'Hear a two-syllable word and pick its tone pattern. Where most tone mistakes happen.', seconds: 60, unit: 'tone pairs heard' },
   { id: 'listening-blitz', title: 'Listening Blitz', hanzi: '快听', blurb: 'Hear a word, pick its meaning — as many as you can before time runs out.', seconds: 60, unit: 'words understood' },
   { id: 'pair-rush', title: 'Pair Rush', hanzi: '配对', blurb: 'Clear boards of characters and meanings. A fresh board appears each time you finish one.', seconds: 60, unit: 'pairs matched' },
   { id: 'sentence-scramble', title: 'Sentence Scramble', hanzi: '组句', blurb: 'Build the Chinese sentence from tiles, in order, against the clock.', seconds: 90, unit: 'sentences built' },
   { id: 'measure-match', title: 'Measure Word Match', hanzi: '量词', blurb: 'Two dogs, a cup of tea: pick the right measure word (个, 只, 杯…).', seconds: 60, unit: 'correct picks' },
 ];
+
+export const gameDef = (id: string): GameDef => GAMES.find((g) => g.id === id)!;
 
 const syllableCount = (w: Word) => [...hanziOnly(w.hanzi)].length;
 
@@ -48,7 +51,7 @@ const TONE_BUCKETS: Array<{ tone: Tone; name: string; path: string }> = [
 
 export function ToneSort({ pool }: { pool: Pool }) {
   const items = useMemo(() => toneItems(pool), [pool]);
-  const def = GAMES[0];
+  const def = gameDef('tone-sort');
   return (
     <GameFrame def={def} minItems={4} available={items.length}>
       {({ addScore, miss }) => <ToneSortPlay items={items} pool={pool} addScore={addScore} miss={miss} />}
@@ -119,7 +122,7 @@ function blitzRound(pool: Pool) {
 
 export function ListeningBlitz({ pool }: { pool: Pool }) {
   return (
-    <GameFrame def={GAMES[1]} minItems={6} available={pool.words.length}>
+    <GameFrame def={gameDef('listening-blitz')} minItems={6} available={pool.words.length}>
       {({ addScore, miss }) => <BlitzPlay pool={pool} addScore={addScore} miss={miss} />}
     </GameFrame>
   );
@@ -182,7 +185,7 @@ function board(pool: Pool): Word[] {
 
 export function PairRush({ pool }: { pool: Pool }) {
   return (
-    <GameFrame def={GAMES[2]} minItems={5} available={pool.words.length}>
+    <GameFrame def={gameDef('pair-rush')} minItems={5} available={pool.words.length}>
       {({ addScore, miss }) => <PairPlay pool={pool} addScore={addScore} miss={miss} />}
     </GameFrame>
   );
@@ -251,7 +254,7 @@ const scrambleable = (s: Sentence) => s.words.length >= 3 && s.words.length <= 7
 export function SentenceScramble({ pool }: { pool: Pool }) {
   const list = pool.sentences.filter(scrambleable);
   return (
-    <GameFrame def={GAMES[3]} minItems={3} available={list.length}>
+    <GameFrame def={gameDef('sentence-scramble')} minItems={3} available={list.length}>
       {({ addScore, miss }) => <ScramblePlay list={list} pool={pool} addScore={addScore} miss={miss} />}
     </GameFrame>
   );
@@ -333,7 +336,7 @@ export function MeasureMatch({ pool }: { pool: Pool }) {
   const nouns = pool.words.filter((w) => w.measure && words.has(w.measure));
   const classifiers = [...words.values()].filter((w) => w.pos === 'measure' && !NOT_CLASSIFIERS.has(w.id));
   return (
-    <GameFrame def={GAMES[4]} minItems={3} available={new Set(nouns.map((n) => n.measure)).size >= 2 ? nouns.length : 0}>
+    <GameFrame def={gameDef('measure-match')} minItems={3} available={new Set(nouns.map((n) => n.measure)).size >= 2 ? nouns.length : 0}>
       {({ addScore, miss }) => <MeasurePlay nouns={nouns} classifiers={classifiers} pool={pool} addScore={addScore} miss={miss} />}
     </GameFrame>
   );
@@ -387,6 +390,112 @@ function MeasurePlay({ nouns, classifiers, pool, addScore, miss }: { nouns: Word
           );
         })}
       </div>
+    </div>
+  );
+}
+
+// ---------------- Tone Pairs ----------------
+
+interface PairItem {
+  id: string;
+  hanzi: string;
+  pinyin: string;
+  tones: Tone[];
+}
+
+/** Plausible wrong patterns: flip one syllable to a commonly confused tone. */
+const CONFUSE: Record<number, Tone[]> = { 1: [4, 2], 2: [3, 1], 3: [2, 4], 4: [1, 3], 5: [3, 1] };
+function distractors(t: Tone[]): Tone[][] {
+  const out = new Map<string, Tone[]>();
+  for (let i = 0; i < t.length; i++) for (const c of CONFUSE[t[i]]) {
+    const v = [...t];
+    v[i] = c;
+    out.set(v.join(), v);
+  }
+  out.delete(t.join());
+  return shuffle([...out.values()]).slice(0, 3);
+}
+
+export function TonePairs({ pool }: { pool: Pool }) {
+  const items = useMemo<PairItem[]>(
+    () =>
+      pool.words
+        .map((w) => ({ id: w.id, hanzi: w.hanzi, pinyin: w.pinyin, tones: parsePinyin(w.pinyin, syllableCount(w))?.map((s) => s.tone) ?? [] }))
+        .filter((w) => w.tones.length === 2),
+    [pool],
+  );
+  return (
+    <GameFrame def={gameDef('tone-pairs')} minItems={4} available={items.length}>
+      {({ addScore, miss }) => <TonePairsPlay items={items} pool={pool} addScore={addScore} miss={miss} />}
+    </GameFrame>
+  );
+}
+
+function ToneGlyph({ t }: { t: Tone }) {
+  const d = t === 5 ? 'M10 16 h12' : TONE_BUCKETS[t - 1].path;
+  return (
+    <svg viewBox="0 0 32 32" className={`h-8 w-8 text-t${t}`} fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" aria-hidden>
+      <path d={d} />
+    </svg>
+  );
+}
+
+function TonePairsPlay({ items, pool, addScore, miss }: { items: PairItem[]; pool: Pool; addScore: () => void; miss: () => void }) {
+  const record = useStudyRecorder('tone-pairs');
+  const round = () => {
+    const it = pickWeighted(items, pool.weights, 1)[0];
+    return { it, opts: shuffle([it.tones, ...distractors(it.tones)]) };
+  };
+  const [r, setR] = useState(round);
+  const [picked, setPicked] = useState<number | null>(null);
+  useEffect(() => void play(r.it.id), [r]);
+  const answer = (i: number) => {
+    if (picked !== null) return;
+    const ok = r.opts[i].join() === r.it.tones.join();
+    record(r.it.id, ok ? 'correct' : 'wrong');
+    if (ok) {
+      sfx.correct();
+      addScore();
+    } else miss();
+    setPicked(i);
+    setTimeout(() => {
+      setPicked(null);
+      setR(round());
+    }, ok ? 500 : 1600);
+  };
+  useNumberKeys(r.opts.length, answer);
+  const label = (t: Tone) => (t === 5 ? 'neutral' : String(t));
+  return (
+    <div className="flex flex-col items-center pt-6">
+      <button onClick={() => play(r.it.id)} aria-label="Play again" className="flex h-28 w-28 items-center justify-center rounded-full bg-jade text-jade-ink shadow-md active:scale-95">
+        <Speaker className="h-12 w-12" />
+      </button>
+      <button onClick={() => play(r.it.id, { slow: true })} className="mt-3 text-sm text-muted underline">
+        Play slowly
+      </button>
+      <p className={`mt-3 h-10 text-2xl ${picked !== null ? '' : 'invisible'}`}>
+        <ToneText hanzi={r.it.hanzi} pinyin={r.it.pinyin} className="han" /> <span className="text-muted">{r.it.pinyin}</span>
+      </p>
+      <div className="mt-4 grid w-full grid-cols-2 gap-3">
+        {r.opts.map((o, i) => {
+          let st: OptionState = 'idle';
+          if (picked !== null && o.join() === r.it.tones.join()) st = 'right';
+          else if (picked === i) st = 'wrong';
+          return (
+            <button key={o.join()} onClick={() => answer(i)} className={`flex h-24 flex-col items-center justify-center rounded-2xl border-2 ${optionClass(st)}`} aria-label={`Tones ${o.map(label).join(' and ')}`}>
+              <span className="flex items-center gap-1">
+                <ToneGlyph t={o[0]} />
+                <ToneGlyph t={o[1]} />
+              </span>
+              <span className="text-sm font-medium">
+                <span className="mr-1 hidden text-muted sm:inline">{i + 1}</span>
+                {o.map(label).join(' + ')}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      <p className="mt-4 text-center text-xs text-muted">Remember: 3 + 3 is spoken as 2 + 3, but written as 3 + 3.</p>
     </div>
   );
 }

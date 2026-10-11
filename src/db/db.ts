@@ -55,6 +55,8 @@ export interface Settings {
   voice: VoicePref;
   sound: boolean;
   toneColors: boolean;
+  /** More tone exercises in lessons. */
+  toneFocus: boolean;
   theme: Theme;
 }
 
@@ -88,10 +90,11 @@ export const DEFAULT_SETTINGS: Settings = {
   speaking: false,
   pinyinDisplay: 'always',
   strictTones: false,
-  audioSpeed: 'normal',
+  audioSpeed: 'slow',
   voice: 'alternate',
   sound: true,
   toneColors: true,
+  toneFocus: true,
   theme: 'system',
 };
 

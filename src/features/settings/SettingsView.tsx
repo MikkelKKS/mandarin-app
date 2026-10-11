@@ -78,7 +78,10 @@ export function SettingsView() {
         <Row title="Colour characters by tone" hint="Red 1st · orange 2nd · blue 3rd · purple 4th · grey neutral">
           <Segmented label="Tone colours" value={s.toneColors ? 'on' : 'off'} onChange={(v) => set({ toneColors: v === 'on' })} options={[...onOff]} />
         </Row>
-        <Row title="Audio speed">
+        <Row title="Extra tone practice" hint="Adds more tone exercises to every lesson: hearing tones, minimal pairs and dictation with tones.">
+          <Segmented label="Extra tone practice" value={s.toneFocus ? 'on' : 'off'} onChange={(v) => set({ toneFocus: v === 'on' })} options={[...onOff]} />
+        </Row>
+        <Row title="Audio speed" hint="Slow uses a separately recorded slower version. You can always tap the turtle for slow or the speaker for normal.">
           <Segmented
             label="Audio speed"
             value={s.audioSpeed}

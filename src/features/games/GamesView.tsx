@@ -4,7 +4,7 @@ import { unlockedItemIds } from '../../lib/progress';
 import { go } from '../../lib/router';
 import { useLive } from '../../lib/useLive';
 import { useNodeStates } from '../path/PathView';
-import { GAMES, ListeningBlitz, MeasureMatch, PairRush, SentenceScramble, ToneSort } from './Games';
+import { GAMES, ListeningBlitz, MeasureMatch, PairRush, SentenceScramble, TonePairs, ToneSort } from './Games';
 import { usePool } from './shared';
 import { packItemIds, usePacks } from '../packs/store';
 import { useMyWords } from '../dictionary/mywords';
@@ -49,6 +49,8 @@ export function GameRunner({ id }: { id: string }) {
   switch (id) {
     case 'tone-sort':
       return <ToneSort pool={pool} />;
+    case 'tone-pairs':
+      return <TonePairs pool={pool} />;
     case 'listening-blitz':
       return <ListeningBlitz pool={pool} />;
     case 'pair-rush':

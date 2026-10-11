@@ -9,6 +9,14 @@ export async function loadSettings(): Promise<Settings> {
   return cached;
 }
 
+/** One-off changes to saved settings when defaults change (runs once per device). */
+export async function migrateSettings(): Promise<void> {
+  if ((await db.meta.get('migrated:slow-default'))?.value) return;
+  await db.meta.put({ key: 'migrated:slow-default', value: true });
+  const row = await db.settings.get('me');
+  if (row && row.audioSpeed === 'normal') await updateSettings({ audioSpeed: 'slow', toneFocus: true });
+}
+
 /** Last known settings, for non-React code (audio, sound effects). */
 export function currentSettings(): Settings {
   return cached;

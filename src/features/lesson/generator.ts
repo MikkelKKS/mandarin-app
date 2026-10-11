@@ -28,6 +28,8 @@ export interface GenInput {
   quiet: boolean; // "can't listen now"
   /** Add optional repeat-after-me exercises. */
   speaking?: boolean;
+  /** Add extra tone exercises. */
+  toneFocus?: boolean;
   voice: () => Voice;
   rnd?: () => number;
 }
@@ -38,10 +40,15 @@ let counter = 0;
 const key = (k: string) => `${k}-${++counter}`;
 
 const syllableCount = (hz: string) => [...hanziOnly(hz)].length;
-const toneless = (p: string) =>
-  (parsePinyin(p) ?? [])
-    .map((s) => s.base)
-    .join('');
+const tonelessCache = new Map<string, string>();
+const toneless = (p: string) => {
+  let t = tonelessCache.get(p);
+  if (t === undefined) {
+    t = (parsePinyin(p) ?? []).map((s) => s.base).join('');
+    tonelessCache.set(p, t);
+  }
+  return t;
+};
 
 /** Weighted plan of categories for a lesson of n exercises. */
 export function categoryPlan(n: number, rnd = Math.random): Array<'listening' | 'pinyin' | 'recognition' | 'other'> {
@@ -63,6 +70,7 @@ const BY_CATEGORY: Record<string, ExerciseKind[]> = {
   pinyin: ['en-to-pinyin', 'fill-gap', 'build-sentence', 'reply-type'],
   recognition: ['pick-character', 'read-sentence', 'match-pairs'],
   other: ['minimal-pair', 'tone-id', 'match-pairs'],
+  tones: ['tone-id', 'tone-id', 'minimal-pair', 'dictation'],
 };
 
 /** When the user can't listen, swap audio-only kinds for reading ones. */
@@ -74,7 +82,8 @@ export function generateLesson(input: GenInput): Exercise[] {
 
   for (const id of input.introduce) out.push({ kind: 'intro', key: key('intro'), wordId: id });
 
-  const plan = categoryPlan(input.length, rnd);
+  const plan: Array<string> = categoryPlan(input.length, rnd);
+  if (input.toneFocus && !input.quiet) for (let i = 0; i < 3; i++) plan.splice(Math.floor(rnd() * (plan.length + 1)), 0, 'tones');
   // Rotate through targets so every focus item gets attention.
   const targets: Target[] = shuffle(
     [
