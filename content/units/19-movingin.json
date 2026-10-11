@@ -1,0 +1,111 @@
+{
+  "id": "u19-movingin",
+  "order": 19,
+  "title": "Moving in",
+  "titleHanzi": "搬家",
+  "description": "A new flat in Beijing: floors and lifts, the kitchen, chores, and meeting the neighbours.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-ban-move", "hanzi": "搬", "pinyin": "bān", "english": ["to move (house, things)", "to carry"], "hsk": 3, "pos": "verb" },
+    { "id": "w-lou", "hanzi": "楼", "pinyin": "lóu", "english": ["floor (storey)", "building"], "hsk": 3, "pos": "noun" },
+    { "id": "w-ceng", "hanzi": "层", "pinyin": "céng", "english": ["floor", "layer"], "hsk": 3, "pos": "measure" },
+    { "id": "w-dianti", "hanzi": "电梯", "pinyin": "diàntī", "english": ["lift", "elevator"], "hsk": 3, "pos": "noun" },
+    { "id": "w-huai", "hanzi": "坏", "pinyin": "huài", "english": ["broken", "bad"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-linju", "hanzi": "邻居", "pinyin": "línjū", "english": ["neighbour"], "hsk": 3, "pos": "noun" },
+    { "id": "w-chufang", "hanzi": "厨房", "pinyin": "chúfáng", "english": ["kitchen"], "hsk": 3, "pos": "noun" },
+    { "id": "w-bingxiang", "hanzi": "冰箱", "pinyin": "bīngxiāng", "english": ["fridge"], "hsk": 3, "pos": "noun" },
+    { "id": "w-kongtiao", "hanzi": "空调", "pinyin": "kōngtiáo", "english": ["air conditioning"], "hsk": 3, "pos": "noun" },
+    { "id": "w-deng-lamp", "hanzi": "灯", "pinyin": "dēng", "english": ["light", "lamp"], "hsk": 3, "pos": "noun" },
+    { "id": "w-guan", "hanzi": "关", "pinyin": "guān", "english": ["to close", "to turn off"], "hsk": 3, "pos": "verb" },
+    { "id": "w-huan", "hanzi": "换", "pinyin": "huàn", "english": ["to change", "to replace"], "hsk": 3, "pos": "verb" },
+    { "id": "w-dasao", "hanzi": "打扫", "pinyin": "dǎsǎo", "english": ["to clean", "to sweep"], "hsk": 3, "pos": "verb" },
+    { "id": "w-ganjing", "hanzi": "干净", "pinyin": "gānjìng", "english": ["clean"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-shua", "hanzi": "刷", "pinyin": "shuā", "english": ["to brush", "to scrub"], "hsk": 3, "pos": "verb" },
+    { "id": "w-xizao", "hanzi": "洗澡", "pinyin": "xǐzǎo", "english": ["to shower", "to take a bath"], "hsk": 3, "pos": "verb" },
+    { "id": "w-panzi", "hanzi": "盘子", "pinyin": "pánzi", "english": ["plate"], "hsk": 3, "pos": "noun", "measure": "w-ge" },
+    { "id": "w-jiu-old", "hanzi": "旧", "pinyin": "jiù", "english": ["old (things)", "worn"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-fangbian", "hanzi": "方便", "pinyin": "fāngbiàn", "english": ["convenient"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-fujin", "hanzi": "附近", "pinyin": "fùjìn", "english": ["nearby", "the area around"], "hsk": 3, "pos": "noun" },
+    { "id": "w-huanjing", "hanzi": "环境", "pinyin": "huánjìng", "english": ["surroundings", "environment"], "hsk": 3, "pos": "noun" },
+    { "id": "w-zhongjian", "hanzi": "中间", "pinyin": "zhōngjiān", "english": ["middle", "between"], "hsk": 3, "pos": "noun" },
+    { "id": "w-jiedao", "hanzi": "街道", "pinyin": "jiēdào", "english": ["street"], "hsk": 3, "pos": "noun" }
+  ],
+  "sentences": [
+    { "id": "s19-xiageyuebanjia", "hanzi": "我们下个月搬家。", "pinyin": "Wǒmen xià ge yuè bānjiā.", "english": "We're moving next month.", "words": ["w-women", "w-xia", "w-ge", "w-yue", "w-ban-move", "w-jia"] },
+    { "id": "s19-xinbanlaide", "hanzi": "你好！你们是新搬来的吗？", "pinyin": "Nǐ hǎo! Nǐmen shì xīn bān lái de ma?", "english": "Hello! Have you just moved in?", "words": ["w-nihao", "w-ni", "w-men", "w-shi", "w-xin", "w-ban-move", "w-lai", "w-de", "w-ma"] },
+    { "id": "s19-zhuliulou", "hanzi": "对，我们住六楼。", "pinyin": "Duì, wǒmen zhù liù lóu.", "english": "Yes, we live on the sixth floor.", "words": ["w-dui", "w-women", "w-zhu", "w-liu", "w-lou"] },
+    { "id": "s19-zhujiceng", "hanzi": "你住在几层？", "pinyin": "Nǐ zhù zài jǐ céng?", "english": "Which floor do you live on?", "words": ["w-ni", "w-zhu", "w-zai", "w-ji", "w-ceng"] },
+    { "id": "s19-youdiantima", "hanzi": "有电梯吗？", "pinyin": "Yǒu diàntī ma?", "english": "Is there a lift?", "words": ["w-you", "w-dianti", "w-ma"] },
+    { "id": "s19-diantihuaile", "hanzi": "电梯坏了！", "pinyin": "Diàntī huài le!", "english": "The lift is broken!", "words": ["w-dianti", "w-huai", "w-le"] },
+    { "id": "s19-zoushangqu", "hanzi": "没事儿，我们走上去。", "pinyin": "Méishìr, wǒmen zǒu shàngqù.", "english": "No worries, we'll walk up.", "words": ["w-meishir", "w-women", "w-zou", "w-shang", "w-qu"] },
+    { "id": "s19-xinlinju", "hanzi": "您好，我是您的新邻居。", "pinyin": "Nín hǎo, wǒ shì nín de xīn línjū.", "english": "Hello, I'm your new neighbour.", "words": ["w-nin", "w-hao", "w-wo", "w-shi", "w-nin", "w-de", "w-xin", "w-linju"] },
+    { "id": "s19-wolaibangnimen", "hanzi": "我来帮你们！", "pinyin": "Wǒ lái bāng nǐmen!", "english": "Let me help you!", "words": ["w-wo", "w-lai", "w-bang", "w-ni", "w-men"] },
+    { "id": "s19-taixiexienin", "hanzi": "太谢谢您了！", "pinyin": "Tài xièxie nín le!", "english": "Thank you so much!", "words": ["w-tai", "w-xiexie", "w-nin", "w-le"] },
+    { "id": "s19-chufanghenxiao", "hanzi": "厨房很小，可是很干净。", "pinyin": "Chúfáng hěn xiǎo, kěshì hěn gānjìng.", "english": "The kitchen is small, but it's clean.", "words": ["w-chufang", "w-hen", "w-xiao", "w-keshi", "w-hen", "w-ganjing"] },
+    { "id": "s19-bingxiangliyou", "hanzi": "冰箱里有什么？", "pinyin": "Bīngxiāng lǐ yǒu shénme?", "english": "What's in the fridge?", "words": ["w-bingxiang", "w-li-inside", "w-you", "w-shenme"] },
+    { "id": "s19-niunaijidan", "hanzi": "冰箱里有牛奶和鸡蛋。", "pinyin": "Bīngxiāng lǐ yǒu niúnǎi hé jīdàn.", "english": "There's milk and eggs in the fridge.", "words": ["w-bingxiang", "w-li-inside", "w-you", "w-niunai", "w-he", "w-jidan"] },
+    { "id": "s19-kaikongtiao", "hanzi": "太热了，开空调吧。", "pinyin": "Tài rè le, kāi kōngtiáo ba.", "english": "It's too hot. Let's turn on the air con.", "words": ["w-tai", "w-re", "w-le", "w-kai", "w-kongtiao", "w-ba-particle"] },
+    { "id": "s19-guandeng", "hanzi": "出门的时候，别忘记关灯。", "pinyin": "Chū mén de shíhou, bié wàngjì guān dēng.", "english": "Don't forget to turn off the lights when you go out.", "words": ["w-chu", "w-men-door", "w-de", "w-shihou", "w-bie", "w-wangji", "w-guan", "w-deng-lamp"] },
+    { "id": "s19-denghuanyige", "hanzi": "灯坏了，我们换一个吧。", "pinyin": "Dēng huài le, wǒmen huàn yí ge ba.", "english": "The light's broken. Let's replace it.", "words": ["w-deng-lamp", "w-huai", "w-le", "w-women", "w-huan", "w-yi", "w-ge", "w-ba-particle"] },
+    { "id": "s19-huanjianyifu", "hanzi": "我去换件衣服。", "pinyin": "Wǒ qù huàn jiàn yīfu.", "english": "I'll go and change my clothes.", "words": ["w-wo", "w-qu", "w-huan", "w-jian-item", "w-yifu"] },
+    { "id": "s19-shoujitaijiu", "hanzi": "我的手机太旧了，想换一个新的。", "pinyin": "Wǒ de shǒujī tài jiù le, xiǎng huàn yí ge xīn de.", "english": "My phone is too old. I want a new one.", "words": ["w-wo", "w-de", "w-shouji", "w-tai", "w-jiu-old", "w-le", "w-xiang", "w-huan", "w-yi", "w-ge", "w-xin", "w-de"] },
+    { "id": "s19-zhuozihenjiu", "hanzi": "这张桌子很旧了。", "pinyin": "Zhè zhāng zhuōzi hěn jiù le.", "english": "This table is quite old.", "words": ["w-zhe", "w-zhang", "w-zhuozi", "w-hen", "w-jiu-old", "w-le"] },
+    { "id": "s19-yiqidasao", "hanzi": "周末我们一起打扫房间吧。", "pinyin": "Zhōumò wǒmen yìqǐ dǎsǎo fángjiān ba.", "english": "Let's clean the flat together this weekend.", "words": ["w-zhoumo", "w-women", "w-yiqi", "w-dasao", "w-fangjian", "w-ba-particle"] },
+    { "id": "s19-dasaodehenganjing", "hanzi": "房间打扫得很干净。", "pinyin": "Fángjiān dǎsǎo de hěn gānjìng.", "english": "The room has been cleaned really well.", "words": ["w-fangjian", "w-dasao", "w-de-particle", "w-hen", "w-ganjing"] },
+    { "id": "s19-wolaishuawan", "hanzi": "我来刷碗！", "pinyin": "Wǒ lái shuā wǎn!", "english": "I'll do the dishes!", "words": ["w-wo", "w-lai", "w-shua", "w-wan"] },
+    { "id": "s19-xianquxizao", "hanzi": "你先去洗澡吧。", "pinyin": "Nǐ xiān qù xǐzǎo ba.", "english": "You go and shower first.", "words": ["w-ni", "w-xian", "w-qu", "w-xizao", "w-ba-particle"] },
+    { "id": "s19-panzizainar", "hanzi": "盘子在哪儿？", "pinyin": "Pánzi zài nǎr?", "english": "Where are the plates?", "words": ["w-panzi", "w-zai", "w-nar"], "alt": { "pinyin": ["Pánzi zài nǎlǐ?"] } },
+    { "id": "s19-bapanzifang", "hanzi": "把盘子放在桌子上。", "pinyin": "Bǎ pánzi fàng zài zhuōzi shàng.", "english": "Put the plates on the table.", "words": ["w-ba-object", "w-panzi", "w-fang-put", "w-zai", "w-zhuozi", "w-shang"] },
+    { "id": "s19-henfangbian", "hanzi": "这儿离地铁站很近，很方便。", "pinyin": "Zhèr lí dìtiě zhàn hěn jìn, hěn fāngbiàn.", "english": "It's close to the subway station here. Very convenient.", "words": ["w-zher", "w-li-from", "w-ditie", "w-zhan", "w-hen", "w-jin-near", "w-hen", "w-fangbian"] },
+    { "id": "s19-fujinfanguan", "hanzi": "附近有很多饭馆，很方便。", "pinyin": "Fùjìn yǒu hěn duō fànguǎn, hěn fāngbiàn.", "english": "There are lots of restaurants nearby. Very handy.", "words": ["w-fujin", "w-you", "w-hen", "w-duo", "w-fanguan", "w-hen", "w-fangbian"] },
+    { "id": "s19-fujinyoufanguanma", "hanzi": "附近有饭馆吗？", "pinyin": "Fùjìn yǒu fànguǎn ma?", "english": "Are there any restaurants nearby?", "words": ["w-fujin", "w-you", "w-fanguan", "w-ma"] },
+    { "id": "s19-huanjinghenhao", "hanzi": "这儿环境很好，很安静。", "pinyin": "Zhèr huánjìng hěn hǎo, hěn ānjìng.", "english": "It's a nice area here, very quiet.", "words": ["w-zher", "w-huanjing", "w-hen", "w-hao", "w-hen", "w-anjing"] },
+    { "id": "s19-zhongjian", "hanzi": "我们家在商店和饭馆中间。", "pinyin": "Wǒmen jiā zài shāngdiàn hé fànguǎn zhōngjiān.", "english": "Our home is between the shop and the restaurant.", "words": ["w-women", "w-jia", "w-zai", "w-shangdian", "w-he", "w-fanguan", "w-zhongjian"] },
+    { "id": "s19-jiedaohenganjing", "hanzi": "这儿的街道很干净。", "pinyin": "Zhèr de jiēdào hěn gānjìng.", "english": "The streets here are very clean.", "words": ["w-zher", "w-de", "w-jiedao", "w-hen", "w-ganjing"] }
+  ],
+  "exchanges": [
+    { "id": "x19-floor", "prompt": "s19-zhujiceng", "reply": "s19-zhuliulou", "wrong": ["s19-wolaishuawan", "s19-kaikongtiao"], "context": "You live on the sixth floor." },
+    { "id": "x19-lift", "prompt": "s19-diantihuaile", "reply": "s19-zoushangqu", "wrong": ["s19-niunaijidan", "s19-xianquxizao"], "context": "The lift is broken. You don't mind the stairs." },
+    { "id": "x19-help", "prompt": "s19-wolaibangnimen", "reply": "s19-taixiexienin", "wrong": ["s19-panzizainar", "s19-zhuozihenjiu"], "context": "An older neighbour offers to help carry boxes." },
+    { "id": "x19-dishes", "prompt": "s19-chufanghenxiao", "reply": "s19-wolaishuawan", "wrong": ["s19-youdiantima", "s19-xiageyuebanjia"], "context": "After dinner in her parents' kitchen. Offer to clean up." },
+    { "id": "x19-area", "prompt": "s19-fujinyoufanguanma", "reply": "s19-fujinfanguan", "wrong": ["s19-guandeng", "s19-huanjianyifu"], "context": "A friend asks about your new area. It has lots of restaurants." }
+  ],
+  "grammar": [
+    { "id": "g19-floor", "title": "Floors: 六楼, 六层", "body": "Say the floor as number + 楼: 我们住六楼. 层 also works: 住在六层.\nIn China, 一楼 is the ground floor.", "examples": ["s19-zhuliulou", "s19-zhujiceng"] },
+    { "id": "g19-direction", "title": "走上去, 搬来", "body": "Add a direction after a verb: 上 (up), 下 (down), then 去 (away from the speaker) or 来 (towards the speaker). 走上去: walk up there. 搬来: move here.", "examples": ["s19-zoushangqu", "s19-xinbanlaide"] },
+    { "id": "g19-shuawan", "title": "刷碗: northern for washing up", "body": "In Beijing people often say 刷碗 (scrub the bowls) for doing the dishes. 洗碗 means the same everywhere.", "examples": ["s19-wolaishuawan"] },
+    { "id": "g19-huan", "title": "换: change or replace", "body": "换 means to swap one thing for another: 换衣服 (change clothes), 换一个新的 (get a new one).", "examples": ["s19-denghuanyige", "s19-shoujitaijiu", "s19-huanjianyifu"] }
+  ],
+  "dialogue": {
+    "id": "d19-neighbour",
+    "title": "Listening challenge: Moving day",
+    "setting": "Moving day in Beijing. A friendly neighbour meets 米格 in the entrance hall.",
+    "speakers": [
+      { "id": "N", "name": "Neighbour", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "N", "sentence": "s19-xinbanlaide" },
+      { "speaker": "K", "sentence": "s19-zhuliulou" },
+      { "speaker": "N", "sentence": "s19-diantihuaile" },
+      { "speaker": "K", "sentence": "s19-zoushangqu" },
+      { "speaker": "N", "sentence": "s19-wolaibangnimen" },
+      { "speaker": "K", "sentence": "s19-taixiexienin" },
+      { "speaker": "N", "sentence": "s19-fujinfanguan" },
+      { "speaker": "K", "sentence": "s19-huanjinghenhao" }
+    ],
+    "questions": [
+      { "q": "Which floor will 米格 live on?", "options": ["The first", "The sixth", "The eighth"], "answer": 1 },
+      { "q": "What's the problem?", "options": ["The lift is broken", "The door is locked", "The lights are off"], "answer": 0 },
+      { "q": "What does the neighbour offer?", "options": ["To cook dinner", "To help carry things", "To call a taxi"], "answer": 1 },
+      { "q": "What does 米格 think of the area?", "options": ["It's noisy", "It's far from everything", "It's nice and quiet"], "answer": 2 }
+    ]
+  },
+  "nodes": [
+    { "id": "n19-moving", "title": "Moving day", "words": ["w-ban-move", "w-lou", "w-ceng", "w-dianti", "w-huai", "w-linju"], "sentences": ["s19-xiageyuebanjia", "s19-xinbanlaide", "s19-zhuliulou", "s19-zhujiceng", "s19-youdiantima", "s19-diantihuaile", "s19-zoushangqu", "s19-xinlinju", "s19-wolaibangnimen", "s19-taixiexienin"], "exchanges": ["x19-floor", "x19-lift", "x19-help"], "grammar": ["g19-floor", "g19-direction"] },
+    { "id": "n19-kitchen", "title": "Kitchen and lights", "words": ["w-chufang", "w-bingxiang", "w-kongtiao", "w-deng-lamp", "w-guan", "w-huan", "w-jiu-old"], "sentences": ["s19-chufanghenxiao", "s19-bingxiangliyou", "s19-niunaijidan", "s19-kaikongtiao", "s19-guandeng", "s19-denghuanyige", "s19-huanjianyifu", "s19-shoujitaijiu", "s19-zhuozihenjiu"], "grammar": ["g19-huan"] },
+    { "id": "n19-chores", "title": "Chores", "words": ["w-dasao", "w-ganjing", "w-shua", "w-xizao", "w-panzi"], "sentences": ["s19-yiqidasao", "s19-dasaodehenganjing", "s19-wolaishuawan", "s19-xianquxizao", "s19-panzizainar", "s19-bapanzifang", "s19-chufanghenxiao"], "exchanges": ["x19-dishes"], "grammar": ["g19-shuawan"] },
+    { "id": "n19-area", "title": "The neighbourhood", "words": ["w-fangbian", "w-fujin", "w-huanjing", "w-zhongjian", "w-jiedao"], "sentences": ["s19-henfangbian", "s19-fujinfanguan", "s19-fujinyoufanguanma", "s19-huanjinghenhao", "s19-zhongjian", "s19-jiedaohenganjing"], "exchanges": ["x19-area"] },
+    { "id": "n19-story", "title": "Challenge: Moving day", "kind": "story", "sentences": ["s19-xinbanlaide", "s19-diantihuaile", "s19-wolaibangnimen", "s19-fujinfanguan", "s19-huanjinghenhao"] }
+  ]
+}
