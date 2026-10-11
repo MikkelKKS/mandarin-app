@@ -1,0 +1,109 @@
+{
+  "id": "u21-eatingout",
+  "order": 21,
+  "title": "Eating out and groceries",
+  "titleHanzi": "炸酱面",
+  "description": "Menus, this or that, the supermarket, sweet and fresh, and a bowl of Beijing zhajiang noodles.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-caidan", "hanzi": "菜单", "pinyin": "càidān", "english": ["menu"], "hsk": 3, "pos": "noun" },
+    { "id": "w-miantiao", "hanzi": "面条", "pinyin": "miàntiáo", "english": ["noodles"], "hsk": 3, "pos": "noun", "measure": "w-wan" },
+    { "id": "w-zhajiangmian", "hanzi": "炸酱面", "pinyin": "zhájiàngmiàn", "english": ["zhajiang noodles (Beijing noodles with bean sauce)"], "hsk": 0, "pos": "noun", "note": "Beijing's home-style noodle dish." },
+    { "id": "w-kaoya", "hanzi": "烤鸭", "pinyin": "kǎoyā", "english": ["roast duck"], "hsk": 0, "pos": "noun" },
+    { "id": "w-haishi", "hanzi": "还是", "pinyin": "háishi", "english": ["or (in questions)", "still"], "hsk": 3, "pos": "conjunction" },
+    { "id": "w-huozhe", "hanzi": "或者", "pinyin": "huòzhě", "english": ["or (in statements)"], "hsk": 3, "pos": "conjunction" },
+    { "id": "w-pijiu", "hanzi": "啤酒", "pinyin": "píjiǔ", "english": ["beer"], "hsk": 3, "pos": "noun", "measure": "w-bei" },
+    { "id": "w-guozhi", "hanzi": "果汁", "pinyin": "guǒzhī", "english": ["juice"], "hsk": 3, "pos": "noun", "measure": "w-bei" },
+    { "id": "w-ke-thirsty", "hanzi": "渴", "pinyin": "kě", "english": ["thirsty"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-ji-extremely", "hanzi": "极", "pinyin": "jí", "english": ["extremely (…极了)"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-chaoshi", "hanzi": "超市", "pinyin": "chāoshì", "english": ["supermarket"], "hsk": 3, "pos": "noun" },
+    { "id": "w-mianbao", "hanzi": "面包", "pinyin": "miànbāo", "english": ["bread"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xinxian", "hanzi": "新鲜", "pinyin": "xīnxiān", "english": ["fresh"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-putao", "hanzi": "葡萄", "pinyin": "pútao", "english": ["grapes"], "hsk": 3, "pos": "noun" },
+    { "id": "w-xiangjiao", "hanzi": "香蕉", "pinyin": "xiāngjiāo", "english": ["banana"], "hsk": 3, "pos": "noun" },
+    { "id": "w-jiao-money", "hanzi": "角", "pinyin": "jiǎo", "english": ["ten fen (0.1 yuan, written)"], "hsk": 3, "pos": "measure" },
+    { "id": "w-bao-bag", "hanzi": "包", "pinyin": "bāo", "english": ["bag"], "hsk": 3, "pos": "noun" },
+    { "id": "w-tang", "hanzi": "糖", "pinyin": "táng", "english": ["sugar", "sweets"], "hsk": 3, "pos": "noun" },
+    { "id": "w-tian-sweet", "hanzi": "甜", "pinyin": "tián", "english": ["sweet"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-dangao", "hanzi": "蛋糕", "pinyin": "dàngāo", "english": ["cake"], "hsk": 3, "pos": "noun" },
+    { "id": "w-zhong", "hanzi": "种", "pinyin": "zhǒng", "english": ["kind", "type"], "hsk": 3, "pos": "measure" },
+    { "id": "w-qita", "hanzi": "其他", "pinyin": "qítā", "english": ["other", "else"], "hsk": 3, "pos": "pronoun" },
+    { "id": "w-yiban", "hanzi": "一般", "pinyin": "yìbān", "english": ["usually", "so-so", "ordinary"], "hsk": 3, "pos": "adjective" }
+  ],
+  "sentences": [
+    { "id": "s21-qinggeicaidan", "hanzi": "服务员，请给我们菜单。", "pinyin": "Fúwùyuán, qǐng gěi wǒmen càidān.", "english": "Excuse me, could we have the menu?", "words": ["w-fuwuyuan", "w-qing", "w-gei", "w-women", "w-caidan"] },
+    { "id": "s21-miantiaohaishimifan", "hanzi": "米格，你想吃面条还是米饭？", "pinyin": "Mǐgé, nǐ xiǎng chī miàntiáo háishi mǐfàn?", "english": "米格, would you like noodles or rice?", "words": ["w-mikkel", "w-ni", "w-xiang", "w-chi", "w-miantiao", "w-haishi", "w-mifan"] },
+    { "id": "s21-xiangchizhajiangmian", "hanzi": "我想吃北京的炸酱面！", "pinyin": "Wǒ xiǎng chī Běijīng de zhájiàngmiàn!", "english": "I want to try Beijing zhajiang noodles!", "words": ["w-wo", "w-xiang", "w-chi", "w-beijing", "w-de", "w-zhajiangmian"] },
+    { "id": "s21-yiwanzhajiangmian", "hanzi": "我要一碗炸酱面。", "pinyin": "Wǒ yào yì wǎn zhájiàngmiàn.", "english": "A bowl of zhajiang noodles, please.", "words": ["w-wo", "w-yao", "w-yi", "w-wan", "w-zhajiangmian"] },
+    { "id": "s21-haochijile", "hanzi": "这家的炸酱面好吃极了！", "pinyin": "Zhè jiā de zhájiàngmiàn hǎochī jí le!", "english": "The zhajiang noodles here are amazing!", "words": ["w-zhe", "w-jia", "w-de", "w-zhajiangmian", "w-haochi", "w-ji-extremely", "w-le"] },
+    { "id": "s21-zhendidao", "hanzi": "真地道！", "pinyin": "Zhēn dìdao!", "english": "So authentic!", "words": ["w-zhen", "w-didao"] },
+    { "id": "s21-chikaoya", "hanzi": "咱们去吃北京烤鸭吧！", "pinyin": "Zánmen qù chī Běijīng kǎoyā ba!", "english": "Let's go and have Peking duck!", "words": ["w-zanmen", "w-qu", "w-chi", "w-beijing", "w-kaoya", "w-ba-particle"] },
+    { "id": "s21-pijiuhaishiguozhi", "hanzi": "你喝啤酒还是果汁？", "pinyin": "Nǐ hē píjiǔ háishi guǒzhī?", "english": "Will you have beer or juice?", "words": ["w-ni", "w-he-drink", "w-pijiu", "w-haishi", "w-guozhi"] },
+    { "id": "s21-kejile-guozhi", "hanzi": "我渴极了，要一杯果汁。", "pinyin": "Wǒ kě jí le, yào yì bēi guǒzhī.", "english": "I'm really thirsty. A glass of juice, please.", "words": ["w-wo", "w-ke-thirsty", "w-ji-extremely", "w-le", "w-yao", "w-yi", "w-bei", "w-guozhi"] },
+    { "id": "s21-wokele", "hanzi": "我渴了。", "pinyin": "Wǒ kě le.", "english": "I'm thirsty.", "words": ["w-wo", "w-ke-thirsty", "w-le"] },
+    { "id": "s21-hebeipijiu", "hanzi": "叔叔，咱们喝杯啤酒吧！", "pinyin": "Shūshu, zánmen hē bēi píjiǔ ba!", "english": "Uncle, let's have a beer!", "words": ["w-shushu", "w-zanmen", "w-he-drink", "w-bei", "w-pijiu", "w-ba-particle"] },
+    { "id": "s21-chahuozhekafei", "hanzi": "喝茶或者咖啡都可以。", "pinyin": "Hē chá huòzhě kāfēi dōu kěyǐ.", "english": "Tea or coffee, either is fine.", "words": ["w-he-drink", "w-cha", "w-huozhe", "w-kafei", "w-dou", "w-keyi"] },
+    { "id": "s21-quchaoshi", "hanzi": "我去超市买点东西。", "pinyin": "Wǒ qù chāoshì mǎi diǎn dōngxi.", "english": "I'm going to the supermarket to get a few things.", "words": ["w-wo", "w-qu", "w-chaoshi", "w-mai3", "w-dian", "w-dongxi"] },
+    { "id": "s21-xinxianmianbao", "hanzi": "超市里有新鲜的面包。", "pinyin": "Chāoshì lǐ yǒu xīnxiān de miànbāo.", "english": "The supermarket has fresh bread.", "words": ["w-chaoshi", "w-li-inside", "w-you", "w-xinxian", "w-de", "w-mianbao"] },
+    { "id": "s21-putaoxinxian", "hanzi": "这些葡萄很新鲜。", "pinyin": "Zhèxiē pútao hěn xīnxiān.", "english": "These grapes are very fresh.", "words": ["w-zhe", "w-xie", "w-putao", "w-hen", "w-xinxian"] },
+    { "id": "s21-xiangjiaoduoshao", "hanzi": "香蕉多少钱一斤？", "pinyin": "Xiāngjiāo duōshao qián yì jīn?", "english": "How much are bananas per jin?", "words": ["w-xiangjiao", "w-duoshao", "w-qian", "w-yi", "w-jin-weight"] },
+    { "id": "s21-sankuaiwu", "hanzi": "三块五一斤。", "pinyin": "Sān kuài wǔ yì jīn.", "english": "3.50 a jin.", "words": ["w-san", "w-kuai", "w-wu", "w-yi", "w-jin-weight"] },
+    { "id": "s21-yijiaoshishifen", "hanzi": "一角是十分钱。", "pinyin": "Yì jiǎo shì shí fēn qián.", "english": "One jiao is ten fen.", "words": ["w-yi", "w-jiao-money", "w-shi", "w-shi2", "w-fen", "w-qian"] },
+    { "id": "s21-baozainar", "hanzi": "我的包在哪儿？", "pinyin": "Wǒ de bāo zài nǎr?", "english": "Where's my bag?", "words": ["w-wo", "w-de", "w-bao-bag", "w-zai", "w-nar"] },
+    { "id": "s21-yaotangma", "hanzi": "你的咖啡要糖吗？", "pinyin": "Nǐ de kāfēi yào táng ma?", "english": "Do you take sugar in your coffee?", "words": ["w-ni", "w-de", "w-kafei", "w-yao", "w-tang", "w-ma"] },
+    { "id": "s21-buyaotang", "hanzi": "不要糖，谢谢。", "pinyin": "Bú yào táng, xièxie.", "english": "No sugar, thanks.", "words": ["w-bu", "w-yao", "w-tang", "w-xiexie"] },
+    { "id": "s21-dangaotaitian", "hanzi": "这个蛋糕太甜了。", "pinyin": "Zhège dàngāo tài tián le.", "english": "This cake is too sweet.", "words": ["w-zhe", "w-ge", "w-dangao", "w-tai", "w-tian-sweet", "w-le"] },
+    { "id": "s21-shengridangao", "hanzi": "我们给姥姥买一个生日蛋糕吧。", "pinyin": "Wǒmen gěi lǎolao mǎi yí ge shēngrì dàngāo ba.", "english": "Let's buy Grandma a birthday cake.", "words": ["w-women", "w-gei", "w-laolao", "w-mai3", "w-yi", "w-ge", "w-shengri", "w-dangao", "w-ba-particle"] },
+    { "id": "s21-zhezhongshuiguo", "hanzi": "我喜欢这种水果。", "pinyin": "Wǒ xǐhuan zhè zhǒng shuǐguǒ.", "english": "I like this kind of fruit.", "words": ["w-wo", "w-xihuan", "w-zhe", "w-zhong", "w-shuiguo"] },
+    { "id": "s21-nazhong", "hanzi": "你喜欢哪种？", "pinyin": "Nǐ xǐhuan nǎ zhǒng?", "english": "Which kind do you like?", "words": ["w-ni", "w-xihuan", "w-na3", "w-zhong"] },
+    { "id": "s21-haiyaoqita", "hanzi": "你还要其他的吗？", "pinyin": "Nǐ hái yào qítā de ma?", "english": "Anything else?", "words": ["w-ni", "w-hai-still", "w-yao", "w-qita", "w-de", "w-ma"] },
+    { "id": "s21-buyaole-baole", "hanzi": "不要了，谢谢。我吃饱了。", "pinyin": "Bú yào le, xièxie. Wǒ chī bǎo le.", "english": "No more, thanks. I'm full.", "words": ["w-bu", "w-yao", "w-le", "w-xiexie", "w-wo", "w-chi", "w-bao", "w-le"] },
+    { "id": "s21-yibanhekafei", "hanzi": "我一般早上喝咖啡。", "pinyin": "Wǒ yìbān zǎoshang hē kāfēi.", "english": "I usually have coffee in the morning.", "words": ["w-wo", "w-yiban", "w-zaoshang", "w-he-drink", "w-kafei"] },
+    { "id": "s21-fanguanyiban", "hanzi": "这家饭馆一般。", "pinyin": "Zhè jiā fànguǎn yìbān.", "english": "This restaurant is so-so.", "words": ["w-zhe", "w-jia", "w-fanguan", "w-yiban"] }
+  ],
+  "exchanges": [
+    { "id": "x21-drink", "prompt": "s21-pijiuhaishiguozhi", "reply": "s21-kejile-guozhi", "wrong": ["s21-fanguanyiban", "s21-baozainar"], "context": "You're very thirsty and don't feel like beer." },
+    { "id": "x21-sugar", "prompt": "s21-yaotangma", "reply": "s21-buyaotang", "wrong": ["s21-nazhong", "s21-quchaoshi"], "context": "You take your coffee black." },
+    { "id": "x21-else", "prompt": "s21-haiyaoqita", "reply": "s21-buyaole-baole", "wrong": ["s21-chikaoya", "s21-yijiaoshishifen"], "context": "The waiter asks at the end of a big meal." },
+    { "id": "x21-noodles", "prompt": "s21-miantiaohaishimifan", "reply": "s21-xiangchizhajiangmian", "wrong": ["s21-dangaotaitian", "s21-wokele"], "context": "You've heard about Beijing's famous noodles." },
+    { "id": "x21-price", "prompt": "s21-xiangjiaoduoshao", "reply": "s21-sankuaiwu", "wrong": ["s21-putaoxinxian", "s21-chahuozhekafei"], "context": "You're the fruit seller. Bananas are 3.50 a jin." }
+  ],
+  "grammar": [
+    { "id": "g21-haishi", "title": "还是 or 或者?", "body": "Both mean \"or\". 还是 asks someone to choose: 啤酒还是果汁? 或者 is for statements: 茶或者咖啡都可以.", "examples": ["s21-pijiuhaishiguozhi", "s21-chahuozhekafei"] },
+    { "id": "g21-ji", "title": "好吃极了: extremely", "body": "Adjective + 极了 means \"extremely\": 好吃极了 (incredibly tasty), 渴极了 (so thirsty).", "examples": ["s21-haochijile", "s21-kejile-guozhi"] },
+    { "id": "g21-jiao", "title": "Prices with 角", "body": "1 yuan = 10 角. Price tags write 角; Beijingers say 毛. In speech the last unit is often dropped: 三块五 = 3.50.", "examples": ["s21-sankuaiwu", "s21-yijiaoshishifen"] },
+    { "id": "g21-zhong", "title": "种: kind", "body": "种 is a measure word for kinds and types: 这种水果 (this kind of fruit), 哪种? (which kind?).", "examples": ["s21-zhezhongshuiguo", "s21-nazhong"] }
+  ],
+  "dialogue": {
+    "id": "d21-noodles",
+    "title": "Listening challenge: A bowl of noodles",
+    "setting": "Her sister takes 米格 to a small noodle restaurant in an old Beijing alley.",
+    "speakers": [
+      { "id": "S", "name": "Her sister", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "S", "sentence": "s21-qinggeicaidan" },
+      { "speaker": "S", "sentence": "s21-miantiaohaishimifan" },
+      { "speaker": "K", "sentence": "s21-xiangchizhajiangmian" },
+      { "speaker": "S", "sentence": "s21-pijiuhaishiguozhi" },
+      { "speaker": "K", "sentence": "s21-kejile-guozhi" },
+      { "speaker": "S", "sentence": "s21-haochijile" },
+      { "speaker": "K", "sentence": "s21-zhendidao" },
+      { "speaker": "S", "sentence": "s21-haiyaoqita" },
+      { "speaker": "K", "sentence": "s21-buyaole-baole" }
+    ],
+    "questions": [
+      { "q": "What does 米格 order?", "options": ["Rice", "Roast duck", "Zhajiang noodles"], "answer": 2 },
+      { "q": "What does he drink?", "options": ["Juice", "Beer", "Tea"], "answer": 0 },
+      { "q": "What does he think of the food?", "options": ["Too sweet", "Very authentic", "So-so"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n21-menu", "title": "Ordering", "words": ["w-caidan", "w-miantiao", "w-zhajiangmian", "w-kaoya", "w-haishi", "w-huozhe"], "sentences": ["s21-qinggeicaidan", "s21-miantiaohaishimifan", "s21-xiangchizhajiangmian", "s21-yiwanzhajiangmian", "s21-chikaoya", "s21-chahuozhekafei", "s21-zhendidao"], "exchanges": ["x21-noodles"], "grammar": ["g21-haishi"] },
+    { "id": "n21-drinks", "title": "Thirsty", "words": ["w-pijiu", "w-guozhi", "w-ke-thirsty", "w-ji-extremely", "w-tang"], "sentences": ["s21-pijiuhaishiguozhi", "s21-kejile-guozhi", "s21-wokele", "s21-hebeipijiu", "s21-haochijile", "s21-yaotangma", "s21-buyaotang"], "exchanges": ["x21-drink", "x21-sugar"], "grammar": ["g21-ji"] },
+    { "id": "n21-shop", "title": "At the supermarket", "words": ["w-chaoshi", "w-mianbao", "w-xinxian", "w-putao", "w-xiangjiao", "w-jiao-money", "w-bao-bag"], "sentences": ["s21-quchaoshi", "s21-xinxianmianbao", "s21-putaoxinxian", "s21-xiangjiaoduoshao", "s21-sankuaiwu", "s21-yijiaoshishifen", "s21-baozainar"], "exchanges": ["x21-price"], "grammar": ["g21-jiao"] },
+    { "id": "n21-taste", "title": "Sweet and so-so", "words": ["w-tian-sweet", "w-dangao", "w-zhong", "w-qita", "w-yiban"], "sentences": ["s21-dangaotaitian", "s21-shengridangao", "s21-zhezhongshuiguo", "s21-nazhong", "s21-haiyaoqita", "s21-buyaole-baole", "s21-yibanhekafei", "s21-fanguanyiban"], "exchanges": ["x21-else"], "grammar": ["g21-zhong"] },
+    { "id": "n21-story", "title": "Challenge: A bowl of noodles", "kind": "story", "sentences": ["s21-miantiaohaishimifan", "s21-xiangchizhajiangmian", "s21-kejile-guozhi", "s21-haochijile", "s21-buyaole-baole"] }
+  ]
+}
