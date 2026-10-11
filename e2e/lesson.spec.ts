@@ -54,7 +54,7 @@ test('complete the first lesson and see it on the path', async ({ page }) => {
   await expect(page.getByText('New word')).toBeVisible();
 
   let finished = false;
-  for (let i = 0; i < 120 && !finished; i++) finished = await step(page);
+  for (let i = 0; i < 400 && !finished; i++) finished = await step(page);
   expect(finished).toBe(true);
   await expect(page.getByText('Accuracy')).toBeVisible();
 

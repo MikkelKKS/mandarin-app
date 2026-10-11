@@ -157,7 +157,3 @@ function englishSearch(dict: Dict, q: string, limit: number): Entry[] {
 export function plecoLink(hanzi: string): string {
   return `plecoapi://x-callback-url/s?q=${encodeURIComponent(hanzi)}`;
 }
-
-export function googleTranslateLink(text: string): string {
-  return `https://translate.google.com/?sl=zh-CN&tl=en&op=translate&text=${encodeURIComponent(text)}`;
-}

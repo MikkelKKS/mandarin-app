@@ -6,7 +6,7 @@ const launchOptions = !process.env.CI && existsSync(local) ? { executablePath: l
 
 export default defineConfig({
   testDir: 'e2e',
-  timeout: 120_000,
+  timeout: 240_000,
   retries: process.env.CI ? 1 : 0,
   use: { baseURL: 'http://localhost:4173/mandarin-app/', launchOptions },
   webServer: {

@@ -3,7 +3,8 @@ import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { wordByHanzi } from '../../content';
 import { play, speak } from '../../lib/audio';
-import { googleTranslateLink, loadDict, plecoLink, search, type Dict, type Entry } from './dict';
+import { loadDict, plecoLink, search, type Dict, type Entry } from './dict';
+import { looksLikeEnglishSentence, translate } from './translate';
 import { addMyWord, myWordId, removeMyWord, useMyWords } from './mywords';
 
 function say(hanzi: string) {
@@ -31,6 +32,15 @@ export function DictionaryView() {
 
   useEffect(() => {
     void loadDict().then(setDict);
+  }, []);
+  // Follow "#/dictionary?q=…" links from elsewhere in the app.
+  useEffect(() => {
+    const h = () => {
+      const next = new URLSearchParams(location.hash.split('?')[1] ?? '').get('q');
+      if (next !== null) setQ(next);
+    };
+    window.addEventListener('hashchange', h);
+    return () => window.removeEventListener('hashchange', h);
   }, []);
 
   const result = useMemo(() => (dict && dict !== 'loading' ? search(dict, dq) : null), [dict, dq]);
@@ -60,6 +70,8 @@ export function DictionaryView() {
       )}
 
       {result?.mode === 'empty' && <MyWords />}
+
+      {result?.mode === 'words' && looksLikeEnglishSentence(dq) && <TranslationCard text={dq} dir="en-zh" />}
 
       {result?.mode === 'words' && (
         <>
@@ -93,15 +105,12 @@ export function DictionaryView() {
               <button onClick={() => void speak(q)} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-2 text-sm font-medium">
                 <Speaker className="h-4 w-4" /> Listen
               </button>
-              <a href={googleTranslateLink(q)} target="_blank" rel="noreferrer" className="rounded-xl border-2 border-line px-3 py-2 text-sm font-medium">
-                Translate whole sentence ↗
-              </a>
               <a href={plecoLink(q)} className="rounded-xl border-2 border-line px-3 py-2 text-sm font-medium">
                 Open in Pleco
               </a>
             </div>
-            <p className="mt-3 text-xs text-muted">Word-by-word breakdown. For a full translation, use the translate link.</p>
           </div>
+          <TranslationCard text={dq} dir="zh-en" />
           <ul className="mt-4 flex flex-col gap-2">
             {result.tokens.map((t, i) =>
               t.entries.length ? (
@@ -188,6 +197,59 @@ function MyWords() {
           ))}
         </ul>
       )}
+    </section>
+  );
+}
+
+/** In-app translation (online). Chinese → English, or English → Chinese with pinyin. */
+function TranslationCard({ text, dir }: { text: string; dir: 'zh-en' | 'en-zh' }) {
+  const [state, setState] = useState<{ status: 'loading' | 'done' | 'error'; text?: string; error?: string }>({ status: 'loading' });
+  const [online, setOnline] = useState(navigator.onLine);
+  useEffect(() => {
+    const on = () => setOnline(navigator.onLine);
+    window.addEventListener('online', on);
+    window.addEventListener('offline', on);
+    return () => {
+      window.removeEventListener('online', on);
+      window.removeEventListener('offline', on);
+    };
+  }, []);
+  useEffect(() => {
+    const ctl = new AbortController();
+    setState({ status: 'loading' });
+    const t = setTimeout(() => {
+      translate(text, dir, ctl.signal)
+        .then((r) => setState({ status: 'done', text: r.text }))
+        .catch((e: Error) => e.name !== 'AbortError' && setState({ status: 'error', error: e.message }));
+    }, 500);
+    return () => {
+      clearTimeout(t);
+      ctl.abort();
+    };
+  }, [text, dir, online]);
+  const zh = dir === 'en-zh' && state.text ? state.text : null;
+  return (
+    <section className="mt-3 rounded-2xl border-2 border-jade/40 bg-surface p-4" aria-live="polite">
+      <p className="text-xs font-semibold text-jade">{dir === 'zh-en' ? 'Translation' : 'In Chinese'}</p>
+      {state.status === 'loading' && <p className="mt-1 text-muted">Translating…</p>}
+      {state.status === 'error' && <p className="mt-1 text-sm">{state.error}</p>}
+      {state.status === 'done' && !zh && <p className="mt-1 text-lg leading-snug">{state.text}</p>}
+      {zh && (
+        <div className="mt-1">
+          <p className="han text-2xl" lang="zh-CN">
+            {zh}
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <button onClick={() => void speak(zh)} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+              <Speaker className="h-4 w-4" /> Listen
+            </button>
+            <a href={`#/dictionary?q=${encodeURIComponent(zh)}`} className="rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+              Break it down
+            </a>
+          </div>
+        </div>
+      )}
+      <p className="mt-2 text-xs text-muted">Machine translation by MyMemory (needs internet) — good for the gist, not always perfect.</p>
     </section>
   );
 }
