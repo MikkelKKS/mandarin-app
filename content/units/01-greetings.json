@@ -1,0 +1,111 @@
+{
+  "id": "u01-greetings",
+  "order": 1,
+  "title": "Greetings & introductions",
+  "titleHanzi": "认识你很高兴",
+  "description": "Say your name, where you're from, and that you speak a little Chinese — everything you need when you walk through the door.",
+  "hsk": 1,
+  "words": [
+    { "id": "w-jiao", "hanzi": "叫", "pinyin": "jiào", "english": ["to be called", "to call"], "hsk": 1, "pos": "verb" },
+    { "id": "w-shenme", "hanzi": "什么", "pinyin": "shénme", "english": ["what"], "hsk": 1, "pos": "question" },
+    { "id": "w-mingzi", "hanzi": "名字", "pinyin": "míngzi", "english": ["name"], "hsk": 1, "pos": "noun" },
+    { "id": "w-mikkel", "hanzi": "米克尔", "pinyin": "Mǐkè'ěr", "english": ["Mikkel"], "hsk": 0, "pos": "name", "note": "A sound-based Chinese version of your name." },
+    { "id": "w-renshi", "hanzi": "认识", "pinyin": "rènshi", "english": ["to know (a person)", "to meet"], "hsk": 1, "pos": "verb" },
+    { "id": "w-gaoxing", "hanzi": "高兴", "pinyin": "gāoxìng", "english": ["happy", "glad"], "hsk": 1, "pos": "adjective" },
+    { "id": "w-nin", "hanzi": "您", "pinyin": "nín", "english": ["you (polite)"], "hsk": 2, "pos": "pronoun", "note": "Use with older people, like a partner's parents." },
+    { "id": "w-zhe", "hanzi": "这", "pinyin": "zhè", "english": ["this"], "hsk": 1, "pos": "pronoun" },
+    { "id": "w-na3", "hanzi": "哪", "pinyin": "nǎ", "english": ["which"], "hsk": 1, "pos": "question" },
+    { "id": "w-guo", "hanzi": "国", "pinyin": "guó", "english": ["country"], "hsk": 0, "pos": "noun" },
+    { "id": "w-ren", "hanzi": "人", "pinyin": "rén", "english": ["person", "people"], "hsk": 1, "pos": "noun" },
+    { "id": "w-zhongguo", "hanzi": "中国", "pinyin": "Zhōngguó", "english": ["China"], "hsk": 1, "pos": "name" },
+    { "id": "w-danmai", "hanzi": "丹麦", "pinyin": "Dānmài", "english": ["Denmark"], "hsk": 0, "pos": "name" },
+    { "id": "w-ta-he", "hanzi": "他", "pinyin": "tā", "english": ["he", "him"], "hsk": 1, "pos": "pronoun" },
+    { "id": "w-ta-she", "hanzi": "她", "pinyin": "tā", "english": ["she", "her"], "hsk": 1, "pos": "pronoun", "note": "Sounds exactly like 他 (he)." },
+    { "id": "w-hui", "hanzi": "会", "pinyin": "huì", "english": ["can (a learned skill)", "to know how to"], "hsk": 1, "pos": "verb" },
+    { "id": "w-shuo", "hanzi": "说", "pinyin": "shuō", "english": ["to speak", "to say"], "hsk": 0, "pos": "verb" },
+    { "id": "w-zhongwen", "hanzi": "中文", "pinyin": "Zhōngwén", "english": ["Chinese (language)"], "hsk": 0, "pos": "noun", "note": "汉语 means the same; 中文 is what most people say day to day." },
+    { "id": "w-hanyu", "hanzi": "汉语", "pinyin": "Hànyǔ", "english": ["Chinese (language)", "Mandarin"], "hsk": 1, "pos": "noun" },
+    { "id": "w-yidian", "hanzi": "一点", "pinyin": "yìdiǎn", "english": ["a little", "a bit"], "hsk": 0, "pos": "phrase" },
+    { "id": "w-zai", "hanzi": "在", "pinyin": "zài", "english": ["(be) in the middle of doing", "at", "in"], "hsk": 1, "pos": "preposition" },
+    { "id": "w-xue", "hanzi": "学", "pinyin": "xué", "english": ["to study", "to learn"], "hsk": 0, "pos": "verb" },
+    { "id": "w-de", "hanzi": "的", "pinyin": "de", "english": ["'s", "(possessive particle)"], "hsk": 1, "pos": "particle" },
+    { "id": "w-nali", "hanzi": "哪里", "pinyin": "nǎlǐ", "english": ["where", "oh, not really (modest reply)"], "hsk": 0, "pos": "question" },
+    { "id": "w-huanying", "hanzi": "欢迎", "pinyin": "huānyíng", "english": ["welcome"], "hsk": 2, "pos": "verb" },
+    { "id": "w-qing", "hanzi": "请", "pinyin": "qǐng", "english": ["please", "to invite"], "hsk": 1, "pos": "verb" },
+    { "id": "w-jin", "hanzi": "进", "pinyin": "jìn", "english": ["to enter", "come in"], "hsk": 2, "pos": "verb" },
+    { "id": "w-zuo", "hanzi": "坐", "pinyin": "zuò", "english": ["to sit"], "hsk": 1, "pos": "verb" }
+  ],
+  "sentences": [
+    { "id": "s-nijiaoshenmemingzi", "hanzi": "你叫什么名字？", "pinyin": "Nǐ jiào shénme míngzi?", "english": "What's your name?", "words": ["w-ni", "w-jiao", "w-shenme", "w-mingzi"], "alt": { "pinyin": ["nǐ jiào shénme"] } },
+    { "id": "s-wojiaomikkel", "hanzi": "我叫米克尔。", "pinyin": "Wǒ jiào Mǐkè'ěr.", "english": "My name is Mikkel.", "words": ["w-wo", "w-jiao", "w-mikkel"], "alt": { "english": ["I'm called Mikkel.", "I'm Mikkel."] } },
+    { "id": "s-ninhao-wojiao", "hanzi": "您好！我叫米克尔。", "pinyin": "Nín hǎo! Wǒ jiào Mǐkè'ěr.", "english": "Hello! My name is Mikkel.", "words": ["w-nin", "w-hao", "w-wo", "w-jiao", "w-mikkel"] },
+    { "id": "s-ninhao", "hanzi": "您好！", "pinyin": "Nín hǎo!", "english": "Hello! (polite)", "words": ["w-nin", "w-hao"] },
+    { "id": "s-renshinihengaoxing", "hanzi": "认识你很高兴！", "pinyin": "Rènshi nǐ hěn gāoxìng!", "english": "Nice to meet you!", "words": ["w-renshi", "w-ni", "w-hen", "w-gaoxing"], "alt": { "english": ["Pleased to meet you!"] } },
+    { "id": "s-nihao-mikkel-renshi", "hanzi": "你好，米克尔！认识你很高兴！", "pinyin": "Nǐ hǎo, Mǐkè'ěr! Rènshi nǐ hěn gāoxìng!", "english": "Hello, Mikkel! Nice to meet you!", "words": ["w-nihao", "w-mikkel", "w-renshi", "w-ni", "w-hen", "w-gaoxing"] },
+    { "id": "s-woyehengaoxing", "hanzi": "我也很高兴。", "pinyin": "Wǒ yě hěn gāoxìng.", "english": "Nice to meet you too.", "words": ["w-wo", "w-ye", "w-hen", "w-gaoxing"], "alt": { "english": ["I'm glad too.", "Me too."] } },
+    { "id": "s-zheshimikkel", "hanzi": "这是米克尔。", "pinyin": "Zhè shì Mǐkè'ěr.", "english": "This is Mikkel.", "words": ["w-zhe", "w-shi", "w-mikkel"] },
+    { "id": "s-nishinaguoren", "hanzi": "你是哪国人？", "pinyin": "Nǐ shì nǎ guó rén?", "english": "Where are you from?", "words": ["w-ni", "w-shi", "w-na3", "w-guo", "w-ren"], "alt": { "english": ["Which country are you from?"] } },
+    { "id": "s-woshidanmairen", "hanzi": "我是丹麦人。", "pinyin": "Wǒ shì Dānmài rén.", "english": "I'm Danish.", "words": ["w-wo", "w-shi", "w-danmai", "w-ren"], "alt": { "english": ["I'm from Denmark."] } },
+    { "id": "s-tashizhongguoren", "hanzi": "她是中国人。", "pinyin": "Tā shì Zhōngguó rén.", "english": "She's Chinese.", "words": ["w-ta-she", "w-shi", "w-zhongguo", "w-ren"] },
+    { "id": "s-tabushizhongguoren", "hanzi": "他不是中国人。", "pinyin": "Tā bú shì Zhōngguó rén.", "english": "He isn't Chinese.", "words": ["w-ta-he", "w-bu", "w-shi", "w-zhongguo", "w-ren"] },
+    { "id": "s-nihuishuozhongwenma", "hanzi": "你会说中文吗？", "pinyin": "Nǐ huì shuō Zhōngwén ma?", "english": "Can you speak Chinese?", "words": ["w-ni", "w-hui", "w-shuo", "w-zhongwen", "w-ma"], "alt": { "english": ["Do you speak Chinese?"] } },
+    { "id": "s-wohuishuoyidian", "hanzi": "我会说一点。", "pinyin": "Wǒ huì shuō yìdiǎn.", "english": "I can speak a little.", "words": ["w-wo", "w-hui", "w-shuo", "w-yidian"] },
+    { "id": "s-wozaixuezhongwen", "hanzi": "我在学中文。", "pinyin": "Wǒ zài xué Zhōngwén.", "english": "I'm learning Chinese.", "words": ["w-wo", "w-zai", "w-xue", "w-zhongwen"] },
+    { "id": "s-huishuoyidian-zaixue", "hanzi": "我会说一点。我在学中文。", "pinyin": "Wǒ huì shuō yìdiǎn. Wǒ zài xué Zhōngwén.", "english": "I can speak a little. I'm learning Chinese.", "words": ["w-wo", "w-hui", "w-shuo", "w-yidian", "w-wo", "w-zai", "w-xue", "w-zhongwen"] },
+    { "id": "s-tahuishuohanyu", "hanzi": "他会说汉语。", "pinyin": "Tā huì shuō Hànyǔ.", "english": "He can speak Chinese.", "words": ["w-ta-he", "w-hui", "w-shuo", "w-hanyu"] },
+    { "id": "s-nidezhongwenhenhao", "hanzi": "你的中文很好！", "pinyin": "Nǐ de Zhōngwén hěn hǎo!", "english": "Your Chinese is very good!", "words": ["w-ni", "w-de", "w-zhongwen", "w-hen", "w-hao"] },
+    { "id": "s-nalinali", "hanzi": "哪里哪里！", "pinyin": "Nǎlǐ nǎlǐ!", "english": "Oh, not really!", "words": ["w-nali", "w-nali"], "alt": { "english": ["Not at all!"] } },
+    { "id": "s-huanying", "hanzi": "欢迎欢迎！", "pinyin": "Huānyíng huānyíng!", "english": "Welcome!", "words": ["w-huanying", "w-huanying"] },
+    { "id": "s-huanying-qingjin", "hanzi": "欢迎欢迎！请进！", "pinyin": "Huānyíng huānyíng! Qǐng jìn!", "english": "Welcome! Come in!", "words": ["w-huanying", "w-huanying", "w-qing", "w-jin"] },
+    { "id": "s-qingjin", "hanzi": "请进！", "pinyin": "Qǐng jìn!", "english": "Come in, please!", "words": ["w-qing", "w-jin"] },
+    { "id": "s-qingzuo", "hanzi": "请坐。", "pinyin": "Qǐng zuò.", "english": "Please sit down.", "words": ["w-qing", "w-zuo"], "alt": { "english": ["Have a seat."] } },
+    { "id": "s-qingzuo-huishuo", "hanzi": "请坐。你会说中文吗？", "pinyin": "Qǐng zuò. Nǐ huì shuō Zhōngwén ma?", "english": "Have a seat. Can you speak Chinese?", "words": ["w-qing", "w-zuo", "w-ni", "w-hui", "w-shuo", "w-zhongwen", "w-ma"] },
+    { "id": "s-xiexie", "hanzi": "谢谢！", "pinyin": "Xièxie!", "english": "Thanks!", "words": ["w-xiexie"], "alt": { "english": ["Thank you!"] } }
+  ],
+  "exchanges": [
+    { "id": "x-name", "prompt": "s-nijiaoshenmemingzi", "reply": "s-wojiaomikkel", "wrong": ["s-woshidanmairen", "s-qingzuo"], "context": "Someone asks your name." },
+    { "id": "x-nicetomeet", "prompt": "s-renshinihengaoxing", "reply": "s-woyehengaoxing", "wrong": ["s-bukeqi", "s-nijiaoshenmemingzi"], "context": "You've just been introduced." },
+    { "id": "x-country", "prompt": "s-nishinaguoren", "reply": "s-woshidanmairen", "wrong": ["s-wojiaomikkel", "s-wohuishuoyidian"], "context": "Someone asks where you're from." },
+    { "id": "x-speak", "prompt": "s-nihuishuozhongwenma", "reply": "s-wohuishuoyidian", "wrong": ["s-tashizhongguoren", "s-qingjin"], "context": "Someone wonders whether you speak Chinese." },
+    { "id": "x-compliment", "prompt": "s-nidezhongwenhenhao", "reply": "s-nalinali", "wrong": ["s-qingzuo", "s-woshidanmairen"], "context": "Someone praises your Chinese. Be modest!" },
+    { "id": "x-welcome", "prompt": "s-huanying-qingjin", "reply": "s-xiexie", "wrong": ["s-zaijian", "s-nishinaguoren"], "context": "You arrive at someone's home." }
+  ],
+  "grammar": [
+    { "id": "g-jiao", "title": "Names with 叫", "body": "我叫 + name = my name is…\nTo ask, put 什么 (what) where the answer would go: 你叫什么名字？ Chinese question words stay in the same place as the answer — no moving words to the front like in English or Danish.", "examples": ["s-nijiaoshenmemingzi", "s-wojiaomikkel"] },
+    { "id": "g-guoren", "title": "Country + 人 = nationality", "body": "Add 人 (person) after a country: 中国人 = Chinese person, 丹麦人 = Dane. To ask: 你是哪国人？ (you are which-country person?)", "examples": ["s-woshidanmairen", "s-nishinaguoren"] },
+    { "id": "g-hui", "title": "会 for skills you've learned", "body": "会 + verb = can / know how to. 我会说一点 = I can speak a little. Make a question with 吗.", "examples": ["s-wohuishuoyidian", "s-nihuishuozhongwenma"] },
+    { "id": "g-de", "title": "的 = 's", "body": "的 links an owner to a thing: 你的中文 = your Chinese, 我的名字 = my name.", "examples": ["s-nidezhongwenhenhao"] },
+    { "id": "g-nin", "title": "Polite 您", "body": "您 (nín) is a respectful 'you'. Use it with a partner's parents and other elders, especially the first time you meet.", "examples": ["s-ninhao"] }
+  ],
+  "dialogue": {
+    "id": "d01-door",
+    "title": "At the door",
+    "setting": "Mikkel arrives at his girlfriend's parents' home for the first time. Her mother opens the door.",
+    "speakers": [
+      { "id": "M", "name": "Her mother", "voice": "f" },
+      { "id": "K", "name": "Mikkel", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "M", "sentence": "s-huanying-qingjin" },
+      { "speaker": "K", "sentence": "s-ninhao-wojiao" },
+      { "speaker": "M", "sentence": "s-nihao-mikkel-renshi" },
+      { "speaker": "K", "sentence": "s-woyehengaoxing" },
+      { "speaker": "M", "sentence": "s-qingzuo-huishuo" },
+      { "speaker": "K", "sentence": "s-huishuoyidian-zaixue" },
+      { "speaker": "M", "sentence": "s-nidezhongwenhenhao" },
+      { "speaker": "K", "sentence": "s-nalinali" }
+    ],
+    "questions": [
+      { "q": "What's the first thing the mother says?", "options": ["Welcome, come in!", "What's your name?", "Please sit down."], "answer": 0 },
+      { "q": "What does the mother ask Mikkel?", "options": ["Where he's from", "Whether he speaks Chinese", "What his job is"], "answer": 1 },
+      { "q": "How does Mikkel react to the compliment?", "options": ["He says thank you", "He says he's Danish", "He modestly brushes it off"], "answer": 2 }
+    ]
+  },
+  "nodes": [
+    { "id": "n01-names", "title": "Names", "words": ["w-jiao", "w-shenme", "w-mingzi", "w-mikkel", "w-renshi", "w-gaoxing", "w-nin", "w-zhe"], "sentences": ["s-nijiaoshenmemingzi", "s-wojiaomikkel", "s-ninhao", "s-renshinihengaoxing", "s-woyehengaoxing", "s-zheshimikkel"], "exchanges": ["x-name", "x-nicetomeet"], "grammar": ["g-jiao", "g-nin"] },
+    { "id": "n01-where", "title": "Where are you from?", "words": ["w-na3", "w-guo", "w-ren", "w-zhongguo", "w-danmai", "w-ta-he", "w-ta-she"], "sentences": ["s-nishinaguoren", "s-woshidanmairen", "s-tashizhongguoren", "s-tabushizhongguoren"], "exchanges": ["x-country"], "grammar": ["g-guoren"] },
+    { "id": "n01-speak", "title": "Speaking Chinese", "words": ["w-hui", "w-shuo", "w-zhongwen", "w-hanyu", "w-yidian", "w-zai", "w-xue", "w-de", "w-nali"], "sentences": ["s-nihuishuozhongwenma", "s-wohuishuoyidian", "s-wozaixuezhongwen", "s-tahuishuohanyu", "s-nidezhongwenhenhao", "s-nalinali"], "exchanges": ["x-speak", "x-compliment"], "grammar": ["g-hui", "g-de"] },
+    { "id": "n01-welcome", "title": "Welcome!", "words": ["w-huanying", "w-qing", "w-jin", "w-zuo"], "sentences": ["s-huanying", "s-qingjin", "s-qingzuo", "s-xiexie"], "exchanges": ["x-welcome"] },
+    { "id": "n01-story", "title": "Story: At the door", "kind": "story", "sentences": ["s-huanying-qingjin", "s-ninhao-wojiao", "s-qingzuo-huishuo", "s-huishuoyidian-zaixue"] }
+  ]
+}
