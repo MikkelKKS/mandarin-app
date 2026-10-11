@@ -1,0 +1,111 @@
+{
+  "id": "u25-feelings",
+  "order": 25,
+  "title": "Feelings and opinions",
+  "titleHanzi": "别着急",
+  "description": "Worry, anger and relief, comforting someone, giving your opinion, and whether her dad likes you.",
+  "hsk": 3,
+  "words": [
+    { "id": "w-zhaoji", "hanzi": "着急", "pinyin": "zháojí", "english": ["anxious", "worried", "in a hurry"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-shengqi", "hanzi": "生气", "pinyin": "shēngqì", "english": ["angry", "to get angry"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-haipa", "hanzi": "害怕", "pinyin": "hàipà", "english": ["to be afraid"], "hsk": 3, "pos": "verb" },
+    { "id": "w-nanguo", "hanzi": "难过", "pinyin": "nánguò", "english": ["sad", "upset"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-ku", "hanzi": "哭", "pinyin": "kū", "english": ["to cry"], "hsk": 3, "pos": "verb" },
+    { "id": "w-turan", "hanzi": "突然", "pinyin": "tūrán", "english": ["suddenly"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-qiguai", "hanzi": "奇怪", "pinyin": "qíguài", "english": ["strange", "odd"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-qishi", "hanzi": "其实", "pinyin": "qíshí", "english": ["actually", "in fact"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-yiwei", "hanzi": "以为", "pinyin": "yǐwéi", "english": ["to think (wrongly)", "to assume"], "hsk": 3, "pos": "verb" },
+    { "id": "w-dangran", "hanzi": "当然", "pinyin": "dāngrán", "english": ["of course"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-manyi", "hanzi": "满意", "pinyin": "mǎnyì", "english": ["satisfied", "pleased"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-zhongyu", "hanzi": "终于", "pinyin": "zhōngyú", "english": ["finally", "at last"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-guanxin", "hanzi": "关心", "pinyin": "guānxīn", "english": ["to care about", "concern"], "hsk": 3, "pos": "verb" },
+    { "id": "w-reqing", "hanzi": "热情", "pinyin": "rèqíng", "english": ["warm", "welcoming", "enthusiastic"], "hsk": 3, "pos": "adjective" },
+    { "id": "w-faxian", "hanzi": "发现", "pinyin": "fāxiàn", "english": ["to discover", "to notice"], "hsk": 3, "pos": "verb" },
+    { "id": "w-tebie", "hanzi": "特别", "pinyin": "tèbié", "english": ["especially", "special"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-duome", "hanzi": "多么", "pinyin": "duōme", "english": ["how (…!)"], "hsk": 3, "pos": "adverb" },
+    { "id": "w-renwei", "hanzi": "认为", "pinyin": "rènwéi", "english": ["to think", "to believe (opinion)"], "hsk": 3, "pos": "verb" },
+    { "id": "w-xiangxin", "hanzi": "相信", "pinyin": "xiāngxìn", "english": ["to believe", "to trust"], "hsk": 3, "pos": "verb" },
+    { "id": "w-tongyi", "hanzi": "同意", "pinyin": "tóngyì", "english": ["to agree"], "hsk": 3, "pos": "verb" },
+    { "id": "w-yuanyi", "hanzi": "愿意", "pinyin": "yuànyì", "english": ["to be willing", "would like to"], "hsk": 3, "pos": "verb" },
+    { "id": "w-gan", "hanzi": "敢", "pinyin": "gǎn", "english": ["to dare"], "hsk": 3, "pos": "verb" },
+    { "id": "w-jide", "hanzi": "记得", "pinyin": "jìde", "english": ["to remember"], "hsk": 3, "pos": "verb" },
+    { "id": "w-liaojie", "hanzi": "了解", "pinyin": "liǎojiě", "english": ["to understand", "to get to know"], "hsk": 3, "pos": "verb" }
+  ],
+  "sentences": [
+    { "id": "s25-henzhaoji", "hanzi": "我很着急：叔叔是不是不喜欢我？", "pinyin": "Wǒ hěn zháojí: shūshu shì bu shì bù xǐhuan wǒ?", "english": "I'm worried. Does your dad not like me?", "words": ["w-wo", "w-hen", "w-zhaoji", "w-shushu", "w-shi", "w-bu", "w-shi", "w-bu", "w-xihuan", "w-wo"] },
+    { "id": "s25-weishenme-biezhaoji", "hanzi": "为什么？你别着急。", "pinyin": "Wèishénme? Nǐ bié zháojí.", "english": "Why? Don't worry.", "words": ["w-weishenme", "w-ni", "w-bie", "w-zhaoji"] },
+    { "id": "s25-biezhaoji-manman", "hanzi": "别着急，慢慢来。", "pinyin": "Bié zháojí, mànmàn lái.", "english": "No rush, take your time.", "words": ["w-bie", "w-zhaoji", "w-man", "w-man", "w-lai"] },
+    { "id": "s25-turanbushuohua", "hanzi": "他今天突然不说话了。", "pinyin": "Tā jīntiān tūrán bù shuōhuà le.", "english": "He suddenly went quiet today.", "words": ["w-ta-he", "w-jintian", "w-turan", "w-bu", "w-shuohua", "w-le"] },
+    { "id": "s25-qishi-yiwei", "hanzi": "其实他很喜欢你！他以为你听不懂他说话。", "pinyin": "Qíshí tā hěn xǐhuan nǐ! Tā yǐwéi nǐ tīng bu dǒng tā shuōhuà.", "english": "Actually he really likes you! He thought you couldn't understand him.", "words": ["w-qishi", "w-ta-he", "w-hen", "w-xihuan", "w-ni", "w-ta-he", "w-yiwei", "w-ni", "w-ting", "w-bu", "w-dong", "w-ta-he", "w-shuohua"] },
+    { "id": "s25-woyiweinibulai", "hanzi": "我以为你不来了！", "pinyin": "Wǒ yǐwéi nǐ bù lái le!", "english": "I thought you weren't coming!", "words": ["w-wo", "w-yiwei", "w-ni", "w-bu", "w-lai", "w-le"] },
+    { "id": "s25-zhendema", "hanzi": "真的吗？", "pinyin": "Zhēn de ma?", "english": "Really?", "words": ["w-zhen", "w-de", "w-ma"] },
+    { "id": "s25-dangran-manyi", "hanzi": "当然！我爸爸对你很满意。", "pinyin": "Dāngrán! Wǒ bàba duì nǐ hěn mǎnyì.", "english": "Of course! My dad is very happy with you.", "words": ["w-dangran", "w-wo", "w-baba", "w-dui", "w-ni", "w-hen", "w-manyi"] },
+    { "id": "s25-zhongyufangxin", "hanzi": "太好了！我终于放心了。", "pinyin": "Tài hǎo le! Wǒ zhōngyú fàngxīn le.", "english": "Great! I can finally relax.", "words": ["w-tai", "w-hao", "w-le", "w-wo", "w-zhongyu", "w-fangxin", "w-le"] },
+    { "id": "s25-zhongyudaole", "hanzi": "我们终于到了！", "pinyin": "Wǒmen zhōngyú dào le!", "english": "We're finally here!", "words": ["w-women", "w-zhongyu", "w-dao", "w-le"] },
+    { "id": "s25-bieshengqile", "hanzi": "别生气了。", "pinyin": "Bié shēngqì le.", "english": "Don't be angry.", "words": ["w-bie", "w-shengqi", "w-le"] },
+    { "id": "s25-mamashengqile", "hanzi": "妈妈生气了。", "pinyin": "Māma shēngqì le.", "english": "Mum is angry.", "words": ["w-mama", "w-shengqi", "w-le"] },
+    { "id": "s25-haipagou", "hanzi": "我害怕狗。", "pinyin": "Wǒ hàipà gǒu.", "english": "I'm afraid of dogs.", "words": ["w-wo", "w-haipa", "w-gou"] },
+    { "id": "s25-henanguo", "hanzi": "她很难过。", "pinyin": "Tā hěn nánguò.", "english": "She's very upset.", "words": ["w-ta-she", "w-hen", "w-nanguo"] },
+    { "id": "s25-biekule", "hanzi": "别哭了！", "pinyin": "Bié kū le!", "english": "Don't cry!", "words": ["w-bie", "w-ku", "w-le"] },
+    { "id": "s25-zhenqiguai", "hanzi": "真奇怪！", "pinyin": "Zhēn qíguài!", "english": "How strange!", "words": ["w-zhen", "w-qiguai"] },
+    { "id": "s25-xiexieguanxin", "hanzi": "谢谢你的关心。", "pinyin": "Xièxie nǐ de guānxīn.", "english": "Thanks for your concern.", "words": ["w-xiexie", "w-ni", "w-de", "w-guanxin"] },
+    { "id": "s25-jiarenreqing", "hanzi": "你的家人都很热情。", "pinyin": "Nǐ de jiārén dōu hěn rèqíng.", "english": "Your family are all so welcoming.", "words": ["w-ni", "w-de", "w-jia", "w-ren", "w-dou", "w-hen", "w-reqing"] },
+    { "id": "s25-faxianreqing", "hanzi": "我发现北京人都很热情。", "pinyin": "Wǒ fāxiàn Běijīng rén dōu hěn rèqíng.", "english": "I've found that Beijingers are really friendly.", "words": ["w-wo", "w-faxian", "w-beijing", "w-ren", "w-dou", "w-hen", "w-reqing"] },
+    { "id": "s25-tebiepiaoliang", "hanzi": "北京的秋天特别漂亮。", "pinyin": "Běijīng de qiūtiān tèbié piàoliang.", "english": "Autumn in Beijing is especially beautiful.", "words": ["w-beijing", "w-de", "w-qiu", "w-tian", "w-tebie", "w-piaoliang"] },
+    { "id": "s25-duomepiaoliang", "hanzi": "这儿多么漂亮啊！", "pinyin": "Zhèr duōme piàoliang a!", "english": "How beautiful it is here!", "words": ["w-zher", "w-duome", "w-piaoliang", "w-a"] },
+    { "id": "s25-renweibanfahao", "hanzi": "我认为这个办法很好。", "pinyin": "Wǒ rènwéi zhège bànfǎ hěn hǎo.", "english": "I think this is a good idea.", "words": ["w-wo", "w-renwei", "w-zhe", "w-ge", "w-banfa", "w-hen", "w-hao"] },
+    { "id": "s25-wotongyi", "hanzi": "我同意。", "pinyin": "Wǒ tóngyì.", "english": "I agree.", "words": ["w-wo", "w-tongyi"] },
+    { "id": "s25-nitongyima", "hanzi": "你同意吗？", "pinyin": "Nǐ tóngyì ma?", "english": "Do you agree?", "words": ["w-ni", "w-tongyi", "w-ma"] },
+    { "id": "s25-woxiangxinni", "hanzi": "我相信你！", "pinyin": "Wǒ xiāngxìn nǐ!", "english": "I believe in you!", "words": ["w-wo", "w-xiangxin", "w-ni"] },
+    { "id": "s25-yuanyiquzhongguo", "hanzi": "你愿意跟我去中国吗？", "pinyin": "Nǐ yuànyì gēn wǒ qù Zhōngguó ma?", "english": "Would you come to China with me?", "words": ["w-ni", "w-yuanyi", "w-gen", "w-wo", "w-qu", "w-zhongguo", "w-ma"] },
+    { "id": "s25-woyuanyi", "hanzi": "我愿意！", "pinyin": "Wǒ yuànyì!", "english": "I'd love to!", "words": ["w-wo", "w-yuanyi"], "alt": { "english": ["I'm willing!", "I do!"] } },
+    { "id": "s25-buganchi", "hanzi": "我不敢吃这个。", "pinyin": "Wǒ bù gǎn chī zhège.", "english": "I don't dare eat this.", "words": ["w-wo", "w-bu", "w-gan", "w-chi", "w-zhe", "w-ge"] },
+    { "id": "s25-haijidewoma", "hanzi": "你还记得我吗？", "pinyin": "Nǐ hái jìde wǒ ma?", "english": "Do you still remember me?", "words": ["w-ni", "w-hai-still", "w-jide", "w-wo", "w-ma"] },
+    { "id": "s25-dangranjide", "hanzi": "当然记得！", "pinyin": "Dāngrán jìde!", "english": "Of course I remember!", "words": ["w-dangran", "w-jide"] },
+    { "id": "s25-liaojiewenhua", "hanzi": "我想多了解中国文化。", "pinyin": "Wǒ xiǎng duō liǎojiě Zhōngguó wénhuà.", "english": "I want to learn more about Chinese culture.", "words": ["w-wo", "w-xiang", "w-duo", "w-liaojie", "w-zhongguo", "w-wenhua"] }
+  ],
+  "exchanges": [
+    { "id": "x25-remember", "prompt": "s25-haijidewoma", "reply": "s25-dangranjide", "wrong": ["s25-haipagou", "s25-zhenqiguai"], "context": "Her aunt, whom you met last year, greets you." },
+    { "id": "x25-cry", "prompt": "s25-henanguo", "reply": "s25-biekule", "wrong": ["s25-wotongyi", "s25-tebiepiaoliang"], "context": "Your niece is in tears. Comfort her." },
+    { "id": "x25-agree", "prompt": "s25-nitongyima", "reply": "s25-wotongyi", "wrong": ["s25-buganchi", "s25-zhongyudaole"], "context": "Her mother suggests a plan you like." },
+    { "id": "x25-come", "prompt": "s25-yuanyiquzhongguo", "reply": "s25-woyuanyi", "wrong": ["s25-mamashengqile", "s25-xiexieguanxin"], "context": "Your girlfriend asks you to come to China with her." },
+    { "id": "x25-worried", "prompt": "s25-henzhaoji", "reply": "s25-weishenme-biezhaoji", "wrong": ["s25-duomepiaoliang", "s25-woyuanyi"], "context": "You're her sister. 米格 looks worried." }
+  ],
+  "grammar": [
+    { "id": "g25-yiwei", "title": "以为 or 认为?", "body": "认为 gives your opinion: 我认为这个办法很好. 以为 is what you thought, but it turned out wrong: 我以为你不来了! (I thought you weren't coming!)", "examples": ["s25-woyiweinibulai", "s25-renweibanfahao", "s25-qishi-yiwei"] },
+    { "id": "g25-bie", "title": "别…了: comforting", "body": "别 + feeling + 了 tells someone to stop feeling that way: 别生气了, 别哭了. 别着急 means don't worry, take your time.", "examples": ["s25-bieshengqile", "s25-biekule", "s25-biezhaoji-manman"] },
+    { "id": "g25-duome", "title": "多么…啊!", "body": "多么 + adjective + 啊 is an exclamation: 多么漂亮啊! (How beautiful!). In speech 多 alone is common too.", "examples": ["s25-duomepiaoliang"] },
+    { "id": "g25-manyi", "title": "对…很满意", "body": "对 + person/thing + 很满意: pleased with. 我爸爸对你很满意: my dad is happy with you.", "examples": ["s25-dangran-manyi"] }
+  ],
+  "dialogue": {
+    "id": "d25-worried",
+    "title": "Listening challenge: Does he like me?",
+    "setting": "After a family dinner, 米格 quietly asks her sister about her dad.",
+    "speakers": [
+      { "id": "S", "name": "Her sister", "voice": "f" },
+      { "id": "K", "name": "米格", "voice": "m" }
+    ],
+    "lines": [
+      { "speaker": "K", "sentence": "s25-henzhaoji" },
+      { "speaker": "S", "sentence": "s25-weishenme-biezhaoji" },
+      { "speaker": "K", "sentence": "s25-turanbushuohua" },
+      { "speaker": "S", "sentence": "s25-qishi-yiwei" },
+      { "speaker": "K", "sentence": "s25-zhendema" },
+      { "speaker": "S", "sentence": "s25-dangran-manyi" },
+      { "speaker": "K", "sentence": "s25-zhongyufangxin" }
+    ],
+    "questions": [
+      { "q": "Why is 米格 worried?", "options": ["He thinks her dad doesn't like him", "He's late", "He lost his phone"], "answer": 0 },
+      { "q": "What did her dad do?", "options": ["He got angry", "He suddenly went quiet", "He left early"], "answer": 1 },
+      { "q": "Why did her dad go quiet?", "options": ["He was tired", "He thought 米格 couldn't understand him", "He was upset"], "answer": 1 },
+      { "q": "How does her dad really feel about 米格?", "options": ["Unsure", "Very happy with him", "Worried"], "answer": 1 }
+    ]
+  },
+  "nodes": [
+    { "id": "n25-worry", "title": "Don't worry", "words": ["w-zhaoji", "w-shengqi", "w-haipa", "w-nanguo", "w-ku", "w-turan"], "sentences": ["s25-henzhaoji", "s25-weishenme-biezhaoji", "s25-biezhaoji-manman", "s25-turanbushuohua", "s25-bieshengqile", "s25-mamashengqile", "s25-haipagou", "s25-henanguo", "s25-biekule"], "exchanges": ["x25-cry", "x25-worried"], "grammar": ["g25-bie"] },
+    { "id": "n25-actually", "title": "Actually...", "words": ["w-qiguai", "w-qishi", "w-yiwei", "w-dangran", "w-manyi", "w-zhongyu"], "sentences": ["s25-zhenqiguai", "s25-qishi-yiwei", "s25-woyiweinibulai", "s25-zhendema", "s25-dangran-manyi", "s25-zhongyufangxin", "s25-zhongyudaole"], "grammar": ["g25-yiwei", "g25-manyi"] },
+    { "id": "n25-warm", "title": "Warm and welcoming", "words": ["w-guanxin", "w-reqing", "w-faxian", "w-tebie", "w-duome", "w-liaojie"], "sentences": ["s25-xiexieguanxin", "s25-jiarenreqing", "s25-faxianreqing", "s25-tebiepiaoliang", "s25-duomepiaoliang", "s25-liaojiewenhua"], "grammar": ["g25-duome"] },
+    { "id": "n25-opinions", "title": "I agree", "words": ["w-renwei", "w-xiangxin", "w-tongyi", "w-yuanyi", "w-gan", "w-jide"], "sentences": ["s25-renweibanfahao", "s25-wotongyi", "s25-nitongyima", "s25-woxiangxinni", "s25-yuanyiquzhongguo", "s25-woyuanyi", "s25-buganchi", "s25-haijidewoma", "s25-dangranjide"], "exchanges": ["x25-remember", "x25-agree", "x25-come"] },
+    { "id": "n25-story", "title": "Challenge: Does he like me?", "kind": "story", "sentences": ["s25-henzhaoji", "s25-turanbushuohua", "s25-qishi-yiwei", "s25-dangran-manyi", "s25-zhongyufangxin"] }
+  ]
+}
