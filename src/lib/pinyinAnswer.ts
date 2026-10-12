@@ -156,6 +156,22 @@ function withoutYige(e: ExpectedPinyin): ExpectedPinyin | null {
   if (!e.hanzi?.includes('一个') || !YIGE_PINYIN.test(e.pinyin)) return null;
   return { hanzi: e.hanzi.replace('一个', ''), pinyin: e.pinyin.replace(YIGE_PINYIN, '') };
 }
+/**
+ * Possessive 的 after a pronoun is optional (我爸爸 / 我的爸爸). These strip it from
+ * characters and from pinyin (with tone marks or numbers).
+ */
+const PRONOUN_HANZI = /(我们|你们|他们|她们|咱们|我|你|他|她|您)的/g;
+const PRONOUN_DE = /\b((?:w[oǒ]|n[iǐ]|t[aā]|n[ií]n|z[aá]n)[0-5]?(?:\s*men[05]?)?)\s*'?de[05]?(?![a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü])/gi;
+function withoutPossessiveDe(text: string): string {
+  return text.replace(PRONOUN_HANZI, '$1').replace(PRONOUN_DE, '$1 ');
+}
+function expectedWithoutDe(e: ExpectedPinyin): ExpectedPinyin | null {
+  if (!e.hanzi || !PRONOUN_HANZI.test(e.hanzi)) return null;
+  PRONOUN_HANZI.lastIndex = 0;
+  const pinyin = e.pinyin.replace(PRONOUN_DE, '$1 ').replace(/\s+([,.!?，。！？])/g, '$1');
+  return pinyin === e.pinyin ? null : { hanzi: e.hanzi.replace(PRONOUN_HANZI, '$1'), pinyin };
+}
+
 function inputWithoutYige(input: string): string | null {
   if (input.includes('一个')) return input.replace('一个', '');
   return YIGE_PINYIN.test(input) ? input.replace(YIGE_PINYIN, '') : null;
@@ -213,6 +229,10 @@ export function checkPinyinAnswer(input: string, expected: ExpectedPinyin, opts:
   for (const v of equivalents(expected)) variants.push([input, v]);
   const shorter = withoutYige(expected);
   if (shorter) variants.push([input, shorter]);
+  const noDe = expectedWithoutDe(expected);
+  if (noDe) variants.push([input, noDe]);
+  const inputNoDe = withoutPossessiveDe(input);
+  if (inputNoDe !== input) variants.push([inputNoDe, expected]);
   const trimmed = inputWithoutYige(input);
   if (trimmed && trimmed.trim()) variants.push([trimmed, expected]);
   let best = strict;

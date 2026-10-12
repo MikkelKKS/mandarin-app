@@ -139,6 +139,17 @@ describe('checkPinyinAnswer', () => {
     expect(check('ta1 qu4 na3li3', { hanzi: '您去哪儿？', pinyin: 'Nín qù nǎr?' }).verdict).toBe('wrong');
   });
 
+  it('allows possessive 的 after a pronoun to be added or left out', () => {
+    const dad = { hanzi: '这是我爸爸。', pinyin: 'Zhè shì wǒ bàba.' };
+    expect(check('这是我的爸爸', dad).verdict).toBe('correct');
+    expect(check('zhe4 shi4 wo3 de bah4ba', dad).verdict).not.toBe('correct');
+    expect(check('zhe4 shi4 wo3 de ba4ba', dad).verdict).toBe('correct');
+    expect(check('zhe4 shi4 wo3de ba4ba', dad).verdict).toBe('correct');
+    const phone = { hanzi: '我的手机在哪里？', pinyin: 'Wǒ de shǒujī zài nǎlǐ?' };
+    expect(check('wo3 shou3ji1 zai4 na3li3', phone).verdict).toBe('correct');
+    expect(check('我手机在哪里', phone).verdict).toBe('correct');
+  });
+
   it('treats empty input as wrong', () => {
     expect(check('   ', nihao)).toMatchObject({ verdict: 'wrong', reason: 'empty' });
   });
