@@ -40,7 +40,12 @@ export interface PinyinCheck {
   syllables?: SyllableFeedback[];
   /** The answer to show as the correct version. */
   correction: string;
+  /** Set when the answer was accepted with an equivalent character (他 for 她): the expected characters. */
+  otherAnswer?: string;
 }
+
+/** 他, 她 and 它 all sound tā: when context doesn't say who, any of them is fine. */
+const sameSound = (h: string) => h.replace(/[她它]/g, '他');
 
 export interface CheckOptions {
   strictTones?: boolean;
@@ -150,7 +155,10 @@ export function checkPinyinAnswer(input: string, expected: ExpectedPinyin, opts:
   const typedHanzi = hanziOnly(input);
   if (typedHanzi) {
     const hit = candidates.some((c) => c.hanzi && hanziOnly(c.hanzi) === typedHanzi);
-    return hit ? { verdict: 'correct', correction } : { verdict: 'wrong', reason: 'mismatch', correction };
+    if (hit) return { verdict: 'correct', correction };
+    const near = candidates.find((c) => c.hanzi && sameSound(hanziOnly(c.hanzi)) === sameSound(typedHanzi));
+    if (near) return { verdict: 'correct', correction, otherAnswer: near.hanzi };
+    return { verdict: 'wrong', reason: 'mismatch', correction };
   }
 
   const letters = toLetters(input);

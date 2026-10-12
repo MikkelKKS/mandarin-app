@@ -79,9 +79,14 @@ def min_seconds(text):
     return max(0.8, 0.18 * n + 0.2)
 
 
+BLOCKED = {"hit": False}
+
+
 async def synth(text, voice, rate, dest, sem):
     async with sem:
         for attempt in range(5):
+            if BLOCKED["hit"]:
+                return False  # the service is refusing us: stop for now, the next run retries
             try:
                 tmp = dest.with_suffix(".tmp")
                 await edge_tts.Communicate(text, voice, rate=rate).save(str(tmp))
@@ -93,6 +98,10 @@ async def synth(text, voice, rate, dest, sem):
                 return True
             except Exception as e:  # network hiccups or a cut-off clip: retry with backoff
                 print(f"  retry {attempt + 1} for {dest.name}: {e}", file=sys.stderr)
+                if "403" in str(e) and attempt >= 1:
+                    BLOCKED["hit"] = True
+                    print(f"::warning::TTS service refused requests (403); stopping this run, missing audio is retried later")
+                    return False
                 if attempt == 4:
                     # Shows up as a GitHub annotation, readable without the full log.
                     print(f"::warning::audio failed for {dest.name}: {e}")

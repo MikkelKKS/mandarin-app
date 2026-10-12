@@ -110,6 +110,13 @@ describe('checkPinyinAnswer', () => {
     expect(check('您好', nihao).verdict).toBe('wrong');
   });
 
+  it('accepts 他/她/它 for each other when typed in characters', () => {
+    const r = check('他很高兴', { hanzi: '她很高兴。', pinyin: 'Tā hěn gāoxìng.' });
+    expect(r.verdict).toBe('correct');
+    expect(r.otherAnswer).toBe('她很高兴。');
+    expect(check('她很高兴', { hanzi: '她很高兴。', pinyin: 'Tā hěn gāoxìng.' }).otherAnswer).toBeUndefined();
+  });
+
   it('treats empty input as wrong', () => {
     expect(check('   ', nihao)).toMatchObject({ verdict: 'wrong', reason: 'empty' });
   });

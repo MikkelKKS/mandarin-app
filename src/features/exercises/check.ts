@@ -12,7 +12,7 @@ export function checkTyped(
   const answer = { hanzi: expected.hanzi, pinyin: r.correction, english: expected.english };
   switch (r.verdict) {
     case 'correct':
-      return { verdict: 'correct', answer };
+      return r.otherAnswer ? { verdict: 'correct', answer, note: `Another correct answer: ${r.otherAnswer}` } : { verdict: 'correct', answer };
     case 'typo':
       return { verdict: 'typo', answer, note: `Small typo. You wrote “${input.trim()}”.` };
     case 'almost':

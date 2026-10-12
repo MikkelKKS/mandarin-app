@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { course, grammar, nodes, units, words } from '../../content';
 import type { Unit } from '../../content/schema';
 import { ToneText } from '../../components/Hanzi';
@@ -19,16 +19,22 @@ export function useNodeStates(): Map<string, NodeState> {
 }
 
 export function PathView() {
-  const states = useNodeStates();
+  const rows = useLive(() => db.progress.toArray(), [], null);
+  const states = useMemo(() => computeStates(nodeOrder, new Map((rows ?? []).map((r) => [r.id, r]))), [rows]);
+  const loaded = rows !== null;
   const next = nextNode(states);
   const [sheet, setSheet] = useState<string | null>(null);
   const due = useLive(() => dueCount(), [], 0);
 
+  // Bring the skill you're on into view, once your progress has loaded.
+  const scrolled = useRef(false);
   useEffect(() => {
-    // Bring the next node into view on load.
-    if (next && next !== nodeOrder[0]) document.getElementById(`node-${next}`)?.scrollIntoView({ block: 'center' });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [states.size]);
+    if (!loaded || scrolled.current || !next) return;
+    scrolled.current = true;
+    if (next === nodeOrder[0]) return;
+    const t = setTimeout(() => document.getElementById(`node-${next}`)?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 120);
+    return () => clearTimeout(t);
+  }, [loaded, next]);
 
   return (
     <div className="pb-8">
