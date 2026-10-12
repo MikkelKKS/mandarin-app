@@ -137,7 +137,9 @@ function Reviews({ s }: { s: Stats }) {
           Practise
         </button>
       </div>
-      <div className="mt-4 grid grid-cols-7 items-end gap-2" role="img" aria-label={`Reviews due over the next week: ${days.join(', ')}`}>
+      <p className="mt-5 text-sm font-medium">Coming up this week</p>
+      <p className="text-xs text-muted">How many words and sentences come back for review each day. The app spaces them out so you see each one just before you'd forget it.</p>
+      <div className="mt-3 grid grid-cols-7 items-end gap-2" role="img" aria-label={`Reviews due over the next week: ${days.join(', ')}`}>
         {days.map((n, i) => (
           <div key={i} className="flex flex-col items-center gap-1">
             <span className="text-xs tabular-nums text-muted">{n || ''}</span>
