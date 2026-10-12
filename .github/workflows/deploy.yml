@@ -3,6 +3,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Daily retry for any audio the TTS service refused (it sometimes blocks for a while).
+  schedule:
+    - cron: '17 3 * * *'
 permissions:
   contents: write
   pages: write
@@ -22,6 +25,9 @@ jobs:
       - name: Install ffmpeg
         run: which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
       - name: Generate missing audio
+        # The free TTS service sometimes refuses requests for a while. Never block a deploy over it:
+        # the app falls back to the browser's voice, and the next run retries what's missing.
+        continue-on-error: true
         run: python3 scripts/generate-audio.py
       - name: Commit new audio
         run: |
@@ -65,7 +71,7 @@ jobs:
       - name: Build dictionary (CC-CEDICT)
         run: (test -s public/dict/cedict.tsv && test -s public/dict/t2s.json) || npm run dict:build
       - name: Validate content
-        run: npm run content:validate
+        run: npm run content:validate -- --allow-missing-audio
       - name: Unit tests
         run: npm test
       - name: Build

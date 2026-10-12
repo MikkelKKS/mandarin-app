@@ -265,7 +265,10 @@ const TONE: Record<Verdict, { title: string; cls: string; btn: string }> = {
 function Feedback({ outcome, ex, onContinue }: { outcome: Outcome; ex: Exercise; onContinue: () => void }) {
   const t = TONE[outcome.verdict];
   const a = outcome.answer;
-  const audioId = audioOf(ex)[0] ?? itemsOf(ex)[0];
+  // Play the answer that's shown: for conversation exercises that's the reply, not the line you heard.
+  const isReply = ex.kind === 'what-would-you-say' || ex.kind === 'reply-type';
+  const audioId = isReply ? itemsOf(ex)[0] : (audioOf(ex)[0] ?? itemsOf(ex)[0]);
+  const voice = isReply && ex.voice ? (ex.voice === 'f' ? 'm' : 'f') : ex.voice;
   const showAnswer = a && (outcome.verdict !== 'correct' || a.hanzi);
   return (
     <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 ${t.cls} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5`}>
@@ -281,7 +284,7 @@ function Feedback({ outcome, ex, onContinue }: { outcome: Outcome; ex: Exercise;
               {a.text && <p>{a.text}</p>}
             </div>
             {audioId && (
-              <button onClick={() => play(audioId, { voice: ex.voice })} aria-label="Play again" className="rounded-full bg-surface/70 p-3">
+              <button onClick={() => play(audioId, { voice })} aria-label="Play again" className="rounded-full bg-surface/70 p-3">
                 <Speaker className="h-6 w-6" />
               </button>
             )}
