@@ -28,7 +28,7 @@ export function checkTyped(
         const syl = r.syllables ?? [];
         tones = { expected: syl.map((x) => x.tone ?? 0).join('-'), given: syl.map((x) => x.given ?? 0).join('-') };
       }
-      return { verdict: 'wrong', answer, note, tones };
+      return { verdict: 'wrong', answer, note, tones, canOverride: r.reason === 'mismatch' };
     }
   }
 }

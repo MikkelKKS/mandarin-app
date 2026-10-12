@@ -107,7 +107,8 @@ describe('checkPinyinAnswer', () => {
 
   it('accepts characters typed with an IME', () => {
     expect(check('你好！', nihao).verdict).toBe('correct');
-    expect(check('您好', nihao).verdict).toBe('wrong');
+    expect(check('您好', nihao).verdict).toBe('correct'); // polite 您 is fine too
+    expect(check('他好', nihao).verdict).toBe('wrong');
   });
 
   it('accepts 他/她/它 for each other when typed in characters', () => {
@@ -127,6 +128,15 @@ describe('checkPinyinAnswer', () => {
     expect(check('我有一个哥哥', without).verdict).toBe('correct');
     expect(check('wo3 you3 yi2 ge4 ge1ge', withYige).otherAnswer).toBeUndefined();
     expect(check('wo3 you3 jie3jie', withYige).verdict).toBe('wrong');
+  });
+
+  it('accepts everyday equivalents like 你 for 您 and 哪里 for 哪儿', () => {
+    const r = check('ni3 qu4 na3li3', { hanzi: '您去哪儿？', pinyin: 'Nín qù nǎr?' });
+    expect(r.verdict).toBe('correct');
+    expect(r.otherAnswer).toBe('您去哪儿？');
+    expect(check('nin2 hao3', nihao).verdict).toBe('correct');
+    expect(check('我们走吧', { hanzi: '咱们走吧。', pinyin: 'Zánmen zǒu ba.' }).verdict).toBe('correct');
+    expect(check('ta1 qu4 na3li3', { hanzi: '您去哪儿？', pinyin: 'Nín qù nǎr?' }).verdict).toBe('wrong');
   });
 
   it('treats empty input as wrong', () => {

@@ -88,3 +88,4 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## Leeway for 一个
 - Typed answers accept 一个 left out or added (我有哥哥 / 我有一个哥哥), shown as correct with the course version as "Another correct answer".
+- Typed answers also accept everyday equivalents (您/你, 咱们/我们, 哪儿/哪里, 这儿/这里, 那儿/那里, 一点儿/一点, 一会儿/一会). For other rewordings (a wrong answer with different words, not wrong tones), the feedback offers "I was right", which counts the exercise as correct. Real meaning-checking would need an AI model at runtime, which the brief rules out.

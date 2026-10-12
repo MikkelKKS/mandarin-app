@@ -67,4 +67,6 @@ export interface Outcome {
   /** Per-item verdicts for review scheduling (defaults to all items of the exercise). */
   items?: Array<{ id: string; verdict: Verdict }>;
   tones?: { expected: string; given: string };
+  /** A typed answer with different wording: the learner may mark it as right ("I was right"). */
+  canOverride?: boolean;
 }

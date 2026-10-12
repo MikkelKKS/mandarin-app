@@ -161,20 +161,67 @@ function inputWithoutYige(input: string): string | null {
   return YIGE_PINYIN.test(input) ? input.replace(YIGE_PINYIN, '') : null;
 }
 
+/**
+ * Words that mean the same in everyday speech: any of these swaps in the
+ * expected answer is accepted too (Beijing and standard forms, polite and plain "you").
+ */
+const SWAPS: Array<[string, string, string, string]> = [
+  // hanzi, pinyin, hanzi, pinyin
+  ['您', 'nín', '你', 'nǐ'],
+  ['咱们', 'zánmen', '我们', 'wǒmen'],
+  ['哪儿', 'nǎr', '哪里', 'nǎlǐ'],
+  ['这儿', 'zhèr', '这里', 'zhèlǐ'],
+  ['那儿', 'nàr', '那里', 'nàlǐ'],
+  ['一点儿', 'yìdiǎnr', '一点', 'yìdiǎn'],
+  ['一会儿', 'yíhuìr', '一会', 'yíhuì'],
+];
+
+function swapOnce(e: ExpectedPinyin, fromH: string, fromP: string, toH: string, toP: string): ExpectedPinyin | null {
+  if (!e.hanzi?.includes(fromH)) return null;
+  const re = new RegExp(`(^|[^a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü])${fromP}(?![a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü])`, 'i');
+  const m = e.pinyin.match(re);
+  if (!m) return null;
+  const start = m.index! + m[1].length;
+  const orig = e.pinyin.slice(start, start + fromP.length);
+  const to = orig[0] === orig[0].toUpperCase() ? toP[0].toUpperCase() + toP.slice(1) : toP;
+  return { hanzi: e.hanzi.replace(fromH, toH), pinyin: e.pinyin.slice(0, start) + to + e.pinyin.slice(start + fromP.length) };
+}
+
+/** Versions of the answer with equivalent words swapped in (one swap each, plus all at once). */
+function equivalents(e: ExpectedPinyin): ExpectedPinyin[] {
+  const out: ExpectedPinyin[] = [];
+  let forward: ExpectedPinyin = e; // 您→你, 咱们→我们, 哪儿→哪里…
+  let backward: ExpectedPinyin = e; // and the other way round
+  for (const [h1, p1, h2, p2] of SWAPS) {
+    const f = swapOnce(e, h1, p1, h2, p2);
+    const b = swapOnce(e, h2, p2, h1, p1);
+    if (f) out.push(f);
+    if (b) out.push(b);
+    forward = swapOnce(forward, h1, p1, h2, p2) ?? forward;
+    backward = swapOnce(backward, h2, p2, h1, p1) ?? backward;
+  }
+  if (forward !== e) out.push(forward);
+  if (backward !== e) out.push(backward);
+  return out;
+}
+
 export function checkPinyinAnswer(input: string, expected: ExpectedPinyin, opts: CheckOptions = {}): PinyinCheck {
   const strict = checkExact(input, expected, opts);
-  if (strict.verdict !== 'wrong') return strict;
-  // Leeway: 一个 left out, or added where the answer has none. Accepted, with the main answer shown.
-  const shorter = withoutYige(expected);
+  if (strict.verdict === 'correct') return strict;
+  // Leeway: equivalent words (您/你, 哪儿/哪里…), and 一个 left out or added. Accepted, with the main answer shown.
   const variants: Array<[string, ExpectedPinyin]> = [];
+  for (const v of equivalents(expected)) variants.push([input, v]);
+  const shorter = withoutYige(expected);
   if (shorter) variants.push([input, shorter]);
   const trimmed = inputWithoutYige(input);
   if (trimmed && trimmed.trim()) variants.push([trimmed, expected]);
+  let best = strict;
   for (const [inp, exp] of variants) {
     const r = checkExact(inp, exp, opts);
-    if (r.verdict !== 'wrong') return { ...r, correction: strict.correction, otherAnswer: expected.hanzi };
+    if (RANK[r.verdict] > RANK[best.verdict]) best = { ...r, correction: strict.correction, otherAnswer: expected.hanzi };
+    if (best.verdict === 'correct') break;
   }
-  return strict;
+  return best;
 }
 
 function checkExact(input: string, expected: ExpectedPinyin, opts: CheckOptions): PinyinCheck {

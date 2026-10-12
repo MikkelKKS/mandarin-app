@@ -134,6 +134,22 @@ export function LessonPlayer({
     [current, outcome, advance, mode, nodeId],
   );
 
+  /** "I was right": a differently worded answer counts as correct after all. */
+  const override = useCallback(() => {
+    if (!current || !outcome) return;
+    const { ex, origin, retry } = current;
+    if (retry === 0) firstResults.current.set(origin, 'correct');
+    passed.current.add(origin);
+    for (const id of itemsOf(ex)) {
+      mistakes.current.delete(id);
+      void recordAnswer(id, 'correct', { exercise: ex.kind, nodeId });
+    }
+    // Drop the retry that was queued for this exercise.
+    setQueue((q) => q.filter((e, i) => !(i > pos && e.origin === origin && e.retry === retry + 1)));
+    sfx.correct();
+    setOutcome({ ...outcome, verdict: 'correct', note: 'Counted as correct.', canOverride: false });
+  }, [current, outcome, pos, nodeId]);
+
   const doCheck = useCallback(() => {
     const fn = checkRef.current;
     if (!fn) return;
@@ -258,7 +274,7 @@ export function LessonPlayer({
             </div>
           </footer>
         )}
-        {outcome && <Feedback outcome={outcome} ex={current.ex} onContinue={advance} />}
+        {outcome && <Feedback outcome={outcome} ex={current.ex} onContinue={advance} onOverride={mode === 'testout' ? undefined : override} />}
       </div>
     </LessonCtx.Provider>
   );
@@ -271,7 +287,7 @@ const TONE: Record<Verdict, { title: string; cls: string; btn: string; badge: st
   wrong: { title: 'Not quite', cls: 'bg-cinnabar-soft', btn: 'bg-cinnabar text-white dark:text-black', badge: 'bg-cinnabar text-white dark:text-black' },
 };
 
-function Feedback({ outcome, ex, onContinue }: { outcome: Outcome; ex: Exercise; onContinue: () => void }) {
+function Feedback({ outcome, ex, onContinue, onOverride }: { outcome: Outcome; ex: Exercise; onContinue: () => void; onOverride?: () => void }) {
   const t = TONE[outcome.verdict];
   const a = outcome.answer;
   // Play the answer that's shown: for conversation exercises that's the reply, not the line you heard.
@@ -307,6 +323,11 @@ function Feedback({ outcome, ex, onContinue }: { outcome: Outcome; ex: Exercise;
         <button ref={focusNoScroll} onClick={onContinue} className={`press mt-4 h-14 w-full rounded-2xl text-lg font-semibold ${t.btn}`}>
           {outcome.verdict === 'wrong' ? 'Got it' : 'Continue'}
         </button>
+        {outcome.verdict === 'wrong' && outcome.canOverride && onOverride && (
+          <button onClick={onOverride} className="mt-2 h-11 w-full rounded-2xl text-sm font-medium opacity-80 hover:opacity-100">
+            I was right: my answer means the same
+          </button>
+        )}
       </div>
     </div>
   );
