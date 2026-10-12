@@ -85,3 +85,6 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - `content/stories/*.json`, one story per file: original texts about the owner's life (studies, insurance job, running, games, her family in Beijing). Each story names the unit it follows; the validator checks that every character is taught by then, except a few listed `extra` words with glosses (shown with a dotted underline).
 - Reading only. Pinyin follows the "Pinyin above characters" setting (pinyin-pro for context-aware readings); tapping a word opens the same word card as the music lyrics. A story opens once you finish (or pass) its unit.
 - End screen: "Fixed along the way" now counts exercises answered wrong first time, not item ids (sound drills have none).
+
+## Leeway for 一个
+- Typed answers accept 一个 left out or added (我有哥哥 / 我有一个哥哥), shown as correct with the course version as "Another correct answer".

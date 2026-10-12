@@ -117,6 +117,18 @@ describe('checkPinyinAnswer', () => {
     expect(check('她很高兴', { hanzi: '她很高兴。', pinyin: 'Tā hěn gāoxìng.' }).otherAnswer).toBeUndefined();
   });
 
+  it('allows 一个 to be left out or added', () => {
+    const withYige = { hanzi: '我有一个哥哥。', pinyin: 'Wǒ yǒu yí ge gēge.' };
+    const without = { hanzi: '我有哥哥。', pinyin: 'Wǒ yǒu gēge.' };
+    expect(check('wo3 you3 ge1ge', withYige).verdict).toBe('correct');
+    expect(check('wo3 you3 ge1ge', withYige).otherAnswer).toBe('我有一个哥哥。');
+    expect(check('wo3 you3 yi2 ge4 ge1ge', without).verdict).toBe('correct');
+    expect(check('我有哥哥', withYige).verdict).toBe('correct');
+    expect(check('我有一个哥哥', without).verdict).toBe('correct');
+    expect(check('wo3 you3 yi2 ge4 ge1ge', withYige).otherAnswer).toBeUndefined();
+    expect(check('wo3 you3 jie3jie', withYige).verdict).toBe('wrong');
+  });
+
   it('treats empty input as wrong', () => {
     expect(check('   ', nihao)).toMatchObject({ verdict: 'wrong', reason: 'empty' });
   });

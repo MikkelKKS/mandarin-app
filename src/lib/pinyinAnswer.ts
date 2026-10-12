@@ -147,7 +147,37 @@ function checkOne(letters: Letter[], exp: ExpectedPinyin, strict: boolean): Piny
 
 const RANK: Record<Verdict, number> = { correct: 3, almost: 2, typo: 1, wrong: 0 };
 
+/**
+ * Leeway for optional words: 一个 ("a") before a noun can be left out or added
+ * (我有哥哥 / 我有一个哥哥). Returns the answer with 一个 removed, or null.
+ */
+const YIGE_PINYIN = /\by[iīíǐì][1-5]?\s*g[eēéěè][1-5]?\b\s*/i;
+function withoutYige(e: ExpectedPinyin): ExpectedPinyin | null {
+  if (!e.hanzi?.includes('一个') || !YIGE_PINYIN.test(e.pinyin)) return null;
+  return { hanzi: e.hanzi.replace('一个', ''), pinyin: e.pinyin.replace(YIGE_PINYIN, '') };
+}
+function inputWithoutYige(input: string): string | null {
+  if (input.includes('一个')) return input.replace('一个', '');
+  return YIGE_PINYIN.test(input) ? input.replace(YIGE_PINYIN, '') : null;
+}
+
 export function checkPinyinAnswer(input: string, expected: ExpectedPinyin, opts: CheckOptions = {}): PinyinCheck {
+  const strict = checkExact(input, expected, opts);
+  if (strict.verdict !== 'wrong') return strict;
+  // Leeway: 一个 left out, or added where the answer has none. Accepted, with the main answer shown.
+  const shorter = withoutYige(expected);
+  const variants: Array<[string, ExpectedPinyin]> = [];
+  if (shorter) variants.push([input, shorter]);
+  const trimmed = inputWithoutYige(input);
+  if (trimmed && trimmed.trim()) variants.push([trimmed, expected]);
+  for (const [inp, exp] of variants) {
+    const r = checkExact(inp, exp, opts);
+    if (r.verdict !== 'wrong') return { ...r, correction: strict.correction, otherAnswer: expected.hanzi };
+  }
+  return strict;
+}
+
+function checkExact(input: string, expected: ExpectedPinyin, opts: CheckOptions): PinyinCheck {
   const correction = displayPinyin(expected);
   const candidates = [expected, ...(opts.alternatives ?? [])];
 
