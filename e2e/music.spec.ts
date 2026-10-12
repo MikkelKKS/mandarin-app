@@ -46,7 +46,7 @@ async function mock(page: Page) {
     return r.fulfill({ json: { trackName: name, artistName: 'x', duration: 200, instrumental: false, plainLyrics: null, syncedLyrics: LYRICS } });
   });
   await page.addInitScript(() => {
-    localStorage.setItem('spotify:auth', JSON.stringify({ access: 'test', refresh: 'r', expiresAt: Date.now() + 3600e3 }));
+    localStorage.setItem('spotify:auth', JSON.stringify({ access: 'test', refresh: 'r', expiresAt: Date.now() + 3600e3, scope: 'user-read-private user-top-read playlist-read-private playlist-modify-private playlist-modify-public user-read-currently-playing' }));
   });
   return calls;
 }

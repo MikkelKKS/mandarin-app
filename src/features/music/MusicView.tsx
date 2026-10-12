@@ -118,6 +118,7 @@ export function MusicView() {
       if (!songs.length) setError('No songs with Chinese lyrics turned up this time. Try again, or pick other genres.');
     } catch (e) {
       setError(`Couldn't search Spotify: ${(e as Error).message}`);
+      setConnected(sp.isConnected());
     } finally {
       setProgress(null);
     }

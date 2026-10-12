@@ -7,7 +7,8 @@
 const AUTH = 'https://accounts.spotify.com/authorize';
 const TOKEN = 'https://accounts.spotify.com/api/token';
 const API = 'https://api.spotify.com/v1';
-const SCOPES = ['user-top-read', 'playlist-modify-private', 'playlist-modify-public', 'user-read-currently-playing'];
+// user-read-private is needed for market=from_token (songs playable in your country).
+const SCOPES = ['user-read-private', 'user-top-read', 'playlist-read-private', 'playlist-modify-private', 'playlist-modify-public', 'user-read-currently-playing'];
 
 const K_CLIENT = 'spotify:clientId';
 const K_AUTH = 'spotify:auth';
@@ -27,6 +28,7 @@ interface Auth {
   access: string;
   refresh: string;
   expiresAt: number;
+  scope?: string;
 }
 
 function get(key: string): string | null {
@@ -59,7 +61,13 @@ export function redirectUri(): string {
 
 function auth(): Auth | null {
   try {
-    return JSON.parse(get(K_AUTH) ?? 'null') as Auth | null;
+    const a = JSON.parse(get(K_AUTH) ?? 'null') as Auth | null;
+    // A login from an older version lacks scopes we now need: log in again.
+    if (a && !SCOPES.every((sc) => (a.scope ?? '').split(' ').includes(sc))) {
+      set(K_AUTH, null);
+      return null;
+    }
+    return a;
   } catch {
     return null;
   }
@@ -109,7 +117,13 @@ async function tokenRequest(body: Record<string, string>): Promise<Auth> {
   });
   const j = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(j.error_description || j.error || `Spotify login failed (${res.status})`);
-  const a: Auth = { access: j.access_token, refresh: j.refresh_token ?? auth()?.refresh ?? '', expiresAt: Date.now() + (j.expires_in - 60) * 1000 };
+  const prev = rawAuth();
+  const a: Auth = {
+    access: j.access_token,
+    refresh: j.refresh_token ?? prev?.refresh ?? '',
+    expiresAt: Date.now() + (j.expires_in - 60) * 1000,
+    scope: j.scope ?? prev?.scope ?? '',
+  };
   set(K_AUTH, JSON.stringify(a));
   return a;
 }
@@ -133,6 +147,14 @@ export async function finishLogin(): Promise<string | null> {
     return null;
   } catch (e) {
     return (e as Error).message;
+  }
+}
+
+function rawAuth(): Auth | null {
+  try {
+    return JSON.parse(get(K_AUTH) ?? 'null') as Auth | null;
+  } catch {
+    return null;
   }
 }
 
@@ -178,7 +200,10 @@ async function api<T>(path: string, init: RequestInit = {}, retry = true): Promi
   const j = await res.json().catch(() => null);
   if (!res.ok) {
     let msg = j?.error?.message || `Spotify error ${res.status}`;
-    if (/not registered|user may not be/i.test(msg)) msg = `${msg}. Add your Spotify account under User Management in the Spotify developer dashboard.`;
+    if (/insufficient client scope/i.test(msg)) {
+      disconnect();
+      msg = 'Spotify needs you to connect again (the app asks for one more permission). Tap Connect Spotify.';
+    } else if (/not registered|user may not be/i.test(msg)) msg = `${msg}. Add your Spotify account under User Management in the Spotify developer dashboard.`;
     throw new SpotifyError(msg, res.status);
   }
   return j as T;
