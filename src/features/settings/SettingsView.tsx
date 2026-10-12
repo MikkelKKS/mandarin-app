@@ -185,6 +185,10 @@ export function SettingsView() {
           </button>
         </Row>
       </section>
+      <p className="mt-4 text-center text-xs text-muted">
+        Version from{' '}
+        {new Date(__BUILD_TIME__).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+      </p>
     </div>
   );
 }

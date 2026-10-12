@@ -10,6 +10,7 @@ const base = process.env.BASE_PATH ?? '/mandarin-app/';
 
 export default defineConfig({
   base,
+  define: { __BUILD_TIME__: JSON.stringify(new Date().toISOString()) },
   plugins: [
     react(),
     citationTones(import.meta.dirname),
