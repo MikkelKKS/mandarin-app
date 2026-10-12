@@ -39,6 +39,10 @@ export function urlFor(id: string, voice: Voice, slow: boolean): string {
   return `${BASE}${audioPath(id, voice, slowFile)}?v=${textVersion(id)}${slowFile ? `s${SLOW_VERSION}` : ''}`;
 }
 
+/** Extra slow-down for the turtle button (the slow recordings are already 25% slower). */
+const SLOW_SENTENCE_RATE = 0.8;
+const SLOW_WORD_RATE = 0.65;
+
 /** Recordings that turned out not to exist (this session), so they aren't tried again. */
 const missing = new Set<string>();
 
@@ -78,13 +82,14 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
     const url = urlFor(id, v, slowFile);
     if (!missing.has(url) && !tries.some((t) => t.url === url)) tries.push({ url, rate });
   };
-  // Words have no separate slow file: slow them down instead (pitch preserved).
-  const wordRate = slow && !isSentence ? 0.8 : 1;
-  add(voice, slow, wordRate);
-  add(other, slow, wordRate);
+  // Turtle speed: sentences use their slow recording, slowed a bit more; words have no slow
+  // recording, so they're slowed down further. Pitch is preserved either way.
+  const rate = !slow ? 1 : isSentence ? SLOW_SENTENCE_RATE : SLOW_WORD_RATE;
+  add(voice, slow, rate);
+  add(other, slow, rate);
   if (slow && isSentence) {
-    add(voice, false, 0.8);
-    add(other, false, 0.8);
+    add(voice, false, SLOW_WORD_RATE);
+    add(other, false, SLOW_WORD_RATE);
   }
   return new Promise<void>((resolve) => {
     currentResolve = resolve;
