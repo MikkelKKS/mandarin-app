@@ -29,6 +29,9 @@ export interface ExpectedPinyin {
 export interface SyllableFeedback {
   expected: string; // marked syllable, e.g. "hǎo"
   status: 'ok' | 'missing' | 'wrong-tone';
+  /** Expected tone (1 to 5) and the tone typed (null if none), for tone statistics. */
+  tone?: number;
+  given?: number | null;
 }
 
 export interface PinyinCheck {
@@ -128,7 +131,7 @@ function checkOne(letters: Letter[], exp: ExpectedPinyin, strict: boolean): Piny
     else status = s.accepted.has(t) ? 'ok' : 'wrong-tone';
     if (status === 'missing') missing++;
     if (status === 'wrong-tone') wrong++;
-    syllables.push({ expected: markSyllable(s), status });
+    syllables.push({ expected: markSyllable(s), status, tone: s.tone, given: status === 'ok' ? s.tone : t === 'conflict' ? null : t });
   }
   if (wrong > 0) return { verdict: 'wrong', reason: 'wrong-tones', syllables, correction };
   if (missing > 0) {

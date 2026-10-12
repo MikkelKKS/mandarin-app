@@ -19,12 +19,16 @@ export function checkTyped(
       return { verdict: 'almost', answer, note: 'Almost! Remember the tones:' };
     default: {
       let note: string | undefined;
+      let tones: Outcome['tones'];
       if (r.reason === 'missing-tones') note = 'Strict tones are on, so tones are required.';
       else if (r.reason === 'wrong-tones') {
         const bad = r.syllables?.filter((s) => s.status === 'wrong-tone').map((s) => s.expected);
         note = bad?.length ? `Check the tone on ${bad.join(', ')}.` : 'Check the tones.';
+        // Log which tones were confused, for the Progress page (0 = no tone typed).
+        const syl = r.syllables ?? [];
+        tones = { expected: syl.map((x) => x.tone ?? 0).join('-'), given: syl.map((x) => x.given ?? 0).join('-') };
       }
-      return { verdict: 'wrong', answer, note };
+      return { verdict: 'wrong', answer, note, tones };
     }
   }
 }

@@ -76,3 +76,15 @@ export const MicOff = ({ className }: P) => (
     <path d="M3 3l18 18M9 9v2a3 3 0 0 0 5.1 2.1M15 9.3V6a3 3 0 0 0-5.7-1.3M19 11a7 7 0 0 1-1.2 3.9M5 11a7 7 0 0 0 10.6 6M12 18v3" />
   </svg>
 );
+export const Chart = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+  </svg>
+);
+export const Music = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="M9 18V5l12-2v13" />
+    <circle cx="6" cy="18" r="3" />
+    <circle cx="18" cy="16" r="3" />
+  </svg>
+);

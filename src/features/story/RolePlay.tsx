@@ -133,7 +133,7 @@ function Run({
     const pass = isPass(o.verdict);
     if (!firstTry.current.has(at)) {
       firstTry.current.set(at, pass);
-      void recordAnswer(s.id, o.verdict, { exercise: 'roleplay', nodeId });
+      void recordAnswer(s.id, o.verdict, { exercise: 'roleplay', nodeId, tones: o.tones });
     }
     if (pass) sfx.correct();
     else sfx.wrong();

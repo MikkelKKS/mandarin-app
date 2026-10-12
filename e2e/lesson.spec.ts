@@ -66,6 +66,12 @@ test('complete the first lesson and see it on the path', async ({ page }) => {
   await expect(page.getByRole('button', { name: /Hello & how are you, level 1 of 5/ })).toBeVisible();
   // The next skill is now open.
   await expect(page.getByRole('button', { name: /Thanks & sorry, level 0 of 5/ })).toBeVisible();
+
+  // The Progress page reflects the lesson.
+  await page.goto('./#/progress');
+  await expect(page.getByRole('heading', { name: 'Progress' })).toBeVisible();
+  await expect(page.getByText('Working on')).toBeVisible();
+  await expect(page.getByText(/reviews? due now/)).toBeVisible();
 });
 
 test('keyboard only: Enter continues through intro cards', async ({ page }) => {
