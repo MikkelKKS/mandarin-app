@@ -194,3 +194,14 @@ test('read a story and look up a word', async ({ page }) => {
   await page.getByRole('button', { name: 'Show the translation' }).click();
   await expect(page.getByText(/I live in Copenhagen/)).toBeVisible();
 });
+
+test('browse all HSK words grouped by what you know', async ({ page }) => {
+  await page.goto('./#/progress');
+  await page.getByRole('button', { name: 'See all HSK words' }).click();
+  await expect(page.getByRole('heading', { name: 'HSK words' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Not learned yet' })).toBeVisible();
+  await page.getByRole('tab', { name: 'HSK 2' }).click();
+  await page.getByRole('tab', { name: 'HSK 1' }).click();
+  await page.getByRole('button', { name: /^爱 / }).click();
+  await expect(page.getByRole('dialog', { name: '爱' })).toBeVisible();
+});

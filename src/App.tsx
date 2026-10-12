@@ -2,6 +2,7 @@ import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
 import { Book, Chart, Cog, Gamepad, Path, Refresh, OpenBook } from './components/icons';
 import { ProgressView } from './features/progress/ProgressView';
+import { WordsView } from './features/progress/WordsView';
 import { MusicRoute } from './features/music/MusicView';
 import { ReadRoute } from './features/read/ReadView';
 import { DictionaryView } from './features/dictionary/DictionaryView';
@@ -64,7 +65,7 @@ export default function App() {
       body = <MusicRoute route={route} />;
       break;
     case 'progress':
-      body = <ProgressView />;
+      body = route[1] === 'words' ? <WordsView /> : <ProgressView />;
       break;
     case 'dictionary':
       body = <DictionaryView />;

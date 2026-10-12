@@ -179,7 +179,8 @@ function StoryReader({ id }: { id: string }) {
       </button>
 
       {picked && (
-        <WordPopover text={picked.text} entry={picked.entry} gloss={picked.gloss} audioId={picked.audioId} anchor={picked.anchor} onClose={() => setPicked(null)} />
+        <WordPopover text={picked.text} entry={picked.entry} gloss={picked.gloss} audioId={picked.audioId}
+          canAdd={!picked.audioId} anchor={picked.anchor} onClose={() => setPicked(null)} />
       )}
     </div>
   );

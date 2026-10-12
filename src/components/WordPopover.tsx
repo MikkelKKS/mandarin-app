@@ -14,6 +14,7 @@ export function WordPopover({
   known = false,
   gloss,
   audioId,
+  canAdd = true,
   anchor,
   onClose,
 }: {
@@ -24,6 +25,8 @@ export function WordPopover({
   gloss?: { pinyin: string; english: string };
   /** A recording to play instead of the browser voice. */
   audioId?: string;
+  /** Offer "Add to my practice" (not for words the course already teaches). */
+  canAdd?: boolean;
   anchor: DOMRect;
   onClose: () => void;
 }) {
@@ -85,7 +88,7 @@ export function WordPopover({
       <p className="mt-1 text-sm leading-relaxed">{e ? e.defs.slice(0, 4).join('; ') : gloss ? gloss.english : 'Not in the dictionary.'}</p>
       {known && <p className="mt-1 text-xs text-jade">You know this one.</p>}
       <div className="mt-3 flex flex-wrap gap-2 text-sm">
-        {e && (
+        {e && canAdd && (
           <button
             disabled={added || busy}
             onClick={async () => {
