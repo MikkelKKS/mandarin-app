@@ -65,8 +65,8 @@ function Section({ title, children, note }: { title: string; note?: string; chil
 function Level({ s }: { s: Stats }) {
   const done = s.level > 3;
   return (
-    <div className="mt-5 flex items-center gap-5 rounded-3xl bg-jade p-5 text-jade-ink">
-      <span className="han text-5xl font-bold leading-none" aria-hidden>
+    <div className="relative mt-5 flex items-center gap-5 overflow-hidden rounded-3xl bg-jade p-5 text-jade-ink">
+      <span className="han anim-pop shrink-0 whitespace-nowrap text-5xl font-bold leading-none" aria-hidden>
         {LEVEL_HANZI[s.level]}
       </span>
       <div>
@@ -95,9 +95,11 @@ function Coverage({ s }: { s: Stats }) {
                   {c.known} of {c.total} known
                 </span>
               </div>
-              <div className="flex h-3 overflow-hidden rounded-full bg-sunk" role="img" aria-label={`HSK ${c.level}: ${c.known} known, ${c.learning} settling in, of ${c.total}`}>
-                <span className="h-full bg-jade" style={{ width: `${k}%` }} />
-                <span className="h-full bg-gold/60" style={{ width: `${l}%` }} />
+              <div className="h-3 overflow-hidden rounded-full bg-sunk" role="img" aria-label={`HSK ${c.level}: ${c.known} known, ${c.learning} settling in, of ${c.total}`}>
+                <div className="anim-grow-x flex h-full w-full" style={{ animationDelay: `${150 + c.level * 90}ms` }}>
+                  <span className="h-full bg-jade" style={{ width: `${k}%` }} />
+                  <span className="h-full bg-gold/60" style={{ width: `${l}%` }} />
+                </div>
               </div>
             </li>
           );
@@ -131,7 +133,7 @@ function Reviews({ s }: { s: Stats }) {
           <p className="text-3xl font-bold tabular-nums">{s.dueNow}</p>
           <p className="text-sm text-muted">{s.dueNow === 1 ? 'review due now' : 'reviews due now'}</p>
         </div>
-        <button onClick={() => go('practice')} className="h-12 rounded-2xl bg-jade px-5 font-semibold text-jade-ink">
+        <button onClick={() => go('practice')} className="press h-12 rounded-2xl bg-jade px-5 font-semibold text-jade-ink">
           Practise
         </button>
       </div>
@@ -140,7 +142,10 @@ function Reviews({ s }: { s: Stats }) {
           <div key={i} className="flex flex-col items-center gap-1">
             <span className="text-xs tabular-nums text-muted">{n || ''}</span>
             <div className="flex h-20 w-full items-end">
-              <span className={`w-full rounded-t-md ${i === 0 ? 'bg-jade' : 'bg-jade/40'}`} style={{ height: `${Math.max(n ? 6 : 2, (n / max) * 100)}%` }} />
+              <span
+                className={`anim-grow-y w-full rounded-t-md ${i === 0 ? 'bg-jade' : 'bg-jade/40'}`}
+                style={{ height: `${Math.max(n ? 6 : 2, (n / max) * 100)}%`, animationDelay: `${i * 50}ms` }}
+              />
             </div>
             <span className="text-xs text-muted">{dayLabel(i)}</span>
           </div>
@@ -162,7 +167,7 @@ function Tones({ s }: { s: Stats }) {
               <span className={`text-xs font-semibold ${TONE_TEXT[t.tone]}`}>{TONE_NAME[t.tone]}</span>
               <span className="mt-1 text-xl font-bold tabular-nums">{pct === null ? '–' : `${pct}%`}</span>
               <span className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-sunk">
-                <span className={`block h-full ${TONE_BG[t.tone]}`} style={{ width: `${pct ?? 0}%` }} />
+                <span className={`anim-grow-x block h-full ${TONE_BG[t.tone]}`} style={{ width: `${pct ?? 0}%`, animationDelay: `${t.tone * 70}ms` }} />
               </span>
               <span className="mt-1 text-[11px] tabular-nums text-muted">{t.attempts ? `of ${t.attempts}` : ' '}</span>
             </div>
@@ -223,7 +228,12 @@ function Activity({ s }: { s: Stats }) {
     <Section title="Last two weeks" note={`${total} answers in 14 days.`}>
       <div className="flex h-16 items-end gap-1" role="img" aria-label={`Answers per day over the last 14 days: ${s.activity.join(', ')}`}>
         {s.activity.map((n, i) => (
-          <span key={i} title={`${n} answers`} className={`flex-1 rounded-t-sm ${i === 13 ? 'bg-jade' : 'bg-jade/40'}`} style={{ height: `${n ? Math.max(8, (n / max) * 100) : 3}%` }} />
+          <span
+            key={i}
+            title={`${n} answers`}
+            className={`anim-grow-y flex-1 rounded-t-sm ${i === 13 ? 'bg-jade' : 'bg-jade/40'}`}
+            style={{ height: `${n ? Math.max(8, (n / max) * 100) : 3}%`, animationDelay: `${i * 30}ms` }}
+          />
         ))}
       </div>
       <div className="mt-1 flex justify-between text-xs text-muted">
@@ -242,7 +252,7 @@ function Units({ s }: { s: Stats }) {
   const shown = all ? s.units : [...started, ...(next ? [next] : [])];
   return (
     <Section title="Units" note={`${s.units.filter((u) => u.done === u.total).length} of ${s.units.length} complete.`}>
-      <ul className="flex flex-col gap-2">
+      <ul className="stagger flex flex-col gap-2">
         {shown.map((u) => (
           <li key={u.id} className="flex items-center gap-3 rounded-2xl bg-surface px-4 py-3">
             <span className="han w-24 shrink-0 truncate font-semibold" lang="zh-CN">
@@ -251,7 +261,7 @@ function Units({ s }: { s: Stats }) {
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm">{u.title}</p>
               <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-sunk">
-                <span className="block h-full bg-gold" style={{ width: `${(u.mastery / (u.total * 5)) * 100}%` }} />
+                <span className="anim-grow-x block h-full bg-gold" style={{ width: `${(u.mastery / (u.total * 5)) * 100}%` }} />
               </div>
             </div>
             <span className="text-xs tabular-nums text-muted">

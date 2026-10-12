@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { course, grammar, nodes, units, words } from '../../content';
 import type { Unit } from '../../content/schema';
 import { ToneText } from '../../components/Hanzi';
@@ -41,14 +41,14 @@ export function PathView() {
       <InstallBanner />
       <button
         onClick={() => go('practice')}
-        className="mb-8 flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left transition hover:border-jade"
+        className="group mb-8 flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left transition hover:border-jade active:scale-[0.99]"
       >
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-jade-soft text-jade">
-          <Refresh className="h-6 w-6" />
+          <Refresh className="h-6 w-6 transition-transform duration-500 [transition-timing-function:var(--ease-out)] group-hover:-rotate-180" />
         </span>
         <span className="flex-1">
           <span className="block font-semibold">Practice</span>
-          <span className="block text-sm text-muted">{due > 0 ? `${due} item${due === 1 ? '' : 's'} due for review` : 'Reviews and recent mistakes'}</span>
+          <span className={`block text-sm ${due > 0 ? 'font-medium text-jade' : 'text-muted'}`}>{due > 0 ? `${due} item${due === 1 ? '' : 's'} due for review` : 'Reviews and recent mistakes'}</span>
         </span>
       </button>
 
@@ -104,17 +104,37 @@ function UnitBlock({ unit, states, next, onNode }: { unit: Unit; states: Map<str
           )}
         </div>
       </div>
-      <ol className="mt-6 flex flex-col items-center gap-5">
+      <ol className="mt-6 flex flex-col items-center gap-8">
         {unit.nodes.map((n, i) => {
           const st = states.get(n.id)!;
+          const x = OFFSETS[i % OFFSETS.length];
+          const prev = i > 0 ? OFFSETS[(i - 1) % OFFSETS.length] : null;
           return (
-            <li key={n.id} id={`node-${n.id}`} style={{ transform: `translateX(${OFFSETS[i % OFFSETS.length]}px)` }}>
-              <NodeCoin nodeId={n.id} state={st} isNext={n.id === next} onClick={() => onNode(n.id)} />
+            <li key={n.id} id={`node-${n.id}`} className="relative" style={{ transform: `translateX(${x}px)` }}>
+              {prev !== null && <Trail dx={prev - x} lit={st.status !== 'locked'} />}
+              <div className="anim-node" style={{ animationDelay: `${Math.min(i, 8) * 45}ms` }}>
+                <NodeCoin nodeId={n.id} state={st} isNext={n.id === next} onClick={() => onNode(n.id)} />
+              </div>
             </li>
           );
         })}
       </ol>
     </div>
+  );
+}
+
+/** Three stepping-stone dots from the previous node down to this one. */
+function Trail({ dx, lit }: { dx: number; lit: boolean }) {
+  return (
+    <span aria-hidden className="pointer-events-none absolute inset-x-0 -top-8 h-8">
+      {[0.2, 0.5, 0.8].map((t) => (
+        <span
+          key={t}
+          className={`absolute h-1.5 w-1.5 rounded-full transition-colors duration-500 ${lit ? 'bg-jade' : 'bg-line'}`}
+          style={{ left: `calc(50% + ${dx * (1 - t)}px - 3px)`, top: `${t * 32 - 3}px` }}
+        />
+      ))}
+    </span>
   );
 }
 
@@ -149,9 +169,25 @@ function NodeCoin({ nodeId, state, isNext, onClick }: { nodeId: string; state: N
       <span className="relative flex h-24 w-24 items-center justify-center">
         <svg className="absolute inset-0 -rotate-90" viewBox="0 0 100 100" aria-hidden>
           <circle cx="50" cy="50" r={r} fill="none" stroke="var(--line)" strokeWidth="6" />
-          {frac > 0 && <circle cx="50" cy="50" r={r} fill="none" stroke="var(--gold)" strokeWidth="6" strokeLinecap="round" strokeDasharray={`${c * frac} ${c}`} />}
+          {frac > 0 && (
+            <circle
+              className="anim-ring transition-[stroke-dashoffset] duration-700"
+              cx="50"
+              cy="50"
+              r={r}
+              fill="none"
+              stroke="var(--gold)"
+              strokeWidth="6"
+              strokeLinecap="round"
+              strokeDasharray={c}
+              strokeDashoffset={c * (1 - frac)}
+              style={{ '--ring-c': `${c}px` } as CSSProperties}
+            />
+          )}
         </svg>
-        <span className={`flex h-[72px] w-[72px] items-center justify-center rounded-full transition group-active:scale-95 ${fill} ${isNext ? 'anim-breathe' : ''}`}>
+        <span
+          className={`flex h-[72px] w-[72px] items-center justify-center rounded-full transition duration-200 group-active:scale-90 ${state.status === 'locked' ? '' : 'shadow-[inset_0_-4px_0_rgb(0_0_0/0.12)] group-hover:-translate-y-0.5'} ${fill} ${isNext ? 'anim-breathe' : ''}`}
+        >
           {state.status === 'locked' ? (
             <Lock className="h-7 w-7" />
           ) : story ? (
@@ -179,7 +215,7 @@ function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeStat
     return () => window.removeEventListener('keydown', h);
   }, [onClose]);
   return (
-    <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/30 sm:items-center" onClick={onClose}>
+    <div className="anim-fade fixed inset-0 z-40 flex items-end justify-center bg-black/30 backdrop-blur-[2px] sm:items-center" onClick={onClose}>
       <div role="dialog" aria-label={n.title} className="anim-rise max-h-[85dvh] w-full max-w-md overflow-y-auto rounded-t-3xl bg-surface p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:rounded-3xl" onClick={(e) => e.stopPropagation()}>
         <h2 className="text-xl font-bold">{n.title}</h2>
         <p className="mt-1 text-sm text-muted">
@@ -203,7 +239,7 @@ function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeStat
         ) : null}
 
         {tips && (
-          <div className="mt-5 flex flex-col gap-4">
+          <div className="stagger mt-5 flex flex-col gap-4">
             {notes.map((g) => (
               <article key={g.id} className="rounded-2xl bg-sunk p-4">
                 <h3 className="font-semibold">{g.title}</h3>
@@ -219,7 +255,7 @@ function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeStat
 
         <div className="mt-6 flex flex-col gap-3">
           {!locked && (
-            <button autoFocus onClick={() => go(`lesson/${nodeId}`)} className="h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
+            <button autoFocus onClick={() => go(`lesson/${nodeId}`)} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
               {state.mastery === 0 ? 'Start' : state.mastery >= MAX_MASTERY ? 'Play again' : 'Level up'}
             </button>
           )}
@@ -229,7 +265,7 @@ function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeStat
             </button>
           )}
           {locked && (
-            <button onClick={() => go(`testout/${nodes.get(nodeId)!.unit}`)} className="h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
+            <button onClick={() => go(`testout/${nodes.get(nodeId)!.unit}`)} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
               Take the test-out
             </button>
           )}

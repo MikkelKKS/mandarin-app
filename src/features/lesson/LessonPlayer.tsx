@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
-import { Close, Headphones, MicOff, Speaker } from '../../components/icons';
+import { Check, Close, Headphones, MicOff, Speaker } from '../../components/icons';
 import { preload, play, stop } from '../../lib/audio';
 import { isPass, type Verdict } from '../../lib/pinyinAnswer';
 import { setQuietUntil, setSpeakPausedUntil, useQuietUntil } from '../../lib/settings';
@@ -215,7 +215,12 @@ export function LessonPlayer({
             <Close className="h-6 w-6" />
           </button>
           <div className="h-3 flex-1 overflow-hidden rounded-full bg-sunk" role="progressbar" aria-label={title} aria-valuenow={Math.round(progress * 100)} aria-valuemin={0} aria-valuemax={100}>
-            <div className="h-full rounded-full bg-jade transition-all duration-500" style={{ width: `${Math.max(4, progress * 100)}%` }} />
+            <div
+              className="relative h-full rounded-full bg-jade transition-[width] duration-700 [transition-timing-function:var(--ease-spring)]"
+              style={{ width: `${Math.max(4, progress * 100)}%` }}
+            >
+              <span aria-hidden className="absolute inset-x-1.5 top-[3px] h-[3px] rounded-full bg-white/30" />
+            </div>
           </div>
           {hasSpeaking && (
             <button onClick={noSpeaking} title="Can't speak now (1 hour)" aria-label="Can't speak now: skip speaking exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
@@ -229,7 +234,7 @@ export function LessonPlayer({
           )}
         </header>
 
-        <main className="flex-1 px-4 pb-48 pt-4" key={current.ex.key}>
+        <main className="anim-slide flex-1 px-4 pb-48 pt-4" key={current.ex.key}>
           {current.retry > 0 && !outcome && <p className="mb-3 text-sm font-medium text-gold">Another go at one you missed</p>}
           <ExerciseView ex={current.ex} />
         </main>
@@ -241,7 +246,7 @@ export function LessonPlayer({
                 <button
                   onClick={doCheck}
                   disabled={!canCheck}
-                  className="h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink shadow-sm transition active:scale-[0.99] disabled:bg-sunk disabled:text-muted disabled:shadow-none"
+                  className="press h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted"
                 >
                   {isIntro ? 'Continue' : 'Check'}
                 </button>
@@ -255,11 +260,11 @@ export function LessonPlayer({
   );
 }
 
-const TONE: Record<Verdict, { title: string; cls: string; btn: string }> = {
-  correct: { title: 'Correct!', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink' },
-  typo: { title: 'Correct, but mind the typo', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink' },
-  almost: { title: 'Almost!', cls: 'bg-amber-soft', btn: 'bg-gold text-white dark:text-black' },
-  wrong: { title: 'Not quite', cls: 'bg-cinnabar-soft', btn: 'bg-cinnabar text-white dark:text-black' },
+const TONE: Record<Verdict, { title: string; cls: string; btn: string; badge: string }> = {
+  correct: { title: 'Correct!', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink', badge: 'bg-jade text-jade-ink' },
+  typo: { title: 'Correct, but mind the typo', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink', badge: 'bg-jade text-jade-ink' },
+  almost: { title: 'Almost!', cls: 'bg-amber-soft', btn: 'bg-gold text-white dark:text-black', badge: 'bg-gold text-white dark:text-black' },
+  wrong: { title: 'Not quite', cls: 'bg-cinnabar-soft', btn: 'bg-cinnabar text-white dark:text-black', badge: 'bg-cinnabar text-white dark:text-black' },
 };
 
 function Feedback({ outcome, ex, onContinue }: { outcome: Outcome; ex: Exercise; onContinue: () => void }) {
@@ -271,9 +276,14 @@ function Feedback({ outcome, ex, onContinue }: { outcome: Outcome; ex: Exercise;
   const voice = isReply && ex.voice ? (ex.voice === 'f' ? 'm' : 'f') : ex.voice;
   const showAnswer = a && (outcome.verdict !== 'correct' || a.hanzi);
   return (
-    <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 ${t.cls} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5`}>
+    <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${t.cls} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)]`}>
       <div className="mx-auto max-w-xl">
-        <p className="text-xl font-bold">{t.title}</p>
+        <p className="flex items-center gap-2.5 text-xl font-bold">
+          <span aria-hidden className={`anim-pop flex h-8 w-8 shrink-0 items-center justify-center rounded-full [animation-delay:120ms] ${t.badge}`}>
+            {outcome.verdict === 'wrong' ? <Close className="h-5 w-5" /> : <Check className="h-5 w-5" />}
+          </span>
+          {t.title}
+        </p>
         {outcome.note && <p className="mt-1 text-sm">{outcome.note}</p>}
         {showAnswer && (
           <div className="mt-3 flex items-start gap-3">
@@ -284,13 +294,13 @@ function Feedback({ outcome, ex, onContinue }: { outcome: Outcome; ex: Exercise;
               {a.text && <p>{a.text}</p>}
             </div>
             {audioId && (
-              <button onClick={() => play(audioId, { voice })} aria-label="Play again" className="rounded-full bg-surface/70 p-3">
+              <button onClick={() => play(audioId, { voice })} aria-label="Play again" className="rounded-full bg-surface/70 p-3 transition active:scale-90">
                 <Speaker className="h-6 w-6" />
               </button>
             )}
           </div>
         )}
-        <button autoFocus onClick={onContinue} className={`mt-4 h-14 w-full rounded-2xl text-lg font-semibold ${t.btn}`}>
+        <button autoFocus onClick={onContinue} className={`press mt-4 h-14 w-full rounded-2xl text-lg font-semibold ${t.btn}`}>
           {outcome.verdict === 'wrong' ? 'Got it' : 'Continue'}
         </button>
       </div>

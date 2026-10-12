@@ -246,7 +246,7 @@ export function MusicView() {
                   Open the playlist in Spotify
                 </a>
               )}
-              <ul className="mt-4 flex flex-col gap-2">
+              <ul className="stagger mt-4 flex flex-col gap-2">
                 {results.songs.map((s) => (
                   <SongRow key={s.track.id} s={s} />
                 ))}
@@ -280,7 +280,7 @@ function SongRow({ s }: { s: ScoredSong }) {
   const b = BAND[s.score.band];
   return (
     <li>
-      <button onClick={() => go(`music/song/${s.track.id}`)} className="flex w-full items-center gap-3 rounded-2xl bg-surface p-3 text-left hover:bg-sunk">
+      <button onClick={() => go(`music/song/${s.track.id}`)} className="flex w-full items-center gap-3 rounded-2xl bg-surface p-3 text-left transition duration-150 hover:bg-sunk active:scale-[0.99]">
         {s.track.image ? <img src={s.track.image} alt="" className="h-12 w-12 shrink-0 rounded-lg object-cover" loading="lazy" /> : <span className="h-12 w-12 shrink-0 rounded-lg bg-sunk" />}
         <span className="min-w-0 flex-1">
           <span className="han block truncate font-semibold">{s.track.name}</span>
@@ -420,32 +420,79 @@ function Summary({ score, reader, onWord }: { score: SongScore; reader: ReturnTy
   );
 }
 
-function LyricLine({ text, reader, showPy, onWord, big = false }: { text: string; reader: { dict: Dict; t2s: Record<string, string>; k: Knowledge }; showPy: boolean; onWord: (t: LyricToken) => void; big?: boolean }) {
+/** Context-aware pinyin for whole lyric lines (pinyin-pro, loaded only when lyrics are shown). */
+type PinyinFn = (text: string) => string[];
+let pinyinFn: Promise<PinyinFn> | null = null;
+function usePinyinFn(): PinyinFn | null {
+  const [fn, setFn] = useState<PinyinFn | null>(null);
+  useEffect(() => {
+    pinyinFn ??= import('pinyin-pro').then((m) => (text: string) => m.pinyin(text, { type: 'array', nonZh: 'removed' }));
+    let live = true;
+    void pinyinFn.then((f) => live && setFn(() => f));
+    return () => {
+      live = false;
+    };
+  }, []);
+  return fn;
+}
+
+function LyricLine({
+  text,
+  reader,
+  showPy,
+  onWord,
+  big = false,
+  alwaysPy = false,
+  progress,
+}: {
+  text: string;
+  reader: { dict: Dict; t2s: Record<string, string>; k: Knowledge };
+  showPy: boolean;
+  onWord: (t: LyricToken) => void;
+  big?: boolean;
+  /** Ignore the "hover" setting: always show pinyin. */
+  alwaysPy?: boolean;
+  /** 0 to 1: how far through this line the song is (lights words up as they're sung). */
+  progress?: number;
+}) {
   const settings = useSettings();
+  const py = usePinyinFn();
   const tokens = useMemo(() => tokenize(text, reader.dict, reader.t2s, reader.k), [text, reader]);
-  const hover = settings.pinyinDisplay === 'hover';
+  // Pinyin per character for the whole line, so words like 了 and 的 get the right reading in context.
+  const syllables = useMemo(() => (py ? py(tokens.map((t) => t.text).join('')) : null), [py, tokens]);
+  const hover = settings.pinyinDisplay === 'hover' && !alwaysPy;
+  const hanCount = tokens.reduce((n, t) => n + (t.status === 'other' ? 0 : [...t.text].length), 0);
+  const sung = progress === undefined ? -1 : Math.floor(progress * hanCount + 0.5);
+  let offset = 0;
   return (
     <p className={`han flex flex-wrap items-end gap-x-0.5 ${big ? 'text-3xl' : 'text-xl'}`} lang="zh-CN">
-      {tokens.map((t, i) =>
-        t.status === 'other' ? (
-          <span key={i} className="self-end">
-            {t.text}
-          </span>
-        ) : (
+      {tokens.map((t, i) => {
+        if (t.status === 'other')
+          return (
+            <span key={i} className="self-end">
+              {t.text}
+            </span>
+          );
+        const len = [...t.text].length;
+        const start = offset;
+        offset += len;
+        const reading = syllables ? syllables.slice(start, start + len).join('') : t.entry?.pinyin.replace(/ /g, '') ?? '';
+        const lit = sung >= 0 && start < sung;
+        return (
           <button
             key={i}
             onClick={() => onWord(t)}
-            className={`group inline-flex flex-col items-center rounded px-0.5 leading-none ${t.status === 'hard' ? 'bg-cinnabar-soft/70' : ''} hover:bg-sunk`}
+            className={`group inline-flex flex-col items-center rounded px-0.5 leading-none transition-colors duration-300 ${t.status === 'hard' ? 'bg-cinnabar-soft/70' : ''} hover:bg-sunk`}
           >
             {showPy && (
-              <span className={`mb-1 font-sans text-[0.45em] leading-none text-muted ${hover ? 'invisible group-hover:visible' : ''}`}>
-                {t.entry?.pinyin.replace(/ /g, '') ?? ' '}
+              <span className={`mb-1 font-sans text-[0.45em] leading-none transition-colors duration-300 ${lit ? 'text-jade' : 'text-muted'} ${hover ? 'invisible group-hover:visible' : ''}`}>
+                {reading || ' '}
               </span>
             )}
-            <span className={t.status === 'level' ? 'border-b-2 border-dotted border-jade' : ''}>{t.text}</span>
+            <span className={`${t.status === 'level' ? 'border-b-2 border-dotted border-jade' : ''} ${lit ? 'text-jade' : ''}`}>{t.text}</span>
           </button>
-        ),
-      )}
+        );
+      })}
     </p>
   );
 }
@@ -468,7 +515,7 @@ function WordSheet({ token, onClose }: { token: LyricToken; onClose: () => void 
     speechSynthesis.speak(u);
   };
   return (
-    <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/30 sm:items-center" onClick={onClose}>
+    <div className="anim-fade fixed inset-0 z-40 flex items-end justify-center bg-black/30 backdrop-blur-[2px] sm:items-center" onClick={onClose}>
       <div role="dialog" aria-label={token.text} className="anim-rise w-full max-w-md rounded-t-3xl bg-surface p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:rounded-3xl" onClick={(ev) => ev.stopPropagation()}>
         <div className="flex items-start gap-3">
           <div className="min-w-0 flex-1">
@@ -556,6 +603,14 @@ function NowPlaying() {
   const synced = lyrics && lyrics !== 'none' && lyrics.synced;
   let idx = -1;
   if (synced) for (let i = 0; i < lines.length; i++) if ((lines[i].t ?? 0) <= position + 300) idx = i;
+  // Lyrics are timed per line, not per word: spread the line's words evenly until the next line starts.
+  let lineProgress = 0;
+  if (idx >= 0) {
+    const start = lines[idx].t ?? 0;
+    const nextT = lines.slice(idx + 1).find((l) => l.t !== null && l.t > start)?.t ?? start + 4000;
+    const span = Math.min(nextT - start, 8000) * 0.85; // singing usually ends a little before the next line
+    lineProgress = Math.max(0, Math.min(1, (position - start) / span));
+  }
   void tick;
 
   useEffect(() => {
@@ -592,7 +647,7 @@ function NowPlaying() {
               {lines.map((l, i) =>
                 l.text ? (
                   <div key={i} ref={i === idx ? current : undefined} className={`transition ${!synced || i === idx ? '' : 'opacity-40'}`}>
-                    <LyricLine text={l.text} reader={reader} showPy onWord={setWord} big={i === idx} />
+                    <LyricLine text={l.text} reader={reader} showPy alwaysPy onWord={setWord} big={i === idx} progress={i === idx ? lineProgress : undefined} />
                   </div>
                 ) : null,
               )}

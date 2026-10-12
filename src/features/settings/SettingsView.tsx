@@ -7,15 +7,24 @@ import { BackupSection, SyncSection } from './Account';
 import { PacksSection } from '../packs/PacksSection';
 
 function Segmented<T extends string>({ value, options, onChange, label }: { value: T; options: Array<{ v: T; label: string }>; onChange: (v: T) => void; label: string }) {
+  const idx = options.findIndex((o) => o.v === value);
+  const n = options.length;
   return (
-    <div role="radiogroup" aria-label={label} className="flex rounded-xl bg-sunk p-1">
+    <div role="radiogroup" aria-label={label} className="relative flex rounded-xl bg-sunk p-1">
+      {idx >= 0 && (
+        <span
+          aria-hidden
+          className="absolute inset-y-1 rounded-lg bg-surface shadow-sm transition-[left] duration-300 [transition-timing-function:var(--ease-out)]"
+          style={{ left: `calc(4px + ${idx} * (100% - 8px) / ${n})`, width: `calc((100% - 8px) / ${n})` }}
+        />
+      )}
       {options.map((o) => (
         <button
           key={o.v}
           role="radio"
           aria-checked={value === o.v}
           onClick={() => onChange(o.v)}
-          className={`flex-1 rounded-lg px-2 py-2 text-sm font-medium transition ${value === o.v ? 'bg-surface text-ink shadow-sm' : 'text-muted'}`}
+          className={`relative flex-1 rounded-lg px-2 py-2 text-sm font-medium transition-colors duration-200 ${value === o.v ? 'text-ink' : 'text-muted hover:text-ink'}`}
         >
           {o.label}
         </button>

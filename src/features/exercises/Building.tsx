@@ -120,7 +120,7 @@ function TileBoard({ tiles, chosen, setChosen }: { tiles: string[]; chosen: numb
       <div ref={answerRef} className="mb-6 flex min-h-16 flex-wrap content-start gap-2 border-b-2 border-line pb-3" aria-label="Your answer">
         {answer.map((a) =>
           a === 'gap' ? (
-            <span key="gap" className="min-h-12 w-12 rounded-xl border-2 border-dashed border-jade bg-jade-soft" aria-hidden />
+            <span key="gap" className="anim-fade min-h-12 w-12 rounded-xl border-2 border-dashed border-jade bg-jade-soft" aria-hidden />
           ) : (
             <button
               key={`tile-${a.tile}`}
@@ -130,7 +130,7 @@ function TileBoard({ tiles, chosen, setChosen }: { tiles: string[]; chosen: numb
               type="button"
               disabled={locked}
               {...handlers(a.tile, a.pos)}
-              className={`${tileClass} border-line bg-surface ${moving?.pos === a.pos ? 'opacity-30' : ''}`}
+              className={`${tileClass} anim-tile border-line bg-surface ${moving?.pos === a.pos ? 'opacity-30' : ''}`}
             >
               {face(a.tile)}
             </button>

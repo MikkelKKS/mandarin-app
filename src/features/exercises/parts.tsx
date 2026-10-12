@@ -37,7 +37,7 @@ export function AudioControls({ id, voice, autoPlay = true, size = 'lg' }: { id:
         type="button"
         onClick={() => go(false)}
         aria-label="Play audio (space)"
-        className={`flex items-center justify-center rounded-full bg-jade text-jade-ink shadow-md transition active:scale-95 ${big ? 'h-24 w-24' : 'h-14 w-14'} ${playing ? 'ring-4 ring-jade/30' : ''}`}
+        className={`press flex items-center justify-center rounded-full bg-jade text-jade-ink ${big ? 'h-24 w-24' : 'h-14 w-14'} ${playing ? 'anim-breathe' : ''}`}
       >
         <Speaker className={big ? 'h-11 w-11' : 'h-7 w-7'} />
       </button>
@@ -45,7 +45,7 @@ export function AudioControls({ id, voice, autoPlay = true, size = 'lg' }: { id:
         type="button"
         onClick={() => go(true)}
         aria-label="Play slowly"
-        className={`flex items-center justify-center rounded-full border-2 border-line bg-surface text-muted transition active:scale-95 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
+        className={`flex items-center justify-center rounded-full border-2 border-line bg-surface text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
       >
         <Turtle className={big ? 'h-7 w-7' : 'h-5 w-5'} />
       </button>
@@ -63,7 +63,7 @@ export function MiniPlay({ id, voice, label = 'Play' }: { id: string; voice?: Vo
         e.stopPropagation();
         play(id, { voice });
       }}
-      className="shrink-0 rounded-full bg-jade-soft p-2 text-jade"
+      className="shrink-0 rounded-full bg-jade-soft p-2 text-jade transition active:scale-90"
     >
       <Speaker className="h-5 w-5" />
     </button>
@@ -75,13 +75,13 @@ export type OptionState = 'idle' | 'selected' | 'right' | 'wrong';
 export function optionClass(state: OptionState): string {
   switch (state) {
     case 'selected':
-      return 'border-jade bg-jade-soft';
+      return 'border-jade bg-jade-soft shadow-[0_3px_0_var(--jade)] -translate-y-px';
     case 'right':
-      return 'border-jade bg-jade-soft';
+      return 'border-jade bg-jade-soft anim-nudge';
     case 'wrong':
       return 'border-cinnabar bg-cinnabar-soft anim-shake';
     default:
-      return 'border-line bg-surface hover:border-muted';
+      return 'border-line bg-surface shadow-[0_3px_0_var(--line)] hover:border-muted';
   }
 }
 
@@ -119,9 +119,9 @@ export function Options({
             aria-selected={selected === i}
             disabled={locked}
             onClick={() => onSelect(i)}
-            className={`group flex min-h-14 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left transition active:scale-[0.99] ${extra ? 'flex-1' : ''} ${optionClass(st)}`}
+            className={`group flex min-h-14 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left transition duration-150 active:translate-y-0.5 active:shadow-none disabled:active:translate-y-0 ${extra ? 'flex-1' : ''} ${optionClass(st)}`}
           >
-            <span className="hidden h-6 w-6 shrink-0 items-center justify-center rounded-md border border-line text-xs text-muted sm:flex">{i + 1}</span>
+            <span className="hidden h-6 w-6 shrink-0 items-center justify-center rounded-md border border-line text-xs text-muted transition-colors group-aria-selected:border-jade group-aria-selected:bg-jade group-aria-selected:text-jade-ink sm:flex">{i + 1}</span>
             <span className="min-w-0 flex-1">{render(i)}</span>
           </button>
         );
@@ -201,7 +201,7 @@ export function PinyinInput({
         inputMode="text"
         enterKeyHint="done"
         aria-label="Your answer in pinyin"
-        className="w-full rounded-2xl border-2 border-line bg-surface px-4 py-4 text-xl outline-none focus:border-jade disabled:opacity-80"
+        className="w-full rounded-2xl border-2 border-line bg-surface px-4 py-4 text-xl outline-none transition-[border-color,box-shadow] duration-200 focus:border-jade focus:shadow-[0_0_0_4px_var(--jade-soft)] disabled:opacity-80"
       />
       <div className="mt-2 flex gap-2" aria-label="Tone marks">
         {TONE_KEYS.map((k) => (
@@ -211,7 +211,7 @@ export function PinyinInput({
             disabled={locked}
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => insert((v, c) => applyToneAt(v, c, k.tone))}
-            className="h-11 flex-1 rounded-xl border border-line bg-surface text-xl"
+            className="h-11 flex-1 rounded-xl border border-line bg-surface text-xl transition hover:border-muted active:scale-95 active:bg-jade-soft"
             aria-label={`Tone ${k.tone} on the last syllable`}
           >
             {k.label}
@@ -222,7 +222,7 @@ export function PinyinInput({
           disabled={locked}
           onMouseDown={(e) => e.preventDefault()}
           onClick={() => insert((v, c) => ({ value: v.slice(0, c) + 'ü' + v.slice(c), caret: c + 1 }))}
-          className="h-11 flex-1 rounded-xl border border-line bg-surface text-xl"
+          className="h-11 flex-1 rounded-xl border border-line bg-surface text-xl transition hover:border-muted active:scale-95 active:bg-jade-soft"
           aria-label="Insert ü"
         >
           ü

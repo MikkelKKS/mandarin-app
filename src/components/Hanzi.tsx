@@ -50,7 +50,7 @@ export function WordPopupProvider({ children }: { children: ReactNode }) {
     <PopupCtx.Provider value={setWord}>
       {children}
       {word && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/30 sm:items-center" onClick={() => setWord(null)}>
+        <div className="anim-fade fixed inset-0 z-50 flex items-end justify-center bg-black/30 backdrop-blur-[2px] sm:items-center" onClick={() => setWord(null)}>
           <div
             role="dialog"
             aria-label={`${word.hanzi}: ${word.english[0]}`}

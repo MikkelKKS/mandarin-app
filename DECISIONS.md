@@ -76,3 +76,7 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## Missing recordings
 - If a recording is missing in one voice, the app plays the other voice (and for slow sentences, the normal-speed file slowed down) before falling back to the browser voice.
+
+## Design pass and follow-along pinyin
+- Shared motion tokens and small animations (page entrance, exercise slide-in, node pop-in, ring fill, bars growing, press states, end-screen stamp); all disabled under prefers-reduced-motion.
+- Follow along always shows pinyin (from pinyin-pro, loaded on demand, so readings fit the context) and lights words up across the current line. LRCLIB timing is per line, so the words are spread evenly over the line.

@@ -76,7 +76,11 @@ export default function App() {
   }
   return (
     <WordPopupProvider>
-      <Shell active={page ?? ''}>{body}</Shell>
+      <Shell active={page ?? ''}>
+        <div key={page ?? ''} className="anim-page">
+          {body}
+        </div>
+      </Shell>
       <OfflinePrefetch />
     </WordPopupProvider>
   );
@@ -100,7 +104,7 @@ function Shell({ active, children }: { active: string; children: ReactNode }) {
         className="fixed inset-x-0 bottom-0 z-30 flex border-t border-line bg-surface/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:sticky md:top-0 md:h-dvh md:w-56 md:flex-col md:gap-1 md:border-r md:border-t-0 md:p-4"
       >
         <a href="#/" className="mb-6 hidden items-center gap-2 px-3 md:flex">
-          <span className="han flex h-10 w-10 items-center justify-center rounded-xl bg-cinnabar text-xl font-bold text-white">学</span>
+          <span className="han flex h-10 w-10 -rotate-6 items-center justify-center rounded-xl bg-cinnabar text-xl font-bold text-white shadow-[inset_0_-3px_0_rgb(0_0_0/0.18)] transition-transform duration-300 hover:rotate-0">学</span>
           <span className="text-lg font-bold">Mandarin</span>
         </a>
         {TABS.map((t) => {
@@ -110,9 +114,13 @@ function Shell({ active, children }: { active: string; children: ReactNode }) {
               key={t.id}
               onClick={() => go(t.id)}
               aria-current={on ? 'page' : undefined}
-              className={`flex flex-1 flex-col items-center gap-0.5 py-2 text-xs font-medium md:flex-none md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-3 md:text-base ${on ? 'text-jade md:bg-jade-soft' : 'text-muted hover:text-ink'}`}
+              className={`group flex flex-1 flex-col items-center gap-0.5 py-1.5 text-xs font-medium transition-colors duration-200 md:flex-none md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-3 md:text-base ${on ? 'text-jade md:bg-jade-soft' : 'text-muted hover:text-ink md:hover:bg-sunk'}`}
             >
-              <t.icon className="h-6 w-6" />
+              <span
+                className={`flex h-8 w-14 items-center justify-center rounded-full transition-[background-color,transform] duration-300 [transition-timing-function:var(--ease-spring)] group-active:scale-90 md:h-auto md:w-auto md:bg-transparent ${on ? 'bg-jade-soft' : ''}`}
+              >
+                <t.icon className="h-6 w-6" />
+              </span>
               {t.label}
             </button>
           );

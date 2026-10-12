@@ -17,20 +17,20 @@ export function GamesView() {
     <div className="pb-8">
       <h1 className="text-2xl font-bold">Games</h1>
       <p className="mt-1 text-muted">Unlimited plays. Games use words you've unlocked, lean towards the ones you find hard, and count as review.</p>
-      <button onClick={() => go('music')} className="mt-6 flex w-full items-center gap-4 rounded-2xl bg-jade p-4 text-left text-jade-ink">
+      <button onClick={() => go('music')} className="press group mt-6 flex w-full items-center gap-4 rounded-2xl bg-jade p-4 text-left text-jade-ink">
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15" aria-hidden>
-          <Music className="h-7 w-7" />
+          <Music className="h-7 w-7 transition-transform duration-300 [transition-timing-function:var(--ease-spring)] group-hover:-rotate-12 group-hover:scale-110" />
         </span>
         <span className="flex-1">
           <span className="block font-semibold">Music at your level</span>
           <span className="block text-sm opacity-90">Mandarin songs from Spotify, sorted by how much you'd understand.</span>
         </span>
       </button>
-      <ul className="mt-3 flex flex-col gap-3">
+      <ul className="stagger mt-3 flex flex-col gap-3">
         {GAMES.map((g) => (
           <li key={g.id}>
-            <button onClick={() => go(`game/${g.id}`)} className="flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left transition hover:border-jade">
-              <span className="han flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-cinnabar/10 text-xl font-bold text-cinnabar" aria-hidden>
+            <button onClick={() => go(`game/${g.id}`)} className="group flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left shadow-[0_3px_0_var(--line)] transition duration-150 hover:border-jade active:translate-y-0.5 active:shadow-none">
+              <span className="han flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-cinnabar/10 text-xl font-bold text-cinnabar transition-transform duration-300 [transition-timing-function:var(--ease-spring)] group-hover:-rotate-6" aria-hidden>
                 {g.hanzi}
               </span>
               <span className="flex-1">

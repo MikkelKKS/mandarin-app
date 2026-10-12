@@ -1,7 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import { lookup, words } from '../../content';
 import { ToneText } from '../../components/Hanzi';
 import type { LessonResult } from './LessonPlayer';
+
+/** Tone colours, sent out from the seal once when it lands. */
+const SPARKS = ['bg-t1', 'bg-gold', 'bg-t3', 'bg-jade', 'bg-t4', 'bg-t1', 'bg-gold', 'bg-t3', 'bg-jade', 'bg-t4'];
 
 /** A verdict in words, based on how many answers were right first time. */
 export function verdictText(firstTry: number): { hanzi: string; pinyin: string; title: string; line: string } {
@@ -28,7 +31,7 @@ export function EndScreen({
   const v = verdictText(result.accuracy);
   const fixed = result.mistakes.length;
   const btn = useRef<HTMLButtonElement>(null);
-  useEffect(() => btn.current?.focus(), []);
+  useEffect(() => btn.current?.focus({ preventScroll: true }), []);
   const mins = Math.floor(result.ms / 60000);
   const secs = Math.round((result.ms % 60000) / 1000);
   const fresh = result.newWords.map((id) => words.get(id)).filter(Boolean);
@@ -36,15 +39,25 @@ export function EndScreen({
   return (
     <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pb-8 pt-[max(2rem,env(safe-area-inset-top))]">
       <div className="text-center">
-        <div className="anim-pop mx-auto flex h-36 w-36 items-center justify-center rounded-full border-4 border-cinnabar text-cinnabar" aria-hidden>
-          <span className="han text-4xl font-bold leading-tight">{v.hanzi}</span>
+        <div className="relative mx-auto h-36 w-36" aria-hidden>
+          {SPARKS.map((c, i) => (
+            <span
+              key={i}
+              className={`anim-spark absolute left-1/2 top-1/2 -ml-1 -mt-1 h-2 w-2 rounded-full ${c}`}
+              style={{ '--a': `${i * 36 + 18}deg`, animationDelay: `${400 + (i % 2) * 60}ms` } as CSSProperties}
+            />
+          ))}
+          <span className="anim-ripple absolute inset-0 rounded-full border-4 border-cinnabar" />
+          <div className="anim-stamp relative flex h-full w-full items-center justify-center rounded-full border-4 border-cinnabar bg-surface text-cinnabar shadow-[inset_0_0_0_5px_var(--surface),inset_0_0_0_7px_var(--cinnabar)]">
+            <span className="han text-4xl font-bold leading-tight">{v.hanzi}</span>
+          </div>
         </div>
-        <p className="mt-2 text-sm text-muted">{v.pinyin}</p>
-        <h1 className="mt-4 text-2xl font-bold">{heading ?? v.title}</h1>
-        <p className="mt-1 text-muted">{extra ?? v.line}</p>
+        <p className="anim-up mt-3 text-sm text-muted [animation-delay:450ms]">{v.pinyin}</p>
+        <h1 className="anim-up mt-3 text-2xl font-bold [animation-delay:520ms]">{heading ?? v.title}</h1>
+        <p className="anim-up mt-1 text-muted [animation-delay:580ms]">{extra ?? v.line}</p>
       </div>
 
-      <dl className="mt-8 grid grid-cols-2 gap-3 text-center">
+      <dl className="anim-up mt-8 grid grid-cols-2 gap-3 text-center [animation-delay:680ms]">
         <div className="rounded-2xl bg-surface p-4">
           <dt className="text-sm text-muted">Time</dt>
           <dd className="text-2xl font-bold">
@@ -58,7 +71,7 @@ export function EndScreen({
       </dl>
 
       {fresh.length > 0 && (
-        <section className="mt-6">
+        <section className="anim-up mt-6 [animation-delay:780ms]">
           <h2 className="mb-2 font-semibold">New words</h2>
           <div className="flex flex-wrap gap-2">
             {fresh.map((w) => (
@@ -72,7 +85,7 @@ export function EndScreen({
       )}
 
       {review.length > 0 && (
-        <section className="mt-6">
+        <section className="anim-up mt-6 [animation-delay:860ms]">
           <h2 className="mb-2 font-semibold">Coming back in Practice</h2>
           <ul className="flex flex-col gap-2">
             {review.slice(0, 8).map((r) => (
@@ -87,10 +100,10 @@ export function EndScreen({
       )}
 
       <div className="mt-auto flex flex-col gap-3 pt-8">
-        <button ref={btn} onClick={onContinue} className="h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
+        <button ref={btn} onClick={onContinue} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
           Continue
         </button>
-        <button onClick={onAgain} className="h-12 rounded-2xl border-2 border-line font-medium">
+        <button onClick={onAgain} className="h-12 rounded-2xl border-2 border-line font-medium transition hover:border-muted active:scale-[0.99]">
           Play again
         </button>
       </div>
