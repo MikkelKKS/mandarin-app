@@ -169,3 +169,15 @@ test('a missing recording falls back to the other voice', async ({ page }) => {
   for (const m of male) expect(female).toContain(m.replace('/audio/m/', '/audio/f/'));
 });
 });
+
+test('opening a skill does not scroll the path', async ({ page }) => {
+  await page.goto('./');
+  const node = page.getByRole('button', { name: /Hello & how are you/ });
+  await node.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(800);
+  const before = await page.evaluate(() => (globalThis as unknown as { scrollY: number }).scrollY);
+  await node.click();
+  await expect(page.getByRole('button', { name: 'Start' })).toBeVisible();
+  await page.waitForTimeout(800);
+  expect(await page.evaluate(() => (globalThis as unknown as { scrollY: number }).scrollY)).toBe(before);
+});

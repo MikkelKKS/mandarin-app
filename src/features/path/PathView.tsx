@@ -5,7 +5,7 @@ import { ToneText } from '../../components/Hanzi';
 import { Book, Check, Lock, Refresh, Lightbulb } from '../../components/icons';
 import { computeStates, MAX_MASTERY, nextNode, unitComplete, type NodeState } from '../../lib/progress';
 import { db } from '../../db/db';
-import { go } from '../../lib/router';
+import { focusNoScroll, go } from '../../lib/router';
 import { useLive } from '../../lib/useLive';
 import { hanziOnly } from '../../lib/pinyin';
 import { nodeOrder } from '../../content';
@@ -255,7 +255,7 @@ function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeStat
 
         <div className="mt-6 flex flex-col gap-3">
           {!locked && (
-            <button autoFocus onClick={() => go(`lesson/${nodeId}`)} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
+            <button ref={focusNoScroll} onClick={() => go(`lesson/${nodeId}`)} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
               {state.mastery === 0 ? 'Start' : state.mastery >= MAX_MASTERY ? 'Play again' : 'Level up'}
             </button>
           )}

@@ -1,3 +1,4 @@
+import { focusNoScroll } from '../../lib/router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Check, Close, Headphones, MicOff, Speaker } from '../../components/icons';
@@ -300,7 +301,7 @@ function Feedback({ outcome, ex, onContinue }: { outcome: Outcome; ex: Exercise;
             )}
           </div>
         )}
-        <button autoFocus onClick={onContinue} className={`press mt-4 h-14 w-full rounded-2xl text-lg font-semibold ${t.btn}`}>
+        <button ref={focusNoScroll} onClick={onContinue} className={`press mt-4 h-14 w-full rounded-2xl text-lg font-semibold ${t.btn}`}>
           {outcome.verdict === 'wrong' ? 'Got it' : 'Continue'}
         </button>
       </div>

@@ -15,3 +15,12 @@ export function go(path: string): void {
   location.hash = path.startsWith('/') ? path : `/${path}`;
   window.scrollTo(0, 0);
 }
+
+/**
+ * Focus an element when it mounts without scrolling the page. Plain autoFocus
+ * scrolls to elements inside sliding sheets (they start off-screen).
+ * Use as a ref: <button ref={focusNoScroll}>.
+ */
+export function focusNoScroll(el: HTMLElement | null): void {
+  el?.focus({ preventScroll: true });
+}

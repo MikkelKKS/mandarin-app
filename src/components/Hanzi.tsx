@@ -2,6 +2,7 @@
  * Displays Chinese text: tone-coloured characters, optional pinyin above,
  * and tap-to-look-up for every word.
  */
+import { focusNoScroll } from '../lib/router';
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import { sentenceTokens, wordByHanzi } from '../content';
 import type { Sentence, Word } from '../content/schema';
@@ -77,7 +78,7 @@ export function WordPopupProvider({ children }: { children: ReactNode }) {
             >
               More in the dictionary
             </a>
-            <button className="mt-4 w-full rounded-xl bg-sunk py-3 font-medium" onClick={() => setWord(null)} autoFocus>
+            <button className="mt-4 w-full rounded-xl bg-sunk py-3 font-medium" onClick={() => setWord(null)} ref={focusNoScroll}>
               Close
             </button>
           </div>
