@@ -185,7 +185,7 @@ test('opening a skill does not scroll the path', async ({ page }) => {
 
 test('read a story and look up a word', async ({ page }) => {
   await page.goto('./#/read');
-  await expect(page.getByRole('heading', { name: 'Stories' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Read' })).toBeVisible();
   await page.goto('./#/read/r-myday');
   await expect(page.getByRole('heading', { name: '我叫米格' })).toBeVisible();
   await page.locator('article button', { hasText: '丹麦' }).first().click();

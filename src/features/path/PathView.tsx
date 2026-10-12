@@ -60,8 +60,8 @@ export function PathView() {
           <OpenBook className="h-6 w-6" />
         </span>
         <span className="flex-1">
-          <span className="block font-semibold">Stories</span>
-          <span className="block text-sm text-muted">Short reads with the words you know</span>
+          <span className="block font-semibold">Read</span>
+          <span className="block text-sm text-muted">Short stories with the words you know</span>
         </span>
       </button>
 

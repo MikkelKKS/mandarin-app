@@ -43,7 +43,7 @@ function StoryList() {
   const states = useStates();
   return (
     <div className="pb-8">
-      <h1 className="text-2xl font-bold">Stories</h1>
+      <h1 className="text-2xl font-bold">Read</h1>
       <p className="mt-1 text-muted">Short reads using the words you've learned. Tap any word to look it up.</p>
       <ul className="stagger mt-6 flex flex-col gap-3">
         {stories.map((s) => {
@@ -120,7 +120,7 @@ function StoryReader({ id }: { id: string }) {
   return (
     <div className="pb-10">
       <button onClick={() => go('read')} className="mb-3 text-sm font-medium text-jade">
-        ← Stories
+        ← Read
       </button>
       <h1 className="han text-3xl font-bold" lang="zh-CN">
         {story.titleHanzi}

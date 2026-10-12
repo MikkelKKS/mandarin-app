@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
-import { Book, Chart, Cog, Gamepad, Path, Refresh } from './components/icons';
+import { Book, Chart, Cog, Gamepad, Path, Refresh, OpenBook } from './components/icons';
 import { ProgressView } from './features/progress/ProgressView';
 import { MusicRoute } from './features/music/MusicView';
 import { ReadRoute } from './features/read/ReadView';
@@ -92,6 +92,7 @@ export default function App() {
 
 const TABS = [
   { id: '', label: 'Learn', icon: Path },
+  { id: 'read', label: 'Read', icon: OpenBook },
   { id: 'practice', label: 'Practice', icon: Refresh },
   { id: 'games', label: 'Games', icon: Gamepad },
   { id: 'progress', label: 'Progress', icon: Chart },
@@ -100,7 +101,7 @@ const TABS = [
 ];
 
 function Shell({ active, children }: { active: string; children: ReactNode }) {
-  const current = active === 'about' ? 'settings' : active === 'music' ? 'games' : active === 'read' ? '' : active;
+  const current = active === 'about' ? 'settings' : active === 'music' ? 'games' : active;
   return (
     <div className="min-h-dvh md:flex">
       <nav
@@ -118,14 +119,14 @@ function Shell({ active, children }: { active: string; children: ReactNode }) {
               key={t.id}
               onClick={() => go(t.id)}
               aria-current={on ? 'page' : undefined}
-              className={`group flex flex-1 flex-col items-center gap-0.5 py-1.5 text-xs font-medium transition-colors duration-200 md:flex-none md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-3 md:text-base ${on ? 'text-jade md:bg-jade-soft' : 'text-muted hover:text-ink md:hover:bg-sunk'}`}
+              className={`group flex min-w-0 flex-1 flex-col items-center gap-0.5 py-1.5 text-[10.5px] font-medium tracking-tight sm:text-xs sm:tracking-normal transition-colors duration-200 md:flex-none md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-3 md:text-base ${on ? 'text-jade md:bg-jade-soft' : 'text-muted hover:text-ink md:hover:bg-sunk'}`}
             >
               <span
-                className={`flex h-8 w-14 items-center justify-center rounded-full transition-[background-color,transform] duration-300 [transition-timing-function:var(--ease-spring)] group-active:scale-90 md:h-auto md:w-auto md:bg-transparent ${on ? 'bg-jade-soft' : ''}`}
+                className={`flex h-8 w-11 items-center justify-center rounded-full sm:w-14 transition-[background-color,transform] duration-300 [transition-timing-function:var(--ease-spring)] group-active:scale-90 md:h-auto md:w-auto md:bg-transparent ${on ? 'bg-jade-soft' : ''}`}
               >
                 <t.icon className="h-6 w-6" />
               </span>
-              {t.label}
+              <span className="max-w-full truncate">{t.label}</span>
             </button>
           );
         })}
