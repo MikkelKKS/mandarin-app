@@ -1,5 +1,6 @@
 /** Music: Mandarin songs from Spotify, ranked by how much of the lyrics you'd understand. */
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { TonePinyin, ToneText } from '../../components/Hanzi';
 import { Close, Music, Speaker } from '../../components/icons';
 import { go } from '../../lib/router';
@@ -317,7 +318,7 @@ function SongView({ id }: { id: string }) {
   const [lyrics, setLyrics] = useState<Lyrics | null | 'none' | 'error'>(null);
   const reader = useReader();
   const [showPy, setShowPy] = useState(true);
-  const [word, setWord] = useState<LyricToken | null>(null);
+  const [word, setWord] = useState<OpenWord | null>(null);
 
   useEffect(() => {
     if (!track && sp.isConnected()) void sp.track(id).then(setTrack).catch(() => setLyrics('error'));
@@ -346,7 +347,7 @@ function SongView({ id }: { id: string }) {
           </div>
         </div>
       )}
-      {saved && <Summary score={saved.score} reader={reader} onWord={setWord} />}
+      {saved && <Summary score={saved.score} reader={reader} onWord={(token, anchor) => setWord({ token, anchor })} />}
       <div className="mt-6 flex items-center justify-between">
         <h2 className="text-lg font-semibold">Lyrics</h2>
         <label className="flex items-center gap-2 text-sm">
@@ -366,11 +367,11 @@ function SongView({ id }: { id: string }) {
       ) : (
         <div className="mt-3 flex flex-col gap-3">
           {dedupe(lyrics.lines.map((l) => l.text)).map((line, i) =>
-            line ? <LyricLine key={i} text={line} reader={reader} showPy={showPy} onWord={setWord} /> : <span key={i} className="h-2" />,
+            line ? <LyricLine key={i} text={line} reader={reader} showPy={showPy} onWord={(token, anchor) => setWord({ token, anchor })} /> : <span key={i} className="h-2" />,
           )}
         </div>
       )}
-      {word && <WordSheet token={word} onClose={() => setWord(null)} />}
+      {word && <WordPopover token={word.token} anchor={word.anchor} onClose={() => setWord(null)} />}
     </div>
   );
 }
@@ -393,7 +394,7 @@ function Legend() {
   );
 }
 
-function Summary({ score, reader, onWord }: { score: SongScore; reader: ReturnType<typeof useReader>; onWord: (t: LyricToken) => void }) {
+function Summary({ score, reader, onWord }: { score: SongScore; reader: ReturnType<typeof useReader>; onWord: OnWord }) {
   const b = BAND[score.band];
   const entryOf = (h: string) => (reader && reader !== 'nodict' ? reader.dict.byHanzi.get(h)?.[0] : undefined);
   return (
@@ -409,7 +410,7 @@ function Summary({ score, reader, onWord }: { score: SongScore; reader: ReturnTy
           <p className="mt-3 text-sm font-medium">Words to learn from this song</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {score.unknown.slice(0, 10).map((u) => (
-              <button key={u.hanzi} onClick={() => onWord({ text: u.hanzi, entry: entryOf(u.hanzi), status: 'hard' })} className="han rounded-lg bg-sunk px-2 py-1 text-lg">
+              <button key={u.hanzi} onClick={(ev) => onWord({ text: u.hanzi, entry: entryOf(u.hanzi), status: 'hard' }, ev.currentTarget.getBoundingClientRect())} className="han rounded-lg bg-sunk px-2 py-1 text-lg">
                 {u.hanzi}
               </button>
             ))}
@@ -448,7 +449,7 @@ function LyricLine({
   text: string;
   reader: { dict: Dict; t2s: Record<string, string>; k: Knowledge };
   showPy: boolean;
-  onWord: (t: LyricToken) => void;
+  onWord: OnWord;
   big?: boolean;
   /** Ignore the "hover" setting: always show pinyin. */
   alwaysPy?: boolean;
@@ -481,7 +482,7 @@ function LyricLine({
         return (
           <button
             key={i}
-            onClick={() => onWord(t)}
+            onClick={(ev) => onWord(t, ev.currentTarget.getBoundingClientRect())}
             className={`group inline-flex flex-col items-center rounded px-0.5 leading-none transition-colors duration-300 ${t.status === 'hard' ? 'bg-cinnabar-soft/70' : ''} hover:bg-sunk`}
           >
             {showPy && (
@@ -497,16 +498,29 @@ function LyricLine({
   );
 }
 
-function WordSheet({ token, onClose }: { token: LyricToken; onClose: () => void }) {
+/** A small card next to the tapped word. No backdrop, so the song and lyrics stay visible. */
+function WordPopover({ token, anchor, onClose }: { token: LyricToken; anchor: DOMRect; onClose: () => void }) {
+  const box = useRef<HTMLDivElement>(null);
+  const close = useRef(onClose);
+  close.current = onClose;
   const mine = useMyWords();
   const [busy, setBusy] = useState(false);
   const e: Entry | undefined = token.entry;
   const added = e ? mine.some((w) => w.id === myWordId(e)) : false;
   useEffect(() => {
-    const h = (ev: KeyboardEvent) => ev.key === 'Escape' && onClose();
-    window.addEventListener('keydown', h);
-    return () => window.removeEventListener('keydown', h);
-  }, [onClose]);
+    const key = (ev: KeyboardEvent) => ev.key === 'Escape' && close.current();
+    // Tapping anywhere else closes it (the tap on another word then opens that one).
+    const down = (ev: PointerEvent) => {
+      if (!box.current?.contains(ev.target as Node)) close.current();
+    };
+    window.addEventListener('keydown', key);
+    const t = setTimeout(() => document.addEventListener('pointerdown', down), 0);
+    return () => {
+      window.removeEventListener('keydown', key);
+      clearTimeout(t);
+      document.removeEventListener('pointerdown', down);
+    };
+  }, []);
   const say = () => {
     if (!('speechSynthesis' in window)) return;
     const u = new SpeechSynthesisUtterance(token.text);
@@ -514,45 +528,61 @@ function WordSheet({ token, onClose }: { token: LyricToken; onClose: () => void 
     speechSynthesis.cancel();
     speechSynthesis.speak(u);
   };
-  return (
-    <div className="anim-fade fixed inset-0 z-40 flex items-end justify-center bg-black/30 backdrop-blur-[2px] sm:items-center" onClick={onClose}>
-      <div role="dialog" aria-label={token.text} className="anim-rise w-full max-w-md rounded-t-3xl bg-surface p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:rounded-3xl" onClick={(ev) => ev.stopPropagation()}>
-        <div className="flex items-start gap-3">
-          <div className="min-w-0 flex-1">
-            {e ? <ToneText hanzi={e.hanzi} pinyin={e.pinyin} className="han text-4xl" /> : <span className="han text-4xl">{token.text}</span>}
-            {e && <TonePinyin pinyin={e.pinyin} className="ml-3 text-lg" />}
-            {e && e.hsk > 0 && <span className="ml-2 rounded-md bg-sunk px-1.5 py-0.5 align-middle text-xs text-muted">HSK {e.hsk}</span>}
-          </div>
-          <button onClick={say} aria-label={`Hear ${token.text}`} className="rounded-full bg-jade-soft p-2.5 text-jade">
-            <Speaker className="h-5 w-5" />
-          </button>
-          <button onClick={onClose} aria-label="Close" className="rounded-full p-2 text-muted hover:bg-sunk">
-            <Close className="h-5 w-5" />
-          </button>
+  // Place it below the word (or above when there's no room), inside the screen, in page coordinates so it scrolls with the lyrics.
+  const width = Math.min(320, window.innerWidth - 24);
+  const left = Math.max(12, Math.min(anchor.left + anchor.width / 2 - width / 2, window.innerWidth - width - 12)) + window.scrollX;
+  const below = anchor.bottom + 230 < window.innerHeight;
+  const top = (below ? anchor.bottom + 8 : anchor.top - 8) + window.scrollY;
+  return createPortal(
+    <div
+      ref={box}
+      role="dialog"
+      aria-label={token.text}
+      className="anim-pop absolute z-40 rounded-2xl border border-line bg-surface p-4 shadow-xl"
+      style={{ left, top, width, transform: below ? undefined : 'translateY(-100%)' }}
+    >
+      <div className="flex items-start gap-2">
+        <div className="min-w-0 flex-1">
+          {e ? <ToneText hanzi={e.hanzi} pinyin={e.pinyin} className="han text-3xl" /> : <span className="han text-3xl">{token.text}</span>}
+          {e && <TonePinyin pinyin={e.pinyin} className="ml-2 text-base" />}
+          {e && e.hsk > 0 && <span className="ml-2 rounded-md bg-sunk px-1.5 py-0.5 align-middle text-xs text-muted">HSK {e.hsk}</span>}
         </div>
-        <p className="mt-2 leading-relaxed">{e ? e.defs.slice(0, 5).join('; ') : 'Not in the dictionary.'}</p>
-        {token.status === 'known' && <p className="mt-2 text-sm text-jade">You know this one.</p>}
-        <div className="mt-4 flex flex-wrap gap-2 text-sm">
-          {e && (
-            <button
-              disabled={added || busy}
-              onClick={async () => {
-                setBusy(true);
-                await addMyWord(e);
-                setBusy(false);
-              }}
-              className={`rounded-xl px-3 py-2 font-medium ${added ? 'bg-jade-soft text-jade' : 'border-2 border-line'}`}
-            >
-              {added ? '✓ In my practice' : '+ Add to my practice'}
-            </button>
-          )}
-          <a href={plecoLink(token.text)} className="rounded-xl border-2 border-line px-3 py-2 font-medium">
-            Open in Pleco
-          </a>
-        </div>
+        <button onClick={say} aria-label={`Hear ${token.text}`} className="rounded-full bg-jade-soft p-2 text-jade">
+          <Speaker className="h-4 w-4" />
+        </button>
+        <button onClick={onClose} aria-label="Close" className="rounded-full p-1.5 text-muted hover:bg-sunk">
+          <Close className="h-4 w-4" />
+        </button>
       </div>
-    </div>
+      <p className="mt-1 text-sm leading-relaxed">{e ? e.defs.slice(0, 4).join('; ') : 'Not in the dictionary.'}</p>
+      {token.status === 'known' && <p className="mt-1 text-xs text-jade">You know this one.</p>}
+      <div className="mt-3 flex flex-wrap gap-2 text-sm">
+        {e && (
+          <button
+            disabled={added || busy}
+            onClick={async () => {
+              setBusy(true);
+              await addMyWord(e);
+              setBusy(false);
+            }}
+            className={`rounded-xl px-3 py-1.5 font-medium ${added ? 'bg-jade-soft text-jade' : 'border-2 border-line'}`}
+          >
+            {added ? '✓ In my practice' : '+ Add to my practice'}
+          </button>
+        )}
+        <a href={plecoLink(token.text)} className="rounded-xl border-2 border-line px-3 py-1.5 font-medium">
+          Open in Pleco
+        </a>
+      </div>
+    </div>,
+    document.body,
   );
+}
+
+type OnWord = (t: LyricToken, anchor: DOMRect) => void;
+interface OpenWord {
+  token: LyricToken;
+  anchor: DOMRect;
 }
 
 /** Shows the line being sung in whatever is playing on Spotify right now. */
@@ -562,7 +592,7 @@ function NowPlaying() {
   const [error, setError] = useState<string | null>(null);
   const [tick, setTick] = useState(0);
   const reader = useReader();
-  const [word, setWord] = useState<LyricToken | null>(null);
+  const [word, setWord] = useState<OpenWord | null>(null);
   const trackId = now && now !== 'idle' ? now.track.id : null;
   const current = useRef<HTMLDivElement>(null);
 
@@ -614,7 +644,9 @@ function NowPlaying() {
   void tick;
 
   useEffect(() => {
-    current.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Don't pull the page away while you're looking up a word.
+    if (!word) current.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx]);
 
   return (
@@ -647,7 +679,7 @@ function NowPlaying() {
               {lines.map((l, i) =>
                 l.text ? (
                   <div key={i} ref={i === idx ? current : undefined} className={`transition ${!synced || i === idx ? '' : 'opacity-40'}`}>
-                    <LyricLine text={l.text} reader={reader} showPy alwaysPy onWord={setWord} big={i === idx} progress={i === idx ? lineProgress : undefined} />
+                    <LyricLine text={l.text} reader={reader} showPy alwaysPy onWord={(token, anchor) => setWord({ token, anchor })} big={i === idx} progress={i === idx ? lineProgress : undefined} />
                   </div>
                 ) : null,
               )}
@@ -655,7 +687,7 @@ function NowPlaying() {
           )}
         </>
       )}
-      {word && <WordSheet token={word} onClose={() => setWord(null)} />}
+      {word && <WordPopover token={word.token} anchor={word.anchor} onClose={() => setWord(null)} />}
     </div>
   );
 }
