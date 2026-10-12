@@ -4,6 +4,7 @@ import { expect, test, type Page } from '@playwright/test';
 async function step(page: Page) {
   const done = page.getByText('Fixed along the way');
   if (await done.isVisible()) return true;
+  if (await page.getByRole('button', { name: /level 1 of 5/ }).first().isVisible()) return true;
 
   const cont = page.getByRole('button', { name: /^(Continue|Got it)$/ });
   if (await cont.first().isVisible()) {
@@ -60,9 +61,9 @@ test('complete the first lesson and see it on the path', async ({ page }) => {
   let finished = false;
   for (let i = 0; i < 400 && !finished; i++) finished = await step(page);
   expect(finished).toBe(true);
-  await expect(page.getByText('Fixed along the way')).toBeVisible();
-
-  await page.getByRole('button', { name: 'Continue' }).click();
+  // The end screen (or, if the bot already tapped Continue, the path).
+  const end = page.getByText('Fixed along the way');
+  if (await end.isVisible()) await page.getByRole('button', { name: 'Continue' }).click();
   await expect(page.getByRole('button', { name: /Hello & how are you, level 1 of 5/ })).toBeVisible();
   // The next skill is now open.
   await expect(page.getByRole('button', { name: /Thanks & sorry, level 0 of 5/ })).toBeVisible();
