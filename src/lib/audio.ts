@@ -39,6 +39,9 @@ export function urlFor(id: string, voice: Voice, slow: boolean): string {
   return `${BASE}${audioPath(id, voice, slowFile)}?v=${textVersion(id)}${slowFile ? `s${SLOW_VERSION}` : ''}`;
 }
 
+/** Recordings that turned out not to exist (this session), so they aren't tried again. */
+const missing = new Set<string>();
+
 export interface PlayOptions {
   voice?: Voice;
   slow?: boolean;
@@ -66,33 +69,59 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
     const text = lookup(id)?.hanzi;
     return text ? speak(text, { slow, voice }) : Promise.resolve();
   }
-  const a = new Audio(urlFor(id, voice, slow));
-  a.preload = 'auto';
+  // Recordings to try in order: the chosen voice, then the other voice, then normal speed
+  // slowed down. Only when none exists does the browser's own voice take over.
+  const other: Voice = voice === 'f' ? 'm' : 'f';
+  const isSentence = sentences.has(id);
+  const tries: Array<{ url: string; rate: number }> = [];
+  const add = (v: Voice, slowFile: boolean, rate: number) => {
+    const url = urlFor(id, v, slowFile);
+    if (!missing.has(url) && !tries.some((t) => t.url === url)) tries.push({ url, rate });
+  };
   // Words have no separate slow file: slow them down instead (pitch preserved).
-  const rate = slow && !sentences.has(id) ? 0.8 : 1;
-  a.defaultPlaybackRate = rate;
-  a.playbackRate = rate;
-  el = a;
+  const wordRate = slow && !isSentence ? 0.8 : 1;
+  add(voice, slow, wordRate);
+  add(other, slow, wordRate);
+  if (slow && isSentence) {
+    add(voice, false, 0.8);
+    add(other, false, 0.8);
+  }
   return new Promise<void>((resolve) => {
     currentResolve = resolve;
+    let a: HTMLAudioElement | null = null;
     const done = () => {
-      a.onended = a.onerror = null;
+      if (a) a.onended = a.onerror = null;
       if (currentResolve === resolve) currentResolve = null;
       resolve();
     };
-    a.onended = done;
-    // Only a real loading error (e.g. file missing) falls back to the browser's voice.
-    a.onerror = () => {
-      a.onended = a.onerror = null;
-      if (el !== a) return done();
-      const text = lookup(id)?.hanzi;
-      if (text) speak(text, { slow, voice }).then(done);
-      else done();
+    const attempt = (i: number) => {
+      if (i >= tries.length) {
+        const text = lookup(id)?.hanzi;
+        if (text && currentResolve === resolve) speak(text, { slow, voice }).then(done);
+        else done();
+        return;
+      }
+      const t = tries[i];
+      a = new Audio(t.url);
+      a.preload = 'auto';
+      a.defaultPlaybackRate = t.rate;
+      a.playbackRate = t.rate;
+      el = a;
+      const me = a;
+      me.onended = done;
+      // Only a real loading error (file missing) moves on to the next option.
+      me.onerror = () => {
+        me.onended = me.onerror = null;
+        if (el !== me) return done();
+        missing.add(t.url);
+        attempt(i + 1);
+      };
+      me.play().catch((e: DOMException) => {
+        // AbortError: we moved on to another clip. NotAllowedError: no tap yet. Neither is a missing file.
+        if (e?.name === 'AbortError' || e?.name === 'NotAllowedError') done();
+      });
     };
-    a.play().catch((e: DOMException) => {
-      // AbortError: we moved on to another clip. NotAllowedError: no tap yet. Neither is a missing file.
-      if (e?.name === 'AbortError' || e?.name === 'NotAllowedError') done();
-    });
+    attempt(0);
   });
 }
 

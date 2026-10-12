@@ -146,3 +146,25 @@ test('role-play a story by typing one part', async ({ page }) => {
   }
   await expect(page.getByText('Fixed along the way')).toBeVisible({ timeout: 30_000 });
 });
+
+test.describe('audio fallback', () => {
+test.use({ serviceWorkers: 'block' });
+test('a missing recording falls back to the other voice', async ({ page }) => {
+  const requested: string[] = [];
+  await page.route('**/audio/m/**', (r) => r.fulfill({ status: 404, body: '' }));
+  page.on('request', (r) => r.url().includes('/audio/') && !r.url().includes('/dict/') && requested.push(new URL(r.url()).pathname));
+  await page.goto('./#/lesson/n01-names');
+  await expect(page.getByText('New word')).toBeVisible();
+  requested.length = 0;
+  // Ask for the male voice explicitly through the settings-independent path: click play twice to alternate voices.
+  for (let i = 0; i < 2; i++) {
+    await page.getByRole('button', { name: /^Play/ }).first().click();
+    await page.waitForTimeout(600);
+  }
+  const male = requested.filter((p) => p.includes('/audio/m/'));
+  const female = requested.filter((p) => p.includes('/audio/f/'));
+  expect(male.length).toBeGreaterThan(0);
+  // Every male request that failed was followed by the same item in the female voice.
+  for (const m of male) expect(female).toContain(m.replace('/audio/m/', '/audio/f/'));
+});
+});

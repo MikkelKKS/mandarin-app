@@ -73,3 +73,6 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## Typing instead of word tiles
 - Tile exercises (listen and build) have a "Type it instead" toggle: type the whole sentence in pinyin or characters, checked like the other typed answers. The choice is remembered on the device.
+
+## Missing recordings
+- If a recording is missing in one voice, the app plays the other voice (and for slow sentences, the normal-speed file slowed down) before falling back to the browser voice.
