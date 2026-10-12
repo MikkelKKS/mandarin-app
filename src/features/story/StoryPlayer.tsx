@@ -50,7 +50,7 @@ export function StoryPlayer({ dialogue, onExit, onFinish }: { dialogue: Dialogue
   };
 
   if (phase === 'questions') {
-    return <Questions dialogue={dialogue} onExit={onExit} onDone={(acc) => onFinish({ accuracy: acc, ms: Date.now() - started.current, newWords: [], mistakes: [], total: dialogue.questions.length })} />;
+    return <Questions dialogue={dialogue} onExit={onExit} onDone={(acc) => onFinish({ accuracy: acc, ms: Date.now() - started.current, newWords: [], mistakes: [], fixed: Math.round((1 - acc) * dialogue.questions.length), total: dialogue.questions.length })} />;
   }
 
   return (

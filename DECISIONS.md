@@ -80,3 +80,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 ## Design pass and follow-along pinyin
 - Shared motion tokens and small animations (page entrance, exercise slide-in, node pop-in, ring fill, bars growing, press states, end-screen stamp); all disabled under prefers-reduced-motion.
 - Follow along always shows pinyin (from pinyin-pro, loaded on demand, so readings fit the context) and lights words up across the current line. LRCLIB timing is per line, so the words are spread evenly over the line.
+
+## Stories (reading)
+- `content/stories/*.json`, one story per file: original texts about the owner's life (studies, insurance job, running, games, her family in Beijing). Each story names the unit it follows; the validator checks that every character is taught by then, except a few listed `extra` words with glosses (shown with a dotted underline).
+- Reading only. Pinyin follows the "Pinyin above characters" setting (pinyin-pro for context-aware readings); tapping a word opens the same word card as the music lyrics. A story opens once you finish (or pass) its unit.
+- End screen: "Fixed along the way" now counts exercises answered wrong first time, not item ids (sound drills have none).

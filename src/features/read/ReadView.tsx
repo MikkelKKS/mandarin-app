@@ -1,7 +1,7 @@
 /** Stories: short reads built from the words you've learned. Reading only; tap a word to look it up. */
 import { useEffect, useMemo, useState } from 'react';
 import { nodeOrder, units, words, wordByHanzi } from '../../content';
-import { StorySchema, segmentWithVocab, type Story } from '../../content/stories';
+import { StorySchema, segmentWithVocab, type Story, type StoryToken } from '../../content/stories';
 import { WordPopover } from '../../components/WordPopover';
 import { Lock } from '../../components/icons';
 import { db } from '../../db/db';
@@ -73,6 +73,16 @@ function StoryList() {
   );
 }
 
+/** Keep punctuation on the same line as the word before it. */
+function groupPunctuation(tokens: StoryToken[]): StoryToken[][] {
+  const groups: StoryToken[][] = [];
+  for (const t of tokens) {
+    if (!t.word && groups.length) groups[groups.length - 1].push(t);
+    else groups.push([t]);
+  }
+  return groups;
+}
+
 interface Picked {
   text: string;
   entry?: Entry;
@@ -125,7 +135,9 @@ function StoryReader({ id }: { id: string }) {
           return (
             <div key={pi}>
               <p className="han flex flex-wrap items-end gap-x-0.5 gap-y-1 text-2xl leading-snug" lang="zh-CN">
-                {tokens.map((t, ti) => {
+                {groupPunctuation(tokens).map((g, gi) => (
+                  <span key={gi} className="inline-flex items-end">
+                    {g.map((t, ti) => {
                   if (!t.word)
                     return (
                       <span key={ti} className="self-end">
@@ -147,7 +159,9 @@ function StoryReader({ id }: { id: string }) {
                       <span>{t.text}</span>
                     </button>
                   );
-                })}
+                    })}
+                  </span>
+                ))}
               </p>
               {english && <p className="anim-fade mt-2 text-muted">{p.en}</p>}
             </div>

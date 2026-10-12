@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { course, grammar, nodes, units, words } from '../../content';
 import type { Unit } from '../../content/schema';
 import { ToneText } from '../../components/Hanzi';
-import { Book, Check, Lock, Refresh, Lightbulb } from '../../components/icons';
+import { Book, Check, Lock, Refresh, Lightbulb, OpenBook } from '../../components/icons';
 import { computeStates, MAX_MASTERY, nextNode, unitComplete, type NodeState } from '../../lib/progress';
 import { db } from '../../db/db';
 import { focusNoScroll, go } from '../../lib/router';
@@ -49,6 +49,19 @@ export function PathView() {
         <span className="flex-1">
           <span className="block font-semibold">Practice</span>
           <span className={`block text-sm ${due > 0 ? 'font-medium text-jade' : 'text-muted'}`}>{due > 0 ? `${due} item${due === 1 ? '' : 's'} due for review` : 'Reviews and recent mistakes'}</span>
+        </span>
+      </button>
+
+      <button
+        onClick={() => go('read')}
+        className="group -mt-5 mb-8 flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left transition hover:border-jade active:scale-[0.99]"
+      >
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-soft text-gold">
+          <OpenBook className="h-6 w-6" />
+        </span>
+        <span className="flex-1">
+          <span className="block font-semibold">Stories</span>
+          <span className="block text-sm text-muted">Short reads with the words you know</span>
         </span>
       </button>
 

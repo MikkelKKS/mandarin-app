@@ -17,6 +17,8 @@ export interface LessonResult {
   ms: number;
   newWords: string[];
   mistakes: string[]; // item ids answered wrong at least once
+  /** Exercises answered wrong first time and then fixed (some exercises, like sound drills, have no item ids). */
+  fixed?: number;
   total: number;
 }
 
@@ -86,6 +88,7 @@ export function LessonPlayer({
       ms: Date.now() - started.current,
       newWords: exercises.filter((e) => e.kind === 'intro').map((e) => (e as Extract<Exercise, { kind: 'intro' }>).wordId),
       mistakes: [...mistakes.current],
+      fixed: scored.length - ok,
       total: scoredTotal,
     });
   }, [exercises, onFinish, scoredTotal]);

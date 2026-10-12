@@ -182,3 +182,15 @@ test('opening a skill does not scroll the path', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Start' })).toBeInViewport();
   expect(await page.evaluate(() => (globalThis as unknown as { scrollY: number }).scrollY)).toBe(before);
 });
+
+test('read a story and look up a word', async ({ page }) => {
+  await page.goto('./#/read');
+  await expect(page.getByRole('heading', { name: 'Stories' })).toBeVisible();
+  await page.goto('./#/read/r-myday');
+  await expect(page.getByRole('heading', { name: '我叫米格' })).toBeVisible();
+  await page.locator('article button', { hasText: '丹麦' }).first().click();
+  await expect(page.getByRole('dialog', { name: '丹麦' })).toBeVisible();
+  await expect(page.getByText('Denmark').first()).toBeVisible();
+  await page.getByRole('button', { name: 'Show the translation' }).click();
+  await expect(page.getByText(/I live in Copenhagen/)).toBeVisible();
+});

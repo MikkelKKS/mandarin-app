@@ -29,7 +29,7 @@ export function EndScreen({
   onAgain: () => void;
 }) {
   const v = verdictText(result.accuracy);
-  const fixed = result.mistakes.length;
+  const fixed = result.fixed ?? result.mistakes.length;
   const btn = useRef<HTMLButtonElement>(null);
   useEffect(() => btn.current?.focus({ preventScroll: true }), []);
   const mins = Math.floor(result.ms / 60000);
