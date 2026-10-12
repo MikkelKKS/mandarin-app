@@ -1,0 +1,19 @@
+{
+  "id": "r-space",
+  "title": "A game about space",
+  "titleHanzi": "太空里的故事",
+  "after": "u26-festival",
+  "blurb": "Why one computer game is still the favourite.",
+  "paragraphs": [
+    { "zh": "我的爱好是跑步和玩电脑游戏。我玩过很多游戏，可是我最喜欢的游戏在太空里。", "en": "My hobbies are running and computer games. I've played lots of games, but my favourite one takes place in space." },
+    { "zh": "在这个游戏里，你坐飞船去很多星球。每个星球都有一个故事。", "en": "In this game you fly a spaceship to lots of planets. Every planet has a story." },
+    { "zh": "没有人告诉你应该做什么。你需要慢慢发现这个世界的历史。", "en": "Nobody tells you what you should do. You have to slowly discover the history of this world." },
+    { "zh": "我第一次玩的时候，有一点害怕，可是我越来越有兴趣。", "en": "The first time I played, I was a little scared, but I got more and more interested." },
+    { "zh": "女朋友说：“你说这个游戏的时候，跟说跑步一样高兴！”", "en": "My girlfriend says: \"When you talk about this game, you're as happy as when you talk about running!\"" }
+  ],
+  "extra": [
+    { "hanzi": "太空", "pinyin": "tàikōng", "english": "space, outer space" },
+    { "hanzi": "飞船", "pinyin": "fēichuán", "english": "spaceship" },
+    { "hanzi": "星球", "pinyin": "xīngqiú", "english": "planet" }
+  ]
+}

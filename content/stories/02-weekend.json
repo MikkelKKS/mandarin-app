@@ -1,0 +1,41 @@
+{
+  "id": "r-weekend",
+  "title": "The weekend",
+  "titleHanzi": "周末",
+  "after": "u09-plans",
+  "blurb": "A run, a game, and a coffee date.",
+  "paragraphs": [
+    {
+      "zh": "周末我有时间。星期六早上我去跑步。我跑了一个小时，很累，可是很高兴。",
+      "en": "At the weekend I have time. On Saturday morning I go running. I ran for an hour; I'm tired but happy."
+    },
+    {
+      "zh": "下午我在家玩电脑。我最喜欢的游戏很难，可是很有意思。",
+      "en": "In the afternoon I play on my computer at home. My favourite game is hard, but really interesting."
+    },
+    {
+      "zh": "晚上女朋友给我打电话。她说：“你明天有空吗？我们一起去喝咖啡吧！”",
+      "en": "In the evening my girlfriend calls me. She says: \"Are you free tomorrow? Let's go for a coffee!\""
+    },
+    {
+      "zh": "我说：“好啊！几点见面？”她说：“下午三点，我们在地铁站见面。”",
+      "en": "I say: \"Sure! What time shall we meet?\" She says: \"Three in the afternoon. Let's meet at the subway station.\""
+    },
+    {
+      "zh": "我可能会迟到，可是我一定去！",
+      "en": "I might be late, but I'll definitely be there!"
+    }
+  ],
+  "extra": [
+    {
+      "hanzi": "游戏",
+      "pinyin": "yóuxì",
+      "english": "game"
+    },
+    {
+      "hanzi": "跑",
+      "pinyin": "pǎo",
+      "english": "to run"
+    }
+  ]
+}

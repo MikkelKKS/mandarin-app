@@ -6,6 +6,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { checkContent } from '../src/content/check';
+import { checkStory } from '../src/content/stories';
 
 const root = join(import.meta.dirname, '..');
 const read = (p: string) => JSON.parse(readFileSync(join(root, p), 'utf8'));
@@ -29,6 +30,12 @@ function hskIndex(): Map<string, number> | undefined {
   return m;
 }
 
+// Reading stories: every character must be taught by the unit the story follows.
+const storyDir = join(root, 'content/stories');
+const storyFiles = existsSync(storyDir) ? readdirSync(storyDir).filter((f) => f.endsWith('.json')).sort() : [];
+const unitData = unitFiles.map((f) => read(`content/units/${f}`));
+for (const f of storyFiles) report.errors.push(...checkStory(`stories/${f}`, read(`content/stories/${f}`), unitData));
+
 let errors = report.errors;
 if (allowMissingAudio) {
   const audio = errors.filter((e) => e.includes('audio file(s) missing'));
@@ -37,5 +44,5 @@ if (allowMissingAudio) {
 }
 report.warnings.forEach((w) => console.warn(`warning: ${w}`));
 errors.forEach((e) => console.error(`error: ${e}`));
-console.log(`${unitFiles.length} unit file(s) checked: ${errors.length} error(s), ${report.warnings.length} warning(s).`);
+console.log(`${unitFiles.length} unit file(s) and ${storyFiles.length} story file(s) checked: ${errors.length} error(s), ${report.warnings.length} warning(s).`);
 process.exit(errors.length ? 1 : 0);

@@ -88,3 +88,9 @@ export const Music = ({ className }: P) => (
     <circle cx="18" cy="16" r="3" />
   </svg>
 );
+export const OpenBook = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.5-2-10-.5z" />
+    <path d="M12 6v13.5" />
+  </svg>
+);

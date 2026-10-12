@@ -1,0 +1,36 @@
+{
+  "id": "r-myday",
+  "title": "My day",
+  "titleHanzi": "我叫米格",
+  "after": "u07-work",
+  "blurb": "Studying maths in Copenhagen, working, running.",
+  "paragraphs": [
+    {
+      "zh": "我叫米格，我是丹麦人。我住在哥本哈根。",
+      "en": "My name is 米格, and I'm Danish. I live in Copenhagen."
+    },
+    {
+      "zh": "我在大学学习数学。我也在一家保险公司工作。",
+      "en": "I study mathematics at university. I also work at an insurance company."
+    },
+    {
+      "zh": "我每天早上八点去大学。下午我去公司上班。我的工作很有意思，可是我常常很忙。",
+      "en": "Every morning at eight I go to the university. In the afternoon I go to work at the company. My job is interesting, but I'm often busy."
+    },
+    {
+      "zh": "晚上我很累。可是我很喜欢跑步，也喜欢玩电脑。",
+      "en": "In the evening I'm tired. But I love running, and I like playing on the computer too."
+    },
+    {
+      "zh": "我的女朋友是中国人。我想和她的家人说中文，我每天学一点。",
+      "en": "My girlfriend is Chinese. I want to speak Chinese with her family, so I learn a little every day."
+    }
+  ],
+  "extra": [
+    {
+      "hanzi": "保险",
+      "pinyin": "bǎoxiǎn",
+      "english": "insurance"
+    }
+  ]
+}

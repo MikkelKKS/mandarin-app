@@ -1,0 +1,16 @@
+{
+  "id": "r-oneyear",
+  "title": "One year of Chinese",
+  "titleHanzi": "学了一年中文",
+  "after": "u28-oneyear",
+  "blurb": "A phone call with her mother, all in Chinese.",
+  "paragraphs": [
+    { "zh": "一年以前，我只会说“你好”和“谢谢”。现在我可以用中文跟阿姨打电话了。", "en": "A year ago, I could only say \"hello\" and \"thank you\". Now I can call her mother in Chinese." },
+    { "zh": "昨天阿姨问我：“米格，你最近工作忙不忙？”", "en": "Yesterday her mother asked me: \"米格, have you been busy at work lately?\"" },
+    { "zh": "我说：“有点忙，可是我很喜欢我的工作。我们公司最近有很多变化。”", "en": "I said: \"A bit busy, but I really like my job. There have been lots of changes at our company recently.\"" },
+    { "zh": "阿姨说：“你的中文越来越好了！”我说：“哪里哪里，还差得远呢。”", "en": "She said: \"Your Chinese keeps getting better!\" I said: \"Not really, I've still got a long way to go.\"" },
+    { "zh": "阿姨高兴地说：“春节你们一定要来北京！姥姥也想你。”", "en": "She said happily: \"You must both come to Beijing for Spring Festival! Grandma misses you too.\"" },
+    { "zh": "我当然愿意去。为了这一天，我学了一年。", "en": "Of course I want to go. This is the day I've been learning for all year." }
+  ],
+  "extra": []
+}

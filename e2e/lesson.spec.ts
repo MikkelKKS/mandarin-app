@@ -177,7 +177,8 @@ test('opening a skill does not scroll the path', async ({ page }) => {
   await page.waitForTimeout(800);
   const before = await page.evaluate(() => (globalThis as unknown as { scrollY: number }).scrollY);
   await node.click();
-  await expect(page.getByRole('button', { name: 'Start' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Start' })).toBeInViewport();
   await page.waitForTimeout(800);
+  await expect(page.getByRole('button', { name: 'Start' })).toBeInViewport();
   expect(await page.evaluate(() => (globalThis as unknown as { scrollY: number }).scrollY)).toBe(before);
 });

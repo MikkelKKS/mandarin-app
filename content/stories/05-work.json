@@ -1,0 +1,23 @@
+{
+  "id": "r-work",
+  "title": "A good idea",
+  "titleHanzi": "我有一个办法",
+  "after": "u24-office",
+  "blurb": "A big meeting at the insurance company.",
+  "paragraphs": [
+    { "zh": "我在大学学习精算，也在一家保险公司工作。我的办公室在十层。", "en": "I study actuarial science at university and also work at an insurance company. My office is on the tenth floor." },
+    { "zh": "我的工作主要是用电脑算风险。我的同事都很好，我们常常一起吃午饭。", "en": "My work is mainly calculating risk on the computer. My colleagues are all nice; we often have lunch together." },
+    { "zh": "今天有一个很重要的会议。经理说：“这个问题我们需要解决，可是我们还没有办法。”", "en": "Today there was an important meeting. The manager said: \"We need to solve this problem, but we don't have a way yet.\"" },
+    { "zh": "我想了一会儿，然后说：“我有一个办法。”大家都看着我。", "en": "I thought for a moment, then said: \"I have an idea.\" Everyone looked at me." },
+    { "zh": "我介绍了我的办法。经理说：“好！就这么做。”", "en": "I explained my idea. The manager said: \"Good! Let's do it that way.\"" },
+    { "zh": "晚上我给女朋友打电话：“今天经理用了我的办法！”她说：“我为你高兴！”", "en": "In the evening I called my girlfriend: \"Today the manager used my idea!\" She said: \"I'm happy for you!\"" }
+  ],
+  "extra": [
+    { "hanzi": "精算", "pinyin": "jīngsuàn", "english": "actuarial science" },
+    { "hanzi": "保险", "pinyin": "bǎoxiǎn", "english": "insurance" },
+    { "hanzi": "算", "pinyin": "suàn", "english": "to calculate" },
+    { "hanzi": "风险", "pinyin": "fēngxiǎn", "english": "risk" },
+    { "hanzi": "午饭", "pinyin": "wǔfàn", "english": "lunch" },
+    { "hanzi": "这么", "pinyin": "zhème", "english": "like this, this way" }
+  ]
+}

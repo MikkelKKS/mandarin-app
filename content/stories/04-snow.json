@@ -1,0 +1,18 @@
+{
+  "id": "r-snow",
+  "title": "Running in the snow",
+  "titleHanzi": "下雪了",
+  "after": "u18-outandabout",
+  "blurb": "A December run through Copenhagen.",
+  "paragraphs": [
+    { "zh": "十二月，哥本哈根下雪了。天很阴，路上没有人。", "en": "In December it snowed in Copenhagen. The sky was grey and there was nobody on the streets." },
+    { "zh": "我穿了很多衣服，出去跑步。", "en": "I put on lots of clothes and went out running." },
+    { "zh": "雪很白，路很长。我跑得不快，可是我非常高兴。", "en": "The snow was white and the road was long. I wasn't running fast, but I was really happy." },
+    { "zh": "我跑了五公里，然后回家喝了一杯牛奶。", "en": "I ran five kilometres, then went home and had a glass of milk." },
+    { "zh": "女朋友给我打电话。她笑着说：“你太爱跑步了！下次多穿点衣服！”", "en": "My girlfriend called me. She laughed: \"You love running too much! Wear more clothes next time!\"" }
+  ],
+  "extra": [
+    { "hanzi": "跑", "pinyin": "pǎo", "english": "to run" },
+    { "hanzi": "公里", "pinyin": "gōnglǐ", "english": "kilometre" }
+  ]
+}

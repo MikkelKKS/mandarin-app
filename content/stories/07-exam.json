@@ -1,0 +1,22 @@
+{
+  "id": "r-exam",
+  "title": "Exam week",
+  "titleHanzi": "考试",
+  "after": "u27-arrival",
+  "blurb": "Probability theory, the library, and a message from Beijing.",
+  "paragraphs": [
+    { "zh": "下个星期我有一个考试，是概率论。这个考试很难，所以我最近每天都在图书馆复习。", "en": "Next week I have an exam in probability theory. It's hard, so lately I've been revising in the library every day." },
+    { "zh": "我做了很多练习，可是有的题我还是不会做。我有点着急。", "en": "I've done lots of exercises, but there are still some questions I can't do. I'm a bit anxious." },
+    { "zh": "晚上女朋友给我发了一个信息：“别着急！你学习那么认真，一定没问题。”", "en": "In the evening my girlfriend sent me a message: \"Don't worry! You study so hard, you'll be fine.\"" },
+    { "zh": "考试那天，我八点就到了。题比我想的容易。", "en": "On the day of the exam I was there by eight. The questions were easier than I'd thought." },
+    { "zh": "两个星期以后，成绩出来了。我考得很好！我马上给她打电话。", "en": "Two weeks later, the results came out. I did really well! I called her straight away." }
+  ],
+  "extra": [
+    { "hanzi": "概率论", "pinyin": "gàilǜlùn", "english": "probability theory" },
+    { "hanzi": "发", "pinyin": "fā", "english": "to send" },
+    { "hanzi": "信息", "pinyin": "xìnxī", "english": "message, text" },
+    { "hanzi": "有的", "pinyin": "yǒude", "english": "some" },
+    { "hanzi": "那么", "pinyin": "nàme", "english": "so (much)" },
+    { "hanzi": "考", "pinyin": "kǎo", "english": "to take an exam" }
+  ]
+}

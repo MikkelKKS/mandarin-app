@@ -1,12 +1,11 @@
 /** Music: Mandarin songs from Spotify, ranked by how much of the lyrics you'd understand. */
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { TonePinyin, ToneText } from '../../components/Hanzi';
-import { Close, Music, Speaker } from '../../components/icons';
+import { WordPopover } from '../../components/WordPopover';
+import { Music } from '../../components/icons';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
-import { loadDict, plecoLink, type Dict, type Entry } from '../dictionary/dict';
-import { addMyWord, myWordId, useMyWords } from '../dictionary/mywords';
+import { usePinyinFn } from '../../lib/pinyinPro';
+import { loadDict, type Dict } from '../dictionary/dict';
 import { useStats } from '../progress/ProgressView';
 import { findSongs, loadKnowledge, loadResults, loadT2s, saveResults, savePlaylist, type SavedResults, type ScoredSong } from './finder';
 import { SCENES, sceneById, suggestScenes } from './genres';
@@ -371,7 +370,7 @@ function SongView({ id }: { id: string }) {
           )}
         </div>
       )}
-      {word && <WordPopover token={word.token} anchor={word.anchor} onClose={() => setWord(null)} />}
+      {word && <WordPopover text={word.token.text} entry={word.token.entry} known={word.token.status === 'known'} anchor={word.anchor} onClose={() => setWord(null)} />}
     </div>
   );
 }
@@ -419,22 +418,6 @@ function Summary({ score, reader, onWord }: { score: SongScore; reader: ReturnTy
       )}
     </div>
   );
-}
-
-/** Context-aware pinyin for whole lyric lines (pinyin-pro, loaded only when lyrics are shown). */
-type PinyinFn = (text: string) => string[];
-let pinyinFn: Promise<PinyinFn> | null = null;
-function usePinyinFn(): PinyinFn | null {
-  const [fn, setFn] = useState<PinyinFn | null>(null);
-  useEffect(() => {
-    pinyinFn ??= import('pinyin-pro').then((m) => (text: string) => m.pinyin(text, { type: 'array', nonZh: 'removed' }));
-    let live = true;
-    void pinyinFn.then((f) => live && setFn(() => f));
-    return () => {
-      live = false;
-    };
-  }, []);
-  return fn;
 }
 
 function LyricLine({
@@ -495,87 +478,6 @@ function LyricLine({
         );
       })}
     </p>
-  );
-}
-
-/** A small card next to the tapped word. No backdrop, so the song and lyrics stay visible. */
-function WordPopover({ token, anchor, onClose }: { token: LyricToken; anchor: DOMRect; onClose: () => void }) {
-  const box = useRef<HTMLDivElement>(null);
-  const close = useRef(onClose);
-  close.current = onClose;
-  const mine = useMyWords();
-  const [busy, setBusy] = useState(false);
-  const e: Entry | undefined = token.entry;
-  const added = e ? mine.some((w) => w.id === myWordId(e)) : false;
-  useEffect(() => {
-    const key = (ev: KeyboardEvent) => ev.key === 'Escape' && close.current();
-    // Tapping anywhere else closes it (the tap on another word then opens that one).
-    const down = (ev: PointerEvent) => {
-      if (!box.current?.contains(ev.target as Node)) close.current();
-    };
-    window.addEventListener('keydown', key);
-    const t = setTimeout(() => document.addEventListener('pointerdown', down), 0);
-    return () => {
-      window.removeEventListener('keydown', key);
-      clearTimeout(t);
-      document.removeEventListener('pointerdown', down);
-    };
-  }, []);
-  const say = () => {
-    if (!('speechSynthesis' in window)) return;
-    const u = new SpeechSynthesisUtterance(token.text);
-    u.lang = 'zh-CN';
-    speechSynthesis.cancel();
-    speechSynthesis.speak(u);
-  };
-  // Place it below the word (or above when there's no room), inside the screen, in page coordinates so it scrolls with the lyrics.
-  const width = Math.min(320, window.innerWidth - 24);
-  const left = Math.max(12, Math.min(anchor.left + anchor.width / 2 - width / 2, window.innerWidth - width - 12)) + window.scrollX;
-  const below = anchor.bottom + 230 < window.innerHeight;
-  const top = (below ? anchor.bottom + 8 : anchor.top - 8) + window.scrollY;
-  return createPortal(
-    <div
-      ref={box}
-      role="dialog"
-      aria-label={token.text}
-      className="anim-pop absolute z-40 rounded-2xl border border-line bg-surface p-4 shadow-xl"
-      style={{ left, top, width, transform: below ? undefined : 'translateY(-100%)' }}
-    >
-      <div className="flex items-start gap-2">
-        <div className="min-w-0 flex-1">
-          {e ? <ToneText hanzi={e.hanzi} pinyin={e.pinyin} className="han text-3xl" /> : <span className="han text-3xl">{token.text}</span>}
-          {e && <TonePinyin pinyin={e.pinyin} className="ml-2 text-base" />}
-          {e && e.hsk > 0 && <span className="ml-2 rounded-md bg-sunk px-1.5 py-0.5 align-middle text-xs text-muted">HSK {e.hsk}</span>}
-        </div>
-        <button onClick={say} aria-label={`Hear ${token.text}`} className="rounded-full bg-jade-soft p-2 text-jade">
-          <Speaker className="h-4 w-4" />
-        </button>
-        <button onClick={onClose} aria-label="Close" className="rounded-full p-1.5 text-muted hover:bg-sunk">
-          <Close className="h-4 w-4" />
-        </button>
-      </div>
-      <p className="mt-1 text-sm leading-relaxed">{e ? e.defs.slice(0, 4).join('; ') : 'Not in the dictionary.'}</p>
-      {token.status === 'known' && <p className="mt-1 text-xs text-jade">You know this one.</p>}
-      <div className="mt-3 flex flex-wrap gap-2 text-sm">
-        {e && (
-          <button
-            disabled={added || busy}
-            onClick={async () => {
-              setBusy(true);
-              await addMyWord(e);
-              setBusy(false);
-            }}
-            className={`rounded-xl px-3 py-1.5 font-medium ${added ? 'bg-jade-soft text-jade' : 'border-2 border-line'}`}
-          >
-            {added ? '✓ In my practice' : '+ Add to my practice'}
-          </button>
-        )}
-        <a href={plecoLink(token.text)} className="rounded-xl border-2 border-line px-3 py-1.5 font-medium">
-          Open in Pleco
-        </a>
-      </div>
-    </div>,
-    document.body,
   );
 }
 
@@ -687,7 +589,7 @@ function NowPlaying() {
           )}
         </>
       )}
-      {word && <WordPopover token={word.token} anchor={word.anchor} onClose={() => setWord(null)} />}
+      {word && <WordPopover text={word.token.text} entry={word.token.entry} known={word.token.status === 'known'} anchor={word.anchor} onClose={() => setWord(null)} />}
     </div>
   );
 }
