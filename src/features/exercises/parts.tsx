@@ -119,7 +119,7 @@ export function Options({
             aria-selected={selected === i}
             disabled={locked}
             onClick={() => onSelect(i)}
-            className={`flex min-h-14 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left transition active:scale-[0.99] ${extra ? 'flex-1' : ''} ${optionClass(st)}`}
+            className={`group flex min-h-14 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left transition active:scale-[0.99] ${extra ? 'flex-1' : ''} ${optionClass(st)}`}
           >
             <span className="hidden h-6 w-6 shrink-0 items-center justify-center rounded-md border border-line text-xs text-muted sm:flex">{i + 1}</span>
             <span className="min-w-0 flex-1">{render(i)}</span>

@@ -54,3 +54,19 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Her family is from Beijing, so later units use Beijing forms where natural (哪儿, 这儿, 咱们, 您 for elders), plus a few local words that aren't on HSK lists: 涮羊肉, 炸酱面, 广场舞, 师傅, 刷碗.
 - A few words are introduced earlier than their HSK level because natural sentences need them (骑, 戴, 们, 天, 风, 北, 话).
 - Sentence, exchange and grammar ids now carry the unit number (s14-…) to avoid clashes.
+
+## Progress page
+- A Progress tab shows HSK 1–3 coverage (known = FSRS card in Review state; settling in = seen but not stable), the level being worked on (first HSK level under 80% known), reviews due now and over the next 7 days, tone accuracy by ear (from tone-identification answers), common tone mix-ups (also from typed answers with wrong tones, now logged), most-missed items, answers per day for 14 days, and per-unit progress. No streaks or points.
+
+## Music (owner request)
+- Spotify Web API from the browser with the PKCE flow (no secret, no server). Development-mode apps need Spotify Premium and allow up to 5 users, which fits a personal app. The Client ID is public and lives in `.env.production`.
+- Song candidates come from Spotify searches by artist and genre for 8 Mandarin "scenes"; the scenes are pre-picked from the listener's top artists' genres.
+- Lyrics come from LRCLIB at runtime on the device and are never stored in the repo, the database or sync. Lyrics are converted to simplified (`public/dict/t2s.json`, built from CC-CEDICT in CI), segmented with the dictionary and scored: known/learning words, words within your HSK level, and harder words. Cantonese and mostly-English lyrics are skipped.
+- The app keeps one private playlist ("学中文: songs at my level") and replaces its songs each time it's saved. "Follow along" polls the currently playing track and highlights the current line of timed lyrics.
+
+## Tiles and pinyin
+- Word tiles support drag and drop (pointer events, works with touch and mouse): reorder answer tiles, drop pool tiles at a position, or drag a tile out to remove it. Tapping still works.
+- New pinyin display mode "On hover": pinyin space is kept but only shown for the hovered word.
+
+## Audio cut off (again)
+- Some recordings from edge-tts came back as only the first syllable (about 0.4 s). The generator now checks each recording's length and retries short ones; the 216 affected files were deleted and regenerated, and audio URLs got a refresh tag so devices fetch the new files.

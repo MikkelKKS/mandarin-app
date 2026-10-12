@@ -51,7 +51,7 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: ({ url }) => url.pathname.endsWith('/dict/cedict.tsv'),
+            urlPattern: ({ url }) => url.pathname.endsWith('/dict/cedict.tsv') || url.pathname.endsWith('/dict/t2s.json'),
             handler: 'StaleWhileRevalidate',
             options: { cacheName: 'dictionary', cacheableResponse: { statuses: [200] } },
           },

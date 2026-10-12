@@ -14,6 +14,8 @@ A listening-first Mandarin Chinese course that runs in the browser and installs 
 - **Pinyin typing** with tone marks or numbers, lenient about tone changes, with clear feedback on tones.
 - **Tone training**: tone exercises in every lesson, plus the Tone Sort and Tone Pairs games.
 - **Spaced repetition** (FSRS) for reviews and recent mistakes.
+- **Progress**: HSK coverage, reviews coming up, how well you hear each tone, and the words that trip you up.
+- **Music**: connects to Spotify, finds Mandarin songs in the genres you like, scores the lyrics against what you know, saves a playlist at your level, and shows the lyrics with pinyin as you listen.
 - **Mini-games**: Tone Sort, Tone Pairs, Listening Blitz, Pair Rush, Sentence Scramble, Measure Word Match.
 - **Dictionary**: search by characters, pinyin or English, sentence breakdown, online translation, Pleco links, and "add to practice".
 - **AI practice packs**: export your weak spots, generate a targeted pack with Claude, and import it.
@@ -46,4 +48,4 @@ Design decisions are recorded in [DECISIONS.md](DECISIONS.md).
 
 ## Credits
 
-Dictionary data from [CC-CEDICT](https://www.mdbg.net/chinese/dictionary?page=cc-cedict) (CC BY-SA 4.0). HSK word levels from [complete-hsk-vocabulary](https://github.com/drkameleon/complete-hsk-vocabulary) (MIT). Pinyin data from [pinyin-pro](https://github.com/zh-lx/pinyin-pro) (MIT). Scheduling by [ts-fsrs](https://github.com/open-spaced-repetition/ts-fsrs) (MIT). Translation by [MyMemory](https://mymemory.translated.net/). Fonts: Noto Sans SC and Lexend (SIL Open Font License).
+Dictionary data from [CC-CEDICT](https://www.mdbg.net/chinese/dictionary?page=cc-cedict) (CC BY-SA 4.0). HSK word levels from [complete-hsk-vocabulary](https://github.com/drkameleon/complete-hsk-vocabulary) (MIT). Pinyin data from [pinyin-pro](https://github.com/zh-lx/pinyin-pro) (MIT). Scheduling by [ts-fsrs](https://github.com/open-spaced-repetition/ts-fsrs) (MIT). Translation by [MyMemory](https://mymemory.translated.net/). Lyrics from [LRCLIB](https://lrclib.net), fetched on your device. Fonts: Noto Sans SC and Lexend (SIL Open Font License).

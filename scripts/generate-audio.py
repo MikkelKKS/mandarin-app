@@ -59,12 +59,34 @@ async def pad(path):
     tmp.replace(path)
 
 
+async def duration(path):
+    proc = await asyncio.create_subprocess_exec(
+        "ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path),
+        stdout=asyncio.subprocess.PIPE,
+    )
+    out, _ = await proc.communicate()
+    try:
+        return float(out.decode().strip())
+    except ValueError:
+        return 0.0
+
+
+def min_seconds(text):
+    """Shortest believable recording. The TTS service sometimes returns only the first syllable."""
+    n = sum(1 for c in text if "\u4e00" <= c <= "\u9fff")
+    # Normal clips are rarely under a second (the service adds a little silence); cut-off ones are about 0.4 s.
+    return max(0.8, 0.18 * n + 0.2)
+
+
 async def synth(text, voice, rate, dest, sem):
     async with sem:
-        for attempt in range(4):
+        for attempt in range(5):
             try:
                 tmp = dest.with_suffix(".tmp")
                 await edge_tts.Communicate(text, voice, rate=rate).save(str(tmp))
+                secs = await duration(tmp)
+                if secs < min_seconds(text) and attempt < 4:
+                    raise RuntimeError(f"recording too short ({secs:.2f}s), probably cut off")
                 tmp.replace(dest)
                 await pad(dest)
                 return True

@@ -40,6 +40,9 @@ export function ProgressView() {
         </p>
       )}
       <Coverage s={s} />
+      <button onClick={() => go('music')} className="mt-4 h-12 w-full rounded-2xl border-2 border-line font-medium">
+        Find songs at {s.level > 3 ? 'your level' : `HSK ${s.level}`}
+      </button>
       <Reviews s={s} />
       <Tones s={s} />
       <Missed s={s} />

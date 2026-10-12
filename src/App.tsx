@@ -2,6 +2,7 @@ import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
 import { Book, Chart, Cog, Gamepad, Path, Refresh } from './components/icons';
 import { ProgressView } from './features/progress/ProgressView';
+import { MusicRoute } from './features/music/MusicView';
 import { DictionaryView } from './features/dictionary/DictionaryView';
 import { GameRunner, GamesView } from './features/games/GamesView';
 import { NodeRunner, PackRunner, PracticeRunner, TestOutRunner } from './features/lesson/Runners';
@@ -55,6 +56,9 @@ export default function App() {
     case 'games':
       body = <GamesView />;
       break;
+    case 'music':
+      body = <MusicRoute route={route} />;
+      break;
     case 'progress':
       body = <ProgressView />;
       break;
@@ -88,7 +92,7 @@ const TABS = [
 ];
 
 function Shell({ active, children }: { active: string; children: ReactNode }) {
-  const current = active === 'about' ? 'settings' : active;
+  const current = active === 'about' ? 'settings' : active === 'music' ? 'games' : active;
   return (
     <div className="min-h-dvh md:flex">
       <nav

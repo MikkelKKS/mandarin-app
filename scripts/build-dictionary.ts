@@ -9,6 +9,9 @@
  *
  * Output line format (tab-separated):
  *   simplified  pinyin-with-marks  toneless-key  definitions(" / "-joined)  hsk-level(0 = none)
+ *
+ * Also writes public/dict/t2s.json: traditional → simplified for single
+ * characters, so song lyrics in traditional characters can be read and scored.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -41,6 +44,20 @@ export function tonelessKey(numeric: string): string {
 }
 
 const VARIANT = /^(old |archaic |erhua |japanese )?variant of /i;
+
+/** Traditional → simplified character pairs from single-character entries. */
+export function tradToSimp(text: string): Record<string, string> {
+  const map: Record<string, string> = {};
+  for (const line of text.split('\n')) {
+    const m = line.match(/^(\S+) (\S+) \[/);
+    if (!m) continue;
+    const [, trad, simp] = m;
+    if (trad === simp || [...trad].length !== 1 || [...simp].length !== 1) continue;
+    if (!/\p{Script=Han}/u.test(trad) || map[trad]) continue;
+    map[trad] = simp;
+  }
+  return map;
+}
 
 export function parseCedict(text: string, hsk: Map<string, number>): string[] {
   const out: string[] = [];
@@ -79,7 +96,9 @@ async function main() {
   const lines = parseCedict(text, hsk);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'cedict.tsv'), lines.join('\n') + '\n');
-  console.log(`Wrote ${lines.length} dictionary entries to public/dict/cedict.tsv`);
+  const t2s = tradToSimp(text);
+  writeFileSync(join(outDir, 't2s.json'), JSON.stringify(t2s));
+  console.log(`Wrote ${lines.length} dictionary entries to public/dict/cedict.tsv, ${Object.keys(t2s).length} traditional characters to t2s.json`);
 }
 
 if (process.argv[1]?.endsWith('build-dictionary.ts')) {

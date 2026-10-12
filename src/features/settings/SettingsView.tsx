@@ -59,7 +59,8 @@ export function SettingsView() {
             onChange={(v) => set({ pinyinDisplay: v })}
             options={[
               { v: 'always', label: 'Always' },
-              { v: 'tap', label: 'On tap' },
+              { v: 'hover', label: 'Hover' },
+              { v: 'tap', label: 'Tap' },
               { v: 'never', label: 'Never' },
             ]}
           />

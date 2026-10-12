@@ -23,8 +23,10 @@ export function pickVoice(): Voice {
 
 /** Short hash of the spoken text, so edited items get fresh audio past any cache. */
 const AUDIO_FORMAT = 2; // matches scripts/generate-audio.py (2 = padded with silence)
+/** Bump to make every device fetch fresh audio (r1: replaced recordings that were cut off). */
+const REFRESH = 'r1';
 function textVersion(id: string): string {
-  const t = `${AUDIO_FORMAT}:${lookup(id)?.hanzi ?? ''}`;
+  const t = `${AUDIO_FORMAT}${REFRESH}:${lookup(id)?.hanzi ?? ''}`;
   let h = 5381;
   for (const ch of t) h = ((h * 33) ^ ch.codePointAt(0)!) >>> 0;
   return h.toString(36);
@@ -139,7 +141,7 @@ export async function prefetchForOffline(ids: string[]): Promise<void> {
 /** URL of the pre-recorded dictionary clip for an HSK 1-6 word. */
 export function dictAudioUrl(hanzi: string): string {
   const key = [...hanzi].map((c) => c.codePointAt(0)!.toString(16)).join('_');
-  return `${BASE}audio/dict/${key}.mp3?v=${AUDIO_FORMAT}`;
+  return `${BASE}audio/dict/${key}.mp3?v=${AUDIO_FORMAT}${REFRESH}`;
 }
 
 /** Play a URL; resolves true if it played, false if it failed to load. */

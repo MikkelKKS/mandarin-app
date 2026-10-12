@@ -43,7 +43,7 @@ export interface ReviewLogRow {
   updatedAt: number;
 }
 
-export type PinyinDisplay = 'always' | 'tap' | 'never';
+export type PinyinDisplay = 'always' | 'hover' | 'tap' | 'never';
 export type VoicePref = 'alternate' | 'f' | 'm';
 export type Theme = 'system' | 'light' | 'dark';
 

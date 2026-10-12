@@ -160,7 +160,7 @@ export function SentenceText({
 }) {
   const settings = useSettings();
   const open = useWordPopup();
-  const showPinyin = pinyin ?? settings.pinyinDisplay === 'always';
+  const mode: PyMode = pinyin === true ? 'show' : pinyin === false ? 'none' : settings.pinyinDisplay === 'always' ? 'show' : settings.pinyinDisplay === 'hover' ? 'hover' : 'none';
   const syls = alignSyllables(sentence.hanzi, sentence.pinyin);
   const tokens = sentenceTokens(sentence as Sentence);
 
@@ -193,17 +193,17 @@ export function SentenceText({
             key={gi}
             type="button"
             onClick={() => open(g.word!)}
-            className="inline-flex rounded-md px-0.5 hover:bg-sunk"
+            className="group inline-flex rounded-md px-0.5 hover:bg-sunk"
             aria-label={`${g.word.hanzi} ${g.word.pinyin}: ${g.word.english[0]}`}
           >
             {g.syls.map((s, si) => (
-              <Ruby key={si} s={s} showPinyin={showPinyin} toneColors={settings.toneColors} />
+              <Ruby key={si} s={s} mode={mode} toneColors={settings.toneColors} />
             ))}
           </button>
         ) : (
-          <span key={gi} className="inline-flex">
+          <span key={gi} className="group inline-flex">
             {g.syls.map((s, si) => (
-              <Ruby key={si} s={s} showPinyin={showPinyin} toneColors={settings.toneColors} />
+              <Ruby key={si} s={s} mode={mode} toneColors={settings.toneColors} />
             ))}
           </span>
         ),
@@ -212,13 +212,15 @@ export function SentenceText({
   );
 }
 
-function Ruby({ s, showPinyin, toneColors }: { s: Syl; showPinyin: boolean; toneColors: boolean }) {
+/** show: always above; hover: space kept, shown while the word is hovered; none: hidden. */
+type PyMode = 'show' | 'hover' | 'none';
+
+function Ruby({ s, mode, toneColors }: { s: Syl; mode: PyMode; toneColors: boolean }) {
   const color = toneColors && s.tone ? TONE_CLASS[s.tone] : '';
+  const vis = !s.pinyin ? 'invisible' : mode === 'hover' ? `invisible group-hover:visible ${color}` : color;
   return (
     <span className="inline-flex flex-col items-center leading-none">
-      {showPinyin && (
-        <span className={`mb-1 font-sans text-[0.42em] leading-none ${s.pinyin ? color : 'invisible'}`}>{s.pinyin || '·'}</span>
-      )}
+      {mode !== 'none' && <span className={`mb-1 font-sans text-[0.42em] leading-none ${vis}`}>{s.pinyin || '·'}</span>}
       <span className={color}>{s.ch}</span>
     </span>
   );

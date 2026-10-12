@@ -72,7 +72,7 @@ export function ListenSentence({ ex }: { ex: Of<'listen-sentence'> }) {
           return (
             <span className="flex flex-col">
               <ToneText hanzi={o.hanzi} pinyin={o.pinyin} className="han text-2xl" />
-              {pinyinDisplay !== 'never' && <span className="text-sm text-muted">{o.pinyin}</span>}
+              {pinyinDisplay !== 'never' && <span className={`text-sm text-muted ${pinyinDisplay === 'hover' ? 'invisible group-hover:visible' : ''}`}>{o.pinyin}</span>}
             </span>
           );
         }}
@@ -253,7 +253,7 @@ export function WhatWouldYouSay({ ex }: { ex: Of<'what-would-you-say'> }) {
           return (
             <span className="flex min-w-0 flex-col">
               <ToneText hanzi={s.hanzi} pinyin={s.pinyin} className="han text-xl" />
-              {pinyinDisplay !== 'never' && <span className="text-sm text-muted">{s.pinyin}</span>}
+              {pinyinDisplay !== 'never' && <span className={`text-sm text-muted ${pinyinDisplay === 'hover' ? 'invisible group-hover:visible' : ''}`}>{s.pinyin}</span>}
               {locked && <span className="text-sm text-muted">{s.english}</span>}
             </span>
           );

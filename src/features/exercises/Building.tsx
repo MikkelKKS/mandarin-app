@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { sentences, words } from '../../content';
 import { alignSyllables, SentenceText, ToneText } from '../../components/Hanzi';
 import { hanziOnly } from '../../lib/pinyin';
@@ -10,36 +10,171 @@ import { checkTyped } from './check';
 
 type Of<K extends Exercise['kind']> = Extract<Exercise, { kind: K }>;
 
-/** Tap tiles to build a sentence. Tiles are word ids (duplicates allowed). */
+/**
+ * Build a sentence from word tiles (word ids, duplicates allowed).
+ * Tap a tile to add or remove it, or drag: drag a tile from the pool into
+ * the answer at any position, drag answer tiles to reorder, or drag one out
+ * of the answer to remove it.
+ */
 function TileBoard({ tiles, chosen, setChosen }: { tiles: string[]; chosen: number[]; setChosen: (c: number[]) => void }) {
   const { locked } = useLesson();
   const { pinyinDisplay } = useSettings();
-  const showPy = pinyinDisplay === 'always';
-  const tile = (i: number, onClick: () => void, faded = false) => {
+  const showPy = pinyinDisplay === 'always' || pinyinDisplay === 'hover';
+  const hoverPy = pinyinDisplay === 'hover';
+  const answerRef = useRef<HTMLDivElement>(null);
+  const slotRefs = useRef<Array<HTMLElement | null>>([]);
+  const [drag, setDrag] = useState<Drag | null>(null);
+  const dragRef = useRef<Drag | null>(null);
+  dragRef.current = drag;
+
+  /** Where in the answer a tile dropped at (x, y) would go, or null if outside the answer. */
+  const dropIndex = (x: number, y: number, skipPos: number | null): number | null => {
+    const box = answerRef.current?.getBoundingClientRect();
+    if (!box || x < box.left - 24 || x > box.right + 24 || y < box.top - 32 || y > box.bottom + 32) return null;
+    let idx = 0;
+    chosen.forEach((_, pos) => {
+      if (pos === skipPos) return;
+      const r = slotRefs.current[pos]?.getBoundingClientRect();
+      if (!r) return;
+      const sameRow = y >= r.top && y <= r.bottom;
+      if (y > r.bottom || (sameRow && x > r.left + r.width / 2)) idx++;
+    });
+    return idx;
+  };
+
+  const onDown = (e: React.PointerEvent, tile: number, pos: number | null) => {
+    if (locked || e.button > 0) return;
+    setDrag({ tile, pos, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, moving: false, target: null });
+  };
+  const onMove = (e: PointerEvent) => {
+    const d = dragRef.current;
+    if (!d) return;
+    const moving = d.moving || Math.hypot(e.clientX - d.x0, e.clientY - d.y0) > 6;
+    setDrag({ ...d, x: e.clientX, y: e.clientY, moving, target: moving ? dropIndex(e.clientX, e.clientY, d.pos) : null });
+  };
+  const onUp = () => {
+    const d = dragRef.current;
+    setDrag(null);
+    if (!d) return;
+    if (!d.moving) {
+      // A plain tap
+      if (d.pos !== null) setChosen(chosen.filter((_, j) => j !== d.pos));
+      else if (!chosen.includes(d.tile)) setChosen([...chosen, d.tile]);
+      return;
+    }
+    const rest = d.pos !== null ? chosen.filter((_, j) => j !== d.pos) : chosen.filter((t) => t !== d.tile);
+    if (d.target === null) setChosen(rest); // dragged out of the answer: remove it
+    else setChosen([...rest.slice(0, d.target), d.tile, ...rest.slice(d.target)]);
+  };
+
+  const face = (i: number, hidden = false) => {
     const w = words.get(tiles[i])!;
     return (
-      <button
-        key={i}
-        type="button"
-        disabled={locked || faded}
-        onClick={onClick}
-        className={`flex min-h-12 flex-col items-center justify-center rounded-xl border-2 border-b-4 px-3 py-1.5 transition active:translate-y-0.5 ${faded ? 'border-transparent bg-sunk text-transparent' : 'border-line bg-surface'}`}
-      >
-        {showPy && <span className={`text-xs ${faded ? 'invisible' : 'text-muted'}`}>{w.pinyin}</span>}
-        <ToneText hanzi={w.hanzi} pinyin={w.pinyin} className={`han text-2xl ${faded ? 'invisible' : ''}`} />
-      </button>
+      <>
+        {showPy && <span className={`text-xs ${hidden ? 'invisible' : hoverPy ? 'invisible text-muted group-hover:visible' : 'text-muted'}`}>{w.pinyin}</span>}
+        <ToneText hanzi={w.hanzi} pinyin={w.pinyin} className={`han text-2xl ${hidden ? 'invisible' : ''}`} />
+      </>
     );
   };
+  const tileClass = 'group flex min-h-12 touch-none select-none flex-col items-center justify-center rounded-xl border-2 border-b-4 px-3 py-1.5 transition';
+  // While dragging, follow the pointer anywhere on the page (tiles re-render under it).
+  const live = useRef({ onMove, onUp });
+  live.current = { onMove, onUp };
+  const dragging = !!drag;
+  useEffect(() => {
+    if (!dragging) return;
+    const move = (e: PointerEvent) => live.current.onMove(e);
+    const up = () => live.current.onUp();
+    const cancel = () => setDrag(null);
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+    window.addEventListener('pointercancel', cancel);
+    return () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+      window.removeEventListener('pointercancel', cancel);
+    };
+  }, [dragging]);
+  const handlers = (tile: number, pos: number | null) => ({
+    onPointerDown: (e: React.PointerEvent) => onDown(e, tile, pos),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      e.stopPropagation();
+      if (pos !== null) setChosen(chosen.filter((_, j) => j !== pos));
+      else if (!chosen.includes(tile)) setChosen([...chosen, tile]);
+    },
+  });
+
+  const moving = drag?.moving ? drag : null;
+  const answer: Array<{ tile: number; pos: number } | 'gap'> = chosen.map((tile, pos) => ({ tile, pos }));
+  if (moving && moving.target !== null) {
+    // Show where the tile will land.
+    const visible = answer.filter((a) => a !== 'gap' && a.pos !== moving.pos);
+    visible.splice(moving.target, 0, 'gap');
+    answer.splice(0, answer.length, ...visible);
+  }
+
   return (
     <div>
-      <div className="mb-6 flex min-h-16 flex-wrap content-start gap-2 border-b-2 border-line pb-3" aria-label="Your answer">
-        {chosen.map((ti, pos) => tile(ti, () => setChosen(chosen.filter((_, j) => j !== pos))))}
+      <div ref={answerRef} className="mb-6 flex min-h-16 flex-wrap content-start gap-2 border-b-2 border-line pb-3" aria-label="Your answer">
+        {answer.map((a) =>
+          a === 'gap' ? (
+            <span key="gap" className="min-h-12 w-12 rounded-xl border-2 border-dashed border-jade bg-jade-soft" aria-hidden />
+          ) : (
+            <button
+              key={`tile-${a.tile}`}
+              ref={(el) => {
+                slotRefs.current[a.pos] = el;
+              }}
+              type="button"
+              disabled={locked}
+              {...handlers(a.tile, a.pos)}
+              className={`${tileClass} border-line bg-surface ${moving?.pos === a.pos ? 'opacity-30' : ''}`}
+            >
+              {face(a.tile)}
+            </button>
+          ),
+        )}
       </div>
       <div className="flex flex-wrap justify-center gap-2" aria-label="Word tiles">
-        {tiles.map((_, i) => tile(i, () => setChosen([...chosen, i]), chosen.includes(i)))}
+        {tiles.map((_, i) => {
+          const used = chosen.includes(i);
+          return (
+            <button
+              key={i}
+              type="button"
+              disabled={locked || used}
+              {...handlers(i, null)}
+              className={`${tileClass} ${used ? 'border-transparent bg-sunk text-transparent' : moving?.tile === i && moving.pos === null ? 'border-line bg-surface opacity-30' : 'border-line bg-surface'}`}
+            >
+              {face(i, used)}
+            </button>
+          );
+        })}
       </div>
+      {moving && (
+        <div
+          className={`${tileClass} pointer-events-none fixed z-50 -translate-x-1/2 -translate-y-1/2 border-jade bg-surface shadow-lg`}
+          style={{ left: moving.x, top: moving.y }}
+          aria-hidden
+        >
+          {face(moving.tile)}
+        </div>
+      )}
     </div>
   );
+}
+
+interface Drag {
+  tile: number; // index into tiles
+  pos: number | null; // position in the answer, or null when dragged from the pool
+  x0: number;
+  y0: number;
+  x: number;
+  y: number;
+  moving: boolean;
+  target: number | null; // insertion index in the answer (without the dragged tile)
 }
 
 function useTileCheck(sentenceId: string, tiles: string[], chosen: number[]) {
