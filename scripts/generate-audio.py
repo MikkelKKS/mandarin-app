@@ -60,15 +60,16 @@ async def pad(path):
 
 
 async def duration(path):
-    proc = await asyncio.create_subprocess_exec(
-        "ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path),
-        stdout=asyncio.subprocess.PIPE,
-    )
-    out, _ = await proc.communicate()
+    """Length in seconds, or None if it can't be measured (then the check is skipped)."""
     try:
+        proc = await asyncio.create_subprocess_exec(
+            "ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path),
+            stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.DEVNULL,
+        )
+        out, _ = await proc.communicate()
         return float(out.decode().strip())
-    except ValueError:
-        return 0.0
+    except (OSError, ValueError):
+        return None
 
 
 def min_seconds(text):
@@ -85,13 +86,16 @@ async def synth(text, voice, rate, dest, sem):
                 tmp = dest.with_suffix(".tmp")
                 await edge_tts.Communicate(text, voice, rate=rate).save(str(tmp))
                 secs = await duration(tmp)
-                if secs < min_seconds(text) and attempt < 4:
+                if secs is not None and secs < min_seconds(text) and attempt < 4:
                     raise RuntimeError(f"recording too short ({secs:.2f}s), probably cut off")
                 tmp.replace(dest)
                 await pad(dest)
                 return True
-            except Exception as e:  # network hiccups: retry with backoff
+            except Exception as e:  # network hiccups or a cut-off clip: retry with backoff
                 print(f"  retry {attempt + 1} for {dest.name}: {e}", file=sys.stderr)
+                if attempt == 4:
+                    # Shows up as a GitHub annotation, readable without the full log.
+                    print(f"::warning::audio failed for {dest.name}: {e}")
                 await asyncio.sleep(2 * (attempt + 1))
         return False
 
