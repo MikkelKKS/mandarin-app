@@ -178,7 +178,7 @@ async function api<T>(path: string, init: RequestInit = {}, retry = true): Promi
   const j = await res.json().catch(() => null);
   if (!res.ok) {
     let msg = j?.error?.message || `Spotify error ${res.status}`;
-    if (res.status === 403) msg = `${msg}. If this is your first time, check that your Spotify account is added under User Management in the Spotify developer dashboard.`;
+    if (/not registered|user may not be/i.test(msg)) msg = `${msg}. Add your Spotify account under User Management in the Spotify developer dashboard.`;
     throw new SpotifyError(msg, res.status);
   }
   return j as T;

@@ -56,7 +56,7 @@ export function MusicView() {
   const [taste, setTaste] = useState<{ artists: string[]; from: string[] } | null>(() => readJson(K_TASTE, null));
   const [results, setResults] = useState<SavedResults | null>(() => loadResults());
   const [progress, setProgress] = useState<{ done: number; total: number; found: number } | null>(null);
-  const [playlist, setPlaylist] = useState<{ busy: boolean; url?: string }>({ busy: false });
+  const [playlist, setPlaylist] = useState<{ busy: boolean; url?: string; failed?: boolean; copied?: boolean }>({ busy: false });
 
   // Finish a Spotify login, then read the listener's taste once.
   useEffect(() => {
@@ -76,8 +76,16 @@ export function MusicView() {
             writeJson(K_SCENES, pick);
             setScenes(pick);
           }
-        } catch (e) {
-          setError((e as Error).message);
+        } catch {
+          // Spotify doesn't allow every app to read top artists. Fall back to a sensible start.
+          const t = { artists: [], from: [] };
+          writeJson(K_TASTE, t);
+          setTaste(t);
+          if (!readJson<string[]>(K_SCENES, []).length) {
+            const pick = level <= 2 ? ['easy', 'pop', 'ballad'] : ['pop', 'ballad', 'folk'];
+            writeJson(K_SCENES, pick);
+            setScenes(pick);
+          }
         }
       }
     });
@@ -109,7 +117,7 @@ export function MusicView() {
       setResults(r);
       if (!songs.length) setError('No songs with Chinese lyrics turned up this time. Try again, or pick other genres.');
     } catch (e) {
-      setError((e as Error).message);
+      setError(`Couldn't search Spotify: ${(e as Error).message}`);
     } finally {
       setProgress(null);
     }
@@ -122,8 +130,19 @@ export function MusicView() {
       const url = await savePlaylist(results.songs, results.level);
       setPlaylist({ busy: false, url });
     } catch (e) {
-      setError((e as Error).message);
-      setPlaylist({ busy: false });
+      setError(`Spotify wouldn't create the playlist (${(e as Error).message}). Use "Copy song links" instead: paste them into any Spotify playlist on your PC with Ctrl+V.`);
+      setPlaylist({ busy: false, failed: true });
+    }
+  };
+
+  const copyLinks = async () => {
+    if (!results) return;
+    const text = results.songs.map((s) => s.track.url).join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      setPlaylist((p) => ({ ...p, copied: true }));
+    } catch {
+      setError("Couldn't copy to the clipboard.");
     }
   };
 
@@ -216,6 +235,11 @@ export function MusicView() {
                   Follow along
                 </button>
               </div>
+              {playlist.failed && (
+                <button onClick={() => void copyLinks()} className="mt-2 h-11 w-full rounded-2xl border-2 border-line font-medium">
+                  {playlist.copied ? 'Copied! Paste into a Spotify playlist' : 'Copy song links'}
+                </button>
+              )}
               {playlist.url && (
                 <a href={playlist.url} target="_blank" rel="noreferrer" className="mt-2 block text-center text-sm font-medium text-jade underline">
                   Open the playlist in Spotify
