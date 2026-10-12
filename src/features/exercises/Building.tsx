@@ -6,7 +6,7 @@ import { useSettings } from '../../lib/settings';
 import { useCheck, useLesson } from '../lesson/context';
 import type { Exercise, Outcome } from '../lesson/types';
 import { AudioControls, PinyinInput, Prompt } from './parts';
-import { checkTyped } from './check';
+import { altPinyin, checkTyped } from './check';
 
 type Of<K extends Exercise['kind']> = Extract<Exercise, { kind: K }>;
 
@@ -193,29 +193,76 @@ function useTileCheck(sentenceId: string, tiles: string[], chosen: number[]) {
   );
 }
 
-export function ListenTiles({ ex }: { ex: Of<'listen-tiles'> }) {
-  const [chosen, setChosen] = useState<number[]>([]);
-  useTileCheck(ex.sentenceId, ex.tiles, chosen);
+/** Word tiles, or (toggle) type the whole sentence in pinyin or characters. Remembered per device. */
+const K_TYPE = 'tiles:type';
+function useTypeMode(): [boolean, (v: boolean) => void] {
+  const [typing, setTyping] = useState(() => {
+    try {
+      return localStorage.getItem(K_TYPE) === '1';
+    } catch {
+      return false;
+    }
+  });
+  return [
+    typing,
+    (v: boolean) => {
+      setTyping(v);
+      try {
+        localStorage.setItem(K_TYPE, v ? '1' : '0');
+      } catch {
+        // ignore
+      }
+    },
+  ];
+}
+
+function TilesOrTyping({ sentenceId, tiles }: { sentenceId: string; tiles: string[] }) {
+  const [typing, setTyping] = useTypeMode();
+  const { locked } = useLesson();
   return (
     <div>
-      <Prompt>Tap the words in the order you hear them</Prompt>
+      {typing ? <TypedSentence sentenceId={sentenceId} /> : <Tiles sentenceId={sentenceId} tiles={tiles} />}
+      {!locked && (
+        <button type="button" onClick={() => setTyping(!typing)} className="mx-auto mt-5 block rounded-xl px-3 py-2 text-sm font-medium text-jade hover:bg-sunk">
+          {typing ? 'Use word tiles instead' : 'Type it instead'}
+        </button>
+      )}
+    </div>
+  );
+}
+
+function Tiles({ sentenceId, tiles }: { sentenceId: string; tiles: string[] }) {
+  const [chosen, setChosen] = useState<number[]>([]);
+  useTileCheck(sentenceId, tiles, chosen);
+  return <TileBoard tiles={tiles} chosen={chosen} setChosen={setChosen} />;
+}
+
+function TypedSentence({ sentenceId }: { sentenceId: string }) {
+  const [text, setText] = useState('');
+  const s = sentences.get(sentenceId)!;
+  useCheck(text.trim() ? () => checkTyped(text, { hanzi: s.hanzi, pinyin: s.pinyin, english: s.english }, altPinyin(s)) : null, [text]);
+  return <PinyinInput value={text} onChange={setText} placeholder="Type in pinyin or characters" />;
+}
+
+export function ListenTiles({ ex }: { ex: Of<'listen-tiles'> }) {
+  return (
+    <div>
+      <Prompt>Put together what you hear</Prompt>
       <div className="mb-6">
         <AudioControls id={ex.sentenceId} voice={ex.voice} />
       </div>
-      <TileBoard tiles={ex.tiles} chosen={chosen} setChosen={setChosen} />
+      <TilesOrTyping sentenceId={ex.sentenceId} tiles={ex.tiles} />
     </div>
   );
 }
 
 export function BuildSentence({ ex }: { ex: Of<'build-sentence'> }) {
-  const [chosen, setChosen] = useState<number[]>([]);
   const s = sentences.get(ex.sentenceId)!;
-  useTileCheck(ex.sentenceId, ex.tiles, chosen);
   return (
     <div>
       <Prompt>Say this in Chinese</Prompt>
       <p className="mb-6 rounded-2xl bg-sunk p-4 text-xl">{s.english}</p>
-      <TileBoard tiles={ex.tiles} chosen={chosen} setChosen={setChosen} />
+      <TilesOrTyping sentenceId={ex.sentenceId} tiles={ex.tiles} />
     </div>
   );
 }

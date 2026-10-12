@@ -70,3 +70,6 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## Audio cut off (again)
 - Some recordings from edge-tts came back as only the first syllable (about 0.4 s). The generator now checks each recording's length and retries short ones; the 216 affected files were deleted and regenerated, and audio URLs got a refresh tag so devices fetch the new files.
+
+## Typing instead of word tiles
+- Tile exercises (listen and build) have a "Type it instead" toggle: type the whole sentence in pinyin or characters, checked like the other typed answers. The choice is remembered on the device.
