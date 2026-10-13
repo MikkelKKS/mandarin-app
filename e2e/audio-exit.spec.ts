@@ -32,3 +32,22 @@ test('leaving a story stops the conversation audio', async ({ page }) => {
   await page.waitForTimeout(2500);
   expect(await page.evaluate(() => (globalThis as unknown as { __plays: number }).__plays)).toBe(plays);
 });
+
+test('role-play works where scrolling returns a promise (newer Chrome)', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(String(e)));
+  await page.addInitScript(() => {
+    const proto = (globalThis as unknown as { Element: { prototype: { scrollIntoView: (...a: unknown[]) => unknown } } }).Element.prototype;
+    const orig = proto.scrollIntoView;
+    proto.scrollIntoView = function (this: unknown, ...a: unknown[]) {
+      orig.apply(this, a);
+      return Promise.resolve();
+    };
+  });
+  await page.route('**/audio/**', (r) => r.fulfill({ body: Buffer.from(SILENCE.split(',')[1], 'base64'), contentType: 'audio/wav' }));
+  await page.goto('./');
+  await page.goto('./#/lesson/n01-story/roleplay');
+  await page.getByRole('button', { name: /^Play as/ }).first().click();
+  await expect(page.getByLabel('Your answer in pinyin')).toBeVisible({ timeout: 15000 });
+  expect(errors).toEqual([]);
+});

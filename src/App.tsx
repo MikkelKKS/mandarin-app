@@ -24,7 +24,9 @@ export default function App() {
   const [page, arg] = route;
   // Whatever was playing belongs to the screen you just left.
   const routeKey = route.join('/');
-  useEffect(() => stop(), [routeKey]);
+  useEffect(() => {
+    stop();
+  }, [routeKey]);
 
   let body: ReactNode;
   switch (page) {

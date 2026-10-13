@@ -97,7 +97,10 @@ function Run({
   const total = lines.filter((l) => l.speaker === role).length;
 
   useEffect(() => () => stop(), []);
-  useEffect(() => bottom.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }), [at, outcome]);
+  useEffect(() => {
+    // Braces matter: newer Chrome returns a Promise from scrollIntoView, which React would try to call on cleanup.
+    bottom.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }, [at, outcome]);
 
   const done = useRef(false);
   const finish = () => {

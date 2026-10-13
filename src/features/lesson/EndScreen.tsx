@@ -31,7 +31,9 @@ export function EndScreen({
   const v = verdictText(result.accuracy);
   const fixed = result.fixed ?? result.mistakes.length;
   const btn = useRef<HTMLButtonElement>(null);
-  useEffect(() => btn.current?.focus({ preventScroll: true }), []);
+  useEffect(() => {
+    btn.current?.focus({ preventScroll: true });
+  }, []);
   const mins = Math.floor(result.ms / 60000);
   const secs = Math.round((result.ms % 60000) / 1000);
   const fresh = result.newWords.map((id) => words.get(id)).filter(Boolean);
