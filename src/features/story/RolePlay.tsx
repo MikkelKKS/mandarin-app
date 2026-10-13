@@ -117,11 +117,17 @@ function Run({
     if (mine(at)) return;
     let live = true;
     const line = lines[at];
-    play(line.sentence, { voice: speakers.get(line.speaker)!.voice }).then(() => {
-      if (live) setTimeout(() => live && setAt((a) => (a === at ? a + 1 : a)), 300);
+    const advance = () => live && setAt((a) => (a === at ? a + 1 : a));
+    // If the audio can't play (no recording, no voice, blocked), move on anyway after a while.
+    const chars = [...(sentences.get(line.sentence)?.hanzi ?? '')].length;
+    const fallback = setTimeout(advance, 4000 + chars * 450);
+    play(line.sentence, { voice: speakers.get(line.speaker)?.voice }).then(() => {
+      clearTimeout(fallback);
+      if (live) setTimeout(advance, 300);
     });
     return () => {
       live = false;
+      clearTimeout(fallback);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [at]);
@@ -138,7 +144,7 @@ function Run({
     if (pass) sfx.correct();
     else sfx.wrong();
     setOutcome(o);
-    void play(s.id, { voice: speakers.get(role)!.voice });
+    void play(s.id, { voice: speakers.get(role)?.voice });
   };
 
   const next = () => {
@@ -177,7 +183,7 @@ function Run({
           </button>
           <h1 className="text-lg font-semibold">{dialogue.title}</h1>
           <span className="ml-auto text-sm text-muted">
-            You are <span className="han">{speakers.get(role)!.name}</span>
+            You are <span className="han">{speakers.get(role)?.name ?? role}</span>
           </span>
         </header>
 
@@ -185,7 +191,7 @@ function Run({
           {lines.slice(0, Math.min(at + 1, lines.length)).map((line, i) => {
             if (i === at && yourTurn) return null;
             const s = sentences.get(line.sentence)!;
-            const sp = speakers.get(line.speaker)!;
+            const sp = speakers.get(line.speaker) ?? { id: line.speaker, name: line.speaker, voice: 'f' as const };
             const me = line.speaker === role;
             const open = me || shown.has(i);
             return (
@@ -217,7 +223,7 @@ function Run({
       </div>
 
       {yourTurn && current && (
-        <footer className="fixed inset-x-0 bottom-0 border-t border-line bg-bg/95 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur">
+        <footer className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-bg px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4">
           <div className="mx-auto max-w-xl">
             <p className="text-sm text-muted">Your turn. Say:</p>
             <p className="mb-3 text-lg font-medium">{current.english}</p>

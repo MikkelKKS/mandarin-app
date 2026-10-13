@@ -24,7 +24,14 @@ export function StoryPlayer({ dialogue, onExit, onFinish }: { dialogue: Dialogue
   const started = useRef(Date.now());
   const speakers = new Map(dialogue.speakers.map((s) => [s.id, s]));
 
-  useEffect(() => () => stop(), []);
+  // Leaving the story ends the "play all" loop too, not just the current line.
+  useEffect(
+    () => () => {
+      playing.current = false;
+      stop();
+    },
+    [],
+  );
 
   const playLine = async (i: number, slow = false) => {
     setCurrent(i);

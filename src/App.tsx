@@ -11,7 +11,7 @@ import { NodeRunner, PackRunner, PracticeRunner, TestOutRunner } from './feature
 import { PathView, useNodeStates } from './features/path/PathView';
 import { About } from './features/settings/About';
 import { SettingsView } from './features/settings/SettingsView';
-import { prefetchForOffline } from './lib/audio';
+import { prefetchForOffline, stop } from './lib/audio';
 import { unlockedItemIds } from './lib/progress';
 import { go, useRoute } from './lib/router';
 import { applyTheme, loadSettings } from './lib/settings';
@@ -22,6 +22,9 @@ export default function App() {
     loadSettings().then((s) => applyTheme(s.theme));
   }, []);
   const [page, arg] = route;
+  // Whatever was playing belongs to the screen you just left.
+  const routeKey = route.join('/');
+  useEffect(() => stop(), [routeKey]);
 
   let body: ReactNode;
   switch (page) {
