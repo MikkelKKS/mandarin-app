@@ -57,10 +57,13 @@ jobs:
 
   build:
     needs: audio
+    # Build even if the audio job failed or timed out: the recordings already in the repo are used.
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: audio
           path: public/audio
