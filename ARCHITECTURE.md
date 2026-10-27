@@ -52,11 +52,11 @@ Your progress lives in IndexedDB on each device and in Supabase. It is keyed by 
 
 ### Remove or set aside
 - **Character recognition exercises** (out of scope: pinyin only).
-- **edge-tts generation** in CI, once Azure audio replaces it.
-- The rest depends on your answers below.
+- **edge-tts generation** in CI. The existing edge-tts recordings stay until Azure audio replaces each one.
 
-## Open questions
-1. **The 29 hand-written units** (path, dialogues, role-play, stories): keep them as an optional "Conversations" section next to the new sessions, or remove them?
-2. **Extras the new brief doesn't mention:** Music (Spotify), Read, Games, the Dictionary tab and practice packs. Keep, hide or remove each?
-3. **Word tiles and drag and drop**, which you asked for earlier: the new brief says typing everywhere except first exposure and Tone Gym. Drop the tiles, or keep them as an option?
-4. **Audio storage:** the full set (11,000 words in 2 voices plus sentences in 2 voices plus slow versions) comes to roughly 500–700 MB even as Opus. That is close to the GitHub Pages limit (1 GB per site). I will propose options at the audio step: the repo for the current levels, or Supabase Storage. Nothing to decide now.
+### Your decisions (27 Oct 2026)
+- The 29 hand-written units (path, dialogues, role-play, stories) move to an optional **Conversations** section. The new sessions become the main way to study.
+- **Music, Read, Games and Dictionary stay.** Games and Music will draw on the new word list.
+- **Word tiles stay as an option** (a toggle), with typing as the default.
+- **Old audio stays until replaced**, so no word loses its sound while Azure audio is generated.
+- **Audio storage** gets decided at the audio step: the full set is roughly 500–700 MB even as Opus, close to the GitHub Pages limit of 1 GB per site.
