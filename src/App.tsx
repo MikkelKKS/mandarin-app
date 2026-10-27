@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
 import { Book, Chart, Cog, Gamepad, Path, OpenBook, Waves } from './components/icons';
-import { ProgressView } from './features/progress/ProgressView';
+import { StatsView } from './features/stats/StatsView';
 import { WordsView } from './features/progress/WordsView';
 import { MusicRoute } from './features/music/MusicView';
 import { ReadRoute } from './features/read/ReadView';
@@ -92,7 +92,7 @@ export default function App() {
       body = <MusicRoute route={route} />;
       break;
     case 'progress':
-      body = route[1] === 'words' ? <WordsView /> : <ProgressView />;
+      body = route[1] === 'words' ? <WordsView /> : <StatsView />;
       break;
     case 'dictionary':
       body = <DictionaryView />;
@@ -126,7 +126,7 @@ const TABS = [
   { id: 'tone-gym', label: 'Tones', icon: Waves },
   { id: 'read', label: 'Read', icon: OpenBook },
   { id: 'games', label: 'Games', icon: Gamepad },
-  { id: 'progress', label: 'Progress', icon: Chart },
+  { id: 'progress', label: 'Stats', icon: Chart },
   { id: 'dictionary', label: 'Dictionary', icon: Book },
   { id: 'settings', label: 'Settings', icon: Cog },
 ];

@@ -68,11 +68,10 @@ test('complete the first lesson and see it on the path', async ({ page }) => {
   // The next skill is now open.
   await expect(page.getByRole('button', { name: /Thanks & sorry, level 0 of 5/ })).toBeVisible();
 
-  // The Progress page reflects the lesson.
+  // The Stats page reflects the lesson.
   await page.goto('./#/progress');
-  await expect(page.getByRole('heading', { name: 'Progress' })).toBeVisible();
-  await expect(page.getByText('Working on')).toBeVisible();
-  await expect(page.getByText(/reviews? due now/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Stats' })).toBeVisible();
+  await expect(page.getByText(/^\d+ \/ 511 started/)).toBeVisible({ timeout: 15000 });
   // Each word got its skill cards, and today's queue is shown.
   const cards = page.getByRole('region', { name: 'Review cards' });
   await expect(cards.getByText(/^Today: \d+ reviews? due, \d+ new words?/)).toBeVisible({ timeout: 15000 });
@@ -215,11 +214,11 @@ test('read a story and look up a word', async ({ page }) => {
 
 test('browse all HSK words grouped by what you know', async ({ page }) => {
   await page.goto('./#/progress');
-  await page.getByRole('button', { name: 'See all HSK words' }).click();
+  await page.getByRole('button', { name: 'Browse the words' }).click();
   await expect(page.getByRole('heading', { name: 'HSK words' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Not learned yet' })).toBeVisible();
-  await page.getByRole('tab', { name: 'HSK 2' }).click();
-  await page.getByRole('tab', { name: 'HSK 1' }).click();
-  await page.getByRole('button', { name: /^爱 / }).click();
+  await expect(page.getByRole('heading', { name: 'Not started' })).toBeVisible({ timeout: 15000 });
+  await page.getByRole('tab', { name: '2' }).click();
+  await page.getByRole('tab', { name: '1' }).click();
+  await page.getByRole('button', { name: /^ài: / }).click();
   await expect(page.getByRole('dialog', { name: '爱' })).toBeVisible();
 });

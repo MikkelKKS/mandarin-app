@@ -167,3 +167,11 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Characters** are off by default ("Characters: Hide/Show" in Settings); sessions show pinyin only.
 - Audio for HSK words: Azure first, then the older course recordings of the same word, and the browser's voice as a last resort, flagged under the exercise ("No recording yet, so this was your browser's voice").
 - Meanings in exercises are shortened (first gloss without bracketed notes, plus the second if both are short).
+
+## 2026-10-27: Redesign step 8, Stats
+- The Progress tab is now **Stats** (`#/progress`): headline tiles (words started and mature, true retention over 7 and 30 days against the target, XP and level), words by state for each HSK 3.0 level (new / learning / young / mature as one jade ramp, light to dark), the 14-day review forecast (today includes overdue), review cards per skill, per-tone accuracy plus the confusion matrix and pair mix-ups, minutes per day, accuracy per day and XP per day for 30 days, and progress towards the scheduler optimiser.
+- **True retention** = share of reviews of cards in long-term review (FSRS state Review before the answer) graded Hard or better; new and relearning cards and replaced (overridden) entries don't count. A note compares it with the target once there are 20+ such reviews.
+- **Time studied** adds each answer's time, capped at a minute (older entries without a time count 8 s).
+- Charts follow the dataviz rules: one hue per chart, columns at most 24 px with a 2 px gap and rounded data end, labels only on the peak and the latest value, a tooltip on hover or focus, and a "Show as a table" view for each.
+- **Scheduler optimiser:** the review log has had full FSRS data since step 4; the Stats page counts towards 1,000 such reviews. The "Optimise my scheduler" button itself is built when that count is in sight, so it can be tested on real data.
+- "Browse the words" lists all HSK 3.0 words by level (1–6, 7–9) and state, pinyin first.

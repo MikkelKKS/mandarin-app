@@ -56,7 +56,7 @@ export function ReviewCards() {
           {queue.overCap > 0 && <p className="text-sm text-muted">{queue.overCap} more wait for tomorrow (daily limit in Settings).</p>}
           {next.length > 0 && (
             <p className="mt-1 text-sm text-muted">
-              Next new words: <span className="han text-ink">{next.map((w) => w!.hanzi).join('、')}</span>
+              Next new words: <span className="text-ink">{next.map((w) => (settings.showHanzi ? w!.hanzi : w!.pinyin)).join(settings.showHanzi ? '、' : ', ')}</span>
             </p>
           )}
         </div>
