@@ -10,6 +10,7 @@ import { GameRunner, GamesView } from './features/games/GamesView';
 import { NodeRunner, PackRunner, PracticeRunner, TestOutRunner } from './features/lesson/Runners';
 import { PathView, useNodeStates } from './features/path/PathView';
 import { About } from './features/settings/About';
+import { AudioSample } from './features/settings/AudioSample';
 import { SettingsView } from './features/settings/SettingsView';
 import { prefetchForOffline, stop } from './lib/audio';
 import { unlockedItemIds } from './lib/progress';
@@ -80,6 +81,9 @@ export default function App() {
       break;
     case 'about':
       body = <About />;
+      break;
+    case 'audio-sample':
+      body = <AudioSample />;
       break;
     default:
       body = <PathView />;

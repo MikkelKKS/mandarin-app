@@ -224,6 +224,11 @@ export function SettingsView() {
             )}
           </Row>
         )}
+        <Row title="New voices" hint="Listen to the Azure sample before every word is recorded.">
+          <button onClick={() => go('audio-sample')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
+            Audio sample
+          </button>
+        </Row>
         <Row title="About">
           <button onClick={() => go('about')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
             Credits & licences
