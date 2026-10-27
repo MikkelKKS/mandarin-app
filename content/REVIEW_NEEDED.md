@@ -19,3 +19,8 @@ Items for a native speaker to check. Remove an entry once checked.
 | u23-study | 小雨 (her niece) | A made-up name for the niece in the stories. |
 | u26-festival | 我们要好好照顾爷爷奶奶。 written hǎohǎo | Beijingers often say hǎohāor with an r. Typed answers accept hǎohǎo. |
 | u28-oneyear | 你们是什么关系？ | Very common question, but can feel direct. English gloss softened to "How do you two know each other?". |
+
+## Vocabulary sentences (content/data/sentences.json)
+- Sentence pinyin is built from each word's dictionary reading. Common polyphones (得 地 还 长 只 干…) are chosen by context rules in `scripts/build-vocab.ts`; rarer ones take the reading learned first and may be wrong.
+- Known weak spot: a verb + 得到 / 得了 potential complement (听得到 should be tīng de dào) is split as 听 + 得到 (dédào).
+- Tatoeba sentences are community-written. They are filtered, not hand-checked; the "report bad audio/sentence" button (step 5) will feed fixes back.

@@ -304,6 +304,9 @@ export function polyphone(ch: string, prev?: string, next?: string): string | un
     case '地':
       // 慢慢地走 → de; 地上, 在地上 → dì. Before a verb, after anything that isn't a noun or number.
       return prev && next && posOf(next).includes('verb') && !posOf(prev).includes('noun') && !NUMERALS.has(prev) && prev !== '在' ? 'de5' : 'di4';
+    case '干':
+      // 谁干的, 你在干吗 → gàn (to do); 衣服干了 → gān (dry).
+      return (prev && (PRONOUNS.has(prev) || ['谁', '在', '想', '要', '能', '会', '去', '来', '别', '不'].includes(prev))) || next === '什么' || next === '吗' || next === '活' ? 'gan4' : 'gan1';
     case '了':
       return 'le5';
     case '着':
