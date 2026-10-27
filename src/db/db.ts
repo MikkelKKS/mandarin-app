@@ -89,7 +89,7 @@ export interface MetaRow {
 export const DEFAULT_SETTINGS: Settings = {
   speaking: false,
   pinyinDisplay: 'always',
-  strictTones: false,
+  strictTones: true,
   audioSpeed: 'normal',
   voice: 'alternate',
   sound: true,

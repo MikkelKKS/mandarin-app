@@ -1,8 +1,10 @@
 /** Building blocks shared by exercise components. */
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import type { Voice } from '../../content/audioPaths';
 import { play } from '../../lib/audio';
 import { markSyllable, type Tone } from '../../lib/pinyin';
+import { liveToneMarks } from '../../lib/pinyinLive';
+import { TONE_CLASS } from '../../components/Hanzi';
 import { Speaker, Turtle } from '../../components/icons';
 import { useLesson, useNumberKeys, useReplay } from '../lesson/context';
 
@@ -138,11 +140,12 @@ export function Options({
   );
 }
 
-const TONE_KEYS: Array<{ tone: Tone; label: string }> = [
-  { tone: 1, label: 'ā' },
-  { tone: 2, label: 'á' },
-  { tone: 3, label: 'ǎ' },
-  { tone: 4, label: 'à' },
+const TONE_KEYS: Array<{ tone: Tone; label: string; name: string }> = [
+  { tone: 1, label: '1', name: '1st tone' },
+  { tone: 2, label: '2', name: '2nd tone' },
+  { tone: 3, label: '3', name: '3rd tone' },
+  { tone: 4, label: '4', name: '4th tone' },
+  { tone: 5, label: '5', name: 'neutral tone' },
 ];
 
 /** Apply a tone mark to the syllable just before the caret. */
@@ -174,6 +177,14 @@ export function PinyinInput({
 }) {
   const { locked } = useLesson();
   const ref = useRef<HTMLInputElement>(null);
+  // Cursor position to restore right after a live tone-mark change (before the next key).
+  const pendingCaret = useRef<number | null>(null);
+  useLayoutEffect(() => {
+    if (pendingCaret.current !== null && ref.current) {
+      ref.current.setSelectionRange(pendingCaret.current, pendingCaret.current);
+      pendingCaret.current = null;
+    }
+  }, [value]);
   const insert = (fn: (v: string, caret: number) => { value: string; caret: number }) => {
     const el = ref.current;
     if (!el) return;
@@ -191,7 +202,20 @@ export function PinyinInput({
         ref={ref}
         value={value}
         disabled={locked}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          const el = e.target;
+          const next = el.value;
+          // One key typed (not pasted, not an IME): turn "ni3" into "nǐ" right away.
+          if (next.length === value.length + 1 && el.selectionStart !== null && !/\p{Script=Han}/u.test(next)) {
+            const r = liveToneMarks(next, el.selectionStart);
+            if (r.value !== next) {
+              pendingCaret.current = r.caret;
+              onChange(r.value);
+              return;
+            }
+          }
+          onChange(next);
+        }}
         placeholder={placeholder}
         autoFocus={autoFocus}
         autoCapitalize="off"
@@ -211,8 +235,8 @@ export function PinyinInput({
             disabled={locked}
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => insert((v, c) => applyToneAt(v, c, k.tone))}
-            className="h-11 flex-1 rounded-xl border border-line bg-surface text-xl transition hover:border-muted active:scale-95 active:bg-jade-soft"
-            aria-label={`Tone ${k.tone} on the last syllable`}
+            className={`h-11 flex-1 rounded-xl border border-line bg-surface text-xl font-semibold tabular-nums transition hover:border-muted active:scale-95 active:bg-jade-soft ${TONE_CLASS[k.tone]}`}
+            aria-label={`${k.name} on the last syllable`}
           >
             {k.label}
           </button>

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { sentences } from '../../content';
 import type { Dialogue } from '../../content/schema';
 import { SentenceText } from '../../components/Hanzi';
+import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { Close, Speaker } from '../../components/icons';
 import { play, stop } from '../../lib/audio';
 import { isPass } from '../../lib/pinyinAnswer';
@@ -234,6 +235,7 @@ function Run({
               <div className={`mb-3 rounded-2xl p-3 ${pass ? 'bg-jade-soft' : 'bg-sunk'}`}>
                 <p className="font-semibold">{pass ? (outcome.verdict === 'correct' ? 'Correct' : outcome.verdict === 'typo' ? 'Correct, but mind the typo' : 'Almost') : 'Not quite'}</p>
                 {outcome.note && <p className="text-sm text-muted">{outcome.note}</p>}
+                {outcome.syllables && outcome.verdict !== 'correct' && <SyllableBreakdown syllables={outcome.syllables} extra={outcome.extra} />}
                 <div className="mt-1">
                   <SentenceText sentence={current} size="text-2xl" />
                 </div>

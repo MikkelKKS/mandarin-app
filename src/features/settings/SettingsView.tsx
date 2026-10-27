@@ -74,9 +74,9 @@ export function SettingsView() {
             ]}
           />
         </Row>
-        <Row title="Tone strictness" hint="Lenient: missing tones count as “almost”. Strict: tones are required.">
+        <Row title="Tone grading" hint="Strict: a wrong or missing tone counts as wrong. Lenient: right syllables with a tone slip count as “Hard”, so the word comes back sooner.">
           <Segmented
-            label="Tone strictness"
+            label="Tone grading"
             value={s.strictTones ? 'strict' : 'lenient'}
             onChange={(v) => set({ strictTones: v === 'strict' })}
             options={[
@@ -85,7 +85,7 @@ export function SettingsView() {
             ]}
           />
         </Row>
-        <Row title="Colour characters by tone" hint="Red 1st · orange 2nd · blue 3rd · purple 4th · grey neutral">
+        <Row title="Colour characters by tone" hint="Red 1st, orange 2nd, green 3rd, blue 4th, grey neutral">
           <Segmented label="Tone colours" value={s.toneColors ? 'on' : 'off'} onChange={(v) => set({ toneColors: v === 'on' })} options={[...onOff]} />
         </Row>
         <Row title="Extra tone practice" hint="Adds more tone exercises to every lesson: hearing tones, minimal pairs and dictation with tones.">

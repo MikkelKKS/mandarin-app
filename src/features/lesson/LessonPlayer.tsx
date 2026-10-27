@@ -1,3 +1,4 @@
+import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { focusNoScroll } from '../../lib/router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
@@ -305,6 +306,7 @@ function Feedback({ outcome, ex, onContinue, onOverride }: { outcome: Outcome; e
           {t.title}
         </p>
         {outcome.note && <p className="mt-1 text-sm">{outcome.note}</p>}
+        {outcome.syllables && outcome.verdict !== 'correct' && <SyllableBreakdown syllables={outcome.syllables} extra={outcome.extra} />}
         {showAnswer && (
           <div className="mt-3 flex items-start gap-3">
             <div className="min-w-0 flex-1">

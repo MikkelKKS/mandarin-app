@@ -99,3 +99,12 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Example sentences follow "i+1": the sentence's hardest word is the word itself, or at most 300 words further on. Max two per word. Hand-checked course sentences win ties.
 - Tatoeba sentences are kept only if simplified, 3–18 characters, without Latin letters or digits, translated into English, and made only of HSK or course words (plus a few common names such as 汤姆).
 - CC-CEDICT and Tatoeba can't be downloaded from the coding sandbox, so the `build-vocabulary` GitHub workflow downloads them, runs the build and commits the result.
+
+## 2026-10-27: Redesign step 3, pinyin input and scoring
+- **Every syllable gets its own result**, even when other syllables are wrong: right, wrong tone, no tone, wrong syllable or left out, plus any extra syllables. Typed syllables are lined up with the answer by edit distance, so one missing word doesn't shift everything after it.
+- **Strict tones are the default** (the owner chose this): a wrong or missing tone counts as wrong (FSRS Again). Lenient mode, in Settings, counts right syllables with a tone slip as "almost" (Hard). A wrong syllable is never lenient. Existing devices are switched to strict once.
+- A one-letter typo on a long answer still passes, but only if every tone is right.
+- Tones from every typed answer are now logged (not just wrong ones), so the confusion matrix in step 6 has the correct answers too.
+- **Live tone marks:** a tone number typed right after a syllable becomes a mark (ni3 → nǐ, nv3 → nǚ, u: → ü; 5 or 0 drops the number). The syllable is the longest valid one at the end of the letters; use an apostrophe or space where that's ambiguous (fāng'àn).
+- The tone row is now 1 2 3 4 5 (5 removes the mark) plus ü, coloured by tone.
+- **Tone colours** follow the brief: 1 red, 2 orange, 3 green, 4 blue, neutral grey. Settings keeps the on/off switch.

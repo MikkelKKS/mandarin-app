@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { checkPinyinAnswer as check } from './pinyinAnswer';
+import { checkPinyinAnswer as check, gradeOf } from './pinyinAnswer';
 import { markSyllable, parsePinyin, toNumeric } from './pinyin';
 
 const nihao = { hanzi: '你好', pinyin: 'nǐ hǎo' };
@@ -56,13 +56,13 @@ describe('checkPinyinAnswer', () => {
     expect(check('xie4xie2', xx).verdict).toBe('wrong');
   });
 
-  it('marks missing tones as almost (lenient) or wrong (strict)', () => {
+  it('marks missing tones as wrong (strict, the default) or almost (lenient)', () => {
     const r = check('ni hao', nihao);
-    expect(r.verdict).toBe('almost');
+    expect(r.verdict).toBe('wrong');
     expect(r.reason).toBe('missing-tones');
     expect(r.syllables?.map((s) => s.status)).toEqual(['missing', 'missing']);
-    expect(check('ni3 hao', nihao).verdict).toBe('almost');
-    expect(check('ni hao', nihao, { strictTones: true }).verdict).toBe('wrong');
+    expect(check('ni hao', nihao, { strictTones: false }).verdict).toBe('almost');
+    expect(check('ni3 hao', nihao, { strictTones: false }).verdict).toBe('almost');
   });
 
   it('rejects wrong tones and reports which syllable', () => {
@@ -70,6 +70,50 @@ describe('checkPinyinAnswer', () => {
     expect(r.verdict).toBe('wrong');
     expect(r.reason).toBe('wrong-tones');
     expect(r.syllables?.map((s) => s.status)).toEqual(['ok', 'wrong-tone']);
+    expect(r.syllables?.[1]).toMatchObject({ tone: 3, given: 4, typed: 'hào' });
+  });
+
+  it('grades a wrong tone as Hard in lenient mode and Again in strict mode', () => {
+    expect(gradeOf(check('ni3 hao4', nihao).verdict)).toBe('again');
+    const lenient = check('ni3 hao4', nihao, { strictTones: false });
+    expect(lenient.verdict).toBe('almost');
+    expect(gradeOf(lenient.verdict)).toBe('hard');
+    expect(gradeOf(check('ni3 hao3', nihao).verdict)).toBe('good');
+    // A wrong syllable is never lenient.
+    expect(gradeOf(check('ni3 hen3', nihao, { strictTones: false }).verdict)).toBe('again');
+  });
+
+  it('scores each syllable even when one syllable is wrong', () => {
+    const exp = { hanzi: '我喜欢跑步', pinyin: 'wǒ xǐhuan pǎobù' };
+    const r = check('wo3 xi2huan pao3 ma4', exp);
+    expect(r.verdict).toBe('wrong');
+    expect(r.reason).toBe('mismatch');
+    expect(r.syllables?.map((s) => s.status)).toEqual(['ok', 'wrong-tone', 'ok', 'ok', 'wrong-syllable']);
+    expect(r.syllables?.[1]).toMatchObject({ tone: 3, given: 2 });
+    expect(r.syllables?.[4]).toMatchObject({ expected: 'bù', typed: 'mà' });
+  });
+
+  it('gives no typo pass when a tone is also wrong', () => {
+    const exp = { hanzi: '我喜欢跑步', pinyin: 'wǒ xǐhuan pǎobù' };
+    expect(check('wo3 xi3huan pao3 ba4', exp).verdict).toBe('typo');
+    expect(check('wo3 xi2huan pao3 ba4', exp).verdict).toBe('wrong');
+  });
+
+  it('marks left-out and extra syllables', () => {
+    const exp = { hanzi: '我喜欢跑步', pinyin: 'wǒ xǐhuan pǎobù' };
+    const left = check('wo3 xi3huan bu4', exp);
+    expect(left.syllables?.map((s) => s.status)).toEqual(['ok', 'ok', 'ok', 'skipped', 'ok']);
+    const more = check('wo3 hen3 xi3huan pao3bu4', exp);
+    expect(more.syllables?.every((s) => s.status === 'ok')).toBe(true);
+    expect(more.extra).toEqual(['hěn']);
+    const both = check('wo4 hen3 xi3huan pao3bu4', exp);
+    expect(both.syllables?.[0]).toMatchObject({ status: 'wrong-tone', typed: 'wò' });
+  });
+
+  it('ignores apostrophes and hyphens', () => {
+    expect(check("xi1'an1", { hanzi: '西安', pinyin: "Xī'ān" }).verdict).toBe('correct');
+    expect(check('pao3-bu4', { hanzi: '跑步', pinyin: 'pǎobù' }).verdict).toBe('correct');
+    expect(check("nǐ-hǎo", nihao).verdict).toBe('correct');
   });
 
   it('applies third-tone sandhi leniency', () => {
@@ -91,7 +135,7 @@ describe('checkPinyinAnswer', () => {
 
   it('gives a typo pass for a one-letter slip on long answers only', () => {
     const long = { hanzi: '我很高兴认识你', pinyin: 'wǒ hěn gāoxìng rènshi nǐ' };
-    const r = check('wo3 hen3 gaoxing4 renshi ni3'.replace('gaoxing4', 'gaoxin4'), long);
+    const r = check('wo3 hen3 gao1xin4 ren4shi ni3', long);
     expect(r.verdict).toBe('typo');
     expect(r.correction).toBe('wǒ hěn gāoxìng rènshi nǐ');
     expect(check('ni3 hap3', nihao).verdict).toBe('wrong');

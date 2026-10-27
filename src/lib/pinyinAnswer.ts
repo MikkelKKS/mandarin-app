@@ -2,8 +2,15 @@
  * Checks a typed pinyin answer against the expected answer.
  *
  * Accepts tone marks, tone numbers (0/5 = neutral), v or u: for ü, any case,
- * any spacing and punctuation. Lenient about 不/一 tone changes and third-tone
- * sandhi. Missing tones are a soft error ("almost") unless strict mode is on.
+ * any spacing, apostrophes, hyphens and punctuation. Lenient about 不/一 tone
+ * changes and third-tone sandhi.
+ *
+ * Syllables and tones are scored separately: every expected syllable gets a
+ * status (right, wrong tone, no tone, wrong syllable, left out), even when
+ * other syllables are wrong, so the feedback can show exactly what to fix.
+ *
+ * Tones: strict (the default) makes any wrong or missing tone "wrong" (Again).
+ * Lenient makes right syllables with a wrong or missing tone "almost" (Hard).
  * One-letter slips on long answers pass as "typo" with the correction shown.
  */
 import citation from 'virtual:citation-tones';
@@ -16,6 +23,7 @@ import {
   markSyllable,
   parsePinyin,
   rangeTone,
+  segmentLetters,
   toLetters,
 } from './pinyin';
 
@@ -26,18 +34,29 @@ export interface ExpectedPinyin {
   hanzi?: string; // used for 不/一 and neutral-tone leniency
 }
 
+/**
+ * ok: right syllable, right tone. missing: right syllable, no tone typed.
+ * wrong-tone: right syllable, wrong tone. wrong-syllable: a different syllable
+ * was typed in its place. skipped: nothing was typed for it.
+ */
+export type SyllableStatus = 'ok' | 'missing' | 'wrong-tone' | 'wrong-syllable' | 'skipped';
+
 export interface SyllableFeedback {
   expected: string; // marked syllable, e.g. "hǎo"
-  status: 'ok' | 'missing' | 'wrong-tone';
+  status: SyllableStatus;
   /** Expected tone (1 to 5) and the tone typed (null if none), for tone statistics. */
   tone?: number;
   given?: number | null;
+  /** What was typed for this syllable (marked), when it differs from the expected one. */
+  typed?: string;
 }
 
 export interface PinyinCheck {
   verdict: Verdict;
   reason?: 'missing-tones' | 'wrong-tones' | 'typo' | 'mismatch' | 'empty';
   syllables?: SyllableFeedback[];
+  /** Typed syllables that don't belong anywhere in the answer. */
+  extra?: string[];
   /** The answer to show as the correct version. */
   correction: string;
   /** Set when the answer was accepted with an equivalent character (他 for 她): the expected characters. */
@@ -48,6 +67,7 @@ export interface PinyinCheck {
 const sameSound = (h: string) => h.replace(/[她它]/g, '他');
 
 export interface CheckOptions {
+  /** Strict (default): wrong or missing tones are wrong. Lenient: right syllables with tone slips are "almost". */
   strictTones?: boolean;
   alternatives?: ExpectedPinyin[];
 }
@@ -99,6 +119,77 @@ export function displayPinyin(exp: ExpectedPinyin): string {
   return exp.pinyin.trim();
 }
 
+/** A syllable as typed: toneless base, its tone (null if none), and the marked text. */
+interface TypedSyllable {
+  base: string;
+  tone: Tone | null | 'conflict';
+  range: [number, number];
+}
+
+/** Split typed letters into syllables; falls back to chunks between spaces and tone numbers. */
+function typedSyllables(letters: Letter[]): TypedSyllable[] {
+  let ranges = segmentLetters(letters, undefined, true);
+  if (!ranges) {
+    ranges = [];
+    let start = 0;
+    for (let i = 1; i <= letters.length; i++) {
+      if (i === letters.length || letters[i].boundaryBefore || letters[i - 1].digit !== undefined) {
+        ranges.push([start, i]);
+        start = i;
+      }
+    }
+  }
+  return ranges.map((r) => ({ base: letters.slice(r[0], r[1]).map((l) => l.ch).join(''), tone: rangeTone(letters, r), range: r }));
+}
+
+function showTyped(t: TypedSyllable): string {
+  const tone = t.tone === null || t.tone === 'conflict' ? 5 : t.tone;
+  return markSyllable({ base: t.base, tone });
+}
+
+/**
+ * Line up typed syllables with expected ones (edit distance over syllables).
+ * Returns, for each expected syllable, the index of the typed syllable in its
+ * place (or -1 if left out), plus the typed syllables that fit nowhere.
+ */
+function alignSyllables(expected: string[], typed: string[]): { pair: number[]; extra: number[] } {
+  const n = expected.length;
+  const m = typed.length;
+  const cost = (i: number, j: number) => (expected[i] === typed[j] ? 0 : 1);
+  const d: number[][] = Array.from({ length: n + 1 }, (_, i) => Array.from({ length: m + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0)));
+  for (let i = 1; i <= n; i++)
+    for (let j = 1; j <= m; j++) d[i][j] = Math.min(d[i - 1][j - 1] + cost(i - 1, j - 1), d[i - 1][j] + 1, d[i][j - 1] + 1);
+  const pair = new Array<number>(n).fill(-1);
+  const extra: number[] = [];
+  let i = n;
+  let j = m;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && d[i][j] === d[i - 1][j - 1] + cost(i - 1, j - 1)) {
+      pair[i - 1] = j - 1;
+      i--;
+      j--;
+    } else if (i > 0 && d[i][j] === d[i - 1][j] + 1) {
+      i--;
+    } else {
+      extra.unshift(j - 1);
+      j--;
+    }
+  }
+  return { pair, extra };
+}
+
+/** Score one syllable's tone. */
+function toneStatus(s: ExpectedSyllable, t: Tone | null | 'conflict'): SyllableFeedback {
+  let status: SyllableStatus;
+  if (t === 'conflict') status = 'wrong-tone';
+  else if (t === null) status = s.tone === 5 ? 'ok' : 'missing';
+  else status = s.accepted.has(t) ? 'ok' : 'wrong-tone';
+  const given = status === 'ok' ? s.tone : t === 'conflict' ? null : t;
+  const fb: SyllableFeedback = { expected: markSyllable(s), status, tone: s.tone, given };
+  if (status === 'wrong-tone') fb.typed = markSyllable({ ...s, tone: (given ?? 5) as Tone });
+  return fb;
+}
+
 function checkOne(letters: Letter[], exp: ExpectedPinyin, strict: boolean): PinyinCheck {
   const correction = displayPinyin(exp);
   const expected = buildExpected(exp);
@@ -114,10 +205,26 @@ function checkOne(letters: Letter[], exp: ExpectedPinyin, strict: boolean): Piny
   }
 
   if (typed !== target) {
-    if (expected.length >= 4 && levenshtein(typed, target) <= 1) {
-      return { verdict: 'typo', reason: 'typo', correction };
+    // Some syllables differ: still score each one, so the feedback shows which.
+    const mine = typedSyllables(letters);
+    const { pair, extra } = alignSyllables(
+      expected.map((s) => s.base + (s.erhua ? 'r' : '')),
+      mine.map((t) => t.base),
+    );
+    const syllables = expected.map((s, i): SyllableFeedback => {
+      const t = pair[i] >= 0 ? mine[pair[i]] : null;
+      if (!t) return { expected: markSyllable(s), status: 'skipped', tone: s.tone, given: null };
+      const same = t.base === s.base + (s.erhua ? 'r' : '') || (s.erhua && t.base === s.base);
+      if (same) return toneStatus(s, t.tone);
+      return { expected: markSyllable(s), status: 'wrong-syllable', tone: s.tone, given: null, typed: showTyped(t) };
+    });
+    const extraText = extra.map((j) => showTyped(mine[j]));
+    // A one-letter slip on a long answer passes, but only if every other tone is right.
+    const tonesRight = syllables.every((x) => x.status === 'ok' || x.status === 'wrong-syllable' || x.status === 'skipped');
+    if (expected.length >= 4 && tonesRight && levenshtein(typed, target) <= 1) {
+      return { verdict: 'typo', reason: 'typo', syllables, extra: extraText, correction };
     }
-    return { verdict: 'wrong', reason: 'mismatch', correction };
+    return { verdict: 'wrong', reason: 'mismatch', syllables, extra: extraText, correction };
   }
 
   // Letters match: assign the user's tones using the expected syllable ranges.
@@ -129,19 +236,13 @@ function checkOne(letters: Letter[], exp: ExpectedPinyin, strict: boolean): Piny
     const len = s.base.length + (s.erhua && withR ? 1 : 0);
     const range: [number, number] = [pos, pos + len];
     pos += len;
-    const t = rangeTone(letters, range);
-    let status: SyllableFeedback['status'];
-    if (t === 'conflict') status = 'wrong-tone';
-    else if (t === null) status = s.tone === 5 ? 'ok' : 'missing';
-    else status = s.accepted.has(t) ? 'ok' : 'wrong-tone';
-    if (status === 'missing') missing++;
-    if (status === 'wrong-tone') wrong++;
-    syllables.push({ expected: markSyllable(s), status, tone: s.tone, given: status === 'ok' ? s.tone : t === 'conflict' ? null : t });
+    const fb = toneStatus(s, rangeTone(letters, range));
+    if (fb.status === 'missing') missing++;
+    if (fb.status === 'wrong-tone') wrong++;
+    syllables.push(fb);
   }
-  if (wrong > 0) return { verdict: 'wrong', reason: 'wrong-tones', syllables, correction };
-  if (missing > 0) {
-    return { verdict: strict ? 'wrong' : 'almost', reason: 'missing-tones', syllables, correction };
-  }
+  if (wrong > 0) return { verdict: strict ? 'wrong' : 'almost', reason: 'wrong-tones', syllables, correction };
+  if (missing > 0) return { verdict: strict ? 'wrong' : 'almost', reason: 'missing-tones', syllables, correction };
   return { verdict: 'correct', syllables, correction };
 }
 
@@ -263,12 +364,17 @@ function checkExact(input: string, expected: ExpectedPinyin, opts: CheckOptions)
 
   let best: PinyinCheck | null = null;
   for (const c of candidates) {
-    const r = checkOne(letters, c, !!opts.strictTones);
+    const r = checkOne(letters, c, opts.strictTones ?? true);
     if (!best || RANK[r.verdict] > RANK[best.verdict]) best = r;
     if (r.verdict === 'correct') break;
   }
   // Always show the main answer as the correction unless an alternative was matched exactly.
   return best!.verdict === 'wrong' ? { ...best!, correction } : best!;
+}
+
+/** The FSRS grade an answer earns: right → Good, tone slip in lenient mode → Hard, wrong → Again. */
+export function gradeOf(v: Verdict): 'again' | 'hard' | 'good' {
+  return v === 'correct' || v === 'typo' ? 'good' : v === 'almost' ? 'hard' : 'again';
 }
 
 /** True when the verdict should count as a pass for progress. */

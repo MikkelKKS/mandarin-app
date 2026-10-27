@@ -11,7 +11,7 @@ import { useSettings } from '../lib/settings';
 import { play } from '../lib/audio';
 import { Speaker } from './icons';
 
-const TONE_CLASS: Record<Tone, string> = {
+export const TONE_CLASS: Record<Tone, string> = {
   1: 'text-t1',
   2: 'text-t2',
   3: 'text-t3',

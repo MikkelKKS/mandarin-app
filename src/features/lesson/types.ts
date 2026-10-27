@@ -1,5 +1,5 @@
 import type { Voice } from '../../content/audioPaths';
-import type { Verdict } from '../../lib/pinyinAnswer';
+import type { SyllableFeedback, Verdict } from '../../lib/pinyinAnswer';
 
 interface Base {
   key: string;
@@ -67,6 +67,10 @@ export interface Outcome {
   /** Per-item verdicts for review scheduling (defaults to all items of the exercise). */
   items?: Array<{ id: string; verdict: Verdict }>;
   tones?: { expected: string; given: string };
+  /** Per-syllable result of a typed pinyin answer, for the breakdown in the feedback. */
+  syllables?: SyllableFeedback[];
+  /** Typed syllables that don't belong in the answer. */
+  extra?: string[];
   /** A typed answer with different wording: the learner may mark it as right ("I was right"). */
   canOverride?: boolean;
 }

@@ -11,6 +11,11 @@ export async function loadSettings(): Promise<Settings> {
 
 /** One-off changes to saved settings when defaults change (runs once per device). */
 export async function migrateSettings(): Promise<void> {
+  // Redesign (27 Oct 2026): strict tone grading becomes the default, once, for existing settings too.
+  if (!(await db.meta.get('migrated:strict-tones'))?.value) {
+    await db.meta.put({ key: 'migrated:strict-tones', value: true });
+    if (await db.settings.get('me')) await updateSettings({ strictTones: true });
+  }
   // v1 (11 Oct) briefly switched everyone to slow audio; v2 switches it back now the cut-off is fixed.
   if ((await db.meta.get('migrated:normal-again'))?.value) return;
   await db.meta.put({ key: 'migrated:normal-again', value: true });

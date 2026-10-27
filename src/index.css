@@ -40,10 +40,11 @@
   --cinnabar: #c0362d;
   --cinnabar-soft: #f8dcd8;
   --amber-soft: #fbecc8;
-  --t1: #d63a31;
-  --t2: #c47a00;
-  --t3: #1f6fbf;
-  --t4: #7b43b8;
+  /* Tone colours (Pleco-style): 1 red, 2 orange, 3 green, 4 blue, neutral grey. */
+  --t1: #d33a2c;
+  --t2: #c96a00;
+  --t3: #2f8a2a;
+  --t4: #1f62c4;
   --t5: #7a848d;
   color-scheme: light;
 }
@@ -63,9 +64,9 @@
   --cinnabar-soft: #3d1c19;
   --amber-soft: #3a2f12;
   --t1: #ff6b5e;
-  --t2: #f2b23a;
-  --t3: #5aa8f0;
-  --t4: #b88af0;
+  --t2: #f5a442;
+  --t3: #6cc865;
+  --t4: #62a6ff;
   --t5: #9aa4ad;
   color-scheme: dark;
 }
