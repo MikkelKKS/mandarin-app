@@ -61,7 +61,7 @@
     { "id": "s27-mingtianlikai", "hanzi": "我们明天离开北京。", "pinyin": "Wǒmen míngtiān líkāi Běijīng.", "english": "We leave Beijing tomorrow.", "words": ["w-women", "w-mingtian", "w-likai", "w-beijing"] },
     { "id": "s27-yudaolaoshi", "hanzi": "我在地铁上遇到了我的老师。", "pinyin": "Wǒ zài dìtiě shàng yùdào le wǒ de lǎoshī.", "english": "I ran into my teacher on the subway.", "words": ["w-wo", "w-zai", "w-ditie", "w-shang", "w-yudao", "w-le", "w-wo", "w-de", "w-laoshi"] },
     { "id": "s27-zheweishilaoye", "hanzi": "这位是我的姥爷。", "pinyin": "Zhè wèi shì wǒ de lǎoye.", "english": "This is my grandpa.", "words": ["w-zhe", "w-wei-person", "w-shi", "w-wo", "w-de", "w-laoye"] },
-    { "id": "s27-jiwei", "hanzi": "您好，几位？", "pinyin": "Nín hǎo, jǐ wèi?", "english": "Hello, how many of you?", "words": ["w-nin", "w-hao", "w-ji", "w-wei-person"] },
+    { "id": "s27-jiwei", "hanzi": "你好，几位？", "pinyin": "Nǐ hǎo, jǐ wèi?", "english": "Hello, how many of you?", "words": ["w-ni", "w-hao", "w-ji", "w-wei-person"] },
     { "id": "s27-liangwei", "hanzi": "两位。", "pinyin": "Liǎng wèi.", "english": "Two, please.", "words": ["w-liang", "w-wei-person"] },
     { "id": "s27-zheduanshijian", "hanzi": "这段时间我很忙。", "pinyin": "Zhè duàn shíjiān wǒ hěn máng.", "english": "I've been busy lately.", "words": ["w-zhe", "w-duan-section", "w-shijian", "w-wo", "w-hen", "w-mang"] }
   ],

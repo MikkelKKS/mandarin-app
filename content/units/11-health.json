@@ -45,10 +45,10 @@
     { "id": "s-biedanxin", "hanzi": "别担心，我没事。", "pinyin": "Bié dānxīn, wǒ méi shì.", "english": "Don't worry, I'm fine.", "words": ["w-bie", "w-danxin", "w-wo", "w-mei", "w-shi-matter"] },
     { "id": "s-fangxinba", "hanzi": "放心吧！", "pinyin": "Fàngxīn ba!", "english": "Don't worry!", "words": ["w-fangxin", "w-ba-particle"], "alt": { "english": ["Rest assured!"] } },
     { "id": "s-xiaoxin", "hanzi": "小心！", "pinyin": "Xiǎoxīn!", "english": "Careful!", "words": ["w-xiaoxin"] },
-    { "id": "s-nishentizenmeyang", "hanzi": "您身体怎么样？", "pinyin": "Nín shēntǐ zěnmeyàng?", "english": "How is your health? (polite)", "words": ["w-nin", "w-shenti", "w-zenmeyang"] },
+    { "id": "s-nishentizenmeyang", "hanzi": "你身体怎么样？", "pinyin": "Nǐ shēntǐ zěnmeyàng?", "english": "How is your health?", "words": ["w-ni", "w-shenti", "w-zenmeyang"] },
     { "id": "s-shentihenhao", "hanzi": "我身体很好，谢谢。", "pinyin": "Wǒ shēntǐ hěn hǎo, xièxie.", "english": "I'm in good health, thank you.", "words": ["w-wo", "w-shenti", "w-hen", "w-hao", "w-xiexie"] },
-    { "id": "s-xiwangshentijiankang", "hanzi": "希望您身体健康！", "pinyin": "Xīwàng nín shēntǐ jiànkāng!", "english": "Wishing you good health!", "words": ["w-xiwang", "w-nin", "w-shenti", "w-jiankang"] },
-    { "id": "s-hao-xiexieayi", "hanzi": "好，谢谢阿姨。", "pinyin": "Hǎo, xièxie āyí.", "english": "OK, thank you.", "words": ["w-hao", "w-xiexie", "w-ayi"] }
+    { "id": "s-xiwangshentijiankang", "hanzi": "希望你身体健康！", "pinyin": "Xīwàng nǐ shēntǐ jiànkāng!", "english": "Wishing you good health!", "words": ["w-xiwang", "w-ni", "w-shenti", "w-jiankang"] },
+    { "id": "s-hao-xiexieayi", "hanzi": "好，谢谢妈。", "pinyin": "Hǎo, xièxie mā.", "english": "OK, thanks, Mum.", "words": ["w-hao", "w-xiexie", "w-ma-mum"] }
   ],
   "exchanges": [
     { "id": "x-whatswrong", "prompt": "s-nizenmele", "reply": "s-wotouteng", "wrong": ["s-taihaole", "s-quguoyici"], "context": "You look pale and someone asks." },
@@ -61,7 +61,7 @@
     { "id": "g-teng", "title": "What hurts: body part + 疼", "body": "头疼 = headache, 肚子疼 = stomach ache. Soften with 有点: 我肚子有点疼. 有点 + adjective is for things you don't like (有点辣, 有点累).", "examples": ["s-wotouteng", "s-duziyoudianteng"] },
     { "id": "g-yinggai", "title": "应该 = should", "body": "应该 + verb gives advice: 你应该去看医生.", "examples": ["s-yinggaikanyisheng"] },
     { "id": "g-duobie", "title": "多… and 别…", "body": "多 + verb = do more of it: 多喝水，多休息. 别 + verb = don't: 别担心 (don't worry).", "examples": ["s-duoheshui", "s-biedanxin"] },
-    { "id": "g-shenti", "title": "Health wishes for elders", "body": "Ask older relatives 您身体怎么样？ and wish them 身体健康 (good health), e.g. 希望您身体健康！ It's a classic toast at family dinners.", "examples": ["s-nishentizenmeyang", "s-xiwangshentijiankang"] }
+    { "id": "g-shenti", "title": "Health wishes for elders", "body": "Ask older relatives 你身体怎么样？ and wish them 身体健康 (good health), e.g. 希望你身体健康！ It's a classic toast at family dinners.", "examples": ["s-nishentizenmeyang", "s-xiwangshentijiankang"] }
   ],
   "dialogue": {
     "id": "d11-cold",

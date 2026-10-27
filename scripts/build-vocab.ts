@@ -406,6 +406,8 @@ if (tatoebaDir) {
     if (n < 3 || n > 18) continue;
     if (/[A-Za-z0-9０-９]/.test(text)) continue;
     if ([...text].some((c) => tradOnly.has(c))) continue;
+    // The owner uses 你, never the polite 您, so example sentences don't either.
+    if (text.includes('您')) continue;
     const en = (links.get(id) ?? []).map((e) => ({ id: e, ...eng.get(e)! })).filter((e) => e.text);
     if (!en.length) continue;
     const a = analyse(text);

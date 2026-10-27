@@ -46,7 +46,7 @@
     { "id": "s-womenqushangdianba", "hanzi": "我们去商店吧。", "pinyin": "Wǒmen qù shāngdiàn ba.", "english": "Let's go to the shop.", "words": ["w-women", "w-qu", "w-shangdian", "w-ba-particle"] },
     { "id": "s-maishuiguo", "hanzi": "我想买水果。", "pinyin": "Wǒ xiǎng mǎi shuǐguǒ.", "english": "I'd like to buy some fruit.", "words": ["w-wo", "w-xiang", "w-mai3", "w-shuiguo"] },
     { "id": "s-zhejianyifu", "hanzi": "这件衣服很漂亮。", "pinyin": "Zhè jiàn yīfu hěn piàoliang.", "english": "This top is really nice.", "words": ["w-zhe", "w-jian-item", "w-yifu", "w-hen", "w-piaoliang"], "alt": { "english": ["This piece of clothing is really pretty."] } },
-    { "id": "s-zheshigeinindeliwu", "hanzi": "这是给您的礼物。", "pinyin": "Zhè shì gěi nín de lǐwù.", "english": "This is a present for you.", "words": ["w-zhe", "w-shi", "w-gei", "w-nin", "w-de", "w-liwu"] },
+    { "id": "s-zheshigeinindeliwu", "hanzi": "这是给你的礼物。", "pinyin": "Zhè shì gěi nǐ de lǐwù.", "english": "This is a present for you.", "words": ["w-zhe", "w-shi", "w-gei", "w-ni", "w-de", "w-liwu"] },
     { "id": "s-nitaikeqile", "hanzi": "你太客气了！", "pinyin": "Nǐ tài kèqi le!", "english": "You shouldn't have!", "words": ["w-ni", "w-tai", "w-keqi", "w-le"], "alt": { "english": ["You're too kind!"] } },
     { "id": "s-woxiangsongtamenshuiguo", "hanzi": "我想送水果。", "pinyin": "Wǒ xiǎng sòng shuǐguǒ.", "english": "I'd like to give fruit (as a gift).", "words": ["w-wo", "w-xiang", "w-song", "w-shuiguo"] },
     { "id": "s-shangdianmaishenme", "hanzi": "这个商店卖什么？", "pinyin": "Zhège shāngdiàn mài shénme?", "english": "What does this shop sell?", "words": ["w-zhe", "w-ge", "w-shangdian", "w-mai4", "w-shenme"] }

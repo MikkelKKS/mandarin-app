@@ -38,8 +38,8 @@
   "sentences": [
     { "id": "s-nijiaoshenmemingzi", "hanzi": "你叫什么名字？", "pinyin": "Nǐ jiào shénme míngzi?", "english": "What's your name?", "words": ["w-ni", "w-jiao", "w-shenme", "w-mingzi"], "alt": { "pinyin": ["nǐ jiào shénme"] } },
     { "id": "s-wojiaomikkel", "hanzi": "我叫米格。", "pinyin": "Wǒ jiào Mǐgé.", "english": "My name is 米格.", "words": ["w-wo", "w-jiao", "w-mikkel"], "alt": { "english": ["I'm called 米格.", "I'm 米格."] } },
-    { "id": "s-ninhao-wojiao", "hanzi": "您好！我叫米格。", "pinyin": "Nín hǎo! Wǒ jiào Mǐgé.", "english": "Hello! My name is 米格.", "words": ["w-nin", "w-hao", "w-wo", "w-jiao", "w-mikkel"] },
-    { "id": "s-ninhao", "hanzi": "您好！", "pinyin": "Nín hǎo!", "english": "Hello! (polite)", "words": ["w-nin", "w-hao"] },
+    { "id": "s-ninhao-wojiao", "hanzi": "你好！我叫米格。", "pinyin": "Nǐ hǎo! Wǒ jiào Mǐgé.", "english": "Hello! My name is 米格.", "words": ["w-ni", "w-hao", "w-wo", "w-jiao", "w-mikkel"] },
+    { "id": "s-ninhao", "hanzi": "你好！", "pinyin": "Nǐ hǎo!", "english": "Hello!", "words": ["w-ni", "w-hao"] },
     { "id": "s-renshinihengaoxing", "hanzi": "认识你很高兴！", "pinyin": "Rènshi nǐ hěn gāoxìng!", "english": "Nice to meet you!", "words": ["w-renshi", "w-ni", "w-hen", "w-gaoxing"], "alt": { "english": ["Pleased to meet you!"] } },
     { "id": "s-nihao-mikkel-renshi", "hanzi": "你好，米格！认识你很高兴！", "pinyin": "Nǐ hǎo, Mǐgé! Rènshi nǐ hěn gāoxìng!", "english": "Hello, 米格! Nice to meet you!", "words": ["w-nihao", "w-mikkel", "w-renshi", "w-ni", "w-hen", "w-gaoxing"] },
     { "id": "s-woyehengaoxing", "hanzi": "我也很高兴。", "pinyin": "Wǒ yě hěn gāoxìng.", "english": "Nice to meet you too.", "words": ["w-wo", "w-ye", "w-hen", "w-gaoxing"], "alt": { "english": ["I'm glad too.", "Me too."] } },
@@ -75,7 +75,7 @@
     { "id": "g-guoren", "title": "Country + 人 = nationality", "body": "Add 人 (person) after a country: 中国人 = Chinese person, 丹麦人 = Dane. To ask: 你是哪国人？ (you are which-country person?)", "examples": ["s-woshidanmairen", "s-nishinaguoren"] },
     { "id": "g-hui", "title": "会 for skills you've learned", "body": "会 + verb = can / know how to. 我会说一点 = I can speak a little. Make a question with 吗.", "examples": ["s-wohuishuoyidian", "s-nihuishuozhongwenma"] },
     { "id": "g-de", "title": "的 = 's", "body": "的 links an owner to a thing: 你的中文 = your Chinese, 我的名字 = my name.", "examples": ["s-nidezhongwenhenhao"] },
-    { "id": "g-nin", "title": "Polite 您", "body": "您 (nín) is a respectful 'you'. Use it with a partner's parents and other elders, especially the first time you meet.", "examples": ["s-ninhao"] }
+    { "id": "g-nin", "title": "您: the polite you", "body": "您 (nín) is a respectful 'you'. You'll hear it from shop staff and older people. You can always use 你 yourself.", "examples": [] }
   ],
   "dialogue": {
     "id": "d01-door",

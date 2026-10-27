@@ -69,9 +69,9 @@
     { "id": "s17-gei-dajia-jieshao", "hanzi": "大家好！我给大家介绍：这是米格。", "pinyin": "Dàjiā hǎo! Wǒ gěi dàjiā jièshào: zhè shì Mǐgé.", "english": "Hi, everyone! Let me introduce 米格.", "words": ["w-dajia", "w-hao", "w-wo", "w-gei", "w-dajia", "w-jieshao", "w-zhe", "w-shi", "w-mikkel"] },
     { "id": "s17-dajiahao-diyici", "hanzi": "大家好！这是我第一次来中国。", "pinyin": "Dàjiā hǎo! Zhè shì wǒ dìyī cì lái Zhōngguó.", "english": "Hi, everyone! This is my first time in China.", "words": ["w-dajia", "w-hao", "w-zhe", "w-shi", "w-wo", "w-diyi", "w-ci", "w-lai", "w-zhongguo"] },
     { "id": "s17-zhengzaixuexi-shuodehao", "hanzi": "他正在学习中文，说得很好！", "pinyin": "Tā zhèngzài xuéxí Zhōngwén, shuō de hěn hǎo!", "english": "He's learning Chinese, and he speaks it really well!", "words": ["w-ta-he", "w-zhengzai", "w-xuexi", "w-zhongwen", "w-shuo", "w-de-particle", "w-hen", "w-hao"] },
-    { "id": "s17-ninguixing", "hanzi": "您贵姓？", "pinyin": "Nín guì xìng?", "english": "What's your surname? (polite)", "words": ["w-nin", "w-gui", "w-xing"] },
+    { "id": "s17-ninguixing", "hanzi": "你贵姓？", "pinyin": "Nǐ guì xìng?", "english": "What's your surname?", "words": ["w-ni", "w-gui", "w-xing"] },
     { "id": "s17-woxingwang", "hanzi": "我姓王。", "pinyin": "Wǒ xìng Wáng.", "english": "My surname is Wang.", "words": ["w-wo", "w-xing", "w-wang-surname"] },
-    { "id": "s17-wanglaoshi", "hanzi": "王老师，您好！", "pinyin": "Wáng lǎoshī, nín hǎo!", "english": "Hello, Teacher Wang!", "words": ["w-wang-surname", "w-laoshi", "w-nin", "w-hao"] }
+    { "id": "s17-wanglaoshi", "hanzi": "王老师，你好！", "pinyin": "Wáng lǎoshī, nǐ hǎo!", "english": "Hello, Teacher Wang!", "words": ["w-wang-surname", "w-laoshi", "w-ni", "w-hao"] }
   ],
   "exchanges": [
     { "id": "x17-praise", "prompt": "s17-shuodehenhao", "reply": "s17-nalinali", "wrong": ["s17-qidianqichuang", "s17-jiaoshizainar"], "context": "Someone praises your Chinese. Be modest." },

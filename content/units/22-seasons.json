@@ -48,7 +48,7 @@
     { "id": "s22-caohenlv", "hanzi": "公园里的草很绿。", "pinyin": "Gōngyuán lǐ de cǎo hěn lǜ.", "english": "The grass in the park is very green.", "words": ["w-gongyuan", "w-li-inside", "w-de", "w-cao", "w-hen", "w-lv"] },
     { "id": "s22-henduoshu", "hanzi": "公园里有很多树。", "pinyin": "Gōngyuán lǐ yǒu hěn duō shù.", "english": "There are lots of trees in the park.", "words": ["w-gongyuan", "w-li-inside", "w-you", "w-hen", "w-duo", "w-shu-tree"] },
     { "id": "s22-huakaile", "hanzi": "花园里的花开了。", "pinyin": "Huāyuán lǐ de huā kāi le.", "english": "The flowers in the garden are out.", "words": ["w-huayuan", "w-li-inside", "w-de", "w-hua-flower", "w-kai", "w-le"] },
-    { "id": "s22-maihua", "hanzi": "我给阿姨买了一些花。", "pinyin": "Wǒ gěi āyí mǎi le yìxiē huā.", "english": "I bought some flowers for her mother.", "words": ["w-wo", "w-gei", "w-ayi", "w-mai3", "w-le", "w-yi", "w-xie", "w-hua-flower"] },
+    { "id": "s22-maihua", "hanzi": "我给她妈妈买了一些花。", "pinyin": "Wǒ gěi tā māma mǎi le yìxiē huā.", "english": "I bought some flowers for her mother.", "words": ["w-wo", "w-gei", "w-ta-she", "w-mama", "w-mai3", "w-le", "w-yi", "w-xie", "w-hua-flower"] },
     { "id": "s22-heshangchuan", "hanzi": "河上有一条船。", "pinyin": "Hé shàng yǒu yì tiáo chuán.", "english": "There's a boat on the river.", "words": ["w-he-river", "w-shang", "w-you", "w-yi", "w-tiao", "w-chuan-boat"] },
     { "id": "s22-shushangniao", "hanzi": "树上有一只鸟。", "pinyin": "Shù shàng yǒu yì zhī niǎo.", "english": "There's a bird in the tree.", "words": ["w-shu-tree", "w-shang", "w-you", "w-yi", "w-zhi", "w-niao"] },
     { "id": "s22-shenmedongwu", "hanzi": "你喜欢什么动物？", "pinyin": "Nǐ xǐhuan shénme dòngwù?", "english": "What animals do you like?", "words": ["w-ni", "w-xihuan", "w-shenme", "w-dongwu"] },

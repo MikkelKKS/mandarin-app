@@ -25,7 +25,7 @@
     { "id": "w-huochezhan", "hanzi": "火车站", "pinyin": "huǒchēzhàn", "english": ["train station"], "hsk": 1, "pos": "noun" }
   ],
   "sentences": [
-    { "id": "s15-wei-ninhao", "hanzi": "喂，您好！", "pinyin": "Wèi, nín hǎo!", "english": "Hello? (on the phone)", "words": ["w-wei", "w-nin", "w-hao"] },
+    { "id": "s15-wei-ninhao", "hanzi": "喂，你好！", "pinyin": "Wèi, nǐ hǎo!", "english": "Hello? (on the phone)", "words": ["w-wei", "w-ni", "w-hao"] },
     { "id": "s15-wei-shimige", "hanzi": "喂，是米格吗？", "pinyin": "Wèi, shì Mǐgé ma?", "english": "Hello, is that 米格?", "words": ["w-wei", "w-shi", "w-mikkel", "w-ma"] },
     { "id": "s15-shiwo", "hanzi": "是我。", "pinyin": "Shì wǒ.", "english": "It's me.", "words": ["w-shi", "w-wo"], "alt": { "english": ["Speaking."] } },
     { "id": "s15-shiwo-nihao", "hanzi": "是我。你好！", "pinyin": "Shì wǒ. Nǐ hǎo!", "english": "It's me. Hi!", "words": ["w-shi", "w-wo", "w-nihao"] },
@@ -36,8 +36,8 @@
     { "id": "s15-duibuqi-man", "hanzi": "对不起，你能说慢一点吗？", "pinyin": "Duìbuqǐ, nǐ néng shuō màn yìdiǎn ma?", "english": "Sorry, could you speak a bit slower?", "words": ["w-duibuqi", "w-ni", "w-neng", "w-shuo", "w-man", "w-yidian", "w-ma"] },
     { "id": "s15-jintianbunengqu", "hanzi": "我今天不能去。", "pinyin": "Wǒ jīntiān bù néng qù.", "english": "I can't go today.", "words": ["w-wo", "w-jintian", "w-bu", "w-neng", "w-qu"] },
     { "id": "s15-buxihuanshuohua", "hanzi": "他不喜欢说话。", "pinyin": "Tā bù xǐhuan shuōhuà.", "english": "He doesn't like to talk much.", "words": ["w-ta-he", "w-bu", "w-xihuan", "w-shuohua"] },
-    { "id": "s15-xiansheng-ninhao", "hanzi": "先生，您好！", "pinyin": "Xiānsheng, nín hǎo!", "english": "Hello, sir!", "words": ["w-xiansheng", "w-nin", "w-hao"] },
-    { "id": "s15-xiaojie-ninhao", "hanzi": "小姐，您好！", "pinyin": "Xiǎojiě, nín hǎo!", "english": "Hello, madam!", "words": ["w-xiaojie", "w-nin", "w-hao"] },
+    { "id": "s15-xiansheng-ninhao", "hanzi": "先生，你好！", "pinyin": "Xiānsheng, nǐ hǎo!", "english": "Hello, sir!", "words": ["w-xiansheng", "w-ni", "w-hao"] },
+    { "id": "s15-xiaojie-ninhao", "hanzi": "小姐，你好！", "pinyin": "Xiǎojiě, nǐ hǎo!", "english": "Hello, madam!", "words": ["w-xiaojie", "w-ni", "w-hao"] },
     { "id": "s15-taxiansheng", "hanzi": "她先生是丹麦人。", "pinyin": "Tā xiānsheng shì Dānmài rén.", "english": "Her husband is Danish.", "words": ["w-ta-she", "w-xiansheng", "w-shi", "w-danmai", "w-ren"] },
     { "id": "s15-xuexizhongwen", "hanzi": "我在学习中文。", "pinyin": "Wǒ zài xuéxí Zhōngwén.", "english": "I'm studying Chinese.", "words": ["w-wo", "w-zai", "w-xuexi", "w-zhongwen"] },
     { "id": "s15-zaixuexima", "hanzi": "你在学习中文吗？", "pinyin": "Nǐ zài xuéxí Zhōngwén ma?", "english": "Are you studying Chinese?", "words": ["w-ni", "w-zai", "w-xuexi", "w-zhongwen", "w-ma"] },
@@ -45,7 +45,7 @@
     { "id": "s15-tongxue", "hanzi": "她是我的同学。", "pinyin": "Tā shì wǒ de tóngxué.", "english": "She's my classmate.", "words": ["w-ta-she", "w-shi", "w-wo", "w-de", "w-tongxue"] },
     { "id": "s15-xiemingzi", "hanzi": "我会写我的中文名字。", "pinyin": "Wǒ huì xiě wǒ de Zhōngwén míngzi.", "english": "I can write my Chinese name.", "words": ["w-wo", "w-hui", "w-xie-write", "w-wo", "w-de", "w-zhongwen", "w-mingzi"] },
     { "id": "s15-shenmezi", "hanzi": "这是什么字？", "pinyin": "Zhè shì shénme zì?", "english": "What character is this?", "words": ["w-zhe", "w-shi", "w-shenme", "w-zi"] },
-    { "id": "s15-nengduzhegezi", "hanzi": "妈妈，您能读这个字吗？", "pinyin": "Māma, nín néng dú zhège zì ma?", "english": "Mum, can you read this character?", "words": ["w-mama", "w-nin", "w-neng", "w-du", "w-zhe", "w-ge", "w-zi", "w-ma"] },
+    { "id": "s15-nengduzhegezi", "hanzi": "妈妈，你能读这个字吗？", "pinyin": "Māma, nǐ néng dú zhège zì ma?", "english": "Mum, can you read this character?", "words": ["w-mama", "w-ni", "w-neng", "w-du", "w-zhe", "w-ge", "w-zi", "w-ma"] },
     { "id": "s15-shengrishiri", "hanzi": "我的生日是三月十日。", "pinyin": "Wǒ de shēngrì shì sān yuè shí rì.", "english": "My birthday is on the 10th of March.", "words": ["w-wo", "w-de", "w-shengri", "w-shi", "w-san", "w-yue", "w-shi2", "w-ri"] },
     { "id": "s15-ererlingliu", "hanzi": "现在是二零二六年。", "pinyin": "Xiànzài shì èr líng èr liù nián.", "english": "It's 2026 now.", "words": ["w-xianzai", "w-shi", "w-er", "w-ling", "w-er", "w-liu", "w-nian"] },
     { "id": "s15-huochezhanzainali", "hanzi": "火车站在哪里？", "pinyin": "Huǒchēzhàn zài nǎlǐ?", "english": "Where's the train station?", "words": ["w-huochezhan", "w-zai", "w-nali"] },

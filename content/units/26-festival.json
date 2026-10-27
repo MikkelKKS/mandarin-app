@@ -33,8 +33,8 @@
   ],
   "sentences": [
     { "id": "s26-chunjiekuaile", "hanzi": "春节快乐！", "pinyin": "Chūnjié kuàilè!", "english": "Happy Spring Festival!", "words": ["w-chunjie", "w-kuaile"] },
-    { "id": "s26-zhuninjiankang", "hanzi": "祝您身体健康！", "pinyin": "Zhù nín shēntǐ jiànkāng!", "english": "Wishing you good health!", "words": ["w-zhu-wish", "w-nin", "w-shenti", "w-jiankang"] },
-    { "id": "s26-nainai-chunjiekuaile", "hanzi": "奶奶，春节快乐！祝您身体健康！", "pinyin": "Nǎinai, Chūnjié kuàilè! Zhù nín shēntǐ jiànkāng!", "english": "Happy Spring Festival, Grandma! Wishing you good health!", "words": ["w-nainai", "w-chunjie", "w-kuaile", "w-zhu-wish", "w-nin", "w-shenti", "w-jiankang"] },
+    { "id": "s26-zhuninjiankang", "hanzi": "祝你身体健康！", "pinyin": "Zhù nǐ shēntǐ jiànkāng!", "english": "Wishing you good health!", "words": ["w-zhu-wish", "w-ni", "w-shenti", "w-jiankang"] },
+    { "id": "s26-nainai-chunjiekuaile", "hanzi": "奶奶，春节快乐！祝你身体健康！", "pinyin": "Nǎinai, Chūnjié kuàilè! Zhù nǐ shēntǐ jiànkāng!", "english": "Happy Spring Festival, Grandma! Wishing you good health!", "words": ["w-nainai", "w-chunjie", "w-kuaile", "w-zhu-wish", "w-ni", "w-shenti", "w-jiankang"] },
     { "id": "s26-zhunixinnian", "hanzi": "祝你新年快乐！", "pinyin": "Zhù nǐ xīnnián kuàilè!", "english": "Happy New Year!", "words": ["w-zhu-wish", "w-ni", "w-xin", "w-nian", "w-kuaile"] },
     { "id": "s26-tebiegaoxing", "hanzi": "谢谢！米格，你来了我们特别高兴。", "pinyin": "Xièxie! Mǐgé, nǐ lái le wǒmen tèbié gāoxìng.", "english": "Thank you! 米格, we're so happy you came.", "words": ["w-xiexie", "w-mikkel", "w-ni", "w-lai", "w-le", "w-women", "w-tebie", "w-gaoxing"] },
     { "id": "s26-zuizhongyaojieri", "hanzi": "是啊，春节是中国最重要的节日。", "pinyin": "Shì a, Chūnjié shì Zhōngguó zuì zhòngyào de jiérì.", "english": "Yes, Spring Festival is the most important holiday in China.", "words": ["w-shi", "w-a", "w-chunjie", "w-shi", "w-zhongguo", "w-zui", "w-zhongyao", "w-de", "w-jieri"] },
@@ -42,7 +42,7 @@
     { "id": "s26-yeyenainailaile", "hanzi": "爷爷奶奶也来了。", "pinyin": "Yéye nǎinai yě lái le.", "english": "Grandpa and Grandma are here too.", "words": ["w-yeye", "w-nainai", "w-ye", "w-lai", "w-le"] },
     { "id": "s26-nainaishi", "hanzi": "奶奶是爸爸的妈妈，姥姥是妈妈的妈妈。", "pinyin": "Nǎinai shì bàba de māma, lǎolao shì māma de māma.", "english": "奶奶 is Dad's mother; 姥姥 is Mum's mother.", "words": ["w-nainai", "w-shi", "w-baba", "w-de", "w-mama", "w-laolao", "w-shi", "w-mama", "w-de", "w-mama"] },
     { "id": "s26-haohaozhaogu", "hanzi": "我们要好好照顾爷爷奶奶。", "pinyin": "Wǒmen yào hǎohǎo zhàogu yéye nǎinai.", "english": "We should take good care of Grandpa and Grandma.", "words": ["w-women", "w-yao", "w-hao", "w-hao", "w-zhaogu", "w-yeye", "w-nainai"] },
-    { "id": "s26-xiexiezhaogu", "hanzi": "谢谢您照顾我。", "pinyin": "Xièxie nín zhàogu wǒ.", "english": "Thank you for looking after me.", "words": ["w-xiexie", "w-nin", "w-zhaogu", "w-wo"] },
+    { "id": "s26-xiexiezhaogu", "hanzi": "谢谢你照顾我。", "pinyin": "Xièxie nǐ zhàogu wǒ.", "english": "Thank you for looking after me.", "words": ["w-xiexie", "w-ni", "w-zhaogu", "w-wo"] },
     { "id": "s26-kanjiemu", "hanzi": "晚上我们一起看电视节目。", "pinyin": "Wǎnshang wǒmen yìqǐ kàn diànshì jiémù.", "english": "In the evening we watch TV together.", "words": ["w-wanshang", "w-women", "w-yiqi", "w-kan", "w-dianshi", "w-jiemu"] },
     { "id": "s26-xiaoyubiaoyan", "hanzi": "晚上小雨给大家表演一个节目。", "pinyin": "Wǎnshang Xiǎoyǔ gěi dàjiā biǎoyǎn yí ge jiémù.", "english": "Tonight Xiaoyu will put on a show for everyone.", "words": ["w-wanshang", "w-xiaoyu", "w-gei", "w-dajia", "w-biaoyan", "w-yi", "w-ge", "w-jiemu"] },
     { "id": "s26-tingbudaoshengyin", "hanzi": "我听不到你的声音。", "pinyin": "Wǒ tīng bu dào nǐ de shēngyīn.", "english": "I can't hear you.", "words": ["w-wo", "w-ting", "w-bu", "w-dao", "w-ni", "w-de", "w-shengyin"] },
@@ -69,7 +69,7 @@
     { "id": "x26-countries", "prompt": "s26-quguojigeguojia", "reply": "s26-shijieguojia", "wrong": ["s26-chunjiekuaile", "s26-kanjiemu"], "context": "You haven't travelled much yet, but you'd love to." }
   ],
   "grammar": [
-    { "id": "g26-zhu", "title": "祝: good wishes", "body": "祝 + person + wish: 祝您身体健康 (good health, perfect for elders), 祝你新年快乐 (Happy New Year), 祝你生日快乐.", "examples": ["s26-zhuninjiankang", "s26-zhunixinnian"] },
+    { "id": "g26-zhu", "title": "祝: good wishes", "body": "祝 + person + wish: 祝你身体健康 (good health, perfect for elders), 祝你新年快乐 (Happy New Year), 祝你生日快乐.", "examples": ["s26-zhuninjiankang", "s26-zhunixinnian"] },
     { "id": "g26-nainai", "title": "奶奶 or 姥姥?", "body": "Chinese names grandparents by side: 爷爷, 奶奶 are Dad's parents; 姥爷, 姥姥 are Mum's parents (in the north; the south says 外公, 外婆).", "examples": ["s26-nainaishi", "s26-yeyenainailaile"] },
     { "id": "g26-xingqu", "title": "对…有兴趣", "body": "对 + topic + 有兴趣: interested in. 我对中国历史很有兴趣. For hobbies: 我的爱好是….", "examples": ["s26-lishixingqu", "s26-aihaoshi"] },
     { "id": "g26-jiemu", "title": "Performing a 节目", "body": "At family gatherings, children often perform a 节目 (a song, a dance, a poem) for everyone. Watching it with a camera ready is part of the fun.", "examples": ["s26-xiaoyubiaoyan"] }

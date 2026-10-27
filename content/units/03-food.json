@@ -44,7 +44,7 @@
     { "id": "s-heshenme-yaobuyao", "hanzi": "你想喝什么？要不要喝茶？", "pinyin": "Nǐ xiǎng hē shénme? Yào bu yào hē chá?", "english": "What would you like to drink? Some tea?", "words": ["w-ni", "w-xiang", "w-he-drink", "w-shenme", "w-yao", "w-bu", "w-yao", "w-he-drink", "w-cha"] },
     { "id": "s-wohechaba", "hanzi": "我喝茶吧。", "pinyin": "Wǒ hē chá ba.", "english": "I'll have tea, I think.", "words": ["w-wo", "w-he-drink", "w-cha", "w-ba-particle"], "alt": { "english": ["I'll have tea."] } },
     { "id": "s-haoa", "hanzi": "好啊！", "pinyin": "Hǎo a!", "english": "Sure!", "words": ["w-hao", "w-a"], "alt": { "english": ["Okay!", "Yes, please!"] } },
-    { "id": "s-haoa-xiexieayi", "hanzi": "好啊，谢谢阿姨！", "pinyin": "Hǎo a, xièxie āyí!", "english": "Yes please, thank you!", "words": ["w-hao", "w-a", "w-xiexie", "w-ayi"] },
+    { "id": "s-haoa-xiexieayi", "hanzi": "好啊，谢谢妈！", "pinyin": "Hǎo a, xièxie mā!", "english": "Yes please, thanks, Mum!", "words": ["w-hao", "w-a", "w-xiexie", "w-ma-mum"] },
     { "id": "s-geiwoyibeishui", "hanzi": "请给我一杯水。", "pinyin": "Qǐng gěi wǒ yì bēi shuǐ.", "english": "Could I have a glass of water, please?", "words": ["w-qing", "w-gei", "w-wo", "w-yi", "w-bei", "w-shui"] },
     { "id": "s-nihuiyongkuaizima", "hanzi": "你会用筷子吗？", "pinyin": "Nǐ huì yòng kuàizi ma?", "english": "Can you use chopsticks?", "words": ["w-ni", "w-hui", "w-yong", "w-kuaizi", "w-ma"] },
     { "id": "s-wohuiyidian", "hanzi": "我会一点。", "pinyin": "Wǒ huì yìdiǎn.", "english": "A little.", "words": ["w-wo", "w-hui", "w-yidian"], "alt": { "english": ["I can a little."] } },
@@ -59,7 +59,7 @@
     { "id": "s-woele", "hanzi": "我饿了。", "pinyin": "Wǒ è le.", "english": "I'm hungry.", "words": ["w-wo", "w-e", "w-le"] },
     { "id": "s-zailaiyiwanba", "hanzi": "再来一碗吧！", "pinyin": "Zài lái yì wǎn ba!", "english": "Have another bowl!", "words": ["w-zai-again", "w-lai", "w-yi", "w-wan", "w-ba-particle"] },
     { "id": "s-wochibaole", "hanzi": "我吃饱了。", "pinyin": "Wǒ chī bǎo le.", "english": "I'm full.", "words": ["w-wo", "w-chi", "w-bao", "w-le"] },
-    { "id": "s-xiexieayi-chibaole", "hanzi": "谢谢阿姨，我吃饱了。", "pinyin": "Xièxie āyí, wǒ chī bǎo le.", "english": "Thank you, but I'm full.", "words": ["w-xiexie", "w-ayi", "w-wo", "w-chi", "w-bao", "w-le"] },
+    { "id": "s-xiexieayi-chibaole", "hanzi": "谢谢妈，我吃饱了。", "pinyin": "Xièxie mā, wǒ chī bǎo le.", "english": "Thanks, Mum, but I'm full.", "words": ["w-xiexie", "w-ma-mum", "w-wo", "w-chi", "w-bao", "w-le"] },
     { "id": "s-manmanchi", "hanzi": "慢慢吃！", "pinyin": "Mànmàn chī!", "english": "Take your time!", "words": ["w-man", "w-man", "w-chi"], "alt": { "english": ["Enjoy your meal!"] } }
   ],
   "exchanges": [

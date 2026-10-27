@@ -26,7 +26,9 @@ Lowercase with dashes, globally unique across all files. Use a `w-` prefix for w
 `{ id, hanzi, pinyin, english, words[], alt? }`
 - `words` are word ids **in order**, and their characters must spell the sentence exactly (punctuation aside). Every word must be defined in this unit or an earlier one.
 - Write pinyin the way it's spoken for 不/一 (`bú shì`, `yí ge`). Leave 3rd-tone sandhi unmarked (`nǐ hǎo`).
-- Her family is from Beijing. In units after "Beijing flavour" (u13), use Beijing forms where natural: 哪儿, 这儿, 那儿, 一会儿, 咱们, and 您 for elders. Earlier units use 哪里 and 一点.
+- Her family is from Beijing. In units after "Beijing flavour" (u13), use Beijing forms where natural: 哪儿, 这儿, 那儿, 一会儿, 咱们. Earlier units use 哪里 and 一点.
+- **Always 你, never 您** (the owner's choice), also with elders. 您 stays in the word list only so it can be recognised.
+- **Her parents are 爸 and 妈** when 米格 talks to them (爸妈好！, 谢谢妈), and 她爸爸 / 她妈妈 (or 你爸 to her) when talking about them. Use 叔叔 and 阿姨 only in their general sense: an uncle or aunt, or what a child calls an adult.
 - Sentence ids start with the unit number (`s14-...`, `x14-...`, `g14-...`) to avoid clashes.
 - Use natural everyday Mainland Mandarin, simplified characters. Prefer contexts from life with a partner's family.
 - Dialogue lines that combine two short sentences need their own combined sentence entry.

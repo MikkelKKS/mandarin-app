@@ -108,3 +108,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Live tone marks:** a tone number typed right after a syllable becomes a mark (ni3 → nǐ, nv3 → nǚ, u: → ü; 5 or 0 drops the number). The syllable is the longest valid one at the end of the letters; use an apostrophe or space where that's ambiguous (fāng'àn).
 - The tone row is now 1 2 3 4 5 (5 removes the mark) plus ü, coloured by tone.
 - **Tone colours** follow the brief: 1 red, 2 orange, 3 green, 4 blue, neutral grey. Settings keeps the on/off switch.
+
+## 2026-10-27: 你 instead of 您, 爸/妈 for her parents (owner request)
+- Course sentences, dialogues, stories and grammar notes use 你, never 您 (40 sentences changed). 您 stays as an HSK word so it can be recognised, with a note that 你 is always fine. Tatoeba example sentences containing 您 are skipped by the vocabulary build.
+- 米格 calls her parents 爸 and 妈 (new words 爸 and 妈, taught in "Meeting her parents"); stories say 她妈妈. 叔叔 and 阿姨 stay as words in their general sense (uncle, aunt, what children call adults) and are taught with the other family words.
+- Changed lines keep their ids, so progress carries over. Their recordings still say the old words until the audio is regenerated.

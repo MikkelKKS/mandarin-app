@@ -41,7 +41,7 @@
     { "id": "s21-pijiuhaishiguozhi", "hanzi": "你喝啤酒还是果汁？", "pinyin": "Nǐ hē píjiǔ háishi guǒzhī?", "english": "Will you have beer or juice?", "words": ["w-ni", "w-he-drink", "w-pijiu", "w-haishi", "w-guozhi"] },
     { "id": "s21-kejile-guozhi", "hanzi": "我渴极了，要一杯果汁。", "pinyin": "Wǒ kě jí le, yào yì bēi guǒzhī.", "english": "I'm really thirsty. A glass of juice, please.", "words": ["w-wo", "w-ke-thirsty", "w-ji-extremely", "w-le", "w-yao", "w-yi", "w-bei", "w-guozhi"] },
     { "id": "s21-wokele", "hanzi": "我渴了。", "pinyin": "Wǒ kě le.", "english": "I'm thirsty.", "words": ["w-wo", "w-ke-thirsty", "w-le"] },
-    { "id": "s21-hebeipijiu", "hanzi": "叔叔，咱们喝杯啤酒吧！", "pinyin": "Shūshu, zánmen hē bēi píjiǔ ba!", "english": "Uncle, let's have a beer!", "words": ["w-shushu", "w-zanmen", "w-he-drink", "w-bei", "w-pijiu", "w-ba-particle"] },
+    { "id": "s21-hebeipijiu", "hanzi": "爸，咱们喝杯啤酒吧！", "pinyin": "Bà, zánmen hē bēi píjiǔ ba!", "english": "Dad, let's have a beer!", "words": ["w-ba-dad", "w-zanmen", "w-he-drink", "w-bei", "w-pijiu", "w-ba-particle"] },
     { "id": "s21-chahuozhekafei", "hanzi": "喝茶或者咖啡都可以。", "pinyin": "Hē chá huòzhě kāfēi dōu kěyǐ.", "english": "Tea or coffee, either is fine.", "words": ["w-he-drink", "w-cha", "w-huozhe", "w-kafei", "w-dou", "w-keyi"] },
     { "id": "s21-quchaoshi", "hanzi": "我去超市买点东西。", "pinyin": "Wǒ qù chāoshì mǎi diǎn dōngxi.", "english": "I'm going to the supermarket to get a few things.", "words": ["w-wo", "w-qu", "w-chaoshi", "w-mai3", "w-dian", "w-dongxi"] },
     { "id": "s21-xinxianmianbao", "hanzi": "超市里有新鲜的面包。", "pinyin": "Chāoshì lǐ yǒu xīnxiān de miànbāo.", "english": "The supermarket has fresh bread.", "words": ["w-chaoshi", "w-li-inside", "w-you", "w-xinxian", "w-de", "w-mianbao"] },

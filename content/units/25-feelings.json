@@ -32,7 +32,7 @@
     { "id": "w-liaojie", "hanzi": "了解", "pinyin": "liǎojiě", "english": ["to understand", "to get to know"], "hsk": 3, "pos": "verb" }
   ],
   "sentences": [
-    { "id": "s25-henzhaoji", "hanzi": "我很着急：叔叔是不是不喜欢我？", "pinyin": "Wǒ hěn zháojí: shūshu shì bu shì bù xǐhuan wǒ?", "english": "I'm worried. Does your dad not like me?", "words": ["w-wo", "w-hen", "w-zhaoji", "w-shushu", "w-shi", "w-bu", "w-shi", "w-bu", "w-xihuan", "w-wo"] },
+    { "id": "s25-henzhaoji", "hanzi": "我很着急：你爸是不是不喜欢我？", "pinyin": "Wǒ hěn zháojí: nǐ bà shì bu shì bù xǐhuan wǒ?", "english": "I'm worried. Does your dad not like me?", "words": ["w-wo", "w-hen", "w-zhaoji", "w-ni", "w-ba-dad", "w-shi", "w-bu", "w-shi", "w-bu", "w-xihuan", "w-wo"] },
     { "id": "s25-weishenme-biezhaoji", "hanzi": "为什么？你别着急。", "pinyin": "Wèishénme? Nǐ bié zháojí.", "english": "Why? Don't worry.", "words": ["w-weishenme", "w-ni", "w-bie", "w-zhaoji"] },
     { "id": "s25-biezhaoji-manman", "hanzi": "别着急，慢慢来。", "pinyin": "Bié zháojí, mànmàn lái.", "english": "No rush, take your time.", "words": ["w-bie", "w-zhaoji", "w-man", "w-man", "w-lai"] },
     { "id": "s25-turanbushuohua", "hanzi": "他今天突然不说话了。", "pinyin": "Tā jīntiān tūrán bù shuōhuà le.", "english": "He suddenly went quiet today.", "words": ["w-ta-he", "w-jintian", "w-turan", "w-bu", "w-shuohua", "w-le"] },

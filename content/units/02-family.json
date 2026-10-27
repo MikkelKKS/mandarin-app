@@ -16,6 +16,8 @@
     { "id": "w-liang", "hanzi": "两", "pinyin": "liǎng", "english": ["two (of something)"], "hsk": 2, "pos": "number", "note": "Use 两, not 二, before a measure word: 两个." },
     { "id": "w-baba", "hanzi": "爸爸", "pinyin": "bàba", "english": ["dad", "father"], "hsk": 1, "pos": "noun" },
     { "id": "w-mama", "hanzi": "妈妈", "pinyin": "māma", "english": ["mum", "mother"], "hsk": 1, "pos": "noun" },
+    { "id": "w-ba-dad", "hanzi": "爸", "pinyin": "bà", "english": ["dad"], "hsk": 1, "pos": "noun" },
+    { "id": "w-ma-mum", "hanzi": "妈", "pinyin": "mā", "english": ["mum"], "hsk": 1, "pos": "noun" },
     { "id": "w-gege", "hanzi": "哥哥", "pinyin": "gēge", "english": ["older brother"], "hsk": 2, "pos": "noun", "measure": "w-ge" },
     { "id": "w-jiejie", "hanzi": "姐姐", "pinyin": "jiějie", "english": ["older sister"], "hsk": 2, "pos": "noun", "measure": "w-ge" },
     { "id": "w-didi", "hanzi": "弟弟", "pinyin": "dìdi", "english": ["younger brother"], "hsk": 2, "pos": "noun", "measure": "w-ge" },
@@ -38,9 +40,9 @@
     { "id": "w-gou", "hanzi": "狗", "pinyin": "gǒu", "english": ["dog"], "hsk": 1, "pos": "noun", "measure": "w-zhi" }
   ],
   "sentences": [
-    { "id": "s-shushuhao", "hanzi": "叔叔好！", "pinyin": "Shūshu hǎo!", "english": "Hello! (to her father)", "words": ["w-shushu", "w-hao"], "alt": { "english": ["Hello, uncle!"] } },
-    { "id": "s-ayihao", "hanzi": "阿姨好！", "pinyin": "Āyí hǎo!", "english": "Hello! (to her mother)", "words": ["w-ayi", "w-hao"], "alt": { "english": ["Hello, auntie!"] } },
-    { "id": "s-shushuhao-ayihao", "hanzi": "叔叔好！阿姨好！", "pinyin": "Shūshu hǎo! Āyí hǎo!", "english": "Hello! (to her father and mother)", "words": ["w-shushu", "w-hao", "w-ayi", "w-hao"] },
+    { "id": "s-shushuhao", "hanzi": "爸，你好！", "pinyin": "Bà, nǐ hǎo!", "english": "Hello, Dad! (to her father)", "words": ["w-ba-dad", "w-ni", "w-hao"] },
+    { "id": "s-ayihao", "hanzi": "妈，你好！", "pinyin": "Mā, nǐ hǎo!", "english": "Hello, Mum! (to her mother)", "words": ["w-ma-mum", "w-ni", "w-hao"] },
+    { "id": "s-shushuhao-ayihao", "hanzi": "爸妈好！", "pinyin": "Bà mā hǎo!", "english": "Hello, Mum and Dad! (to her parents)", "words": ["w-ba-dad", "w-ma-mum", "w-hao"] },
     { "id": "s-nijiayoujikouren", "hanzi": "你家有几口人？", "pinyin": "Nǐ jiā yǒu jǐ kǒu rén?", "english": "How many people are in your family?", "words": ["w-ni", "w-jia", "w-you", "w-ji", "w-kou", "w-ren"] },
     { "id": "s-mikkel-jikouren", "hanzi": "米格，你家有几口人？", "pinyin": "Mǐgé, nǐ jiā yǒu jǐ kǒu rén?", "english": "米格, how many people are in your family?", "words": ["w-mikkel", "w-ni", "w-jia", "w-you", "w-ji", "w-kou", "w-ren"] },
     { "id": "s-wojiayousikouren", "hanzi": "我家有四口人。", "pinyin": "Wǒ jiā yǒu sì kǒu rén.", "english": "There are four people in my family.", "words": ["w-wo", "w-jia", "w-you", "w-si", "w-kou", "w-ren"] },
@@ -77,7 +79,7 @@
     { "id": "g-measure", "title": "Number + measure word + noun", "body": "Between a number and a noun you need a measure word. 个 is the all-rounder: 一个姐姐. Family size uses 口: 四口人. Animals often take 只: 一只狗.", "examples": ["s-woyouyigejiejie", "s-wojiayousikouren", "s-wojiayouyizhigou"] },
     { "id": "g-liang", "title": "两 vs 二", "body": "When counting things, 'two' is 两 (liǎng): 两个妹妹. 二 (èr) is for counting out loud, phone numbers and inside bigger numbers like 十二.", "examples": ["s-tayouliangge-meimei"] },
     { "id": "g-dou", "title": "都 = both / all", "body": "都 goes right before the verb or adjective, after everyone it covers: 我爸爸妈妈都很好.", "examples": ["s-babamamadouhenhao"] },
-    { "id": "g-address", "title": "叔叔 and 阿姨", "body": "Call a partner's or friend's parents 叔叔 (shūshu, 'uncle') and 阿姨 (āyí, 'auntie'). Greeting them is as simple as 叔叔好！阿姨好！", "examples": ["s-shushuhao-ayihao"] }
+    { "id": "g-address", "title": "爸 and 妈", "body": "Once you're family, call her parents 爸 (bà, 'dad') and 妈 (mā, 'mum'), short for 爸爸 and 妈妈. Greet them both with 爸妈好！ You'll still hear 叔叔 ('uncle') and 阿姨 ('auntie'): children use them for adults they know, and they also mean an aunt or uncle.", "examples": ["s-shushuhao-ayihao"] }
   ],
   "dialogue": {
     "id": "d02-photo",
@@ -106,8 +108,8 @@
     ]
   },
   "nodes": [
-    { "id": "n02-parents", "title": "Meeting her parents", "words": ["w-shushu", "w-ayi", "w-baba", "w-mama", "w-na4", "w-nvpengyou", "w-pengyou"], "sentences": ["s-shushuhao", "s-ayihao", "s-zheshiwobaba", "s-nashiwomama", "s-tashiwonvpengyou", "s-tashiwopengyou"], "exchanges": ["x-meetdad", "x-meetmum"], "grammar": ["g-address"] },
-    { "id": "n02-siblings", "title": "Brothers & sisters", "words": ["w-you", "w-mei", "w-ge", "w-liang", "w-gege", "w-jiejie", "w-didi", "w-meimei"], "sentences": ["s-niyougegema", "s-woyouyigejiejie", "s-womeiyoudidi", "s-tayouliangge-meimei", "s-meiyougege-youjiejie"], "exchanges": ["x-brother"], "grammar": ["g-you", "g-liang"] },
+    { "id": "n02-parents", "title": "Meeting her parents", "words": ["w-ba-dad", "w-ma-mum", "w-baba", "w-mama", "w-na4", "w-nvpengyou", "w-pengyou"], "sentences": ["s-shushuhao", "s-ayihao", "s-zheshiwobaba", "s-nashiwomama", "s-tashiwonvpengyou", "s-tashiwopengyou"], "exchanges": ["x-meetdad", "x-meetmum"], "grammar": ["g-address"] },
+    { "id": "n02-siblings", "title": "Brothers & sisters", "words": ["w-you", "w-mei", "w-ge", "w-liang", "w-gege", "w-jiejie", "w-didi", "w-meimei", "w-shushu", "w-ayi"], "sentences": ["s-niyougegema", "s-woyouyigejiejie", "s-womeiyoudidi", "s-tayouliangge-meimei", "s-meiyougege-youjiejie"], "exchanges": ["x-brother"], "grammar": ["g-you", "g-liang"] },
     { "id": "n02-howmany", "title": "How many of you?", "words": ["w-jia", "w-ji", "w-kou", "w-zhi", "w-gou", "w-he", "w-dou", "w-women"], "sentences": ["s-nijiayoujikouren", "s-wojiayousikouren", "s-babamamagegehewo", "s-wojiayouyizhigou", "s-babamamadouhenhao"], "exchanges": ["x-howmany"], "grammar": ["g-measure", "g-dou"] },
     { "id": "n02-photo", "title": "Photos & ages", "words": ["w-shei", "w-zhaopian", "w-kan", "w-duo", "w-da", "w-le", "w-sui"], "sentences": ["s-zheshishei", "s-nikan", "s-nikan-zhaopian", "s-niduodale", "s-wogegesanshisuile"], "exchanges": ["x-whothis"] },
     { "id": "n02-story", "title": "Story: The family photo", "kind": "story", "sentences": ["s-mikkel-jikouren", "s-baba-nashimama", "s-babamamadouhuishuo"] }
