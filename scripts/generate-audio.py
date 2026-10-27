@@ -134,6 +134,7 @@ async def main():
     force = "--force" in sys.argv
     sem = asyncio.Semaphore(CONCURRENCY)
     tasks = []
+    owners = []  # item id per task (None for dictionary audio)
     # manifest: id -> text the audio was generated from. When the text changes
     # (e.g. a sentence is edited), the audio is regenerated.
     if not shutil.which("ffmpeg"):
@@ -156,11 +157,13 @@ async def main():
                 dest = OUT / v / f"{item_id}{suffix}.mp3"
                 if stale or not dest.exists() or (suffix == ".slow" and slow_stale):
                     tasks.append(synth(text, voice, rate, dest, sem))
+                    owners.append(item_id)
     (OUT / "dict").mkdir(parents=True, exist_ok=True)
     for h in dict_jobs():
         dest = OUT / "dict" / f"{dict_key(h)}.mp3"
         if force or not dest.exists():
             tasks.append(synth(h, VOICES["f"], WORD_RATE, dest, sem))
+            owners.append(None)
     print(f"{len(tasks)} file(s) to generate")
     started = time.time()
     results = await asyncio.gather(*tasks)
@@ -177,9 +180,20 @@ async def main():
                 await pad(p)
 
         await asyncio.gather(*(pad_one(p) for p in old))
-    if not failed:
+    # Record the text of every item whose files all succeeded, so it isn't re-recorded next run.
+    # Items with a failed file keep their old entry and are retried. (Before, one failure anywhere
+    # meant nothing was recorded, and every changed line was re-made on every deploy.)
+    bad = {o for o, ok in zip(owners, results) if not ok and o is not None}
+    kept = {}
+    for i, t, _ in items:
+        if i not in bad:
+            kept[i] = t
+        elif manifest.get(i) is not None:
+            kept[i] = manifest[i]
+    if not first_run or not failed:
+        slow = SLOW_VERSION if not failed or not slow_stale else raw.get("_slow", 1)
         MANIFEST.write_text(
-            json.dumps({"_format": AUDIO_FORMAT, "_slow": SLOW_VERSION, "items": {i: t for i, t, _ in items}}, ensure_ascii=False, indent=0, sort_keys=True),
+            json.dumps({"_format": AUDIO_FORMAT, "_slow": slow, "items": kept}, ensure_ascii=False, indent=0, sort_keys=True),
             encoding="utf-8",
         )
     print(f"done: {len(results) - failed} generated, {failed} failed")

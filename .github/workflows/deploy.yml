@@ -28,6 +28,9 @@ jobs:
         # The free TTS service sometimes refuses requests for a while. Never block a deploy over it:
         # the app falls back to the browser's voice, and the next run retries what's missing.
         continue-on-error: true
+        # Pushes shouldn't wait half an hour on retries: 8 minutes, then deploy with what exists.
+        # The nightly run gets longer to catch up.
+        timeout-minutes: ${{ github.event_name == 'schedule' && 90 || 8 }}
         run: python3 scripts/generate-audio.py
       - name: Commit new audio
         run: |
