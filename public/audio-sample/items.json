@@ -1,0 +1,384 @@
+{
+ "voices": {
+  "f": "Xiaoxiao",
+  "m": "Yunjian"
+ },
+ "hintFormat": "spaced",
+ "items": [
+  {
+   "id": "nihao",
+   "hanzi": "你好",
+   "pinyin": "nǐ hǎo",
+   "english": "hello",
+   "check": "3+3: the first syllable rises (ní hǎo)",
+   "hint": null,
+   "files": {
+    "f": "f/nihao.mp3",
+    "m": "m/nihao.mp3"
+   }
+  },
+  {
+   "id": "keyi",
+   "hanzi": "可以",
+   "pinyin": "kěyǐ",
+   "english": "can, may",
+   "check": "3+3: kéyǐ",
+   "hint": null,
+   "files": {
+    "f": "f/keyi.mp3",
+    "m": "m/keyi.mp3"
+   }
+  },
+  {
+   "id": "wohenmang",
+   "hanzi": "我很忙。",
+   "pinyin": "Wǒ hěn máng.",
+   "english": "I'm busy.",
+   "check": "half third tones: low and short, not dipping",
+   "sentence": true,
+   "hint": null,
+   "files": {
+    "f": "f/wohenmang.mp3",
+    "f-slow": "f/wohenmang.slow.mp3",
+    "m": "m/wohenmang.mp3",
+    "m-slow": "m/wohenmang.slow.mp3"
+   }
+  },
+  {
+   "id": "xiangmai",
+   "hanzi": "我也想买。",
+   "pinyin": "Wǒ yě xiǎng mǎi.",
+   "english": "I want to buy one too.",
+   "check": "four 3rd tones in a row",
+   "sentence": true,
+   "hint": null,
+   "files": {
+    "f": "f/xiangmai.mp3",
+    "f-slow": "f/xiangmai.slow.mp3",
+    "m": "m/xiangmai.mp3",
+    "m-slow": "m/xiangmai.slow.mp3"
+   }
+  },
+  {
+   "id": "bushi",
+   "hanzi": "不是",
+   "pinyin": "bú shì",
+   "english": "is not",
+   "check": "不 before a 4th tone: bú",
+   "hint": null,
+   "files": {
+    "f": "f/bushi.mp3",
+    "m": "m/bushi.mp3"
+   }
+  },
+  {
+   "id": "buhao",
+   "hanzi": "不好",
+   "pinyin": "bù hǎo",
+   "english": "not good",
+   "check": "不 stays bù",
+   "hint": null,
+   "files": {
+    "f": "f/buhao.mp3",
+    "m": "m/buhao.mp3"
+   }
+  },
+  {
+   "id": "yige",
+   "hanzi": "一个",
+   "pinyin": "yí ge",
+   "english": "one, a",
+   "check": "一 → yí, 个 neutral",
+   "hint": "yi2 ge5",
+   "files": {
+    "f": "f/yige.mp3",
+    "m": "m/yige.mp3"
+   }
+  },
+  {
+   "id": "yiqi",
+   "hanzi": "一起",
+   "pinyin": "yìqǐ",
+   "english": "together",
+   "check": "一 → yì",
+   "hint": null,
+   "files": {
+    "f": "f/yiqi.mp3",
+    "m": "m/yiqi.mp3"
+   }
+  },
+  {
+   "id": "diyi",
+   "hanzi": "第一",
+   "pinyin": "dì yī",
+   "english": "first",
+   "check": "一 stays yī",
+   "hint": null,
+   "files": {
+    "f": "f/diyi.mp3",
+    "m": "m/diyi.mp3"
+   }
+  },
+  {
+   "id": "mama",
+   "hanzi": "妈妈",
+   "pinyin": "māma",
+   "english": "mum",
+   "check": "second ma light and short",
+   "hint": null,
+   "files": {
+    "f": "f/mama.mp3",
+    "m": "m/mama.mp3"
+   }
+  },
+  {
+   "id": "xiexie",
+   "hanzi": "谢谢",
+   "pinyin": "xièxie",
+   "english": "thank you",
+   "check": "second xie neutral",
+   "hint": "xie4 xie5",
+   "files": {
+    "f": "f/xiexie.mp3",
+    "m": "m/xiexie.mp3"
+   }
+  },
+  {
+   "id": "dongxi",
+   "hanzi": "东西",
+   "pinyin": "dōngxi",
+   "english": "thing, stuff",
+   "check": "dōngxi (thing), not dōngxī (east and west)",
+   "hint": "dong1 xi5",
+   "files": {
+    "f": "f/dongxi.mp3",
+    "m": "m/dongxi.mp3"
+   }
+  },
+  {
+   "id": "pengyou",
+   "hanzi": "朋友",
+   "pinyin": "péngyou",
+   "english": "friend",
+   "check": "you neutral",
+   "hint": "peng2 you5",
+   "files": {
+    "f": "f/pengyou.mp3",
+    "m": "m/pengyou.mp3"
+   }
+  },
+  {
+   "id": "piaoliang",
+   "hanzi": "漂亮",
+   "pinyin": "piàoliang",
+   "english": "pretty",
+   "check": "liang neutral",
+   "hint": null,
+   "files": {
+    "f": "f/piaoliang.mp3",
+    "m": "m/piaoliang.mp3"
+   }
+  },
+  {
+   "id": "shenme",
+   "hanzi": "什么",
+   "pinyin": "shénme",
+   "english": "what",
+   "check": "me neutral",
+   "hint": null,
+   "files": {
+    "f": "f/shenme.mp3",
+    "m": "m/shenme.mp3"
+   }
+  },
+  {
+   "id": "nar",
+   "hanzi": "哪儿",
+   "pinyin": "nǎr",
+   "english": "where",
+   "check": "one syllable nǎr, not nǎ ér",
+   "hint": null,
+   "files": {
+    "f": "f/nar.mp3",
+    "m": "m/nar.mp3"
+   }
+  },
+  {
+   "id": "yidianr",
+   "hanzi": "一点儿",
+   "pinyin": "yìdiǎnr",
+   "english": "a little",
+   "check": "diǎnr with the r",
+   "hint": null,
+   "files": {
+    "f": "f/yidianr.mp3",
+    "m": "m/yidianr.mp3"
+   }
+  },
+  {
+   "id": "wanr",
+   "hanzi": "玩儿",
+   "pinyin": "wánr",
+   "english": "to play",
+   "check": "wánr",
+   "hint": null,
+   "files": {
+    "f": "f/wanr.mp3",
+    "m": "m/wanr.mp3"
+   }
+  },
+  {
+   "id": "yinhang",
+   "hanzi": "银行",
+   "pinyin": "yínháng",
+   "english": "bank",
+   "check": "行 = háng",
+   "hint": null,
+   "files": {
+    "f": "f/yinhang.mp3",
+    "m": "m/yinhang.mp3"
+   }
+  },
+  {
+   "id": "buxing",
+   "hanzi": "不行",
+   "pinyin": "bù xíng",
+   "english": "won't do",
+   "check": "行 = xíng",
+   "hint": null,
+   "files": {
+    "f": "f/buxing.mp3",
+    "m": "m/buxing.mp3"
+   }
+  },
+  {
+   "id": "changcheng",
+   "hanzi": "长城",
+   "pinyin": "Chángchéng",
+   "english": "the Great Wall",
+   "check": "长 = cháng",
+   "hint": null,
+   "files": {
+    "f": "f/changcheng.mp3",
+    "m": "m/changcheng.mp3"
+   }
+  },
+  {
+   "id": "zhangda",
+   "hanzi": "长大",
+   "pinyin": "zhǎngdà",
+   "english": "to grow up",
+   "check": "长 = zhǎng",
+   "hint": null,
+   "files": {
+    "f": "f/zhangda.mp3",
+    "m": "m/zhangda.mp3"
+   }
+  },
+  {
+   "id": "liaojie",
+   "hanzi": "了解",
+   "pinyin": "liǎojiě",
+   "english": "to understand",
+   "check": "了 = liǎo",
+   "hint": null,
+   "files": {
+    "f": "f/liaojie.mp3",
+    "m": "m/liaojie.mp3"
+   }
+  },
+  {
+   "id": "deizou",
+   "hanzi": "我得走了。",
+   "pinyin": "Wǒ děi zǒu le.",
+   "english": "I have to go.",
+   "check": "得 = děi, 了 = le",
+   "sentence": true,
+   "hint": "wo3 dei3 zou3 le5",
+   "files": {
+    "f": "f/deizou.mp3",
+    "f-slow": "f/deizou.slow.mp3",
+    "m": "m/deizou.mp3",
+    "m-slow": "m/deizou.slow.mp3"
+   }
+  },
+  {
+   "id": "haishu",
+   "hanzi": "还书",
+   "pinyin": "huán shū",
+   "english": "to return a book",
+   "check": "还 = huán (not hái)",
+   "hint": "huan2 shu1",
+   "files": {
+    "f": "f/haishu.mp3",
+    "m": "m/haishu.mp3"
+   }
+  },
+  {
+   "id": "haiyou",
+   "hanzi": "还有",
+   "pinyin": "hái yǒu",
+   "english": "there is still",
+   "check": "还 = hái",
+   "hint": null,
+   "files": {
+    "f": "f/haiyou.mp3",
+    "m": "m/haiyou.mp3"
+   }
+  },
+  {
+   "id": "mai3",
+   "hanzi": "买",
+   "pinyin": "mǎi",
+   "english": "to buy",
+   "check": "3rd tone, dips",
+   "hint": null,
+   "files": {
+    "f": "f/mai3.mp3",
+    "m": "m/mai3.mp3"
+   }
+  },
+  {
+   "id": "mai4",
+   "hanzi": "卖",
+   "pinyin": "mài",
+   "english": "to sell",
+   "check": "4th tone, falls",
+   "hint": null,
+   "files": {
+    "f": "f/mai4.mp3",
+    "m": "m/mai4.mp3"
+   }
+  },
+  {
+   "id": "mingtian",
+   "hanzi": "你明天有空吗？",
+   "pinyin": "Nǐ míngtiān yǒu kòng ma?",
+   "english": "Are you free tomorrow?",
+   "check": "natural question intonation, tones still clear",
+   "sentence": true,
+   "hint": "ni3 ming2 tian1 you3 kong4 ma5",
+   "files": {
+    "f": "f/mingtian.mp3",
+    "f-slow": "f/mingtian.slow.mp3",
+    "m": "m/mingtian.mp3",
+    "m-slow": "m/mingtian.slow.mp3"
+   }
+  },
+  {
+   "id": "juede",
+   "hanzi": "我觉得这个很好吃。",
+   "pinyin": "Wǒ juéde zhège hěn hǎochī.",
+   "english": "I think this is delicious.",
+   "check": "juéde, hěn hǎochī (3+3)",
+   "sentence": true,
+   "hint": null,
+   "files": {
+    "f": "f/juede.mp3",
+    "f-slow": "f/juede.slow.mp3",
+    "m": "m/juede.mp3",
+    "m-slow": "m/juede.slow.mp3"
+   }
+  }
+ ]
+}
