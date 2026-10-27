@@ -52,7 +52,7 @@ test('complete the first lesson and see it on the path', async ({ page }) => {
   await page.addInitScript(() => {
     (globalThis as unknown as { __e2eAlwaysCorrect: boolean }).__e2eAlwaysCorrect = true;
   });
-  await page.goto('./');
+  await page.goto('./#/conversations');
   await expect(page.getByText('Check your basics')).toBeVisible();
   await page.getByRole('button', { name: /Hello & how are you/ }).click();
   await page.getByRole('button', { name: 'Start' }).click();
@@ -175,7 +175,7 @@ test('plays the Azure recording first, and an older one when it is missing', asy
 });
 
 test('opening a skill does not scroll the path', async ({ page }) => {
-  await page.goto('./');
+  await page.goto('./#/conversations');
   const node = page.getByRole('button', { name: /Hello & how are you/ });
   // Centre it, so the fixed tab bar doesn't cover it (Playwright would then scroll again to click).
   await node.evaluate((el) => (el as unknown as { scrollIntoView(o: object): void }).scrollIntoView({ block: 'center' }));

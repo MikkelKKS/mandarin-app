@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { db } from '../../db/db';
-import { Music } from '../../components/icons';
+import { Music, Waves } from '../../components/icons';
 import { unlockedItemIds } from '../../lib/progress';
 import { go } from '../../lib/router';
 import { useLive } from '../../lib/useLive';
@@ -18,8 +18,8 @@ export function GamesView() {
       <h1 className="text-2xl font-bold">Games</h1>
       <p className="mt-1 text-muted">Unlimited plays. Games use words you've unlocked, lean towards the ones you find hard, and count as review.</p>
       <button onClick={() => go('tone-gym')} className="press mt-6 flex w-full items-center gap-4 rounded-2xl bg-cinnabar p-4 text-left text-white">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-lg font-bold" aria-hidden>
-          ˉˊˇˋ
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15" aria-hidden>
+          <Waves className="h-7 w-7" />
         </span>
         <span className="flex-1">
           <span className="block font-semibold">Tone Gym</span>

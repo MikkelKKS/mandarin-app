@@ -46,7 +46,7 @@ export function checkTyped(
         const off = r.syllables.filter((s) => s.status === 'wrong-syllable' || s.status === 'skipped').length;
         const extra = r.extra?.length ?? 0;
         const bits: string[] = [];
-        if (off) bits.push(`${off} of ${r.syllables.length} syllables ${off === 1 ? 'is' : 'are'} different.`);
+        if (off) bits.push(r.syllables.length === 1 ? 'A different syllable.' : `${off} of ${r.syllables.length} syllables ${off === 1 ? 'is' : 'are'} different.`);
         if (extra) bits.push(`${extra} extra ${extra === 1 ? 'syllable' : 'syllables'}.`);
         note = bits.join(' ') || undefined;
         const tn = toneNote(r.syllables);

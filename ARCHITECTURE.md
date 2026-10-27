@@ -65,3 +65,6 @@ Your progress lives in IndexedDB on each device and in Supabase. It is keyed by 
 - Step 1 (this file) and step 2 (word list): done 27 Oct.
 - Step 3 (pinyin input and scoring): done 27 Oct. `src/lib/pinyinAnswer.ts`, `src/lib/pinyinLive.ts`.
 - Step 4 (review engine): done 27 Oct. `src/lib/review.ts` (facets, grading, queue, migration, log), `src/lib/srs.ts` (glue for lessons and games).
+- Step 5 (audio): done 27 Oct. `scripts/azure-tts.ts`, `.github/workflows/azure-audio.yml`, report button.
+- Step 6 (Tone Gym): done 27 Oct. `src/features/tonegym/`.
+- Step 7 (sessions, XP): done 27 Oct. `src/features/home/`, `src/features/session/`, `src/lib/gamify.ts`, `src/lib/gameStats.ts`.

@@ -81,6 +81,25 @@ export function SettingsView() {
             options={['5', '10', '15', '20'].map((v) => ({ v, label: v }))}
           />
         </Row>
+        <Row title="Daily goal" hint="XP a day to keep your streak. A right answer is worth about 10 XP, more with a combo.">
+          <Segmented
+            label="Daily goal"
+            value={String(s.dailyGoal)}
+            onChange={(v) => set({ dailyGoal: Number(v) })}
+            options={['50', '100', '200', '300'].map((v) => ({ v, label: `${v} XP` }))}
+          />
+        </Row>
+        <Row title="Characters" hint="Pinyin is always shown. Characters are optional and never needed to answer.">
+          <Segmented
+            label="Characters"
+            value={s.showHanzi ? 'on' : 'off'}
+            onChange={(v) => set({ showHanzi: v === 'on' })}
+            options={[
+              { v: 'off', label: 'Hide' },
+              { v: 'on', label: 'Show' },
+            ]}
+          />
+        </Row>
         <Row title="Reviews per day" hint="A cap for busy days. Reviews left over wait until tomorrow.">
           <Segmented
             label="Reviews per day"

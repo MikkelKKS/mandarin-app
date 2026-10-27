@@ -63,6 +63,8 @@ export interface ReviewLogRow {
   override?: boolean;
   /** A later override replaced this entry (kept, since logs are append-only). */
   replaced?: boolean;
+  /** XP earned (session answers). */
+  xp?: number;
   updatedAt: number;
 }
 
@@ -85,6 +87,10 @@ export interface Settings {
   /** Daily limits. */
   newPerDay: number;
   reviewsPerDay: number;
+  /** Daily goal in XP. */
+  dailyGoal: number;
+  /** Show Chinese characters next to pinyin in sessions (off by default: pinyin only). */
+  showHanzi: boolean;
   theme: Theme;
 }
 
@@ -139,6 +145,8 @@ export const DEFAULT_SETTINGS: Settings = {
   retention: 0.9,
   newPerDay: 10,
   reviewsPerDay: 200,
+  dailyGoal: 100,
+  showHanzi: false,
   theme: 'system',
 };
 

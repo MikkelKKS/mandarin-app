@@ -11,6 +11,8 @@ import type { Plugin } from 'vite';
 
 const LEGACY = 'virtual:vocab-legacy';
 const VOCAB = 'virtual:vocab';
+/** Example sentences: [id, hanzi, pinyin, english, word ids, 1 if an Azure recording exists, source]. */
+const SENTENCES = 'virtual:sentences';
 
 interface RawWord {
   id: string;
@@ -31,8 +33,18 @@ export function vocabModules(root: string): Plugin {
   };
   return {
     name: 'vocab-modules',
-    resolveId: (id) => (id === LEGACY || id === VOCAB ? '\0' + id : undefined),
+    resolveId: (id) => (id === LEGACY || id === VOCAB || id === SENTENCES ? '\0' + id : undefined),
     load(id) {
+      if (id === '\0' + SENTENCES) {
+        const file = join(root, 'content', 'data', 'sentences.json');
+        this.addWatchFile(file);
+        const raw = JSON.parse(readFileSync(file, 'utf8'));
+        const list: Array<{ id: string; hanzi: string; pinyin: string; english: string[]; words: string[]; source: string }> = Array.isArray(raw) ? raw : raw.sentences;
+        const manifestFile = join(root, 'content', 'data', 'azure-audio.json');
+        const made: Record<string, string> = existsSync(manifestFile) ? JSON.parse(readFileSync(manifestFile, 'utf8')) : {};
+        const rows = list.map((x) => [x.id, x.hanzi, x.pinyin, x.english.slice(0, 2), x.words, made[`${x.id}.mp3`] ? 1 : 0, x.source === 'course' ? 1 : 0]);
+        return `export default ${JSON.stringify(rows)};`;
+      }
       if (id !== '\0' + LEGACY && id !== '\0' + VOCAB) return;
       this.addWatchFile(file);
       const words = read();

@@ -94,3 +94,9 @@ export const OpenBook = ({ className }: P) => (
     <path d="M12 6v13.5" />
   </svg>
 );
+/** The four tone contours: level, rising, dipping, falling. */
+export const Waves = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="M2 7h4M8 17l4-10M14 9q1.5 8 3 0M19 7l3 10" />
+  </svg>
+);

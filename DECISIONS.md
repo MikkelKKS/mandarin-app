@@ -151,3 +151,19 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Confusion matrix** (rows: the right tone; columns: what you heard or typed; each row as %), with 3+3 → 2+3 counted as right, plus the most frequent pair mix-ups. On the Tone Gym page and after each round; the Stats screen will reuse it.
 - Gym answers are logged (`exercise: tonegym:<mode>`, with tones) but don't change review cards: it's ear training, not vocabulary review.
 - Keyboard: Space replays, 1–4 (and 0 or 5 for neutral) answer, Enter continues.
+
+## 2026-10-27: Redesign step 7, sessions, new words, XP
+- **Home** (`#/`) replaces the path: daily goal ring, streak, level, reviews due and new words today, **Quick session** (the big button on phones) and **Deep session** (the big one on wide screens), resume, Tone Gym with the weakest pair of the week, achievements. The 29 hand-written units are now **Conversations** (`#/conversations`), linked from Home. Tabs: Home, Tones, Read, Games, Progress, Dictionary, Settings (Practice lives on the Conversations page).
+- **Quick:** up to 24 due reviews with a Tone Gym question after every 4 (up to 6); if fewer than 8 are due, 3 new words too; leftover tone questions at the end.
+- **Deep:** reviews (up to 80) → new words (up to the daily limit, at most 10) → listening (8 sentences made only of words you've started: short ones as dictation, the others "do you understand it?") → Tone Gym round of 20. Speaking joins in step 9. The progress bar shows the blocks.
+- **New words** come from the HSK 3.0 list in learning order (level, then frequency), skipping words that already have cards (your course words were carried over in step 4). Each word: an intro (heard twice, meaning, example sentence), one multiple-choice "what does it mean?" (the only multiple choice outside the Tone Gym), then typed by ear and from English, then its example sentence.
+- **Reviews by facet:** listening → meaning: hear it, optionally type the meaning (a generous matcher suggests the grade), reveal, grade yourself (Again/Hard/Good/Easy, keys 1–4); listening → pinyin: dictation; meaning → pinyin: type from English. Typed answers are auto-graded with the step 3 scorer, with "Change" and "I was right".
+- Wrong answers come back once at the end of their block (half XP).
+- **XP:** right 10, almost 6, wrong 2, a new word 5, Tone Gym 5 / 1; a **combo** adds 10% per answer in a row, up to ×2. Stored on each log entry (`xp`), so XP syncs with the append-only log and both devices agree. **Level** L needs 50·L·(L−1) XP (100 for level 2, 300 for 3…).
+- **Daily goal** in XP (default 100; 50/100/200/300 in Settings). **Streak:** days with the goal met; the day rolls over at 4 am. A **streak freeze** is earned every 7 goal days in a row (at most 2 banked) and is used automatically on a missed day. All computed from the log.
+- **15 achievements** (first session, 7/30/100-day streaks, 100/1,000 words started, 100/500/2,000 mature, 100/1,000 tone pairs right, a flawless Tone Gym round, 25 in a row, 1,000 reviews, level 10). Once unlocked they're kept as `ach:<id>` rows in the synced gameScores table.
+- **Resume:** the session in progress is saved after every answer as the row "session" in the synced settings table, and offered on Home for 18 hours on either device.
+- **Offline:** a session downloads all its audio when it starts. The HSK word list and the example sentences are precached chunks (precache limit raised to 4 MB).
+- **Characters** are off by default ("Characters: Hide/Show" in Settings); sessions show pinyin only.
+- Audio for HSK words: Azure first, then the older course recordings of the same word, and the browser's voice as a last resort, flagged under the exercise ("No recording yet, so this was your browser's voice").
+- Meanings in exercises are shortened (first gloss without bracketed notes, plus the second if both are short).

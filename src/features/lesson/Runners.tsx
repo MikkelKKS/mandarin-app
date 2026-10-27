@@ -47,7 +47,7 @@ export function NodeRunner({ nodeId, roleplay = false }: { nodeId: string; rolep
     return (
       <EndScreen
         result={result}
-        onContinue={() => go('')}
+        onContinue={() => go('conversations')}
         onAgain={() => {
           setResult(null);
           again();
@@ -65,10 +65,10 @@ export function NodeRunner({ nodeId, roleplay = false }: { nodeId: string; rolep
     const unit = getUnit(node.unit)!;
     const d = unit.dialogue ? dialogues.get(unit.dialogue.id)! : null;
     if (!d) return <p className="p-8">Story missing.</p>;
-    if (roleplay) return <RolePlayPlayer dialogue={d} nodeId={nodeId} onExit={() => go('')} onFinish={finish} />;
-    return <StoryPlayer dialogue={d} onExit={() => go('')} onFinish={finish} />;
+    if (roleplay) return <RolePlayPlayer dialogue={d} nodeId={nodeId} onExit={() => go('conversations')} onFinish={finish} />;
+    return <StoryPlayer dialogue={d} onExit={() => go('conversations')} onFinish={finish} />;
   }
-  return <LessonPlayer key={exercises[0]?.key} title={node.title} exercises={exercises} nodeId={nodeId} onExit={() => go('')} onFinish={finish} />;
+  return <LessonPlayer key={exercises[0]?.key} title={node.title} exercises={exercises} nodeId={nodeId} onExit={() => go('conversations')} onFinish={finish} />;
 }
 
 export function TestOutRunner({ unitId }: { unitId: string }) {
@@ -83,7 +83,7 @@ export function TestOutRunner({ unitId }: { unitId: string }) {
         result={result.r}
         heading={result.passed ? `You tested out of “${unit.title}”` : 'Not quite yet'}
         extra={result.passed ? 'The next unit is open. Its skills stay replayable whenever you like.' : 'To test out, most answers need to be right first time. Try again any time, or work through the skills.'}
-        onContinue={() => go('')}
+        onContinue={() => go('conversations')}
         onAgain={() => {
           setResult(null);
           again();
@@ -97,7 +97,7 @@ export function TestOutRunner({ unitId }: { unitId: string }) {
       title={`Test out: ${unit.title}`}
       exercises={exercises}
       mode="testout"
-      onExit={() => go('')}
+      onExit={() => go('conversations')}
       onFinish={async (r) => setResult({ r, passed: await recordTestOut(unitId, r.accuracy) })}
     />
   );
@@ -111,7 +111,7 @@ export function PracticeRunner() {
     return (
       <EndScreen
         result={result}
-        onContinue={() => go('')}
+        onContinue={() => go('conversations')}
         onAgain={() => {
           setResult(null);
           again();
@@ -125,12 +125,12 @@ export function PracticeRunner() {
         <p className="han text-5xl">练习</p>
         <h1 className="mt-4 text-xl font-bold">Nothing to practise yet</h1>
         <p className="mt-2 text-muted">Practice fills up with reviews and mistakes as you do lessons. Start with the first skill on the path.</p>
-        <button onClick={() => go('')} className="mt-6 h-12 rounded-2xl bg-jade px-6 font-semibold text-jade-ink">
+        <button onClick={() => go('conversations')} className="mt-6 h-12 rounded-2xl bg-jade px-6 font-semibold text-jade-ink">
           Go to the path
         </button>
       </div>
     );
-  return <LessonPlayer key={exercises[0]?.key} title="Practice" exercises={exercises} mode="practice" onExit={() => go('')} onFinish={setResult} />;
+  return <LessonPlayer key={exercises[0]?.key} title="Practice" exercises={exercises} mode="practice" onExit={() => go('conversations')} onFinish={setResult} />;
 }
 
 /** Lesson or story from an imported practice pack. */
@@ -148,7 +148,7 @@ export function PackRunner({ id, story, roleplay = false }: { id: string; story:
     return (
       <EndScreen
         result={result}
-        onContinue={() => go('')}
+        onContinue={() => go('conversations')}
         onAgain={() => {
           setResult(null);
           again();
@@ -161,7 +161,7 @@ export function PackRunner({ id, story, roleplay = false }: { id: string; story:
     await recordLesson(`pack:${id}`, r.accuracy);
     setResult(r);
   };
-  if (roleplay && data.p.pack.dialogue) return <RolePlayPlayer dialogue={data.p.pack.dialogue} onExit={() => go('')} onFinish={finish} />;
-  if (story && data.p.pack.dialogue) return <StoryPlayer dialogue={data.p.pack.dialogue} onExit={() => go('')} onFinish={finish} />;
-  return <LessonPlayer key={data.ex[0]?.key} title={data.p.title} exercises={data.ex} mode="practice" onExit={() => go('')} onFinish={finish} />;
+  if (roleplay && data.p.pack.dialogue) return <RolePlayPlayer dialogue={data.p.pack.dialogue} onExit={() => go('conversations')} onFinish={finish} />;
+  if (story && data.p.pack.dialogue) return <StoryPlayer dialogue={data.p.pack.dialogue} onExit={() => go('conversations')} onFinish={finish} />;
+  return <LessonPlayer key={data.ex[0]?.key} title={data.p.title} exercises={data.ex} mode="practice" onExit={() => go('conversations')} onFinish={finish} />;
 }

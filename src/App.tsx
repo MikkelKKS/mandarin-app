@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
-import { Book, Chart, Cog, Gamepad, Path, Refresh, OpenBook } from './components/icons';
+import { Book, Chart, Cog, Gamepad, Path, OpenBook, Waves } from './components/icons';
 import { ProgressView } from './features/progress/ProgressView';
 import { WordsView } from './features/progress/WordsView';
 import { MusicRoute } from './features/music/MusicView';
@@ -12,6 +12,8 @@ import { PathView, useNodeStates } from './features/path/PathView';
 import { About } from './features/settings/About';
 import { AudioSample } from './features/settings/AudioSample';
 import { ToneGymRoute } from './features/tonegym/ToneGym';
+import { HomeView } from './features/home/HomeView';
+import { SessionRoute } from './features/session/SessionPlayer';
 import { SettingsView } from './features/settings/SettingsView';
 import { prefetchForOffline, stop } from './lib/audio';
 import { unlockedItemIds } from './lib/progress';
@@ -62,6 +64,15 @@ export default function App() {
           <GameRunner key={arg} id={arg} />
         </WordPopupProvider>
       );
+    case 'session':
+      return (
+        <WordPopupProvider>
+          <SessionRoute key={route.join('/')} route={route} />
+        </WordPopupProvider>
+      );
+    case 'conversations':
+      body = <PathView />;
+      break;
     case 'games':
       body = <GamesView />;
       break;
@@ -96,7 +107,7 @@ export default function App() {
       body = <AudioSample />;
       break;
     default:
-      body = <PathView />;
+      body = <HomeView />;
   }
   return (
     <WordPopupProvider>
@@ -111,9 +122,9 @@ export default function App() {
 }
 
 const TABS = [
-  { id: '', label: 'Learn', icon: Path },
+  { id: '', label: 'Home', icon: Path },
+  { id: 'tone-gym', label: 'Tones', icon: Waves },
   { id: 'read', label: 'Read', icon: OpenBook },
-  { id: 'practice', label: 'Practice', icon: Refresh },
   { id: 'games', label: 'Games', icon: Gamepad },
   { id: 'progress', label: 'Progress', icon: Chart },
   { id: 'dictionary', label: 'Dictionary', icon: Book },
@@ -121,7 +132,8 @@ const TABS = [
 ];
 
 function Shell({ active, children }: { active: string; children: ReactNode }) {
-  const current = active === 'about' ? 'settings' : active === 'music' ? 'games' : active;
+  const current =
+    active === 'about' || active === 'audio-sample' ? 'settings' : active === 'music' ? 'games' : active === 'conversations' || active === 'practice' ? '' : active;
   return (
     <div className="min-h-dvh md:flex">
       <nav

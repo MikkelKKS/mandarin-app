@@ -160,3 +160,32 @@ export async function regradeAll(cards: string[], rating: RatingName): Promise<v
   const r = currentSettings().retention;
   for (const c of cards) await regrade(c, rating, r);
 }
+
+/**
+ * Record an answer in a session: updates the card if there is one (facet or
+ * sentence card) and always logs it, with the XP it earned.
+ */
+export async function recordSessionAnswer(a: {
+  card?: string | null;
+  itemId: string;
+  verdict: Verdict;
+  /** A self-grade or override; otherwise auto-graded from the verdict and time. */
+  rating?: RatingName;
+  exercise: string;
+  ms?: number;
+  typed?: boolean;
+  syllables?: number;
+  tones?: ReviewLogRow['tones'];
+  xp: number;
+  now?: number;
+}): Promise<RecordedAnswer> {
+  const now = a.now ?? Date.now();
+  const ctx = { exercise: a.exercise, tones: a.tones, verdict: a.verdict, itemId: a.itemId, ms: a.ms, xp: a.xp };
+  if (a.card) {
+    const rating = a.rating ?? autoGrade(a.verdict, { ms: a.ms, typed: a.typed, syllables: a.syllables });
+    await recordReview(a.card, rating, ctx, currentSettings().retention, now);
+    return { card: a.card, rating };
+  }
+  await db.reviewLogs.add({ id: uuid(), itemId: a.itemId, verdict: a.verdict, at: now, exercise: a.exercise, tones: a.tones, ms: a.ms, xp: a.xp, updatedAt: now });
+  return {};
+}

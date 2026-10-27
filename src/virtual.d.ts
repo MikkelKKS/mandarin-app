@@ -12,3 +12,8 @@ declare module 'virtual:vocab' {
   const rows: Array<[string, string, string, string[], number, number, string[], number, string]>;
   export default rows;
 }
+declare module 'virtual:sentences' {
+  /** [id, hanzi, pinyin, english (up to 2), word ids, 1 if an Azure recording exists, 1 if from the course] */
+  const rows: Array<[string, string, string, string[], string[], number, number]>;
+  export default rows;
+}

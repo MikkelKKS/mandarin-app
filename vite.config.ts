@@ -41,6 +41,8 @@ export default defineConfig({
         // App shell + bundled content JSON are precached; audio is cached as it's
         // used and prefetched for unlocked units (see src/lib/audio.ts).
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // The HSK word list and example sentences are big chunks, needed offline.
+        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: 'index.html',
         runtimeCaching: [
           {
@@ -67,7 +69,7 @@ export default defineConfig({
       },
     }),
   ],
-  build: { chunkSizeWarningLimit: 1500 },
+  build: { chunkSizeWarningLimit: 2500 },
   test: {
     include: ['src/**/*.test.ts', 'scripts/**/*.test.ts'],
     environment: 'node',

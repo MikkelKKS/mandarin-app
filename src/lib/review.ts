@@ -37,6 +37,13 @@ export function parseCardId(id: string): { word: string; facet: Facet } | null {
   return FACETS.includes(facet) ? { word: id.slice(0, i), facet } : null;
 }
 
+/** HSK 3.0 word id → its old course id (for the older recordings). */
+const courseOf = new Map<string, string>();
+for (const [legacy, word] of Object.entries(legacyMap)) if (!courseOf.has(word)) courseOf.set(word, legacy);
+export function courseIdFor(word: string): string | undefined {
+  return courseOf.get(word);
+}
+
 /** The HSK 3.0 word id for an old course word id (w-ni → ni3-xxxxx), if it has one. */
 export function newWordId(legacyId: string): string | undefined {
   return legacyMap[legacyId];
@@ -315,6 +322,8 @@ export interface ReviewContext {
   ms?: number;
   /** True when the grade was changed by hand. */
   override?: boolean;
+  /** XP the answer earned (sessions). */
+  xp?: number;
 }
 
 /** Undo information for the last review of each card, so a grade can be changed right after. */
@@ -337,6 +346,7 @@ export async function recordReview(id: string, rating: RatingName, ctx: ReviewCo
       tones: ctx.tones,
       ms: ctx.ms,
       override: ctx.override || undefined,
+      xp: ctx.xp,
       ...r.log,
       updatedAt: now,
     });
@@ -386,7 +396,8 @@ export async function todaysQueue(
   const start = dayStart(now);
   const [cards, logs] = await Promise.all([db.reviewItems.toArray(), db.reviewLogs.where('at').aboveOrEqual(start).toArray()]);
   return buildQueue(
-    cards.filter((c) => c.id.includes('#')),
+    // Word facets, and sentence cards (course "s…-" and Tatoeba "t…" ids); old course word cards are superseded.
+    cards.filter((c) => c.id.includes('#') || /^(s\d*-|t\d+$)/.test(c.id)),
     wordsInOrder,
     { now, newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic: s.mic, doneToday: doneSince(logs.filter((l) => !l.replaced), start) },
   );

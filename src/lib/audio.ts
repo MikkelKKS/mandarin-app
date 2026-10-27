@@ -7,7 +7,7 @@
 import { audioPath, type Voice } from '../content/audioPaths';
 import { lookup, sentences } from '../content';
 import { currentSettings } from './settings';
-import { newWordId } from './review';
+import { courseIdFor, newWordId } from './review';
 import { fixedVersion } from './audioReports';
 
 const BASE = import.meta.env.BASE_URL;
@@ -52,6 +52,12 @@ const AZURE_SLOW_RATE = 0.7;
 /** Extra slow-down for the turtle button (the slow recordings are already 25% slower). */
 const SLOW_SENTENCE_RATE = 0.8;
 const SLOW_WORD_RATE = 0.65;
+
+/** Characters for items outside the course content (HSK words, Tatoeba sentences), for the browser-voice fallback. */
+const fallbackText = new Map<string, string>();
+export function rememberText(id: string, hanzi: string): void {
+  fallbackText.set(id, hanzi);
+}
 
 /** Recordings that turned out not to exist (this session), so they aren't tried again. */
 const missing = new Set<string>();
@@ -101,7 +107,14 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   };
   if (slow && isSentence) addUrl(azureUrl(id, true), 1);
   addUrl(azureUrl(id, false), slow ? (isSentence ? AZURE_SLOW_RATE : SLOW_WORD_RATE) : 1);
-  // Then the older recordings, until every item has an Azure one.
+  // Then the older recordings, until every item has an Azure one (HSK words use their course id).
+  const older = courseIdFor(id);
+  if (older) {
+    for (const v of [voice, other]) {
+      const url = urlFor(older, v, false);
+      addUrl(url, slow ? SLOW_WORD_RATE : 1);
+    }
+  }
   add(voice, slow, rate);
   add(other, slow, rate);
   if (slow && isSentence) {
@@ -118,8 +131,12 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
     };
     const attempt = (i: number) => {
       if (i >= tries.length) {
-        const text = lookup(id)?.hanzi;
-        if (text && currentResolve === resolve) speak(text, { slow, voice }).then(done);
+        const text = lookup(id)?.hanzi ?? fallbackText.get(id);
+        if (text && currentResolve === resolve) {
+          // Last resort, and flagged in the UI (CLAUDE.md §6).
+          if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('audio:browser-voice', { detail: { id } }));
+          speak(text, { slow, voice }).then(done);
+        }
         else done();
         return;
       }

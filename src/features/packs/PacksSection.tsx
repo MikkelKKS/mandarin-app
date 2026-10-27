@@ -107,7 +107,7 @@ export function PacksSection() {
       {done && (
         <p className="mt-3 rounded-xl bg-jade-soft p-3 text-sm">
           {done}{' '}
-          <button className="underline" onClick={() => go('')}>
+          <button className="underline" onClick={() => go('conversations')}>
             Go to the path
           </button>
         </p>
