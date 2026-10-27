@@ -9,12 +9,12 @@
  * added to content/data/azure-usage.json, and the script stops before the
  * monthly free quota (it picks up where it left off the next month).
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import {
   billedChars,
   monthKey,
-  needsHint,
+  hintSpans,
   remaining,
   ssml,
   voiceBody,
@@ -98,7 +98,7 @@ async function probeHintFormat(env: { key: string; region: string }, usage: Usag
   if (usage.hintFormat) return usage.hintFormat;
   for (const format of ['spaced', 'joined'] as HintFormat[]) {
     try {
-      await synth(env, usage, 'f', voiceBody({ hanzi: '还书', hint: ['huan2', 'shu1'], format }));
+      await synth(env, usage, 'f', voiceBody({ hanzi: '还书', hints: [{ start: 0, end: 2, phones: ['huan2', 'shu1'] }], format }));
       console.log(`Pronunciation hints: Azure accepts the "${format}" format.`);
       usage.hintFormat = format;
       saveUsage(usage);
@@ -118,11 +118,13 @@ function write(file: string, buf: Buffer): void {
 
 async function sample(env: { key: string; region: string }, usage: Usage): Promise<void> {
   const dir = join(ROOT, 'public', 'audio-sample');
+  // The sample is small: always make it afresh, so voice or hint changes show up.
+  rmSync(dir, { recursive: true, force: true });
   const format = await probeHintFormat(env, usage);
   const items = [];
   let made = 0;
   for (const it of SAMPLE) {
-    const hint = needsHint(it.hanzi, it.pinyin);
+    const hints = hintSpans(it.hanzi, it.pinyin);
     const files: Record<string, string> = {};
     for (const voice of ['f', 'm'] as VoiceKey[]) {
       for (const slow of it.sentence ? [false, true] : [false]) {
@@ -130,13 +132,14 @@ async function sample(env: { key: string; region: string }, usage: Usage): Promi
         files[`${voice}${slow ? '-slow' : ''}`] = name;
         const file = join(dir, name);
         if (existsSync(file)) continue;
-        write(file, await synth(env, usage, voice, voiceBody({ hanzi: it.hanzi, hint, format, slow })));
+        write(file, await synth(env, usage, voice, voiceBody({ hanzi: it.hanzi, hints, format, slow })));
         made++;
       }
     }
-    items.push({ ...it, hint: hint?.join(' ') ?? null, files });
+    const chars = [...it.hanzi];
+    items.push({ ...it, hint: hints.map((h) => `${chars.slice(h.start, h.end).join('')} ${h.phones.join(' ')}`).join(', ') || null, files });
   }
-  writeFileSync(join(dir, 'items.json'), JSON.stringify({ voices: { f: 'Xiaoxiao', m: 'Yunjian' }, hintFormat: format, items }, null, 1) + '\n');
+  writeFileSync(join(dir, 'items.json'), JSON.stringify({ voices: { f: 'Xiaoxiao', m: 'Yunxi' }, hintFormat: format, items }, null, 1) + '\n');
   console.log(`Sample: ${made} new file(s), ${SAMPLE.length} items.`);
 }
 

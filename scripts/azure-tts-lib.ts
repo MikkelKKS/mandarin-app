@@ -4,9 +4,10 @@
  * Kept separate so they can be unit-tested without calling Azure.
  */
 import { pinyin as pinyinPro } from 'pinyin-pro';
-import { alignToHanzi, hanziOnly, syllableToNumeric } from '../src/lib/pinyin';
+import { alignToHanzi, hanziOnly, isHanzi, parsePinyin, syllableToNumeric } from '../src/lib/pinyin';
 
-export const VOICES = { f: 'zh-CN-XiaoxiaoNeural', m: 'zh-CN-YunjianNeural' } as const;
+/** Female and male voice. Yunxi replaced Yunjian, which mispronounced too many sentences (owner, 27 Oct). */
+export const VOICES = { f: 'zh-CN-XiaoxiaoNeural', m: 'zh-CN-YunxiNeural' } as const;
 export type VoiceKey = keyof typeof VOICES;
 
 /** Free tier: 500,000 billed characters a month. Stop a little before it. */
@@ -60,24 +61,65 @@ function sameReading(chars: string[], exp: string[], def: string[], i: number): 
   return tone(d) === '3' && tone(e) === '2' && !!next && tone(next) === '3';
 }
 
+/** A stretch of the text that gets a pronunciation hint: character positions [start, end) and its syllables. */
+export interface HintSpan {
+  start: number;
+  end: number;
+  phones: string[];
+}
+
+/** How many syllables each space-separated pinyin word has ("Nǐ míngtiān yǒu" → [1, 2, 1]). */
+function wordSizes(pinyin: string, total: number): number[] {
+  const sizes = pinyin
+    .split(/\s+/)
+    .map((w) => w.replace(/[^\p{L}']/gu, ''))
+    .filter(Boolean)
+    .map((w) => parsePinyin(w)?.length ?? 0);
+  return sizes.reduce((a, b) => a + b, 0) === total && sizes.every((n) => n > 0) ? sizes : Array(total).fill(1);
+}
+
 /**
- * A pronunciation hint is only added where the expected reading differs from the
- * default one (polyphones like 行 háng, 长 zhǎng, 了 liǎo; neutral tones). Markup is
- * billed, so plain text is used whenever it should already come out right.
+ * Pronunciation hints, only where the expected reading differs from the default one
+ * (polyphones like 行 háng, 长 zhǎng, 空 kòng, 还 huán; neutral tones in single words),
+ * and only around the word concerned. Hinting a whole sentence makes Azure read it
+ * syllable by syllable and lose its melody, and markup is billed too.
  */
-export function needsHint(hanzi: string, pinyin: string): string[] | null {
+export function hintSpans(hanzi: string, pinyin: string): HintSpan[] {
   const exp = expectedSyllables(hanzi, pinyin);
-  if (!exp) return null;
+  if (!exp) return [];
   const def = defaultSyllables(hanzi);
-  if (def.length !== exp.length) return exp;
-  const chars = [...hanziOnly(hanzi)];
-  return exp.every((_, i) => sameReading(chars, exp, def, i)) ? null : exp;
+  if (def.length !== exp.length) return [];
+  const han = [...hanziOnly(hanzi)];
+  const sizes = wordSizes(pinyin, exp.length);
+  const isSentence = sizes.length > 1;
+  // Position of each Chinese character in the full text (with punctuation).
+  const pos: number[] = [];
+  [...hanzi].forEach((c, i) => isHanzi(c) && pos.push(i));
+  const spans: HintSpan[] = [];
+  let at = 0;
+  for (const n of sizes) {
+    const idx = Array.from({ length: n }, (_, k) => at + k);
+    at += n;
+    const off = idx.filter((i) => !sameReading(han, exp, def, i));
+    // In a sentence, a neutral tone alone isn't worth a hint: context gets those right.
+    const real = isSentence ? off.filter((i) => exp[i].slice(0, -1) !== def[i].slice(0, -1) || !exp[i].endsWith('5')) : off;
+    if (!real.length) continue;
+    spans.push({ start: pos[idx[0]], end: pos[idx[n - 1]] + 1, phones: idx.map((i) => exp[i]) });
+  }
+  return spans;
 }
 
 /** The text inside `<voice>`: what Azure bills. */
-export function voiceBody(o: { hanzi: string; hint?: string[] | null; format?: HintFormat; slow?: boolean }): string {
-  const text = escapeXml(o.hanzi);
-  let body = o.hint ? `<phoneme alphabet="sapi" ph="${sapiPhones(o.hint, o.format ?? 'spaced')}">${text}</phoneme>` : text;
+export function voiceBody(o: { hanzi: string; hints?: HintSpan[]; format?: HintFormat; slow?: boolean }): string {
+  const chars = [...o.hanzi];
+  let body = '';
+  let i = 0;
+  for (const h of [...(o.hints ?? [])].sort((a, b) => a.start - b.start)) {
+    body += escapeXml(chars.slice(i, h.start).join(''));
+    body += `<phoneme alphabet="sapi" ph="${sapiPhones(h.phones, o.format ?? 'spaced')}">${escapeXml(chars.slice(h.start, h.end).join(''))}</phoneme>`;
+    i = h.end;
+  }
+  body += escapeXml(chars.slice(i).join(''));
   if (o.slow) body = `<prosody rate="${SLOW_RATE}">${body}</prosody>`;
   return body;
 }

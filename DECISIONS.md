@@ -126,3 +126,10 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Your progress carried over:** each old course word card is copied onto the word's lm, lp and mp cards. The copy only happens when the old card is newer than the facet card, so it is safe to run repeatedly: it runs at start-up and after every sync, which also catches up answers from a device still running the old version. Old cards are kept, not deleted.
 - **Course screens** (Progress, HSK words, Games, Practice) see one card per course word: the word's weakest listening/typing card.
 - The HSK 3.0 word list ships as its own on-demand chunk (about 530 KB compressed), precached for offline use.
+
+## 2026-10-27: Redesign step 5, audio with Azure
+- Runs on GitHub (`azure-audio` workflow) with the owner's key stored as the repository secrets `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION`; locally a git-ignored `.env` works too. The owner chose GitHub so nothing has to be installed.
+- Voices: Xiaoxiao (female) and **Yunxi** (male). Yunjian was in the first sample and dropped by the owner: it mispronounced too many sentences. Default speaking style only.
+- Output MP3, 24 kHz, 48 kbps mono. Slow versions of sentences at −20% (0.8×).
+- **Billing:** Azure bills everything inside `<voice>`, markup included, and each Chinese character twice. `content/data/azure-usage.json` counts billed characters per month; the script stops 20,000 short of the 500,000 free characters and carries on next month.
+- **Pronunciation hints** (`<phoneme alphabet="sapi" ph="kong 4">`; Azure accepted the spaced format) only where pinyin-pro's default reading differs from ours, ignoring tone changes Azure makes itself (一, 不, 3-3), and in sentences ignoring neutral tones. The hint wraps just that word: the first sample wrapped whole sentences, and Azure then read 你明天有空吗 syllable by syllable, which sounded bad.
