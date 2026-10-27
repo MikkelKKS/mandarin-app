@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { AudioProgress } from './AudioProgress';
 import { go } from '../../lib/router';
 import { setQuietUntil, updateSettings, useQuietUntil, useSettings } from '../../lib/settings';
 import type { Settings } from '../../db/db';
@@ -231,7 +232,10 @@ export function SettingsView() {
             )}
           </Row>
         )}
-        <Row title="Voice" hint="Everything is being recorded in one natural voice, Xiaoxiao. Older recordings are used until each one is ready.">
+        <Row title="Recordings" hint="Azure is recording every word and sentence. Older recordings are used until each one is ready.">
+          <AudioProgress />
+        </Row>
+        <Row title="Voice" hint="Everything is being recorded in one natural voice, Xiaoxiao (Yunxi for the men in the dialogues).">
           <button onClick={() => go('audio-sample')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
             Audio sample
           </button>

@@ -13,6 +13,8 @@ const LEGACY = 'virtual:vocab-legacy';
 const VOCAB = 'virtual:vocab';
 /** Example sentences: [id, hanzi, pinyin, english, word ids, 1 if an Azure recording exists, source]. */
 const SENTENCES = 'virtual:sentences';
+/** How far the Azure recordings are: counts from content/data/azure-audio.json at build time. */
+const AUDIO_PROGRESS = 'virtual:audio-progress';
 
 interface RawWord {
   id: string;
@@ -33,8 +35,29 @@ export function vocabModules(root: string): Plugin {
   };
   return {
     name: 'vocab-modules',
-    resolveId: (id) => (id === LEGACY || id === VOCAB || id === SENTENCES ? '\0' + id : undefined),
+    resolveId: (id) => (id === LEGACY || id === VOCAB || id === SENTENCES || id === AUDIO_PROGRESS ? '\0' + id : undefined),
     load(id) {
+      if (id === '\0' + AUDIO_PROGRESS) {
+        const data = (f: string) => join(root, 'content', 'data', f);
+        for (const f of ['azure-audio.json', 'azure-usage.json', 'words.json', 'sentences.json']) if (existsSync(data(f))) this.addWatchFile(data(f));
+        const made: Record<string, string> = existsSync(data('azure-audio.json')) ? JSON.parse(readFileSync(data('azure-audio.json'), 'utf8')) : {};
+        const usage = existsSync(data('azure-usage.json')) ? JSON.parse(readFileSync(data('azure-usage.json'), 'utf8')) : { months: {} };
+        const list = (f: string, k: string) => {
+          const raw = JSON.parse(readFileSync(data(f), 'utf8'));
+          return (Array.isArray(raw) ? raw : raw[k]) as Array<{ id: string }>;
+        };
+        const words = list('words.json', 'words');
+        const sentences = list('sentences.json', 'sentences');
+        const has = (f: string) => (made[f] ? 1 : 0);
+        const out = {
+          words: { done: words.reduce((n, w) => n + has(`${w.id}.mp3`), 0), total: words.length },
+          sentences: { done: sentences.reduce((n, x) => n + has(`${x.id}.mp3`), 0), total: sentences.length },
+          slow: { done: sentences.reduce((n, x) => n + has(`${x.id}.slow.mp3`), 0), total: sentences.length },
+          months: usage.months ?? {},
+          builtAt: Date.now(),
+        };
+        return `export default ${JSON.stringify(out)};`;
+      }
       if (id === '\0' + SENTENCES) {
         const file = join(root, 'content', 'data', 'sentences.json');
         this.addWatchFile(file);

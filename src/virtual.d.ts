@@ -17,3 +17,14 @@ declare module 'virtual:sentences' {
   const rows: Array<[string, string, string, string[], string[], number, number]>;
   export default rows;
 }
+declare module 'virtual:audio-progress' {
+  /** Azure recordings made so far (when the app was built), and billed characters per month. */
+  const p: {
+    words: { done: number; total: number };
+    sentences: { done: number; total: number };
+    slow: { done: number; total: number };
+    months: Record<string, number>;
+    builtAt: number;
+  };
+  export default p;
+}
