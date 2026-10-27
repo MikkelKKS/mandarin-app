@@ -14,8 +14,8 @@ sentences Tatoeba (CC BY 2.0 FR) and the course.
 |---|---|---|---|
 | 1 | 511 | 473 | 38 |
 | 2 | 758 | 634 | 124 |
-| 3 | 961 | 694 | 267 |
-| 4 | 987 | 684 | 303 |
+| 3 | 961 | 693 | 268 |
+| 4 | 987 | 685 | 302 |
 | 5 | 1064 | 639 | 425 |
 | 6 | 1132 | 622 | 510 |
 | 7–9 | 5627 | 2089 | 3538 |
@@ -23,7 +23,7 @@ sentences Tatoeba (CC BY 2.0 FR) and the course.
 
 ## Sentences
 
-9862 sentences: 9062 from Tatoeba, 800 from the course, 0 generated.
+9861 sentences: 9061 from Tatoeba, 800 from the course, 0 generated.
 Tatoeba had 89211 Chinese sentences; 27623 were simplified, short, translated into English and used only HSK words.
 
 ## Problems (5)
