@@ -68,3 +68,7 @@ Your progress lives in IndexedDB on each device and in Supabase. It is keyed by 
 - Step 5 (audio): done 27 Oct. `scripts/azure-tts.ts`, `.github/workflows/azure-audio.yml`, report button.
 - Step 6 (Tone Gym): done 27 Oct. `src/features/tonegym/`.
 - Step 7 (sessions, XP): done 27 Oct. `src/features/home/`, `src/features/session/`, `src/lib/gamify.ts`, `src/lib/gameStats.ts`.
+- Step 8 (Stats): done 27 Oct. `src/features/stats/`, `src/lib/statsData.ts`.
+- Step 9 (speaking with pitch contours): done 27 Oct. `src/lib/pitchTrack.ts`, `src/features/session/Speak.tsx`.
+- Step 10 (placement, Beijing pack, polish): done 27 Oct. `src/features/placement/`, `src/features/session/beijing.ts`.
+- Still open: Tone Perfect recordings (waiting for MSU), slow audio (Azure quota, November), the scheduler optimiser (needs about 1,000 reviews).

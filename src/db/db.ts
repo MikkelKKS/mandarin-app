@@ -91,6 +91,10 @@ export interface Settings {
   dailyGoal: number;
   /** Show Chinese characters next to pinyin in sessions (off by default: pinyin only). */
   showHanzi: boolean;
+  /** When the placement test (or a chosen starting level) was done; 0 = not yet. */
+  placedAt: number;
+  /** Optional Beijing pack: 儿化 words and Beijing everyday words come first among new words. */
+  beijingPack: boolean;
   theme: Theme;
 }
 
@@ -147,6 +151,8 @@ export const DEFAULT_SETTINGS: Settings = {
   reviewsPerDay: 200,
   dailyGoal: 100,
   showHanzi: false,
+  placedAt: 0,
+  beijingPack: false,
   theme: 'system',
 };
 

@@ -4,8 +4,11 @@
  * the state saved after every answer so it can be resumed on either device.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { wordOrder } from './beijing';
+import { currentSettings } from '../../lib/settings';
 import { TonePinyin } from '../../components/Hanzi';
 import { ReportAudio } from '../../components/ReportAudio';
+import { plecoLink } from '../dictionary/dict';
 import { Speaker } from '../../components/icons';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { db } from '../../db/db';
@@ -33,7 +36,7 @@ const BASE = import.meta.env.BASE_URL;
 async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerDay: number; speaking: boolean }, data: VocabData): Promise<SessionState> {
   const now = Date.now();
   const mic = micActive();
-  const queue = await todaysQueue(data.words.map((w) => w.id), { newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic }, now);
+  const queue = await todaysQueue(wordOrder(data.words.map((w) => w.id), currentSettings().beijingPack), { newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic }, now);
   const cards = await db.reviewItems.toArray();
   const started = new Set(cards.filter((c) => c.word && (c.reps > 0 || c.state !== 0)).map((c) => c.word!));
   // Speaking starts on words you already know by ear (listening card in review), most common first.
@@ -268,6 +271,13 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
       } else if (e.key === ' ' && (e.target as HTMLElement)?.tagName !== 'INPUT') {
         e.preventDefault();
         replayRef.current?.();
+      } else if (e.key.toLowerCase() === 's' && (e.target as HTMLElement)?.tagName !== 'INPUT' && item) {
+        // s = slow (PC shortcut)
+        const id = 'word' in item ? item.word : 'sentence' in item ? item.sentence : null;
+        if (id) {
+          e.preventDefault();
+          void play(id, { slow: true });
+        }
       }
     };
     window.addEventListener('keydown', h);
@@ -376,7 +386,14 @@ function Feedback({
                 </span>
               )}
               {a.english && <p className="opacity-80">{a.english}</p>}
-              {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} className="mt-1 block" />}
+              <span className="mt-1 flex flex-wrap gap-x-4">
+                {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} />}
+                {'word' in item && a.hanzi && (
+                  <a href={plecoLink(a.hanzi)} className="text-xs underline underline-offset-2 opacity-70 hover:opacity-100">
+                    Open in Pleco
+                  </a>
+                )}
+              </span>
             </div>
             {audioId && (
               <button onClick={() => void play(audioId)} aria-label="Play again" className="rounded-full bg-surface/70 p-3 active:scale-90">

@@ -4,6 +4,7 @@
  * tone pair of the week, achievements. The old course lives on as Conversations.
  */
 import { useEffect, useMemo, useState } from 'react';
+import { wordOrder } from '../session/beijing';
 import { db } from '../../db/db';
 import { ACHIEVEMENTS } from '../../lib/gamify';
 import { loadGameStats } from '../../lib/gameStats';
@@ -53,8 +54,8 @@ export function HomeView() {
   const [queue, setQueue] = useState<Queue | null>(null);
   useEffect(() => {
     if (!vocab) return;
-    void todaysQueue(vocab.map((w) => w.id), { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: micActive() }).then(setQueue);
-  }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking, speakPaused, game?.xp]);
+    void todaysQueue(wordOrder(vocab.map((w) => w.id), settings.beijingPack), { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: micActive() }).then(setQueue);
+  }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking, settings.beijingPack, speakPaused, game?.xp]);
 
   const weak = useMemo(() => weakestPair(patternStats(toneLogs)), [toneLogs]);
   const wide = typeof window !== 'undefined' && window.matchMedia?.('(min-width: 1024px)').matches;
@@ -79,6 +80,17 @@ export function HomeView() {
   return (
     <div className="pb-10">
       <InstallBanner />
+      {!settings.placedAt && (
+        <button onClick={() => go('placement')} className="press mb-3 flex w-full items-center justify-between rounded-2xl bg-amber-soft p-4 text-left">
+          <span>
+            <span className="block font-semibold">Know some Chinese already?</span>
+            <span className="block text-sm text-muted">Find your level in 5 minutes, so you skip the words you know</span>
+          </span>
+          <span className="text-2xl" aria-hidden>
+            ›
+          </span>
+        </button>
+      )}
       <section className="flex items-center gap-4 rounded-3xl bg-surface p-4" aria-label="Today">
         <div className="relative" aria-label={`Daily goal: ${game?.streak.todayXp ?? 0} of ${settings.dailyGoal} XP`}>
           <GoalRing value={game?.streak.todayXp ?? 0} goal={settings.dailyGoal} />

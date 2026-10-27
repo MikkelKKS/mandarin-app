@@ -150,7 +150,7 @@ function ChooseMeaning({ data, word, options, onResult }: ItemProps & { word: st
   return (
     <div>
       <Prompt>What does it mean?</Prompt>
-      <AudioControls id={w.id} />
+      <AudioControls id={w.id} ladder />
       <div className="mt-8">
         <Options
           count={opts.length}
@@ -179,7 +179,7 @@ function ListenMeaning({ data, word, onResult }: ItemProps & { word: string }) {
   return (
     <div>
       <Prompt>What does it mean?</Prompt>
-      <AudioControls id={w.id} />
+      <AudioControls id={w.id} ladder />
       {!shown ? (
         <div className="mt-8">
           <input
@@ -281,7 +281,7 @@ function Dictation({ data, word, onResult }: ItemProps & { word: string }) {
   return (
     <div>
       <Prompt>Type what you hear, with tones</Prompt>
-      <AudioControls id={w.id} />
+      <AudioControls id={w.id} ladder />
       <TypeBox {...t} />
     </div>
   );
@@ -307,7 +307,7 @@ function SentenceDictation({ data, sentence, onResult }: ItemProps & { sentence:
   return (
     <div>
       <Prompt>Type the sentence you hear, in pinyin</Prompt>
-      <AudioControls id={s.id} />
+      <AudioControls id={s.id} ladder />
       <TypeBox {...t} />
     </div>
   );
@@ -325,7 +325,7 @@ function SentenceMeaning({ data, sentence, onResult }: ItemProps & { sentence: s
   return (
     <div>
       <Prompt>Listen. Do you understand it?</Prompt>
-      <AudioControls id={s.id} />
+      <AudioControls id={s.id} ladder />
       {!shown ? (
         <button onClick={() => setShown(true)} className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
           Show what it says

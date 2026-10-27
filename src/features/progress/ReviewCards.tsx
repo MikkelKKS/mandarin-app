@@ -3,6 +3,7 @@
  * meaning → pinyin, speaking) and today's queue.
  */
 import { useEffect, useMemo, useState } from 'react';
+import { wordOrder } from '../session/beijing';
 import { db } from '../../db/db';
 import { cardState, FACET_LABEL, FACETS, parseCardId, todaysQueue, type Facet, type Queue } from '../../lib/review';
 import { micActive, useSettings } from '../../lib/settings';
@@ -18,10 +19,10 @@ export function ReviewCards() {
   useEffect(() => {
     if (!vocab || !cards) return;
     void todaysQueue(
-      vocab.map((w) => w.id),
+      wordOrder(vocab.map((w) => w.id), settings.beijingPack),
       { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: micActive() },
     ).then(setQueue);
-  }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking]);
+  }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking, settings.beijingPack]);
 
   const rows = useMemo(() => {
     const now = Date.now();

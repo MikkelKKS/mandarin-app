@@ -183,3 +183,10 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Pitch:** pitchy (McLeod Pitch Method) on 40 ms windows every 10 ms, clarity ≥ 0.7, 60–600 Hz; octave errors folded back, a 5-point median filter and a 3-point average, voiced bits shorter than 40 ms dropped; then semitones from each speaker's own median, on a 0–1 time axis across the voiced part. Tuned on real recordings (说 stays level, 人 rises, 在 falls, 有 dips). The chart's height fits the curves (±3 to ±10 semitones).
 - Because each curve is relative to its own middle, the chart compares **shapes** (rise, fall, dip), not absolute height. Automatic grading (phase 2 in the brief) isn't built; self-grading is used.
 - The old Conversations "repeat after me" exercise is unchanged (it still uses speech recognition where available).
+
+## 2026-10-27: Redesign step 10, placement, Beijing pack, polish
+- **Placement** (`#/placement`, offered on Home until used, and under Settings → Your level): either pick a starting level (every word below it counts as known) or take a short test: 8 words per HSK level, spread over the level's frequency order, heard and typed in pinyin. The test stops after a level under 50%. Levels at 80%+ are marked known in full; for the first level below that, the most common share matching your score; plus every word you got right.
+- **Known** means mature listening and typing cards, due spread over 3 to 9 weeks so they come back gradually and FSRS corrects any mistakes. Cards already further along are left alone. Speaking cards aren't created (they start from words you know by ear, as before).
+- **Beijing pack** (Settings, off by default): the words from the Beijing-family conversations (incl. 儿化 words) come first among new words.
+- **Speed ladder:** the speed button cycles 0.75× → 1× → 1.2× in sessions. **s** = slow on PC, alongside space = replay.
+- **Open in Pleco** link on the feedback after each session answer.

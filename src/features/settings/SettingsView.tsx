@@ -102,6 +102,14 @@ export function SettingsView() {
             ]}
           />
         </Row>
+        <Row title="Your level" hint="Mark the words you already know, with a 5-minute test or by picking a starting HSK level.">
+          <button onClick={() => go('placement')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
+            Find your level
+          </button>
+        </Row>
+        <Row title="Beijing pack" hint="Her family's Beijing Mandarin first: 儿化 words (哪儿, 这儿, 一会儿, 没事儿, 遛弯儿…) and everyday Beijing words come first among your new words.">
+          <Segmented label="Beijing pack" value={s.beijingPack ? 'on' : 'off'} onChange={(v) => set({ beijingPack: v === 'on' })} options={[...onOff]} />
+        </Row>
         <Row title="Reviews per day" hint="A cap for busy days. Reviews left over wait until tomorrow.">
           <Segmented
             label="Reviews per day"

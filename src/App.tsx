@@ -13,6 +13,7 @@ import { About } from './features/settings/About';
 import { AudioSample } from './features/settings/AudioSample';
 import { ToneGymRoute } from './features/tonegym/ToneGym';
 import { HomeView } from './features/home/HomeView';
+import { PlacementView } from './features/placement/PlacementView';
 import { SessionRoute } from './features/session/SessionPlayer';
 import { SettingsView } from './features/settings/SettingsView';
 import { prefetchForOffline, stop } from './lib/audio';
@@ -72,6 +73,9 @@ export default function App() {
       );
     case 'conversations':
       body = <PathView />;
+      break;
+    case 'placement':
+      body = <PlacementView />;
       break;
     case 'games':
       body = <GamesView />;

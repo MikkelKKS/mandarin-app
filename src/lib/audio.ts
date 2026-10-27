@@ -65,6 +65,8 @@ const missing = new Set<string>();
 export interface PlayOptions {
   voice?: Voice;
   slow?: boolean;
+  /** Playback speed for the speed ladder (0.75×, 1×, 1.2×); pitch is kept. Ignored when `slow`. */
+  rate?: number;
 }
 
 export function stop(): void {
@@ -100,19 +102,19 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   };
   // Turtle speed: sentences use their slow recording, slowed a bit more; words have no slow
   // recording, so they're slowed down further. Pitch is preserved either way.
-  const rate = !slow ? 1 : isSentence ? SLOW_SENTENCE_RATE : SLOW_WORD_RATE;
+  const rate = !slow ? (opts.rate ?? 1) : isSentence ? SLOW_SENTENCE_RATE : SLOW_WORD_RATE;
   // Azure first (the new voice). Slow: the 0.7× recording, else the normal one slowed down.
   const addUrl = (url: string, r: number) => {
     if (!missing.has(url) && !tries.some((t) => t.url === url)) tries.push({ url, rate: r });
   };
   if (slow && isSentence) addUrl(azureUrl(id, true), 1);
-  addUrl(azureUrl(id, false), slow ? (isSentence ? AZURE_SLOW_RATE : SLOW_WORD_RATE) : 1);
+  addUrl(azureUrl(id, false), slow ? (isSentence ? AZURE_SLOW_RATE : SLOW_WORD_RATE) : rate);
   // Then the older recordings, until every item has an Azure one (HSK words use their course id).
   const older = courseIdFor(id);
   if (older) {
     for (const v of [voice, other]) {
       const url = urlFor(older, v, false);
-      addUrl(url, slow ? SLOW_WORD_RATE : 1);
+      addUrl(url, slow ? SLOW_WORD_RATE : rate);
     }
   }
   add(voice, slow, rate);

@@ -16,11 +16,28 @@ export function Prompt({ children }: { children: ReactNode }) {
  * Big play button + slow button. Plays once on mount (the user has already
  * tapped to start the lesson, so this never autoplays before a gesture).
  */
-export function AudioControls({ id, voice, autoPlay = true, size = 'lg' }: { id: string; voice?: Voice; autoPlay?: boolean; size?: 'lg' | 'sm' }) {
+/** Speed ladder (CLAUDE.md §3.4): each tap on the speed button plays at the next speed. */
+const LADDER = [0.75, 1, 1.2];
+
+export function AudioControls({
+  id,
+  voice,
+  autoPlay = true,
+  size = 'lg',
+  ladder = false,
+}: {
+  id: string;
+  voice?: Voice;
+  autoPlay?: boolean;
+  size?: 'lg' | 'sm';
+  /** Show the 0.75× → 1× → 1.2× speed button. */
+  ladder?: boolean;
+}) {
   const [playing, setPlaying] = useState(false);
-  const go = (slow?: boolean) => {
+  const [step, setStep] = useState(1);
+  const go = (slow?: boolean, rate?: number) => {
     setPlaying(true);
-    play(id, { voice, slow }).finally(() => setPlaying(false));
+    play(id, { voice, slow, rate }).finally(() => setPlaying(false));
   };
   useReplay(() => go());
   const did = useRef(false);
@@ -51,6 +68,21 @@ export function AudioControls({ id, voice, autoPlay = true, size = 'lg' }: { id:
       >
         <Turtle className={big ? 'h-7 w-7' : 'h-5 w-5'} />
       </button>
+      {ladder && (
+        <button
+          type="button"
+          onClick={() => {
+            const next = (step + 1) % LADDER.length;
+            setStep(next);
+            go(false, LADDER[next]);
+          }}
+          aria-label={`Play at ${LADDER[(step + 1) % LADDER.length]}× speed`}
+          title="Speed ladder: 0.75× → 1× → 1.2×"
+          className={`flex items-center justify-center rounded-full border-2 border-line bg-surface text-sm font-semibold tabular-nums text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
+        >
+          {LADDER[step]}×
+        </button>
+      )}
     </div>
   );
 }
