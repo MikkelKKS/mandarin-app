@@ -177,7 +177,8 @@ test('plays the Azure recording first, and an older one when it is missing', asy
 test('opening a skill does not scroll the path', async ({ page }) => {
   await page.goto('./');
   const node = page.getByRole('button', { name: /Hello & how are you/ });
-  await node.scrollIntoViewIfNeeded();
+  // Centre it, so the fixed tab bar doesn't cover it (Playwright would then scroll again to click).
+  await node.evaluate((el) => (el as unknown as { scrollIntoView(o: object): void }).scrollIntoView({ block: 'center' }));
   await page.waitForTimeout(800);
   const before = await page.evaluate(() => (globalThis as unknown as { scrollY: number }).scrollY);
   await node.click();

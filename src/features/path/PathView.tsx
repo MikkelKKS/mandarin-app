@@ -40,6 +40,18 @@ export function PathView() {
     <div className="pb-8">
       <InstallBanner />
       <button
+        onClick={() => go('tone-gym')}
+        className="press group mb-3 flex w-full items-center gap-4 rounded-2xl bg-jade p-4 text-left text-jade-ink"
+      >
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-lg font-bold tabular-nums" aria-hidden>
+          ˉˊˇˋ
+        </span>
+        <span className="flex-1">
+          <span className="block font-semibold">Tone Gym</span>
+          <span className="block text-sm opacity-90">Train your ear: 20 quick tone questions</span>
+        </span>
+      </button>
+      <button
         onClick={() => go('practice')}
         className="group mb-8 flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left transition hover:border-jade active:scale-[0.99]"
       >

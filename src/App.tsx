@@ -11,6 +11,7 @@ import { NodeRunner, PackRunner, PracticeRunner, TestOutRunner } from './feature
 import { PathView, useNodeStates } from './features/path/PathView';
 import { About } from './features/settings/About';
 import { AudioSample } from './features/settings/AudioSample';
+import { ToneGymRoute } from './features/tonegym/ToneGym';
 import { SettingsView } from './features/settings/SettingsView';
 import { prefetchForOffline, stop } from './lib/audio';
 import { unlockedItemIds } from './lib/progress';
@@ -63,6 +64,15 @@ export default function App() {
       );
     case 'games':
       body = <GamesView />;
+      break;
+    case 'tone-gym':
+      if (route[1])
+        return (
+          <WordPopupProvider>
+            <ToneGymRoute route={route} />
+          </WordPopupProvider>
+        );
+      body = <ToneGymRoute route={route} />;
       break;
     case 'read':
       body = <ReadRoute route={route} />;

@@ -114,7 +114,7 @@ export function computeStats(input: {
       const g = giv[i];
       if (!toneMap.has(e) || !g) return; // no tone typed: not a mix-up
       const right = g === e || (e === 3 && exp[i + 1] === 3 && g === 2);
-      if (l.exercise === 'tone-id') {
+      if (l.exercise === 'tone-id' || l.exercise?.startsWith('tonegym:')) {
         const s = toneMap.get(e)!;
         s.attempts++;
         if (right) s.right++;

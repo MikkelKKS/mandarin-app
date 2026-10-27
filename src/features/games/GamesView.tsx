@@ -17,7 +17,16 @@ export function GamesView() {
     <div className="pb-8">
       <h1 className="text-2xl font-bold">Games</h1>
       <p className="mt-1 text-muted">Unlimited plays. Games use words you've unlocked, lean towards the ones you find hard, and count as review.</p>
-      <button onClick={() => go('music')} className="press group mt-6 flex w-full items-center gap-4 rounded-2xl bg-jade p-4 text-left text-jade-ink">
+      <button onClick={() => go('tone-gym')} className="press mt-6 flex w-full items-center gap-4 rounded-2xl bg-cinnabar p-4 text-left text-white">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-lg font-bold" aria-hidden>
+          ˉˊˇˋ
+        </span>
+        <span className="flex-1">
+          <span className="block font-semibold">Tone Gym</span>
+          <span className="block text-sm opacity-90">Single tones, tone pairs and tone changes, with several voices.</span>
+        </span>
+      </button>
+      <button onClick={() => go('music')} className="press group mt-3 flex w-full items-center gap-4 rounded-2xl bg-jade p-4 text-left text-jade-ink">
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15" aria-hidden>
           <Music className="h-7 w-7 transition-transform duration-300 [transition-timing-function:var(--ease-spring)] group-hover:-rotate-12 group-hover:scale-110" />
         </span>

@@ -11,6 +11,10 @@ export interface VocabRow {
   level: number;
   order: number;
   examples: string[];
+  /** An Azure (Xiaoxiao) recording exists. */
+  azure: boolean;
+  /** Id in the old hand-written course, whose older recordings (two voices) exist. */
+  course?: string;
 }
 
 let cache: Promise<VocabRow[]> | null = null;
@@ -18,7 +22,17 @@ let cache: Promise<VocabRow[]> | null = null;
 export function loadVocab(): Promise<VocabRow[]> {
   cache ??= import('virtual:vocab').then((m) =>
     m.default
-      .map(([id, hanzi, pinyin, gloss, level, order, examples]) => ({ id, hanzi, pinyin, gloss, level, order, examples }))
+      .map(([id, hanzi, pinyin, gloss, level, order, examples, azure, course]) => ({
+        id,
+        hanzi,
+        pinyin,
+        gloss,
+        level,
+        order,
+        examples,
+        azure: azure === 1,
+        course: course || undefined,
+      }))
       .sort((a, b) => a.order - b.order),
   );
   return cache;

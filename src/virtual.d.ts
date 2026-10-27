@@ -8,7 +8,7 @@ declare module 'virtual:vocab-legacy' {
   export default map;
 }
 declare module 'virtual:vocab' {
-  /** [id, hanzi, pinyin, glosses, level, order, example sentence ids] */
-  const rows: Array<[string, string, string, string[], number, number, string[]]>;
+  /** [id, hanzi, pinyin, glosses, level, order, example sentence ids, 1 if an Azure recording exists, old course id or ''] */
+  const rows: Array<[string, string, string, string[], number, number, string[], number, string]>;
   export default rows;
 }
