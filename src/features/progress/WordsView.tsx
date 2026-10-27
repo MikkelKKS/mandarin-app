@@ -5,6 +5,7 @@ import type { Word } from '../../content/schema';
 import { ToneText } from '../../components/Hanzi';
 import { WordPopover } from '../../components/WordPopover';
 import { db } from '../../db/db';
+import { courseCards } from '../../lib/srs';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { isKnown } from '../../lib/stats';
@@ -18,7 +19,7 @@ const GROUPS: Array<{ id: Group; title: string; note: string; cls: string }> = [
 ];
 
 export function WordsView() {
-  const items = useLive(() => db.reviewItems.toArray(), [], null);
+  const items = useLive(() => db.reviewItems.toArray().then(courseCards), [], null);
   const settings = useSettings();
   const [level, setLevel] = useState(1);
   const [picked, setPicked] = useState<{ w: Word; anchor: DOMRect } | null>(null);

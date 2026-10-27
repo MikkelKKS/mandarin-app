@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { citationTones } from './scripts/vite-citation-tones';
+import { vocabModules } from './scripts/vite-vocab';
 
 // Served from https://<user>.github.io/mandarin-app/
 const base = process.env.BASE_PATH ?? '/mandarin-app/';
@@ -14,6 +15,7 @@ export default defineConfig({
   plugins: [
     react(),
     citationTones(import.meta.dirname),
+    vocabModules(import.meta.dirname),
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
@@ -65,7 +67,7 @@ export default defineConfig({
       },
     }),
   ],
-  build: { chunkSizeWarningLimit: 800 },
+  build: { chunkSizeWarningLimit: 1500 },
   test: {
     include: ['src/**/*.test.ts', 'scripts/**/*.test.ts'],
     environment: 'node',

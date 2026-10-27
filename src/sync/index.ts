@@ -7,6 +7,7 @@ import type { Session, SupabaseClient } from '@supabase/supabase-js';
 import { liveQuery } from 'dexie';
 import { useEffect, useState } from 'react';
 import { db } from '../db/db';
+import { runLegacyMigration } from '../lib/review';
 import { resetSyncCursors, syncOnce, type Remote, type RemoteRow } from './engine';
 import { SYNC_TABLES, type Row } from './merge';
 
@@ -97,6 +98,8 @@ export async function syncNow(): Promise<void> {
     try {
       const sb = await p;
       await syncOnce(db, supabaseRemote(sb, status.session!.user.id));
+      // Cards from a device still on the old app are carried over onto word facets.
+      if (await runLegacyMigration()) await syncOnce(db, supabaseRemote(sb, status.session!.user.id));
       const now = Date.now();
       await db.meta.put({ key: 'sync:lastSynced', value: now });
       setStatus({ state: 'idle', lastSynced: now });

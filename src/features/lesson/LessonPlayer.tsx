@@ -1,6 +1,6 @@
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { focusNoScroll } from '../../lib/router';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Check, Close, Headphones, MicOff, Speaker } from '../../components/icons';
 import { preload, play, stop } from '../../lib/audio';
@@ -8,10 +8,15 @@ import { isPass, type Verdict } from '../../lib/pinyinAnswer';
 import { setQuietUntil, setSpeakPausedUntil, useQuietUntil } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
 import { shuffle } from '../../lib/random';
-import { recordAnswer } from '../../lib/srs';
+import { recordAnswer, regradeAll } from '../../lib/srs';
+import type { RatingName } from '../../lib/review';
+import { GradeChip } from './GradeChip';
 import { audioOf, ExerciseView, itemsOf } from '../exercises/ExerciseView';
 import { LessonCtx, type LessonApi } from './context';
-import { AUDIO_ONLY, type Exercise, type Outcome } from './types';
+import { AUDIO_ONLY, type Exercise, type ExerciseKind, type Outcome } from './types';
+
+/** Exercises answered by typing (or arranging tiles): they get more time before counting as slow. */
+const TYPED: ReadonlySet<ExerciseKind> = new Set(['dictation', 'en-to-pinyin', 'reply-type', 'fill-gap', 'build-sentence', 'listen-tiles']);
 
 export interface LessonResult {
   accuracy: number; // first-attempt pass rate, 0 to 1
@@ -66,6 +71,10 @@ export function LessonPlayer({
   const passed = useRef(new Set<string>());
   const mistakes = useRef(new Set<string>());
   const started = useRef(Date.now());
+  // When the current exercise appeared, to time the answer (slow answers grade as Hard).
+  const shownAt = useRef(Date.now());
+  // Cards the first answer to this exercise updated, and the grade they got (for "change grade").
+  const [graded, setGraded] = useState<{ cards: string[]; rating: RatingName } | null>(null);
   const quietUntil = useQuietUntil();
   const quiet = quietUntil > Date.now();
 
@@ -79,6 +88,9 @@ export function LessonPlayer({
   }, [pos, queue]);
 
   useEffect(() => () => stop(), []);
+  useEffect(() => {
+    shownAt.current = Date.now();
+  }, [pos]);
 
   const finish = useCallback(() => {
     const scored = [...firstResults.current.values()];
@@ -97,6 +109,7 @@ export function LessonPlayer({
   const advance = useCallback(() => {
     stop();
     setOutcome(null);
+    setGraded(null);
     checkRef.current = null;
     setCanCheck(false);
     if (pos + 1 >= queue.length) finish();
@@ -108,6 +121,8 @@ export function LessonPlayer({
       if (!current || outcome) return;
       const { ex, origin, retry } = current;
       if (ex.kind === 'intro' || ex.kind === 'repeat') {
+        // Meeting a word gives it its review cards (listening and typing), not graded yet.
+        if (ex.kind === 'intro' && !passed.current.has(origin)) void recordAnswer(ex.wordId, 'correct', { exercise: 'intro', nodeId });
         passed.current.add(origin);
         advance();
         return;
@@ -121,7 +136,12 @@ export function LessonPlayer({
       const items = o.items ?? itemsOf(ex).map((id) => ({ id, verdict: o.verdict }));
       if (!firstResults.current.has(origin)) {
         firstResults.current.set(origin, o.verdict);
-        for (const it of items) void recordAnswer(it.id, it.verdict, { exercise: ex.kind, nodeId, tones: o.tones });
+        const info = { exercise: ex.kind, nodeId, tones: o.tones, ms: Date.now() - shownAt.current, typed: TYPED.has(ex.kind), syllables: o.syllables?.length };
+        void Promise.all(items.map((it) => recordAnswer(it.id, it.verdict, info))).then((rs) => {
+          const cards = rs.flatMap((r) => (r.card ? [r.card] : []));
+          const rating = rs.find((r) => r.rating)?.rating;
+          if (cards.length && rating) setGraded({ cards, rating });
+        });
       }
       for (const it of items) if (it.verdict === 'wrong') mistakes.current.add(it.id);
 
@@ -139,17 +159,27 @@ export function LessonPlayer({
   const override = useCallback(() => {
     if (!current || !outcome) return;
     const { ex, origin, retry } = current;
-    if (retry === 0) firstResults.current.set(origin, 'correct');
-    passed.current.add(origin);
-    for (const id of itemsOf(ex)) {
-      mistakes.current.delete(id);
-      void recordAnswer(id, 'correct', { exercise: ex.kind, nodeId });
+    if (retry === 0) {
+      firstResults.current.set(origin, 'correct');
+      // The first answer was recorded as wrong: change its grade to Good.
+      if (graded) void regradeAll(graded.cards, 'good').then(() => setGraded({ ...graded, rating: 'good' }));
     }
+    passed.current.add(origin);
+    for (const id of itemsOf(ex)) mistakes.current.delete(id);
     // Drop the retry that was queued for this exercise.
     setQueue((q) => q.filter((e, i) => !(i > pos && e.origin === origin && e.retry === retry + 1)));
     sfx.correct();
     setOutcome({ ...outcome, verdict: 'correct', note: 'Counted as correct.', canOverride: false });
-  }, [current, outcome, pos, nodeId]);
+  }, [current, outcome, pos, graded]);
+
+  /** The grade buttons: change the grade the first answer got. */
+  const changeGrade = useCallback(
+    (r: RatingName) => {
+      if (!graded) return;
+      void regradeAll(graded.cards, r).then(() => setGraded({ ...graded, rating: r }));
+    },
+    [graded],
+  );
 
   const doCheck = useCallback(() => {
     const fn = checkRef.current;
@@ -275,7 +305,15 @@ export function LessonPlayer({
             </div>
           </footer>
         )}
-        {outcome && <Feedback outcome={outcome} ex={current.ex} onContinue={advance} onOverride={mode === 'testout' ? undefined : override} />}
+        {outcome && (
+          <Feedback
+            outcome={outcome}
+            ex={current.ex}
+            onContinue={advance}
+            onOverride={mode === 'testout' ? undefined : override}
+            grade={mode === 'testout' || !graded ? undefined : <GradeChip rating={graded.rating} onChange={changeGrade} />}
+          />
+        )}
       </div>
     </LessonCtx.Provider>
   );
@@ -288,7 +326,19 @@ const TONE: Record<Verdict, { title: string; cls: string; btn: string; badge: st
   wrong: { title: 'Not quite', cls: 'bg-cinnabar-soft', btn: 'bg-cinnabar text-white dark:text-black', badge: 'bg-cinnabar text-white dark:text-black' },
 };
 
-function Feedback({ outcome, ex, onContinue, onOverride }: { outcome: Outcome; ex: Exercise; onContinue: () => void; onOverride?: () => void }) {
+function Feedback({
+  outcome,
+  ex,
+  onContinue,
+  onOverride,
+  grade,
+}: {
+  outcome: Outcome;
+  ex: Exercise;
+  onContinue: () => void;
+  onOverride?: () => void;
+  grade?: ReactNode;
+}) {
   const t = TONE[outcome.verdict];
   const a = outcome.answer;
   // Play the answer that's shown: for conversation exercises that's the reply, not the line you heard.
@@ -322,6 +372,7 @@ function Feedback({ outcome, ex, onContinue, onOverride }: { outcome: Outcome; e
             )}
           </div>
         )}
+        {grade}
         <button ref={focusNoScroll} onClick={onContinue} className={`press mt-4 h-14 w-full rounded-2xl text-lg font-semibold ${t.btn}`}>
           {outcome.verdict === 'wrong' ? 'Got it' : 'Continue'}
         </button>

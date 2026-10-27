@@ -2,12 +2,14 @@
 import { useMemo, useState } from 'react';
 import { lookup, units, words } from '../../content';
 import { db } from '../../db/db';
+import { courseCards } from '../../lib/srs';
 import { ToneText } from '../../components/Hanzi';
 import { go } from '../../lib/router';
 import { computeStats, type Stats } from '../../lib/stats';
 import { useLive } from '../../lib/useLive';
 import { MiniPlay } from '../exercises/parts';
 import { useNodeStates } from '../path/PathView';
+import { ReviewCards } from './ReviewCards';
 
 const TONE_NAME = ['', '1st', '2nd', '3rd', '4th', 'neutral'];
 const TONE_BG = ['', 'bg-t1', 'bg-t2', 'bg-t3', 'bg-t4', 'bg-t5'];
@@ -16,7 +18,7 @@ const LEVEL_HANZI = ['', '一级', '二级', '三级', '三级'];
 
 export function useStats(): Stats | null {
   const states = useNodeStates();
-  const items = useLive(() => db.reviewItems.toArray(), [], null);
+  const items = useLive(() => db.reviewItems.toArray().then(courseCards), [], null);
   const logs = useLive(() => db.reviewLogs.toArray(), [], null);
   return useMemo(() => {
     if (!items || !logs) return null;
@@ -47,6 +49,7 @@ export function ProgressView() {
         Find songs at {s.level > 3 ? 'your level' : `HSK ${s.level}`}
       </button>
       <Reviews s={s} />
+      <ReviewCards />
       <Tones s={s} />
       <Missed s={s} />
       <Activity s={s} />

@@ -60,6 +60,42 @@ export function SettingsView() {
     <div className="pb-10">
       <h1 className="mb-4 text-2xl font-bold">Settings</h1>
 
+      <h2 className="mb-2 mt-2 text-sm font-semibold text-muted">Reviews</h2>
+      <section className="mb-6 rounded-2xl bg-surface px-4" aria-label="Review settings">
+        <Row
+          title="Target retention"
+          hint="How often you should still remember a word when it comes back. Higher means more reviews; 90% is the usual balance."
+        >
+          <Segmented
+            label="Target retention"
+            value={String(s.retention)}
+            onChange={(v) => set({ retention: Number(v) })}
+            options={['0.85', '0.9', '0.95'].map((v) => ({ v, label: `${Math.round(Number(v) * 100)}%` }))}
+          />
+        </Row>
+        <Row title="New words per day">
+          <Segmented
+            label="New words per day"
+            value={String(s.newPerDay)}
+            onChange={(v) => set({ newPerDay: Number(v) })}
+            options={['5', '10', '15', '20'].map((v) => ({ v, label: v }))}
+          />
+        </Row>
+        <Row title="Reviews per day" hint="A cap for busy days. Reviews left over wait until tomorrow.">
+          <Segmented
+            label="Reviews per day"
+            value={String(s.reviewsPerDay)}
+            onChange={(v) => set({ reviewsPerDay: Number(v) })}
+            options={[
+              { v: '100', label: '100' },
+              { v: '200', label: '200' },
+              { v: '500', label: '500' },
+              { v: '9999', label: 'No limit' },
+            ]}
+          />
+        </Row>
+      </section>
+
       <section className="rounded-2xl bg-surface px-4">
         <Row title="Pinyin above characters">
           <Segmented

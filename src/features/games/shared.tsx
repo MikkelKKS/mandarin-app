@@ -8,7 +8,7 @@ import { stop } from '../../lib/audio';
 import type { Verdict } from '../../lib/pinyinAnswer';
 import { go } from '../../lib/router';
 import { sfx } from '../../lib/sfx';
-import { recordAnswer } from '../../lib/srs';
+import { courseCards, recordAnswer } from '../../lib/srs';
 import { useLive } from '../../lib/useLive';
 
 export interface GameDef {
@@ -61,9 +61,9 @@ export function usePool(unlockedIds: string[]): Pool | null {
   return useLive(
     async () => {
       const ids = new Set(unlockedIds);
-      const items = await db.reviewItems.bulkGet([...ids]);
+      const byId = new Map(courseCards(await db.reviewItems.toArray()).map((r) => [r.id, r]));
       const weights = new Map<string, number>();
-      [...ids].forEach((id, i) => weights.set(id, weightOf(items[i])));
+      for (const id of ids) weights.set(id, weightOf(byId.get(id)));
       return {
         words: [...words.values()].filter((w) => ids.has(w.id)),
         sentences: [...sentences.values()].filter((s) => ids.has(s.id)),

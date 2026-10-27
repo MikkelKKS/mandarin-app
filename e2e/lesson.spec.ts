@@ -73,6 +73,11 @@ test('complete the first lesson and see it on the path', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Progress' })).toBeVisible();
   await expect(page.getByText('Working on')).toBeVisible();
   await expect(page.getByText(/reviews? due now/)).toBeVisible();
+  // Each word got its skill cards, and today's queue is shown.
+  const cards = page.getByRole('region', { name: 'Review cards' });
+  await expect(cards.getByText(/^Today: \d+ reviews? due, \d+ new words?/)).toBeVisible({ timeout: 15000 });
+  const listening = cards.getByRole('row', { name: /Listening → meaning/ });
+  await expect(listening.getByRole('cell').nth(1)).not.toHaveText('0');
 });
 
 test('keyboard only: Enter continues through intro cards', async ({ page }) => {

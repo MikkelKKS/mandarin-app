@@ -60,3 +60,8 @@ Your progress lives in IndexedDB on each device and in Supabase. It is keyed by 
 - **Word tiles stay as an option** (a toggle), with typing as the default.
 - **Old audio stays until replaced**, so no word loses its sound while Azure audio is generated.
 - **Audio storage** gets decided at the audio step: the full set is roughly 500–700 MB even as Opus, close to the GitHub Pages limit of 1 GB per site.
+
+## Progress through the build order
+- Step 1 (this file) and step 2 (word list): done 27 Oct.
+- Step 3 (pinyin input and scoring): done 27 Oct. `src/lib/pinyinAnswer.ts`, `src/lib/pinyinLive.ts`.
+- Step 4 (review engine): done 27 Oct. `src/lib/review.ts` (facets, grading, queue, migration, log), `src/lib/srs.ts` (glue for lessons and games).

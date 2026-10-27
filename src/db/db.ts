@@ -28,6 +28,11 @@ export interface ReviewItemRow {
   lapses: number;
   state: number;
   lastReview?: number;
+  /** Word facet cards (id "<word id>#<facet>"): the word and the skill. */
+  word?: string;
+  facet?: 'lm' | 'lp' | 'mp' | 'sp';
+  /** Copied from this old course card when the facets were introduced. */
+  migratedFrom?: string;
   updatedAt: number;
 }
 
@@ -40,6 +45,24 @@ export interface ReviewLogRow {
   nodeId?: string;
   /** For tone mistakes: expected vs given tones, e.g. "3-3" vs "2-3". */
   tones?: { expected: string; given: string };
+  // Full FSRS review data (from the redesign on), so the scheduler can be optimised later.
+  /** Card reviewed ("<word id>#<facet>" or a sentence id). */
+  card?: string;
+  /** FSRS grade: 1 Again, 2 Hard, 3 Good, 4 Easy. */
+  rating?: number;
+  /** Card state before the review: 0 New, 1 Learning, 2 Review, 3 Relearning. */
+  stateBefore?: number;
+  /** Days since the card's previous review. */
+  elapsedDays?: number;
+  /** Interval given by this review, in days. */
+  scheduledDays?: number;
+  stabilityAfter?: number;
+  /** Time taken to answer. */
+  ms?: number;
+  /** The grade was changed by hand. */
+  override?: boolean;
+  /** A later override replaced this entry (kept, since logs are append-only). */
+  replaced?: boolean;
   updatedAt: number;
 }
 
@@ -57,6 +80,11 @@ export interface Settings {
   toneColors: boolean;
   /** More tone exercises in lessons. */
   toneFocus: boolean;
+  /** FSRS desired retention (0.7 to 0.97). */
+  retention: number;
+  /** Daily limits. */
+  newPerDay: number;
+  reviewsPerDay: number;
   theme: Theme;
 }
 
@@ -95,6 +123,9 @@ export const DEFAULT_SETTINGS: Settings = {
   sound: true,
   toneColors: true,
   toneFocus: true,
+  retention: 0.9,
+  newPerDay: 10,
+  reviewsPerDay: 200,
   theme: 'system',
 };
 
@@ -118,6 +149,8 @@ export class MandarinDB extends Dexie {
       gameScores: 'id, updatedAt',
       meta: 'key',
     });
+    // Redesign: review logs can be looked up by card.
+    this.version(2).stores({ reviewLogs: 'id, itemId, card, at, verdict, updatedAt' });
   }
 }
 
