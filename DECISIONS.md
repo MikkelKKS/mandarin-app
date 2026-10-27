@@ -90,3 +90,12 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Typed answers accept 一个 left out or added (我有哥哥 / 我有一个哥哥), shown as correct with the course version as "Another correct answer".
 - Typed answers also accept everyday equivalents (您/你, 咱们/我们, 哪儿/哪里, 这儿/这里, 那儿/那里, 一点儿/一点, 一会儿/一会). For other rewordings (a wrong answer with different words, not wrong tones), the feedback offers "I was right", which counts the exercise as correct. Real meaning-checking would need an AI model at runtime, which the brief rules out.
 - Possessive 的 right after a pronoun is optional in typed answers (我爸爸 / 我的爸爸, 我手机 / 我的手机).
+
+## 2026-10-27: Redesign step 2, the vocabulary pipeline
+- `scripts/build-vocab.ts` merges HSK 3.0 (ivankra/hsk30, pinned commit), frequency ranks and classifiers (drkameleon/complete-hsk-vocabulary, pinned), CC-CEDICT glosses and Tatoeba sentences into `content/data/words.json` and `sentences.json`. Nothing is typed by hand.
+- Word ids are `<tone-number reading>-<5-char hash of characters + reading>` (e.g. `ba4ba5-u8v1i`), so they stay the same between rebuilds and tell 行 xíng from 行 háng.
+- Old course word ids are kept in `legacy`, so existing progress can be migrated in step 4. Course words outside HSK 3.0 (丹麦, 胡同, 遛弯儿…) are kept as level 0.
+- Course pinyin written with spoken tone changes (一 yì, 不 bú) is stored with dictionary tones, as the brief asks.
+- Example sentences follow "i+1": the sentence's hardest word is the word itself, or at most 300 words further on. Max two per word. Hand-checked course sentences win ties.
+- Tatoeba sentences are kept only if simplified, 3–18 characters, without Latin letters or digits, translated into English, and made only of HSK or course words (plus a few common names such as 汤姆).
+- CC-CEDICT and Tatoeba can't be downloaded from the coding sandbox, so the `build-vocabulary` GitHub workflow downloads them, runs the build and commits the result.

@@ -7,6 +7,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { checkContent } from '../src/content/check';
 import { checkStory } from '../src/content/stories';
+import { checkVocab } from '../src/content/vocab';
 
 const root = join(import.meta.dirname, '..');
 const read = (p: string) => JSON.parse(readFileSync(join(root, p), 'utf8'));
@@ -36,6 +37,15 @@ const storyFiles = existsSync(storyDir) ? readdirSync(storyDir).filter((f) => f.
 const unitData = unitFiles.map((f) => read(`content/units/${f}`));
 for (const f of storyFiles) report.errors.push(...checkStory(`stories/${f}`, read(`content/stories/${f}`), unitData));
 
+// The big vocabulary (built by scripts/build-vocab.ts).
+let vocabNote = '';
+if (existsSync(join(root, 'content/data/words.json'))) {
+  const w = read('content/data/words.json') as unknown[];
+  const s = read('content/data/sentences.json') as unknown[];
+  report.errors.push(...checkVocab(w, s));
+  vocabNote = `, ${w.length} vocabulary words and ${s.length} sentences`;
+}
+
 let errors = report.errors;
 if (allowMissingAudio) {
   const audio = errors.filter((e) => e.includes('audio file(s) missing'));
@@ -44,5 +54,5 @@ if (allowMissingAudio) {
 }
 report.warnings.forEach((w) => console.warn(`warning: ${w}`));
 errors.forEach((e) => console.error(`error: ${e}`));
-console.log(`${unitFiles.length} unit file(s) and ${storyFiles.length} story file(s) checked: ${errors.length} error(s), ${report.warnings.length} warning(s).`);
+console.log(`${unitFiles.length} unit file(s) and ${storyFiles.length} story file(s)${vocabNote} checked: ${errors.length} error(s), ${report.warnings.length} warning(s).`);
 process.exit(errors.length ? 1 : 0);

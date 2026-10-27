@@ -15,7 +15,8 @@
     "typecheck": "tsc -b",
     "syllables:build": "tsx scripts/build-syllables.ts",
     "hsk:fetch": "tsx scripts/fetch-hsk.ts",
-    "dict:build": "tsx scripts/build-dictionary.ts"
+    "dict:build": "tsx scripts/build-dictionary.ts",
+    "vocab:build": "tsx scripts/build-vocab.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",

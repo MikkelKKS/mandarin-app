@@ -7,3 +7,4 @@ playwright-report
 __pycache__
 *.log
 public/dict
+.vocab-sources
