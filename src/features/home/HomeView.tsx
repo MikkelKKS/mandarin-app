@@ -9,7 +9,8 @@ import { ACHIEVEMENTS } from '../../lib/gamify';
 import { loadGameStats } from '../../lib/gameStats';
 import { todaysQueue, type Queue } from '../../lib/review';
 import { go } from '../../lib/router';
-import { useSettings } from '../../lib/settings';
+import { micActive, setSpeakPausedUntil, useSettings, useSpeakPausedUntil } from '../../lib/settings';
+import { micSupported } from '../../lib/pitchTrack';
 import { useLive } from '../../lib/useLive';
 import { useVocab } from '../../lib/vocabData';
 import { patternLabel, patternStats, weakestPair } from '../tonegym/model';
@@ -43,6 +44,7 @@ function GoalRing({ value, goal }: { value: number; goal: number }) {
 
 export function HomeView() {
   const settings = useSettings();
+  const speakPaused = useSpeakPausedUntil();
   const vocab = useVocab();
   const game = useLive(() => loadGameStats(settings.dailyGoal), [settings.dailyGoal], null);
   const resume = useLive(() => loadSession(), [], null);
@@ -51,8 +53,8 @@ export function HomeView() {
   const [queue, setQueue] = useState<Queue | null>(null);
   useEffect(() => {
     if (!vocab) return;
-    void todaysQueue(vocab.map((w) => w.id), { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: settings.speaking }).then(setQueue);
-  }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking, game?.xp]);
+    void todaysQueue(vocab.map((w) => w.id), { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: micActive() }).then(setQueue);
+  }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking, speakPaused, game?.xp]);
 
   const weak = useMemo(() => weakestPair(patternStats(toneLogs)), [toneLogs]);
   const wide = typeof window !== 'undefined' && window.matchMedia?.('(min-width: 1024px)').matches;
@@ -133,6 +135,25 @@ export function HomeView() {
       )}
 
       <div className="mt-3 grid gap-3 lg:grid-cols-2">{wide ? [deep, quick] : [quick, deep]}</div>
+      {settings.speaking && micSupported && (
+        <p className="mt-2 text-center text-sm text-muted">
+          {speakPaused > Date.now() ? (
+            <>
+              Speaking paused until {new Date(speakPaused).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })} ·{' '}
+              <button onClick={() => void setSpeakPausedUntil(0)} className="font-medium text-jade underline underline-offset-2">
+                Mic is fine now
+              </button>
+            </>
+          ) : (
+            <>
+              Microphone on ·{' '}
+              <button onClick={() => void setSpeakPausedUntil(Date.now() + 3600_000)} className="font-medium text-jade underline underline-offset-2">
+                No mic right now
+              </button>
+            </>
+          )}
+        </p>
+      )}
 
       <button onClick={() => go('tone-gym')} className="mt-3 flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left hover:border-jade">
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-cinnabar/10 text-cinnabar" aria-hidden>

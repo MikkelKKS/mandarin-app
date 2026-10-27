@@ -14,7 +14,7 @@ import { play, prefetchForOffline, stop } from '../../lib/audio';
 import { isPass } from '../../lib/pinyinAnswer';
 import { introduceWord, todaysQueue, type RatingName } from '../../lib/review';
 import { go } from '../../lib/router';
-import { useSettings } from '../../lib/settings';
+import { micActive, useSettings } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
 import { recordSessionAnswer, regradeAll } from '../../lib/srs';
 import { loadVocabData, shortGloss, type VocabData } from '../../lib/vocabData';
@@ -32,12 +32,20 @@ const BASE = import.meta.env.BASE_URL;
 /** Make a fresh session plan from today's queue. */
 async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerDay: number; speaking: boolean }, data: VocabData): Promise<SessionState> {
   const now = Date.now();
-  const queue = await todaysQueue(data.words.map((w) => w.id), { newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic: s.speaking }, now);
+  const mic = micActive();
+  const queue = await todaysQueue(data.words.map((w) => w.id), { newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic }, now);
   const cards = await db.reviewItems.toArray();
   const started = new Set(cards.filter((c) => c.word && (c.reps > 0 || c.state !== 0)).map((c) => c.word!));
+  // Speaking starts on words you already know by ear (listening card in review), most common first.
+  const hasSpeaking = new Set(cards.filter((c) => c.facet === 'sp').map((c) => c.word));
+  const order = new Map(data.words.map((w) => [w.id, w.order]));
+  const speakNew = cards
+    .filter((c) => c.facet === 'lm' && c.state === 2 && c.word && !hasSpeaking.has(c.word))
+    .map((c) => c.word!)
+    .sort((a, b) => (order.get(a) ?? 1e9) - (order.get(b) ?? 1e9));
   const logs = await db.reviewLogs.where('at').above(now - 60 * 864e5).filter((l) => !!l.tones).toArray();
   const tones = pickRound(buildPool(data.words, BASE), 'mixed', patternStats(logs), Math.random, mode === 'quick' ? 6 : 20);
-  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic: s.speaking, now });
+  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, now });
   return { id: 'session', plan, block: 0, item: 0, xp: 0, combo: 0, bestCombo: 0, right: 0, answered: 0, newWords: [], tones: [], done: false, startedAt: now, updatedAt: now };
 }
 
@@ -224,6 +232,21 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
     persist({ ...st, plan: { ...st.plan, blocks } });
   }, [graded, result, st, item, persist]);
 
+  /** "No mic right now": take the speaking questions out of the rest of this session (skipped, not failed). */
+  const noMic = useCallback(() => {
+    stop();
+    const blocks = st.plan.blocks.map((bl, k) =>
+      k < st.block ? bl : { ...bl, items: bl.items.filter((x, j) => (k === st.block && j < st.item) || x.kind !== 'speak') },
+    );
+    let b = st.block;
+    let i = st.item;
+    while (b < blocks.length && i >= blocks[b].items.length) {
+      b++;
+      i = 0;
+    }
+    persist({ ...st, plan: { ...st.plan, blocks }, block: b, item: i, done: b >= blocks.length });
+  }, [st, persist]);
+
   const api: LessonApi = useMemo(
     () => ({
       setCheck: (fn) => (checkRef.current = fn),
@@ -294,7 +317,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
         )}
         <div key={`${st.block}-${st.item}`} className="anim-slide mt-6 flex-1">
           {item!.retry && <p className="mb-3 text-sm font-medium text-cinnabar">One more time</p>}
-          <SessionItem item={item!} data={data} onResult={onResult} />
+          <SessionItem item={item!} data={data} onResult={onResult} onNoMic={noMic} />
           {browserVoice && <p className="mt-3 text-center text-xs text-muted">No recording yet, so this was your browser's voice.</p>}
         </div>
       </div>

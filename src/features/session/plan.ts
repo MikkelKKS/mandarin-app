@@ -22,13 +22,15 @@ type SItemBase =
   | { kind: 'meaning-pinyin'; word: string }
   | { kind: 'sentence-dictation'; sentence: string; card?: string }
   | { kind: 'sentence-meaning'; sentence: string }
-  | { kind: 'tone'; gym: GymItem };
+  | { kind: 'tone'; gym: GymItem }
+  | { kind: 'speak'; word: string };
 
-export type BlockId = 'reviews' | 'new' | 'listening' | 'tones';
+export type BlockId = 'reviews' | 'new' | 'listening' | 'speaking' | 'tones';
 export const BLOCK_TITLE: Record<BlockId, string> = {
   reviews: 'Reviews',
   new: 'New words',
   listening: 'Listening',
+  speaking: 'Speaking',
   tones: 'Tone Gym',
 };
 
@@ -56,6 +58,8 @@ export function cardOf(it: SItem): string | null {
       return `${it.word}#mp`;
     case 'sentence-dictation':
       return it.card ?? null;
+    case 'speak':
+      return `${it.word}#sp`;
     default:
       return null;
   }
@@ -65,7 +69,7 @@ export function cardOf(it: SItem): string | null {
 const wordHasAudio = (w: VocabRow | undefined) => !!w && (w.azure || !!w.course);
 const sentenceHasAudio = (s: SentenceRow | undefined) => !!s && (s.azure || s.course);
 
-export function reviewItem(card: string, data: VocabData): SItem | null {
+export function reviewItem(card: string, data: VocabData, mic = false): SItem | null {
   const p = parseCardId(card);
   if (!p) {
     const s = data.sentences.get(card);
@@ -77,7 +81,7 @@ export function reviewItem(card: string, data: VocabData): SItem | null {
     lm: wordHasAudio(w) ? { kind: 'listen-meaning', word: w.id } : null,
     lp: wordHasAudio(w) ? { kind: 'dictation', word: w.id } : null,
     mp: { kind: 'meaning-pinyin', word: w.id },
-    sp: null, // speaking comes with step 9
+    sp: mic && wordHasAudio(w) ? { kind: 'speak', word: w.id } : null,
   };
   return byFacet[p.facet];
 }
@@ -139,16 +143,18 @@ export interface PlanInput {
   /** A Tone Gym round's worth of items, weighted to your weak spots. */
   tones: GymItem[];
   mic: boolean;
+  /** Words to start speaking practice on (already known by ear), most useful first. */
+  speakNew?: string[];
   now: number;
   rng?: () => number;
 }
 
 export const QUICK = { reviews: 24, toneEvery: 4, tones: 6, newWhenFew: 3, fewReviews: 8 };
-export const DEEP = { reviews: 80, newWords: 10, listening: 8, tones: 20 };
+export const DEEP = { reviews: 80, newWords: 10, listening: 8, speaking: 8, speakNew: 4, tones: 20 };
 
 export function planSession(p: PlanInput): SessionPlan {
   const rng = p.rng ?? Math.random;
-  const reviewItems = p.reviews.map((c) => reviewItem(c, p.data)).filter((x): x is SItem => !!x);
+  const reviewItems = p.reviews.map((c) => reviewItem(c, p.data, p.mic)).filter((x): x is SItem => !!x);
   const blocks: Block[] = [];
   if (p.mode === 'quick') {
     const revs = reviewItems.slice(0, QUICK.reviews);
@@ -169,11 +175,22 @@ export function planSession(p: PlanInput): SessionPlan {
     const started = new Set([...p.started, ...p.newWords.slice(0, DEEP.newWords)]);
     const listening = listeningItems(p.data, started, DEEP.listening, rng);
     if (listening.length) blocks.push({ id: 'listening', items: listening });
-    // Speaking (if the microphone is on) arrives with step 9.
-    void p.mic;
+    // Speaking, if the microphone is on: due speaking cards and a few new ones.
+    if (p.mic) {
+      const speak = [
+        ...blocks.flatMap((b) => (b.id === 'reviews' ? b.items.filter((x) => x.kind === 'speak') : [])),
+        ...(p.speakNew ?? [])
+          .filter((w) => p.data.byId.has(w) && wordHasAudio(p.data.byId.get(w)))
+          .slice(0, DEEP.speakNew)
+          .map((w): SItem => ({ kind: 'speak', word: w })),
+      ].slice(0, DEEP.speaking);
+      const reviewsBlock = blocks.find((b) => b.id === 'reviews');
+      if (reviewsBlock) reviewsBlock.items = reviewsBlock.items.filter((x) => x.kind !== 'speak');
+      if (speak.length) blocks.push({ id: 'speaking', items: speak });
+    }
     if (p.tones.length) blocks.push({ id: 'tones', items: p.tones.slice(0, DEEP.tones).map((g): SItem => ({ kind: 'tone', gym: g })) });
   }
-  return { id: `${p.now.toString(36)}-${Math.floor(rng() * 1e6).toString(36)}`, mode: p.mode, blocks, createdAt: p.now };
+  return { id: `${p.now.toString(36)}-${Math.floor(rng() * 1e6).toString(36)}`, mode: p.mode, blocks: blocks.filter((b) => b.items.length), createdAt: p.now };
 }
 
 export function itemCount(plan: SessionPlan): number {

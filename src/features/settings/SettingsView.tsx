@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 import { AudioProgress } from './AudioProgress';
+import { micSupported } from '../../lib/pitchTrack';
 import { go } from '../../lib/router';
-import { setQuietUntil, updateSettings, useQuietUntil, useSettings } from '../../lib/settings';
+import { setQuietUntil, setSpeakPausedUntil, updateSettings, useQuietUntil, useSettings, useSpeakPausedUntil } from '../../lib/settings';
 import type { Settings } from '../../db/db';
 import { isStandalone, useInstall } from './install';
 import { BackupSection, SyncSection } from './Account';
@@ -44,12 +45,12 @@ function Row({ title, hint, children }: { title: string; hint?: string; children
   );
 }
 
-const speechSupported = typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
 
 export function SettingsView() {
   const s = useSettings();
   const set = (patch: Partial<Settings>) => void updateSettings(patch);
   const quietUntil = useQuietUntil();
+  const speakPaused = useSpeakPausedUntil();
   const quiet = quietUntil > Date.now();
   const { canInstall, install } = useInstall();
   const onOff = [
@@ -189,17 +190,29 @@ export function SettingsView() {
           )}
         </Row>
         <Row
-          title="Speaking exercises"
+          title="Use microphone"
           hint={
-            speechSupported
-              ? 'Adds repeat-after-me exercises with a pitch chart for your tones. Never affects your progress.'
-              : 'This browser has no speech recognition, so speaking exercises are unavailable here. Chrome on Android and Chrome/Edge on PC support it.'
+            micSupported
+              ? 'Speaking practice: say words and compare your pitch with the native recording. Recordings stay on this device. When off, speaking is skipped, never failed.'
+              : "This browser can't record from the microphone, so speaking practice is unavailable here."
           }
         >
-          {speechSupported ? (
-            <Segmented label="Speaking exercises" value={s.speaking ? 'on' : 'off'} onChange={(v) => set({ speaking: v === 'on' })} options={[...onOff]} />
+          {micSupported ? (
+            <div className="flex flex-col gap-2">
+              <Segmented label="Use microphone" value={s.speaking ? 'on' : 'off'} onChange={(v) => set({ speaking: v === 'on' })} options={[...onOff]} />
+              {s.speaking &&
+                (speakPaused > Date.now() ? (
+                  <button onClick={() => setSpeakPausedUntil(0)} className="self-start text-sm font-medium text-jade">
+                    Paused until {new Date(speakPaused).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}. Resume now
+                  </button>
+                ) : (
+                  <button onClick={() => setSpeakPausedUntil(Date.now() + 3600_000)} className="self-start rounded-xl border-2 border-line px-4 py-2 font-medium">
+                    No mic right now (1 hour)
+                  </button>
+                ))}
+            </div>
           ) : (
-            <Segmented label="Speaking exercises" value="off" onChange={() => {}} options={[{ v: 'off', label: 'Unavailable' }]} />
+            <Segmented label="Use microphone" value="off" onChange={() => {}} options={[{ v: 'off', label: 'Unavailable' }]} />
           )}
         </Row>
       </section>

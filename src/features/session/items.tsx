@@ -17,6 +17,7 @@ import type { Outcome } from '../lesson/types';
 import type { RatingName } from '../../lib/review';
 import { patternLabel, TONE_WORD, type GymItem } from '../tonegym/model';
 import { meaningMatches } from './meaning';
+import { Speak } from './Speak';
 import type { SItem } from './plan';
 
 export interface ItemResult {
@@ -32,6 +33,8 @@ export interface ItemProps {
   item: SItem;
   data: VocabData;
   onResult: (r: ItemResult) => void;
+  /** "No mic right now": drop the speaking questions from this session. */
+  onNoMic?: () => void;
 }
 
 const glossOf = (w: VocabRow) => shortGloss(w.gloss);
@@ -76,6 +79,8 @@ export function SessionItem(p: ItemProps) {
       return <SentenceMeaning {...p} sentence={p.item.sentence} />;
     case 'tone':
       return <ToneQuestion {...p} gym={p.item.gym} />;
+    case 'speak':
+      return <Speak data={p.data} word={p.item.word} onResult={p.onResult} onNoMic={p.onNoMic ?? (() => {})} />;
   }
 }
 

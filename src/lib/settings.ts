@@ -1,3 +1,4 @@
+import { micSupported } from './pitchTrack';
 import { DEFAULT_SETTINGS, db, type Settings } from '../db/db';
 import { useLive } from './useLive';
 
@@ -11,6 +12,11 @@ export async function loadSettings(): Promise<Settings> {
 
 /** One-off changes to saved settings when defaults change (runs once per device). */
 export async function migrateSettings(): Promise<void> {
+  // Redesign step 9: "Use microphone" is on by default (CLAUDE.md §5), once, for existing settings too.
+  if (!(await db.meta.get('migrated:mic-on'))?.value) {
+    await db.meta.put({ key: 'migrated:mic-on', value: true });
+    if (await db.settings.get('me')) await updateSettings({ speaking: true });
+  }
   // Redesign (27 Oct 2026): strict tone grading becomes the default, once, for existing settings too.
   if (!(await db.meta.get('migrated:strict-tones'))?.value) {
     await db.meta.put({ key: 'migrated:strict-tones', value: true });
@@ -62,6 +68,10 @@ let speakPausedUntil = 0;
 export function speakingActive(): boolean {
   const supported = typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
   return cached.speaking && supported && Date.now() > speakPausedUntil;
+}
+/** Microphone practice is on, possible here, and not paused with "No mic right now" (new sessions). */
+export function micActive(): boolean {
+  return cached.speaking && micSupported && Date.now() > speakPausedUntil;
 }
 export async function setSpeakPausedUntil(until: number): Promise<void> {
   speakPausedUntil = until;

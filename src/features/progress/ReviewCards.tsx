@@ -5,7 +5,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { db } from '../../db/db';
 import { cardState, FACET_LABEL, FACETS, parseCardId, todaysQueue, type Facet, type Queue } from '../../lib/review';
-import { useSettings } from '../../lib/settings';
+import { micActive, useSettings } from '../../lib/settings';
 import { useLive } from '../../lib/useLive';
 import { useVocab } from '../../lib/vocabData';
 
@@ -19,7 +19,7 @@ export function ReviewCards() {
     if (!vocab || !cards) return;
     void todaysQueue(
       vocab.map((w) => w.id),
-      { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: settings.speaking },
+      { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: micActive() },
     ).then(setQueue);
   }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking]);
 

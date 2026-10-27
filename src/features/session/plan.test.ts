@@ -76,6 +76,20 @@ describe('planning sessions', () => {
     expect(plan.blocks[3].items).toHaveLength(20);
     expect(itemCount(plan)).toBeGreaterThan(25);
   });
+  it('deep with the microphone on: a speaking block of due and new speaking cards', () => {
+    const plan = planSession({ ...base, mic: true, mode: 'deep', reviews: ['w1#sp', 'w2#lm'], newWords: [], speakNew: ['w5', 'w6'] });
+    expect(plan.blocks.map((b) => b.id)).toEqual(['reviews', 'listening', 'speaking', 'tones']);
+    expect(plan.blocks[0].items).toEqual([{ kind: 'listen-meaning', word: 'w2' }]);
+    expect(plan.blocks[2].items).toEqual([
+      { kind: 'speak', word: 'w1' },
+      { kind: 'speak', word: 'w5' },
+      { kind: 'speak', word: 'w6' },
+    ]);
+    // Microphone off: speaking cards are skipped, not shown.
+    const off = planSession({ ...base, mic: false, mode: 'deep', reviews: ['w1#sp', 'w2#lm'], newWords: [], speakNew: ['w5'] });
+    expect(off.blocks.some((b) => b.id === 'speaking')).toBe(false);
+    expect(off.blocks[0].items).toHaveLength(1);
+  });
   it('works with nothing due and nothing new', () => {
     const plan = planSession({ ...base, mode: 'quick', reviews: [], newWords: [] });
     expect(plan.blocks.map((b) => b.id)).toEqual(['tones']);
