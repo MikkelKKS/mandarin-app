@@ -37,6 +37,10 @@ const USAGE_FILE = join(ROOT, 'content', 'data', 'azure-usage.json');
 const FORMAT = 'audio-24khz-48kbitrate-mono-mp3';
 const AUDIO_DIR = join(ROOT, 'public', 'audio', 'az');
 const MANIFEST_FILE = join(ROOT, 'content', 'data', 'azure-audio.json');
+/** Items re-recorded after a report: their voice and full pronunciation, so bulk runs keep them. */
+const OVERRIDES_FILE = join(ROOT, 'content', 'data', 'azure-overrides.json');
+type Override = { voice: VoiceKey; all: true };
+const loadOverrides = (): Record<string, Override> => (existsSync(OVERRIDES_FILE) ? JSON.parse(readFileSync(OVERRIDES_FILE, 'utf8')) : {});
 /** Free tier: 20 requests per 60 seconds. */
 const MIN_GAP_MS = 3_100;
 
@@ -228,8 +232,13 @@ async function bulk(env: { key: string; region: string } | null, usage: Usage, m
   const manifest: Record<string, string> = existsSync(MANIFEST_FILE) ? JSON.parse(readFileSync(MANIFEST_FILE, 'utf8')) : {};
   const format = env ? await probeHintFormat(env, usage) : (usage.hintFormat ?? 'spaced');
   const jobs = bulkJobs();
+  const overrides = loadOverrides();
+  for (const j of jobs) {
+    const o = overrides[j.id];
+    if (o) j.voice = o.voice;
+  }
   const todo = jobs
-    .map((j) => ({ j, body: voiceBody({ hanzi: j.hanzi, hints: hintSpans(j.hanzi, j.pinyin), format, slow: j.slow }) }))
+    .map((j) => ({ j, body: voiceBody({ hanzi: j.hanzi, hints: hintSpans(j.hanzi, j.pinyin, { all: !!overrides[j.id] }), format, slow: j.slow }) }))
     .filter(({ j, body }) => !(manifest[j.file] === fingerprint(j.voice, body) && existsSync(join(AUDIO_DIR, j.file))));
   const cost = todo.reduce((n, t) => n + billedChars(t.body), 0);
   console.log(`${jobs.length} clips in all, ${todo.length} to make (${cost} billed characters). Free this month: ${Math.max(0, remaining(usage, new Date()))}.`);
@@ -265,6 +274,72 @@ async function bulk(env: { key: string; region: string } | null, usage: Usage, m
   }
 }
 
+/**
+ * Re-record items reported as sounding wrong (the app's "Report bad audio").
+ * First report: Xiaoxiao again with every word's pronunciation spelled out.
+ * Reported again: the other voice (Yunxi). Reads and updates the Supabase
+ * audio_reports table with the service key (GitHub secret SUPABASE_SERVICE_KEY).
+ */
+async function reports(env: { key: string; region: string }, usage: Usage): Promise<void> {
+  // The project URL is public: it's in .env.production next to the anon key.
+  const prod = existsSync(join(ROOT, '.env.production')) ? readFileSync(join(ROOT, '.env.production'), 'utf8') : '';
+  const url = (process.env.SUPABASE_URL ?? prod.match(/^VITE_SUPABASE_URL=(.+)$/m)?.[1])?.trim().replace(/\/$/, '');
+  const service = process.env.SUPABASE_SERVICE_KEY?.trim();
+  if (!url || !service) {
+    console.log('Reports: SUPABASE_URL / SUPABASE_SERVICE_KEY not set, skipped.');
+    return;
+  }
+  const headers = { apikey: service, Authorization: `Bearer ${service}`, 'Content-Type': 'application/json' };
+  const res = await fetch(`${url}/rest/v1/audio_reports?select=user_id,id,data`, { headers });
+  if (!res.ok) {
+    console.log(`Reports: couldn't read the audio_reports table (HTTP ${res.status}); has 002_audio_reports.sql been run?`);
+    return;
+  }
+  const rows = (await res.json()) as Array<{ user_id: string; id: string; data: { status: string; count: number; hanzi: string } }>;
+  const open = rows.filter((r) => r.data?.status === 'open');
+  if (!open.length) return void console.log('Reports: none open.');
+
+  const words = readList<{ id: string; hanzi: string; pinyin: string; legacy?: string[] }>('words.json', 'words');
+  const sentences = readList<{ id: string; hanzi: string; pinyin: string }>('sentences.json', 'sentences');
+  const byId = new Map<string, { id: string; hanzi: string; pinyin: string; sentence: boolean }>();
+  for (const w of words) {
+    byId.set(w.id, { ...w, sentence: false });
+    for (const l of w.legacy ?? []) byId.set(l, { ...w, sentence: false });
+  }
+  for (const x of sentences) byId.set(x.id, { ...x, sentence: true });
+
+  const format = await probeHintFormat(env, usage);
+  const manifest: Record<string, string> = existsSync(MANIFEST_FILE) ? JSON.parse(readFileSync(MANIFEST_FILE, 'utf8')) : {};
+  const overrides = loadOverrides();
+  for (const r of open) {
+    const it = byId.get(r.id);
+    if (!it) {
+      console.warn(`Report for unknown item ${r.id} (${r.data.hanzi}): skipped.`);
+      continue;
+    }
+    const voice: VoiceKey = (r.data.count ?? 1) >= 2 ? 'm' : 'f';
+    const hints = hintSpans(it.hanzi, it.pinyin, { all: true });
+    const files = [{ file: `${it.id}.mp3`, slow: false }];
+    if (it.sentence && existsSync(join(AUDIO_DIR, `${it.id}.slow.mp3`))) files.push({ file: `${it.id}.slow.mp3`, slow: true });
+    for (const f of files) {
+      const body = voiceBody({ hanzi: it.hanzi, hints, format, slow: f.slow });
+      write(join(AUDIO_DIR, f.file), await synth(env, usage, voice, body));
+      manifest[f.file] = fingerprint(voice, body);
+    }
+    overrides[it.id] = { voice, all: true };
+    const now = Date.now();
+    const patch = await fetch(`${url}/rest/v1/audio_reports?user_id=eq.${r.user_id}&id=eq.${encodeURIComponent(r.id)}`, {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify({ data: { ...r.data, status: 'fixed', fixedAt: now, updatedAt: now }, updated_at: now }),
+    });
+    console.log(`Re-recorded ${it.hanzi} (${voice === 'm' ? 'Yunxi' : 'Xiaoxiao, spelled out'})${patch.ok ? '' : `; couldn't mark it fixed (HTTP ${patch.status})`}.`);
+  }
+  writeFileSync(MANIFEST_FILE, JSON.stringify(manifest, Object.keys(manifest).sort(), 0) + '\n');
+  writeFileSync(OVERRIDES_FILE, JSON.stringify(overrides, null, 1) + '\n');
+  saveUsage(usage);
+}
+
 async function main() {
   const dry = process.argv.includes('--dry-run');
   const env = dry ? null : loadEnv();
@@ -274,7 +349,11 @@ async function main() {
   const minutes = mi > 0 ? Number(process.argv[mi + 1]) : 330;
   try {
     if (process.argv.includes('--sample') && env) await sample(env, usage);
-    else if (process.argv.includes('--bulk')) await bulk(env, usage, minutes);
+    else if (process.argv.includes('--bulk')) {
+      // Reported recordings first (quick), then carry on with the bulk.
+      if (env) await reports(env, usage);
+      await bulk(env, usage, minutes);
+    } else if (process.argv.includes('--reports') && env) await reports(env, usage);
     else {
       console.error('Usage: npx tsx scripts/azure-tts.ts --sample | --bulk [--minutes 330] [--dry-run]');
       process.exit(1);

@@ -84,7 +84,7 @@ function wordSizes(pinyin: string, total: number): number[] {
  * and only around the word concerned. Hinting a whole sentence makes Azure read it
  * syllable by syllable and lose its melody, and markup is billed too.
  */
-export function hintSpans(hanzi: string, pinyin: string): HintSpan[] {
+export function hintSpans(hanzi: string, pinyin: string, opts: { all?: boolean } = {}): HintSpan[] {
   const exp = expectedSyllables(hanzi, pinyin);
   if (!exp) return [];
   const def = defaultSyllables(hanzi);
@@ -100,9 +100,10 @@ export function hintSpans(hanzi: string, pinyin: string): HintSpan[] {
   for (const n of sizes) {
     const idx = Array.from({ length: n }, (_, k) => at + k);
     at += n;
-    const off = idx.filter((i) => !sameReading(han, exp, def, i));
+    // `all`: spell out every word (used when a recording was reported as wrong).
+    const off = opts.all ? idx : idx.filter((i) => !sameReading(han, exp, def, i));
     // In a sentence, a neutral tone alone isn't worth a hint: context gets those right.
-    const real = isSentence ? off.filter((i) => exp[i].slice(0, -1) !== def[i].slice(0, -1) || !exp[i].endsWith('5')) : off;
+    const real = isSentence && !opts.all ? off.filter((i) => exp[i].slice(0, -1) !== def[i].slice(0, -1) || !exp[i].endsWith('5')) : off;
     if (!real.length) continue;
     spans.push({ start: pos[idx[0]], end: pos[idx[n - 1]] + 1, phones: idx.map((i) => exp[i]) });
   }

@@ -17,6 +17,14 @@ describe('Azure TTS helpers', () => {
     // Tone changes Azure makes by itself need no hint.
     expect(hintSpans('不是', 'bú shì')).toEqual([]);
     expect(hintSpans('你好', 'ní hǎo')).toEqual([]);
+    // A reported recording gets every word spelled out, word by word.
+    expect(hintSpans('你明天有空吗？', 'Nǐ míngtiān yǒu kòng ma?', { all: true }).map((h) => h.phones.join(' '))).toEqual([
+      'ni3',
+      'ming2 tian1',
+      'you3',
+      'kong4',
+      'ma5',
+    ]);
     // 儿化 can't be hinted syllable by syllable.
     expect(hintSpans('哪儿', 'nǎr')).toEqual([]);
   });

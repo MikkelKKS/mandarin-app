@@ -106,3 +106,31 @@ describe('sync between two devices', () => {
     expect(again.pushed).toBe(0);
   });
 });
+
+describe('a table not yet created in Supabase', () => {
+  /** Remote where audio_reports doesn't exist until `create()` is called. */
+  class Partial extends MemoryRemote {
+    exists = false;
+    create() {
+      this.exists = true;
+    }
+    async pull(table: string, since: string | null) {
+      if (table === 'audio_reports' && !this.exists) throw { code: 'PGRST205', message: "Could not find the table 'public.audio_reports'" };
+      return super.pull(table, since);
+    }
+  }
+
+  it('is skipped, and its rows are pushed once the table exists', async () => {
+    const remote = new Partial();
+    const phone = device();
+    await phone.audioReports.put({ id: 's-nihao', hanzi: '你好！', count: 1, status: 'open', reportedAt: 1, updatedAt: Date.now() });
+    await phone.progress.put(progress('n1', 1, Date.now()));
+    await syncOnce(phone, remote);
+    expect(remote.tables.get('progress')?.size).toBe(1); // the rest still syncs
+    expect(remote.tables.get('audio_reports')).toBeUndefined();
+    await syncOnce(phone, remote); // still missing: still fine
+    remote.create();
+    await syncOnce(phone, remote);
+    expect(remote.tables.get('audio_reports')?.get('s-nihao')).toBeTruthy();
+  });
+});

@@ -6,6 +6,7 @@ import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { startSync } from './sync';
 import { runLegacyMigration } from './lib/review';
+import { startAudioReports } from './lib/audioReports';
 import { loadSpeakPause, migrateSettings } from './lib/settings';
 import { startPackRegistry } from './features/packs/store';
 import { startMyWordsRegistry } from './features/dictionary/mywords';
@@ -17,6 +18,7 @@ startMyWordsRegistry();
 void loadSpeakPause();
 void migrateSettings();
 void runLegacyMigration();
+startAudioReports();
 void startSync();
 
 createRoot(document.getElementById('root')!).render(

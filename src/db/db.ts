@@ -108,6 +108,19 @@ export interface GameScoreRow {
   updatedAt: number;
 }
 
+/** A recording the learner reported as sounding wrong; re-recorded by scripts/azure-tts.ts --reports. */
+export interface AudioReportRow {
+  id: string; // item id (course word or sentence id, or HSK word id)
+  hanzi: string;
+  pinyin?: string;
+  /** Times reported (a second report gets the other voice). */
+  count: number;
+  status: 'open' | 'fixed';
+  reportedAt: number;
+  fixedAt?: number;
+  updatedAt: number;
+}
+
 /** Device-local values that are never synced. */
 export interface MetaRow {
   key: string;
@@ -137,6 +150,7 @@ export class MandarinDB extends Dexie {
   customPacks!: EntityTable<CustomPackRow, 'id'>;
   gameScores!: EntityTable<GameScoreRow, 'id'>;
   meta!: EntityTable<MetaRow, 'key'>;
+  audioReports!: EntityTable<AudioReportRow, 'id'>;
 
   constructor(name = 'mandarin') {
     super(name);
@@ -151,6 +165,7 @@ export class MandarinDB extends Dexie {
     });
     // Redesign: review logs can be looked up by card.
     this.version(2).stores({ reviewLogs: 'id, itemId, card, at, verdict, updatedAt' });
+    this.version(3).stores({ audioReports: 'id, status, updatedAt' });
   }
 }
 

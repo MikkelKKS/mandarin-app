@@ -8,6 +8,7 @@ import { audioPath, type Voice } from '../content/audioPaths';
 import { lookup, sentences } from '../content';
 import { currentSettings } from './settings';
 import { newWordId } from './review';
+import { fixedVersion } from './audioReports';
 
 const BASE = import.meta.env.BASE_URL;
 let el: HTMLAudioElement | null = null;
@@ -42,7 +43,8 @@ export function urlFor(id: string, voice: Voice, slow: boolean): string {
  */
 export function azureUrl(id: string, slow: boolean): string {
   const az = newWordId(id) ?? id;
-  return `${BASE}audio/az/${az}${slow ? '.slow' : ''}.mp3?v=${textVersion(id)}`;
+  const fix = fixedVersion(id);
+  return `${BASE}audio/az/${az}${slow ? '.slow' : ''}.mp3?v=${textVersion(id)}${fix ? `&r=${fix}` : ''}`;
 }
 /** Turtle speed when only the normal Azure recording exists yet. */
 const AZURE_SLOW_RATE = 0.7;

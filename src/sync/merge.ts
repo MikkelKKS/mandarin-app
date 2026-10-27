@@ -6,7 +6,9 @@
  */
 import type { ProgressRow } from '../db/db';
 
-export const SYNC_TABLES = ['progress', 'reviewItems', 'reviewLogs', 'settings', 'customPacks', 'gameScores'] as const;
+export const SYNC_TABLES = ['progress', 'reviewItems', 'reviewLogs', 'settings', 'customPacks', 'gameScores', 'audioReports'] as const;
+/** Tables added later, whose Supabase table may not exist yet (the owner runs a migration): skipped until it does. */
+export const OPTIONAL_TABLES: ReadonlySet<string> = new Set(['audioReports']);
 export type SyncTable = (typeof SYNC_TABLES)[number];
 
 /** Supabase table name for each local table. */
@@ -17,6 +19,7 @@ export const REMOTE_NAME: Record<SyncTable, string> = {
   settings: 'settings',
   customPacks: 'custom_packs',
   gameScores: 'game_scores',
+  audioReports: 'audio_reports',
 };
 
 export interface Row {

@@ -195,6 +195,19 @@ test('read a story and look up a word', async ({ page }) => {
   await page.locator('article button', { hasText: '丹麦' }).first().click();
   await expect(page.getByRole('dialog', { name: '丹麦' })).toBeVisible();
   await expect(page.getByText('Denmark').first()).toBeVisible();
+  // Report its recording: it's queued for re-recording.
+  await page.getByRole('dialog', { name: '丹麦' }).getByRole('button', { name: 'Report bad audio' }).click();
+  await expect(page.getByText('Reported. It will be re-recorded.')).toBeVisible();
+  // (A string, because the e2e TypeScript setup has no DOM types.)
+  const reports = (await page.evaluate(`new Promise((done) => {
+    const req = indexedDB.open('mandarin');
+    req.onsuccess = () => {
+      const q = req.result.transaction('audioReports').objectStore('audioReports').getAll();
+      q.onsuccess = () => done(q.result);
+    };
+  })`)) as Array<{ hanzi: string; status: string }>;
+  expect(reports).toEqual([expect.objectContaining({ hanzi: '丹麦', status: 'open' })]);
+  await page.keyboard.press('Escape');
   await page.getByRole('button', { name: 'Show the translation' }).click();
   await expect(page.getByText(/I live in Copenhagen/)).toBeVisible();
 });

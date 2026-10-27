@@ -1,6 +1,7 @@
 /** A small card next to a tapped word: reading, meaning, audio, add to practice. No backdrop. */
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { ReportAudio } from './ReportAudio';
 import { TonePinyin, ToneText } from './Hanzi';
 import { Close, Speaker } from './icons';
 import { play } from '../lib/audio';
@@ -105,6 +106,7 @@ export function WordPopover({
           Open in Pleco
         </a>
       </div>
+      {audioId && <ReportAudio id={audioId} hanzi={e?.hanzi ?? text} pinyin={e?.pinyin} className="mt-2 block text-muted" />}
     </div>,
     document.body,
   );
