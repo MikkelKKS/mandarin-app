@@ -267,7 +267,7 @@ async function bulk(env: { key: string; region: string } | null, usage: Usage, m
   } finally {
     save();
     const left = todo.length - made;
-    console.log(`Made ${made} clip(s); ${left} left.`);
+    console.log(`::notice::Made ${made} clip(s); ${left} left.`);
     if (process.env.GITHUB_STEP_SUMMARY) {
       writeFileSync(process.env.GITHUB_STEP_SUMMARY, `Made ${made} clip(s), ${left} left of ${jobs.length}.\n`, { flag: 'a' });
     }
@@ -292,12 +292,13 @@ async function reports(env: { key: string; region: string }, usage: Usage): Prom
   const headers = { apikey: service, Authorization: `Bearer ${service}`, 'Content-Type': 'application/json' };
   const res = await fetch(`${url}/rest/v1/audio_reports?select=user_id,id,data`, { headers });
   if (!res.ok) {
-    console.log(`Reports: couldn't read the audio_reports table (HTTP ${res.status}); has 002_audio_reports.sql been run?`);
+    console.log(`::warning::Reports: couldn't read the audio_reports table (HTTP ${res.status}); has 002_audio_reports.sql been run, and is SUPABASE_SERVICE_KEY right?`);
     return;
   }
   const rows = (await res.json()) as Array<{ user_id: string; id: string; data: { status: string; count: number; hanzi: string } }>;
   const open = rows.filter((r) => r.data?.status === 'open');
-  if (!open.length) return void console.log('Reports: none open.');
+  console.log(`::notice::Reports: table reachable, ${open.length} open of ${rows.length}.`);
+  if (!open.length) return;
 
   const words = readList<{ id: string; hanzi: string; pinyin: string; legacy?: string[] }>('words.json', 'words');
   const sentences = readList<{ id: string; hanzi: string; pinyin: string }>('sentences.json', 'sentences');
