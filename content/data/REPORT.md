@@ -8,23 +8,23 @@ sentences Tatoeba (CC BY 2.0 FR) and the course.
 
 ## Words
 
-11074 words. 672 of them carry ids from the hand-written course, so progress on those carries over.
+11074 words. 674 of them carry ids from the hand-written course, so progress on those carries over.
 
 | HSK level | Words | With an example | Still need one |
 |---|---|---|---|
-| 1 | 511 | 474 | 37 |
-| 2 | 758 | 634 | 124 |
-| 3 | 961 | 693 | 268 |
-| 4 | 987 | 685 | 302 |
-| 5 | 1064 | 639 | 425 |
-| 6 | 1132 | 622 | 510 |
-| 7–9 | 5627 | 2089 | 3538 |
+| 1 | 511 | 472 | 39 |
+| 2 | 758 | 633 | 125 |
+| 3 | 961 | 691 | 270 |
+| 4 | 987 | 683 | 304 |
+| 5 | 1064 | 638 | 426 |
+| 6 | 1132 | 618 | 514 |
+| 7–9 | 5627 | 2075 | 3552 |
 | course only | 34 | 34 | 0 |
 
 ## Sentences
 
-9863 sentences: 9063 from Tatoeba, 800 from the course, 0 generated.
-Tatoeba had 89211 Chinese sentences; 27623 were simplified, short, translated into English and used only HSK words.
+9800 sentences: 9000 from Tatoeba, 800 from the course, 0 generated.
+Tatoeba had 89211 Chinese sentences; 27164 were simplified, short, translated into English and used only HSK words.
 
 ## Problems (5)
 
