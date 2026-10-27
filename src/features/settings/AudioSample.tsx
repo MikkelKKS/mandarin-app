@@ -20,6 +20,8 @@ interface Item {
 }
 
 const BASE = `${import.meta.env.BASE_URL}audio-sample/`;
+/** The sample gets remade under the same file names, so never use a cached copy. */
+const FRESH = `?t=${Date.now()}`;
 
 export function AudioSample() {
   const [data, setData] = useState<{ voices: Record<string, string>; items: Item[] } | null | 'missing'>(null);
@@ -36,7 +38,7 @@ export function AudioSample() {
   const play = (file: string) => {
     stop();
     el.current?.pause();
-    const a = new Audio(`${BASE}${file}`);
+    const a = new Audio(`${BASE}${file}${FRESH}`);
     el.current = a;
     setPlaying(file);
     a.onended = a.onerror = () => setPlaying((p) => (p === file ? null : p));
