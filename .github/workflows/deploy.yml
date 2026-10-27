@@ -16,6 +16,8 @@ concurrency:
 jobs:
   audio:
     runs-on: ubuntu-latest
+    # Never hold a deploy for long: the app works without new recordings.
+    timeout-minutes: ${{ github.event_name == 'schedule' && 120 || 15 }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -23,7 +25,10 @@ jobs:
           python-version: '3.12'
       - run: pip install edge-tts
       - name: Install ffmpeg
-        run: which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+        # apt sometimes hangs on the runner; give up after 4 minutes (generation is then skipped).
+        timeout-minutes: 4
+        continue-on-error: true
+        run: which ffmpeg || (sudo apt-get update -o Acquire::Retries=2 -o Acquire::http::Timeout=20 && sudo apt-get install -y --no-install-recommends ffmpeg)
       - name: Generate missing audio
         # The free TTS service sometimes refuses requests for a while. Never block a deploy over it:
         # the app falls back to the browser's voice, and the next run retries what's missing.
