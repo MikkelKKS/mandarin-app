@@ -278,6 +278,59 @@ for (const [id, d] of ordered) if (!byHanzi.has(d.hanzi)) byHanzi.set(d.hanzi, i
 const NAMES: Record<string, string> = { 汤姆: 'Tāngmǔ', 玛丽: 'Mǎlì', 约翰: 'Yuēhàn', 杰克: 'Jiékè', 比尔: 'Bǐ\'ěr', 肯: 'Kěn', 露西: 'Lùxī', 迈克: 'Màikè', 米格: 'Mǐgé' };
 const segVocab = new Set([...byHanzi.keys(), ...Object.keys(NAMES)]);
 
+// ---------- readings for characters with more than one ----------
+/** Every word id per hanzi, for characters and words with several readings. */
+const allByHanzi = new Map<string, string[]>();
+for (const [id, d] of ordered) (allByHanzi.get(d.hanzi) ?? allByHanzi.set(d.hanzi, []).get(d.hanzi)!).push(id);
+const PRONOUNS = new Set(['我', '你', '您', '他', '她', '它', '我们', '你们', '他们', '她们', '咱们', '大家', '谁', '也', '就', '还', '都', '真', '可']);
+const NUMERALS = new Set(['一', '两', '二', '三', '四', '五', '六', '七', '八', '九', '十', '几', '这', '那', '哪', '每', '半']);
+const posOf = (hanzi?: string) => (hanzi ? (drafts.get(byHanzi.get(hanzi) ?? '')?.pos ?? []) : []);
+/**
+ * Pick the reading of a polyphone from its neighbours. Only the frequent cases
+ * where the earliest-learned reading is often wrong; everything else keeps the
+ * earliest-learned reading. Returns tone numbers, e.g. "de5".
+ */
+export function polyphone(ch: string, prev?: string, next?: string): string | undefined {
+  switch (ch) {
+    case '得':
+      if (prev && PRONOUNS.has(prev) && next && posOf(next).includes('verb')) return 'dei3'; // 我得走
+      return 'de5'; // 跑得快, 长得高
+    case '还':
+      return next === '了' || next === '给' || next === '钱' || next === '书' ? 'huan2' : 'hai2';
+    case '长':
+      return next === '得' || next === '着' || next === '了' ? 'zhang3' : 'chang2';
+    case '只':
+      return prev && NUMERALS.has(prev) ? 'zhi1' : 'zhi3';
+    case '地':
+      // 慢慢地走 → de; 地上, 在地上 → dì. Before a verb, after anything that isn't a noun or number.
+      return prev && next && posOf(next).includes('verb') && !posOf(prev).includes('noun') && !NUMERALS.has(prev) && prev !== '在' ? 'de5' : 'di4';
+    case '了':
+      return 'le5';
+    case '着':
+      return 'zhe5';
+    case '种':
+      return 'zhong3';
+    case '教':
+      return 'jiao1';
+    case '为':
+      return 'wei4';
+    case '觉':
+      return 'jue2';
+    case '好':
+      return 'hao3';
+    case '要':
+      return 'yao4';
+    default:
+      return undefined;
+  }
+}
+function readingId(hanzi: string, prev?: string, next?: string): string {
+  const all = allByHanzi.get(hanzi)!;
+  if (all.length === 1) return all[0];
+  const want = polyphone(hanzi, prev, next);
+  return (want && all.find((id) => normNum(drafts.get(id)!.numeric) === want)) || all[0];
+}
+
 // ---------- sentences ----------
 const sentences = new Map<string, VocabSentence>();
 const wordPinyin = (id: string) => numericToMarks(drafts.get(id)!.numeric);
@@ -288,10 +341,13 @@ function analyse(hanzi: string): { words: string[]; pinyin: string; unlocks: num
   if (toks.some((t) => t.unknown)) return null;
   const words: string[] = [];
   let unlocks = 0;
+  const keys = toks.filter((t) => t.key).map((t) => t.key!);
+  let k = -1;
   const withPy = toks.map((t) => {
     if (!t.key) return { text: t.text };
+    k++;
     if (NAMES[t.key]) return { text: t.text, pinyin: NAMES[t.key] };
-    const id = byHanzi.get(t.key)!;
+    const id = readingId(t.key, keys[k - 1], keys[k + 1]);
     words.push(id);
     unlocks = Math.max(unlocks, orderOf.get(id)!);
     return { text: t.text, pinyin: wordPinyin(id) };
