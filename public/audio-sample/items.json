@@ -1,7 +1,7 @@
 {
  "voices": {
   "f": "Xiaoxiao",
-  "m": "Yunjian"
+  "m": "Yunxi"
  },
  "hintFormat": "spaced",
  "items": [
@@ -89,7 +89,7 @@
    "pinyin": "yí ge",
    "english": "one, a",
    "check": "一 → yí, 个 neutral",
-   "hint": "yi2 ge5",
+   "hint": null,
    "files": {
     "f": "f/yige.mp3",
     "m": "m/yige.mp3"
@@ -137,7 +137,7 @@
    "pinyin": "xièxie",
    "english": "thank you",
    "check": "second xie neutral",
-   "hint": "xie4 xie5",
+   "hint": "谢谢 xie4 xie5",
    "files": {
     "f": "f/xiexie.mp3",
     "m": "m/xiexie.mp3"
@@ -149,7 +149,7 @@
    "pinyin": "dōngxi",
    "english": "thing, stuff",
    "check": "dōngxi (thing), not dōngxī (east and west)",
-   "hint": "dong1 xi5",
+   "hint": "东西 dong1 xi5",
    "files": {
     "f": "f/dongxi.mp3",
     "m": "m/dongxi.mp3"
@@ -161,7 +161,7 @@
    "pinyin": "péngyou",
    "english": "friend",
    "check": "you neutral",
-   "hint": "peng2 you5",
+   "hint": "朋友 peng2 you5",
    "files": {
     "f": "f/pengyou.mp3",
     "m": "m/pengyou.mp3"
@@ -294,7 +294,7 @@
    "english": "I have to go.",
    "check": "得 = děi, 了 = le",
    "sentence": true,
-   "hint": "wo3 dei3 zou3 le5",
+   "hint": "得 dei3",
    "files": {
     "f": "f/deizou.mp3",
     "f-slow": "f/deizou.slow.mp3",
@@ -308,7 +308,7 @@
    "pinyin": "huán shū",
    "english": "to return a book",
    "check": "还 = huán (not hái)",
-   "hint": "huan2 shu1",
+   "hint": "还 huan2",
    "files": {
     "f": "f/haishu.mp3",
     "m": "m/haishu.mp3"
@@ -357,7 +357,7 @@
    "english": "Are you free tomorrow?",
    "check": "natural question intonation, tones still clear",
    "sentence": true,
-   "hint": "ni3 ming2 tian1 you3 kong4 ma5",
+   "hint": "空 kong4",
    "files": {
     "f": "f/mingtian.mp3",
     "f-slow": "f/mingtian.slow.mp3",
