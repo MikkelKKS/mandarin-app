@@ -3,13 +3,20 @@
  * "azure-audio") or locally with a git-ignored .env containing
  * AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.
  *
- *   npx tsx scripts/azure-tts.ts --sample   # the 30-item approval sample
+ *   npx tsx scripts/azure-tts.ts --sample             # the 30-item approval sample
+ *   npx tsx scripts/azure-tts.ts --bulk [--minutes 330] [--dry-run]
+ *
+ * Bulk: every HSK word and example sentence in Xiaoxiao's voice (the owner's choice;
+ * only lines a male character speaks in the course dialogues use Yunxi),
+ * in learning order: each word followed by its example sentences, then the other
+ * sentences, then the slow (0.7×) sentence versions. The free tier allows 20 requests
+ * a minute, so a run stops after --minutes and the next run carries on.
  *
  * Idempotent: existing files are skipped. Every request's billed characters are
  * added to content/data/azure-usage.json, and the script stops before the
  * monthly free quota (it picks up where it left off the next month).
  */
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import {
   billedChars,
@@ -23,10 +30,15 @@ import {
   type VoiceKey,
 } from './azure-tts-lib';
 import { SAMPLE } from './azure-sample';
+import { createHash } from 'node:crypto';
 
 const ROOT = join(import.meta.dirname, '..');
 const USAGE_FILE = join(ROOT, 'content', 'data', 'azure-usage.json');
 const FORMAT = 'audio-24khz-48kbitrate-mono-mp3';
+const AUDIO_DIR = join(ROOT, 'public', 'audio', 'az');
+const MANIFEST_FILE = join(ROOT, 'content', 'data', 'azure-audio.json');
+/** Free tier: 20 requests per 60 seconds. */
+const MIN_GAP_MS = 3_100;
 
 function loadEnv(): { key: string; region: string } {
   const envFile = join(ROOT, '.env');
@@ -53,12 +65,16 @@ function saveUsage(u: Usage): void {
 }
 
 class QuotaReached extends Error {}
+let lastRequest = 0;
 
 async function synth(env: { key: string; region: string }, usage: Usage, voice: VoiceKey, body: string): Promise<Buffer> {
   const cost = billedChars(body);
   if (remaining(usage, new Date()) < cost) throw new QuotaReached();
   const url = `https://${env.region}.tts.speech.microsoft.com/cognitiveservices/v1`;
   for (let attempt = 0; ; attempt++) {
+    const wait = lastRequest + MIN_GAP_MS - Date.now();
+    if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+    lastRequest = Date.now();
     const res = await fetch(url, {
       method: 'POST',
       headers: {
@@ -83,8 +99,8 @@ async function synth(env: { key: string; region: string }, usage: Usage, voice: 
       console.error(`Azure refused the key (HTTP ${res.status}). Check the AZURE_SPEECH_KEY secret and that the region is ${env.region}.`);
       process.exit(3);
     }
-    if ((res.status === 429 || res.status >= 500) && attempt < 5) {
-      const wait = 2000 * 2 ** attempt;
+    if ((res.status === 429 || res.status >= 500) && attempt < 6) {
+      const wait = 5000 * 2 ** attempt;
       console.warn(`HTTP ${res.status}, retrying in ${wait / 1000} s`);
       await new Promise((r) => setTimeout(r, wait));
       continue;
@@ -143,14 +159,124 @@ async function sample(env: { key: string; region: string }, usage: Usage): Promi
   console.log(`Sample: ${made} new file(s), ${SAMPLE.length} items.`);
 }
 
+
+interface Job {
+  id: string;
+  voice: VoiceKey;
+  hanzi: string;
+  pinyin: string;
+  slow: boolean;
+  /** Path relative to public/audio/az. */
+  file: string;
+}
+
+function readList<T>(file: string, key: string): T[] {
+  const raw = JSON.parse(readFileSync(join(ROOT, 'content', 'data', file), 'utf8'));
+  return Array.isArray(raw) ? raw : raw[key];
+}
+
+/** Every clip, most useful first. */
+/** Sentences only male characters speak in the course dialogues (米格, the male neighbour…). */
+function maleLines(): Set<string> {
+  const voices = new Map<string, Set<string>>();
+  const dir = join(ROOT, 'content', 'units');
+  for (const f of readdirSync(dir)) {
+    const d = JSON.parse(readFileSync(join(dir, f), 'utf8')).dialogue as
+      | { speakers: Array<{ id: string; voice: string }>; lines: Array<{ speaker: string; sentence: string }> }
+      | undefined;
+    if (!d) continue;
+    const sp = new Map(d.speakers.map((x) => [x.id, x.voice]));
+    for (const l of d.lines) {
+      const set = voices.get(l.sentence) ?? new Set<string>();
+      set.add(sp.get(l.speaker) ?? 'f');
+      voices.set(l.sentence, set);
+    }
+  }
+  return new Set([...voices].filter(([, v]) => v.size === 1 && v.has('m')).map(([id]) => id));
+}
+
+function bulkJobs(): Job[] {
+  const male = maleLines();
+  const words = readList<{ id: string; hanzi: string; pinyin: string; order: number; examples: string[] }>('words.json', 'words').sort((a, b) => a.order - b.order);
+  const sentences = readList<{ id: string; hanzi: string; pinyin: string; unlocks: number }>('sentences.json', 'sentences');
+  const sById = new Map(sentences.map((x) => [x.id, x]));
+  const normal: Job[] = [];
+  const queued = new Set<string>();
+  const addSentence = (id: string) => {
+    const x = sById.get(id);
+    if (!x || queued.has(id)) return;
+    queued.add(id);
+    normal.push({ id, voice: male.has(id) ? 'm' : 'f', hanzi: x.hanzi, pinyin: x.pinyin, slow: false, file: `${id}.mp3` });
+  };
+  for (const w of words) {
+    normal.push({ id: w.id, voice: 'f', hanzi: w.hanzi, pinyin: w.pinyin, slow: false, file: `${w.id}.mp3` });
+    for (const e of w.examples) addSentence(e);
+  }
+  for (const x of [...sentences].sort((a, b) => a.unlocks - b.unlocks)) addSentence(x.id);
+  // Slow (0.7×) versions of the sentences come last: they cost the most (the speed markup is billed).
+  const slow = normal.filter((j) => queued.has(j.id)).map((j) => ({ ...j, slow: true, file: `${j.id}.slow.mp3` }));
+  return [...normal, ...slow];
+}
+
+/** Fingerprint of what a clip was made from, so edited text gets re-recorded. */
+function fingerprint(voice: VoiceKey, body: string): string {
+  return createHash('sha1').update(`${voice}|${body}`).digest('hex').slice(0, 10);
+}
+
+async function bulk(env: { key: string; region: string } | null, usage: Usage, minutes: number): Promise<void> {
+  const stopAt = Date.now() + minutes * 60_000;
+  const manifest: Record<string, string> = existsSync(MANIFEST_FILE) ? JSON.parse(readFileSync(MANIFEST_FILE, 'utf8')) : {};
+  const format = env ? await probeHintFormat(env, usage) : (usage.hintFormat ?? 'spaced');
+  const jobs = bulkJobs();
+  const todo = jobs
+    .map((j) => ({ j, body: voiceBody({ hanzi: j.hanzi, hints: hintSpans(j.hanzi, j.pinyin), format, slow: j.slow }) }))
+    .filter(({ j, body }) => !(manifest[j.file] === fingerprint(j.voice, body) && existsSync(join(AUDIO_DIR, j.file))));
+  const cost = todo.reduce((n, t) => n + billedChars(t.body), 0);
+  console.log(`${jobs.length} clips in all, ${todo.length} to make (${cost} billed characters). Free this month: ${Math.max(0, remaining(usage, new Date()))}.`);
+  if (!env) return; // dry run
+  let made = 0;
+  const save = () => {
+    writeFileSync(MANIFEST_FILE, JSON.stringify(manifest, Object.keys(manifest).sort(), 0) + '\n');
+    saveUsage(usage);
+  };
+  try {
+    for (const { j, body } of todo) {
+      if (Date.now() > stopAt) {
+        console.log(`Time's up for this run; the next run carries on.`);
+        break;
+      }
+      try {
+        write(join(AUDIO_DIR, j.file), await synth(env, usage, j.voice, body));
+        manifest[j.file] = fingerprint(j.voice, body);
+        made++;
+      } catch (e) {
+        if (e instanceof QuotaReached) throw e;
+        console.warn(`${j.file} (${j.hanzi}): ${(e as Error).message}`);
+      }
+      if (made % 200 === 0) save();
+    }
+  } finally {
+    save();
+    const left = todo.length - made;
+    console.log(`Made ${made} clip(s); ${left} left.`);
+    if (process.env.GITHUB_STEP_SUMMARY) {
+      writeFileSync(process.env.GITHUB_STEP_SUMMARY, `Made ${made} clip(s), ${left} left of ${jobs.length}.\n`, { flag: 'a' });
+    }
+  }
+}
+
 async function main() {
-  const env = loadEnv();
+  const dry = process.argv.includes('--dry-run');
+  const env = dry ? null : loadEnv();
   const usage = loadUsage();
   const before = usage.months[monthKey(new Date())] ?? 0;
+  const mi = process.argv.indexOf('--minutes');
+  const minutes = mi > 0 ? Number(process.argv[mi + 1]) : 330;
   try {
-    if (process.argv.includes('--sample')) await sample(env, usage);
+    if (process.argv.includes('--sample') && env) await sample(env, usage);
+    else if (process.argv.includes('--bulk')) await bulk(env, usage, minutes);
     else {
-      console.error('Usage: npx tsx scripts/azure-tts.ts --sample');
+      console.error('Usage: npx tsx scripts/azure-tts.ts --sample | --bulk [--minutes 330] [--dry-run]');
       process.exit(1);
     }
   } catch (e) {

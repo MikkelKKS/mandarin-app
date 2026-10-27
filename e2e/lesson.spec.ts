@@ -155,23 +155,22 @@ test('role-play a story by typing one part', async ({ page }) => {
 
 test.describe('audio fallback', () => {
 test.use({ serviceWorkers: 'block' });
-test('a missing recording falls back to the other voice', async ({ page }) => {
+test('plays the Azure recording first, and an older one when it is missing', async ({ page }) => {
   const requested: string[] = [];
-  await page.route('**/audio/m/**', (r) => r.fulfill({ status: 404, body: '' }));
+  // No Azure recordings yet: every request for one fails.
+  await page.route('**/audio/az/**', (r) => r.fulfill({ status: 404, body: '' }));
   page.on('request', (r) => r.url().includes('/audio/') && !r.url().includes('/dict/') && requested.push(new URL(r.url()).pathname));
   await page.goto('./#/lesson/n01-names');
   await expect(page.getByText('New word')).toBeVisible();
   requested.length = 0;
-  // Ask for the male voice explicitly through the settings-independent path: click play twice to alternate voices.
-  for (let i = 0; i < 2; i++) {
-    await page.getByRole('button', { name: /^Play/ }).first().click();
-    await page.waitForTimeout(600);
-  }
-  const male = requested.filter((p) => p.includes('/audio/m/'));
-  const female = requested.filter((p) => p.includes('/audio/f/'));
-  expect(male.length).toBeGreaterThan(0);
-  // Every male request that failed was followed by the same item in the female voice.
-  for (const m of male) expect(female).toContain(m.replace('/audio/m/', '/audio/f/'));
+  await page.getByRole('button', { name: /^Play/ }).first().click();
+  await page.waitForTimeout(800);
+  const az = requested.filter((p) => p.includes('/audio/az/'));
+  const older = requested.filter((p) => p.includes('/audio/f/'));
+  expect(az.length).toBeGreaterThan(0);
+  // The missing Azure clip was followed by the older recording of the same item.
+  expect(older.length).toBeGreaterThan(0);
+  expect(requested.indexOf(az[0])).toBeLessThan(requested.indexOf(older[0]));
 });
 });
 

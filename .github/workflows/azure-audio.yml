@@ -7,8 +7,12 @@ on:
       mode:
         description: 'What to generate'
         type: choice
-        options: [sample]
-        default: sample
+        options: [bulk, sample]
+        default: bulk
+  # Bulk: the free tier allows 20 requests a minute, so runs of about 5½ hours every
+  # 6 hours carry on until everything is made (and continue next month after the quota).
+  schedule:
+    - cron: '23 */6 * * *'
 permissions:
   contents: write
   actions: write
@@ -18,7 +22,9 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 350
+    env:
+      MODE: ${{ inputs.mode || 'bulk' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,22 +32,22 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Generate (${{ inputs.mode }})
+      - name: Generate (${{ env.MODE }})
         env:
           AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
           AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
-        run: npx tsx scripts/azure-tts.ts --${{ inputs.mode }}
+        run: npx tsx scripts/azure-tts.ts --$MODE --minutes 320
       - name: Commit audio and usage
         if: ${{ !cancelled() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/audio-sample content/data/azure-usage.json 2>/dev/null || true
+          for p in public/audio-sample public/audio/az content/data/azure-usage.json content/data/azure-audio.json; do if [ -e "$p" ]; then git add "$p"; fi; done
           if git diff --cached --quiet; then
             echo "Nothing new"
             echo "CHANGED=0" >> "$GITHUB_ENV"
           else
-            git commit -m "Azure audio (${{ inputs.mode }}) [skip ci]"
+            git commit -m "Azure audio ($MODE) [skip ci]"
             for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
             echo "CHANGED=1" >> "$GITHUB_ENV"
           fi

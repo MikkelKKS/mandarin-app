@@ -7,18 +7,15 @@
 import { audioPath, type Voice } from '../content/audioPaths';
 import { lookup, sentences } from '../content';
 import { currentSettings } from './settings';
+import { newWordId } from './review';
 
 const BASE = import.meta.env.BASE_URL;
 let el: HTMLAudioElement | null = null;
-let alternateFlip = false;
 let currentResolve: (() => void) | null = null;
 
-/** Choose a voice according to settings ("alternate" flips each call). */
+/** Voice for older recordings: Xiaoxiao (female), the same voice as the Azure recordings. */
 export function pickVoice(): Voice {
-  const pref = currentSettings().voice;
-  if (pref === 'f' || pref === 'm') return pref;
-  alternateFlip = !alternateFlip;
-  return alternateFlip ? 'f' : 'm';
+  return 'f';
 }
 
 /** Short hash of the spoken text, so edited items get fresh audio past any cache. */
@@ -38,6 +35,17 @@ export function urlFor(id: string, voice: Voice, slow: boolean): string {
   const slowFile = slow && sentences.has(id);
   return `${BASE}${audioPath(id, voice, slowFile)}?v=${textVersion(id)}${slowFile ? `s${SLOW_VERSION}` : ''}`;
 }
+
+/**
+ * Azure recordings (Xiaoxiao), by HSK word id or sentence id: audio/az/<id>.mp3,
+ * and audio/az/<id>.slow.mp3 for sentences at 0.7×. Course words map to their HSK id.
+ */
+export function azureUrl(id: string, slow: boolean): string {
+  const az = newWordId(id) ?? id;
+  return `${BASE}audio/az/${az}${slow ? '.slow' : ''}.mp3?v=${textVersion(id)}`;
+}
+/** Turtle speed when only the normal Azure recording exists yet. */
+const AZURE_SLOW_RATE = 0.7;
 
 /** Extra slow-down for the turtle button (the slow recordings are already 25% slower). */
 const SLOW_SENTENCE_RATE = 0.8;
@@ -85,6 +93,13 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   // Turtle speed: sentences use their slow recording, slowed a bit more; words have no slow
   // recording, so they're slowed down further. Pitch is preserved either way.
   const rate = !slow ? 1 : isSentence ? SLOW_SENTENCE_RATE : SLOW_WORD_RATE;
+  // Azure first (the new voice). Slow: the 0.7× recording, else the normal one slowed down.
+  const addUrl = (url: string, r: number) => {
+    if (!missing.has(url) && !tries.some((t) => t.url === url)) tries.push({ url, rate: r });
+  };
+  if (slow && isSentence) addUrl(azureUrl(id, true), 1);
+  addUrl(azureUrl(id, false), slow ? (isSentence ? AZURE_SLOW_RATE : SLOW_WORD_RATE) : 1);
+  // Then the older recordings, until every item has an Azure one.
   add(voice, slow, rate);
   add(other, slow, rate);
   if (slow && isSentence) {
@@ -147,18 +162,17 @@ export function speak(text: string, opts: PlayOptions = {}): Promise<void> {
 
 /** Warm the cache for upcoming audio (goes through the service worker cache). */
 export function preload(ids: string[], voice?: Voice): void {
+  void voice;
   for (const id of ids.filter((i) => !i.startsWith('p-'))) {
-    for (const v of voice ? [voice] : (['f', 'm'] as Voice[])) {
-      fetch(urlFor(id, v, false), { priority: 'low' } as RequestInit).catch(() => {});
-    }
+    fetch(azureUrl(id, false), { priority: 'low' } as RequestInit).catch(() => {});
   }
 }
 
 /** Download all audio for a set of items in the background, for offline use. */
 export async function prefetchForOffline(ids: string[]): Promise<void> {
   const urls = ids.filter((i) => !i.startsWith('p-')).flatMap((id) => {
-    const list = [urlFor(id, 'f', false), urlFor(id, 'm', false)];
-    if (sentences.has(id)) list.push(urlFor(id, 'f', true), urlFor(id, 'm', true));
+    const list = [azureUrl(id, false), urlFor(id, 'f', false)];
+    if (sentences.has(id)) list.push(azureUrl(id, true));
     return list;
   });
   const cache = typeof caches !== 'undefined' ? await caches.open('audio') : null;

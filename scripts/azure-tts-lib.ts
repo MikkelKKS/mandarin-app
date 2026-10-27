@@ -14,8 +14,8 @@ export type VoiceKey = keyof typeof VOICES;
 export const MONTHLY_QUOTA = 500_000;
 export const SAFETY_MARGIN = 20_000;
 
-/** Slow versions of sentences: 0.8× speed. */
-export const SLOW_RATE = '-20%';
+/** Slow versions of sentences: 0.7× speed (the owner found 0.8× not slow enough). */
+export const SLOW_RATE = '-30%';
 
 /** How Azure writes a zh-CN pronunciation in `<phoneme alphabet="sapi" ph="…">`. */
 export type HintFormat = 'spaced' | 'joined';

@@ -3,9 +3,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # Daily retry for any audio the TTS service refused (it sometimes blocks for a while).
-  schedule:
-    - cron: '17 3 * * *'
 permissions:
   contents: write
   pages: write
@@ -14,59 +11,11 @@ concurrency:
   group: deploy
   cancel-in-progress: false
 jobs:
-  audio:
-    runs-on: ubuntu-latest
-    # Never hold a deploy for long: the app works without new recordings.
-    timeout-minutes: ${{ github.event_name == 'schedule' && 120 || 15 }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: pip install edge-tts
-      - name: Install ffmpeg
-        # apt sometimes hangs on the runner; give up after 4 minutes (generation is then skipped).
-        timeout-minutes: 4
-        continue-on-error: true
-        run: which ffmpeg || (sudo apt-get update -o Acquire::Retries=2 -o Acquire::http::Timeout=20 && sudo apt-get install -y --no-install-recommends ffmpeg)
-      - name: Generate missing audio
-        # The free TTS service sometimes refuses requests for a while. Never block a deploy over it:
-        # the app falls back to the browser's voice, and the next run retries what's missing.
-        continue-on-error: true
-        # Pushes shouldn't wait half an hour on retries: 8 minutes, then deploy with what exists.
-        # The nightly run gets longer to catch up.
-        timeout-minutes: ${{ github.event_name == 'schedule' && 90 || 8 }}
-        run: python3 scripts/generate-audio.py
-      - name: Commit new audio
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/audio
-          if git diff --cached --quiet; then
-            echo "No new audio"
-          else
-            git commit -m "Generate audio [skip ci]"
-            for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && break; sleep 5; done
-          fi
-      # Hand the audio straight to the build, so it builds exactly this push's content.
-      - uses: actions/upload-artifact@v4
-        with:
-          name: audio
-          path: public/audio
-          retention-days: 1
-
+  # Recordings are made by the azure-audio workflow and committed; the build uses what's in the repo.
   build:
-    needs: audio
-    # Build even if the audio job failed or timed out: the recordings already in the repo are used.
-    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        continue-on-error: true
-        with:
-          name: audio
-          path: public/audio
       - uses: actions/setup-node@v4
         with:
           node-version: 22

@@ -138,18 +138,6 @@ export function SettingsView() {
             ]}
           />
         </Row>
-        <Row title="Voice">
-          <Segmented
-            label="Voice"
-            value={s.voice}
-            onChange={(v) => set({ voice: v })}
-            options={[
-              { v: 'alternate', label: 'Alternate' },
-              { v: 'f', label: 'Female' },
-              { v: 'm', label: 'Male' },
-            ]}
-          />
-        </Row>
         <Row title="Sound effects">
           <Segmented label="Sound effects" value={s.sound ? 'on' : 'off'} onChange={(v) => set({ sound: v === 'on' })} options={[...onOff]} />
         </Row>
@@ -224,7 +212,7 @@ export function SettingsView() {
             )}
           </Row>
         )}
-        <Row title="New voices" hint="Listen to the Azure sample before every word is recorded.">
+        <Row title="Voice" hint="Everything is being recorded in one natural voice, Xiaoxiao. Older recordings are used until each one is ready.">
           <button onClick={() => go('audio-sample')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
             Audio sample
           </button>

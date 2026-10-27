@@ -5,7 +5,7 @@ describe('Azure TTS helpers', () => {
   it('counts Chinese characters twice and markup once, as Azure bills', () => {
     expect(billedChars('你好')).toBe(4);
     expect(billedChars('你好！')).toBe(5);
-    expect(billedChars('<prosody rate="-20%">你好</prosody>')).toBe(4 + '<prosody rate="-20%"></prosody>'.length);
+    expect(billedChars('<prosody rate="-30%">你好</prosody>')).toBe(4 + '<prosody rate="-30%"></prosody>'.length);
   });
   it('only adds pronunciation hints where the default reading is wrong, around that word only', () => {
     expect(hintSpans('银行', 'yínháng')).toEqual([]);
@@ -26,7 +26,7 @@ describe('Azure TTS helpers', () => {
     expect(voiceBody({ hanzi: '你明天有空吗？', hints: [{ start: 4, end: 5, phones: ['kong4'] }] })).toBe(
       '你明天有<phoneme alphabet="sapi" ph="kong 4">空</phoneme>吗？',
     );
-    expect(voiceBody({ hanzi: '我很忙。', slow: true })).toBe('<prosody rate="-20%">我很忙。</prosody>');
+    expect(voiceBody({ hanzi: '我很忙。', slow: true })).toBe('<prosody rate="-30%">我很忙。</prosody>');
   });
   it('builds SSML with the chosen voices and no speaking style', () => {
     const x = ssml('m', '你好');
