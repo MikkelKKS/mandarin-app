@@ -3,6 +3,7 @@
  * what happened; the player records it, shows feedback and moves on.
  * Pinyin first: characters only when "Characters: Show" is on.
  */
+import { VolumeSlider } from '../../components/VolumeSlider';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
@@ -424,6 +425,7 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
             Another voice
           </button>
         )}
+        <VolumeSlider className="mt-2" />
         <p className="mt-4 text-3xl font-semibold">{gym.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}</p>
       </div>
       <div className="mt-6 flex flex-col gap-3">

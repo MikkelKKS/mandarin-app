@@ -12,6 +12,35 @@ import { fixedVersion } from './audioReports';
 
 const BASE = import.meta.env.BASE_URL;
 let el: HTMLAudioElement | null = null;
+
+/** Playback volume (0–1), per device: phones and PCs differ. */
+const VOLUME_KEY = 'audio:volume';
+let volume = (() => {
+  try {
+    const v = Number(localStorage.getItem(VOLUME_KEY));
+    return localStorage.getItem(VOLUME_KEY) !== null && v >= 0 && v <= 1 ? v : 0.8;
+  } catch {
+    return 0.8;
+  }
+})();
+const volumeListeners = new Set<(v: number) => void>();
+export function getVolume(): number {
+  return volume;
+}
+export function setVolume(v: number): void {
+  volume = Math.max(0, Math.min(1, v));
+  if (el) el.volume = volume;
+  try {
+    localStorage.setItem(VOLUME_KEY, String(volume));
+  } catch {
+    /* storage unavailable: still applies this session */
+  }
+  volumeListeners.forEach((f) => f(volume));
+}
+export function onVolume(f: (v: number) => void): () => void {
+  volumeListeners.add(f);
+  return () => void volumeListeners.delete(f);
+}
 let currentResolve: (() => void) | null = null;
 
 /** Voice for older recordings: Xiaoxiao (female), the same voice as the Azure recordings. */
@@ -142,6 +171,7 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
       a.preload = 'auto';
       a.defaultPlaybackRate = t.rate;
       a.playbackRate = t.rate;
+      a.volume = volume;
       el = a;
       const me = a;
       me.onended = done;
@@ -168,6 +198,7 @@ export function speak(text: string, opts: PlayOptions = {}): Promise<void> {
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'zh-CN';
     u.rate = opts.slow ? 0.6 : 0.9;
+    u.volume = volume;
     const voices = speechSynthesis.getVoices().filter((v) => v.lang.replace('_', '-').startsWith('zh-CN'));
     if (voices.length) u.voice = voices[opts.voice === 'm' ? voices.length - 1 : 0];
     u.onend = () => resolve();
@@ -212,6 +243,7 @@ export function dictAudioUrl(hanzi: string): string {
 export function playUrl(url: string): Promise<boolean> {
   stop();
   const a = new Audio(url);
+  a.volume = volume;
   el = a;
   return new Promise((resolve) => {
     a.onended = () => resolve(true);

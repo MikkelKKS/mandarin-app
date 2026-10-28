@@ -1,3 +1,4 @@
+import { VolumeSlider } from '../../components/VolumeSlider';
 import type { ReactNode } from 'react';
 import { AudioProgress } from './AudioProgress';
 import { micSupported } from '../../lib/pitchTrack';
@@ -161,6 +162,7 @@ export function SettingsView() {
             ]}
           />
         </Row>
+        <Row title="Volume" hint="For every recording. Remembered on this device." side={<VolumeSlider />} />
         <Row title="Sound effects" side={<Toggle label="Sound effects" on={s.sound} onChange={(on) => set({ sound: on })} />} />
         <Row title="Appearance">
           <Segmented

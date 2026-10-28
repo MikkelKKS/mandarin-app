@@ -222,3 +222,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Converted to 40 kbps mono MP3 (60 MB instead of 284 MB) by `scripts/tone-perfect.ts`; loudness was already even across speakers, so nothing else was changed. Credited in About and the README.
 - **Single tones** in the Tone Gym now come from these recordings: every syllable in every tone (1,640 items), a random speaker each time, "Another voice" cycles through the six. After a wrong answer, "What you chose sounds like" plays your tone on the same syllable in the same voice. Tone pairs and tone changes still use Azure words (Tone Perfect has single syllables only).
 - **Tone questions in sessions** are back on (they were paused until these arrived), now single tones by real speakers only: up to 6 in a quick session, 12 in a deep one.
+
+## 2026-10-28: Quieter Tone Perfect, real recordings only, volume slider
+- The Tone Perfect originals are mastered very loud (about −7 LUFS, peaks above full scale). Every clip is now turned down to −20 LUFS, the loudness of the Azure recordings, with at least 2 dB of headroom (`scripts/tone-perfect.ts`, measured per file with ffmpeg's EBU R128 meter). Allowed by the CC BY-NC licence.
+- **Tone Gym = real recordings only** (asked): tone pairs and tone changes are gone. Two rounds: **Workout** (weighted to the tones you mix up most) and **Even mix** (all four tones equally). Old links to the removed rounds open a workout. Tone pairs from your typed answers still show in the matrix and as "weakest pair".
+- **Volume slider** under every audio player (sessions, lessons, Tone Gym, story reader) and in Settings: one level for all recordings, remembered per device (phone and PC differ), applied to playing audio immediately.

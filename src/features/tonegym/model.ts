@@ -12,11 +12,10 @@ const TP = tonePerfect as Record<string, Record<string, string[]>>;
 const TP_SPEAKERS: Record<string, string> = { f1: 'Woman 1', f2: 'Woman 2', f3: 'Woman 3', m1: 'Man 1', m2: 'Man 2', m3: 'Man 3' };
 
 export type GymMode = 'mixed' | 'single' | 'pairs' | 'sandhi';
+/** The Tone Gym uses real recordings only (Tone Perfect), so single tones: an adaptive workout and an even mix. */
 export const MODES: Array<{ id: GymMode; title: string; blurb: string }> = [
-  { id: 'mixed', title: 'Workout', blurb: 'Single tones and pairs, weighted to what you mix up most' },
-  { id: 'single', title: 'Single tones', blurb: 'Every syllable in every tone, by six real speakers' },
-  { id: 'pairs', title: 'Tone pairs', blurb: 'Two-syllable words: all 20 combinations' },
-  { id: 'sandhi', title: 'Tone changes', blurb: '3+3, 不 and 一: hear the change, name the dictionary tones' },
+  { id: 'mixed', title: 'Workout', blurb: 'Weighted to the tones you mix up most' },
+  { id: 'single', title: 'Even mix', blurb: 'All four tones equally, any syllable' },
 ];
 export const ROUND = 20;
 
@@ -138,11 +137,9 @@ export function tonePerfectPool(vocab: VocabRow[], base: string): GymItem[] {
   return out;
 }
 
-/** Everything the Tone Gym can ask: real speakers for single tones, Azure words for pairs and tone changes. */
+/** Everything the Tone Gym asks: single tones by real speakers (Tone Perfect). */
 export function buildPool(vocab: VocabRow[], base: string): GymItem[] {
-  const words = vocab.map((w) => toItem(w, base)).filter((x): x is GymItem => !!x);
-  const tp = tonePerfectPool(vocab, base);
-  return tp.length ? [...tp, ...words.filter((x) => x.tones.length > 1)] : words;
+  return tonePerfectPool(vocab, base);
 }
 
 /** For sessions: single tones by real speakers only. */
@@ -248,7 +245,8 @@ export function pickRound(pool: GymItem[], mode: GymMode, stats: Map<string, Pat
       if (narrowed.length) patterns = narrowed;
     }
     if (!patterns.length) break;
-    const p = choose(patterns, (k) => 0.15 + errorRate(stats.get(k)));
+    // Even mix: every tone equally likely. Otherwise weighted to your mistakes.
+    const p = choose(patterns, (k) => (mode === 'single' ? 1 : 0.15 + errorRate(stats.get(k))));
     const options = byPattern.get(p)!.filter((x) => !used.has(x.word));
     const item = options[Math.floor(rng() * options.length)];
     used.add(item.word);

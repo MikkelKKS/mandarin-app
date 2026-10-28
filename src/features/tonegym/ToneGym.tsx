@@ -3,6 +3,7 @@
  * tone changes), with several speakers, weighted to what you mix up most.
  * Answers are logged with their tones, which feeds the confusion matrix.
  */
+import { VolumeSlider } from '../../components/VolumeSlider';
 import { PageHeader } from '../../components/PageHeader';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Speaker } from '../../components/icons';
@@ -22,7 +23,8 @@ const TONE_TEXT = ['', 'text-t1', 'text-t2', 'text-t3', 'text-t4', 'text-t5'];
 const WEEK = 7 * 864e5;
 
 export function ToneGymRoute({ route }: { route: string[] }) {
-  const mode = route[1] as GymMode | undefined;
+  // Old links to the removed pair and tone-change rounds open a workout.
+  const mode = route[1] ? ((MODES.some((m) => m.id === route[1]) ? route[1] : 'mixed') as GymMode) : undefined;
   return mode && MODES.some((m) => m.id === mode) ? <Round key={mode} mode={mode} /> : <GymHome />;
 }
 
@@ -244,6 +246,7 @@ function Round({ mode }: { mode: GymMode }) {
             Another voice ({item!.sources.length} voices)
           </button>
         )}
+        <VolumeSlider className="mt-3" />
         <p className="mt-6 text-3xl font-semibold tracking-wide" aria-label="Syllables">
           {item!.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}
         </p>

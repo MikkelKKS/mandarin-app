@@ -101,16 +101,18 @@ describe('picking a round', () => {
     expect(pickRound(pool, 'pairs', new Map(), rng()).every((x) => x.tones.length === 2)).toBe(true);
     expect(candidates(pool, 'sandhi').every((x) => x.sandhi)).toBe(true);
   });
-  it('drills weak patterns more often', () => {
-    const weak = new Map([['2-3', { n: 20, wrong: 16 }]]);
-    for (const [p, n] of [['1-1', 0], ['1-2', 0]] as const) weak.set(p, { n: 20, wrong: n });
-    let weakCount = 0;
-    let evenCount = 0;
+  it('a workout drills weak tones more often; an even mix does not', async () => {
+    const { tonePerfectPool } = await import('./model');
+    const tp = tonePerfectPool([], '/');
+    const weak = new Map([['3', { n: 20, wrong: 16 }]]);
+    for (const p of ['1', '2', '4']) weak.set(p, { n: 20, wrong: 0 });
+    let workout = 0;
+    let even = 0;
     for (let seed = 1; seed <= 30; seed++) {
-      weakCount += pickRound(pool, 'pairs', weak, rng(seed)).filter((x) => x.pattern === '2-3').length;
-      evenCount += pickRound(pool, 'pairs', new Map(), rng(seed)).filter((x) => x.pattern === '2-3').length;
+      workout += pickRound(tp, 'mixed', weak, rng(seed)).filter((x) => x.pattern === '3').length;
+      even += pickRound(tp, 'single', weak, rng(seed)).filter((x) => x.pattern === '3').length;
     }
-    expect(weakCount).toBeGreaterThan(evenCount * 1.5);
+    expect(workout).toBeGreaterThan(even * 1.5);
   });
   it('rates unpractised patterns as a 1-in-3 miss', () => {
     expect(errorRate(undefined)).toBeCloseTo(1 / 3);

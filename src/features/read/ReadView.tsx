@@ -1,4 +1,5 @@
 /** Stories: short reads built from the words you've learned. Reading only; tap a word to look it up. */
+import { VolumeSlider } from '../../components/VolumeSlider';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { units, words, wordByHanzi } from '../../content';
 import { StorySchema, segmentWithVocab, type Story, type StoryToken } from '../../content/stories';
@@ -163,6 +164,7 @@ function StoryReader({ id }: { id: string }) {
           {english ? 'Hide English' : 'Show English'}
         </button>
       </div>
+      <VolumeSlider className="mt-3" />
 
       <article className="mt-7 flex flex-col gap-6">
         {story.paragraphs.map((p, pi) => {

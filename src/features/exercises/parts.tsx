@@ -1,4 +1,5 @@
 /** Building blocks shared by exercise components. */
+import { VolumeSlider } from '../../components/VolumeSlider';
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import type { Voice } from '../../content/audioPaths';
 import { play } from '../../lib/audio';
@@ -51,6 +52,7 @@ export function AudioControls({
   }, [id]);
   const big = size === 'lg';
   return (
+    <div className="flex flex-col items-center gap-3">
     <div className="flex items-center justify-center gap-4">
       <button
         type="button"
@@ -83,6 +85,8 @@ export function AudioControls({
           {LADDER[step]}×
         </button>
       )}
+    </div>
+    <VolumeSlider />
     </div>
   );
 }
