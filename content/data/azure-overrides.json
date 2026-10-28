@@ -1,5 +1,9 @@
 {
  "s-nikan-zhaopian": {
+  "voice": "m",
+  "all": true
+ },
+ "s-zhegecaizhenhaochi": {
   "voice": "f",
   "all": true
  }
