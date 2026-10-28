@@ -12,10 +12,10 @@ sentences Tatoeba (CC BY 2.0 FR) and the course.
 
 | HSK level | Words | With an example | Still need one |
 |---|---|---|---|
-| 1 | 511 | 472 | 39 |
-| 2 | 758 | 633 | 125 |
-| 3 | 961 | 691 | 270 |
-| 4 | 987 | 683 | 304 |
+| 1 | 511 | 501 | 10 |
+| 2 | 758 | 709 | 49 |
+| 3 | 961 | 847 | 114 |
+| 4 | 987 | 806 | 181 |
 | 5 | 1064 | 638 | 426 |
 | 6 | 1132 | 618 | 514 |
 | 7–9 | 5627 | 2075 | 3552 |
@@ -23,7 +23,7 @@ sentences Tatoeba (CC BY 2.0 FR) and the course.
 
 ## Sentences
 
-9800 sentences: 9000 from Tatoeba, 800 from the course, 0 generated.
+9990 sentences: 9190 from Tatoeba, 800 from the course, 0 generated.
 Tatoeba had 89211 Chinese sentences; 27164 were simplified, short, translated into English and used only HSK words.
 
 ## Problems (5)
