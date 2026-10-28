@@ -110,6 +110,9 @@ export function SettingsView() {
         <Row title="Beijing pack" hint="Her family's Beijing Mandarin first: 儿化 words (哪儿, 这儿, 一会儿, 没事儿, 遛弯儿…) and everyday Beijing words come first among your new words.">
           <Segmented label="Beijing pack" value={s.beijingPack ? 'on' : 'off'} onChange={(v) => set({ beijingPack: v === 'on' })} options={[...onOff]} />
         </Row>
+        <Row title="Tone questions in sessions" hint="Mix Tone Gym questions into quick and deep sessions. Off for now: the Tone Gym page still has them.">
+          <Segmented label="Tone questions in sessions" value={s.sessionTones ? 'on' : 'off'} onChange={(v) => set({ sessionTones: v === 'on' })} options={[...onOff]} />
+        </Row>
         <Row title="Reviews per day" hint="A cap for busy days. Reviews left over wait until tomorrow.">
           <Segmented
             label="Reviews per day"

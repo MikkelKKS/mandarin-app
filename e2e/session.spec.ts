@@ -45,8 +45,14 @@ test('a quick session from the home screen earns XP and counts towards the goal'
   // A fresh start: new words first.
   await expect(page.getByText(/^New word/).first()).toBeVisible();
   let done = false;
-  for (let i = 0; i < 200 && !done; i++) done = await step(page);
+  let toneQuestions = 0;
+  for (let i = 0; i < 200 && !done; i++) {
+    if (await page.getByText(/^Tone Gym: which tone/).isVisible()) toneQuestions++;
+    done = await step(page);
+  }
   expect(done).toBe(true);
+  // Tone questions stay in the Tone Gym unless turned on in Settings.
+  expect(toneQuestions).toBe(0);
   await expect(page.getByText(/^\+\d+ XP$/)).toBeVisible();
   await expect(page.getByText(/New words \(\d\)/)).toBeVisible();
   await expect(page.getByText('First session')).toBeVisible(); // achievement

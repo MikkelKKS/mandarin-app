@@ -95,6 +95,8 @@ export interface Settings {
   placedAt: number;
   /** Optional Beijing pack: 儿化 words and Beijing everyday words come first among new words. */
   beijingPack: boolean;
+  /** Tone Gym questions inside quick and deep sessions (off until better tone recordings arrive). */
+  sessionTones: boolean;
   theme: Theme;
 }
 
@@ -153,6 +155,7 @@ export const DEFAULT_SETTINGS: Settings = {
   showHanzi: false,
   placedAt: 0,
   beijingPack: false,
+  sessionTones: false,
   theme: 'system',
 };
 

@@ -67,13 +67,13 @@ export function HomeView() {
   const quick = (
     <button key="quick" onClick={() => go('session/quick')} className={`press flex w-full flex-col items-start rounded-3xl p-5 text-left ${wide ? 'border-2 border-line bg-surface' : 'bg-jade text-jade-ink'}`}>
       <span className="text-2xl font-bold">Quick session</span>
-      <span className={`text-sm ${wide ? 'text-muted' : 'opacity-90'}`}>About 5 minutes: reviews with tone questions mixed in</span>
+      <span className={`text-sm ${wide ? 'text-muted' : 'opacity-90'}`}>{settings.sessionTones ? 'About 5 minutes: reviews with tone questions mixed in' : 'About 5 minutes: your reviews, and a few new words'}</span>
     </button>
   );
   const deep = (
     <button key="deep" onClick={() => go('session/deep')} className={`press flex w-full flex-col items-start rounded-3xl p-5 text-left ${wide ? 'bg-jade text-jade-ink' : 'border-2 border-line bg-surface'}`}>
       <span className="text-2xl font-bold">Deep session</span>
-      <span className={`text-sm ${wide ? 'opacity-90' : 'text-muted'}`}>20+ minutes: reviews, new words, listening, Tone Gym</span>
+      <span className={`text-sm ${wide ? 'opacity-90' : 'text-muted'}`}>20+ minutes: reviews, new words, listening{settings.sessionTones ? ', Tone Gym' : ''}</span>
     </button>
   );
 

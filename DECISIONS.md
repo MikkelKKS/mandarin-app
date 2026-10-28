@@ -200,3 +200,7 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Stats → Browse the words → **Move words**: tap words (or "Select all" on a group), then move them to Not started, Learning, Young or Mature.
 - **Not started:** every card of the word goes back to new (speaking too); it's taught again as a new word. **Learning:** as if just answered "Again" the first time (due within minutes). **Young:** in review, due in 3–14 days. **Mature:** due in 3–9 weeks, as with placement (cards already that far out are kept).
 - Manual moves aren't reviews: nothing is added to the review log, so retention stats and the scheduler optimiser only see real answers.
+
+## 2026-10-28: Tone questions out of sessions (for now)
+- Quick and deep sessions no longer mix in Tone Gym questions: the neural-voice syllables weren't good enough to learn tones from. The Tone Gym page keeps them.
+- Settings → **Tone questions in sessions** (off by default) brings them back; the plan is to turn it on once the Tone Perfect recordings (6 real speakers) are in.
