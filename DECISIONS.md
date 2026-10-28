@@ -195,3 +195,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Review questions about a word (listening → meaning, dictation, meaning → pinyin) have an **"I don't know this word"** button, before and (for listening → meaning) after showing the answer. Not on new-word lessons or retries.
 - It puts all the word's cards back to new (not started), shows the word, drops its other review questions from the session, and teaches it straight away like a new word (intro, first choice, typing). Its reviews start over from scratch.
 - Logged as exercise `unknown` without a card, so it doesn't count against true retention (the word was never really in long-term memory). Asked for because placement marked words as known that weren't.
+
+## 2026-10-28: Moving words by hand
+- Stats → Browse the words → **Move words**: tap words (or "Select all" on a group), then move them to Not started, Learning, Young or Mature.
+- **Not started:** every card of the word goes back to new (speaking too); it's taught again as a new word. **Learning:** as if just answered "Again" the first time (due within minutes). **Young:** in review, due in 3–14 days. **Mature:** due in 3–9 weeks, as with placement (cards already that far out are kept).
+- Manual moves aren't reviews: nothing is added to the review log, so retention stats and the scheduler optimiser only see real answers.
