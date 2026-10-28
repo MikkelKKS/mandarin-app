@@ -3,13 +3,18 @@
  * speakers, adapting to the tones and tone pairs you confuse most.
  * Pure logic here; the screen is ToneGym.tsx.
  */
+import tonePerfect from '../../../content/data/tone-perfect.json';
 import { parsePinyin, markSyllable, type Tone } from '../../lib/pinyin';
 import type { VocabRow } from '../../lib/vocabData';
+
+/** Tone Perfect (MSU Libraries, CC BY-NC 4.0): syllable → tone → speakers recorded. */
+const TP = tonePerfect as Record<string, Record<string, string[]>>;
+const TP_SPEAKERS: Record<string, string> = { f1: 'Woman 1', f2: 'Woman 2', f3: 'Woman 3', m1: 'Man 1', m2: 'Man 2', m3: 'Man 3' };
 
 export type GymMode = 'mixed' | 'single' | 'pairs' | 'sandhi';
 export const MODES: Array<{ id: GymMode; title: string; blurb: string }> = [
   { id: 'mixed', title: 'Workout', blurb: 'Single tones and pairs, weighted to what you mix up most' },
-  { id: 'single', title: 'Single tones', blurb: 'Hear one syllable: which of the four tones?' },
+  { id: 'single', title: 'Single tones', blurb: 'Every syllable in every tone, by six real speakers' },
   { id: 'pairs', title: 'Tone pairs', blurb: 'Two-syllable words: all 20 combinations' },
   { id: 'sandhi', title: 'Tone changes', blurb: '3+3, 不 and 一: hear the change, name the dictionary tones' },
 ];
@@ -94,8 +99,55 @@ export function toItem(w: VocabRow, base: string): GymItem | null {
   };
 }
 
+/** A Tone Perfect recording of one syllable in one tone by one speaker. */
+export function tpUrl(base: string, syllable: string, tone: number, speaker: string): string {
+  return `${base}audio/tp/${syllable}${tone}_${speaker}.mp3`;
+}
+
+/**
+ * Single tones from Tone Perfect: every Mandarin syllable in every tone, each by
+ * up to six real speakers (high-variability training). A common HSK word with
+ * that exact reading gives the meaning shown afterwards, when there is one.
+ */
+export function tonePerfectPool(vocab: VocabRow[], base: string): GymItem[] {
+  const meaning = new Map<string, VocabRow>();
+  for (const w of vocab) {
+    if ([...w.hanzi].length !== 1) continue;
+    const syl = parsePinyin(w.pinyin.replace(/\s+/g, ''), 1);
+    if (!syl || syl.length !== 1) continue;
+    const k = `${syl[0].base}${syl[0].tone}`;
+    if (!meaning.has(k)) meaning.set(k, w);
+  }
+  const out: GymItem[] = [];
+  for (const [syllable, tones] of Object.entries(TP)) {
+    for (const [t, speakers] of Object.entries(tones)) {
+      const tone = Number(t) as Tone;
+      const w = meaning.get(`${syllable}${tone}`);
+      out.push({
+        word: `tp-${syllable}${tone}`,
+        hanzi: w?.hanzi ?? '',
+        pinyin: markSyllable({ base: syllable, tone }),
+        bases: [syllable],
+        tones: [tone],
+        pattern: String(tone),
+        sources: speakers.map((sp) => ({ url: tpUrl(base, syllable, tone, sp), speaker: TP_SPEAKERS[sp] ?? sp })),
+        gloss: w ? `${w.hanzi} ${w.gloss[0] ?? ''}`.trim() : '',
+      });
+    }
+  }
+  return out;
+}
+
+/** Everything the Tone Gym can ask: real speakers for single tones, Azure words for pairs and tone changes. */
 export function buildPool(vocab: VocabRow[], base: string): GymItem[] {
-  return vocab.map((w) => toItem(w, base)).filter((x): x is GymItem => !!x);
+  const words = vocab.map((w) => toItem(w, base)).filter((x): x is GymItem => !!x);
+  const tp = tonePerfectPool(vocab, base);
+  return tp.length ? [...tp, ...words.filter((x) => x.tones.length > 1)] : words;
+}
+
+/** For sessions: single tones by real speakers only. */
+export function sessionPool(vocab: VocabRow[], base: string): GymItem[] {
+  return tonePerfectPool(vocab, base);
 }
 
 // ---------------------------------------------------------------------------

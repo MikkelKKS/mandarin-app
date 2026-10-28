@@ -128,7 +128,7 @@ export function SettingsView() {
         />
         <Row
           title="Tone questions in sessions"
-          hint="Mix Tone Gym questions into quick and deep sessions. Off until the recordings of real speakers arrive."
+          hint="Mix single-tone questions, recorded by six real speakers, into quick and deep sessions."
           side={<Toggle label="Tone questions in sessions" on={s.sessionTones} onChange={(on) => set({ sessionTones: on })} />}
         />
         <LinkRow title="Your level" hint="Mark words you already know, with a 5-minute test or by picking a starting level." to="placement" />

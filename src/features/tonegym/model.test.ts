@@ -117,3 +117,23 @@ describe('picking a round', () => {
     expect(errorRate({ n: 97, wrong: 0 })).toBeLessThan(0.02);
   });
 });
+
+describe('Tone Perfect: single tones by six real speakers', async () => {
+  const { tonePerfectPool, buildPool, sessionPool } = await import('./model');
+  const vocab = [{ id: 'ma3x', hanzi: '马', pinyin: 'mǎ', gloss: ['horse'], level: 1, order: 1, examples: [], azure: true }];
+  it('every syllable in every tone, with up to six voices and a meaning when an HSK word has that reading', () => {
+    const pool = tonePerfectPool(vocab, '/');
+    expect(pool.length).toBe(1640);
+    const ma3 = pool.find((x) => x.word === 'tp-ma3')!;
+    expect(ma3.sources).toHaveLength(6);
+    expect(ma3.sources[0].url).toBe('/audio/tp/ma3_f1.mp3');
+    expect(ma3.pinyin).toBe('mǎ');
+    expect(ma3.gloss).toBe('马 horse');
+    expect(pool.find((x) => x.word === 'tp-jiao1')!.sources).toHaveLength(5); // one file MSU removed
+  });
+  it('real speakers replace the single-word items; sessions use only them', () => {
+    const pool = buildPool(vocab, '/');
+    expect(pool.filter((x) => x.tones.length === 1).every((x) => x.word.startsWith('tp-'))).toBe(true);
+    expect(sessionPool(vocab, '/').every((x) => x.word.startsWith('tp-'))).toBe(true);
+  });
+});

@@ -51,8 +51,8 @@ test('a quick session from the home screen earns XP and counts towards the goal'
     done = await step(page);
   }
   expect(done).toBe(true);
-  // Tone questions stay in the Tone Gym unless turned on in Settings.
-  expect(toneQuestions).toBe(0);
+  // Single-tone questions by real speakers are mixed in.
+  expect(toneQuestions).toBeGreaterThan(0);
   await expect(page.getByText(/^\+\d+ XP$/)).toBeVisible();
   await expect(page.getByText(/New words \(\d\)/)).toBeVisible();
   await expect(page.getByText('First session')).toBeVisible(); // achievement

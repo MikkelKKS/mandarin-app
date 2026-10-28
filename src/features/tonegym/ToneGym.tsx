@@ -38,8 +38,9 @@ function GymHome() {
   const weak = logs ? weakestPair(patternStats(logs.filter((l) => l.at > weekAgo))) : null;
   return (
     <div className="pb-10">
-      <PageHeader title="Tone Gym" />
-      <p className="mt-1 text-muted">Short rounds of {ROUND}. Hearing many voices and words trains your ear fastest.</p>
+      <PageHeader title="Tone Gym">
+        Short rounds of {ROUND}. Single tones are recorded by six native speakers (Tone Perfect, Michigan State University), so your ear learns the tone rather than one voice.
+      </PageHeader>
       {weak && (
         <p className="mt-4 rounded-2xl bg-amber-soft p-4">
           Weakest pair this week: <span className="font-semibold tabular-nums">{patternLabel(weak.pattern)}</span>, missed {Math.round(weak.error * 100)}% of the time.
@@ -280,12 +281,12 @@ function Round({ mode }: { mode: GymMode }) {
         ))}
       </div>
 
-      {answer && <Feedback answer={answer} pool={pool} onNext={next} onReplay={() => void playSource(answer.item, speaker)} />}
+      {answer && <Feedback answer={answer} pool={pool} voice={answer.item.sources[speaker]?.speaker} onNext={next} onReplay={() => void playSource(answer.item, speaker)} />}
     </div>
   );
 }
 
-function Feedback({ answer, pool, onNext, onReplay }: { answer: Answer; pool: GymItem[]; onNext: () => void; onReplay: () => void }) {
+function Feedback({ answer, pool, voice, onNext, onReplay }: { answer: Answer; pool: GymItem[]; voice?: string; onNext: () => void; onReplay: () => void }) {
   const { item, given, right } = answer;
   // What you thought you heard: the same syllables with your tones if a recording exists, else any word with that tone pattern.
   const yours = useMemo(() => {
@@ -316,7 +317,7 @@ function Feedback({ answer, pool, onNext, onReplay }: { answer: Answer; pool: Gy
             <Speaker className="h-5 w-5" /> Hear it again
           </button>
           {yours && (
-            <button onClick={() => void playUrl(yours.sources[0].url)} className="flex h-11 items-center gap-2 rounded-xl bg-surface/70 px-3 font-medium">
+            <button onClick={() => void playUrl((yours.sources.find((x) => x.speaker === voice) ?? yours.sources[0]).url)} className="flex h-11 items-center gap-2 rounded-xl bg-surface/70 px-3 font-medium">
               <Speaker className="h-5 w-5" /> What {patternLabel(given.join('-'))} sounds like ({yours.pinyin})
             </button>
           )}

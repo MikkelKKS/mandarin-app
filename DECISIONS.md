@@ -216,3 +216,9 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Dictionary:** "Learn next" replaces "Add to my practice" (those words never reached a session). HSK words go to the front of your new words; earlier "My words" were carried over. Words play their Azure recording.
 - **Translation:** a Supabase function calling Azure Translator (free F0), only for the owner's account; MyMemory remains the fallback until it's set up.
 - **Look:** porcelain and ink. Cool light surfaces, jade for actions, tone colours as the only other bright colours; Instrument Sans (good pinyin tone marks) with Noto Sans SC; hairline borders instead of thick ones; no 3D button lips; one easing curve, short durations; the red seal on end screens is the one flourish. Home has one main action; Settings is grouped with switches; achievements moved to Stats.
+
+## 2026-10-28: Tone Perfect recordings
+- MSU's Tone Perfect MP3 Dataset (licence CC BY-NC 4.0: attribution, non-commercial, changes allowed): all 410 syllables in four tones by six native speakers, 9,839 files (MSU deleted one faulty file, jiao1 by woman 3).
+- Converted to 40 kbps mono MP3 (60 MB instead of 284 MB) by `scripts/tone-perfect.ts`; loudness was already even across speakers, so nothing else was changed. Credited in About and the README.
+- **Single tones** in the Tone Gym now come from these recordings: every syllable in every tone (1,640 items), a random speaker each time, "Another voice" cycles through the six. After a wrong answer, "What you chose sounds like" plays your tone on the same syllable in the same voice. Tone pairs and tone changes still use Azure words (Tone Perfect has single syllables only).
+- **Tone questions in sessions** are back on (they were paused until these arrived), now single tones by real speakers only: up to 6 in a quick session, 12 in a deep one.

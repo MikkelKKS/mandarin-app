@@ -28,6 +28,11 @@ export async function migrateSettings(): Promise<void> {
     const r = await db.settings.get('me');
     if (r && r.audioSpeed === 'slow') await updateSettings({ audioSpeed: 'normal' });
   }
+  // Tone Perfect arrived (28 Oct 2026): tone questions in sessions come back, now with real speakers only.
+  if (!(await db.meta.get('migrated:tp-session-tones'))?.value) {
+    await db.meta.put({ key: 'migrated:tp-session-tones', value: true });
+    if (await db.settings.get('me')) await updateSettings({ sessionTones: true });
+  }
   // v1 (11 Oct) briefly switched everyone to slow audio; v2 switches it back now the cut-off is fixed.
   if ((await db.meta.get('migrated:normal-again'))?.value) return;
   await db.meta.put({ key: 'migrated:normal-again', value: true });

@@ -95,7 +95,7 @@ export interface Settings {
   placedAt: number;
   /** Optional Beijing pack: 儿化 words and Beijing everyday words come first among new words. */
   beijingPack: boolean;
-  /** Tone Gym questions inside quick and deep sessions (off until better tone recordings arrive). */
+  /** Tone Gym questions (single tones by real speakers) inside quick and deep sessions. */
   sessionTones: boolean;
   /** HSK words you asked to learn next (from the dictionary), first among new words. */
   nextWords: string[];
@@ -157,7 +157,7 @@ export const DEFAULT_SETTINGS: Settings = {
   showHanzi: false,
   placedAt: 0,
   beijingPack: false,
-  sessionTones: false,
+  sessionTones: true,
   nextWords: [],
   theme: 'system',
 };

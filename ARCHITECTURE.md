@@ -42,6 +42,7 @@ Shared pieces: `components/PageHeader.tsx`, `ProgressBar.tsx`, `WordPopover.tsx`
 ## Audio
 
 - **Azure Speech** (Free F0, `swedencentral`): `scripts/azure-tts.ts`, run by `.github/workflows/azure-audio.yml` every 6 hours. It counts billed characters, stops before the monthly free quota and carries on the next month. Output in `public/audio/az/`, with a manifest in `content/data/azure-audio.json`. It records words, sentences, story paragraphs and 0.7× sentence versions. Keys are GitHub secrets.
+- **Tone Perfect** (MSU Libraries, CC BY-NC 4.0): 410 syllables × 4 tones × 6 speakers, converted to 40 kbps mono by `scripts/tone-perfect.ts` into `public/audio/tp/`, indexed in `content/data/tone-perfect.json`. Used for every single-tone question (Tone Gym and sessions); tone pairs and tone changes use Azure words.
 - **Report bad audio** → Supabase `audio_reports` → the next run re-records the clip with full pronunciation hints (a second report switches voice).
 - Playback (`lib/audio.ts`): Azure first, then the older edge-tts recordings (`public/audio/f|m|dict`) while Azure isn't complete, and the browser voice only as a last resort, flagged on screen.
 - The service worker caches audio as it's played; sessions download their audio when they start, and cards due in the next two days are fetched in the background.
@@ -60,7 +61,6 @@ Vitest for the pure logic (scoring, scheduling, knowledge, planning, placement, 
 
 ## Still open
 
-- Tone Perfect recordings (6 real speakers) for the Tone Gym: waiting for MSU.
 - Slow (0.7×) sentence recordings: November's Azure quota.
 - Once Azure has every word and sentence, the older recordings in `public/audio/f`, `m` and `dict` can be deleted (about 170 MB).
 - The scheduler optimiser, once there are about 1,000 reviews.
