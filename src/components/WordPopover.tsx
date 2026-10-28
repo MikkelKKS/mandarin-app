@@ -1,4 +1,5 @@
 /** A small card next to a tapped word: reading, meaning, audio, add to practice. No backdrop. */
+import { GrammarToggle } from './GrammarNote';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ReportAudio } from './ReportAudio';
@@ -84,6 +85,7 @@ export function WordPopover({
       {known && <p className="mt-1 text-xs text-jade">You know this one.</p>}
       <div className="mt-3 flex flex-wrap gap-2 text-sm">
         {e && <LearnNext entry={e} />}
+        {e && <GrammarToggle word={e} />}
         <a href={plecoLink(text)} className="inline-flex h-9 items-center rounded-xl border border-line bg-surface px-3 text-sm font-medium hover:border-ink/30">
           Open in Pleco
         </a>

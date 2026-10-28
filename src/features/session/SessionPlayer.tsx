@@ -3,6 +3,8 @@
  * combo multiplier, wrong answers asked again at the end of their block, and
  * the state saved after every answer so it can be resumed on either device.
  */
+import { GrammarNoteCard } from '../../components/GrammarNote';
+import { grammarFor } from '../../lib/grammar';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { wordOrder } from './beijing';
 import { currentSettings } from '../../lib/settings';
@@ -48,7 +50,15 @@ async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerD
     .sort((a, b) => (order.get(a) ?? 1e9) - (order.get(b) ?? 1e9));
   const logs = await db.reviewLogs.where('at').above(now - 60 * 864e5).filter((l) => !!l.tones).toArray();
   const tones = !currentSettings().sessionTones ? [] : pickRound(sessionPool(data.words, BASE), 'mixed', patternStats(logs), Math.random, mode === 'quick' ? QUICK.tones : DEEP.tones);
-  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, now });
+  // Newest words, for the sentences to type: words still early on (few reviews), most recently practised first.
+  const early = new Map<string, { reps: number; last: number }>();
+  for (const c of cards) {
+    if (!c.word || c.facet === 'sp' || (c.reps === 0 && c.state === 0)) continue;
+    const e = early.get(c.word) ?? { reps: 0, last: 0 };
+    early.set(c.word, { reps: Math.max(e.reps, c.reps), last: Math.max(e.last, c.lastReview ?? 0) });
+  }
+  const newest = [...early].filter(([, e]) => e.reps <= 4).sort((a, b) => b[1].last - a[1].last).map(([w]) => w).slice(0, 60);
+  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, newest, now });
   return { id: 'session', plan, block: 0, item: 0, xp: 0, combo: 0, bestCombo: 0, right: 0, answered: 0, newWords: [], tones: [], done: false, startedAt: now, updatedAt: now };
 }
 
@@ -225,14 +235,14 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
     [item, result, st, persist],
   );
 
-  /** "I was right": a differently worded typed answer counts as correct after all. */
+  /** "I was right": a differently worded typed answer counts as correct after all (and its card, if it has one, is regraded). */
   const override = useCallback(() => {
-    if (!graded || !result) return;
-    void regradeAll([graded.card], 'good').then(() => setGraded({ ...graded, rating: 'good' }));
+    if (!result) return;
+    if (graded) void regradeAll([graded.card], 'good').then(() => setGraded({ ...graded, rating: 'good' }));
     setResult({ ...result, outcome: { ...result.outcome, verdict: 'correct', note: 'Counted as correct.', canOverride: false } });
     // Drop the retry that was queued for it.
     const blocks = st.plan.blocks.map((bl, k) => (k === st.block ? { ...bl, items: bl.items.filter((x, j) => !(j > st.item && x.retry && JSON.stringify({ ...x, retry: undefined }) === JSON.stringify({ ...item, retry: undefined }))) } : bl));
-    persist({ ...st, plan: { ...st.plan, blocks } });
+    persist({ ...st, plan: { ...st.plan, blocks }, right: st.right + 1, combo: st.combo + 1 });
   }, [graded, result, st, item, persist]);
 
   /**
@@ -360,7 +370,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           item={item!}
           data={data}
           onContinue={advance}
-          onOverride={graded ? override : undefined}
+          onOverride={override}
           grade={graded ? <GradeChip rating={graded.rating} onChange={(r) => void regradeAll([graded.card], r).then(() => setGraded({ ...graded, rating: r }))} /> : null}
         />
       )}
@@ -411,6 +421,7 @@ function Feedback({
               {a.english && <p className="opacity-80">{a.english}</p>}
               <span className="mt-1 flex flex-wrap gap-x-4">
                 {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} />}
+                {'word' in item && a.hanzi && a.pinyin && <GrammarLink word={{ hanzi: a.hanzi, pinyin: a.pinyin }} />}
                 {'word' in item && a.hanzi && (
                   <a href={plecoLink(a.hanzi)} className="text-xs underline underline-offset-2 opacity-70 hover:opacity-100">
                     Open in Pleco
@@ -449,4 +460,19 @@ function answerFor(item: SItem, data: VocabData): Outcome['answer'] {
     return s && { pinyin: s.pinyin, hanzi: s.hanzi, english: s.english[0] };
   }
   return undefined;
+}
+
+/** "Grammar" under an answer, for function words: opens the note in the feedback panel. */
+function GrammarLink({ word }: { word: { hanzi: string; pinyin: string } }) {
+  const note = grammarFor(word);
+  const [open, setOpen] = useState(false);
+  if (!note) return null;
+  return (
+    <>
+      <button onClick={() => setOpen(!open)} aria-expanded={open} className="text-xs underline underline-offset-2 opacity-70 hover:opacity-100">
+        Grammar
+      </button>
+      {open && <GrammarNoteCard note={note} className="mt-2 basis-full" />}
+    </>
+  );
 }

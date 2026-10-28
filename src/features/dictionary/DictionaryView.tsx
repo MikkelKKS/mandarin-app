@@ -1,3 +1,4 @@
+import { GrammarToggle } from '../../components/GrammarNote';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
@@ -202,6 +203,7 @@ function EntryCard({ e, more = [] }: { e: Entry; more?: Entry[] }) {
       </div>
       <div className="mt-3 flex flex-wrap gap-2 text-sm">
         <LearnNext entry={e} />
+        <GrammarToggle word={e} />
         <a href={plecoLink(e.hanzi)} className="inline-flex h-9 items-center rounded-xl border border-line bg-surface px-3 text-sm font-medium hover:border-ink/30">
           Open in Pleco
         </a>

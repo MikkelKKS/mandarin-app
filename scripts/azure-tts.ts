@@ -16,6 +16,7 @@
  * added to content/data/azure-usage.json, and the script stops before the
  * monthly free quota (it picks up where it left off the next month).
  */
+import { allGrammarNotes } from '../src/lib/grammar';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import {
@@ -226,6 +227,8 @@ function bulkJobs(): Job[] {
   };
   // The Read stories, one clip per paragraph. 米格 tells them all (first person), so Yunxi.
   for (const st of storyParagraphs()) normal.push({ id: st.id, voice: 'm', hanzi: st.hanzi, pinyin: '', slow: false, file: `${st.id}.mp3` });
+  // Grammar-note examples (content/grammar-notes.json).
+  for (const g of allGrammarNotes()) normal.push({ id: g.id, voice: 'f', hanzi: g.zh, pinyin: g.py, slow: false, file: `${g.id}.mp3` });
   for (const w of words) {
     normal.push({ id: w.id, voice: 'f', hanzi: w.hanzi, pinyin: w.pinyin, slow: false, file: `${w.id}.mp3` });
     for (const e of w.examples) addSentence(e);

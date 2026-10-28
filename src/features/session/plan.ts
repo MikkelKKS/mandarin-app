@@ -23,14 +23,16 @@ type SItemBase =
   | { kind: 'meaning-pinyin'; word: string }
   | { kind: 'sentence-dictation'; sentence: string; card?: string }
   | { kind: 'sentence-meaning'; sentence: string }
+  | { kind: 'sentence-pinyin'; sentence: string }
   | { kind: 'tone'; gym: GymItem }
   | { kind: 'speak'; word: string };
 
-export type BlockId = 'reviews' | 'new' | 'listening' | 'speaking' | 'tones';
+export type BlockId = 'reviews' | 'new' | 'listening' | 'writing' | 'speaking' | 'tones';
 export const BLOCK_TITLE: Record<BlockId, string> = {
   reviews: 'Reviews',
   new: 'New words',
   listening: 'Listening',
+  writing: 'Say it in pinyin',
   speaking: 'Speaking',
   tones: 'Tone Gym',
 };
@@ -115,14 +117,23 @@ export function distractors(word: Pick<VocabRow, 'id' | 'order' | 'gloss' | 'pin
   return out.map((w) => w.id);
 }
 
-/** New words: meet each one (intro + first choice), then type each twice (by ear, from English), then hear it in a sentence. */
+/** How many other words are introduced before a word's first "what does it mean?" question. */
+export const CHOOSE_GAP = 3;
+
+/**
+ * New words: meet each one (intro); its first "what does it mean?" comes after
+ * the next few words' intros, so it tests memory, not the last five seconds.
+ * Then type each twice (by ear, from English), then hear it in a sentence.
+ */
 export function newWordItems(words: string[], data: VocabData, rng: () => number): SItem[] {
   const ws = words.map((id) => data.byId.get(id)).filter((w): w is VocabRow => !!w);
   const out: SItem[] = [];
-  for (const w of ws) {
+  const choose = (w: VocabRow): SItem[] => (wordHasAudio(w) ? [{ kind: 'choose-meaning', word: w.id, options: shuffle([w.id, ...distractors(w, data.words, rng)], rng) }] : []);
+  ws.forEach((w, i) => {
     out.push({ kind: 'intro', word: w.id });
-    if (wordHasAudio(w)) out.push({ kind: 'choose-meaning', word: w.id, options: shuffle([w.id, ...distractors(w, data.words, rng)], rng) });
-  }
+    if (i >= CHOOSE_GAP) out.push(...choose(ws[i - CHOOSE_GAP]));
+  });
+  for (const w of ws.slice(Math.max(0, ws.length - CHOOSE_GAP))) out.push(...choose(w));
   const typed: SItem[] = [];
   for (const w of ws) {
     if (wordHasAudio(w)) typed.push({ kind: 'dictation', word: w.id });
@@ -145,6 +156,24 @@ export function listeningItems(data: VocabData, started: Set<string>, n: number,
   );
 }
 
+/**
+ * Sentence production: English → pinyin, from sentences made only of words
+ * you've started, with your newest words first (sentences that use them),
+ * short enough to type (at most 12 characters).
+ */
+export function productionItems(data: VocabData, started: Set<string>, newest: string[], n: number, rng: () => number, avoid = new Set<string>()): SItem[] {
+  const rank = new Map(newest.map((w, i) => [w, i]));
+  const ok = [...data.sentences.values()].filter(
+    (s) => s.words.length > 1 && s.english[0] && [...s.hanzi].length <= 12 && s.words.every((w) => started.has(w)) && !avoid.has(s.id),
+  );
+  // Best rank of a newest word in the sentence (lower = newer), random order within the same rank.
+  const score = (s: SentenceRow) => Math.min(...s.words.map((w) => rank.get(w) ?? 1e6));
+  const picked = shuffle(ok, rng)
+    .sort((a, b) => score(a) - score(b))
+    .slice(0, n);
+  return picked.map((s) => ({ kind: 'sentence-pinyin', sentence: s.id }));
+}
+
 export interface PlanInput {
   mode: SessionMode;
   /** Due card ids, most urgent first (from the review queue). */
@@ -159,6 +188,8 @@ export interface PlanInput {
   mic: boolean;
   /** Words to start speaking practice on (already known by ear), most useful first. */
   speakNew?: string[];
+  /** Recently started words, newest first (for the sentences to type). */
+  newest?: string[];
   now: number;
   rng?: () => number;
 }
@@ -173,7 +204,7 @@ export function sessionPreview(mode: SessionMode, due: number, fresh: number, to
 }
 
 export const QUICK = { reviews: 24, toneEvery: 4, tones: 6, newWhenFew: 3, fewReviews: 8 };
-export const DEEP = { reviews: 80, newWords: 10, listening: 8, speaking: 8, speakNew: 4, tones: 12 };
+export const DEEP = { reviews: 80, newWords: 10, listening: 8, writing: 4, speaking: 8, speakNew: 4, tones: 12 };
 
 export function planSession(p: PlanInput): SessionPlan {
   const rng = p.rng ?? Math.random;
@@ -198,6 +229,10 @@ export function planSession(p: PlanInput): SessionPlan {
     const started = new Set([...p.started, ...p.newWords.slice(0, DEEP.newWords)]);
     const listening = listeningItems(p.data, started, DEEP.listening, rng);
     if (listening.length) blocks.push({ id: 'listening', items: listening });
+    // Say it in pinyin: a few sentences from English, using your newest words.
+    const heard = new Set(listening.map((x) => ('sentence' in x ? x.sentence : '')));
+    const writing = productionItems(p.data, started, [...p.newWords.slice(0, DEEP.newWords), ...(p.newest ?? [])], DEEP.writing, rng, heard);
+    if (writing.length) blocks.push({ id: 'writing', items: writing });
     // Speaking, if the microphone is on: due speaking cards and a few new ones.
     if (p.mic) {
       const speak = [

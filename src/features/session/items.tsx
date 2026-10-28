@@ -3,6 +3,8 @@
  * what happened; the player records it, shows feedback and moves on.
  * Pinyin first: characters only when "Characters: Show" is on.
  */
+import { grammarFor } from '../../lib/grammar';
+import { GrammarNoteCard } from '../../components/GrammarNote';
 import { VolumeSlider } from '../../components/VolumeSlider';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { TonePinyin } from '../../components/Hanzi';
@@ -90,6 +92,8 @@ export function SessionItem(p: ItemProps) {
       return <SentenceDictation {...p} sentence={p.item.sentence} />;
     case 'sentence-meaning':
       return <SentenceMeaning {...p} sentence={p.item.sentence} />;
+    case 'sentence-pinyin':
+      return <SentenceToPinyin {...p} sentence={p.item.sentence} />;
     case 'tone':
       return <ToneQuestion {...p} gym={p.item.gym} />;
     case 'speak':
@@ -101,6 +105,7 @@ export function SessionItem(p: ItemProps) {
 function Intro({ data, word, onResult }: ItemProps & { word: string }) {
   const w = useWord(data, word);
   const ex = w.examples.map((e) => data.sentences.get(e)).find(Boolean);
+  const note = grammarFor(w);
   useEffect(() => {
     let live = true;
     const t = setTimeout(async () => {
@@ -125,7 +130,8 @@ function Intro({ data, word, onResult }: ItemProps & { word: string }) {
       <TonePinyin pinyin={w.pinyin} className="mt-6 block text-5xl font-semibold" />
       <Hanzi text={w.hanzi} className="mt-2 block text-3xl text-muted" />
       <p className="mt-4 text-xl">{glossOf(w)}</p>
-      {ex && (
+      {note && <GrammarNoteCard note={note} className="mt-6 w-full" />}
+      {ex && !note && (
         <div className="mt-8 w-full rounded-2xl bg-surface p-4 text-left border border-line">
           <div className="flex items-center gap-3">
             <button onClick={() => void play(ex.id)} aria-label="Play the example" className="rounded-full bg-jade-soft p-2 text-jade">
@@ -324,6 +330,20 @@ function SentenceDictation({ data, sentence, onResult }: ItemProps & { sentence:
     <div>
       <Prompt>Type the sentence you hear, in pinyin</Prompt>
       <AudioControls id={s.id} ladder />
+      <TypeBox {...t} />
+    </div>
+  );
+}
+
+/** Deep sessions: say it in Chinese. English → the whole sentence in pinyin. */
+function SentenceToPinyin({ data, sentence, onResult }: ItemProps & { sentence: string }) {
+  const s = useSentence(data, sentence);
+  const t = useTyped({ pinyin: s.pinyin, hanzi: s.hanzi, english: s.english[0] }, onResult);
+  return (
+    <div>
+      <Prompt>Say it in Chinese: type the pinyin with tones</Prompt>
+      <p className="rounded-2xl border border-line bg-surface p-5 text-center text-xl font-medium leading-snug">{s.english[0]}</p>
+      <p className="mt-2 text-center text-xs text-muted">Only words you've already met.</p>
       <TypeBox {...t} />
     </div>
   );

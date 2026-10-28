@@ -1,0 +1,405 @@
+{
+ "_about": "Short grammar notes for function words, shown when the word is introduced and from its word card. Key: characters|numeric pinyin (as in content/data/words.json). Written for this app; examples are recorded with Azure as g-<n>. Notes give examples in pinyin (characters only where they tell same-sounding words apart).",
+ "notes": [
+  {
+   "key": "了|le5",
+   "title": "Done, or now different",
+   "note": "After a verb, le says the action is done: wǒ chīle, I've eaten. At the end of a sentence it says something has changed or is now the case: xià yǔ le, it's raining now.",
+   "zh": "我买了两本书。",
+   "py": "Wǒ mǎile liǎng běn shū.",
+   "en": "I bought two books."
+  },
+  {
+   "key": "的|de5",
+   "title": "Linking a description to a noun",
+   "note": "Put de after a person or a description to link it to the noun that follows, like English 's: wǒ de péngyou, my friend; hěn guì de chē, an expensive car. With close family it's often dropped: wǒ māma.",
+   "zh": "这是我的书。",
+   "py": "Zhè shì wǒ de shū.",
+   "en": "This is my book."
+  },
+  {
+   "key": "得|de5",
+   "title": "How well something is done",
+   "note": "Verb + de + description says how an action is done: tā shuō de hěn kuài, he speaks fast. It sounds exactly like the de of wǒ de (的) and of màn man de (地); coming right after a verb is what gives it away.",
+   "zh": "你中文说得很好。",
+   "py": "Nǐ Zhōngwén shuō de hěn hǎo.",
+   "en": "You speak Chinese very well."
+  },
+  {
+   "key": "地|de5",
+   "title": "Making a description into -ly",
+   "note": "Description + de + verb says how someone does something: mànmàn de zǒu, walk slowly. It sounds exactly like the other de's (的, 得); here it comes before the verb.",
+   "zh": "他高兴地笑了。",
+   "py": "Tā gāoxìng de xiào le.",
+   "en": "He laughed happily."
+  },
+  {
+   "key": "过|guo5",
+   "title": "Have ever done",
+   "note": "Verb + guo means you've had the experience at some point: wǒ qùguo Běijīng, I've been to Beijing. Say you haven't with méi: wǒ méi qùguo.",
+   "zh": "你吃过北京烤鸭吗？",
+   "py": "Nǐ chīguo Běijīng kǎoyā ma?",
+   "en": "Have you ever had Peking duck?"
+  },
+  {
+   "key": "着|zhe5",
+   "title": "An ongoing state",
+   "note": "Verb + zhe says an action or its result continues: mén kāizhe, the door is open; zuòzhe, sitting. It also says how something is done: xiàozhe shuō, say with a smile.",
+   "zh": "门开着。",
+   "py": "Mén kāizhe.",
+   "en": "The door is open."
+  },
+  {
+   "key": "把|ba3",
+   "title": "Doing something to a thing",
+   "note": "Bǎ puts the object before the verb to stress what happens to it: bǎ mén guānshang, shut the door. The verb then needs something after it, such as a result, le or a place.",
+   "zh": "请把门关上。",
+   "py": "Qǐng bǎ mén guānshang.",
+   "en": "Please close the door."
+  },
+  {
+   "key": "被|bei4",
+   "title": "Passive: done to it (by)",
+   "note": "Thing + bèi + (who did it) + verb: something happened to it, often something unwelcome: wǒ de shǒujī bèi tōu le, my phone was stolen.",
+   "zh": "我的自行车被偷了。",
+   "py": "Wǒ de zìxíngchē bèi tōu le.",
+   "en": "My bike was stolen."
+  },
+  {
+   "key": "吧|ba5",
+   "title": "Let's…, or …, right?",
+   "note": "At the end of a sentence, ba makes a soft suggestion (wǒmen zǒu ba, let's go) or checks something you assume (nǐ shì Mǐgé ba? you're Mige, right?).",
+   "zh": "我们走吧。",
+   "py": "Wǒmen zǒu ba.",
+   "en": "Let's go."
+  },
+  {
+   "key": "呢|ne5",
+   "title": "And you? / What about…?",
+   "note": "After a noun, ne asks about it in the same situation: wǒ hěn hǎo, nǐ ne? I'm fine, and you? At the end of a sentence it can also mark something going on right now.",
+   "zh": "我很好，你呢？",
+   "py": "Wǒ hěn hǎo, nǐ ne?",
+   "en": "I'm fine, and you?"
+  },
+  {
+   "key": "吗|ma5",
+   "title": "Yes/no questions",
+   "note": "Add ma to the end of a statement to make a yes/no question. Don't use it with question words like shénme or nǎr: they're questions already.",
+   "zh": "你是学生吗？",
+   "py": "Nǐ shì xuésheng ma?",
+   "en": "Are you a student?"
+  },
+  {
+   "key": "啊|a5",
+   "title": "Adding feeling",
+   "note": "At the end of a sentence, a adds feeling or softens it: hǎo a! sure!; shì a, yes indeed. Its sound blends with the word before it (ya, wa, na).",
+   "zh": "今天好冷啊！",
+   "py": "Jīntiān hǎo lěng a!",
+   "en": "It's so cold today!"
+  },
+  {
+   "key": "就|jiu4",
+   "title": "Already, right away, then",
+   "note": "Before a verb, jiù says something is sooner or easier than expected (tā bā diǎn jiù lái le, he came as early as eight), or means 'then' after an 'if'. Jiù shì means exactly or simply.",
+   "zh": "我马上就来。",
+   "py": "Wǒ mǎshàng jiù lái.",
+   "en": "I'm coming right away."
+  },
+  {
+   "key": "才|cai2",
+   "title": "Not until, only then",
+   "note": "Before a verb, cái says something is later or harder than expected: tā shí diǎn cái lái, he didn't come until ten. Before a number it means only: cái wǔ kuài. The opposite of jiù.",
+   "zh": "他十点才起床。",
+   "py": "Tā shí diǎn cái qǐchuáng.",
+   "en": "He didn't get up until ten."
+  },
+  {
+   "key": "都|dou1",
+   "title": "All, both",
+   "note": "Dōu goes before the verb and sums up the people or things mentioned before it: wǒmen dōu shì xuésheng, we're all students. With a question word it means every: shéi dōu zhīdào, everyone knows.",
+   "zh": "我们都喜欢吃饺子。",
+   "py": "Wǒmen dōu xǐhuan chī jiǎozi.",
+   "en": "We all like eating dumplings."
+  },
+  {
+   "key": "还|hai2",
+   "title": "Still, also, even",
+   "note": "Before a verb, hái means still (tā hái zài shuìjiào, he's still asleep) or in addition (hái yào yì bēi, one more cup). Hái kěyǐ means not bad.",
+   "zh": "他还在睡觉。",
+   "py": "Tā hái zài shuìjiào.",
+   "en": "He's still sleeping."
+  },
+  {
+   "key": "又|you4",
+   "title": "Again (it already happened)",
+   "note": "Yòu is for a repeat that has already happened: tā yòu lái le, he came again. For a repeat still to come, use zài. Yòu… yòu… means both… and…",
+   "zh": "你又迟到了！",
+   "py": "Nǐ yòu chídào le!",
+   "en": "You're late again!"
+  },
+  {
+   "key": "再|zai4",
+   "title": "Again (still to come), then",
+   "note": "Zài is for a repeat that hasn't happened yet: qǐng zài shuō yí biàn, please say it again; míngtiān zài lái, come again tomorrow. It also means and then: xiān chī fàn, zài zǒu.",
+   "zh": "请再说一遍。",
+   "py": "Qǐng zài shuō yí biàn.",
+   "en": "Please say it once more."
+  },
+  {
+   "key": "比|bi3",
+   "title": "Comparing: more … than",
+   "note": "A bǐ B + adjective: A is more … than B: tā bǐ wǒ gāo, he's taller than me. Don't add hěn; for much more, put duō le after it: tā bǐ wǒ gāo duō le.",
+   "zh": "北京比哥本哈根大。",
+   "py": "Běijīng bǐ Gēběnhāgēn dà.",
+   "en": "Beijing is bigger than Copenhagen."
+  },
+  {
+   "key": "跟|gen1",
+   "title": "With, and",
+   "note": "Gēn + person + verb: do it with them: wǒ gēn māma shuōhuà, I'm talking with Mum. Gēn… yíyàng means the same as.",
+   "zh": "我跟她一起去。",
+   "py": "Wǒ gēn tā yìqǐ qù.",
+   "en": "I'm going with her."
+  },
+  {
+   "key": "给|gei3",
+   "title": "Give; for or to someone",
+   "note": "As a verb, gěi means give: gěi wǒ, give me. Before another verb it means for or to someone: gěi tā dǎ diànhuà, call her.",
+   "zh": "我晚上给你打电话。",
+   "py": "Wǒ wǎnshang gěi nǐ dǎ diànhuà.",
+   "en": "I'll call you tonight."
+  },
+  {
+   "key": "对|dui4",
+   "title": "Right; towards",
+   "note": "On its own, duì means right, correct: duì! Before a person or thing it means towards or to: tā duì wǒ hěn hǎo, he's very good to me.",
+   "zh": "她对我很好。",
+   "py": "Tā duì wǒ hěn hǎo.",
+   "en": "She's very good to me."
+  },
+  {
+   "key": "让|rang4",
+   "title": "Let, make someone do",
+   "note": "A ràng B + verb: A lets or has B do something: māma ràng wǒ zǎo diǎnr huí jiā, Mum wants me home early. Ràng wǒ… means let me…",
+   "zh": "让我想想。",
+   "py": "Ràng wǒ xiǎngxiang.",
+   "en": "Let me think."
+  },
+  {
+   "key": "也|ye3",
+   "title": "Also, too",
+   "note": "Yě always goes before the verb, never at the end like English too: wǒ yě shì xuésheng, I'm a student too.",
+   "zh": "我也喜欢跑步。",
+   "py": "Wǒ yě xǐhuan pǎobù.",
+   "en": "I like running too."
+  },
+  {
+   "key": "很|hen3",
+   "title": "Very (often just linking)",
+   "note": "An adjective that describes something usually needs hěn in front: wǒ hěn hǎo, I'm fine. Here hěn often doesn't really mean very; without it the sentence sounds like a comparison.",
+   "zh": "今天很热。",
+   "py": "Jīntiān hěn rè.",
+   "en": "It's hot today."
+  },
+  {
+   "key": "在|zai4",
+   "title": "At; in the middle of doing",
+   "note": "Before a place, zài means at or in: wǒ zài jiā, I'm at home. Before a verb it means doing it right now: wǒ zài chī fàn, I'm eating.",
+   "zh": "我在学中文。",
+   "py": "Wǒ zài xué Zhōngwén.",
+   "en": "I'm learning Chinese."
+  },
+  {
+   "key": "没|mei2",
+   "title": "Didn't, haven't; don't have",
+   "note": "Méi says something didn't happen (wǒ méi qù, I didn't go) and negates yǒu (méiyǒu qián, have no money). For habits, plans and shì, use bù.",
+   "zh": "我昨天没去。",
+   "py": "Wǒ zuótiān méi qù.",
+   "en": "I didn't go yesterday."
+  },
+  {
+   "key": "不|bu4",
+   "title": "Not",
+   "note": "Bù negates the present, the future, habits and adjectives: wǒ bú qù, I'm not going. Before a 4th tone it's said bú: bú shì.",
+   "zh": "我不喝咖啡。",
+   "py": "Wǒ bù hē kāfēi.",
+   "en": "I don't drink coffee."
+  },
+  {
+   "key": "会|hui4",
+   "title": "Can (a learned skill); will",
+   "note": "Huì + verb means know how to (wǒ huì yóuyǒng, I can swim) or will probably (míngtiān huì xià yǔ, it'll rain tomorrow). For being able or allowed right now, use néng.",
+   "zh": "你会说中文吗？",
+   "py": "Nǐ huì shuō Zhōngwén ma?",
+   "en": "Can you speak Chinese?"
+  },
+  {
+   "key": "能|neng2",
+   "title": "Can (able or allowed)",
+   "note": "Néng + verb means able to in this situation, or allowed: wǒ míngtiān bù néng lái, I can't come tomorrow. For a learned skill, use huì.",
+   "zh": "你明天能来吗？",
+   "py": "Nǐ míngtiān néng lái ma?",
+   "en": "Can you come tomorrow?"
+  },
+  {
+   "key": "可以|ke3 yi3",
+   "title": "May, can (allowed)",
+   "note": "Kěyǐ + verb says something is allowed or possible: wǒ kěyǐ jìnlai ma? may I come in? Kěyǐ on its own means that's fine.",
+   "zh": "我可以坐这儿吗？",
+   "py": "Wǒ kěyǐ zuò zhèr ma?",
+   "en": "Can I sit here?"
+  },
+  {
+   "key": "要|yao4",
+   "title": "Want; going to; need to",
+   "note": "Yào + noun means want: wǒ yào yì bēi chá. Yào + verb means going to or need to: wǒ yào zǒu le, I have to go now. Bú yào means don't.",
+   "zh": "我要一杯茶。",
+   "py": "Wǒ yào yì bēi chá.",
+   "en": "I'd like a cup of tea."
+  },
+  {
+   "key": "是|shi4",
+   "title": "To be (between nouns)",
+   "note": "Shì links two nouns: wǒ shì Dānmài rén, I'm Danish. It isn't used before an adjective: say wǒ hěn gāo, not wǒ shì gāo.",
+   "zh": "我是丹麦人。",
+   "py": "Wǒ shì Dānmài rén.",
+   "en": "I'm Danish."
+  },
+  {
+   "key": "因为|yin1 wei4",
+   "title": "Because (…so)",
+   "note": "Yīnwèi gives the reason first; suǒyǐ can introduce the result: yīnwèi xià yǔ, suǒyǐ wǒ méi qù. Either half can stand alone.",
+   "zh": "因为下雨，我没去。",
+   "py": "Yīnwèi xià yǔ, wǒ méi qù.",
+   "en": "Because it rained, I didn't go."
+  },
+  {
+   "key": "虽然|sui1 ran2",
+   "title": "Although (…but)",
+   "note": "Suīrán is usually paired with dànshì or kěshì in the second half, unlike English, which uses only one: suīrán hěn lèi, dànshì hěn gāoxìng.",
+   "zh": "虽然很累，但是我很高兴。",
+   "py": "Suīrán hěn lèi, dànshì wǒ hěn gāoxìng.",
+   "en": "Although I'm tired, I'm happy."
+  },
+  {
+   "key": "和|he2",
+   "title": "And (between nouns)",
+   "note": "Hé joins nouns: wǒ hé tā, she and I. It doesn't join sentences or verbs; for those, just put them side by side or use yě, hái or ránhòu.",
+   "zh": "我和她都是学生。",
+   "py": "Wǒ hé tā dōu shì xuésheng.",
+   "en": "She and I are both students."
+  },
+  {
+   "key": "还是|hai2 shi5",
+   "title": "Or (in questions); still",
+   "note": "In a question, háishi means or: nǐ hē chá háishi kāfēi? tea or coffee? In statements, use huòzhě for or. Háishi can also mean still, or had better.",
+   "zh": "你喝茶还是咖啡？",
+   "py": "Nǐ hē chá háishi kāfēi?",
+   "en": "Do you drink tea or coffee?"
+  },
+  {
+   "key": "或者|huo4 zhe3",
+   "title": "Or (in statements)",
+   "note": "Huòzhě means or in a statement: jīntiān huòzhě míngtiān, today or tomorrow. In a question asking someone to choose, use háishi.",
+   "zh": "我们今天或者明天去。",
+   "py": "Wǒmen jīntiān huòzhě míngtiān qù.",
+   "en": "We'll go today or tomorrow."
+  },
+  {
+   "key": "从|cong2",
+   "title": "From",
+   "note": "Cóng + place or time + verb: from: wǒ cóng Dānmài lái, I come from Denmark. Cóng… dào… means from… to…",
+   "zh": "我从八点到五点上班。",
+   "py": "Wǒ cóng bā diǎn dào wǔ diǎn shàngbān.",
+   "en": "I work from eight to five."
+  },
+  {
+   "key": "离|li2",
+   "title": "Distance from",
+   "note": "A lí B + yuǎn/jìn says how far A is from B: wǒ jiā lí gōngsī hěn jìn, my home is close to work.",
+   "zh": "我家离公司很近。",
+   "py": "Wǒ jiā lí gōngsī hěn jìn.",
+   "en": "My home is close to work."
+  },
+  {
+   "key": "已经|yi3 jing1",
+   "title": "Already",
+   "note": "Yǐjīng goes before the verb, usually with le at the end: tā yǐjīng zǒu le, he's already left.",
+   "zh": "他已经走了。",
+   "py": "Tā yǐjīng zǒu le.",
+   "en": "He's already left."
+  },
+  {
+   "key": "正在|zheng4 zai4",
+   "title": "In the middle of doing",
+   "note": "Zhèngzài + verb says an action is going on right now, often with ne at the end: wǒ zhèngzài zuò fàn ne, I'm cooking right now.",
+   "zh": "我正在做饭呢。",
+   "py": "Wǒ zhèngzài zuò fàn ne.",
+   "en": "I'm cooking right now."
+  },
+  {
+   "key": "太|tai4",
+   "title": "Too; so",
+   "note": "Tài + adjective usually comes with le: tài guì le, too expensive; tài hǎo le, great! Bú tài means not very: bú tài hǎo.",
+   "zh": "这个太贵了。",
+   "py": "Zhège tài guì le.",
+   "en": "This one is too expensive."
+  },
+  {
+   "key": "最|zui4",
+   "title": "Most",
+   "note": "Zuì + adjective or verb means the most: zuì hǎo, the best; wǒ zuì xǐhuan, my favourite.",
+   "zh": "我最喜欢夏天。",
+   "py": "Wǒ zuì xǐhuan xiàtiān.",
+   "en": "I like summer best."
+  },
+  {
+   "key": "只|zhi3",
+   "title": "Only",
+   "note": "Zhǐ goes before the verb: wǒ zhǐ yǒu yí ge, I only have one.",
+   "zh": "我只会说一点儿中文。",
+   "py": "Wǒ zhǐ huì shuō yìdiǎnr Zhōngwén.",
+   "en": "I only speak a little Chinese."
+  },
+  {
+   "key": "越|yue4",
+   "title": "The more…, the more…",
+   "note": "Yuè A yuè B: the more A, the more B. Yuè lái yuè hǎo means better and better.",
+   "zh": "你的中文越来越好了。",
+   "py": "Nǐ de Zhōngwén yuè lái yuè hǎo le.",
+   "en": "Your Chinese is getting better and better."
+  },
+  {
+   "key": "如果|ru2 guo3",
+   "title": "If",
+   "note": "Rúguǒ starts the condition; the result often has jiù: rúguǒ xià yǔ, wǒ jiù bú qù le, if it rains, I won't go.",
+   "zh": "如果下雨，我就不去了。",
+   "py": "Rúguǒ xià yǔ, wǒ jiù bú qù le.",
+   "en": "If it rains, I won't go."
+  },
+  {
+   "key": "先|xian1",
+   "title": "First (…then)",
+   "note": "Xiān + verb means do it first; the next step often has zài or ránhòu: xiān chī fàn, zài zǒu.",
+   "zh": "我们先吃饭，然后去公园。",
+   "py": "Wǒmen xiān chī fàn, ránhòu qù gōngyuán.",
+   "en": "Let's eat first, then go to the park."
+  },
+  {
+   "key": "们|men5",
+   "title": "Plural for people",
+   "note": "Men makes pronouns and people plural: wǒmen, we; péngyoumen, friends. It isn't used with numbers: sān ge péngyou, not sān ge péngyoumen.",
+   "zh": "朋友们，你们好！",
+   "py": "Péngyoumen, nǐmen hǎo!",
+   "en": "Hello, friends!"
+  },
+  {
+   "key": "个|ge4",
+   "title": "The everyday measure word",
+   "note": "Between a number (or zhè/nà) and a noun you need a measure word; ge is the all-rounder: yí ge rén, zhège wèntí.",
+   "zh": "我有一个妹妹。",
+   "py": "Wǒ yǒu yí ge mèimei.",
+   "en": "I have a younger sister."
+  }
+ ]
+}

@@ -41,12 +41,19 @@ describe('session items', () => {
   });
   it('introduces new words: meet, choose once, type twice, hear in a sentence', () => {
     const items = newWordItems(['w1', 'w2'], data, rng);
-    expect(items.slice(0, 4).map((x) => x.kind)).toEqual(['intro', 'choose-meaning', 'intro', 'choose-meaning']);
-    const choose = items[1] as { options: string[] };
+    expect(items.slice(0, 4).map((x) => x.kind)).toEqual(['intro', 'intro', 'choose-meaning', 'choose-meaning']);
+    const choose = items[2] as { options: string[] };
     expect(choose.options).toHaveLength(4);
     expect(choose.options).toContain('w1');
     expect(items.filter((x) => x.kind === 'dictation' || x.kind === 'meaning-pinyin')).toHaveLength(4);
     expect(items.filter((x) => x.kind === 'sentence-meaning')).toHaveLength(2);
+  });
+  it("asks a word's meaning only after the next three words' intros", () => {
+    const items = newWordItems(['w1', 'w2', 'w3', 'w4', 'w5'], data, rng);
+    const at = (kind: string, w: string) => items.findIndex((x) => x.kind === kind && (x as { word?: string }).word === w);
+    expect(at('choose-meaning', 'w1')).toBeGreaterThan(at('intro', 'w4'));
+    expect(at('choose-meaning', 'w2')).toBeGreaterThan(at('intro', 'w5'));
+    expect(items.filter((x) => x.kind === 'choose-meaning')).toHaveLength(5);
   });
   it('listens only to sentences of words you have started', () => {
     const items = listeningItems(data, new Set(['w0', 'w5']), 8, rng);
@@ -128,5 +135,22 @@ describe('what Home says a session holds', async () => {
   });
   it('a deep session: up to 10 new words', () => {
     expect(sessionPreview('deep', 30, 10, true)).toEqual({ reviews: 30, newWords: 10, tones: 12 });
+  });
+});
+
+describe('say it in pinyin (deep sessions)', async () => {
+  const { productionItems } = await import('./plan');
+  it('uses only sentences of words you have started, newest words first', () => {
+    const started = new Set(['w0', 'w1', 'w2', 'w3', 'w7']);
+    const items = productionItems(data, started, ['w7', 'w3'], 3, rng);
+    const ids = items.map((x) => (x as { sentence: string }).sentence);
+    expect(items.every((x) => x.kind === 'sentence-pinyin')).toBe(true);
+    expect(ids[0]).toBe('s7'); // the sentence with the newest word
+    expect(ids[1]).toBe('s3');
+    expect(ids.every((id) => data.sentences.get(id)!.words.every((w) => started.has(w)))).toBe(true);
+  });
+  it('skips sentences already heard in the listening block', () => {
+    const items = productionItems(data, new Set(['w0', 'w7']), ['w7'], 3, rng, new Set(['s7']));
+    expect(items.map((x) => (x as { sentence: string }).sentence)).not.toContain('s7');
   });
 });
