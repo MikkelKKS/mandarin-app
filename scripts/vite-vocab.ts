@@ -90,7 +90,8 @@ export function vocabModules(root: string): Plugin {
         w.id,
         w.hanzi,
         w.pinyin,
-        w.gloss.slice(0, 3),
+        // CC-CEDICT puts a space before commas once a [pinyin] note is cut out ("a verb , linking").
+        w.gloss.slice(0, 3).map((g) => g.replace(/\s+([,;.:)])/g, '$1').replace(/\s{2,}/g, ' ').trim()),
         w.level,
         w.order,
         w.examples,

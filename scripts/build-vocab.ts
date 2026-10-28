@@ -428,6 +428,28 @@ if (tatoebaDir) {
   console.log(`Tatoeba: ${tatoebaSeen} Chinese sentences, ${tatoebaUsable} usable`);
 }
 
+// Generated sentences (written for this app, marked as generated and listed in
+// content/REVIEW_NEEDED.md) for HSK 1–4 words that have no example otherwise.
+const generatedFile = join(root, 'content', 'generated-sentences.json');
+if (existsSync(generatedFile)) {
+  const gen = JSON.parse(readFileSync(generatedFile, 'utf8')) as { sentences: Array<{ word: string; zh: string; py: string; en: string }> };
+  let n = 0;
+  for (const g of gen.sentences) {
+    if (!drafts.has(g.word)) {
+      problems.push(`Generated sentence for unknown word ${g.word}: ${g.zh}`);
+      continue;
+    }
+    const a = analyse(g.zh);
+    if (!a) problems.push(`Generated sentence uses characters outside the HSK list: ${g.zh}`);
+    const words = a ? a.words : [g.word];
+    if (!words.includes(g.word)) words.push(g.word);
+    const unlocks = Math.max(0, ...words.map((w) => orderOf.get(w) ?? 0));
+    sentences.set(`gen-${g.word}`, { id: `gen-${g.word}`, hanzi: g.zh, pinyin: g.py, english: [g.en], words, unlocks, source: 'generated' });
+    n++;
+  }
+  console.log(`Generated sentences: ${n}`);
+}
+
 // ---------- pick examples per word ("i+1": every other word comes earlier) ----------
 const candidates = new Map<string, VocabSentence[]>();
 for (const s of sentences.values()) for (const w of new Set(s.words)) (candidates.get(w) ?? candidates.set(w, []).get(w)!).push(s);
@@ -441,13 +463,21 @@ for (const [id] of ordered) {
     const len = [...hanziOnly(s.hanzi)].length;
     const ideal = Math.abs(len - 8); // short, but a real sentence
     const course = s.source === 'course' ? -3 : 0; // hand-checked
+    const generated = s.source === 'generated' ? 30 : 0; // only when nothing real fits
     const late = s.unlocks > order ? 50 + (s.unlocks - order) / 50 : 0; // uses words learned later
-    return late + ideal + course;
+    return late + ideal + course + generated;
   };
-  const pick = list
+  let pick = list
     .filter((s) => s.unlocks <= order + 300) // at most slightly ahead
     .sort((a, b) => score(a) - score(b) || a.id.localeCompare(b.id))
     .slice(0, MAX_EXAMPLES);
+  // HSK 1–4 words with nothing at all: a real sentence even if it uses later words
+  // (the fewest and nearest), before any generated one.
+  const lvl = drafts.get(id)!.level;
+  if (!pick.length && lvl >= 1 && lvl <= 4) {
+    const real = list.filter((s) => s.source !== 'generated').sort((a, b) => score(a) - score(b) || a.id.localeCompare(b.id));
+    pick = (real.length ? real : list).slice(0, 1);
+  }
   examples.set(id, pick.map((s) => s.id));
   pick.forEach((s) => used.add(s.id));
 }

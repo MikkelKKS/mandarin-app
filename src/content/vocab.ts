@@ -157,7 +157,7 @@ export function cleanGlosses(defs: string[], max = 4): string[] {
   const keep = defs
     .map((d) => d.trim())
     .filter((d) => d && !/^CL:/.test(d) && !/^(old |erhua )?variant of /.test(d) && !/^see [^ ]+\[/.test(d) && !/^also written /.test(d) && !/^abbr\. for /.test(d))
-    .map((d) => d.replace(/\[[a-zA-Z0-9: ]+\]/g, '').replace(/[^\s|]+\|([^\s|]+)/g, '$1').trim());
+    .map((d) => d.replace(/\[[a-zA-Z0-9: ]+\]/g, '').replace(/[^\s|]+\|([^\s|]+)/g, '$1').replace(/\s+([,;.:)])/g, '$1').replace(/\(\s+/g, '(').replace(/\s{2,}/g, ' ').trim());
   const out = keep.length ? keep : defs.filter((d) => !/^CL:/.test(d)).map((d) => d.trim());
   return [...new Set(out)].slice(0, max);
 }
