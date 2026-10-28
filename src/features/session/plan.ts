@@ -6,6 +6,7 @@
  *   (speaking, step 9) → a Tone Gym round.
  * Pure: everything it needs is passed in.
  */
+import { inContext, isNeutralParticle, needsContext } from '../../lib/context';
 import { samePinyin, sharesMeaning } from '../../lib/gloss';
 import { parseCardId, type Facet } from '../../lib/review';
 import type { SentenceRow, VocabData, VocabRow } from '../../lib/vocabData';
@@ -17,10 +18,12 @@ export type SessionMode = 'quick' | 'deep';
 export type SItem = SItemBase & { retry?: boolean };
 type SItemBase =
   | { kind: 'intro'; word: string }
-  | { kind: 'choose-meaning'; word: string; options: string[] }
-  | { kind: 'listen-meaning'; word: string }
-  | { kind: 'dictation'; word: string }
-  | { kind: 'meaning-pinyin'; word: string }
+  | { kind: 'choose-meaning'; word: string; options: string[]; ctx?: string }
+  /** ctx: an example sentence to hear the word in (homophones and particles). */
+  | { kind: 'listen-meaning'; word: string; ctx?: string }
+  | { kind: 'dictation'; word: string; ctx?: string }
+  /** card: the facet card it stands in for (a particle's dictation, when there's no sentence to dictate it in). */
+  | { kind: 'meaning-pinyin'; word: string; card?: string }
   | { kind: 'sentence-dictation'; sentence: string; card?: string }
   | { kind: 'sentence-meaning'; sentence: string }
   | { kind: 'sentence-pinyin'; sentence: string }
@@ -58,7 +61,7 @@ export function cardOf(it: SItem): string | null {
     case 'dictation':
       return `${it.word}#lp`;
     case 'meaning-pinyin':
-      return `${it.word}#mp`;
+      return it.card ?? `${it.word}#mp`;
     case 'sentence-dictation':
       return it.card ?? null;
     case 'speak':
@@ -72,6 +75,22 @@ export function cardOf(it: SItem): string | null {
 const wordHasAudio = (w: VocabRow | undefined) => !!w && (w.azure || !!w.course);
 const sentenceHasAudio = (s: SentenceRow | undefined) => !!s && (s.azure || s.course);
 
+/** For homophones and particles: the example sentence to hear the word in, if one lines up. */
+export function contextFor(w: VocabRow, data: VocabData): string | undefined {
+  return needsContext(w.id, data) ? inContext(w, data, sentenceHasAudio)?.sentence.id : undefined;
+}
+
+/**
+ * Dictation of a word: in its sentence when it needs one. A neutral-tone
+ * particle is never dictated on its own: without a sentence, its listening
+ * card is practised from English instead.
+ */
+function dictationItem(w: VocabRow, data: VocabData, ctx = contextFor(w, data)): SItem | null {
+  if (ctx) return { kind: 'dictation', word: w.id, ctx };
+  if (isNeutralParticle(w)) return { kind: 'meaning-pinyin', word: w.id, card: `${w.id}#lp` };
+  return wordHasAudio(w) ? { kind: 'dictation', word: w.id } : null;
+}
+
 export function reviewItem(card: string, data: VocabData, mic = false): SItem | null {
   const p = parseCardId(card);
   if (!p) {
@@ -80,9 +99,10 @@ export function reviewItem(card: string, data: VocabData, mic = false): SItem | 
   }
   const w = data.byId.get(p.word);
   if (!w) return null;
+  const ctx = contextFor(w, data);
   const byFacet: Record<Facet, SItem | null> = {
-    lm: wordHasAudio(w) ? { kind: 'listen-meaning', word: w.id } : null,
-    lp: wordHasAudio(w) ? { kind: 'dictation', word: w.id } : null,
+    lm: wordHasAudio(w) ? { kind: 'listen-meaning', word: w.id, ...(ctx && { ctx }) } : null,
+    lp: dictationItem(w, data, ctx),
     mp: { kind: 'meaning-pinyin', word: w.id },
     sp: mic && wordHasAudio(w) ? { kind: 'speak', word: w.id } : null,
   };
@@ -128,7 +148,11 @@ export const CHOOSE_GAP = 3;
 export function newWordItems(words: string[], data: VocabData, rng: () => number): SItem[] {
   const ws = words.map((id) => data.byId.get(id)).filter((w): w is VocabRow => !!w);
   const out: SItem[] = [];
-  const choose = (w: VocabRow): SItem[] => (wordHasAudio(w) ? [{ kind: 'choose-meaning', word: w.id, options: shuffle([w.id, ...distractors(w, data.words, rng)], rng) }] : []);
+  const choose = (w: VocabRow): SItem[] => {
+    if (!wordHasAudio(w)) return [];
+    const ctx = contextFor(w, data);
+    return [{ kind: 'choose-meaning', word: w.id, options: shuffle([w.id, ...distractors(w, data.words, rng)], rng), ...(ctx && { ctx }) }];
+  };
   ws.forEach((w, i) => {
     out.push({ kind: 'intro', word: w.id });
     if (i >= CHOOSE_GAP) out.push(...choose(ws[i - CHOOSE_GAP]));
@@ -136,7 +160,8 @@ export function newWordItems(words: string[], data: VocabData, rng: () => number
   for (const w of ws.slice(Math.max(0, ws.length - CHOOSE_GAP))) out.push(...choose(w));
   const typed: SItem[] = [];
   for (const w of ws) {
-    if (wordHasAudio(w)) typed.push({ kind: 'dictation', word: w.id });
+    const d = dictationItem(w, data);
+    if (d && d.kind === 'dictation') typed.push(d);
     typed.push({ kind: 'meaning-pinyin', word: w.id });
   }
   out.push(...shuffle(typed, rng));

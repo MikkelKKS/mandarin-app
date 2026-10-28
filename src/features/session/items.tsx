@@ -3,6 +3,9 @@
  * what happened; the player records it, shows feedback and moves on.
  * Pinyin first: characters only when "Characters: Show" is on.
  */
+import { glossTerms, samePinyin } from '../../lib/gloss';
+import { isPass } from '../../lib/pinyinAnswer';
+import { inContext, type InContext } from '../../lib/context';
 import { grammarFor } from '../../lib/grammar';
 import { GrammarNoteCard } from '../../components/GrammarNote';
 import { VolumeSlider } from '../../components/VolumeSlider';
@@ -25,6 +28,8 @@ import type { SItem } from './plan';
 
 export interface ItemResult {
   outcome: Outcome;
+  /** The sentence the word was heard in (homophones and particles), shown with the word highlighted. */
+  context?: { before: string; target: string; after: string; english?: string; id?: string };
   /** A self-grade (listening for meaning): recorded as given, no feedback panel. */
   rating?: RatingName;
   typed?: boolean;
@@ -52,7 +57,20 @@ function DontKnow({ onUnknown }: { onUnknown?: () => void }) {
   );
 }
 
-const glossOf = (w: VocabRow) => shortGloss(w.gloss);
+const glossOf = (w: VocabRow) => w.short ?? shortGloss(w.gloss);
+
+/** Part of speech in plain words ("verb", "measure word"…), or nothing when it's unclear. */
+export function posLabel(pos?: string[]): string | null {
+  const map: Record<string, string> = { pr: 'pronoun', intj: 'interjection', 'sound word': 'sound word' };
+  const list = [...new Set((pos ?? []).map((p) => map[p] ?? p))].filter((p) => !['name', 'phrase', 'time', 'number'].includes(p));
+  return list.length ? list.slice(0, 2).join(' / ') : null;
+}
+
+/** Other HSK words that the shown meaning fits too (néng, huì, kěyǐ for "can"). */
+export function sameMeaning(w: VocabRow, words: VocabRow[]): VocabRow[] {
+  const shown = glossTerms([glossOf(w)]);
+  return words.filter((x) => x.id !== w.id && !samePinyin(x.pinyin, w.pinyin) && [...glossTerms(x.gloss.slice(0, 2))].some((t) => shown.has(t)));
+}
 
 /** Characters, when the setting is on. */
 function Hanzi({ text, className = '' }: { text: string; className?: string }) {
@@ -81,11 +99,11 @@ export function SessionItem(p: ItemProps) {
     case 'intro':
       return <Intro {...p} word={p.item.word} />;
     case 'choose-meaning':
-      return <ChooseMeaning {...p} word={p.item.word} options={p.item.options} />;
+      return <ChooseMeaning {...p} word={p.item.word} options={p.item.options} ctx={p.item.ctx} />;
     case 'listen-meaning':
-      return <ListenMeaning {...p} word={p.item.word} />;
+      return <ListenMeaning {...p} word={p.item.word} ctx={p.item.ctx} />;
     case 'dictation':
-      return <Dictation {...p} word={p.item.word} />;
+      return <Dictation {...p} word={p.item.word} ctx={p.item.ctx} />;
     case 'meaning-pinyin':
       return <MeaningToPinyin {...p} word={p.item.word} />;
     case 'sentence-dictation':
@@ -99,6 +117,33 @@ export function SessionItem(p: ItemProps) {
     case 'speak':
       return <Speak data={p.data} word={p.item.word} onResult={p.onResult} onNoMic={p.onNoMic ?? (() => {})} />;
   }
+}
+
+/** The word inside its sentence (homophones and particles), when the item has one. */
+function useContext(data: VocabData, w: VocabRow, ctx?: string): InContext | null {
+  return useMemo(() => {
+    if (!ctx) return null;
+    const c = inContext(w, data, (s) => s.id === ctx);
+    if (c) rememberText(c.sentence.id, c.sentence.hanzi);
+    return c;
+  }, [data, w, ctx]);
+}
+
+/** A sentence's pinyin with the word highlighted, or left blank to fill in. */
+export function ContextLine({ c, blank = false, className = '' }: { c: { before: string; target: string; after: string }; blank?: boolean; className?: string }) {
+  return (
+    <p className={`text-center text-xl leading-relaxed ${className}`}>
+      {c.before && <TonePinyin pinyin={c.before} className="mr-1.5" />}
+      {blank ? (
+        <span className="mx-0.5 inline-block w-14 border-b-2 border-ink align-baseline" aria-label="missing word" />
+      ) : (
+        <mark className="rounded-md bg-amber-soft px-1 font-semibold text-inherit">
+          <TonePinyin pinyin={c.target} />
+        </mark>
+      )}
+      {c.after && <TonePinyin pinyin={c.after} className="ml-1.5" />}
+    </p>
+  );
 }
 
 /** Meeting a new word: hear it (twice), see it, see it in a sentence. */
@@ -156,20 +201,22 @@ function Intro({ data, word, onResult }: ItemProps & { word: string }) {
 }
 
 /** First exposure only: hear it, pick the meaning. */
-function ChooseMeaning({ data, word, options, onResult }: ItemProps & { word: string; options: string[] }) {
+function ChooseMeaning({ data, word, options, ctx, onResult }: ItemProps & { word: string; options: string[]; ctx?: string }) {
   const w = useWord(data, word);
+  const c = useContext(data, w, ctx);
   const [picked, setPicked] = useState<number | null>(null);
   const opts = options.map((id) => data.byId.get(id)!).filter(Boolean);
   const right = opts.findIndex((o) => o.id === w.id);
   const choose = (i: number) => {
     if (picked !== null) return;
     setPicked(i);
-    onResult({ outcome: { verdict: i === right ? 'correct' : 'wrong', answer: { pinyin: w.pinyin, english: glossOf(w), hanzi: w.hanzi } } });
+    onResult({ outcome: { verdict: i === right ? 'correct' : 'wrong', answer: { pinyin: w.pinyin, english: glossOf(w), hanzi: w.hanzi } }, context: c ? { ...c, english: c.sentence.english[0], id: c.sentence.id } : undefined });
   };
   return (
     <div>
-      <Prompt>What does it mean?</Prompt>
-      <AudioControls id={w.id} ladder />
+      <Prompt>{c ? 'What does the marked word mean here?' : 'What does it mean?'}</Prompt>
+      <AudioControls id={c?.sentence.id ?? w.id} ladder />
+      {c && <ContextLine c={c} className="mt-5" />}
       <div className="mt-8">
         <Options
           count={opts.length}
@@ -184,8 +231,9 @@ function ChooseMeaning({ data, word, options, onResult }: ItemProps & { word: st
 }
 
 /** Review, listening → meaning: hear it, think (or type) the meaning, then grade yourself. */
-function ListenMeaning({ data, word, onResult, onUnknown }: ItemProps & { word: string }) {
+function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { word: string; ctx?: string }) {
   const w = useWord(data, word);
+  const c = useContext(data, w, ctx);
   const [shown, setShown] = useState(false);
   const [typed, setTyped] = useState('');
   const match = shown && typed.trim() ? meaningMatches(typed, w.gloss) : null;
@@ -197,8 +245,9 @@ function ListenMeaning({ data, word, onResult, onUnknown }: ItemProps & { word: 
   }, []);
   return (
     <div>
-      <Prompt>What does it mean?</Prompt>
-      <AudioControls id={w.id} ladder />
+      <Prompt>{c ? 'What does the marked word mean here?' : 'What does it mean?'}</Prompt>
+      <AudioControls id={c?.sentence.id ?? w.id} ladder />
+      {c && <ContextLine c={c} className="mt-5" />}
       {!shown ? (
         <div className="mt-8">
           <input
@@ -219,6 +268,7 @@ function ListenMeaning({ data, word, onResult, onUnknown }: ItemProps & { word: 
         <div className="anim-rise mt-8 rounded-2xl bg-surface p-4 border border-line">
           <TonePinyin pinyin={w.pinyin} className="text-3xl font-semibold" /> <Hanzi text={w.hanzi} className="ml-2 text-2xl text-muted" />
           <p className="mt-1 text-lg">{glossOf(w)}</p>
+          {c && <p className="mt-1 text-sm text-muted">The sentence: {c.sentence.english[0]}</p>}
           {match !== null && <p className={`mt-1 text-sm ${match ? 'text-jade' : 'text-muted'}`}>{match ? 'Your answer matches.' : `You wrote “${typed.trim()}”.`}</p>}
           <SelfGrade onGrade={grade} suggest={match === true ? 'good' : match === false ? 'again' : undefined} />
           <DontKnow onUnknown={onUnknown} />
@@ -269,14 +319,14 @@ function SelfGrade({ onGrade, suggest }: { onGrade: (r: RatingName) => void; sug
   );
 }
 
-/** Typed pinyin, checked syllable by syllable. */
-function useTyped(expected: { pinyin: string; hanzi: string; english?: string }, onResult: (r: ItemResult) => void) {
+/** Typed pinyin, checked syllable by syllable (or by a custom checker). */
+function useTyped(expected: { pinyin: string; hanzi: string; english?: string }, onResult: (r: ItemResult) => void, checker?: (text: string) => Outcome) {
   const [text, setText] = useState('');
   const done = useRef(false);
   const check = () => {
     if (done.current || !text.trim()) return null as unknown as Outcome;
     done.current = true;
-    const o = checkTyped(text, expected);
+    const o = checker ? checker(text) : checkTyped(text, expected);
     onResult({ outcome: o, typed: true });
     return null as unknown as Outcome;
   };
@@ -296,27 +346,49 @@ function TypeBox({ text, setText, check, onUnknown }: ReturnType<typeof useTyped
   );
 }
 
-/** Review, listening → pinyin: dictation. */
-function Dictation({ data, word, onResult, onUnknown }: ItemProps & { word: string }) {
+/** Review, listening → pinyin: dictation (in its sentence, for homophones and particles: type the missing word). */
+function Dictation({ data, word, ctx, onResult, onUnknown }: ItemProps & { word: string; ctx?: string }) {
   const w = useWord(data, word);
-  const t = useTyped({ pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) }, onResult);
+  const c = useContext(data, w, ctx);
+  const t = useTyped({ pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) }, (r) => onResult(c ? { ...r, context: { ...c, english: c.sentence.english[0], id: c.sentence.id } } : r));
   return (
     <div>
-      <Prompt>Type what you hear, with tones</Prompt>
-      <AudioControls id={w.id} ladder />
+      <Prompt>{c ? 'Listen, then type the missing word with tones' : 'Type what you hear, with tones'}</Prompt>
+      <AudioControls id={c?.sentence.id ?? w.id} ladder />
+      {c && <ContextLine c={c} blank className="mt-5" />}
       <TypeBox {...t} onUnknown={onUnknown} />
     </div>
   );
 }
 
-/** Review, meaning → pinyin: active recall. */
+/** Review, meaning → pinyin: active recall, with part of speech and the example sentence (word blanked) to tell near-synonyms apart. */
 function MeaningToPinyin({ data, word, onResult, onUnknown }: ItemProps & { word: string }) {
   const w = useWord(data, word);
-  const t = useTyped({ pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) }, onResult);
+  const c = useMemo(() => inContext(w, data, () => true), [w, data]);
+  const others = useMemo(() => sameMeaning(w, data.words), [w, data.words]);
+  const expected = { pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) };
+  const t = useTyped(expected, onResult, (text) => {
+    const o = checkTyped(text, expected);
+    if (isPass(o.verdict)) return o;
+    // Another HSK word with this meaning: right, just not the one we meant.
+    const other = others.find((x) => isPass(checkTyped(text, { pinyin: x.pinyin, hanzi: x.hanzi }).verdict));
+    if (other) return { verdict: 'correct', answer: o.answer, note: `Also right: ${other.pinyin} means that too. We were looking for ${w.pinyin}.` };
+    return o;
+  });
+  const pos = posLabel(w.pos);
   return (
     <div>
       <Prompt>How do you say it? Type the pinyin with tones</Prompt>
-      <p className="rounded-2xl bg-surface p-5 text-center text-2xl font-semibold border border-line">{glossOf(w)}</p>
+      <div className="rounded-2xl border border-line bg-surface p-5 text-center">
+        <p className="text-2xl font-semibold">{glossOf(w)}</p>
+        {pos && <p className="mt-1 text-sm text-muted">{pos}</p>}
+        {c && (
+          <div className="mt-4 border-t border-line pt-3">
+            <ContextLine c={c} blank className="!text-lg" />
+            <p className="mt-1 text-sm text-muted">{c.sentence.english[0]}</p>
+          </div>
+        )}
+      </div>
       <TypeBox {...t} onUnknown={onUnknown} />
     </div>
   );

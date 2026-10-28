@@ -15,6 +15,10 @@ export interface VocabRow {
   azure: boolean;
   /** Id in the old hand-written course, whose older recordings (two voices) exist. */
   course?: string;
+  /** Parts of speech from the HSK list (noun, verb, particle…). */
+  pos?: string[];
+  /** A short everyday meaning for exercises (HSK 1–4); the full CC-CEDICT glosses stay in `gloss`. */
+  short?: string;
 }
 
 let cache: Promise<VocabRow[]> | null = null;
@@ -22,7 +26,7 @@ let cache: Promise<VocabRow[]> | null = null;
 export function loadVocab(): Promise<VocabRow[]> {
   cache ??= import('virtual:vocab').then((m) =>
     m.default
-      .map(([id, hanzi, pinyin, gloss, level, order, examples, azure, course]) => ({
+      .map(([id, hanzi, pinyin, gloss, level, order, examples, azure, course, pos, short]) => ({
         id,
         hanzi,
         pinyin,
@@ -32,6 +36,8 @@ export function loadVocab(): Promise<VocabRow[]> {
         examples,
         azure: azure === 1,
         course: course || undefined,
+        pos,
+        short: short || undefined,
       }))
       .sort((a, b) => a.order - b.order),
   );

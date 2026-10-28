@@ -27,7 +27,7 @@ import { LessonCtx, type LessonApi } from '../lesson/context';
 import { GradeChip } from '../lesson/GradeChip';
 import type { Outcome } from '../lesson/types';
 import { patternStats, pickRound, sessionPool } from '../tonegym/model';
-import { SessionItem, type ItemResult } from './items';
+import { ContextLine, SessionItem, type ItemResult } from './items';
 import { BLOCK_TITLE, cardOf, DEEP, newWordItems, planSession, QUICK, type SItem, type SessionMode } from './plan';
 import { SessionEnd } from './SessionEnd';
 import { loadSession, saveSession, type SessionState } from './state';
@@ -401,7 +401,8 @@ function Feedback({
   }, []);
   const tone = o.verdict === 'wrong' ? 'bg-cinnabar-soft' : o.verdict === 'almost' || o.verdict === 'typo' ? 'bg-amber-soft' : 'bg-jade-soft';
   const title = o.note?.startsWith('Moved back') ? "Here's the word" : o.verdict === 'wrong' ? 'Not quite' : o.verdict === 'almost' ? 'Almost' : o.verdict === 'typo' ? 'Right, with a typo' : 'Right';
-  const audioId = 'word' in item ? item.word : 'sentence' in item ? item.sentence : null;
+  // A word heard in a sentence is replayed in that sentence.
+  const audioId = result.context?.id ?? ('word' in item ? item.word : 'sentence' in item ? item.sentence : null);
   const a = o.answer ?? (audioId ? answerFor(item, data) : undefined);
   return (
     <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)]`}>
@@ -409,6 +410,12 @@ function Feedback({
         <p className="text-xl font-semibold">{title}</p>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}
         {o.syllables && o.verdict !== 'correct' && <SyllableBreakdown syllables={o.syllables} extra={o.extra} />}
+        {result.context && (
+          <div className="mt-2">
+            <ContextLine c={result.context} className="!text-left !text-lg" />
+            {result.context.english && <p className="text-sm opacity-80">{result.context.english}</p>}
+          </div>
+        )}
         {a && (
           <div className="mt-3 flex items-start gap-3">
             <div className="min-w-0 flex-1">
@@ -420,7 +427,12 @@ function Feedback({
               )}
               {a.english && <p className="opacity-80">{a.english}</p>}
               <span className="mt-1 flex flex-wrap gap-x-4">
-                {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} />}
+                {audioId &&
+                  (result.context?.id ? (
+                    <ReportAudio id={audioId} hanzi={data.sentences.get(audioId)?.hanzi ?? ''} pinyin={data.sentences.get(audioId)?.pinyin} />
+                  ) : (
+                    <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} />
+                  ))}
                 {'word' in item && a.hanzi && a.pinyin && <GrammarLink word={{ hanzi: a.hanzi, pinyin: a.pinyin }} />}
                 {'word' in item && a.hanzi && (
                   <a href={plecoLink(a.hanzi)} className="text-xs underline underline-offset-2 opacity-70 hover:opacity-100">

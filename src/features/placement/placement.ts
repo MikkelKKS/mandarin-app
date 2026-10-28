@@ -3,6 +3,7 @@
  * starting level, marks words you already know as mature so you aren't
  * drilled on basics. Pure helpers plus the write to the database.
  */
+import { isNeutralParticle } from '../../lib/context';
 import { db, type ReviewItemRow } from '../../db/db';
 import { cardId, TEXT_FACETS } from '../../lib/review';
 import type { VocabRow } from '../../lib/vocabData';
@@ -13,10 +14,12 @@ export const STOP_BELOW = 0.5;
 export const LEVELS = [1, 2, 3, 4, 5, 6];
 
 const playable = (w: VocabRow) => w.azure || !!w.course;
+/** Never dictate a neutral-tone particle on its own (le, de, ne…): it's only meaningful in a sentence. */
+const dictatable = (w: VocabRow) => playable(w) && !isNeutralParticle(w);
 
 /** Words to test at a level: spread evenly over its frequency order, so the score stands for the level. */
 export function sampleLevel(words: VocabRow[], level: number, n = PER_LEVEL): VocabRow[] {
-  const pool = words.filter((w) => w.level === level && playable(w) && [...w.hanzi].length <= 3).sort((a, b) => a.order - b.order);
+  const pool = words.filter((w) => w.level === level && dictatable(w) && [...w.hanzi].length <= 3).sort((a, b) => a.order - b.order);
   if (pool.length <= n) return pool;
   return Array.from({ length: n }, (_, i) => pool[Math.floor(((i + 0.5) / n) * pool.length)]);
 }

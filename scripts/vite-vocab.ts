@@ -25,6 +25,7 @@ interface RawWord {
   gloss: string[];
   examples: string[];
   legacy?: string[];
+  pos?: string[];
 }
 
 export function vocabModules(root: string): Plugin {
@@ -80,8 +81,11 @@ export function vocabModules(root: string): Plugin {
       const manifestFile = join(root, 'content', 'data', 'azure-audio.json');
       if (existsSync(manifestFile)) this.addWatchFile(manifestFile);
       const made: Record<string, string> = existsSync(manifestFile) ? JSON.parse(readFileSync(manifestFile, 'utf8')) : {};
-      // Tuples keep the chunk small: [id, hanzi, pinyin, glosses, level, order, examples, audio, course id]
-      // audio: 1 = Azure recording exists.
+      // Tuples keep the chunk small: [id, hanzi, pinyin, glosses, level, order, examples, audio, course id, parts of speech, short meaning]
+      // audio: 1 = Azure recording exists. Short meaning: content/data/short-glosses.json (learner-friendly, HSK 1–4).
+      const shortFile = join(root, 'content', 'data', 'short-glosses.json');
+      if (existsSync(shortFile)) this.addWatchFile(shortFile);
+      const short: Record<string, string> = existsSync(shortFile) ? JSON.parse(readFileSync(shortFile, 'utf8')).glosses ?? {} : {};
       const rows = words.map((w) => [
         w.id,
         w.hanzi,
@@ -92,6 +96,8 @@ export function vocabModules(root: string): Plugin {
         w.examples,
         made[`${w.id}.mp3`] ? 1 : 0,
         w.legacy?.[0] ?? '',
+        w.pos ?? [],
+        short[w.id] ?? '',
       ]);
       return `export default ${JSON.stringify(rows)};`;
     },

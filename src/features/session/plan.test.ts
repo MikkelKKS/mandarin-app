@@ -154,3 +154,25 @@ describe('say it in pinyin (deep sessions)', async () => {
     expect(items.map((x) => (x as { sentence: string }).sentence)).not.toContain('s7');
   });
 });
+
+describe('homophones and particles are heard in a sentence', async () => {
+  const { reviewItem, newWordItems: items, cardOf: card } = await import('./plan');
+  const mk = (id: string, hanzi: string, pinyin: string, examples: string[] = [], extra: Partial<VocabRow> = {}): VocabRow => ({ id, hanzi, pinyin, gloss: [id], level: 1, order: 1, examples, azure: true, ...extra });
+  const shi = mk('shi', '是', 'shì', ['x1']);
+  const shi2 = mk('shi2', '事', 'shì');
+  const le = mk('le', '了', 'le');
+  const ma = mk('ma', '马', 'mǎ');
+  const x1: SentenceRow = { id: 'x1', hanzi: '我是学生。', pinyin: 'Wǒ shì xuésheng.', english: ["I'm a student."], words: [], azure: true, course: false };
+  const d: VocabData = { words: [shi, shi2, le, ma], byId: new Map([shi, shi2, le, ma].map((w) => [w.id, w])), sentences: new Map([['x1', x1]]) };
+  it('a homophone is listened to and dictated in its example sentence', () => {
+    expect(reviewItem('shi#lm', d)).toEqual({ kind: 'listen-meaning', word: 'shi', ctx: 'x1' });
+    expect(reviewItem('shi#lp', d)).toEqual({ kind: 'dictation', word: 'shi', ctx: 'x1' });
+    expect(reviewItem('ma#lp', d)).toEqual({ kind: 'dictation', word: 'ma' }); // not a homophone
+  });
+  it('a particle with no sentence is never dictated on its own', () => {
+    const it2 = reviewItem('le#lp', d)!;
+    expect(it2).toEqual({ kind: 'meaning-pinyin', word: 'le', card: 'le#lp' });
+    expect(card(it2)).toBe('le#lp');
+    expect(items(['le'], d, () => 0.3).some((x) => x.kind === 'dictation')).toBe(false);
+  });
+});
