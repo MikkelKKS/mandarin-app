@@ -24,30 +24,6 @@ export const Check = ({ className }: P) => (
     <path d="m5 12 5 5L20 7" />
   </svg>
 );
-export const Lock = ({ className }: P) => (
-  <svg {...base} className={className} aria-hidden>
-    <rect x="5" y="11" width="14" height="10" rx="2" />
-    <path d="M8 11V8a4 4 0 0 1 8 0v3" />
-  </svg>
-);
-export const Path = ({ className }: P) => (
-  <svg {...base} className={className} aria-hidden>
-    <circle cx="6" cy="19" r="2" />
-    <circle cx="18" cy="5" r="2" />
-    <path d="M8 19h6a4 4 0 0 0 0-8h-4a4 4 0 0 1 0-8h6" />
-  </svg>
-);
-export const Refresh = ({ className }: P) => (
-  <svg {...base} className={className} aria-hidden>
-    <path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7" />
-  </svg>
-);
-export const Gamepad = ({ className }: P) => (
-  <svg {...base} className={className} aria-hidden>
-    <rect x="2" y="7" width="20" height="11" rx="5" />
-    <path d="M7 11v3M5.5 12.5h3M15 12h.01M18 14h.01" />
-  </svg>
-);
 export const Cog = ({ className }: P) => (
   <svg {...base} className={className} aria-hidden>
     <circle cx="12" cy="12" r="3" />
@@ -86,12 +62,6 @@ export const Music = ({ className }: P) => (
     <path d="M9 18V5l12-2v13" />
     <circle cx="6" cy="18" r="3" />
     <circle cx="18" cy="16" r="3" />
-  </svg>
-);
-export const OpenBook = ({ className }: P) => (
-  <svg {...base} className={className} aria-hidden>
-    <path d="M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.5-2-10-.5z" />
-    <path d="M12 6v13.5" />
   </svg>
 );
 /** The four tone contours: level, rising, dipping, falling. */

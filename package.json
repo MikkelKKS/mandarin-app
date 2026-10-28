@@ -11,7 +11,6 @@
     "test:e2e": "playwright test",
     "content:validate": "tsx scripts/validate-content.ts",
     "content:build": "tsx scripts/build-content.ts",
-    "audio:generate": "python3 scripts/generate-audio.py",
     "typecheck": "tsc -b",
     "syllables:build": "tsx scripts/build-syllables.ts",
     "hsk:fetch": "tsx scripts/fetch-hsk.ts",

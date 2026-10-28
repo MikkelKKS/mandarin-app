@@ -18,8 +18,6 @@ function Ctor(): (new () => Rec) | undefined {
   return w.SpeechRecognition ?? w.webkitSpeechRecognition;
 }
 
-export const speechSupported = typeof window !== 'undefined' && !!Ctor();
-
 export interface Recording {
   stop: () => void;
   result: Promise<{ transcript: string; pitch: PitchPoint[]; error?: string }>;

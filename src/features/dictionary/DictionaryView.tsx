@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { wordByHanzi } from '../../content';
-import { dictAudioUrl, hasChineseVoice, play, playUrl, speak } from '../../lib/audio';
+import { azureUrl, dictAudioUrl, hasChineseVoice, play, playUrl, speak } from '../../lib/audio';
+import { loadVocab } from '../../lib/vocabData';
 import { guessHanzi, isPinyinSentence, loadDict, plecoLink, romanKey, search, segment, type Dict, type Entry } from './dict';
 import { looksLikeEnglishSentence, translate } from './translate';
 import { useQueuedWords } from './mywords';
@@ -11,13 +12,22 @@ import { PageHeader } from '../../components/PageHeader';
 
 let showNoVoice: (v: boolean) => void = () => {};
 
-/** Play a word: course recording, then dictionary recording, then the browser's voice. */
+let azureByHanzi: Promise<Map<string, string>> | null = null;
+/** HSK words with an Azure recording, by characters. */
+function azureWords(): Promise<Map<string, string>> {
+  azureByHanzi ??= loadVocab().then((v) => new Map(v.filter((w) => w.azure).map((w) => [w.hanzi, w.id])));
+  return azureByHanzi;
+}
+
+/** Play a word: its Azure recording (course or HSK word), then the older dictionary recording, then the browser's voice. */
 async function sayWord(hanzi: string): Promise<boolean> {
   const known = wordByHanzi(hanzi);
   if (known) {
     void play(known.id);
     return true;
   }
+  const hsk = (await azureWords()).get(hanzi);
+  if (hsk && (await playUrl(azureUrl(hsk, false)))) return true;
   if (await playUrl(dictAudioUrl(hanzi))) return true;
   if (await hasChineseVoice()) {
     void speak(hanzi);
@@ -224,7 +234,7 @@ function UpNext() {
 
 /** In-app translation (online). Chinese → English, or English → Chinese with pinyin. */
 function TranslationCard({ text, dir, sourceKey, dict }: { text: string; dir: 'zh-en' | 'en-zh'; sourceKey?: string; dict?: Dict }) {
-  const [state, setState] = useState<{ status: 'loading' | 'done' | 'error'; text?: string; error?: string }>({ status: 'loading' });
+  const [state, setState] = useState<{ status: 'loading' | 'done' | 'error'; text?: string; error?: string; source?: 'azure' | 'mymemory' }>({ status: 'loading' });
   const [online, setOnline] = useState(navigator.onLine);
   useEffect(() => {
     const on = () => setOnline(navigator.onLine);
@@ -240,7 +250,7 @@ function TranslationCard({ text, dir, sourceKey, dict }: { text: string; dir: 'z
     setState({ status: 'loading' });
     const t = setTimeout(() => {
       translate(text, dir, ctl.signal, sourceKey)
-        .then((r) => setState({ status: 'done', text: r.text }))
+        .then((r) => setState({ status: 'done', text: r.text, source: r.source }))
         .catch((e: Error) => e.name !== 'AbortError' && setState({ status: 'error', error: e.message }));
     }, 500);
     return () => {
@@ -251,7 +261,10 @@ function TranslationCard({ text, dir, sourceKey, dict }: { text: string; dir: 'z
   const zh = dir === 'en-zh' && state.text ? state.text : null;
   return (
     <section className="mt-3 rounded-2xl border border-jade/40 bg-surface p-4" aria-live="polite">
-      <p className="text-xs font-semibold text-jade">{dir === 'zh-en' ? 'Translation' : 'In Chinese'}</p>
+      <p className="flex justify-between gap-3 text-xs">
+        <span className="font-semibold text-jade">{dir === 'zh-en' ? 'Translation' : 'In Chinese'}</span>
+        {state.source && <span className="text-muted">{state.source === 'azure' ? 'Azure Translator' : 'MyMemory (rough; free)'}</span>}
+      </p>
       {state.status === 'loading' && <p className="mt-1 text-muted">Translating…</p>}
       {state.status === 'error' && <p className="mt-1 text-sm">{state.error}</p>}
       {state.status === 'done' && !zh && <p className="mt-1 text-lg leading-snug">{state.text}</p>}

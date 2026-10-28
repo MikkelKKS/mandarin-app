@@ -204,3 +204,15 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 ## 2026-10-28: Tone questions out of sessions (for now)
 - Quick and deep sessions no longer mix in Tone Gym questions: the neural-voice syllables weren't good enough to learn tones from. The Tone Gym page keeps them.
 - Settings → **Tone questions in sessions** (off by default) brings them back; the plan is to turn it on once the Tone Perfect recordings (6 real speakers) are in.
+
+## 2026-10-28: Clean-up of the whole app
+- **Asked:** keep Conversations as a side section with progress shared both ways; keep Read (Stories), Music and the Dictionary; remove the mini-games and AI practice packs; clean files, but don't rewrite git history.
+- **Navigation:** five tabs: Home, Tones, Library, Stats, Settings. Library holds Conversations, Stories, Music, HSK words and the Dictionary, with a look-up box at the top.
+- **Removed:** the six mini-games (Tone Sort and Tone Pairs were covered by the Tone Gym), AI practice packs, unit test-outs, the old Practice screen (sessions do this now), the old Progress page, the "Audio speed" and "Extra tone practice" settings and the "Can't listen now" settings row (the lesson's own "No audio" button stays). The old edge-tts generator and the old brief (CLAUDE-old.md) are gone from the repo.
+- **One picture of what you know** (`lib/knowledge.ts`): every screen reads word stages from the same HSK review cards. Conversations lessons count as done when finished or when you know all their words; lessons no longer re-introduce words you've met; Stories show how much of each you know; Music scores songs against it (it was still reading the old card format).
+- **Fixed:** a word met in only one skill counted as "not started". It now counts as learning.
+- **Conversations:** no locks; a compact list of units that open to show their lessons (the long winding path is gone).
+- **Stories:** every paragraph recorded with Azure (Yunxi, since 米格 tells them), "Play all" and per-paragraph play; no locks.
+- **Dictionary:** "Learn next" replaces "Add to my practice" (those words never reached a session). HSK words go to the front of your new words; earlier "My words" were carried over. Words play their Azure recording.
+- **Translation:** a Supabase function calling Azure Translator (free F0), only for the owner's account; MyMemory remains the fallback until it's set up.
+- **Look:** porcelain and ink. Cool light surfaces, jade for actions, tone colours as the only other bright colours; Instrument Sans (good pinyin tone marks) with Noto Sans SC; hairline borders instead of thick ones; no 3D button lips; one easing curve, short durations; the red seal on end screens is the one flourish. Home has one main action; Settings is grouped with switches; achievements moved to Stats.

@@ -1,6 +1,6 @@
 /**
  * Zod schemas for all curriculum content in /content.
- * Shared by the app (runtime validation of practice packs) and
+ * Shared by the app and
  * scripts/validate-content.ts (CI validation of the shipped curriculum).
  */
 import { z } from 'zod';

@@ -316,7 +316,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             {st.plan.blocks.map((b, k) => {
               const frac = k < st.block ? 1 : k > st.block ? 0 : st.item / Math.max(1, b.items.length);
               return (
-                <div key={k} className="h-3 overflow-hidden rounded-full bg-sunk" style={{ flex: Math.max(3, b.items.length) }} title={BLOCK_TITLE[b.id]}>
+                <div key={k} className="h-2 overflow-hidden rounded-full bg-sunk" style={{ flex: Math.max(3, b.items.length) }} title={BLOCK_TITLE[b.id]}>
                   <div className="h-full rounded-full bg-jade transition-[width] duration-300" style={{ width: `${frac * 100}%` }} />
                 </div>
               );

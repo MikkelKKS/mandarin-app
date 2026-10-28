@@ -266,22 +266,23 @@ export function LessonPlayer({
           <button onClick={onExit} aria-label="Leave lesson" className="rounded-full p-2 text-muted hover:bg-sunk">
             <Close className="h-6 w-6" />
           </button>
-          <div className="h-3 flex-1 overflow-hidden rounded-full bg-sunk" role="progressbar" aria-label={title} aria-valuenow={Math.round(progress * 100)} aria-valuemin={0} aria-valuemax={100}>
+          <div className="h-2 flex-1 overflow-hidden rounded-full bg-sunk" role="progressbar" aria-label={title} aria-valuenow={Math.round(progress * 100)} aria-valuemin={0} aria-valuemax={100}>
             <div
-              className="relative h-full rounded-full bg-jade transition-[width] duration-700 [transition-timing-function:var(--ease-spring)]"
+              className="relative h-full rounded-full bg-jade transition-[width] duration-500 [transition-timing-function:var(--ease-out)]"
               style={{ width: `${Math.max(4, progress * 100)}%` }}
             >
-              <span aria-hidden className="absolute inset-x-1.5 top-[3px] h-[3px] rounded-full bg-white/30" />
             </div>
           </div>
           {hasSpeaking && (
-            <button onClick={noSpeaking} title="Can't speak now (1 hour)" aria-label="Can't speak now: skip speaking exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
-              <MicOff className="h-6 w-6" />
+            <button onClick={noSpeaking} title="Skip speaking exercises for an hour" aria-label="Can't speak now: skip speaking exercises for an hour" className="flex items-center gap-1 rounded-full border border-line px-2.5 py-1 text-xs font-medium text-muted hover:text-ink">
+              <MicOff className="h-4 w-4" />
+              No mic
             </button>
           )}
           {!quiet && (
-            <button onClick={goQuiet} title="Can't listen now (1 hour)" aria-label="Can't listen now: skip audio exercises for an hour" className="rounded-full p-2 text-muted hover:bg-sunk">
-              <Headphones className="h-6 w-6" />
+            <button onClick={goQuiet} title="Skip listening exercises for an hour" aria-label="Can't listen now: skip audio exercises for an hour" className="flex items-center gap-1 rounded-full border border-line px-2.5 py-1 text-xs font-medium text-muted hover:text-ink">
+              <Headphones className="h-4 w-4" />
+              No audio
             </button>
           )}
         </header>

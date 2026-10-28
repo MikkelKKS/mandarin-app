@@ -24,7 +24,6 @@ export const TEXT_FACETS: Facet[] = ['lm', 'lp', 'mp'];
 
 export type RatingName = 'again' | 'hard' | 'good' | 'easy';
 export const RATING: Record<RatingName, Grade> = { again: Rating.Again, hard: Rating.Hard, good: Rating.Good, easy: Rating.Easy };
-export const RATING_NAME: Record<number, RatingName> = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' };
 
 export function cardId(word: string, facet: Facet): string {
   return `${word}#${facet}`;

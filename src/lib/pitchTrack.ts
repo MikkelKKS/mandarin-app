@@ -25,11 +25,7 @@ const WINDOW_S = 0.04;
 const STEP_S = 0.01;
 const MIN_HZ = 60;
 const MAX_HZ = 600;
-let CLARITY = 0.7;
-/** For tuning in tests. */
-export function setClarity(c: number): void {
-  CLARITY = c;
-}
+const CLARITY = 0.7;
 
 /** Pitch of every voiced 10 ms frame of a mono signal. */
 export function pitchPoints(samples: Float32Array, sampleRate: number): PitchPoint[] {

@@ -50,10 +50,6 @@ function set(key: string, value: string | null): void {
 export function clientId(): string {
   return (get(K_CLIENT) || import.meta.env.VITE_SPOTIFY_CLIENT_ID || '').trim();
 }
-export function setClientId(id: string): void {
-  set(K_CLIENT, id.trim() || null);
-}
-
 /** Must match a Redirect URI registered in the Spotify app exactly. */
 export function redirectUri(): string {
   return `${location.origin}${import.meta.env.BASE_URL}`;

@@ -86,11 +86,6 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   stop();
   const voice = opts.voice ?? pickVoice();
   const slow = opts.slow ?? currentSettings().audioSpeed === 'slow';
-  if (id.startsWith('p-')) {
-    // Practice-pack items have no recordings: use the browser's voice.
-    const text = lookup(id)?.hanzi;
-    return text ? speak(text, { slow, voice }) : Promise.resolve();
-  }
   // Recordings to try in order: the chosen voice, then the other voice, then normal speed
   // slowed down. Only when none exists does the browser's own voice take over.
   const other: Voice = voice === 'f' ? 'm' : 'f';
@@ -166,7 +161,7 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   });
 }
 
-/** Browser text-to-speech fallback (also used for imported practice packs). */
+/** Browser text-to-speech: the last-resort fallback. */
 export function speak(text: string, opts: PlayOptions = {}): Promise<void> {
   return new Promise((resolve) => {
     if (typeof speechSynthesis === 'undefined') return resolve();
@@ -184,14 +179,14 @@ export function speak(text: string, opts: PlayOptions = {}): Promise<void> {
 /** Warm the cache for upcoming audio (goes through the service worker cache). */
 export function preload(ids: string[], voice?: Voice): void {
   void voice;
-  for (const id of ids.filter((i) => !i.startsWith('p-'))) {
+  for (const id of ids) {
     fetch(azureUrl(id, false), { priority: 'low' } as RequestInit).catch(() => {});
   }
 }
 
 /** Download all audio for a set of items in the background, for offline use. */
 export async function prefetchForOffline(ids: string[]): Promise<void> {
-  const urls = ids.filter((i) => !i.startsWith('p-')).flatMap((id) => {
+  const urls = ids.flatMap((id) => {
     const list = [azureUrl(id, false), urlFor(id, 'f', false)];
     if (sentences.has(id)) list.push(azureUrl(id, true));
     return list;

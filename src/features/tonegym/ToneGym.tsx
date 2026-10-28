@@ -222,7 +222,7 @@ function Round({ mode }: { mode: GymMode }) {
         <button onClick={() => go('tone-gym')} aria-label="Leave the round" className="rounded-full p-2 text-muted hover:bg-sunk">
           ✕
         </button>
-        <div className="h-3 flex-1 overflow-hidden rounded-full bg-sunk" role="progressbar" aria-valuenow={i} aria-valuemax={items.length} aria-label={title}>
+        <div className="h-2 flex-1 overflow-hidden rounded-full bg-sunk" role="progressbar" aria-valuenow={i} aria-valuemax={items.length} aria-label={title}>
           <div className="h-full rounded-full bg-jade transition-[width] duration-300" style={{ width: `${(i / items.length) * 100}%` }} />
         </div>
         <span className="text-sm tabular-nums text-muted">

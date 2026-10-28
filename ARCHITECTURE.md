@@ -1,74 +1,66 @@
 # Architecture
 
-What the app is today, and what the redesign in `CLAUDE.md` keeps, changes or removes. The old brief is kept as `CLAUDE-old.md` for reference.
+How the app is built, as of the clean-up on 28 Oct 2026. The product brief is `CLAUDE.md`; dated decisions are in `DECISIONS.md`.
 
-## What exists today
+## Stack
 
-About 11,600 lines of TypeScript, deployed to GitHub Pages from `main` by GitHub Actions.
+Vite 7, React 19, TypeScript (strict), Tailwind v4 and `vite-plugin-pwa`, deployed to GitHub Pages from `main` (`.github/workflows/deploy.yml`, which runs the unit and browser tests first). Hash routing (`src/lib/router.ts`). Local data in IndexedDB through Dexie (`src/db/db.ts`), synced to Supabase.
 
-| Area | Where | State |
+## Screens
+
+Five tabs (`src/App.tsx`): **Home**, **Tones**, **Library**, **Stats**, **Settings**.
+
+| Screen | Where | What it does |
 |---|---|---|
-| App shell | Vite 7, React 19, TypeScript (strict), Tailwind v4, `vite-plugin-pwa` | Works offline, installable, hash routing (`src/lib/router.ts`) |
-| Local data | Dexie (IndexedDB), `src/db/db.ts` | Tables: `progress`, `reviewItems`, `reviewLogs`, `settings`, `customPacks`, `gameScores`, `meta` |
-| Sync | Supabase (magic-link login), `src/sync/`, `supabase/migrations/001_init.sql` | One JSON row per record with RLS. Last write wins; logs append-only; mastery takes the max. Tested |
-| Scheduling | `ts-fsrs`, `src/lib/srs.ts` | **One card per word or sentence** (no facets). Desired retention is fixed |
-| Pinyin checking | `src/lib/pinyin.ts`, `src/lib/pinyinAnswer.ts` | Tone marks or numbers, `v`/`u:`, neutral tone, sandhi leniency, typo pass, accepted variants (您/你, 一个 optional…). 190 lines of tests. Reports tones per syllable |
-| Content | `content/units/*.json` (29 hand-written units), `content/stories/`, zod schemas in `src/content/` | 672 words (HSK 2.0 levels 1–3), 800 sentences, dialogues, grammar notes. Validated in CI |
-| Audio | `scripts/generate-audio.py` (edge-tts, the unofficial free Microsoft voice) | 9,610 MP3s, 168 MB, in `public/audio`. Voices Xiaoxiao and Yunxi. About 120 still missing; the app then falls back to the other voice and finally to the browser's own voice |
-| Dictionary | `scripts/build-dictionary.ts` → CC-CEDICT built in CI | Full lookup tab |
-| Exercises | `src/features/exercises/` | Listening multiple choice, word tiles (drag and drop), dictation, English → pinyin, gap fill, tone ID, minimal pairs, character recognition, repeat-after-me with pitch chart (`pitchy`) |
-| Path | `src/features/path/` | Units → skills → lessons, mastery rings, test-out |
-| Games | `src/features/games/` | Tone Sort, Tone Pairs, Listening Blitz, Pair Rush, Sentence Scramble, Measure Words. Personal bests |
-| Stories | `src/features/story/`, `src/features/read/` | Listening dialogues, role-play, a Read tab with personal stories |
-| Progress | `src/features/progress/` | Words known per HSK level, review forecast, tone accuracy, missed words, activity |
-| Extras | `src/features/music/`, `src/features/packs/` | Spotify songs at your level with synced lyrics and pinyin; import/export of practice packs made with Claude |
-| Tests | Vitest (71 tests), Playwright (24 flows on phone and desktop) | Run in CI before every deploy |
+| Home | `features/home/` | Goal ring, streak, level; Quick or Deep session; resume; Tone Gym; placement; next achievement |
+| Session | `features/session/` | `plan.ts` builds the blocks (reviews → new words → listening → speaking → optional tones); `SessionPlayer.tsx` runs them; `items.tsx` has each question type; `Speak.tsx` the pitch comparison |
+| Tone Gym | `features/tonegym/` | Rounds of 20, adaptive (`model.ts`), confusion matrix |
+| Library | `features/library/` | Links to Conversations, Stories, Music, HSK words, Dictionary |
+| Conversations | `features/path/`, `features/lesson/`, `features/exercises/`, `features/story/` | The 29 hand-written units: lessons, listening stories and role-play. No locks |
+| Stories | `features/read/` | Eight short stories, read aloud paragraph by paragraph |
+| Music | `features/music/` | Spotify songs scored against what you know; lyrics with pinyin |
+| HSK words | `features/progress/WordsView.tsx` | Every word by level and stage; move words between stages |
+| Dictionary | `features/dictionary/` | CC-CEDICT lookup, sentence breakdown, translation, "Learn next" |
+| Stats | `features/stats/` | Words by level and stage, retention, forecast, tones, time, accuracy, XP, achievements |
+| Placement | `features/placement/` | A short test or a chosen starting level marks known words |
+| Settings | `features/settings/` | Learning, display, microphone, sync and backup, recordings |
 
-Your progress lives in IndexedDB on each device and in Supabase. It is keyed by the current word ids (for example `w-ni`).
+Shared pieces: `components/PageHeader.tsx`, `ProgressBar.tsx`, `WordPopover.tsx`, `LearnNext.tsx`, `icons.tsx`. Design tokens, the `card` / `group-list` / `btn` classes and all animations are in `src/index.css`.
 
-## The plan
+## Learning data: one picture of what you know
 
-### Keep (works and fits the new brief)
-- The app shell, PWA setup, routing, deploy pipeline and test setup.
-- Dexie plus Supabase sync, including login and backup. New tables get added to the same pattern.
-- `ts-fsrs` and the review log. The log already stores tone data per answer, which the confusion matrix can use straight away.
-- The pinyin parser and checker as the base for step 3. It gets extended, not rewritten.
-- Pitch detection with `pitchy` as the base for the speaking step.
-- CC-CEDICT, built by script in CI.
+- **Words** are the HSK 3.0 list (`content/data/words.json`, built by `scripts/build-vocab.ts`), loaded as a lazy chunk (`lib/vocabData.ts`). The Conversations units have their own word ids (`w-…`); `virtual:vocab-legacy` maps each one to its HSK word.
+- **Cards** (`reviewItems`): one per word and skill, `<word>#lm|lp|mp|sp` (listening → meaning, listening → pinyin, meaning → pinyin, speaking), plus one per sentence. Scheduled with `ts-fsrs` (`lib/review.ts`). Every answer appends a full entry to `reviewLogs` (append-only).
+- **Word stage** (new / learning / young / mature) comes from a word's listening and typing cards (`wordState` in `lib/review.ts`). `lib/knowledge.ts` turns the cards into the stage of every word, and every screen reads it from there: sessions, Stats, the word list, Conversations (lessons count as done when you know their words), Stories ("you know 72% of the words") and Music.
+- Answers in a Conversations lesson update the same HSK word cards (`lib/srs.ts`), and lessons skip introducing words you've already met.
+- **Gamification** (`lib/gamify.ts`, `lib/gameStats.ts`): XP is stored on each log entry, so it syncs with the log. Streaks, freezes and levels are computed from the log; achievements are kept as `ach:<id>` rows in `gameScores`.
 
-### Change
-- **Vocabulary:** from 672 hand-picked HSK 2.0 words to the full HSK 3.0 list (about 11,000 terms) from `ivankra/hsk30` and `drkameleon/complete-hsk-vocabulary`, with CC-CEDICT glosses, sorted by frequency within each level. Output: one `words.json` and one `sentences.json` with stable ids.
-- **Sentences:** Tatoeba pairs filtered to words you already know, with my own sentences where none exist (marked as generated). The 800 sentences already written can fill gaps.
-- **Scheduling:** from one card per word to four facets per word (listening → meaning, listening → pinyin, meaning → pinyin, speaking), with Again/Hard/Good/Easy auto-grading, a retention setting, daily limits, and later an optimiser.
-- **Existing progress:** migrated, not reset. Each current word card is copied onto the matching new word's facets, so words you know stay known.
-- **Audio:** from edge-tts to Azure (Xiaoxiao + Yunjian), with SSML pronunciation hints, quota tracking and a "report bad audio" button. Plus Tone Perfect human recordings for Tone Gym. The browser voice stays only as a flagged last resort.
-- **Tone colours:** today 3 is blue and 4 is purple. Change to the brief's scheme (1 red, 2 orange, 3 green, 4 blue, neutral grey) and make it configurable.
-- **Hanzi:** off by default, an optional toggle. Pinyin everywhere. No answer ever needs characters.
-- **Exercises:** typing first. Multiple choice only for a word's first exposure and in Tone Gym.
-- **Speaking:** microphone on by default, with a global setting and a "no mic right now" toggle. Speaking cards are skipped (never failed) when it is off.
-- **Home:** quick session (phone, about 5 min) and deep session (PC, 20+ min) instead of a path of units.
-- **Motivation:** add XP, levels, daily goal, streak with streak freeze, achievements and a combo multiplier (the old brief forbade these).
-- **Progress → Stats:** add retention vs target, a 14-day forecast, words by state per level, the tone confusion matrix, time per day and XP history.
+## Pinyin
 
-### Remove or set aside
-- **Character recognition exercises** (out of scope: pinyin only).
-- **edge-tts generation** in CI. The existing edge-tts recordings stay until Azure audio replaces each one.
+`lib/pinyin.ts` parses and segments; `lib/pinyinAnswer.ts` scores syllables and tones separately (strict or lenient); `lib/pinyinLive.ts` turns tone numbers into marks as you type.
 
-### Your decisions (27 Oct 2026)
-- The 29 hand-written units (path, dialogues, role-play, stories) move to an optional **Conversations** section. The new sessions become the main way to study.
-- **Music, Read, Games and Dictionary stay.** Games and Music will draw on the new word list.
-- **Word tiles stay as an option** (a toggle), with typing as the default.
-- **Old audio stays until replaced**, so no word loses its sound while Azure audio is generated.
-- **Audio storage** gets decided at the audio step: the full set is roughly 500–700 MB even as Opus, close to the GitHub Pages limit of 1 GB per site.
+## Audio
 
-## Progress through the build order
-- Step 1 (this file) and step 2 (word list): done 27 Oct.
-- Step 3 (pinyin input and scoring): done 27 Oct. `src/lib/pinyinAnswer.ts`, `src/lib/pinyinLive.ts`.
-- Step 4 (review engine): done 27 Oct. `src/lib/review.ts` (facets, grading, queue, migration, log), `src/lib/srs.ts` (glue for lessons and games).
-- Step 5 (audio): done 27 Oct. `scripts/azure-tts.ts`, `.github/workflows/azure-audio.yml`, report button.
-- Step 6 (Tone Gym): done 27 Oct. `src/features/tonegym/`.
-- Step 7 (sessions, XP): done 27 Oct. `src/features/home/`, `src/features/session/`, `src/lib/gamify.ts`, `src/lib/gameStats.ts`.
-- Step 8 (Stats): done 27 Oct. `src/features/stats/`, `src/lib/statsData.ts`.
-- Step 9 (speaking with pitch contours): done 27 Oct. `src/lib/pitchTrack.ts`, `src/features/session/Speak.tsx`.
-- Step 10 (placement, Beijing pack, polish): done 27 Oct. `src/features/placement/`, `src/features/session/beijing.ts`.
-- Still open: Tone Perfect recordings (waiting for MSU), slow audio (Azure quota, November), the scheduler optimiser (needs about 1,000 reviews).
+- **Azure Speech** (Free F0, `swedencentral`): `scripts/azure-tts.ts`, run by `.github/workflows/azure-audio.yml` every 6 hours. It counts billed characters, stops before the monthly free quota and carries on the next month. Output in `public/audio/az/`, with a manifest in `content/data/azure-audio.json`. It records words, sentences, story paragraphs and 0.7× sentence versions. Keys are GitHub secrets.
+- **Report bad audio** → Supabase `audio_reports` → the next run re-records the clip with full pronunciation hints (a second report switches voice).
+- Playback (`lib/audio.ts`): Azure first, then the older edge-tts recordings (`public/audio/f|m|dict`) while Azure isn't complete, and the browser voice only as a last resort, flagged on screen.
+- The service worker caches audio as it's played; sessions download their audio when they start, and cards due in the next two days are fetched in the background.
+
+## Sync
+
+`src/sync/`: magic-link sign-in; each record is one JSON row in Supabase with row-level security (`supabase/migrations/`). Last write wins per row, review logs are append-only, lesson progress takes the max. Synced tables: progress, reviewItems, reviewLogs, settings, gameScores, audioReports.
+
+## Translation
+
+`supabase/functions/translate`: a small Supabase function that calls Azure Translator (free F0) with a key kept as a Supabase secret, and only answers the app's owner. It's deployed by `.github/workflows/translate-function.yml`. Until it's set up, the dictionary uses the free MyMemory service (`features/dictionary/translate.ts`).
+
+## Tests
+
+Vitest for the pure logic (scoring, scheduling, knowledge, planning, placement, pitch tracking, content checks), Playwright for the main flows on phone and desktop sizes (`e2e/`). Both run before every deploy.
+
+## Still open
+
+- Tone Perfect recordings (6 real speakers) for the Tone Gym: waiting for MSU.
+- Slow (0.7×) sentence recordings: November's Azure quota.
+- Once Azure has every word and sentence, the older recordings in `public/audio/f`, `m` and `dict` can be deleted (about 170 MB).
+- The scheduler optimiser, once there are about 1,000 reviews.

@@ -50,16 +50,10 @@ for (const u of units) {
   u.nodes.forEach((n, index) => nodes.set(n.id, { ...n, unit: u.id, index }));
 }
 
-export function unitOf(nodeId: string): Unit {
-  return unitById.get(nodes.get(nodeId)!.unit)!;
-}
-
 export function getUnit(id: string): Unit | undefined {
   return unitById.get(id);
 }
 
-/** Every node in path order. */
-export const nodeOrder: string[] = units.flatMap((u) => u.nodes.map((n) => n.id));
 
 /** Words whose hanzi spells the sentence, for tiles and tap-to-look-up. */
 export function sentenceTokens(s: Sentence): Word[] {

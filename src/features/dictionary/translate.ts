@@ -1,9 +1,11 @@
 /**
- * Online sentence translation via the free MyMemory API (no key needed;
- * anonymous use allows ~5,000 characters a day). Results are cached locally
- * so repeated look-ups don't use the quota and work offline.
+ * Online sentence translation. Best: Azure Translator, through the app's own
+ * Supabase helper (supabase/functions/translate), when you're signed in and it
+ * has been set up. Otherwise the free MyMemory API (no key; rougher, ~5,000
+ * characters a day). Results are cached locally, so repeats work offline.
  */
 import { segmentLetters, toLetters } from '../../lib/pinyin';
+import { client } from '../../sync';
 
 const API = 'https://api.mymemory.translated.net/get';
 const CACHE_KEY = 'translations:v2';
@@ -30,6 +32,34 @@ function writeCache(c: Record<string, string>) {
 export interface Translation {
   text: string;
   cached: boolean;
+  /** Which service it came from. */
+  source: 'azure' | 'mymemory';
+}
+
+/** The Azure helper turned out to be unavailable (not set up, or not signed in): don't keep asking this session. */
+let azureDown = false;
+
+async function viaAzure(q: string, dir: Dir, signal?: AbortSignal): Promise<string | null> {
+  const c = azureDown ? null : client();
+  if (!c) return null;
+  try {
+    const sb = await c;
+    const { data } = await sb.auth.getSession();
+    if (!data.session) return null;
+    const res = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/translate`, {
+      method: 'POST',
+      signal,
+      headers: { Authorization: `Bearer ${data.session.access_token}`, apikey: String(import.meta.env.VITE_SUPABASE_ANON_KEY ?? ''), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: q, dir }),
+    });
+    if (res.status === 404 || res.status === 403 || res.status === 503) azureDown = true;
+    if (!res.ok) return null;
+    const body = (await res.json()) as { text?: string };
+    return body.text?.trim() || null;
+  } catch (e) {
+    if ((e as Error).name === 'AbortError') throw e;
+    return null;
+  }
 }
 
 const STOPWORDS = new Set(['the', 'is', 'a', 'an', 'i', 'you', 'it', 'my', 'me', 'to', 'of', 'and', 'are', 'what', 'how', 'do', 'not', 'very', 'he', 'she', 'we']);
@@ -57,8 +87,17 @@ export async function translate(text: string, dir: Dir, signal?: AbortSignal, so
   const q = text.trim().slice(0, 450);
   const key = `${dir}|${q}`;
   const cache = readCache();
-  if (cache[key]) return { text: cache[key], cached: true };
+  const azKey = `az|${key}`;
+  if (cache[azKey]) return { text: cache[azKey], cached: true, source: 'azure' };
+  if (cache[key] && !navigator.onLine) return { text: cache[key], cached: true, source: 'mymemory' };
   if (!navigator.onLine) throw new Error('Translation needs an internet connection.');
+  const az = await viaAzure(q, dir, signal);
+  if (az) {
+    cache[azKey] = az;
+    writeCache(cache);
+    return { text: az, cached: false, source: 'azure' };
+  }
+  if (cache[key]) return { text: cache[key], cached: true, source: 'mymemory' };
   const langpair = dir === 'zh-en' ? 'zh-CN|en' : 'en|zh-CN';
   let res: Response;
   try {
@@ -87,7 +126,7 @@ export async function translate(text: string, dir: Dir, signal?: AbortSignal, so
   if (!out) throw new Error('No reliable translation found. See the word breakdown.');
   cache[key] = out;
   writeCache(cache);
-  return { text: out, cached: false };
+  return { text: out, cached: false, source: 'mymemory' };
 }
 
 function decodeEntities(s: string): string {
