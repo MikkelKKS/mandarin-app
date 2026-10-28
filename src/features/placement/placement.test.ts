@@ -1,13 +1,23 @@
 import { describe, expect, it } from 'vitest';
 import type { ReviewItemRow } from '../../db/db';
 import type { VocabRow } from '../../lib/vocabData';
-import { knownBelow, knownFromResults, matureCards, sampleLevel, shouldContinue } from './placement';
+import { knownBelow, knownFromResults, matureCards, meaningOptions, sampleLevel, shouldContinue } from './placement';
 
 const words: VocabRow[] = [];
 let order = 0;
 for (const level of [1, 2, 3]) for (let i = 0; i < 100; i++) words.push({ id: `L${level}-${i}`, hanzi: '你', pinyin: 'nǐ', gloss: ['you'], level, order: ++order, examples: [], azure: i % 10 !== 9 });
 
 describe('placement', () => {
+  it('asks the meaning with the word and three others of different meaning and sound', () => {
+    const pool: VocabRow[] = ['eat', 'drink', 'sleep', 'run', 'read', 'to eat; to dine'].map((g, i) => ({
+      id: `w${i}`, hanzi: '吃', pinyin: ['chī', 'hē', 'shuì', 'pǎo', 'kàn', 'cān'][i], gloss: [g], level: 1, order: i + 1, examples: [], azure: true,
+    }));
+    const opts = meaningOptions(pool[0], pool, () => 0.3);
+    expect(opts).toHaveLength(4);
+    expect(opts).toContain('w0');
+    expect(opts).not.toContain('w5');
+    expect(new Set(opts).size).toBe(4);
+  });
   it('samples a level evenly over its frequency order, only words with a recording', () => {
     const s = sampleLevel(words, 2, 8);
     expect(s).toHaveLength(8);

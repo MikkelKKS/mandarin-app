@@ -11,7 +11,7 @@ import { meaningOf, useVocab, type VocabRow } from '../../lib/vocabData';
 import { checkTyped } from '../exercises/check';
 import { AudioControls, PinyinInput } from '../exercises/parts';
 import { LessonCtx, type LessonApi } from '../lesson/context';
-import { knownBelow, knownFromResults, LEVELS, markKnown, PER_LEVEL, sampleLevel, shouldContinue, type LevelResult } from './placement';
+import { knownBelow, knownFromResults, LEVELS, markKnown, meaningOptions, PER_LEVEL, sampleLevel, shouldContinue, type LevelResult } from './placement';
 
 type Phase = { kind: 'start' } | { kind: 'test' } | { kind: 'result'; known: string[] } | { kind: 'done'; count: number };
 
@@ -59,7 +59,7 @@ export function PlacementView() {
           <section className="mt-6 rounded-2xl bg-surface p-5 border border-line">
             <h2 className="text-lg font-semibold">Take the test</h2>
             <p className="mt-1 text-sm text-muted">
-              About 5 minutes. You hear words, starting at HSK 1, and type them in pinyin with tones. Up to {PER_LEVEL} words per level; it stops when a level gets hard.
+              About 5 minutes. You hear words, starting at HSK 1, and type them in pinyin with tones; when the pinyin is right you also pick the meaning. A word only counts as known if both are right. Up to {PER_LEVEL} words per level; it stops when a level gets hard.
             </p>
             <button onClick={() => setPhase({ kind: 'test' })} className="press mt-4 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
               Start the test
@@ -138,7 +138,10 @@ function PlacementTest({ vocab, onDone, onStop }: { vocab: VocabRow[]; onDone: (
   const [li, setLi] = useState(0);
   const [i, setI] = useState(0);
   const [text, setText] = useState('');
-  const [answer, setAnswer] = useState<{ ok: boolean; w: VocabRow } | null>(null);
+  /** After a right dictation: which meanings to choose from (word ids). */
+  const [options, setOptions] = useState<string[] | null>(null);
+  const [answer, setAnswer] = useState<{ ok: boolean; w: VocabRow; pinyinOk: boolean } | null>(null);
+  const byId = useMemo(() => new Map(vocab.map((x) => [x.id, x])), [vocab]);
   const results = useRef<LevelResult[]>([]);
   const right = useRef(new Set<string>());
   const samples = useMemo(() => LEVELS.map((l) => sampleLevel(vocab, l)), [vocab]);
@@ -160,30 +163,46 @@ function PlacementTest({ vocab, onDone, onStop }: { vocab: VocabRow[]; onDone: (
   };
   const next = () => {
     setAnswer(null);
+    setOptions(null);
     setText('');
     if (i + 1 >= items.length) finishLevel();
     else setI(i + 1);
   };
   const check = (giveUp = false) => {
-    if (answer || !w) return;
+    if (answer || options || !w) return;
     const ok = !giveUp && isPass(checkTyped(text, { pinyin: w.pinyin, hanzi: w.hanzi }).verdict);
+    if (ok) setOptions(meaningOptions(w, vocab));
+    else {
+      sfx.wrong();
+      setAnswer({ ok: false, w, pinyinOk: false });
+    }
+  };
+  /** The meaning question: known only if the pinyin and the meaning are both right. */
+  const pick = (id: string | null) => {
+    if (answer || !w) return;
+    const ok = id === w.id;
     if (ok) {
       right.current.add(w.id);
       sfx.correct();
     } else sfx.wrong();
-    setAnswer({ ok, w });
+    setAnswer({ ok, w, pinyinOk: true });
   };
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
+      if (options && !answer && /^[1-4]$/.test(e.key) && !(e.target instanceof HTMLInputElement)) {
+        const id = options[Number(e.key) - 1];
+        if (id) pick(id);
+        return;
+      }
       if (e.key !== 'Enter') return;
       e.preventDefault();
       if (answer) next();
-      else if (text.trim()) check();
+      else if (!options && text.trim()) check();
     };
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
   });
-  const api: LessonApi = { setCheck: () => {}, setReplay: () => {}, answer: () => {}, locked: !!answer, quiet: false };
+  const api: LessonApi = { setCheck: () => {}, setReplay: () => {}, answer: () => {}, locked: !!answer || !!options, quiet: false };
   if (!w) {
     // A level without testable words: skip it.
     setTimeout(finishLevel, 0);
@@ -200,11 +219,28 @@ function PlacementTest({ vocab, onDone, onStop }: { vocab: VocabRow[]; onDone: (
             HSK {level} · {i + 1} of {items.length}
           </span>
         </div>
-        <h1 className="mt-6 text-lg font-semibold">Type what you hear, with tones</h1>
+        <h1 className="mt-6 text-lg font-semibold">{options && !answer ? 'Right! What does it mean?' : 'Type what you hear, with tones'}</h1>
         <div key={w.id} className="mt-6">
           <AudioControls id={w.id} />
         </div>
-        {!answer ? (
+        {options && !answer ? (
+          <div className="mt-6">
+            <TonePinyin pinyin={w.pinyin} className="text-2xl font-semibold" />
+            <div className="mt-4 flex flex-col gap-2" role="group" aria-label="Meaning">
+              {options.map((id, k) => (
+                <button key={id} onClick={() => pick(id)} className="press flex min-h-14 items-center gap-3 rounded-2xl border border-line bg-surface px-4 text-left font-medium">
+                  <span className="hidden text-sm text-muted md:inline" aria-hidden>
+                    {k + 1}
+                  </span>
+                  {meaningOf(byId.get(id) ?? w)}
+                </button>
+              ))}
+              <button onClick={() => pick(null)} className="h-12 rounded-2xl font-medium text-muted">
+                I don't know the meaning
+              </button>
+            </div>
+          </div>
+        ) : !answer ? (
           <div className="mt-8">
             <PinyinInput value={text} onChange={setText} />
             <div className="mt-3 grid grid-cols-2 gap-2">
@@ -218,7 +254,7 @@ function PlacementTest({ vocab, onDone, onStop }: { vocab: VocabRow[]; onDone: (
           </div>
         ) : (
           <div className={`anim-rise mt-8 rounded-2xl p-4 ${answer.ok ? 'bg-jade-soft' : 'bg-sunk'}`}>
-            <p className="font-semibold">{answer.ok ? 'Right' : 'Not this time'}</p>
+            <p className="font-semibold">{answer.ok ? 'Right' : answer.pinyinOk ? 'Pinyin right, meaning not: this one stays in your lessons' : 'Not this time'}</p>
             <TonePinyin pinyin={answer.w.pinyin} className="text-2xl font-semibold" />
             <p className="text-sm text-muted">{meaningOf(answer.w)}</p>
             <button onClick={next} className="press mt-4 h-12 w-full rounded-2xl bg-jade font-semibold text-jade-ink">

@@ -7,10 +7,10 @@ A personal Mandarin app for one learner, aimed at a large vocabulary, at listeni
 ## What's in it
 
 - **Home:** daily goal, streak (with freezes), level, and one main button: a **Quick session** (about 5 minutes, phone) or a **Deep session** (20+ minutes, PC).
-- **Sessions:** due reviews first, then new words from the HSK 3.0 list (about 11,000 words) in frequency order, each with an example sentence; a deep session adds listening (dictation, "do you understand it?") and speaking.
+- **Sessions:** due reviews first, then new words from the HSK 3.0 list (about 11,000 words) in frequency order, each with a short everyday meaning and an example sentence; a deep session adds listening (dictation, "do you understand it?"), typing sentences in pinyin from English, and speaking. Words that sound like other words, and particles, are practised inside their sentence; 50 function words have grammar notes.
 - **Spaced repetition** with FSRS, scheduled separately per skill: listening → meaning, listening → pinyin, meaning → pinyin and speaking. "I don't know this word" sends a word back to new.
 - **Pinyin typing** with tone numbers or marks (converted as you type); syllables and tones are scored separately.
-- **Tone Gym** (Tones tab): single tones by six real speakers (Tone Perfect), all tone pairs and tone changes, weighted to your tone confusion matrix. Single-tone questions are also mixed into sessions.
+- **Tone Gym** (Tones tab): single tones by six real speakers (Tone Perfect), a Workout weighted to your tone confusion matrix or an Even mix, with a volume slider. Single-tone questions are also mixed into sessions.
 - **Speaking:** record yourself and compare your pitch curve with the native one. The microphone can be turned off.
 - **Library:** Conversations (29 units of dialogues set around family life in Beijing, with role-play), Stories (read aloud), Music (Spotify songs at your level, lyrics with pinyin), the full HSK word list (move words between stages) and the Dictionary (with "Learn next").
 - **Stats:** words per HSK level and stage, true retention, a 14-day forecast, the tone confusion matrix, time, accuracy and XP per day, achievements.

@@ -7,6 +7,7 @@ import { isNeutralParticle } from '../../lib/context';
 import { db, type ReviewItemRow } from '../../db/db';
 import { cardId, TEXT_FACETS } from '../../lib/review';
 import type { VocabRow } from '../../lib/vocabData';
+import { distractors } from '../session/plan';
 
 export const PER_LEVEL = 8;
 export const PASS_LEVEL = 0.8;
@@ -22,6 +23,19 @@ export function sampleLevel(words: VocabRow[], level: number, n = PER_LEVEL): Vo
   const pool = words.filter((w) => w.level === level && dictatable(w) && [...w.hanzi].length <= 3).sort((a, b) => a.order - b.order);
   if (pool.length <= n) return pool;
   return Array.from({ length: n }, (_, i) => pool[Math.floor(((i + 0.5) / n) * pool.length)]);
+}
+
+/**
+ * The meaning question after a right dictation: the word and three others that
+ * don't share its meaning or its sound, shuffled. Ids, in display order.
+ */
+export function meaningOptions(w: VocabRow, words: VocabRow[], rng: () => number = Math.random): string[] {
+  const ids = [w.id, ...distractors(w, words, rng, 3)];
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [ids[i], ids[j]] = [ids[j], ids[i]];
+  }
+  return ids;
 }
 
 export interface LevelResult {
