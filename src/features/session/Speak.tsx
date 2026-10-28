@@ -60,7 +60,7 @@ export function PitchCompare({ native, mine, tones }: { native: ContourPoint[]; 
   const parts = tones.map((t, k) => ({ t, pts: native.filter((p) => p.x >= k / n - 0.01 && p.x <= (k + 1) / n + 0.01) }));
   return (
     <figure className="mt-4">
-      <svg viewBox={`0 0 ${W} ${H}`} className="w-full rounded-2xl bg-surface" role="img" aria-label="Pitch: the native speaker and you">
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full rounded-2xl bg-surface border border-line" role="img" aria-label="Pitch: the native speaker and you">
         <line x1={6} x2={W - 6} y1={H / 2} y2={H / 2} stroke="var(--line)" strokeWidth={1} />
         {tones.slice(1).map((_, k) => (
           <line key={k} x1={x((k + 1) / n)} x2={x((k + 1) / n)} y1={6} y2={H - 6} stroke="var(--line)" strokeWidth={1} />
@@ -136,7 +136,7 @@ export function Speak({ data, word, onResult, onNoMic }: { data: VocabData; word
     <div>
       <h2 className="mb-1 text-lg font-semibold">Say it like the recording</h2>
       <p className="mb-4 text-sm text-muted">Listen, record yourself, then compare the pitch.</p>
-      <div className="flex items-center gap-3 rounded-2xl bg-surface p-4">
+      <div className="flex items-center gap-3 rounded-2xl bg-surface p-4 border border-line">
         <button onClick={() => void play(word)} aria-label="Hear the native recording" className="press rounded-full bg-jade p-3 text-jade-ink">
           <Speaker className="h-6 w-6" />
         </button>
@@ -164,10 +164,10 @@ export function Speak({ data, word, onResult, onNoMic }: { data: VocabData; word
         </button>
         {blob && (
           <>
-            <button onClick={() => void play(word)} className="h-14 rounded-2xl border-2 border-line px-4 font-medium">
+            <button onClick={() => void play(word)} className="h-14 rounded-2xl border border-line px-4 font-medium">
               A: native
             </button>
-            <button onClick={() => void playUrl(blob)} className="h-14 rounded-2xl border-2 border-line px-4 font-medium">
+            <button onClick={() => void playUrl(blob)} className="h-14 rounded-2xl border border-line px-4 font-medium">
               B: you
             </button>
           </>
@@ -187,7 +187,7 @@ export function Speak({ data, word, onResult, onNoMic }: { data: VocabData; word
                 ['easy', 'Easy', 'Spot on'],
               ] as Array<[RatingName, string, string]>
             ).map(([r, label, hint]) => (
-              <button key={r} onClick={() => grade(r)} className="flex h-16 flex-col items-center justify-center rounded-2xl border-2 border-line bg-surface font-semibold active:scale-95">
+              <button key={r} onClick={() => grade(r)} className="flex h-16 flex-col items-center justify-center rounded-2xl border border-line bg-surface font-semibold active:scale-95">
                 {label}
                 <span className="text-[11px] font-normal text-muted">{hint}</span>
               </button>

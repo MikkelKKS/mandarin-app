@@ -36,7 +36,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
         <p className="han text-5xl text-cinnabar" lang="zh-CN">
           哎呀
         </p>
-        <h1 className="text-xl font-bold">This screen stopped working</h1>
+        <h1 className="text-xl font-semibold">This screen stopped working</h1>
         <p className="text-muted">Your progress is safe. Go back and try again. If it keeps happening, send a screenshot of the line below.</p>
         <p className="break-words rounded-xl bg-sunk p-3 font-mono text-xs text-muted">{String(error.message || error).slice(0, 300)}</p>
         <button
@@ -48,7 +48,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, State> {
         >
           Back to the path
         </button>
-        <button onClick={() => location.reload()} className="h-12 rounded-2xl border-2 border-line font-medium">
+        <button onClick={() => location.reload()} className="h-12 rounded-2xl border border-line font-medium">
           Reload the app
         </button>
       </div>

@@ -1,7 +1,6 @@
 /** Find Mandarin songs on Spotify and rank them by how well you'd understand the lyrics. */
-import { words } from '../../content';
-import { db } from '../../db/db';
-import { isKnown } from '../../lib/stats';
+import { hanziKnowledge, loadWordStates } from '../../lib/knowledge';
+import { loadVocab } from '../../lib/vocabData';
 import type { Dict } from '../dictionary/dict';
 import { sceneById } from './genres';
 import { cleanTitle, fetchLyrics } from './lyrics';
@@ -15,16 +14,8 @@ export interface ScoredSong {
 }
 
 export async function loadKnowledge(level: number): Promise<Knowledge> {
-  const items = await db.reviewItems.toArray();
-  const known = new Set<string>();
-  const learning = new Set<string>();
-  for (const r of items) {
-    const w = words.get(r.id);
-    if (!w) continue;
-    (isKnown(r) ? known : learning).add(w.hanzi);
-  }
-  for (const h of known) learning.delete(h);
-  return { known, learning, level };
+  const [vocab, states] = await Promise.all([loadVocab(), loadWordStates()]);
+  return { ...hanziKnowledge(vocab, states), level };
 }
 
 let t2sPromise: Promise<Record<string, string>> | null = null;

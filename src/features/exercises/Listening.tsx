@@ -155,7 +155,7 @@ export function ToneId({ ex }: { ex: Of<'tone-id'> }) {
                     type="button"
                     disabled={locked}
                     onClick={() => setPicked((p) => p.map((v, j) => (j === si ? t.tone : v)))}
-                    className={`flex flex-col items-center rounded-xl border-2 py-2 ${optionClass(st)}`}
+                    className={`flex flex-col items-center rounded-xl border py-2 ${optionClass(st)}`}
                     aria-label={`Tone ${t.hint}`}
                   >
                     <span className="text-lg font-semibold">{t.tone === 5 ? '·' : markSyllable({ base: s.base, tone: t.tone })}</span>

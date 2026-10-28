@@ -2,11 +2,11 @@
  * The Azure audio sample: 30 tricky items in both voices, to approve before
  * every word and sentence is generated.
  */
+import { PageHeader } from '../../components/PageHeader';
 import { useEffect, useRef, useState } from 'react';
 import { TonePinyin } from '../../components/Hanzi';
 import { Speaker, Turtle } from '../../components/icons';
 import { stop } from '../../lib/audio';
-import { go } from '../../lib/router';
 
 interface Item {
   id: string;
@@ -47,10 +47,7 @@ export function AudioSample() {
 
   return (
     <div className="pb-10">
-      <button onClick={() => go('settings')} className="mb-3 text-sm font-medium text-jade">
-        ← Settings
-      </button>
-      <h1 className="text-2xl font-bold">Audio sample</h1>
+      <PageHeader back={{ label: 'Settings', to: 'settings' }} title="Audio sample" />
       <p className="mt-1 text-muted">
         Thirty tricky items from Azure, in both voices. Each one says what to listen for. If they sound right, every word and sentence gets made the
         same way.
@@ -60,7 +57,7 @@ export function AudioSample() {
       {data && data !== 'missing' && (
         <ul className="mt-6 flex flex-col gap-3">
           {data.items.map((it, i) => (
-            <li key={it.id} className="rounded-2xl bg-surface p-4">
+            <li key={it.id} className="rounded-2xl bg-surface p-4 border border-line">
               <div className="flex items-baseline gap-3">
                 <span className="w-6 shrink-0 text-sm tabular-nums text-muted">{i + 1}</span>
                 <div className="min-w-0 flex-1">
@@ -79,7 +76,7 @@ export function AudioSample() {
                   <span key={v} className="flex gap-2">
                     <button
                       onClick={() => play(it.files[v])}
-                      className={`flex h-10 items-center gap-1.5 rounded-xl border-2 px-3 text-sm font-medium ${playing === it.files[v] ? 'border-jade bg-jade-soft' : 'border-line'}`}
+                      className={`flex h-10 items-center gap-1.5 rounded-xl border px-3 text-sm font-medium ${playing === it.files[v] ? 'border-jade bg-jade-soft' : 'border-line'}`}
                     >
                       <Speaker className="h-4 w-4" /> {data.voices[v]}
                     </button>
@@ -87,7 +84,7 @@ export function AudioSample() {
                       <button
                         onClick={() => play(it.files[`${v}-slow`])}
                         aria-label={`${data.voices[v]}, slow`}
-                        className={`flex h-10 items-center rounded-xl border-2 px-2.5 ${playing === it.files[`${v}-slow`] ? 'border-jade bg-jade-soft' : 'border-line'}`}
+                        className={`flex h-10 items-center rounded-xl border px-2.5 ${playing === it.files[`${v}-slow`] ? 'border-jade bg-jade-soft' : 'border-line'}`}
                       >
                         <Turtle className="h-4 w-4" />
                       </button>

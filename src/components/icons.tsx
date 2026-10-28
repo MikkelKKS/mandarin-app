@@ -1,6 +1,6 @@
 /* Small inline icons (stroke-based, inherit currentColor). */
 type P = { className?: string };
-const base = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, viewBox: '0 0 24 24' };
+const base = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.75, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, viewBox: '0 0 24 24' };
 
 export const Speaker = ({ className }: P) => (
   <svg {...base} className={className} aria-hidden>
@@ -98,5 +98,38 @@ export const OpenBook = ({ className }: P) => (
 export const Waves = ({ className }: P) => (
   <svg {...base} className={className} aria-hidden>
     <path d="M2 7h4M8 17l4-10M14 9q1.5 8 3 0M19 7l3 10" />
+  </svg>
+);
+export const ChevronRight = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="m9 6 6 6-6 6" />
+  </svg>
+);
+export const ChevronLeft = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="m15 6-6 6 6 6" />
+  </svg>
+);
+export const Home = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1v-8.5z" />
+  </svg>
+);
+export const Library = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="M5 4v16M9.5 4v16" />
+    <path d="m14 5.2 3.8-1 3 14.6-3.8 1z" />
+  </svg>
+);
+export const Search = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <circle cx="11" cy="11" r="6.5" />
+    <path d="m16 16 4.5 4.5" />
+  </svg>
+);
+export const Flame = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <path d="M12 21c-3.6 0-6-2.4-6-5.6 0-3.4 2.6-5 3.4-8.4.2-.9 1.3-1.2 1.8-.4 2.4 3.4 6.8 5.3 6.8 8.8 0 3.2-2.4 5.6-6 5.6z" />
+    <path d="M12 21c-1.6 0-2.6-1.1-2.6-2.5 0-1.6 1.4-2.6 2.6-4 1.2 1.4 2.6 2.4 2.6 4 0 1.4-1 2.5-2.6 2.5z" />
   </svg>
 );

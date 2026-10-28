@@ -135,9 +135,9 @@ export function TableView({ caption, head, rows }: { caption: string; head: stri
 /** A big number with a label (for headline figures). */
 export function Tile({ label, value, note }: { label: string; value: string; note?: ReactNode }) {
   return (
-    <div className="rounded-2xl bg-surface p-4">
+    <div className="rounded-2xl bg-surface p-4 border border-line">
       <p className="text-xs text-muted">{label}</p>
-      <p className="text-3xl font-bold tabular-nums">{value}</p>
+      <p className="text-3xl font-semibold tabular-nums">{value}</p>
       {note && <p className="mt-0.5 text-xs text-muted">{note}</p>}
     </div>
   );

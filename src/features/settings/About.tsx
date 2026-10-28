@@ -1,4 +1,4 @@
-import { go } from '../../lib/router';
+import { PageHeader } from '../../components/PageHeader';
 
 const CREDITS: Array<{ name: string; what: string; licence: string; url: string }> = [
   { name: 'HSK vocabulary lists', what: 'HSK levels for vocabulary (drkameleon/complete-hsk-vocabulary)', licence: 'MIT', url: 'https://github.com/drkameleon/complete-hsk-vocabulary' },
@@ -16,10 +16,7 @@ const CREDITS: Array<{ name: string; what: string; licence: string; url: string 
 export function About() {
   return (
     <div className="pb-10">
-      <button onClick={() => go('settings')} className="mb-4 text-sm text-muted">
-        ← Settings
-      </button>
-      <h1 className="text-2xl font-bold">About</h1>
+      <PageHeader back={{ label: 'Settings', to: 'settings' }} title="About" />
       <p className="mt-2 text-muted">
         A personal Mandarin app, focused on understanding spoken Chinese and knowing what to say. All sentences and stories are written for this app. No limits, no ads,
         no tracking.
@@ -27,7 +24,7 @@ export function About() {
       <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">Credits & licences</h2>
       <ul className="flex flex-col gap-2">
         {CREDITS.map((c) => (
-          <li key={c.name} className="rounded-2xl bg-surface p-4">
+          <li key={c.name} className="rounded-2xl bg-surface p-4 border border-line">
             <a href={c.url} target="_blank" rel="noreferrer" className="font-semibold text-jade underline-offset-2 hover:underline">
               {c.name}
             </a>

@@ -1,4 +1,5 @@
 /** Music: Mandarin songs from Spotify, ranked by how much of the lyrics you'd understand. */
+import { PageHeader } from '../../components/PageHeader';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { WordPopover } from '../../components/WordPopover';
 import { Music } from '../../components/icons';
@@ -6,7 +7,8 @@ import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { usePinyinFn } from '../../lib/pinyinPro';
 import { loadDict, type Dict } from '../dictionary/dict';
-import { useStats } from '../progress/ProgressView';
+import { currentLevel, useWordStates } from '../../lib/knowledge';
+import { useVocab } from '../../lib/vocabData';
 import { findSongs, loadKnowledge, loadResults, loadT2s, saveResults, savePlaylist, type SavedResults, type ScoredSong } from './finder';
 import { SCENES, sceneById, suggestScenes } from './genres';
 import { fetchLyrics, type Lyrics } from './lyrics';
@@ -44,12 +46,18 @@ export function MusicRoute({ route }: { route: string[] }) {
 }
 
 function levelLabel(level: number): string {
-  return level > 3 ? 'HSK 3 and up' : `HSK ${level}`;
+  return level >= 7 ? 'HSK 7–9' : `HSK ${level}`;
+}
+
+/** The HSK level you're working on, from the same word knowledge as everywhere else. */
+function useLevel(): number | undefined {
+  const vocab = useVocab();
+  const states = useWordStates();
+  return vocab && states ? currentLevel(vocab, states) : undefined;
 }
 
 export function MusicView() {
-  const stats = useStats();
-  const level = stats?.level ?? 1;
+  const level = useLevel() ?? 1;
   const [connected, setConnected] = useState(sp.isConnected());
   const [error, setError] = useState<string | null>(null);
   const [scenes, setScenes] = useState<string[]>(() => readJson<string[]>(K_SCENES, []));
@@ -155,7 +163,7 @@ export function MusicView() {
 
   return (
     <div className="pb-8">
-      <h1 className="text-2xl font-bold">Music</h1>
+      <PageHeader back={{ label: 'Library', to: 'library' }} title="Music" />
       <p className="mt-1 text-muted">Mandarin songs from Spotify, sorted by how much of the lyrics you'd understand at {levelLabel(level)}.</p>
 
       {error && (
@@ -167,7 +175,7 @@ export function MusicView() {
       {!sp.clientId() ? (
         <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">Spotify isn't set up for this app yet.</p>
       ) : !connected ? (
-        <div className="mt-6 rounded-3xl bg-surface p-5">
+        <div className="mt-6 rounded-3xl bg-surface p-5 border border-line">
           <Music className="h-8 w-8 text-jade" />
           <h2 className="mt-3 text-lg font-semibold">Connect your Spotify</h2>
           <p className="mt-1 text-sm text-muted">
@@ -190,7 +198,7 @@ export function MusicView() {
                     key={s.id}
                     onClick={() => toggle(s.id)}
                     aria-pressed={on}
-                    className={`rounded-full border-2 px-3.5 py-1.5 text-sm font-medium ${on ? 'border-jade bg-jade-soft text-jade' : 'border-line bg-surface'}`}
+                    className={`rounded-full border px-3.5 py-1.5 text-sm font-medium ${on ? 'border-jade bg-jade-soft text-jade' : 'border-line bg-surface'}`}
                   >
                     <span className="han mr-1.5" lang="zh-CN">
                       {s.hanzi}
@@ -232,12 +240,12 @@ export function MusicView() {
                 <button onClick={() => void save()} disabled={playlist.busy} className="h-12 flex-1 rounded-2xl bg-jade font-semibold text-jade-ink disabled:opacity-60">
                   {playlist.busy ? 'Saving…' : playlist.url ? 'Saved to Spotify' : 'Save as Spotify playlist'}
                 </button>
-                <button onClick={() => go('music/now')} className="h-12 rounded-2xl border-2 border-line px-4 font-medium">
+                <button onClick={() => go('music/now')} className="h-12 rounded-2xl border border-line px-4 font-medium">
                   Follow along
                 </button>
               </div>
               {playlist.failed && (
-                <button onClick={() => void copyLinks()} className="mt-2 h-11 w-full rounded-2xl border-2 border-line font-medium">
+                <button onClick={() => void copyLinks()} className="mt-2 h-11 w-full rounded-2xl border border-line font-medium">
                   {playlist.copied ? 'Copied! Paste into a Spotify playlist' : 'Copy song links'}
                 </button>
               )}
@@ -246,7 +254,7 @@ export function MusicView() {
                   Open the playlist in Spotify
                 </a>
               )}
-              <ul className="stagger mt-4 flex flex-col gap-2">
+              <ul className="mt-4 flex flex-col gap-2">
                 {results.songs.map((s) => (
                   <SongRow key={s.track.id} s={s} />
                 ))}
@@ -280,7 +288,7 @@ function SongRow({ s }: { s: ScoredSong }) {
   const b = BAND[s.score.band];
   return (
     <li>
-      <button onClick={() => go(`music/song/${s.track.id}`)} className="flex w-full items-center gap-3 rounded-2xl bg-surface p-3 text-left transition duration-150 hover:bg-sunk active:scale-[0.99]">
+      <button onClick={() => go(`music/song/${s.track.id}`)} className="flex w-full items-center gap-3 rounded-2xl bg-surface p-3 text-left transition duration-150 hover:bg-sunk active:scale-[0.99] border border-line">
         {s.track.image ? <img src={s.track.image} alt="" className="h-12 w-12 shrink-0 rounded-lg object-cover" loading="lazy" /> : <span className="h-12 w-12 shrink-0 rounded-lg bg-sunk" />}
         <span className="min-w-0 flex-1">
           <span className="han block truncate font-semibold">{s.track.name}</span>
@@ -297,9 +305,8 @@ function SongRow({ s }: { s: ScoredSong }) {
 
 /** Dictionary, character map and what you know, for reading lyrics. */
 function useReader(): { dict: Dict; t2s: Record<string, string>; k: Knowledge } | null | 'nodict' {
-  const stats = useStats();
+  const level = useLevel();
   const [r, setR] = useState<{ dict: Dict; t2s: Record<string, string>; k: Knowledge } | null | 'nodict'>(null);
-  const level = stats?.level;
   useEffect(() => {
     if (level === undefined) return;
     let live = true;
@@ -338,7 +345,7 @@ function SongView({ id }: { id: string }) {
         <div className="flex items-center gap-4">
           {track.image && <img src={track.image} alt="" className="h-20 w-20 rounded-xl object-cover" />}
           <div className="min-w-0 flex-1">
-            <h1 className="han truncate text-2xl font-bold">{track.name}</h1>
+            <h1 className="han truncate text-2xl font-semibold">{track.name}</h1>
             <p className="han truncate text-muted">{track.artists.join(', ')}</p>
             <a href={track.url} target="_blank" rel="noreferrer" className="mt-2 inline-flex h-10 items-center rounded-full bg-jade px-4 text-sm font-semibold text-jade-ink">
               Play in Spotify
@@ -397,7 +404,7 @@ function Summary({ score, reader, onWord }: { score: SongScore; reader: ReturnTy
   const b = BAND[score.band];
   const entryOf = (h: string) => (reader && reader !== 'nodict' ? reader.dict.byHanzi.get(h)?.[0] : undefined);
   return (
-    <div className="mt-5 rounded-2xl bg-surface p-4">
+    <div className="mt-5 rounded-2xl bg-surface p-4 border border-line">
       <div className="flex items-center gap-3">
         <span className={`rounded-full px-2.5 py-1 text-sm font-semibold ${b.cls}`}>{b.label}</span>
         <span className="text-sm text-muted">
@@ -553,10 +560,7 @@ function NowPlaying() {
 
   return (
     <div className="pb-8">
-      <button onClick={() => go('music')} className="mb-3 text-sm font-medium text-jade">
-        ← Music
-      </button>
-      <h1 className="text-2xl font-bold">Follow along</h1>
+      <PageHeader back={{ label: 'Music', to: 'music' }} title="Follow along" />
       {error && <p className="mt-3 rounded-2xl bg-cinnabar-soft p-4 text-sm text-cinnabar">{error}</p>}
       {now === null ? (
         <p className="mt-4 text-muted">Checking Spotify…</p>

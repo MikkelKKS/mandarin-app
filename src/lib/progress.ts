@@ -1,37 +1,56 @@
-/** Skill-path progress: mastery per node, unlocking and test-outs. */
-import { getUnit, nodeOrder, nodes } from '../content';
-import { db, type ProgressRow } from '../db/db';
-
-export const MAX_MASTERY = 5;
-export const TESTOUT_PASS = 0.8;
-
-export type NodeState = { status: 'locked' | 'open' | 'done'; mastery: number };
-
 /**
- * Pure: work out which nodes are open. A node is open if it's the first one,
- * the node before it is done, or anything later in the path is already done
- * (you jumped ahead with a test-out, so earlier material stays available).
+ * Conversations progress. Nothing is locked: every unit and lesson is open.
+ * A lesson counts as done once you've finished it, or once you know all its
+ * words from anywhere in the app (sessions, placement, moving words by hand),
+ * so the two ways of learning share one picture of what you know.
  */
-export function computeStates(order: string[], rows: Map<string, ProgressRow>): Map<string, NodeState> {
+import { nodes, units } from '../content';
+import { db, type ProgressRow } from '../db/db';
+import { courseWordState, isKnownState } from './knowledge';
+import type { WordState } from './review';
+
+export interface NodeState {
+  done: boolean;
+  /** Times finished. */
+  completions: number;
+  /** Words of the lesson you know (in review), and how many it has. */
+  known: number;
+  total: number;
+}
+
+/** Pure: the state of every lesson from its progress row and your word knowledge. */
+export function nodeStates(rows: Map<string, ProgressRow>, words: Map<string, WordState>): Map<string, NodeState> {
   const out = new Map<string, NodeState>();
-  const done = order.map((id) => (rows.get(id)?.mastery ?? 0) >= 1);
-  let lastDone = -1;
-  done.forEach((d, i) => d && (lastDone = i));
-  order.forEach((id, i) => {
-    const mastery = rows.get(id)?.mastery ?? 0;
-    const open = i === 0 || done[i - 1] || i < lastDone;
-    out.set(id, { status: mastery >= 1 ? 'done' : open ? 'open' : 'locked', mastery });
-  });
+  for (const [id, n] of nodes) {
+    const row = rows.get(id);
+    const known = n.words.filter((w) => isKnownState(courseWordState(w, words))).length;
+    const total = n.words.length;
+    const completions = row?.completions ?? 0;
+    out.set(id, {
+      done: completions > 0 || (row?.mastery ?? 0) >= 1 || (total > 0 && known === total),
+      completions,
+      known,
+      total,
+    });
+  }
   return out;
 }
 
-/** Pure: new row after finishing a lesson. Every completion counts; mastery only goes up. */
+/** Pure: how far along a unit is (its distinct words you know, and lessons done). */
+export function unitProgress(unitId: string, states: Map<string, NodeState>, words: Map<string, WordState>) {
+  const u = units.find((x) => x.id === unitId)!;
+  const ids = [...new Set(u.nodes.flatMap((n) => nodes.get(n.id)?.words ?? []))];
+  const known = ids.filter((w) => isKnownState(courseWordState(w, words))).length;
+  const done = u.nodes.filter((n) => states.get(n.id)?.done).length;
+  return { known, total: ids.length, done, lessons: u.nodes.length };
+}
+
+/** Pure: new row after finishing a lesson. */
 export function afterLesson(prev: ProgressRow | undefined, id: string, accuracy: number, now: number): ProgressRow {
-  const mastery = prev?.mastery ?? 0;
   return {
     id,
     kind: 'node',
-    mastery: Math.min(MAX_MASTERY, mastery + 1),
+    mastery: Math.min(5, (prev?.mastery ?? 0) + 1),
     completions: (prev?.completions ?? 0) + 1,
     bestAccuracy: Math.max(prev?.bestAccuracy ?? 0, accuracy),
     testedOut: prev?.testedOut,
@@ -45,51 +64,3 @@ export async function recordLesson(nodeId: string, accuracy: number): Promise<Pr
   await db.progress.put(row);
   return row;
 }
-
-/** Passing a unit test-out marks all its nodes as done (mastery ≥ 1). */
-export async function recordTestOut(unitId: string, accuracy: number): Promise<boolean> {
-  const passed = accuracy >= TESTOUT_PASS;
-  const now = Date.now();
-  await db.transaction('rw', db.progress, async () => {
-    const key = `unit:${unitId}`;
-    const prev = await db.progress.get(key);
-    await db.progress.put({
-      id: key,
-      kind: 'unit',
-      mastery: 0,
-      completions: (prev?.completions ?? 0) + 1,
-      bestAccuracy: Math.max(prev?.bestAccuracy ?? 0, accuracy),
-      testedOut: passed || prev?.testedOut,
-      updatedAt: now,
-    });
-    if (!passed) return;
-    for (const n of getUnit(unitId)!.nodes) {
-      const p = await db.progress.get(n.id);
-      if ((p?.mastery ?? 0) < 1) {
-        await db.progress.put({ id: n.id, kind: 'node', mastery: 1, completions: p?.completions ?? 0, bestAccuracy: p?.bestAccuracy ?? 0, testedOut: true, updatedAt: now });
-      }
-    }
-  });
-  return passed;
-}
-
-/** Words and sentences from open/done nodes (what the learner has seen). */
-export function unlockedItemIds(states: Map<string, NodeState>): string[] {
-  const ids: string[] = [];
-  for (const id of nodeOrder) {
-    if (states.get(id)?.status === 'locked') continue;
-    const n = nodes.get(id)!;
-    ids.push(...n.words, ...n.sentences);
-  }
-  return [...new Set(ids)];
-}
-
-/** Next node to study: first open node that isn't done yet. */
-export function nextNode(states: Map<string, NodeState>): string | undefined {
-  return nodeOrder.find((id) => states.get(id)?.status === 'open');
-}
-
-export function unitComplete(unitId: string, states: Map<string, NodeState>): boolean {
-  return getUnit(unitId)!.nodes.every((n) => states.get(n.id)?.status === 'done');
-}
-

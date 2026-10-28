@@ -64,7 +64,7 @@ export function AudioControls({
         type="button"
         onClick={() => go(true)}
         aria-label="Play slowly"
-        className={`flex items-center justify-center rounded-full border-2 border-line bg-surface text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
+        className={`flex items-center justify-center rounded-full border border-line bg-surface text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
       >
         <Turtle className={big ? 'h-7 w-7' : 'h-5 w-5'} />
       </button>
@@ -78,7 +78,7 @@ export function AudioControls({
           }}
           aria-label={`Play at ${LADDER[(step + 1) % LADDER.length]}× speed`}
           title="Speed ladder: 0.75× → 1× → 1.2×"
-          className={`flex items-center justify-center rounded-full border-2 border-line bg-surface text-sm font-semibold tabular-nums text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
+          className={`flex items-center justify-center rounded-full border border-line bg-surface text-sm font-semibold tabular-nums text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
         >
           {LADDER[step]}×
         </button>
@@ -153,7 +153,7 @@ export function Options({
             aria-selected={selected === i}
             disabled={locked}
             onClick={() => onSelect(i)}
-            className={`group flex min-h-14 items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left transition duration-150 active:translate-y-0.5 active:shadow-none disabled:active:translate-y-0 ${extra ? 'flex-1' : ''} ${optionClass(st)}`}
+            className={`group flex min-h-14 items-center gap-3 rounded-2xl border px-4 py-3 text-left transition duration-150 active:translate-y-0.5 active:shadow-none disabled:active:translate-y-0 ${extra ? 'flex-1' : ''} ${optionClass(st)}`}
           >
             <span className="hidden h-6 w-6 shrink-0 items-center justify-center rounded-md border border-line text-xs text-muted transition-colors group-aria-selected:border-jade group-aria-selected:bg-jade group-aria-selected:text-jade-ink sm:flex">{i + 1}</span>
             <span className="min-w-0 flex-1">{render(i)}</span>
@@ -257,7 +257,7 @@ export function PinyinInput({
         inputMode="text"
         enterKeyHint="done"
         aria-label="Your answer in pinyin"
-        className="w-full rounded-2xl border-2 border-line bg-surface px-4 py-4 text-xl outline-none transition-[border-color,box-shadow] duration-200 focus:border-jade focus:shadow-[0_0_0_4px_var(--jade-soft)] disabled:opacity-80"
+        className="w-full rounded-2xl border border-line bg-surface px-4 py-4 text-xl outline-none transition-[border-color,box-shadow] duration-200 focus:border-jade focus:shadow-[0_0_0_4px_var(--jade-soft)] disabled:opacity-80"
       />
       <div className="mt-2 flex gap-2" aria-label="Tone marks">
         {TONE_KEYS.map((k) => (

@@ -76,7 +76,7 @@ function TileBoard({ tiles, chosen, setChosen }: { tiles: string[]; chosen: numb
       </>
     );
   };
-  const tileClass = 'group flex min-h-12 touch-none select-none flex-col items-center justify-center rounded-xl border-2 border-b-4 px-3 py-1.5 transition';
+  const tileClass = 'group flex min-h-12 touch-none select-none flex-col items-center justify-center rounded-xl border border-b-4 px-3 py-1.5 transition';
   // While dragging, follow the pointer anywhere on the page (tiles re-render under it).
   const live = useRef({ onMove, onUp });
   live.current = { onMove, onUp };
@@ -120,7 +120,7 @@ function TileBoard({ tiles, chosen, setChosen }: { tiles: string[]; chosen: numb
       <div ref={answerRef} className="mb-6 flex min-h-16 flex-wrap content-start gap-2 border-b-2 border-line pb-3" aria-label="Your answer">
         {answer.map((a) =>
           a === 'gap' ? (
-            <span key="gap" className="anim-fade min-h-12 w-12 rounded-xl border-2 border-dashed border-jade bg-jade-soft" aria-hidden />
+            <span key="gap" className="anim-fade min-h-12 w-12 rounded-xl border border-dashed border-jade bg-jade-soft" aria-hidden />
           ) : (
             <button
               key={`tile-${a.tile}`}

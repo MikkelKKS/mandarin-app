@@ -1,12 +1,12 @@
 /** A small card next to a tapped word: reading, meaning, audio, add to practice. No backdrop. */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ReportAudio } from './ReportAudio';
 import { TonePinyin, ToneText } from './Hanzi';
 import { Close, Speaker } from './icons';
 import { play } from '../lib/audio';
 import { plecoLink, type Entry } from '../features/dictionary/dict';
-import { addMyWord, myWordId, useMyWords } from '../features/dictionary/mywords';
+import { LearnNext } from './LearnNext';
 
 /** A small card next to the tapped word. No backdrop, so the song and lyrics stay visible. */
 export function WordPopover({
@@ -15,7 +15,6 @@ export function WordPopover({
   known = false,
   gloss,
   audioId,
-  canAdd = true,
   anchor,
   onClose,
 }: {
@@ -26,18 +25,13 @@ export function WordPopover({
   gloss?: { pinyin: string; english: string };
   /** A recording to play instead of the browser voice. */
   audioId?: string;
-  /** Offer "Add to my practice" (not for words the course already teaches). */
-  canAdd?: boolean;
   anchor: DOMRect;
   onClose: () => void;
 }) {
   const box = useRef<HTMLDivElement>(null);
   const close = useRef(onClose);
   close.current = onClose;
-  const mine = useMyWords();
-  const [busy, setBusy] = useState(false);
   const e: Entry | undefined = entry;
-  const added = e ? mine.some((w) => w.id === myWordId(e)) : false;
   useEffect(() => {
     const key = (ev: KeyboardEvent) => ev.key === 'Escape' && close.current();
     // Tapping anywhere else closes it (the tap on another word then opens that one).
@@ -89,20 +83,8 @@ export function WordPopover({
       <p className="mt-1 text-sm leading-relaxed">{e ? e.defs.slice(0, 4).join('; ') : gloss ? gloss.english : 'Not in the dictionary.'}</p>
       {known && <p className="mt-1 text-xs text-jade">You know this one.</p>}
       <div className="mt-3 flex flex-wrap gap-2 text-sm">
-        {e && canAdd && (
-          <button
-            disabled={added || busy}
-            onClick={async () => {
-              setBusy(true);
-              await addMyWord(e);
-              setBusy(false);
-            }}
-            className={`rounded-xl px-3 py-1.5 font-medium ${added ? 'bg-jade-soft text-jade' : 'border-2 border-line'}`}
-          >
-            {added ? '✓ In my practice' : '+ Add to my practice'}
-          </button>
-        )}
-        <a href={plecoLink(text)} className="rounded-xl border-2 border-line px-3 py-1.5 font-medium">
+        {e && <LearnNext entry={e} />}
+        <a href={plecoLink(text)} className="inline-flex h-9 items-center rounded-xl border border-line bg-surface px-3 text-sm font-medium hover:border-ink/30">
           Open in Pleco
         </a>
       </div>

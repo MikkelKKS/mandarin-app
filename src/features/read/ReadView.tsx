@@ -1,15 +1,17 @@
 /** Stories: short reads built from the words you've learned. Reading only; tap a word to look it up. */
-import { useEffect, useMemo, useState } from 'react';
-import { nodeOrder, units, words, wordByHanzi } from '../../content';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { units, words, wordByHanzi } from '../../content';
 import { StorySchema, segmentWithVocab, type Story, type StoryToken } from '../../content/stories';
 import { WordPopover } from '../../components/WordPopover';
-import { Lock } from '../../components/icons';
-import { db } from '../../db/db';
-import { computeStates, nextNode, unitComplete, type NodeState } from '../../lib/progress';
+import { ChevronRight, Speaker } from '../../components/icons';
+import { PageHeader } from '../../components/PageHeader';
+import { ProgressBar } from '../../components/ProgressBar';
+import { play, rememberText, stop } from '../../lib/audio';
+import { hanziKnowledge, useWordStates } from '../../lib/knowledge';
+import { useVocab } from '../../lib/vocabData';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { usePinyinFn } from '../../lib/pinyinPro';
-import { useLive } from '../../lib/useLive';
 import { loadDict, type Dict, type Entry } from '../dictionary/dict';
 
 const modules = import.meta.glob('../../../content/stories/*.json', { eager: true, import: 'default' });
@@ -21,18 +23,16 @@ export const stories: Story[] = Object.values(modules)
 /** Every word the course teaches, for splitting stories into words. */
 const allVocab = new Set([...words.values()].map((w) => w.hanzi));
 
-function useStates(): Map<string, NodeState> | null {
-  const rows = useLive(() => db.progress.toArray(), [], null);
-  return useMemo(() => (rows ? computeStates(nodeOrder, new Map(rows.map((r) => [r.id, r]))) : null), [rows]);
-}
+/** Audio id of a story paragraph (recorded with Azure like everything else). */
+export const paragraphId = (story: string, i: number) => `${story}-p${i}`;
 
-/** A story opens once you've finished (or moved past) the unit it follows. */
-function isOpen(s: Story, states: Map<string, NodeState>): boolean {
-  if (unitComplete(s.after, states)) return true;
-  const unit = units.find((u) => u.id === s.after);
-  const last = unit?.nodes[unit.nodes.length - 1]?.id;
-  const next = nextNode(states);
-  return !!last && !!next && nodeOrder.indexOf(next) > nodeOrder.indexOf(last);
+/** Pure: share of a story's words you know (in review), counting each word once. */
+export function storyKnown(story: Story, known: Set<string>): number {
+  const vocab = new Set([...allVocab, ...known]);
+  const seen = new Set<string>();
+  for (const p of story.paragraphs) for (const t of segmentWithVocab(p.zh, vocab).tokens) if (t.word) seen.add(t.word);
+  if (!seen.size) return 0;
+  return [...seen].filter((w) => known.has(w)).length / seen.size;
 }
 
 export function ReadRoute({ route }: { route: string[] }) {
@@ -40,30 +40,36 @@ export function ReadRoute({ route }: { route: string[] }) {
 }
 
 function StoryList() {
-  const states = useStates();
+  const vocab = useVocab();
+  const states = useWordStates();
+  const known = useMemo(() => (vocab && states ? hanziKnowledge(vocab, states).known : null), [vocab, states]);
   return (
     <div className="pb-8">
-      <h1 className="text-2xl font-bold">Read</h1>
-      <p className="mt-1 text-muted">Short reads using the words you've learned. Tap any word to look it up.</p>
-      <ul className="stagger mt-6 flex flex-col gap-3">
+      <PageHeader back={{ label: 'Library', to: 'library' }} title="Stories">
+        Short stories about 米格's life in Copenhagen and Beijing, read aloud. Tap any word to look it up.
+      </PageHeader>
+      <ul className="group-list mt-6">
         {stories.map((s) => {
-          const open = states ? isOpen(s, states) : false;
-          const unit = units.find((u) => u.id === s.after);
+          const share = known ? storyKnown(s, known) : null;
           return (
             <li key={s.id}>
-              <button
-                disabled={!open}
-                onClick={() => go(`read/${s.id}`)}
-                className={`flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition ${open ? 'border-line bg-surface hover:border-jade' : 'border-dashed border-line text-muted'}`}
-              >
+              <button onClick={() => go(`read/${s.id}`)} className="flex w-full items-center gap-4 px-4 py-4 text-left first:rounded-t-[20px] last:rounded-b-[20px] hover:bg-sunk/50">
                 <span className="min-w-0 flex-1">
-                  <span className="han block text-xl font-semibold" lang="zh-CN">
-                    {s.titleHanzi}
+                  <span className="flex items-baseline gap-3">
+                    <span className="han text-xl font-semibold" lang="zh-CN">
+                      {s.titleHanzi}
+                    </span>
+                    <span className="truncate font-medium">{s.title}</span>
                   </span>
-                  <span className="block font-medium">{s.title}</span>
-                  <span className="block text-sm text-muted">{open ? s.blurb : `Opens after “${unit?.title ?? s.after}”`}</span>
+                  <span className="mt-0.5 block text-sm text-muted">{s.blurb}</span>
+                  {share !== null && (
+                    <span className="mt-2 flex items-center gap-3">
+                      <ProgressBar value={share} label={`${s.title}: words you know`} className="w-24" />
+                      <span className="text-xs tabular-nums text-muted">You know {Math.round(share * 100)}% of the words</span>
+                    </span>
+                  )}
                 </span>
-                {!open && <Lock className="h-5 w-5 shrink-0" />}
+                <ChevronRight className="h-5 w-5 shrink-0 text-muted" />
               </button>
             </li>
           );
@@ -98,10 +104,35 @@ function StoryReader({ id }: { id: string }) {
   const [dict, setDict] = useState<Dict | null>(null);
   const [english, setEnglish] = useState(false);
   const [picked, setPicked] = useState<Picked | null>(null);
+  /** Paragraph being read aloud (Play all, or one paragraph). */
+  const [reading, setReading] = useState<number | null>(null);
+  const playing = useRef(0);
   useEffect(() => {
     void loadDict().then(setDict);
+    return () => {
+      playing.current++;
+      stop();
+    };
   }, []);
   if (!story) return <p className="p-8">This story doesn't exist.</p>;
+  story.paragraphs.forEach((p, i) => rememberText(paragraphId(story.id, i), p.zh));
+
+  const playFrom = async (start: number, all: boolean) => {
+    const run = ++playing.current;
+    for (let i = start; i < story.paragraphs.length; i++) {
+      setReading(i);
+      await play(paragraphId(story.id, i));
+      if (run !== playing.current || !all) break;
+      await new Promise((r) => setTimeout(r, 450));
+      if (run !== playing.current) break;
+    }
+    if (run === playing.current) setReading(null);
+  };
+  const stopReading = () => {
+    playing.current++;
+    stop();
+    setReading(null);
+  };
 
   const vocab = new Set([...allVocab, ...story.extra.map((e) => e.hanzi)]);
   const extra = new Map(story.extra.map((e) => [e.hanzi, e]));
@@ -119,22 +150,29 @@ function StoryReader({ id }: { id: string }) {
 
   return (
     <div className="pb-10">
-      <button onClick={() => go('read')} className="mb-3 text-sm font-medium text-jade">
-        ← Read
-      </button>
-      <h1 className="han text-3xl font-bold" lang="zh-CN">
+      <PageHeader back={{ label: 'Stories', to: 'read' }} title={story.title} />
+      <p className="han -mt-1 text-lg text-muted" lang="zh-CN">
         {story.titleHanzi}
-      </h1>
-      <p className="text-muted">{story.title}</p>
+      </p>
+      <div className="mt-5 flex gap-2">
+        <button onClick={() => (reading !== null ? stopReading() : void playFrom(0, true))} className="btn btn-primary h-11 gap-2 px-5 text-base">
+          <Speaker className="h-5 w-5" />
+          {reading !== null ? 'Stop' : 'Play all'}
+        </button>
+        <button onClick={() => setEnglish(!english)} aria-pressed={english} className="btn btn-quiet h-11 px-4">
+          {english ? 'Hide English' : 'Show English'}
+        </button>
+      </div>
 
-      <article className="mt-6 flex flex-col gap-5">
+      <article className="mt-7 flex flex-col gap-6">
         {story.paragraphs.map((p, pi) => {
           const { tokens } = segmentWithVocab(p.zh, vocab);
           const readings = py ? py(p.zh) : null;
           let offset = 0;
           return (
-            <div key={pi}>
-              <p className="han flex flex-wrap items-end gap-x-0.5 gap-y-1 text-2xl leading-snug" lang="zh-CN">
+            <div key={pi} className={`-mx-3 rounded-2xl px-3 py-2 transition-colors duration-300 ${reading === pi ? 'bg-jade-soft/60' : ''}`}>
+              <div className="flex items-start gap-2">
+              <p className="han flex min-w-0 flex-1 flex-wrap items-end gap-x-0.5 gap-y-1 text-2xl leading-snug" lang="zh-CN">
                 {groupPunctuation(tokens).map((g, gi) => (
                   <span key={gi} className="inline-flex items-end">
                     {g.map((t, ti) => {
@@ -163,7 +201,15 @@ function StoryReader({ id }: { id: string }) {
                   </span>
                 ))}
               </p>
-              {english && <p className="anim-fade mt-2 text-muted">{p.en}</p>}
+              <button
+                onClick={() => (reading === pi ? stopReading() : void playFrom(pi, false))}
+                aria-label={`Read paragraph ${pi + 1} aloud`}
+                className={`mt-1 shrink-0 rounded-full p-2 transition-colors ${reading === pi ? 'bg-jade text-jade-ink' : 'text-muted hover:bg-sunk hover:text-ink'}`}
+              >
+                <Speaker className="h-5 w-5" />
+              </button>
+              </div>
+              {english && <p className="anim-fade mt-2 leading-relaxed text-muted">{p.en}</p>}
             </div>
           );
         })}
@@ -171,16 +217,13 @@ function StoryReader({ id }: { id: string }) {
 
       {story.extra.length > 0 && (
         <p className="mt-6 text-sm text-muted">
-          <span className="border-b-2 border-dotted border-gold">Dotted</span> words aren't in the course yet.
+          <span className="border-b-2 border-dotted border-gold">Dotted</span> words aren't in the HSK list.
         </p>
       )}
-      <button onClick={() => setEnglish(!english)} className="mt-6 h-12 w-full rounded-2xl border-2 border-line font-medium">
-        {english ? 'Hide the translation' : 'Show the translation'}
-      </button>
 
       {picked && (
         <WordPopover text={picked.text} entry={picked.entry} gloss={picked.gloss} audioId={picked.audioId}
-          canAdd={!picked.audioId} anchor={picked.anchor} onClose={() => setPicked(null)} />
+          anchor={picked.anchor} onClose={() => setPicked(null)} />
       )}
     </div>
   );

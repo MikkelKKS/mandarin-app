@@ -52,7 +52,7 @@ export function Repeat({ ex }: { ex: Of<'repeat'> }) {
         <p className="mt-2 text-sm text-muted">{rec ? 'Listening… tap to stop' : res ? 'Tap to try again' : 'Tap and say it'}</p>
       </div>
       {res && (
-        <div className="mt-6 rounded-2xl bg-surface p-4">
+        <div className="mt-6 rounded-2xl bg-surface p-4 border border-line">
           {res.error ? (
             <p className="text-sm">{res.error}</p>
           ) : (

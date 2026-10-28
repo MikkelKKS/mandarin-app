@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { choosePractice, schedule } from './srs';
+import { schedule } from './srs';
 
 const DAY = 864e5;
 const t0 = Date.UTC(2026, 0, 1);
@@ -40,21 +40,4 @@ describe('FSRS wrapper', () => {
     expect(almost).toBeGreaterThanOrEqual(wrong);
   });
 
-  it('picks recent mistakes and due items for practice, then the weakest', () => {
-    const items = [
-      { ...schedule(undefined, 'a', 'correct', t0), due: t0 - 10 },
-      { ...schedule(undefined, 'b', 'correct', t0), due: t0 + DAY },
-      { ...schedule(undefined, 'c', 'correct', t0), due: t0 + 5 * DAY, stability: 0.1 },
-    ];
-    const logs = [
-      { itemId: 'b', verdict: 'wrong' as const, at: t0 - 1000 },
-      { itemId: 'd', verdict: 'wrong' as const, at: t0 - 2000 },
-      { itemId: 'd', verdict: 'correct' as const, at: t0 - 500 },
-    ];
-    const chosen = choosePractice(items, logs, t0, 3);
-    expect(chosen).toContain('a'); // due
-    expect(chosen).toContain('b'); // recent mistake
-    expect(chosen).not.toContain('d'); // fixed since
-    expect(chosen.length).toBe(3);
-  });
 });

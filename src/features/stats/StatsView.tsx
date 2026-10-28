@@ -3,9 +3,12 @@
  * target, the 14-day forecast, the tone confusion matrix, time per day,
  * accuracy trend and XP history.
  */
+import { PageHeader } from '../../components/PageHeader';
 import { useMemo } from 'react';
 import { db } from '../../db/db';
 import { loadGameStats } from '../../lib/gameStats';
+import { ACHIEVEMENTS } from '../../lib/gamify';
+import { ProgressBar } from '../../components/ProgressBar';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { forecast, OPTIMISE_AFTER, optimiserReviews, perDay, retention, STATES, toneAccuracy, wordsByLevel } from '../../lib/statsData';
@@ -34,9 +37,9 @@ const dom = (t: number) => String(new Date(t).getDate());
 
 function Section({ title, note, children }: { title: string; note?: string; children: React.ReactNode }) {
   return (
-    <section className="mt-9">
+    <section className="mt-10">
       <h2 className="text-lg font-semibold">{title}</h2>
-      {note && <p className="text-sm text-muted">{note}</p>}
+      {note && <p className="mt-0.5 text-sm leading-snug text-muted">{note}</p>}
       <div className="mt-3">{children}</div>
     </section>
   );
@@ -67,7 +70,7 @@ export function StatsView() {
 
   return (
     <div className="pb-10">
-      <h1 className="text-2xl font-bold">Stats</h1>
+      <PageHeader title="Stats" />
 
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Tile label="Words started" value={started.toLocaleString('en-GB')} note={`${mature.toLocaleString('en-GB')} mature`} />
@@ -111,7 +114,7 @@ export function StatsView() {
             rows={levels.map((l) => [l.level === 7 ? '7–9' : String(l.level), l.counts.new, l.counts.learning, l.counts.young, l.counts.mature])}
           />
         )}
-        <button onClick={() => go('progress/words')} className="mt-3 h-11 w-full rounded-2xl border-2 border-line font-medium">
+        <button onClick={() => go('words')} className="mt-3 h-11 w-full rounded-2xl border border-line font-medium">
           Browse the words
         </button>
       </Section>
@@ -131,7 +134,7 @@ export function StatsView() {
           {tones.map((t) => (
             <div key={t.tone} className="rounded-xl bg-surface p-2">
               <p className={`text-xs font-semibold ${TONE_TEXT[t.tone]}`}>{TONE_WORD[t.tone]}</p>
-              <p className="text-lg font-bold tabular-nums">{pct(t.rate)}</p>
+              <p className="text-lg font-semibold tabular-nums">{pct(t.rate)}</p>
               <p className="text-[10px] text-muted">{t.n} heard</p>
             </div>
           ))}
@@ -173,23 +176,44 @@ export function StatsView() {
       </Section>
 
       <Section title="Scheduler" note="FSRS learns how fast you forget once it has enough of your reviews; it then fits its parameters to you.">
-        <div className="rounded-2xl bg-surface p-4">
+        <div className="card p-4">
           <div className="flex justify-between text-sm">
             <span>Reviews with full data</span>
             <span className="tabular-nums">
               {Math.min(fsrsReviews, OPTIMISE_AFTER).toLocaleString('en-GB')} / {OPTIMISE_AFTER.toLocaleString('en-GB')}
             </span>
           </div>
-          <div className="mt-2 h-2 overflow-hidden rounded-full bg-sunk">
-            <div className="h-full bg-jade" style={{ width: `${Math.min(1, fsrsReviews / OPTIMISE_AFTER) * 100}%` }} />
-          </div>
+          <ProgressBar value={fsrsReviews / OPTIMISE_AFTER} label="Reviews towards the scheduler optimiser" className="mt-2" />
           <p className="mt-2 text-xs text-muted">"Optimise my scheduler" appears here at {OPTIMISE_AFTER.toLocaleString('en-GB')} reviews.</p>
         </div>
       </Section>
 
-      <button onClick={() => go('music')} className="mt-8 h-12 w-full rounded-2xl border-2 border-line font-medium">
-        Find songs at your level
-      </button>
+      <Section title="Achievements" note={`${game?.unlocked.size ?? 0} of ${ACHIEVEMENTS.length} unlocked.`}>
+        <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          {ACHIEVEMENTS.map((a) => {
+            const at = game?.unlocked.get(a.id);
+            const p = game ? a.progress(game.stats) : 0;
+            return (
+              <li key={a.id} className={`card flex items-center gap-3 p-3 ${at ? '' : 'shadow-none'}`}>
+                <span
+                  className={`han flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[11px] font-medium ${at ? 'border-[1.5px] border-gold bg-amber-soft text-gold' : 'border border-line text-muted'}`}
+                  aria-hidden
+                >
+                  {a.hanzi}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="flex items-baseline justify-between gap-2">
+                    <span className="font-medium">{a.title}</span>
+                    <span className="text-xs tabular-nums text-muted">{at ? new Date(at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : `${Math.round(p * 100)}%`}</span>
+                  </span>
+                  <span className="block text-xs text-muted">{a.detail}</span>
+                  {!at && <ProgressBar value={p} label={`${a.title} progress`} tone="gold" className="mt-1.5" />}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
     </div>
   );
 }

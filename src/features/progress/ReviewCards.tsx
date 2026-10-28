@@ -19,10 +19,10 @@ export function ReviewCards() {
   useEffect(() => {
     if (!vocab || !cards) return;
     void todaysQueue(
-      wordOrder(vocab.map((w) => w.id), settings.beijingPack),
+      wordOrder(vocab.map((w) => w.id), settings.beijingPack, settings.nextWords),
       { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: micActive() },
     ).then(setQueue);
-  }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking, settings.beijingPack]);
+  }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking, settings.beijingPack, settings.nextWords]);
 
   const rows = useMemo(() => {
     const now = Date.now();
@@ -49,7 +49,7 @@ export function ReviewCards() {
         Every word has a card for each skill, so a word you understand but can't type yet comes back for typing on its own.
       </p>
       {queue && (
-        <div className="mt-3 rounded-2xl bg-surface p-4">
+        <div className="mt-3 rounded-2xl bg-surface p-4 border border-line">
           <p className="font-semibold">
             Today: {queue.reviews.length} {queue.reviews.length === 1 ? 'review' : 'reviews'} due, {queue.newWords.length} new{' '}
             {queue.newWords.length === 1 ? 'word' : 'words'}

@@ -4,7 +4,7 @@ import { expect, test, type Page } from '@playwright/test';
 async function step(page: Page) {
   const done = page.getByText('Fixed along the way');
   if (await done.isVisible()) return true;
-  if (await page.getByRole('button', { name: /level 1 of 5/ }).first().isVisible()) return true;
+  if (await page.getByRole('heading', { name: 'Conversations' }).isVisible()) return true;
 
   const cont = page.getByRole('button', { name: /^(Continue|Got it)$/ });
   if (await cont.first().isVisible()) {
@@ -47,13 +47,13 @@ async function step(page: Page) {
   return false;
 }
 
-test('complete the first lesson and see it on the path', async ({ page }) => {
+test('complete the first lesson: it counts in Conversations and in Stats', async ({ page }) => {
   // Wrong answers now repeat until right, so the random-answer bot is graded as correct.
   await page.addInitScript(() => {
     (globalThis as unknown as { __e2eAlwaysCorrect: boolean }).__e2eAlwaysCorrect = true;
   });
   await page.goto('./#/conversations');
-  await expect(page.getByText('Check your basics')).toBeVisible();
+  await expect(page.getByRole('button', { name: /Check your basics/ })).toBeVisible();
   await page.getByRole('button', { name: /Hello & how are you/ }).click();
   await page.getByRole('button', { name: 'Start' }).click();
   await expect(page.getByText('New word')).toBeVisible();
@@ -61,18 +61,16 @@ test('complete the first lesson and see it on the path', async ({ page }) => {
   let finished = false;
   for (let i = 0; i < 400 && !finished; i++) finished = await step(page);
   expect(finished).toBe(true);
-  // The end screen (or, if the bot already tapped Continue, the path).
   const end = page.getByText('Fixed along the way');
   if (await end.isVisible()) await page.getByRole('button', { name: 'Continue' }).click();
-  await expect(page.getByRole('button', { name: /Hello & how are you, level 1 of 5/ })).toBeVisible();
-  // The next skill is now open.
-  await expect(page.getByRole('button', { name: /Thanks & sorry, level 0 of 5/ })).toBeVisible();
+  // Done once, and nothing is locked.
+  await expect(page.getByRole('button', { name: /Hello & how are you.*done 1×/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Thanks & sorry/ })).toBeVisible();
 
-  // The Stats page reflects the lesson.
+  // The same words are now in the HSK system: Stats and today's queue show them.
   await page.goto('./#/progress');
   await expect(page.getByRole('heading', { name: 'Stats' })).toBeVisible();
-  await expect(page.getByText(/^\d+ \/ 511 started/)).toBeVisible({ timeout: 15000 });
-  // Each word got its skill cards, and today's queue is shown.
+  await expect(page.getByText(/^[1-9]\d* \/ 511 started/)).toBeVisible({ timeout: 15000 });
   const cards = page.getByRole('region', { name: 'Review cards' });
   await expect(cards.getByText(/^Today: \d+ reviews? due, \d+ new words?/)).toBeVisible({ timeout: 15000 });
   const listening = cards.getByRole('row', { name: /Listening → meaning/ });
@@ -87,45 +85,16 @@ test('keyboard only: Enter continues through intro cards', async ({ page }) => {
   await page.keyboard.press('Enter');
 });
 
-test('play a few rounds of Listening Blitz', async ({ page }) => {
-  await page.goto('./#/games');
-  await page.getByRole('button', { name: /Listening Blitz/ }).click();
-  await page.getByRole('button', { name: 'Play' }).click();
-  await expect(page.getByLabel('Score')).toHaveText('0');
-  for (let i = 0; i < 4; i++) {
-    await page.keyboard.press(String((i % 4) + 1));
-    await page.waitForTimeout(1300);
-  }
-  await expect(page.getByLabel('Seconds left')).toBeVisible();
-});
-
-test('import a practice pack and play it', async ({ page }) => {
-  const { readFileSync } = await import('node:fs');
-  const prompt = readFileSync('content/practice-pack-prompt.md', 'utf8');
-  const example = prompt.match(/```json\n([\s\S]*?)```/)![1];
-  await page.goto('./#/settings');
-  await page.getByLabel('Practice pack JSON').fill(example);
-  await page.getByRole('button', { name: 'Import practice pack' }).click();
-  await expect(page.getByText(/Imported “Third tones at the dinner table”/)).toBeVisible();
-  await page.getByRole('button', { name: 'Go to the path' }).click();
-  await expect(page.getByText('Custom practice')).toBeVisible();
-  await page.getByRole('button', { name: 'Practise' }).click();
-  await expect(page.getByRole('progressbar')).toBeVisible();
-  // A bad pack shows specific errors.
-  await page.goto('./#/settings');
-  await page.getByLabel('Practice pack JSON').fill(example.replace('"w-bao"', '"w-nope"'));
-  await page.getByRole('button', { name: 'Import practice pack' }).click();
-  await expect(page.getByRole('alert')).toContainText('unknown word id "w-nope"');
-});
-
-test('dictionary: search and add a word to practice', async ({ page }) => {
-  await page.goto('./#/dictionary');
-  await page.getByLabel('Search the dictionary').fill('nihao');
+test('dictionary: look up a word and learn it next', async ({ page }) => {
+  await page.goto('./#/library');
+  await page.getByLabel('Look up in the dictionary').fill('nihao');
+  await page.keyboard.press('Enter');
   await expect(page.getByText('hello / hi').or(page.getByText('hello; hi'))).toBeVisible();
-  await page.getByRole('button', { name: '+ Add to my practice' }).first().click();
-  await expect(page.getByRole('button', { name: '✓ In my practice' }).first()).toBeVisible();
+  await page.getByRole('button', { name: 'Learn next' }).first().click();
+  await expect(page.getByRole('button', { name: 'Learning next' }).first()).toBeVisible();
   await page.getByLabel('Search the dictionary').fill('');
-  await expect(page.getByText('My words')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Learning next' })).toBeVisible();
+  await expect(page.getByText('nǐ hǎo').first()).toBeVisible();
 });
 
 test('role-play a story by typing one part', async ({ page }) => {
@@ -173,25 +142,24 @@ test('plays the Azure recording first, and an older one when it is missing', asy
 });
 });
 
-test('opening a skill does not scroll the path', async ({ page }) => {
+test('a unit opens to show its lessons; a lesson opens its sheet', async ({ page }) => {
   await page.goto('./#/conversations');
-  const node = page.getByRole('button', { name: /Hello & how are you/ });
-  // Centre it, so the fixed tab bar doesn't cover it (Playwright would then scroll again to click).
-  await node.evaluate((el) => (el as unknown as { scrollIntoView(o: object): void }).scrollIntoView({ block: 'center' }));
-  await page.waitForTimeout(800);
-  const before = await page.evaluate(() => (globalThis as unknown as { scrollY: number }).scrollY);
-  await node.click();
-  await expect(page.getByRole('button', { name: 'Start' })).toBeInViewport();
-  await page.waitForTimeout(800);
-  await expect(page.getByRole('button', { name: 'Start' })).toBeInViewport();
-  expect(await page.evaluate(() => (globalThis as unknown as { scrollY: number }).scrollY)).toBe(before);
+  const unit = page.getByRole('button', { name: /^Family/ });
+  await unit.click();
+  await expect(unit).toHaveAttribute('aria-expanded', 'true');
+  const row = page.getByRole('listitem').filter({ has: unit });
+  await row.getByRole('button', { name: /words known/ }).first().click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await expect(page.getByRole('dialog').getByRole('button', { name: /^(Start|Listen)$/ })).toBeInViewport();
 });
 
 test('read a story and look up a word', async ({ page }) => {
   await page.goto('./#/read');
-  await expect(page.getByRole('heading', { name: 'Read' })).toBeVisible();
-  await page.goto('./#/read/r-myday');
-  await expect(page.getByRole('heading', { name: '我叫米格' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Stories' })).toBeVisible();
+  await expect(page.getByText(/You know \d+% of the words/).first()).toBeVisible();
+  await page.getByRole('button', { name: /我叫米格/ }).click();
+  await expect(page.getByRole('heading', { name: 'My day' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Play all' })).toBeVisible();
   await page.locator('article button', { hasText: '丹麦' }).first().click();
   await expect(page.getByRole('dialog', { name: '丹麦' })).toBeVisible();
   await expect(page.getByText('Denmark').first()).toBeVisible();
@@ -208,7 +176,7 @@ test('read a story and look up a word', async ({ page }) => {
   })`)) as Array<{ hanzi: string; status: string }>;
   expect(reports).toEqual([expect.objectContaining({ hanzi: '丹麦', status: 'open' })]);
   await page.keyboard.press('Escape');
-  await page.getByRole('button', { name: 'Show the translation' }).click();
+  await page.getByRole('button', { name: 'Show English' }).click();
   await expect(page.getByText(/I live in Copenhagen/)).toBeVisible();
 });
 

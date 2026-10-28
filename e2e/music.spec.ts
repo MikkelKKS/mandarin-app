@@ -75,8 +75,9 @@ test('music: find songs at my level, save a playlist, read lyrics', async ({ pag
   await page.getByRole('button', { name: /思念/ }).first().click();
   await expect(page.getByText('to miss')).toBeVisible();
   await shot('word');
-  await page.getByRole('button', { name: '+ Add to my practice' }).click();
-  await expect(page.getByRole('button', { name: '✓ In my practice' })).toBeVisible();
+  // An HSK word can be put first in line for the next session.
+  await page.getByRole('button', { name: 'Learn next' }).click();
+  await expect(page.getByRole('button', { name: 'Learning next' })).toBeVisible();
 
   await page.goto('./#/music/now');
   await expect(page.getByRole('heading', { name: 'Follow along' })).toBeVisible();

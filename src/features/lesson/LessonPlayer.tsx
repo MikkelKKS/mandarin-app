@@ -350,7 +350,7 @@ function Feedback({
   return (
     <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${t.cls} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)]`}>
       <div className="mx-auto max-w-xl">
-        <p className="flex items-center gap-2.5 text-xl font-bold">
+        <p className="flex items-center gap-2.5 text-xl font-semibold">
           <span aria-hidden className={`anim-pop flex h-8 w-8 shrink-0 items-center justify-center rounded-full [animation-delay:120ms] ${t.badge}`}>
             {outcome.verdict === 'wrong' ? <Close className="h-5 w-5" /> : <Check className="h-5 w-5" />}
           </span>

@@ -36,7 +36,7 @@ const BASE = import.meta.env.BASE_URL;
 async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerDay: number; speaking: boolean }, data: VocabData): Promise<SessionState> {
   const now = Date.now();
   const mic = micActive();
-  const queue = await todaysQueue(wordOrder(data.words.map((w) => w.id), currentSettings().beijingPack), { newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic }, now);
+  const queue = await todaysQueue(wordOrder(data.words.map((w) => w.id), currentSettings().beijingPack, currentSettings().nextWords), { newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic }, now);
   const cards = await db.reviewItems.toArray();
   const started = new Set(cards.filter((c) => c.word && (c.reps > 0 || c.state !== 0)).map((c) => c.word!));
   // Speaking starts on words you already know by ear (listening card in review), most common first.
@@ -96,13 +96,13 @@ export function SessionRoute({ route }: { route: string[] }) {
     return (
       <div className="mx-auto max-w-xl p-8 text-center">
         <p className="han text-5xl text-jade">好</p>
-        <h1 className="mt-4 text-xl font-bold">Nothing to do right now</h1>
+        <h1 className="mt-4 text-xl font-semibold">Nothing to do right now</h1>
         <p className="mt-2 text-muted">No reviews due and no new words left for today. The Tone Gym is always open.</p>
         <div className="mt-6 flex flex-col gap-3">
           <button onClick={() => go('tone-gym')} className="press h-12 rounded-2xl bg-jade font-semibold text-jade-ink">
             Tone Gym
           </button>
-          <button onClick={() => go('')} className="h-12 rounded-2xl border-2 border-line font-medium">
+          <button onClick={() => go('')} className="h-12 rounded-2xl border border-line font-medium">
             Home
           </button>
         </div>
@@ -338,7 +338,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           )}
         </div>
         {gained !== null && (
-          <span key={`${st.block}-${st.item}-${gained}`} className="anim-pop pointer-events-none fixed right-6 top-16 z-30 rounded-full bg-gold px-3 py-1 text-sm font-bold text-ink shadow" aria-hidden>
+          <span key={`${st.block}-${st.item}-${gained}`} className="anim-pop pointer-events-none fixed right-6 top-16 z-30 rounded-full bg-gold px-3 py-1 text-sm font-semibold text-ink shadow" aria-hidden>
             +{gained} XP
           </span>
         )}
@@ -396,7 +396,7 @@ function Feedback({
   return (
     <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)]`}>
       <div className="mx-auto max-w-xl lg:max-w-2xl">
-        <p className="text-xl font-bold">{title}</p>
+        <p className="text-xl font-semibold">{title}</p>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}
         {o.syllables && o.verdict !== 'correct' && <SyllableBreakdown syllables={o.syllables} extra={o.extra} />}
         {a && (

@@ -58,7 +58,7 @@ export function RolePlayPlayer({
               key={s.id}
               autoFocus={i === 0}
               onClick={() => setRole(s.id)}
-              className={`h-14 rounded-2xl text-lg font-semibold ${i === 0 ? 'bg-jade text-jade-ink' : 'border-2 border-line bg-surface'}`}
+              className={`h-14 rounded-2xl text-lg font-semibold ${i === 0 ? 'bg-jade text-jade-ink' : 'border border-line bg-surface'}`}
             >
               Play as <span className="han">{s.name}</span>
             </button>

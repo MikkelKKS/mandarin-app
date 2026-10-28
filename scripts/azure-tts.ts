@@ -199,6 +199,18 @@ function maleLines(): Set<string> {
   return new Set([...voices].filter(([, v]) => v.size === 1 && v.has('m')).map(([id]) => id));
 }
 
+/** Paragraphs of the Read stories (content/stories), as <story id>-p<n>. */
+function storyParagraphs(): Array<{ id: string; hanzi: string }> {
+  const dir = join(ROOT, 'content', 'stories');
+  return readdirSync(dir)
+    .filter((f) => f.endsWith('.json'))
+    .sort()
+    .flatMap((f) => {
+      const st = JSON.parse(readFileSync(join(dir, f), 'utf8')) as { id: string; paragraphs: Array<{ zh: string }> };
+      return st.paragraphs.map((p, i) => ({ id: `${st.id}-p${i}`, hanzi: p.zh }));
+    });
+}
+
 function bulkJobs(): Job[] {
   const male = maleLines();
   const words = readList<{ id: string; hanzi: string; pinyin: string; order: number; examples: string[] }>('words.json', 'words').sort((a, b) => a.order - b.order);
@@ -212,6 +224,8 @@ function bulkJobs(): Job[] {
     queued.add(id);
     normal.push({ id, voice: male.has(id) ? 'm' : 'f', hanzi: x.hanzi, pinyin: x.pinyin, slow: false, file: `${id}.mp3` });
   };
+  // The Read stories, one clip per paragraph. 米格 tells them all (first person), so Yunxi.
+  for (const st of storyParagraphs()) normal.push({ id: st.id, voice: 'm', hanzi: st.hanzi, pinyin: '', slow: false, file: `${st.id}.mp3` });
   for (const w of words) {
     normal.push({ id: w.id, voice: 'f', hanzi: w.hanzi, pinyin: w.pinyin, slow: false, file: `${w.id}.mp3` });
     for (const e of w.examples) addSentence(e);

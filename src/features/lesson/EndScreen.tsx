@@ -1,10 +1,7 @@
-import { useEffect, useRef, type CSSProperties } from 'react';
+import { useEffect, useRef } from 'react';
 import { lookup, words } from '../../content';
 import { ToneText } from '../../components/Hanzi';
 import type { LessonResult } from './LessonPlayer';
-
-/** Tone colours, sent out from the seal once when it lands. */
-const SPARKS = ['bg-t1', 'bg-gold', 'bg-t3', 'bg-jade', 'bg-t4', 'bg-t1', 'bg-gold', 'bg-t3', 'bg-jade', 'bg-t4'];
 
 /** A verdict in words, based on how many answers were right first time. */
 export function verdictText(firstTry: number): { hanzi: string; pinyin: string; title: string; line: string } {
@@ -12,7 +9,18 @@ export function verdictText(firstTry: number): { hanzi: string; pinyin: string; 
   if (firstTry >= 0.8) return { hanzi: '很棒', pinyin: 'hěn bàng', title: 'Strong work', line: 'A few slips, and you fixed every one.' };
   if (firstTry >= 0.6) return { hanzi: '不错', pinyin: 'búcuò', title: 'Solid progress', line: 'You stuck with the tricky ones until they clicked.' };
   if (firstTry >= 0.4) return { hanzi: '有进步', pinyin: 'yǒu jìnbù', title: 'Good effort', line: 'Lots of new material here. The next round will feel easier.' };
-  return { hanzi: '加油', pinyin: 'jiāyóu', title: 'You got through it', line: 'A tough one, and you finished it. The tricky words are waiting in Practice.' };
+  return { hanzi: '加油', pinyin: 'jiāyóu', title: 'You got through it', line: 'A tough one, and you finished it. The tricky words come back in your reviews.' };
+}
+
+/** The red seal pressed onto an end screen: the verdict in two or three characters. */
+export function Seal({ hanzi, small = false }: { hanzi: string; small?: boolean }) {
+  return (
+    <div className={`relative mx-auto ${small ? 'h-28 w-28' : 'h-36 w-36'}`} aria-hidden>
+      <div className="anim-stamp relative flex h-full w-full items-center justify-center rounded-full border-[3px] border-cinnabar bg-surface text-cinnabar shadow-[inset_0_0_0_4px_var(--surface),inset_0_0_0_5px_var(--cinnabar)]">
+        <span className={`han font-semibold leading-tight ${small ? 'text-3xl' : 'text-4xl'}`}>{hanzi}</span>
+      </div>
+    </div>
+  );
 }
 
 export function EndScreen({
@@ -41,34 +49,22 @@ export function EndScreen({
   return (
     <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pb-8 pt-[max(2rem,env(safe-area-inset-top))]">
       <div className="text-center">
-        <div className="relative mx-auto h-36 w-36" aria-hidden>
-          {SPARKS.map((c, i) => (
-            <span
-              key={i}
-              className={`anim-spark absolute left-1/2 top-1/2 -ml-1 -mt-1 h-2 w-2 rounded-full ${c}`}
-              style={{ '--a': `${i * 36 + 18}deg`, animationDelay: `${400 + (i % 2) * 60}ms` } as CSSProperties}
-            />
-          ))}
-          <span className="anim-ripple absolute inset-0 rounded-full border-4 border-cinnabar" />
-          <div className="anim-stamp relative flex h-full w-full items-center justify-center rounded-full border-4 border-cinnabar bg-surface text-cinnabar shadow-[inset_0_0_0_5px_var(--surface),inset_0_0_0_7px_var(--cinnabar)]">
-            <span className="han text-4xl font-bold leading-tight">{v.hanzi}</span>
-          </div>
-        </div>
-        <p className="anim-up mt-3 text-sm text-muted [animation-delay:450ms]">{v.pinyin}</p>
-        <h1 className="anim-up mt-3 text-2xl font-bold [animation-delay:520ms]">{heading ?? v.title}</h1>
-        <p className="anim-up mt-1 text-muted [animation-delay:580ms]">{extra ?? v.line}</p>
+        <Seal hanzi={v.hanzi} />
+        <p className="anim-up mt-3 text-sm text-muted [animation-delay:250ms]">{v.pinyin}</p>
+        <h1 className="anim-up mt-3 text-2xl font-semibold [animation-delay:300ms]">{heading ?? v.title}</h1>
+        <p className="anim-up mt-1 text-muted [animation-delay:340ms]">{extra ?? v.line}</p>
       </div>
 
-      <dl className="anim-up mt-8 grid grid-cols-2 gap-3 text-center [animation-delay:680ms]">
-        <div className="rounded-2xl bg-surface p-4">
+      <dl className="anim-up mt-8 grid grid-cols-2 gap-3 text-center [animation-delay:400ms]">
+        <div className="card p-4">
           <dt className="text-sm text-muted">Time</dt>
-          <dd className="text-2xl font-bold">
+          <dd className="text-2xl font-semibold">
             {mins}:{String(secs).padStart(2, '0')}
           </dd>
         </div>
-        <div className="rounded-2xl bg-surface p-4">
+        <div className="card p-4">
           <dt className="text-sm text-muted">Fixed along the way</dt>
-          <dd className="text-2xl font-bold">{fixed === 0 ? 'Nothing' : fixed === 1 ? '1 item' : `${fixed} items`}</dd>
+          <dd className="text-2xl font-semibold">{fixed === 0 ? 'Nothing' : fixed === 1 ? '1 item' : `${fixed} items`}</dd>
         </div>
       </dl>
 
@@ -105,7 +101,7 @@ export function EndScreen({
         <button ref={btn} onClick={onContinue} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
           Continue
         </button>
-        <button onClick={onAgain} className="h-12 rounded-2xl border-2 border-line font-medium transition hover:border-muted active:scale-[0.99]">
+        <button onClick={onAgain} className="h-12 rounded-2xl border border-line font-medium transition hover:border-muted active:scale-[0.99]">
           Play again
         </button>
       </div>

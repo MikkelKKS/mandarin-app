@@ -97,6 +97,8 @@ export interface Settings {
   beijingPack: boolean;
   /** Tone Gym questions inside quick and deep sessions (off until better tone recordings arrive). */
   sessionTones: boolean;
+  /** HSK words you asked to learn next (from the dictionary), first among new words. */
+  nextWords: string[];
   theme: Theme;
 }
 
@@ -156,6 +158,7 @@ export const DEFAULT_SETTINGS: Settings = {
   placedAt: 0,
   beijingPack: false,
   sessionTones: false,
+  nextWords: [],
   theme: 'system',
 };
 

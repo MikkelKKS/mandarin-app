@@ -201,10 +201,15 @@ export function cardState(r: ReviewItemRow | undefined): WordState {
 }
 
 const RANK: Record<WordState, number> = { new: 0, learning: 1, young: 2, mature: 3 };
-/** A word is as far along as its weakest listening/typing facet. */
+/**
+ * A word is as far along as its weakest listening/typing facet; once any facet
+ * has been practised it counts as at least "learning" (a facet not met yet
+ * doesn't make a word you've started "new" again).
+ */
 export function wordState(cards: Array<ReviewItemRow | undefined>): WordState {
   const states = cards.map(cardState);
   if (states.every((s) => s === 'new')) return 'new';
+  if (states.some((s) => s === 'new')) return 'learning';
   return states.reduce((a, b) => (RANK[a] <= RANK[b] ? a : b));
 }
 

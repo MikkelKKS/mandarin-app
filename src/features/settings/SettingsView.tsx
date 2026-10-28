@@ -2,22 +2,23 @@ import type { ReactNode } from 'react';
 import { AudioProgress } from './AudioProgress';
 import { micSupported } from '../../lib/pitchTrack';
 import { go } from '../../lib/router';
-import { setQuietUntil, setSpeakPausedUntil, updateSettings, useQuietUntil, useSettings, useSpeakPausedUntil } from '../../lib/settings';
+import { setSpeakPausedUntil, updateSettings, useSettings, useSpeakPausedUntil } from '../../lib/settings';
 import type { Settings } from '../../db/db';
 import { isStandalone, useInstall } from './install';
 import { BackupSection, SyncSection } from './Account';
-import { PacksSection } from '../packs/PacksSection';
+import { PageHeader } from '../../components/PageHeader';
+import { ChevronRight } from '../../components/icons';
 
 function Segmented<T extends string>({ value, options, onChange, label }: { value: T; options: Array<{ v: T; label: string }>; onChange: (v: T) => void; label: string }) {
   const idx = options.findIndex((o) => o.v === value);
   const n = options.length;
   return (
-    <div role="radiogroup" aria-label={label} className="relative flex rounded-xl bg-sunk p-1">
+    <div role="radiogroup" aria-label={label} className="relative flex rounded-xl bg-sunk p-0.5">
       {idx >= 0 && (
         <span
           aria-hidden
-          className="absolute inset-y-1 rounded-lg bg-surface shadow-sm transition-[left] duration-300 [transition-timing-function:var(--ease-out)]"
-          style={{ left: `calc(4px + ${idx} * (100% - 8px) / ${n})`, width: `calc((100% - 8px) / ${n})` }}
+          className="absolute inset-y-0.5 rounded-[10px] bg-surface shadow-sm transition-[left] duration-300 [transition-timing-function:var(--ease-out)]"
+          style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`, width: `calc((100% - 4px) / ${n})` }}
         />
       )}
       {options.map((o) => (
@@ -26,7 +27,7 @@ function Segmented<T extends string>({ value, options, onChange, label }: { valu
           role="radio"
           aria-checked={value === o.v}
           onClick={() => onChange(o.v)}
-          className={`relative flex-1 rounded-lg px-2 py-2 text-sm font-medium transition-colors duration-200 ${value === o.v ? 'text-ink' : 'text-muted hover:text-ink'}`}
+          className={`relative flex-1 rounded-[10px] px-2 py-1.5 text-sm font-medium transition-colors duration-200 ${value === o.v ? 'text-ink' : 'text-muted hover:text-ink'}`}
         >
           {o.label}
         </button>
@@ -35,83 +36,71 @@ function Segmented<T extends string>({ value, options, onChange, label }: { valu
   );
 }
 
-function Row({ title, hint, children }: { title: string; hint?: string; children: ReactNode }) {
+/** An on/off switch. */
+function Toggle({ on, onChange, label }: { on: boolean; onChange: (on: boolean) => void; label: string }) {
   return (
-    <div className="border-b border-line py-4 last:border-0">
-      <p className="font-medium">{title}</p>
-      {hint && <p className="mb-2 text-sm text-muted">{hint}</p>}
-      <div className="mt-2">{children}</div>
+    <button
+      role="switch"
+      aria-checked={on}
+      aria-label={label}
+      onClick={() => onChange(!on)}
+      className={`relative h-7 w-12 shrink-0 rounded-full transition-colors duration-200 ${on ? 'bg-jade' : 'bg-line'}`}
+    >
+      <span className={`absolute top-0.5 h-6 w-6 rounded-full bg-white shadow-sm transition-[left] duration-200 [transition-timing-function:var(--ease-out)] ${on ? 'left-[22px]' : 'left-0.5'}`} />
+    </button>
+  );
+}
+
+/** A settings row: title and explanation, with the control beside it (switches, links) or below it (choices). */
+function Row({ title, hint, children, side }: { title: string; hint?: ReactNode; children?: ReactNode; side?: ReactNode }) {
+  return (
+    <div className="px-4 py-3.5">
+      <div className="flex items-center gap-4">
+        <div className="min-w-0 flex-1">
+          <p className="font-medium">{title}</p>
+          {hint && <p className="mt-0.5 text-sm leading-snug text-muted">{hint}</p>}
+        </div>
+        {side}
+      </div>
+      {children && <div className="mt-3">{children}</div>}
     </div>
   );
 }
 
+function LinkRow({ title, hint, to }: { title: string; hint?: string; to: string }) {
+  return (
+    <button onClick={() => go(to)} className="flex w-full items-center gap-4 px-4 py-3.5 text-left hover:bg-sunk/50">
+      <span className="min-w-0 flex-1">
+        <span className="block font-medium">{title}</span>
+        {hint && <span className="mt-0.5 block text-sm leading-snug text-muted">{hint}</span>}
+      </span>
+      <ChevronRight className="h-5 w-5 shrink-0 text-muted" />
+    </button>
+  );
+}
+
+function Group({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="mt-8" aria-label={title}>
+      <h2 className="mb-2 px-1 text-sm font-medium text-muted">{title}</h2>
+      <div className="group-list">{children}</div>
+    </section>
+  );
+}
 
 export function SettingsView() {
   const s = useSettings();
   const set = (patch: Partial<Settings>) => void updateSettings(patch);
-  const quietUntil = useQuietUntil();
   const speakPaused = useSpeakPausedUntil();
-  const quiet = quietUntil > Date.now();
   const { canInstall, install } = useInstall();
-  const onOff = [
-    { v: 'on', label: 'On' },
-    { v: 'off', label: 'Off' },
-  ] as const;
 
   return (
     <div className="pb-10">
-      <h1 className="mb-4 text-2xl font-bold">Settings</h1>
+      <PageHeader title="Settings" />
 
-      <h2 className="mb-2 mt-2 text-sm font-semibold text-muted">Reviews</h2>
-      <section className="mb-6 rounded-2xl bg-surface px-4" aria-label="Review settings">
-        <Row
-          title="Target retention"
-          hint="How often you should still remember a word when it comes back. Higher means more reviews; 90% is the usual balance."
-        >
-          <Segmented
-            label="Target retention"
-            value={String(s.retention)}
-            onChange={(v) => set({ retention: Number(v) })}
-            options={['0.85', '0.9', '0.95'].map((v) => ({ v, label: `${Math.round(Number(v) * 100)}%` }))}
-          />
-        </Row>
+      <Group title="Learning">
         <Row title="New words per day">
-          <Segmented
-            label="New words per day"
-            value={String(s.newPerDay)}
-            onChange={(v) => set({ newPerDay: Number(v) })}
-            options={['5', '10', '15', '20'].map((v) => ({ v, label: v }))}
-          />
-        </Row>
-        <Row title="Daily goal" hint="XP a day to keep your streak. A right answer is worth about 10 XP, more with a combo.">
-          <Segmented
-            label="Daily goal"
-            value={String(s.dailyGoal)}
-            onChange={(v) => set({ dailyGoal: Number(v) })}
-            options={['50', '100', '200', '300'].map((v) => ({ v, label: `${v} XP` }))}
-          />
-        </Row>
-        <Row title="Characters" hint="Pinyin is always shown. Characters are optional and never needed to answer.">
-          <Segmented
-            label="Characters"
-            value={s.showHanzi ? 'on' : 'off'}
-            onChange={(v) => set({ showHanzi: v === 'on' })}
-            options={[
-              { v: 'off', label: 'Hide' },
-              { v: 'on', label: 'Show' },
-            ]}
-          />
-        </Row>
-        <Row title="Your level" hint="Mark the words you already know, with a 5-minute test or by picking a starting HSK level.">
-          <button onClick={() => go('placement')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
-            Find your level
-          </button>
-        </Row>
-        <Row title="Beijing pack" hint="Her family's Beijing Mandarin first: 儿化 words (哪儿, 这儿, 一会儿, 没事儿, 遛弯儿…) and everyday Beijing words come first among your new words.">
-          <Segmented label="Beijing pack" value={s.beijingPack ? 'on' : 'off'} onChange={(v) => set({ beijingPack: v === 'on' })} options={[...onOff]} />
-        </Row>
-        <Row title="Tone questions in sessions" hint="Mix Tone Gym questions into quick and deep sessions. Off for now: the Tone Gym page still has them.">
-          <Segmented label="Tone questions in sessions" value={s.sessionTones ? 'on' : 'off'} onChange={(v) => set({ sessionTones: v === 'on' })} options={[...onOff]} />
+          <Segmented label="New words per day" value={String(s.newPerDay)} onChange={(v) => set({ newPerDay: Number(v) })} options={['5', '10', '15', '20'].map((v) => ({ v, label: v }))} />
         </Row>
         <Row title="Reviews per day" hint="A cap for busy days. Reviews left over wait until tomorrow.">
           <Segmented
@@ -126,10 +115,40 @@ export function SettingsView() {
             ]}
           />
         </Row>
-      </section>
+        <Row title="Daily goal" hint="XP a day to keep your streak. A right answer is worth about 10 XP, more with a combo.">
+          <Segmented label="Daily goal" value={String(s.dailyGoal)} onChange={(v) => set({ dailyGoal: Number(v) })} options={['50', '100', '200', '300'].map((v) => ({ v, label: `${v} XP` }))} />
+        </Row>
+        <Row title="Target retention" hint="How likely you should be to remember a word when it comes back. Higher means more reviews; 90% is the usual balance.">
+          <Segmented label="Target retention" value={String(s.retention)} onChange={(v) => set({ retention: Number(v) })} options={['0.85', '0.9', '0.95'].map((v) => ({ v, label: `${Math.round(Number(v) * 100)}%` }))} />
+        </Row>
+        <Row
+          title="Beijing pack"
+          hint="Her family's Beijing Mandarin first: 儿化 words (哪儿, 一会儿, 没事儿…) and everyday Beijing words come first among your new words."
+          side={<Toggle label="Beijing pack" on={s.beijingPack} onChange={(on) => set({ beijingPack: on })} />}
+        />
+        <Row
+          title="Tone questions in sessions"
+          hint="Mix Tone Gym questions into quick and deep sessions. Off until the recordings of real speakers arrive."
+          side={<Toggle label="Tone questions in sessions" on={s.sessionTones} onChange={(on) => set({ sessionTones: on })} />}
+        />
+        <LinkRow title="Your level" hint="Mark words you already know, with a 5-minute test or by picking a starting level." to="placement" />
+      </Group>
 
-      <section className="rounded-2xl bg-surface px-4">
-        <Row title="Pinyin above characters">
+      <Group title="Answers and display">
+        <Row title="Tone grading" hint="Strict: a wrong or missing tone counts as wrong. Lenient: a tone slip counts as “Hard”, so the word comes back sooner.">
+          <Segmented
+            label="Tone grading"
+            value={s.strictTones ? 'strict' : 'lenient'}
+            onChange={(v) => set({ strictTones: v === 'strict' })}
+            options={[
+              { v: 'strict', label: 'Strict' },
+              { v: 'lenient', label: 'Lenient' },
+            ]}
+          />
+        </Row>
+        <Row title="Show characters" hint="In sessions. Pinyin is always shown; characters are never needed to answer." side={<Toggle label="Show characters" on={s.showHanzi} onChange={(on) => set({ showHanzi: on })} />} />
+        <Row title="Tone colours" hint="Red 1st, orange 2nd, green 3rd, blue 4th, grey neutral." side={<Toggle label="Tone colours" on={s.toneColors} onChange={(on) => set({ toneColors: on })} />} />
+        <Row title="Pinyin above characters" hint="In Conversations, stories and song lyrics.">
           <Segmented
             label="Pinyin above characters"
             value={s.pinyinDisplay}
@@ -142,37 +161,7 @@ export function SettingsView() {
             ]}
           />
         </Row>
-        <Row title="Tone grading" hint="Strict: a wrong or missing tone counts as wrong. Lenient: right syllables with a tone slip count as “Hard”, so the word comes back sooner.">
-          <Segmented
-            label="Tone grading"
-            value={s.strictTones ? 'strict' : 'lenient'}
-            onChange={(v) => set({ strictTones: v === 'strict' })}
-            options={[
-              { v: 'lenient', label: 'Lenient' },
-              { v: 'strict', label: 'Strict' },
-            ]}
-          />
-        </Row>
-        <Row title="Colour characters by tone" hint="Red 1st, orange 2nd, green 3rd, blue 4th, grey neutral">
-          <Segmented label="Tone colours" value={s.toneColors ? 'on' : 'off'} onChange={(v) => set({ toneColors: v === 'on' })} options={[...onOff]} />
-        </Row>
-        <Row title="Extra tone practice" hint="Adds more tone exercises to every lesson: hearing tones, minimal pairs and dictation with tones.">
-          <Segmented label="Extra tone practice" value={s.toneFocus ? 'on' : 'off'} onChange={(v) => set({ toneFocus: v === 'on' })} options={[...onOff]} />
-        </Row>
-        <Row title="Audio speed" hint="Slow uses a separately recorded slower version. You can always tap the turtle for slow or the speaker for normal.">
-          <Segmented
-            label="Audio speed"
-            value={s.audioSpeed}
-            onChange={(v) => set({ audioSpeed: v })}
-            options={[
-              { v: 'normal', label: 'Normal' },
-              { v: 'slow', label: 'Slow' },
-            ]}
-          />
-        </Row>
-        <Row title="Sound effects">
-          <Segmented label="Sound effects" value={s.sound ? 'on' : 'off'} onChange={(v) => set({ sound: v === 'on' })} options={[...onOff]} />
-        </Row>
+        <Row title="Sound effects" side={<Toggle label="Sound effects" on={s.sound} onChange={(on) => set({ sound: on })} />} />
         <Row title="Appearance">
           <Segmented
             label="Appearance"
@@ -185,92 +174,67 @@ export function SettingsView() {
             ]}
           />
         </Row>
-      </section>
+      </Group>
 
-      <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">Situations</h2>
-      <section className="rounded-2xl bg-surface px-4">
-        <Row title="Can't listen now" hint="Swaps listening exercises for reading ones for an hour.">
-          {quiet ? (
-            <button onClick={() => setQuietUntil(0)} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
-              Turn listening back on (until {new Date(quietUntil).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })})
-            </button>
-          ) : (
-            <button onClick={() => setQuietUntil(Date.now() + 3600_000)} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
-              Skip listening for 1 hour
-            </button>
-          )}
-        </Row>
+      <Group title="Microphone">
         <Row
           title="Use microphone"
           hint={
             micSupported
               ? 'Speaking practice: say words and compare your pitch with the native recording. Recordings stay on this device. When off, speaking is skipped, never failed.'
-              : "This browser can't record from the microphone, so speaking practice is unavailable here."
+              : "This browser can't record from the microphone, so speaking practice is off here."
           }
+          side={micSupported ? <Toggle label="Use microphone" on={s.speaking} onChange={(on) => set({ speaking: on })} /> : undefined}
         >
-          {micSupported ? (
-            <div className="flex flex-col gap-2">
-              <Segmented label="Use microphone" value={s.speaking ? 'on' : 'off'} onChange={(v) => set({ speaking: v === 'on' })} options={[...onOff]} />
-              {s.speaking &&
-                (speakPaused > Date.now() ? (
-                  <button onClick={() => setSpeakPausedUntil(0)} className="self-start text-sm font-medium text-jade">
-                    Paused until {new Date(speakPaused).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}. Resume now
-                  </button>
-                ) : (
-                  <button onClick={() => setSpeakPausedUntil(Date.now() + 3600_000)} className="self-start rounded-xl border-2 border-line px-4 py-2 font-medium">
-                    No mic right now (1 hour)
-                  </button>
-                ))}
-            </div>
-          ) : (
-            <Segmented label="Use microphone" value="off" onChange={() => {}} options={[{ v: 'off', label: 'Unavailable' }]} />
-          )}
+          {micSupported &&
+            s.speaking &&
+            (speakPaused > Date.now() ? (
+              <button onClick={() => setSpeakPausedUntil(0)} className="text-sm font-medium text-jade">
+                Paused until {new Date(speakPaused).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}. Resume now
+              </button>
+            ) : (
+              <button onClick={() => setSpeakPausedUntil(Date.now() + 3600_000)} className="btn btn-quiet h-10 px-4 text-sm">
+                No mic right now (1 hour)
+              </button>
+            ))}
         </Row>
-      </section>
+      </Group>
 
-      <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">Sync & backup</h2>
-      <section className="rounded-2xl bg-surface px-4">
-        <div className="border-b border-line">
-          <p className="pt-4 font-medium">Sync between devices</p>
+      <Group title="Sync and backup">
+        <div className="px-4 pb-1 pt-3.5">
+          <p className="font-medium">Sync between devices</p>
           <SyncSection />
         </div>
-        <div>
-          <p className="pt-4 font-medium">Backup</p>
+        <div className="px-4 pb-1 pt-3.5">
+          <p className="font-medium">Backup</p>
           <BackupSection />
         </div>
-      </section>
+      </Group>
 
-      <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">AI practice packs</h2>
-      <section className="rounded-2xl bg-surface px-4">
-        <PacksSection />
-      </section>
-
-      <h2 className="mb-2 mt-8 text-sm font-semibold text-muted">App</h2>
-      <section className="rounded-2xl bg-surface px-4">
-        {!isStandalone() && (
-          <Row title="Install" hint={canInstall ? 'Adds the app to your home screen / start menu and works offline.' : 'Use your browser menu → “Install app” or “Add to Home screen”.'}>
-            {canInstall && (
-              <button onClick={install} className="rounded-xl bg-jade px-4 py-2 font-semibold text-jade-ink">
-                Install app
-              </button>
-            )}
-          </Row>
-        )}
-        <Row title="Recordings" hint="Azure is recording every word and sentence. Older recordings are used until each one is ready.">
+      <Group title="Recordings">
+        <Row title="Progress" hint="Every word, sentence and story is being recorded with Azure's Xiaoxiao voice (Yunxi for lines a man says). Older recordings are used until each one is ready.">
           <AudioProgress />
         </Row>
-        <Row title="Voice" hint="Everything is being recorded in one natural voice, Xiaoxiao (Yunxi for the men in the dialogues).">
-          <button onClick={() => go('audio-sample')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
-            Audio sample
-          </button>
-        </Row>
-        <Row title="About">
-          <button onClick={() => go('about')} className="rounded-xl border-2 border-line px-4 py-2 font-medium">
-            Credits & licences
-          </button>
-        </Row>
-      </section>
-      <p className="mt-4 text-center text-xs text-muted">
+        <LinkRow title="Voice sample" hint="The 30 test items, including tricky tones." to="audio-sample" />
+      </Group>
+
+      <Group title="App">
+        {!isStandalone() && (
+          <Row
+            title="Install"
+            hint={canInstall ? 'Adds the app to your home screen or Start menu; it then works offline.' : 'Use your browser menu → “Install app” or “Add to Home screen”.'}
+            side={
+              canInstall ? (
+                <button onClick={install} className="btn btn-primary h-10 px-4 text-sm">
+                  Install
+                </button>
+              ) : undefined
+            }
+          />
+        )}
+        <LinkRow title="Credits and licences" to="about" />
+      </Group>
+      <p className="mt-6 text-center text-xs text-muted">
         Version from{' '}
         {new Date(__BUILD_TIME__).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
       </p>

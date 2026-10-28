@@ -1,7 +1,7 @@
 /**
- * Home (CLAUDE.md §7): streak, daily goal ring, level, what's due, the big
- * Quick session button (phone) and Deep session (PC), resume, the weakest
- * tone pair of the week, achievements. The old course lives on as Conversations.
+ * Home (CLAUDE.md §7): today's goal, streak and level; one main action (Quick
+ * session on a phone, Deep session on a PC); resume; the Tone Gym with your
+ * weakest pair of the week; the next achievement. Everything else is in Library.
  */
 import { useEffect, useMemo, useState } from 'react';
 import { wordOrder } from '../session/beijing';
@@ -17,24 +17,25 @@ import { useVocab } from '../../lib/vocabData';
 import { patternLabel, patternStats, weakestPair } from '../tonegym/model';
 import { loadSession, remainingItems } from '../session/state';
 import { InstallBanner } from '../settings/install';
-import { Waves } from '../../components/icons';
+import { ChevronRight, Flame } from '../../components/icons';
+import { ProgressBar } from '../../components/ProgressBar';
 
 const WEEK = 7 * 864e5;
 
 function GoalRing({ value, goal }: { value: number; goal: number }) {
-  const r = 26;
+  const r = 28;
   const c = 2 * Math.PI * r;
   const frac = Math.min(1, value / Math.max(1, goal));
   return (
-    <svg viewBox="0 0 64 64" className="h-16 w-16 -rotate-90" aria-hidden>
-      <circle cx="32" cy="32" r={r} fill="none" stroke="var(--sunk)" strokeWidth="8" />
+    <svg viewBox="0 0 64 64" className="h-[72px] w-[72px] -rotate-90" aria-hidden>
+      <circle cx="32" cy="32" r={r} fill="none" stroke="var(--sunk)" strokeWidth="5" />
       <circle
         cx="32"
         cy="32"
         r={r}
         fill="none"
         stroke={frac >= 1 ? 'var(--jade)' : 'var(--gold)'}
-        strokeWidth="8"
+        strokeWidth="5"
         strokeLinecap="round"
         strokeDasharray={`${c * frac} ${c}`}
         className="transition-[stroke-dasharray] duration-700"
@@ -54,179 +55,171 @@ export function HomeView() {
   const [queue, setQueue] = useState<Queue | null>(null);
   useEffect(() => {
     if (!vocab) return;
-    void todaysQueue(wordOrder(vocab.map((w) => w.id), settings.beijingPack), { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: micActive() }).then(setQueue);
+    void todaysQueue(wordOrder(vocab.map((w) => w.id), settings.beijingPack, settings.nextWords), { newPerDay: settings.newPerDay, reviewsPerDay: settings.reviewsPerDay, mic: micActive() }).then(setQueue);
   }, [vocab, cards, settings.newPerDay, settings.reviewsPerDay, settings.speaking, settings.beijingPack, speakPaused, game?.xp]);
 
   const weak = useMemo(() => weakestPair(patternStats(toneLogs)), [toneLogs]);
   const wide = typeof window !== 'undefined' && window.matchMedia?.('(min-width: 1024px)').matches;
-  const next = ACHIEVEMENTS.filter((a) => !game?.unlocked.has(a.id))
+  const nextAch = ACHIEVEMENTS.filter((a) => !game?.unlocked.has(a.id))
     .map((a) => ({ a, p: game ? a.progress(game.stats) : 0 }))
-    .sort((x, y) => y.p - x.p)
-    .slice(0, 3);
+    .sort((x, y) => y.p - x.p)[0];
+  const todayXp = game?.streak.todayXp ?? 0;
+  const due = queue?.reviews.length ?? 0;
+  const fresh = queue?.newWords.length ?? 0;
+  const plural = (n: number, w: string) => `${n} ${w}${n === 1 ? '' : 's'}`;
+  const whatsUp = queue ? (due || fresh ? [due ? plural(due, 'review') : '', fresh ? plural(fresh, 'new word') : ''].filter(Boolean).join(' and ') : 'Nothing due') : 'Checking what’s due…';
 
-  const quick = (
-    <button key="quick" onClick={() => go('session/quick')} className={`press flex w-full flex-col items-start rounded-3xl p-5 text-left ${wide ? 'border-2 border-line bg-surface' : 'bg-jade text-jade-ink'}`}>
-      <span className="text-2xl font-bold">Quick session</span>
-      <span className={`text-sm ${wide ? 'text-muted' : 'opacity-90'}`}>{settings.sessionTones ? 'About 5 minutes: reviews with tone questions mixed in' : 'About 5 minutes: your reviews, and a few new words'}</span>
-    </button>
-  );
-  const deep = (
-    <button key="deep" onClick={() => go('session/deep')} className={`press flex w-full flex-col items-start rounded-3xl p-5 text-left ${wide ? 'bg-jade text-jade-ink' : 'border-2 border-line bg-surface'}`}>
-      <span className="text-2xl font-bold">Deep session</span>
-      <span className={`text-sm ${wide ? 'opacity-90' : 'text-muted'}`}>20+ minutes: reviews, new words, listening{settings.sessionTones ? ', Tone Gym' : ''}</span>
-    </button>
-  );
+  const sessions = [
+    { mode: 'quick', title: 'Quick session', detail: `About 5 minutes. ${whatsUp}.` },
+    { mode: 'deep', title: 'Deep session', detail: '20+ minutes: reviews, new words, then listening and speaking.' },
+  ];
+  if (wide) sessions.reverse();
+  const resumable = resume && remainingItems(resume) > 0 ? resume : null;
 
   return (
     <div className="pb-10">
       <InstallBanner />
-      {!settings.placedAt && (
-        <button onClick={() => go('placement')} className="press mb-3 flex w-full items-center justify-between rounded-2xl bg-amber-soft p-4 text-left">
-          <span>
-            <span className="block font-semibold">Know some Chinese already?</span>
-            <span className="block text-sm text-muted">Find your level in 5 minutes, so you skip the words you know</span>
-          </span>
-          <span className="text-2xl" aria-hidden>
-            ›
-          </span>
-        </button>
-      )}
-      <section className="flex items-center gap-4 rounded-3xl bg-surface p-4" aria-label="Today">
-        <div className="relative" aria-label={`Daily goal: ${game?.streak.todayXp ?? 0} of ${settings.dailyGoal} XP`}>
-          <GoalRing value={game?.streak.todayXp ?? 0} goal={settings.dailyGoal} />
-          <span className="absolute inset-0 flex items-center justify-center text-xs font-bold tabular-nums">
-            {Math.min(999, game?.streak.todayXp ?? 0)}
+
+      <section className="card flex items-center gap-5 p-5" aria-label="Today">
+        <div className="relative" aria-label={`Daily goal: ${todayXp} of ${settings.dailyGoal} XP`}>
+          <GoalRing value={todayXp} goal={settings.dailyGoal} />
+          <span className="absolute inset-0 flex flex-col items-center justify-center leading-none">
+            <span className="text-lg font-semibold tabular-nums">{Math.min(999, todayXp)}</span>
+            <span className="mt-0.5 text-[10px] text-muted">of {settings.dailyGoal}</span>
           </span>
         </div>
         <div className="min-w-0 flex-1">
-          <p className="text-sm text-muted">{game?.streak.todayDone ? "Today's goal: done" : `Today: ${game?.streak.todayXp ?? 0} of ${settings.dailyGoal} XP`}</p>
-          <p className="text-xl font-bold">
-            <span className="han mr-1 text-cinnabar" aria-hidden>
-              火
-            </span>
+          <p className="flex items-center gap-1.5 whitespace-nowrap text-lg font-semibold">
+            <Flame className={`h-5 w-5 ${game?.streak.current ? 'text-cinnabar' : 'text-muted'}`} />
             {game?.streak.current ?? 0}-day streak
           </p>
-          {!!game?.streak.freezes && (
-            <p className="text-xs text-muted">
-              {game.streak.freezes} streak freeze{game.streak.freezes > 1 ? 's' : ''} saved up
-            </p>
-          )}
+          <p className="mt-0.5 text-sm text-muted">
+            {game?.streak.todayDone ? 'Goal reached today' : `${Math.max(0, settings.dailyGoal - todayXp)} XP to today's goal`}
+            {game?.streak.freezes ? ` · ${game.streak.freezes} freeze${game.streak.freezes > 1 ? 's' : ''} saved` : ''}
+          </p>
         </div>
         {game && (
-          <div className="text-right">
+          <div className="w-16 text-right">
             <p className="text-xs text-muted">Level</p>
-            <p className="text-3xl font-bold tabular-nums text-gold">{game.level.level}</p>
-            <div className="mt-1 h-1.5 w-14 overflow-hidden rounded-full bg-sunk">
-              <div className="h-full bg-gold" style={{ width: `${(game.level.into / game.level.span) * 100}%` }} />
-            </div>
+            <p className="text-2xl font-semibold tabular-nums">{game.level.level}</p>
+            <ProgressBar value={game.level.into / game.level.span} label="Progress to the next level" tone="gold" className="mt-1" />
           </div>
         )}
       </section>
 
-      <p className="mt-5 text-center text-sm text-muted" aria-live="polite">
-        {queue ? (
-          <>
-            <span className="font-semibold text-ink">{queue.reviews.length}</span> review{queue.reviews.length === 1 ? '' : 's'} due ·{' '}
-            <span className="font-semibold text-ink">{queue.newWords.length}</span> new word{queue.newWords.length === 1 ? '' : 's'} today
-          </>
-        ) : (
-          'Checking what’s due…'
-        )}
-      </p>
-
-      {resume && remainingItems(resume) > 0 && (
-        <button onClick={() => go('session/resume')} className="press mt-3 flex w-full items-center justify-between rounded-2xl bg-amber-soft p-4 text-left">
-          <span>
-            <span className="block font-semibold">Resume your {resume.plan.mode} session</span>
-            <span className="block text-sm text-muted">{remainingItems(resume)} questions left · {resume.xp} XP so far</span>
+      {resumable && (
+        <button onClick={() => go('session/resume')} className="press card mt-3 flex w-full items-center gap-4 border-gold/40 bg-amber-soft p-4 text-left">
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold">Resume your {resumable.plan.mode} session</span>
+            <span className="block text-sm text-muted">
+              {remainingItems(resumable)} questions left, {resumable.xp} XP so far
+            </span>
           </span>
-          <span className="text-2xl" aria-hidden>
-            ›
-          </span>
+          <ChevronRight className="h-5 w-5 text-muted" />
         </button>
       )}
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-2">{wide ? [deep, quick] : [quick, deep]}</div>
+      <div className="mt-3 flex flex-col gap-3">
+        {sessions.map((x, i) =>
+          i === 0 ? (
+            <button key={x.mode} onClick={() => go(`session/${x.mode}`)} className="press group flex w-full items-center gap-4 rounded-[22px] bg-jade p-6 text-left text-jade-ink shadow-md">
+              <span className="min-w-0 flex-1">
+                <span className="block text-[1.625rem] font-semibold leading-tight">{x.title}</span>
+                <span className="mt-1 block text-[0.9375rem] opacity-85">{x.detail}</span>
+              </span>
+              <ChevronRight className="h-6 w-6 opacity-80 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </button>
+          ) : (
+            <button key={x.mode} onClick={() => go(`session/${x.mode}`)} className="press card flex w-full items-center gap-4 p-5 text-left hover:border-ink/20">
+              <span className="min-w-0 flex-1">
+                <span className="block text-lg font-semibold">{x.title}</span>
+                <span className="block text-sm text-muted">{x.mode === 'quick' ? `About 5 minutes. ${whatsUp}.` : x.detail}</span>
+              </span>
+              <ChevronRight className="h-5 w-5 text-muted" />
+            </button>
+          ),
+        )}
+      </div>
       {settings.speaking && micSupported && (
-        <p className="mt-2 text-center text-sm text-muted">
+        <p className="mt-3 text-center text-sm text-muted">
           {speakPaused > Date.now() ? (
             <>
-              Speaking paused until {new Date(speakPaused).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })} ·{' '}
-              <button onClick={() => void setSpeakPausedUntil(0)} className="font-medium text-jade underline underline-offset-2">
-                Mic is fine now
+              Speaking paused until {new Date(speakPaused).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}.{' '}
+              <button onClick={() => void setSpeakPausedUntil(0)} className="font-medium text-jade">
+                Turn the mic back on
               </button>
             </>
           ) : (
-            <>
-              Microphone on ·{' '}
-              <button onClick={() => void setSpeakPausedUntil(Date.now() + 3600_000)} className="font-medium text-jade underline underline-offset-2">
-                No mic right now
-              </button>
-            </>
+            <button onClick={() => void setSpeakPausedUntil(Date.now() + 3600_000)} className="font-medium text-muted hover:text-ink">
+              No mic right now? Skip speaking for an hour
+            </button>
           )}
         </p>
       )}
 
-      <button onClick={() => go('tone-gym')} className="mt-3 flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left hover:border-jade">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-cinnabar/10 text-cinnabar" aria-hidden>
-          <Waves className="h-6 w-6" />
-        </span>
-        <span className="flex-1">
-          <span className="block font-semibold">Tone Gym</span>
-          <span className="block text-sm text-muted">
-            {weak ? (
-              <>
-                Weakest pair this week: <span className="font-semibold text-ink">{patternLabel(weak.pattern)}</span> ({Math.round(weak.error * 100)}% missed)
-              </>
-            ) : (
-              '20 quick tone questions'
-            )}
-          </span>
-        </span>
-      </button>
-
-      <section className="mt-8">
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-lg font-semibold">Achievements</h2>
-          <span className="text-sm tabular-nums text-muted">
-            {game?.unlocked.size ?? 0} of {ACHIEVEMENTS.length}
-          </span>
-        </div>
-        <ul className="mt-3 flex flex-col gap-2">
-          {next.map(({ a, p }) => (
-            <li key={a.id} className="flex items-center gap-3 rounded-2xl bg-surface p-3">
-              <span className="han flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sunk text-xs font-bold text-muted">{a.hanzi}</span>
+      <ul className="group-list mt-6">
+        <li>
+          <button onClick={() => go('tone-gym')} className="flex w-full items-center gap-4 px-4 py-4 text-left hover:bg-sunk/50">
+            <ToneMark />
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold">Tone Gym</span>
+              <span className="block text-sm text-muted">
+                {weak ? (
+                  <>
+                    Weakest pair this week: <span className="font-medium text-ink">{patternLabel(weak.pattern)}</span>, {Math.round(weak.error * 100)}% missed
+                  </>
+                ) : (
+                  'Rounds of 20 tone questions'
+                )}
+              </span>
+            </span>
+            <ChevronRight className="h-5 w-5 text-muted" />
+          </button>
+        </li>
+        {!settings.placedAt && (
+          <li>
+            <button onClick={() => go('placement')} className="flex w-full items-center gap-4 px-4 py-4 text-left hover:bg-sunk/50">
+              <span className="han flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sunk text-sm" aria-hidden>
+                测
+              </span>
               <span className="min-w-0 flex-1">
-                <span className="block font-medium">{a.title}</span>
-                <span className="mt-1 block h-1.5 overflow-hidden rounded-full bg-sunk">
-                  <span className="block h-full bg-gold" style={{ width: `${p * 100}%` }} />
-                </span>
+                <span className="block font-semibold">Know some Chinese already?</span>
+                <span className="block text-sm text-muted">Find your level in 5 minutes and skip the words you know</span>
               </span>
-              <span className="text-xs tabular-nums text-muted">{Math.round(p * 100)}%</span>
-            </li>
-          ))}
-        </ul>
-        {game && game.unlocked.size > 0 && (
-          <p className="mt-3 flex flex-wrap gap-2">
-            {ACHIEVEMENTS.filter((a) => game.unlocked.has(a.id)).map((a) => (
-              <span key={a.id} title={`${a.title}: ${a.detail}`} className="han flex h-10 w-10 items-center justify-center rounded-full bg-gold text-xs font-bold text-ink">
-                {a.hanzi}
-              </span>
-            ))}
-          </p>
+              <ChevronRight className="h-5 w-5 text-muted" />
+            </button>
+          </li>
         )}
-      </section>
-
-      <section className="mt-8 grid gap-3 sm:grid-cols-2">
-        <button onClick={() => go('conversations')} className="rounded-2xl border-2 border-line bg-surface p-4 text-left hover:border-jade">
-          <span className="block font-semibold">Conversations</span>
-          <span className="block text-sm text-muted">The original units: dialogues, role-play, everyday phrases</span>
-        </button>
-        <button onClick={() => go('read')} className="rounded-2xl border-2 border-line bg-surface p-4 text-left hover:border-jade">
-          <span className="block font-semibold">Read</span>
-          <span className="block text-sm text-muted">Short stories with the words you know</span>
-        </button>
-      </section>
+        {nextAch && (
+          <li>
+            <button onClick={() => go('progress')} className="flex w-full items-center gap-4 px-4 py-4 text-left hover:bg-sunk/50">
+              <span className="han flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/50 text-[11px] font-medium text-gold" aria-hidden>
+                {nextAch.a.hanzi}
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="flex items-baseline justify-between gap-3">
+                  <span className="font-semibold">Next: {nextAch.a.title}</span>
+                  <span className="text-xs tabular-nums text-muted">{Math.round(nextAch.p * 100)}%</span>
+                </span>
+                <ProgressBar value={nextAch.p} label={`${nextAch.a.title} progress`} tone="gold" className="mt-2" />
+              </span>
+              <ChevronRight className="h-5 w-5 text-muted" />
+            </button>
+          </li>
+        )}
+      </ul>
     </div>
+  );
+}
+
+/** The four tone contours in their colours: the Tone Gym's mark. */
+function ToneMark() {
+  return (
+    <svg viewBox="0 0 40 40" className="h-10 w-10 shrink-0 rounded-xl bg-sunk p-1.5" aria-hidden>
+      <path d="M6 12h6" stroke="var(--t1)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M15 24l6-11" stroke="var(--t2)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M6 22c1.5 6 4.5 6 6 1" stroke="var(--t3)" strokeWidth="2.5" strokeLinecap="round" fill="none" transform="translate(0 4)" />
+      <path d="M26 12l7 14" stroke="var(--t4)" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+    </svg>
   );
 }

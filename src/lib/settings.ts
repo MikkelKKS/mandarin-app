@@ -22,6 +22,12 @@ export async function migrateSettings(): Promise<void> {
     await db.meta.put({ key: 'migrated:strict-tones', value: true });
     if (await db.settings.get('me')) await updateSettings({ strictTones: true });
   }
+  // Clean-up (28 Oct 2026): the "Audio speed" setting is gone (the speed buttons remain), so normal speed again.
+  if (!(await db.meta.get('migrated:cleanup-1'))?.value) {
+    await db.meta.put({ key: 'migrated:cleanup-1', value: true });
+    const r = await db.settings.get('me');
+    if (r && r.audioSpeed === 'slow') await updateSettings({ audioSpeed: 'normal' });
+  }
   // v1 (11 Oct) briefly switched everyone to slow audio; v2 switches it back now the cut-off is fixed.
   if ((await db.meta.get('migrated:normal-again'))?.value) return;
   await db.meta.put({ key: 'migrated:normal-again', value: true });
@@ -58,11 +64,6 @@ export function applyTheme(theme: Settings['theme']): void {
   document.documentElement.classList.toggle('dark', dark);
 }
 
-/** "Can't listen now": hide audio-only exercises for an hour. Device-local. */
-export async function setQuietUntil(until: number): Promise<void> {
-  await db.meta.put({ key: 'quietUntil', value: until });
-}
-
 /** Speaking exercises are on, supported, and not paused with "Can't speak now". */
 let speakPausedUntil = 0;
 export function speakingActive(): boolean {
@@ -84,6 +85,10 @@ export function useSpeakPausedUntil(): number {
   return useLive(async () => ((await db.meta.get('speakPausedUntil'))?.value as number) ?? 0, [], 0);
 }
 
+/** "Can't listen now" (the headphones button in a Conversations lesson): audio-only exercises skipped for an hour. Device-local. */
+export async function setQuietUntil(until: number): Promise<void> {
+  await db.meta.put({ key: 'quietUntil', value: until });
+}
 export function useQuietUntil(): number {
   return useLive(async () => ((await db.meta.get('quietUntil'))?.value as number) ?? 0, [], 0);
 }

@@ -5,7 +5,9 @@ import { wordByHanzi } from '../../content';
 import { dictAudioUrl, hasChineseVoice, play, playUrl, speak } from '../../lib/audio';
 import { guessHanzi, isPinyinSentence, loadDict, plecoLink, romanKey, search, segment, type Dict, type Entry } from './dict';
 import { looksLikeEnglishSentence, translate } from './translate';
-import { addMyWord, myWordId, removeMyWord, useMyWords } from './mywords';
+import { useQueuedWords } from './mywords';
+import { LearnNext } from '../../components/LearnNext';
+import { PageHeader } from '../../components/PageHeader';
 
 let showNoVoice: (v: boolean) => void = () => {};
 
@@ -53,8 +55,6 @@ export function DictionaryView() {
   const [q, setQ] = useState(() => new URLSearchParams(location.hash.split('?')[1] ?? '').get('q') ?? '');
   const dq = useDebounced(q, 200);
   const input = useRef<HTMLInputElement>(null);
-  const mine = useMyWords();
-  const mineIds = useMemo(() => new Set(mine.map((w) => w.id)), [mine]);
   const [noVoice, setNoVoice] = useState(false);
   showNoVoice = setNoVoice;
 
@@ -75,7 +75,7 @@ export function DictionaryView() {
 
   return (
     <div className="pb-10">
-      <h1 className="text-2xl font-bold">Dictionary</h1>
+      <PageHeader back={{ label: 'Library', to: 'library' }} title="Dictionary" />
       <div className="sticky top-0 z-10 -mx-4 bg-bg/95 px-4 pb-3 pt-3 backdrop-blur">
         <input
           ref={input}
@@ -86,7 +86,7 @@ export function DictionaryView() {
           autoCapitalize="off"
           autoCorrect="off"
           spellCheck={false}
-          className="w-full rounded-2xl border-2 border-line bg-surface px-4 py-3 text-lg outline-none focus:border-jade"
+          className="w-full rounded-2xl border border-line bg-surface px-4 py-3 text-lg outline-none focus:border-jade"
         />
       </div>
 
@@ -102,7 +102,7 @@ export function DictionaryView() {
         </p>
       )}
 
-      {result?.mode === 'empty' && <MyWords />}
+      {result?.mode === 'empty' && <UpNext />}
 
       {result?.mode === 'words' && dict && dict !== 'loading' && isPinyinSentence(dq) && <PinyinSentenceCard dict={dict} q={dq} />}
       {result?.mode === 'words' && !isPinyinSentence(dq) && looksLikeEnglishSentence(dq) && <TranslationCard text={dq} dir="en-zh" dict={dict as Dict} />}
@@ -112,7 +112,7 @@ export function DictionaryView() {
           {result.entries.length === 0 && <p className="mt-6 text-muted">No matches. Try characters, pinyin (e.g. “ni3 hao3” or “nihao”) or a single English word.</p>}
           <ul className="mt-2 flex flex-col gap-2">
             {result.entries.map((e, i) => (
-              <EntryCard key={`${e.hanzi}-${e.pinyin}-${i}`} e={e} added={mineIds.has(myWordId(e))} />
+              <EntryCard key={`${e.hanzi}-${e.pinyin}-${i}`} e={e} />
             ))}
           </ul>
         </>
@@ -120,7 +120,7 @@ export function DictionaryView() {
 
       {result?.mode === 'sentence' && (
         <div className="mt-2">
-          <div className="rounded-2xl bg-surface p-4">
+          <div className="rounded-2xl bg-surface p-4 border border-line">
             <div className="flex flex-wrap items-end gap-x-2 gap-y-3" lang="zh-CN">
               {result.tokens.map((t, i) =>
                 t.entries.length ? (
@@ -138,11 +138,11 @@ export function DictionaryView() {
             <div className="mt-4 flex flex-wrap gap-2">
               <button
                 onClick={() => void saySentence(q, result.tokens.filter((t) => t.entries.length).map((t) => t.text))}
-                className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-2 text-sm font-medium"
+                className="flex items-center gap-2 rounded-xl border border-line px-3 py-2 text-sm font-medium"
               >
                 <Speaker className="h-4 w-4" /> Listen
               </button>
-              <a href={plecoLink(q)} className="rounded-xl border-2 border-line px-3 py-2 text-sm font-medium">
+              <a href={plecoLink(q)} className="rounded-xl border border-line px-3 py-2 text-sm font-medium">
                 Open in Pleco
               </a>
             </div>
@@ -152,7 +152,7 @@ export function DictionaryView() {
             {result.tokens.map((t, i) =>
               t.entries.length ? (
                 <li key={i} id={`tok-${i}`}>
-                  <EntryCard e={t.entries[0]} more={t.entries.slice(1)} added={mineIds.has(myWordId(t.entries[0]))} />
+                  <EntryCard e={t.entries[0]} more={t.entries.slice(1)} />
                 </li>
               ) : null,
             )}
@@ -171,10 +171,9 @@ export function DictionaryView() {
   );
 }
 
-function EntryCard({ e, more = [], added }: { e: Entry; more?: Entry[]; added: boolean }) {
-  const [busy, setBusy] = useState(false);
+function EntryCard({ e, more = [] }: { e: Entry; more?: Entry[] }) {
   return (
-    <div className="rounded-2xl bg-surface p-4">
+    <div className="rounded-2xl bg-surface p-4 border border-line">
       <div className="flex items-start gap-3">
         <div className="min-w-0 flex-1">
           <ToneText hanzi={e.hanzi} pinyin={e.pinyin} className="han text-3xl" />
@@ -192,24 +191,8 @@ function EntryCard({ e, more = [], added }: { e: Entry; more?: Entry[]; added: b
         </button>
       </div>
       <div className="mt-3 flex flex-wrap gap-2 text-sm">
-        {added ? (
-          <button className="rounded-xl bg-jade-soft px-3 py-1.5 font-medium text-jade" onClick={() => removeMyWord(myWordId(e))}>
-            ✓ In my practice
-          </button>
-        ) : (
-          <button
-            disabled={busy}
-            className="rounded-xl border-2 border-line px-3 py-1.5 font-medium"
-            onClick={async () => {
-              setBusy(true);
-              await addMyWord(e);
-              setBusy(false);
-            }}
-          >
-            + Add to my practice
-          </button>
-        )}
-        <a href={plecoLink(e.hanzi)} className="rounded-xl border-2 border-line px-3 py-1.5 font-medium">
+        <LearnNext entry={e} />
+        <a href={plecoLink(e.hanzi)} className="inline-flex h-9 items-center rounded-xl border border-line bg-surface px-3 text-sm font-medium hover:border-ink/30">
           Open in Pleco
         </a>
       </div>
@@ -217,19 +200,20 @@ function EntryCard({ e, more = [], added }: { e: Entry; more?: Entry[]; added: b
   );
 }
 
-function MyWords() {
-  const mine = useMyWords();
+/** Words waiting to be taught first, from "Learn next". */
+function UpNext() {
+  const queued = useQueuedWords();
   return (
-    <section className="mt-4">
-      <h2 className="text-sm font-semibold text-muted">My words</h2>
-      {mine.length === 0 ? (
-        <p className="mt-2 text-sm text-muted">Words you add from the dictionary appear here and come up in Practice and Games.</p>
+    <section className="mt-6">
+      <h2 className="text-sm font-medium text-muted">Learning next</h2>
+      {queued.length === 0 ? (
+        <p className="mt-2 text-sm leading-relaxed text-muted">Look up a word and tap “Learn next”: your next session teaches it before the usual new words.</p>
       ) : (
         <ul className="mt-2 flex flex-wrap gap-2">
-          {mine.map((w) => (
-            <li key={w.id} className="rounded-xl bg-surface px-3 py-2">
-              <ToneText hanzi={w.hanzi} pinyin={w.pinyin} className="han text-xl" />
-              <span className="ml-2 text-sm text-muted">{w.english[0]}</span>
+          {queued.map((w) => (
+            <li key={w.id} className="rounded-xl border border-line bg-surface px-3 py-2">
+              <TonePinyin pinyin={w.pinyin} className="font-semibold" />
+              <span className="ml-2 text-sm text-muted">{w.gloss[0]}</span>
             </li>
           ))}
         </ul>
@@ -266,7 +250,7 @@ function TranslationCard({ text, dir, sourceKey, dict }: { text: string; dir: 'z
   }, [text, dir, online]);
   const zh = dir === 'en-zh' && state.text ? state.text : null;
   return (
-    <section className="mt-3 rounded-2xl border-2 border-jade/40 bg-surface p-4" aria-live="polite">
+    <section className="mt-3 rounded-2xl border border-jade/40 bg-surface p-4" aria-live="polite">
       <p className="text-xs font-semibold text-jade">{dir === 'zh-en' ? 'Translation' : 'In Chinese'}</p>
       {state.status === 'loading' && <p className="mt-1 text-muted">Translating…</p>}
       {state.status === 'error' && <p className="mt-1 text-sm">{state.error}</p>}
@@ -294,10 +278,10 @@ function TranslationCard({ text, dir, sourceKey, dict }: { text: string; dir: 'z
             </p>
           )}
           <div className="mt-2 flex flex-wrap gap-2">
-            <button onClick={() => void saySentence(zh, [...zh].filter((c) => /\p{Script=Han}/u.test(c)))} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+            <button onClick={() => void saySentence(zh, [...zh].filter((c) => /\p{Script=Han}/u.test(c)))} className="flex items-center gap-2 rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
               <Speaker className="h-4 w-4" /> Listen
             </button>
-            <a href={`#/dictionary?q=${encodeURIComponent(zh)}`} className="rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+            <a href={`#/dictionary?q=${encodeURIComponent(zh)}`} className="rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
               Break it down
             </a>
           </div>
@@ -313,17 +297,17 @@ function PinyinSentenceCard({ dict, q }: { dict: Dict; q: string }) {
   if (!guess) return null;
   return (
     <>
-      <section className="mt-3 rounded-2xl bg-surface p-4">
+      <section className="mt-3 rounded-2xl bg-surface p-4 border border-line">
         <p className="text-xs font-semibold text-muted">In characters (best guess)</p>
         <p className="han mt-1 text-3xl" lang="zh-CN">
           {guess.hanzi}
         </p>
         {!guess.complete && <p className="mt-1 text-xs text-muted">Some syllables didn't match a word. Check the spelling or add tone numbers (ni3 hao3).</p>}
         <div className="mt-3 flex flex-wrap gap-2">
-          <button onClick={() => void saySentence(guess.hanzi, [...guess.hanzi])} className="flex items-center gap-2 rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+          <button onClick={() => void saySentence(guess.hanzi, [...guess.hanzi])} className="flex items-center gap-2 rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
             <Speaker className="h-4 w-4" /> Listen
           </button>
-          <a href={`#/dictionary?q=${encodeURIComponent(guess.hanzi)}`} className="rounded-xl border-2 border-line px-3 py-1.5 text-sm font-medium">
+          <a href={`#/dictionary?q=${encodeURIComponent(guess.hanzi)}`} className="rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
             Break it down
           </a>
         </div>

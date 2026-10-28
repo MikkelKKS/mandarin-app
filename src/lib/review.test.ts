@@ -19,7 +19,7 @@ import {
   review,
   wordState,
 } from './review';
-import { courseCards, recordAnswer } from './srs';
+import { recordAnswer } from './srs';
 
 const DAY = 864e5;
 const t0 = Date.UTC(2026, 9, 1, 10);
@@ -96,6 +96,8 @@ describe('word states', () => {
   it('takes the weakest facet for the word', () => {
     expect(wordState([matured('w#lm', 8), matured('w#lp', 3)])).toBe('young');
     expect(wordState([undefined, undefined])).toBe('new');
+    // Met in one skill only: started, so "learning", not "new".
+    expect(wordState([matured('w#lp', 1), undefined, undefined])).toBe('learning');
   });
 });
 
@@ -218,13 +220,6 @@ describe('recording and changing grades', () => {
     expect(logs.find((l) => !l.replaced)).toMatchObject({ rating: 3, override: true });
   });
 
-  it('shows facet cards as one card per course word on course screens', () => {
-    const w = legacyMap['w-ni'];
-    const rows = [matured(`${w}#lm`, 6), matured(`${w}#lp`, 2), { ...matured('w-ni', 1) }, matured('s-nihao', 1)];
-    const out = courseCards(rows);
-    expect(out.map((r) => r.id).sort()).toEqual(['s-nihao', 'w-ni']);
-    expect(out.find((r) => r.id === 'w-ni')!.stability).toBe(rows[1].stability); // the weakest facet
-  });
 });
 
 describe("I don't know this word", () => {

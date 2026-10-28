@@ -75,7 +75,7 @@ export function StoryPlayer({ dialogue, onExit, onFinish }: { dialogue: Dialogue
         <button onClick={() => playAll(false)} className="flex h-14 items-center gap-2 rounded-full bg-jade px-6 text-lg font-semibold text-jade-ink">
           <Speaker className="h-6 w-6" /> Play conversation
         </button>
-        <button onClick={() => playAll(true)} aria-label="Play conversation slowly" className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-line bg-surface text-muted">
+        <button onClick={() => playAll(true)} aria-label="Play conversation slowly" className="flex h-14 w-14 items-center justify-center rounded-full border border-line bg-surface text-muted">
           <Turtle className="h-6 w-6" />
         </button>
       </div>
@@ -134,7 +134,7 @@ export function StoryPlayer({ dialogue, onExit, onFinish }: { dialogue: Dialogue
               playing.current = false;
               setPhase('questions');
             }}
-            className={`h-14 w-full rounded-2xl text-lg font-semibold ${heardAll ? 'bg-jade text-jade-ink' : 'border-2 border-line bg-surface'}`}
+            className={`h-14 w-full rounded-2xl text-lg font-semibold ${heardAll ? 'bg-jade text-jade-ink' : 'border border-line bg-surface'}`}
           >
             Answer the questions
           </button>
@@ -199,7 +199,7 @@ function Questions({ dialogue, onExit, onDone }: { dialogue: Dialogue; onExit: (
       <h2 className="mb-5 mt-6 text-xl font-semibold">{q.q}</h2>
       <div className="flex flex-col gap-3">
         {q.options.map((o, i) => (
-          <button key={i} disabled={locked} onClick={() => setSel(i)} className={`min-h-14 rounded-2xl border-2 px-4 py-3 text-left ${optionClass(st(i))}`}>
+          <button key={i} disabled={locked} onClick={() => setSel(i)} className={`min-h-14 rounded-2xl border px-4 py-3 text-left ${optionClass(st(i))}`}>
             {o}
           </button>
         ))}

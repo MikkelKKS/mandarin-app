@@ -3,7 +3,7 @@
   "order": 0,
   "title": "Check your basics",
   "titleHanzi": "你好！",
-  "description": "Greetings, polite phrases and the numbers one to ten. Already know these? Take the test-out.",
+  "description": "Greetings, polite phrases and the numbers one to ten.",
   "hsk": 1,
   "words": [
     { "id": "w-ni", "hanzi": "你", "pinyin": "nǐ", "english": ["you"], "hsk": 1, "pos": "pronoun" },

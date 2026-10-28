@@ -10,7 +10,7 @@ test('pick a starting level: words below it are marked known', async ({ page }) 
   await expect(start).toBeEnabled();
   await start.click();
   await expect(page.getByText(/words marked as known/)).toBeVisible();
-  await page.getByRole('main').getByRole('button', { name: 'Home', exact: true }).click();
+  await page.getByRole('main').getByRole('button', { name: 'Home', exact: true }).last().click();
   await expect(page.getByText('Know some Chinese already?')).toHaveCount(0);
 });
 

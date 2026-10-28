@@ -1,10 +1,10 @@
 /** Every HSK 3.0 word, by level, grouped by how well you know it. */
+import { PageHeader } from '../../components/PageHeader';
 import { useMemo, useState } from 'react';
 import { TonePinyin } from '../../components/Hanzi';
 import { WordPopover } from '../../components/WordPopover';
 import { db, type ReviewItemRow } from '../../db/db';
 import { parseCardId, wordState, type WordState } from '../../lib/review';
-import { go } from '../../lib/router';
 import { currentSettings, useSettings } from '../../lib/settings';
 import { moveWords } from '../../lib/wordMove';
 import { useLive } from '../../lib/useLive';
@@ -61,10 +61,7 @@ export function WordsView() {
 
   return (
     <div className={selecting ? 'pb-44' : 'pb-8'}>
-      <button onClick={() => go('progress')} className="mb-3 text-sm font-medium text-jade">
-        ← Stats
-      </button>
-      <h1 className="text-2xl font-bold">HSK words</h1>
+      <PageHeader back={{ label: 'Library', to: 'library' }} title="HSK words" />
       <p className="mt-1 text-muted">
         {selecting ? 'Tap words to select them, then choose where to move them.' : 'All HSK 3.0 words, most common first. Tap one to hear it.'}
       </p>
@@ -75,7 +72,7 @@ export function WordsView() {
           setMoved(null);
         }}
         aria-pressed={selecting}
-        className={`mt-3 h-11 rounded-2xl border-2 px-4 font-medium ${selecting ? 'border-ink bg-sunk' : 'border-line bg-surface'}`}
+        className={`mt-3 h-11 rounded-2xl border px-4 font-medium ${selecting ? 'border-ink bg-sunk' : 'border-line bg-surface'}`}
       >
         {selecting ? 'Done moving' : 'Move words'}
       </button>
@@ -91,7 +88,7 @@ export function WordsView() {
             role="tab"
             aria-selected={level === l}
             onClick={() => setLevel(l)}
-            className={`h-11 rounded-xl border-2 text-sm font-semibold ${level === l ? 'border-jade bg-jade text-jade-ink' : 'border-line bg-surface'}`}
+            className={`h-11 rounded-xl border text-sm font-semibold ${level === l ? 'border-jade bg-jade text-jade-ink' : 'border-line bg-surface'}`}
           >
             {l === 7 ? '7–9' : l}
           </button>
@@ -136,7 +133,7 @@ export function WordsView() {
                     <li key={w.id}>
                       <button
                         onClick={(ev) => (selecting ? toggle(w.id) : setPicked({ w, anchor: ev.currentTarget.getBoundingClientRect() }))}
-                        className={`flex flex-col items-center rounded-xl border-2 px-2.5 py-1.5 ${g.cls} ${selecting && sel.has(w.id) ? 'outline-3 outline-offset-1 outline-ink' : ''}`}
+                        className={`flex flex-col items-center rounded-xl border px-2.5 py-1.5 ${g.cls} ${selecting && sel.has(w.id) ? 'outline-3 outline-offset-1 outline-ink' : ''}`}
                         aria-label={`${w.pinyin}: ${shortGloss(w.gloss)}`}
                         aria-pressed={selecting ? sel.has(w.id) : undefined}
                       >
@@ -158,13 +155,13 @@ export function WordsView() {
       )}
       {selecting && sel.size > 0 && (
         <div className="fixed inset-x-0 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-30 px-3 md:bottom-4 md:left-auto md:right-4 md:w-[28rem]">
-          <div className="rounded-2xl border-2 border-line bg-surface p-3 shadow-lg" role="group" aria-label="Move the selected words">
+          <div className="rounded-2xl border border-line bg-surface p-3 shadow-lg" role="group" aria-label="Move the selected words">
             <p className="text-sm font-medium">
               Move {sel.size.toLocaleString('en-GB')} word{sel.size === 1 ? '' : 's'} to:
             </p>
             <div className="mt-2 grid grid-cols-4 gap-1.5">
               {[...GROUPS].reverse().map((g) => (
-                <button key={g.id} disabled={busy} onClick={() => void move(g.id)} className={`h-11 rounded-xl border-2 text-sm font-semibold ${g.cls} disabled:opacity-50`}>
+                <button key={g.id} disabled={busy} onClick={() => void move(g.id)} className={`h-11 rounded-xl border text-sm font-semibold ${g.cls} disabled:opacity-50`}>
                   {g.title}
                 </button>
               ))}
@@ -177,7 +174,6 @@ export function WordsView() {
           text={picked.w.hanzi}
           entry={{ hanzi: picked.w.hanzi, pinyin: picked.w.pinyin, key: '', defs: picked.w.gloss, hsk: picked.w.level, tones: '' }}
           audioId={picked.w.id}
-          canAdd={false}
           anchor={picked.anchor}
           onClose={() => setPicked(null)}
         />

@@ -1,168 +1,165 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+/**
+ * Conversations: the hand-written units (dialogues set around family life in
+ * Beijing), as an optional side section. Nothing is locked. Progress is shared
+ * with the rest of the app: a lesson's words you know from sessions count here,
+ * and what you learn here counts in your sessions and Stats.
+ */
+import { useEffect, useMemo, useState } from 'react';
 import { course, grammar, nodes, units, words } from '../../content';
 import type { Unit } from '../../content/schema';
 import { ToneText } from '../../components/Hanzi';
-import { Book, Check, Lock, Refresh, Lightbulb, OpenBook } from '../../components/icons';
-import { computeStates, MAX_MASTERY, nextNode, unitComplete, type NodeState } from '../../lib/progress';
+import { Book, Check, ChevronRight, Lightbulb } from '../../components/icons';
 import { db } from '../../db/db';
+import { courseWordState, isKnownState, useWordStates } from '../../lib/knowledge';
+import { nodeStates, unitProgress, type NodeState } from '../../lib/progress';
 import { focusNoScroll, go } from '../../lib/router';
 import { useLive } from '../../lib/useLive';
 import { hanziOnly } from '../../lib/pinyin';
-import { nodeOrder } from '../../content';
-import { PacksOnPath } from '../packs/PacksOnPath';
-import { dueCount } from '../../lib/srs';
+import { PageHeader } from '../../components/PageHeader';
+import { ProgressBar } from '../../components/ProgressBar';
+import type { WordState } from '../../lib/review';
 
-export function useNodeStates(): Map<string, NodeState> {
-  const rows = useLive(() => db.progress.toArray(), [], []);
-  return useMemo(() => computeStates(nodeOrder, new Map(rows.map((r) => [r.id, r]))), [rows]);
-}
+const OPEN_KEY = 'conversations:open';
 
 export function PathView() {
   const rows = useLive(() => db.progress.toArray(), [], null);
-  const states = useMemo(() => computeStates(nodeOrder, new Map((rows ?? []).map((r) => [r.id, r]))), [rows]);
-  const loaded = rows !== null;
-  const next = nextNode(states);
+  const known = useWordStates();
+  const states = useMemo(() => (rows && known ? nodeStates(new Map(rows.map((r) => [r.id, r])), known) : null), [rows, known]);
   const [sheet, setSheet] = useState<string | null>(null);
-  const due = useLive(() => dueCount(), [], 0);
-
-  // Bring the skill you're on into view, once your progress has loaded.
-  const scrolled = useRef(false);
+  const [open, setOpen] = useState<string | null>(() => {
+    try {
+      return sessionStorage.getItem(OPEN_KEY);
+    } catch {
+      return null;
+    }
+  });
+  // First visit: open the first unit that isn't finished.
   useEffect(() => {
-    if (!loaded || scrolled.current || !next) return;
-    scrolled.current = true;
-    if (next === nodeOrder[0]) return;
-    const t = setTimeout(() => document.getElementById(`node-${next}`)?.scrollIntoView({ block: 'center', behavior: 'smooth' }), 120);
-    return () => clearTimeout(t);
-  }, [loaded, next]);
+    if (open !== null || !states) return;
+    const u = units.find((x) => x.nodes.some((n) => !states.get(n.id)?.done));
+    if (u) setOpen(u.id);
+  }, [states, open]);
+  const toggle = (id: string) => {
+    const next = open === id ? '' : id;
+    setOpen(next);
+    try {
+      sessionStorage.setItem(OPEN_KEY, next);
+    } catch {
+      /* not available */
+    }
+  };
 
   return (
     <div className="pb-8">
-      <button onClick={() => go('')} className="mb-3 text-sm font-medium text-jade">
-        ← Home
-      </button>
-      <h1 className="mb-1 text-2xl font-bold">Conversations</h1>
-      <p className="mb-5 text-muted">The original units: everyday dialogues, role-play and phrases. Optional, alongside your sessions.</p>
-      <button
-        onClick={() => go('practice')}
-        className="group mb-8 flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left transition hover:border-jade active:scale-[0.99]"
-      >
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-jade-soft text-jade">
-          <Refresh className="h-6 w-6 transition-transform duration-500 [transition-timing-function:var(--ease-out)] group-hover:-rotate-180" />
-        </span>
-        <span className="flex-1">
-          <span className="block font-semibold">Practice</span>
-          <span className={`block text-sm ${due > 0 ? 'font-medium text-jade' : 'text-muted'}`}>{due > 0 ? `${due} item${due === 1 ? '' : 's'} due for review` : 'Reviews and recent mistakes'}</span>
-        </span>
-      </button>
-
-      <button
-        onClick={() => go('read')}
-        className="group -mt-5 mb-8 flex w-full items-center gap-4 rounded-2xl border-2 border-line bg-surface p-4 text-left transition hover:border-jade active:scale-[0.99]"
-      >
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-soft text-gold">
-          <OpenBook className="h-6 w-6" />
-        </span>
-        <span className="flex-1">
-          <span className="block font-semibold">Read</span>
-          <span className="block text-sm text-muted">Short stories with the words you know</span>
-        </span>
-      </button>
-
-      <PacksOnPath />
-
-      {course.sections.map((sec) => (
-        <section key={sec.id} className="mb-10">
-          <h2 className="mb-4 text-sm font-semibold text-muted">{sec.title}</h2>
-          {sec.units.map((uid) => {
-            const u = units.find((x) => x.id === uid);
-            return u ? <UnitBlock key={u.id} unit={u} states={states} next={next} onNode={setSheet} /> : null;
-          })}
-        </section>
-      ))}
-
-      {course.upcoming.length > 0 && <section>
-        <h2 className="mb-4 text-sm font-semibold text-muted">Coming next</h2>
-        <ul className="flex flex-col gap-2">
-          {course.upcoming.map((u) => (
-            <li key={u.title} className="flex items-center gap-3 rounded-2xl border-2 border-dashed border-line px-4 py-3 text-muted">
-              <span className="han text-xl">{u.titleHanzi}</span>
-              <span className="text-sm">{u.title}</span>
-            </li>
-          ))}
-        </ul>
-      </section>}
-
-      {sheet && <NodeSheet nodeId={sheet} state={states.get(sheet)!} onClose={() => setSheet(null)} />}
+      <PageHeader back={{ label: 'Library', to: 'library' }} title="Conversations">
+        Everyday dialogues set around family life in Beijing, with role-play. Words you know from your sessions count here, and what you learn here counts in your sessions.
+      </PageHeader>
+      {!states || !known ? (
+        <p className="mt-6 text-muted">Loading…</p>
+      ) : (
+        course.sections.map((sec) => (
+          <section key={sec.id} className="mt-8">
+            <h2 className="mb-3 text-sm font-medium text-muted">{sec.title}</h2>
+            <ul className="flex flex-col gap-2">
+              {sec.units.map((uid) => {
+                const u = units.find((x) => x.id === uid);
+                return u ? (
+                  <li key={u.id}>
+                    <UnitRow unit={u} states={states} known={known} open={open === u.id} onToggle={() => toggle(u.id)} onNode={setSheet} />
+                  </li>
+                ) : null;
+              })}
+            </ul>
+          </section>
+        ))
+      )}
+      {sheet && states && known && <NodeSheet nodeId={sheet} state={states.get(sheet)!} known={known} onClose={() => setSheet(null)} />}
     </div>
   );
 }
 
-const OFFSETS = [0, 52, 76, 52, 0, -52, -76, -52];
-
-function UnitBlock({ unit, states, next, onNode }: { unit: Unit; states: Map<string, NodeState>; next?: string; onNode: (id: string) => void }) {
-  const complete = unitComplete(unit.id, states);
-  return (
-    <div className="mb-10">
-      <div className="rounded-3xl bg-surface p-5 shadow-[0_1px_0_var(--line)]">
-        <UnitTitle unit={unit} />
-        <h3 className="mt-2 text-xl font-bold">{unit.title}</h3>
-        <p className="mt-1 text-sm text-muted">{unit.description}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {!complete && (
-            <button onClick={() => go(`testout/${unit.id}`)} className="rounded-xl border-2 border-line px-3 py-2 text-sm font-medium hover:border-jade">
-              Test out
-            </button>
-          )}
-          {complete && (
-            <span className="flex items-center gap-1 rounded-xl bg-jade-soft px-3 py-2 text-sm font-medium text-jade">
-              <Check className="h-4 w-4" /> Unit complete
-            </span>
-          )}
-        </div>
-      </div>
-      <ol className="mt-6 flex flex-col items-center gap-8">
-        {unit.nodes.map((n, i) => {
-          const st = states.get(n.id)!;
-          const x = OFFSETS[i % OFFSETS.length];
-          const prev = i > 0 ? OFFSETS[(i - 1) % OFFSETS.length] : null;
-          return (
-            <li key={n.id} id={`node-${n.id}`} className="relative" style={{ transform: `translateX(${x}px)` }}>
-              {prev !== null && <Trail dx={prev - x} lit={st.status !== 'locked'} />}
-              <div className="anim-node" style={{ animationDelay: `${Math.min(i, 8) * 45}ms` }}>
-                <NodeCoin nodeId={n.id} state={st} isNext={n.id === next} onClick={() => onNode(n.id)} />
-              </div>
-            </li>
-          );
-        })}
-      </ol>
-    </div>
-  );
-}
-
-/** Three stepping-stone dots from the previous node down to this one. */
-function Trail({ dx, lit }: { dx: number; lit: boolean }) {
-  return (
-    <span aria-hidden className="pointer-events-none absolute inset-x-0 -top-8 h-8">
-      {[0.2, 0.5, 0.8].map((t) => (
-        <span
-          key={t}
-          className={`absolute h-1.5 w-1.5 rounded-full transition-colors duration-500 ${lit ? 'bg-jade' : 'bg-line'}`}
-          style={{ left: `calc(50% + ${dx * (1 - t)}px - 3px)`, top: `${t * 32 - 3}px` }}
-        />
-      ))}
-    </span>
-  );
-}
-
-/** Unit title in big tone-coloured characters. */
+/** Unit title in tone-coloured characters, when its pinyin is known. */
 function UnitTitle({ unit }: { unit: Unit }) {
-  // Find pinyin for the title from the unit's sentences when possible.
   const match = unit.sentences.find((s) => hanziOnly(s.hanzi) === hanziOnly(unit.titleHanzi));
-  if (match) return <ToneText hanzi={unit.titleHanzi} pinyin={match.pinyin} className="han text-4xl font-bold" />;
+  if (match) return <ToneText hanzi={unit.titleHanzi} pinyin={match.pinyin} className="han mt-0.5 block text-base" />;
   return (
-    <span className="han text-4xl font-bold" lang="zh-CN">
+    <span className="han mt-0.5 block text-base text-muted" lang="zh-CN">
       {unit.titleHanzi}
     </span>
+  );
+}
+
+function UnitRow({
+  unit,
+  states,
+  known,
+  open,
+  onToggle,
+  onNode,
+}: {
+  unit: Unit;
+  states: Map<string, NodeState>;
+  known: Map<string, WordState>;
+  open: boolean;
+  onToggle: () => void;
+  onNode: (id: string) => void;
+}) {
+  const p = unitProgress(unit.id, states, known);
+  const complete = p.done === p.lessons;
+  return (
+    <div className={`card overflow-hidden transition-shadow ${open ? 'shadow-md' : ''}`}>
+      <button onClick={onToggle} aria-expanded={open} className="flex w-full items-center gap-4 p-4 text-left">
+        <span className="min-w-0 flex-1">
+          <span className="block font-semibold">{unit.title}</span>
+          <UnitTitle unit={unit} />
+          <span className="mt-2 flex items-center gap-3">
+            <ProgressBar value={p.total ? p.known / p.total : 0} label={`${unit.title}: words you know`} className="flex-1" />
+            <span className="w-20 shrink-0 text-right text-xs tabular-nums text-muted">
+              {p.known}/{p.total} words
+            </span>
+          </span>
+        </span>
+        {complete ? (
+          <Check className="h-5 w-5 shrink-0 text-jade" aria-label="All lessons done" />
+        ) : (
+          <ChevronRight className={`h-5 w-5 shrink-0 text-muted transition-transform duration-300 ${open ? 'rotate-90' : ''}`} />
+        )}
+      </button>
+      <div className={`grid transition-[grid-template-rows] duration-300 [transition-timing-function:var(--ease-out)] ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+        <div className="min-h-0 overflow-hidden" inert={!open}>
+          <p className="px-4 text-sm text-muted">{unit.description}</p>
+          <ol className="mt-2 divide-y divide-line border-t border-line">
+            {unit.nodes.map((n) => {
+              const node = nodes.get(n.id)!;
+              const st = states.get(n.id)!;
+              return (
+                <li key={n.id}>
+                  <button onClick={() => onNode(n.id)} className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-sunk/60">
+                    <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${st.done ? 'bg-jade text-jade-ink' : 'bg-sunk text-ink'}`}>
+                      {node.kind === 'story' ? (
+                        <Book className="h-4 w-4" />
+                      ) : (
+                        <span className="han text-base" lang="zh-CN">
+                          {nodeGlyph(n.id)}
+                        </span>
+                      )}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate font-medium">{node.title}</span>
+                      <span className="block text-xs text-muted">
+                        {node.kind === 'story' ? 'Listening story · role-play' : `${st.known} of ${st.total} words known`}
+                        {st.completions > 0 ? ` · done ${st.completions}×` : ''}
+                      </span>
+                    </span>
+                    {st.done && <Check className="h-4 w-4 text-jade" aria-label="Done" />}
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -172,90 +169,44 @@ function nodeGlyph(nodeId: string): string {
   return first ? [...first.hanzi][0] : '听';
 }
 
-function NodeCoin({ nodeId, state, isNext, onClick }: { nodeId: string; state: NodeState; isNext: boolean; onClick: () => void }) {
-  const n = nodes.get(nodeId)!;
-  const r = 44;
-  const c = 2 * Math.PI * r;
-  const frac = state.mastery / MAX_MASTERY;
-  const story = n.kind === 'story';
-  const fill =
-    state.status === 'done' ? 'bg-jade text-jade-ink' : state.status === 'open' ? 'bg-surface text-jade border-4 border-jade' : 'bg-sunk text-muted';
-  return (
-    <button onClick={onClick} className="group flex flex-col items-center" aria-label={`${n.title}, ${state.status === 'locked' ? 'locked' : `level ${state.mastery} of ${MAX_MASTERY}`}`}>
-      <span className="relative flex h-24 w-24 items-center justify-center">
-        <svg className="absolute inset-0 -rotate-90" viewBox="0 0 100 100" aria-hidden>
-          <circle cx="50" cy="50" r={r} fill="none" stroke="var(--line)" strokeWidth="6" />
-          {frac > 0 && (
-            <circle
-              className="anim-ring transition-[stroke-dashoffset] duration-700"
-              cx="50"
-              cy="50"
-              r={r}
-              fill="none"
-              stroke="var(--gold)"
-              strokeWidth="6"
-              strokeLinecap="round"
-              strokeDasharray={c}
-              strokeDashoffset={c * (1 - frac)}
-              style={{ '--ring-c': `${c}px` } as CSSProperties}
-            />
-          )}
-        </svg>
-        <span
-          className={`flex h-[72px] w-[72px] items-center justify-center rounded-full transition duration-200 group-active:scale-90 ${state.status === 'locked' ? '' : 'shadow-[inset_0_-4px_0_rgb(0_0_0/0.12)] group-hover:-translate-y-0.5'} ${fill} ${isNext ? 'anim-breathe' : ''}`}
-        >
-          {state.status === 'locked' ? (
-            <Lock className="h-7 w-7" />
-          ) : story ? (
-            <Book className="h-8 w-8" />
-          ) : (
-            <span className="han text-3xl font-bold" lang="zh-CN">
-              {nodeGlyph(nodeId)}
-            </span>
-          )}
-        </span>
-      </span>
-      <span className="mt-1 max-w-36 text-center text-sm font-medium leading-tight">{n.title}</span>
-    </button>
-  );
-}
-
-function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeState; onClose: () => void }) {
+function NodeSheet({ nodeId, state, known, onClose }: { nodeId: string; state: NodeState; known: Map<string, WordState>; onClose: () => void }) {
   const n = nodes.get(nodeId)!;
   const [tips, setTips] = useState(false);
   const notes = n.grammar.map((g) => grammar.get(g)!).filter(Boolean);
-  const locked = state.status === 'locked';
   useEffect(() => {
     const h = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
   }, [onClose]);
   return (
-    <div className="anim-fade fixed inset-0 z-40 flex items-end justify-center bg-black/30 backdrop-blur-[2px] sm:items-center" onClick={onClose}>
-      <div role="dialog" aria-label={n.title} className="anim-rise max-h-[85dvh] w-full max-w-md overflow-y-auto rounded-t-3xl bg-surface p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:rounded-3xl" onClick={(e) => e.stopPropagation()}>
-        <h2 className="text-xl font-bold">{n.title}</h2>
+    <div className="anim-fade fixed inset-0 z-40 flex items-end justify-center bg-ink/30 backdrop-blur-sm sm:items-center" onClick={onClose}>
+      <div
+        role="dialog"
+        aria-label={n.title}
+        className="anim-sheet max-h-[85dvh] w-full max-w-md overflow-y-auto rounded-t-3xl bg-surface p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] shadow-xl sm:rounded-3xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h2 className="text-xl font-semibold">{n.title}</h2>
         <p className="mt-1 text-sm text-muted">
-          {locked ? 'Locked' : `Level ${state.mastery} of ${MAX_MASTERY}`}
-          {n.kind === 'story' ? ' · Listening story' : ''}
+          {n.kind === 'story' ? 'Listening story' : `${state.known} of ${state.total} words known`}
+          {state.completions > 0 ? ` · done ${state.completions}×` : ''}
         </p>
         {n.words.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
+          <ul className="mt-4 flex flex-wrap gap-1.5">
             {n.words.map((id) => {
               const w = words.get(id)!;
+              const k = isKnownState(courseWordState(id, known));
               return (
-                <span key={id} className="rounded-lg bg-sunk px-2 py-1">
+                <li key={id} className={`rounded-lg px-2 py-1 ${k ? 'bg-jade-soft' : 'bg-sunk'}`} title={k ? 'You know this word' : undefined}>
                   <ToneText hanzi={w.hanzi} pinyin={w.pinyin} className="han text-lg" />
-                </span>
+                </li>
               );
             })}
-          </div>
+          </ul>
         )}
-        {locked ? (
-          <p className="mt-5 text-muted">Finish the skill before this one, or take the unit's test-out to jump ahead.</p>
-        ) : null}
 
         {tips && (
-          <div className="stagger mt-5 flex flex-col gap-4">
+          <div className="mt-5 flex flex-col gap-3">
             {notes.map((g) => (
               <article key={g.id} className="rounded-2xl bg-sunk p-4">
                 <h3 className="font-semibold">{g.title}</h3>
@@ -269,28 +220,21 @@ function NodeSheet({ nodeId, state, onClose }: { nodeId: string; state: NodeStat
           </div>
         )}
 
-        <div className="mt-6 flex flex-col gap-3">
-          {!locked && (
-            <button ref={focusNoScroll} onClick={() => go(`lesson/${nodeId}`)} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
-              {state.mastery === 0 ? 'Start' : state.mastery >= MAX_MASTERY ? 'Play again' : 'Level up'}
-            </button>
-          )}
-          {!locked && n.kind === 'story' && (
-            <button onClick={() => go(`lesson/${nodeId}/roleplay`)} className="flex h-12 items-center justify-center gap-2 rounded-2xl border-2 border-line font-medium">
+        <div className="mt-6 flex flex-col gap-2">
+          <button ref={focusNoScroll} onClick={() => go(`lesson/${nodeId}`)} className="btn btn-primary h-13">
+            {n.kind === 'story' ? 'Listen' : state.completions === 0 ? 'Start' : 'Practise again'}
+          </button>
+          {n.kind === 'story' && (
+            <button onClick={() => go(`lesson/${nodeId}/roleplay`)} className="btn btn-quiet h-12">
               Role-play
             </button>
           )}
-          {locked && (
-            <button onClick={() => go(`testout/${nodes.get(nodeId)!.unit}`)} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
-              Take the test-out
-            </button>
-          )}
           {notes.length > 0 && !tips && (
-            <button onClick={() => setTips(true)} className="flex h-12 items-center justify-center gap-2 rounded-2xl border-2 border-line font-medium">
-              <Lightbulb className="h-5 w-5" /> Tips
+            <button onClick={() => setTips(true)} className="btn btn-quiet h-12 gap-2">
+              <Lightbulb className="h-5 w-5" /> Grammar tips
             </button>
           )}
-          <button onClick={onClose} className="h-12 rounded-2xl font-medium text-muted">
+          <button onClick={onClose} className="h-11 rounded-2xl text-sm font-medium text-muted">
             Close
           </button>
         </div>

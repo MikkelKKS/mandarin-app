@@ -21,10 +21,10 @@ export function beijingWords(): string[] {
   return out;
 }
 
-/** The learning order with the pack's words first (when it's on). */
-export function wordOrder(ids: string[], beijing: boolean): string[] {
-  if (!beijing) return ids;
-  const pack = beijingWords().filter((id) => ids.includes(id));
-  const set = new Set(pack);
-  return [...pack, ...ids.filter((id) => !set.has(id))];
+/** The learning order: words you asked for first, then the Beijing pack's words (when it's on), then the rest. */
+export function wordOrder(ids: string[], beijing: boolean, next: string[] = []): string[] {
+  const all = new Set(ids);
+  const first = [...next, ...(beijing ? beijingWords() : [])].filter((id) => all.has(id));
+  const set = new Set(first);
+  return [...set, ...ids.filter((id) => !set.has(id))];
 }

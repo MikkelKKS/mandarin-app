@@ -113,7 +113,7 @@ export function MatchPairs({ ex }: { ex: Of<'match-pairs'> }) {
         type="button"
         disabled={done || locked}
         onClick={() => (side === 'L' ? setPickL(id) : setPickR(id))}
-        className={`flex min-h-16 items-center justify-center rounded-2xl border-2 px-2 py-2 text-center transition ${done ? 'border-transparent bg-sunk opacity-40' : optionClass(st)}`}
+        className={`flex min-h-16 items-center justify-center rounded-2xl border px-2 py-2 text-center transition ${done ? 'border-transparent bg-sunk opacity-40' : optionClass(st)}`}
       >
         {side === 'L' ? (
           <ToneText hanzi={w.hanzi} pinyin={w.pinyin} className="han text-3xl" />

@@ -11,7 +11,7 @@ function ago(t?: number): string {
   return new Date(t).toLocaleDateString();
 }
 
-const btn = 'rounded-xl border-2 border-line px-4 py-2 font-medium';
+const btn = 'rounded-xl border border-line px-4 py-2 font-medium';
 const primary = 'rounded-xl bg-jade px-4 py-2 font-semibold text-jade-ink disabled:opacity-60';
 
 export function SyncSection() {
@@ -83,7 +83,7 @@ export function SyncSection() {
             placeholder="you@example.com"
             autoComplete="email"
             aria-label="Email address"
-            className="flex-1 rounded-xl border-2 border-line bg-surface px-3 py-2"
+            className="flex-1 rounded-xl border border-line bg-surface px-3 py-2"
           />
           <button className={primary} disabled={busy || !email.includes('@')}>
             Email me a link
@@ -107,7 +107,7 @@ export function SyncSection() {
               inputMode="numeric"
               placeholder="Or enter the code from the email"
               aria-label="Code from the email"
-              className="flex-1 rounded-xl border-2 border-line bg-surface px-3 py-2"
+              className="flex-1 rounded-xl border border-line bg-surface px-3 py-2"
             />
             <button className={btn} disabled={busy || code.trim().length < 6}>
               Sign in

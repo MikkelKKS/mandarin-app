@@ -39,7 +39,7 @@ test('a quick session from the home screen earns XP and counts towards the goal'
   await page.route('**/audio/**', (r) => r.abort());
   await page.goto('./');
   await expect(page.getByText(/day streak/)).toBeVisible();
-  await expect(page.getByText(/new words? today/)).toBeVisible({ timeout: 15000 });
+  await expect(page.getByText(/\d+ new words?\./).first()).toBeVisible({ timeout: 15000 });
   await page.getByRole('button', { name: /Quick session/ }).click();
   await expect(page.getByRole('progressbar', { name: 'Session progress' })).toBeVisible({ timeout: 15000 });
   // A fresh start: new words first.
@@ -57,7 +57,7 @@ test('a quick session from the home screen earns XP and counts towards the goal'
   await expect(page.getByText(/New words \(\d\)/)).toBeVisible();
   await expect(page.getByText('First session')).toBeVisible(); // achievement
   await page.getByRole('button', { name: 'Home', exact: true }).click();
-  await expect(page.getByText(/Today: \d+ of 100 XP|Today's goal: done/)).toBeVisible();
+  await expect(page.getByText(/\d+ XP to today's goal|Goal reached today/)).toBeVisible();
   // The new words now have review cards.
   await page.goto('./#/progress');
   await expect(page.getByRole('region', { name: 'Review cards' }).getByText(/^Today:/)).toBeVisible({ timeout: 15000 });

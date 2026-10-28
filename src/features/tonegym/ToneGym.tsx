@@ -3,6 +3,7 @@
  * tone changes), with several speakers, weighted to what you mix up most.
  * Answers are logged with their tones, which feeds the confusion matrix.
  */
+import { PageHeader } from '../../components/PageHeader';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Speaker } from '../../components/icons';
 import { TonePinyin } from '../../components/Hanzi';
@@ -37,20 +38,20 @@ function GymHome() {
   const weak = logs ? weakestPair(patternStats(logs.filter((l) => l.at > weekAgo))) : null;
   return (
     <div className="pb-10">
-      <h1 className="text-2xl font-bold">Tone Gym</h1>
+      <PageHeader title="Tone Gym" />
       <p className="mt-1 text-muted">Short rounds of {ROUND}. Hearing many voices and words trains your ear fastest.</p>
       {weak && (
         <p className="mt-4 rounded-2xl bg-amber-soft p-4">
-          Weakest pair this week: <span className="font-bold tabular-nums">{patternLabel(weak.pattern)}</span>, missed {Math.round(weak.error * 100)}% of the time.
+          Weakest pair this week: <span className="font-semibold tabular-nums">{patternLabel(weak.pattern)}</span>, missed {Math.round(weak.error * 100)}% of the time.
           Workouts drill it more often.
         </p>
       )}
-      <ul className="stagger mt-5 flex flex-col gap-3">
+      <ul className="mt-5 flex flex-col gap-3">
         {MODES.map((m, i) => (
           <li key={m.id}>
             <button
               onClick={() => go(`tone-gym/${m.id}`)}
-              className={`press flex w-full items-center gap-4 rounded-2xl p-4 text-left ${i === 0 ? 'bg-jade text-jade-ink' : 'border-2 border-line bg-surface'}`}
+              className={`press flex w-full items-center gap-4 rounded-2xl p-4 text-left ${i === 0 ? 'bg-jade text-jade-ink' : 'border border-line bg-surface'}`}
             >
               <span className="flex-1">
                 <span className="block font-semibold">{m.title}</span>
@@ -58,7 +59,7 @@ function GymHome() {
               </span>
               <span className="text-right">
                 <span className={`block text-xs ${i === 0 ? 'opacity-80' : 'text-muted'}`}>Best</span>
-                <span className="block text-xl font-bold tabular-nums">
+                <span className="block text-xl font-semibold tabular-nums">
                   {best.get(`tonegym:${m.id}`) ?? 0}/{ROUND}
                 </span>
               </span>
@@ -194,7 +195,7 @@ function Round({ mode }: { mode: GymMode }) {
     return (
       <div className="mx-auto max-w-xl p-8 text-center">
         <p>No recordings for this drill yet. New recordings arrive every few hours; try again later.</p>
-        <button onClick={() => go('tone-gym')} className="mt-4 h-12 rounded-2xl border-2 border-line px-6 font-medium">
+        <button onClick={() => go('tone-gym')} className="mt-4 h-12 rounded-2xl border border-line px-6 font-medium">
           Back
         </button>
       </div>
@@ -265,7 +266,7 @@ function Round({ mode }: { mode: GymMode }) {
                       disabled={!!answer}
                       aria-label={`${TONE_WORD[t]} tone`}
                       aria-pressed={chosen}
-                      className={`flex h-16 flex-col items-center justify-center rounded-2xl border-2 text-xl font-semibold transition active:scale-95 ${TONE_TEXT[t]} ${
+                      className={`flex h-16 flex-col items-center justify-center rounded-2xl border text-xl font-semibold transition active:scale-95 ${TONE_TEXT[t]} ${
                         isRight ? 'border-jade bg-jade-soft' : isWrongPick ? 'border-cinnabar bg-cinnabar-soft' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'
                       }`}
                     >
@@ -300,7 +301,7 @@ function Feedback({ answer, pool, onNext, onReplay }: { answer: Answer; pool: Gy
   return (
     <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 ${right ? 'bg-jade-soft' : 'bg-cinnabar-soft'}`}>
       <div className="mx-auto max-w-xl">
-        <p className="text-xl font-bold">{right ? 'Right' : `It was ${patternLabel(item.pattern)}, not ${patternLabel(given.join('-'))}`}</p>
+        <p className="text-xl font-semibold">{right ? 'Right' : `It was ${patternLabel(item.pattern)}, not ${patternLabel(given.join('-'))}`}</p>
         <p className="mt-2 flex flex-wrap items-baseline gap-x-3">
           <TonePinyin pinyin={item.pinyin} className="text-2xl font-semibold" />
           <span className="text-sm opacity-80">{item.gloss}</span>
@@ -345,14 +346,14 @@ function RoundEnd({ mode, answers, ms, onAgain }: { mode: GymMode; answers: Answ
   const missed = answers.filter((a) => !a.right);
   return (
     <div className="mx-auto max-w-xl px-4 pb-10 pt-8">
-      <p className="text-center text-6xl font-bold tabular-nums">
+      <p className="text-center text-6xl font-semibold tabular-nums">
         {score}
         <span className="text-3xl text-muted">/{answers.length}</span>
       </p>
       <p className="mt-2 text-center text-muted">
         {prevBest !== null && score > prevBest ? 'New personal best!' : `Personal best ${Math.max(prevBest ?? 0, score)}`} · {Math.round(ms / 1000)} s
       </p>
-      {weak && <p className="mt-4 rounded-2xl bg-amber-soft p-4 text-center">Weakest pair this round: <span className="font-bold">{patternLabel(weak.pattern)}</span></p>}
+      {weak && <p className="mt-4 rounded-2xl bg-amber-soft p-4 text-center">Weakest pair this round: <span className="font-semibold">{patternLabel(weak.pattern)}</span></p>}
       {missed.length > 0 && (
         <section className="mt-6">
           <h2 className="font-semibold">Missed</h2>
@@ -374,7 +375,7 @@ function RoundEnd({ mode, answers, ms, onAgain }: { mode: GymMode; answers: Answ
         <ToneMatrix logs={logs} />
       </div>
       <div className="mt-6 flex flex-col gap-3">
-        <button onClick={() => go(`tone-gym`)} className="h-12 rounded-2xl border-2 border-line font-medium">
+        <button onClick={() => go(`tone-gym`)} className="h-12 rounded-2xl border border-line font-medium">
           Back to the Tone Gym
         </button>
         <button onClick={onAgain} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink">

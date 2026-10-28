@@ -1,4 +1,5 @@
 /** Find your level: a short listening + pinyin test, or pick a starting HSK level. */
+import { PageHeader } from '../../components/PageHeader';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { TonePinyin } from '../../components/Hanzi';
 import { go } from '../../lib/router';
@@ -47,17 +48,14 @@ export function PlacementView() {
 
   return (
     <div className="mx-auto max-w-xl pb-10">
-      <button onClick={() => go('')} className="mb-3 text-sm font-medium text-jade">
-        ← Home
-      </button>
-      <h1 className="text-2xl font-bold">Find your level</h1>
+      <PageHeader back={{ label: 'Home', to: '' }} title="Find your level" />
       {phase.kind === 'start' && (
         <>
           <p className="mt-1 text-muted">
             So you aren't drilled on words you know. Known words are marked as mature: they come back in 3 to 9 weeks, just to check.
             {settings.placedAt ? ' You did this before; doing it again only adds words.' : ''}
           </p>
-          <section className="mt-6 rounded-2xl bg-surface p-5">
+          <section className="mt-6 rounded-2xl bg-surface p-5 border border-line">
             <h2 className="text-lg font-semibold">Take the test</h2>
             <p className="mt-1 text-sm text-muted">
               About 5 minutes. You hear words, starting at HSK 1, and type them in pinyin with tones. Up to {PER_LEVEL} words per level; it stops when a level gets hard.
@@ -66,7 +64,7 @@ export function PlacementView() {
               Start the test
             </button>
           </section>
-          <section className="mt-4 rounded-2xl bg-surface p-5">
+          <section className="mt-4 rounded-2xl bg-surface p-5 border border-line">
             <h2 className="text-lg font-semibold">Or pick a starting level</h2>
             <p className="mt-1 text-sm text-muted">Every word below the level you pick counts as known.</p>
             <div className="mt-3 grid grid-cols-6 gap-1.5" role="radiogroup" aria-label="Start at HSK level">
@@ -76,7 +74,7 @@ export function PlacementView() {
                   role="radio"
                   aria-checked={level === l}
                   onClick={() => setLevel(l)}
-                  className={`h-11 rounded-xl border-2 font-semibold ${level === l ? 'border-jade bg-jade text-jade-ink' : 'border-line bg-surface'}`}
+                  className={`h-11 rounded-xl border font-semibold ${level === l ? 'border-jade bg-jade text-jade-ink' : 'border-line bg-surface'}`}
                 >
                   {l}
                 </button>
@@ -85,7 +83,7 @@ export function PlacementView() {
             <button
               disabled={busy || level === 1}
               onClick={() => void apply(knownBelow(vocab, level))}
-              className="mt-4 h-12 w-full rounded-2xl border-2 border-line font-medium disabled:opacity-50"
+              className="mt-4 h-12 w-full rounded-2xl border border-line font-medium disabled:opacity-50"
             >
               {level === 1 ? 'HSK 1: start from the beginning' : `Start at HSK ${level} (${knownBelow(vocab, level).length.toLocaleString('en-GB')} words known)`}
             </button>
@@ -110,13 +108,13 @@ export function PlacementView() {
             ))}
           </ul>
           <p className="mt-5">
-            That puts about <span className="font-bold">{phase.known.length.toLocaleString('en-GB')} words</span> in the "known" pile
+            That puts about <span className="font-semibold">{phase.known.length.toLocaleString('en-GB')} words</span> in the "known" pile
             {right.size ? `, including the ${right.size} you got right` : ''}.
           </p>
           <button disabled={busy} onClick={() => void apply(phase.known)} className="press mt-5 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
             {busy ? 'Saving…' : `Mark ${phase.known.length.toLocaleString('en-GB')} words as known`}
           </button>
-          <button onClick={() => setPhase({ kind: 'start' })} className="mt-3 h-12 w-full rounded-2xl border-2 border-line font-medium">
+          <button onClick={() => setPhase({ kind: 'start' })} className="mt-3 h-12 w-full rounded-2xl border border-line font-medium">
             Not now
           </button>
         </>
@@ -124,7 +122,7 @@ export function PlacementView() {
       {phase.kind === 'done' && (
         <>
           <p className="mt-4 text-lg">
-            Done: <span className="font-bold">{phase.count.toLocaleString('en-GB')}</span> words marked as known. New words now start after them.
+            Done: <span className="font-semibold">{phase.count.toLocaleString('en-GB')}</span> words marked as known. New words now start after them.
           </p>
           <button onClick={() => go('')} className="press mt-6 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
             Home
@@ -209,7 +207,7 @@ function PlacementTest({ vocab, onDone }: { vocab: VocabRow[]; onDone: (r: Level
           <div className="mt-8">
             <PinyinInput value={text} onChange={setText} />
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <button onClick={() => check(true)} className="h-14 rounded-2xl border-2 border-line font-medium">
+              <button onClick={() => check(true)} className="h-14 rounded-2xl border border-line font-medium">
                 I don't know
               </button>
               <button onClick={() => check()} disabled={!text.trim()} className="press h-14 rounded-2xl bg-jade text-lg font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted">

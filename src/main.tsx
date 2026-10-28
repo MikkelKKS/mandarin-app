@@ -8,16 +8,14 @@ import { startSync } from './sync';
 import { runLegacyMigration } from './lib/review';
 import { startAudioReports } from './lib/audioReports';
 import { loadSpeakPause, migrateSettings } from './lib/settings';
-import { startPackRegistry } from './features/packs/store';
-import { startMyWordsRegistry } from './features/dictionary/mywords';
+import { migrateMyWords } from './features/dictionary/mywords';
 import './index.css';
 
 registerSW({ immediate: true });
-startPackRegistry();
-startMyWordsRegistry();
 void loadSpeakPause();
 void migrateSettings();
 void runLegacyMigration();
+void migrateMyWords();
 startAudioReports();
 void startSync();
 

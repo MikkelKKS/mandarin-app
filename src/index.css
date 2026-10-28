@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-han: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'Source Han Sans SC', sans-serif;
 
   --color-bg: var(--bg);
@@ -24,50 +24,61 @@
   --color-t3: var(--t3);
   --color-t4: var(--t4);
   --color-t5: var(--t5);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --spacing-13: 3.25rem;
 }
 
 :root {
-  --bg: #eef3f0;
+  /* Porcelain and ink: cool, quiet surfaces; jade for action; tone colours are the only other bright colours. */
+  --bg: #f2f4f3;
   --surface: #ffffff;
-  --sunk: #e3eae6;
-  --ink: #18222c;
-  --muted: #56636e;
-  --line: #d3ddd8;
-  --jade: #157a5d;
+  --sunk: #e9eeec;
+  --ink: #142120;
+  --muted: #5b6866;
+  --line: #dde4e1;
+  --jade: #0e6b54;
   --jade-ink: #ffffff;
-  --jade-soft: #d5ede4;
-  --gold: #c98a0c;
-  --cinnabar: #c0362d;
-  --cinnabar-soft: #f8dcd8;
-  --amber-soft: #fbecc8;
+  --jade-soft: #dcede6;
+  --gold: #a8740e;
+  --cinnabar: #b3362a;
+  --cinnabar-soft: #f6dfdb;
+  --amber-soft: #f7eed8;
   /* Tone colours (Pleco-style): 1 red, 2 orange, 3 green, 4 blue, neutral grey. */
   --t1: #d33a2c;
   --t2: #c96a00;
   --t3: #2f8a2a;
   --t4: #1f62c4;
   --t5: #7a848d;
+  --shadow-sm: 0 1px 2px rgb(20 33 32 / 0.05);
+  --shadow-md: 0 1px 2px rgb(20 33 32 / 0.04), 0 6px 20px -8px rgb(20 33 32 / 0.14);
+  --shadow-lg: 0 2px 6px rgb(20 33 32 / 0.06), 0 24px 48px -16px rgb(20 33 32 / 0.25);
   color-scheme: light;
 }
 
 .dark {
-  --bg: #0f1619;
-  --surface: #172126;
-  --sunk: #0b1114;
-  --ink: #e6eeea;
-  --muted: #9babA4;
-  --line: #273539;
-  --jade: #3cc093;
-  --jade-ink: #06241a;
-  --jade-soft: #173a30;
-  --gold: #f0b43c;
-  --cinnabar: #f0705f;
-  --cinnabar-soft: #3d1c19;
-  --amber-soft: #3a2f12;
+  --bg: #0d1413;
+  --surface: #151e1d;
+  --sunk: #0a100f;
+  --ink: #e4ece9;
+  --muted: #94a39f;
+  --line: #263231;
+  --jade: #43b08b;
+  --jade-ink: #04221a;
+  --jade-soft: #163a30;
+  --gold: #e9b04a;
+  --cinnabar: #ef7464;
+  --cinnabar-soft: #3b1d19;
+  --amber-soft: #352c14;
   --t1: #ff6b5e;
   --t2: #f5a442;
   --t3: #6cc865;
   --t4: #62a6ff;
   --t5: #9aa4ad;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -10px rgb(0 0 0 / 0.6);
+  --shadow-lg: 0 2px 6px rgb(0 0 0 / 0.35), 0 24px 48px -16px rgb(0 0 0 / 0.7);
   color-scheme: dark;
 }
 
@@ -84,6 +95,12 @@ body {
   font-family: var(--font-sans);
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'ss01';
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.012em;
 }
 
 .han {
@@ -91,52 +108,92 @@ body {
 }
 
 :focus-visible {
-  outline: 3px solid var(--jade);
+  outline: 2px solid var(--jade);
   outline-offset: 2px;
 }
 
+/* ---------- Components ---------- */
+/* A raised surface: hairline edge, the faintest shadow. */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+/* Rows grouped in one container (settings, lists). */
+.group-list {
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.group-list > * + * {
+  border-top: 1px solid var(--line);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-weight: 600;
+  transition: transform 0.16s var(--ease-out), background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.btn:active:not(:disabled) { transform: scale(0.98); }
+.btn:disabled { opacity: 0.45; }
+.btn-primary {
+  background: var(--jade);
+  color: var(--jade-ink);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), var(--shadow-sm);
+  font-size: 1.0625rem;
+}
+.btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--jade) 92%, black); }
+.btn-quiet {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-weight: 500;
+}
+.btn-quiet:hover:not(:disabled) { border-color: color-mix(in srgb, var(--ink) 25%, var(--line)); }
+
 /* ---------- Motion ----------
-   One easing family: a soft "settle" for entrances and a small overshoot for
-   things that react to a tap. Everything is switched off for reduced motion. */
+   One easing curve, short durations, and motion only where something changes.
+   Everything is switched off for reduced motion. */
 :root {
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.3, 1.3, 0.6, 1);
 }
 
 @keyframes pop {
-  0% { transform: scale(0.85); opacity: 0; }
-  60% { transform: scale(1.06); opacity: 1; }
-  100% { transform: scale(1); }
+  from { transform: scale(0.94); opacity: 0; }
 }
 @keyframes rise {
   from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+}
+@keyframes sheet {
+  from { transform: translateY(24px); opacity: 0; }
 }
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(5px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(2px); }
+  25% { transform: translateX(-4px); }
+  60% { transform: translateX(3px); }
 }
 @keyframes breathe {
-  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--jade) 45%, transparent); }
-  50% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--jade) 0%, transparent); }
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 30%, transparent); }
+  50% { box-shadow: 0 0 0 8px color-mix(in srgb, currentColor 0%, transparent); }
 }
 @keyframes fade {
   from { opacity: 0; }
 }
 @keyframes page-in {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(6px); }
 }
 @keyframes slide-in {
-  from { opacity: 0; transform: translateX(18px); }
+  from { opacity: 0; transform: translateX(12px); }
 }
 @keyframes up {
-  from { opacity: 0; transform: translateY(14px); }
-}
-@keyframes node-in {
-  from { opacity: 0; transform: scale(0.6); }
+  from { opacity: 0; transform: translateY(8px); }
 }
 @keyframes ring-fill {
   from { stroke-dashoffset: var(--ring-c); }
@@ -148,70 +205,40 @@ body {
   from { transform: scaleY(0); }
 }
 @keyframes nudge {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.035); }
-  100% { transform: scale(1); }
+  40% { transform: scale(1.02); }
 }
 @keyframes tile-in {
-  from { opacity: 0; transform: scale(0.7) translateY(6px); }
+  from { opacity: 0; transform: scale(0.92); }
 }
-/* The end-of-lesson seal is pressed onto the page like a chop. */
+/* The end-of-session seal is pressed onto the page like a chop: the one flourish. */
 @keyframes stamp {
-  0% { opacity: 0; transform: scale(1.7) rotate(-14deg); }
-  55% { opacity: 1; transform: scale(0.92) rotate(-5deg); }
-  75% { transform: scale(1.03) rotate(-6deg); }
+  0% { opacity: 0; transform: scale(1.4) rotate(-10deg); }
+  70% { opacity: 1; transform: scale(0.97) rotate(-6deg); }
   100% { opacity: 1; transform: scale(1) rotate(-6deg); }
 }
-@keyframes ripple {
-  0% { opacity: 0.55; transform: scale(0.9); }
-  100% { opacity: 0; transform: scale(1.6); }
-}
-@keyframes spark {
-  0% { opacity: 0; transform: rotate(var(--a)) translateY(-40px) scale(0.3); }
-  20% { opacity: 1; }
-  100% { opacity: 0; transform: rotate(var(--a)) translateY(-104px) scale(1); }
-}
 
-.anim-pop { animation: pop 0.35s var(--ease-out) both; }
-.anim-rise { animation: rise 0.32s var(--ease-out) both; }
-.anim-shake { animation: shake 0.4s ease-in-out; }
-.anim-breathe { animation: breathe 2.4s ease-in-out infinite; }
-.anim-fade { animation: fade 0.25s ease-out both; }
-/* "backwards", not "both": a transform left on the page would break position: fixed sheets inside it. */
+.anim-pop { animation: pop 0.22s var(--ease-out) both; }
+.anim-rise { animation: rise 0.28s var(--ease-out) both; }
+.anim-sheet { animation: sheet 0.26s var(--ease-out) both; }
+.anim-shake { animation: shake 0.3s ease-in-out; }
+.anim-breathe { animation: breathe 1.8s ease-in-out infinite; }
+.anim-fade { animation: fade 0.2s ease-out both; }
 /* backwards (not both): a transform kept on the page would break position: fixed sheets inside it. */
-.anim-page { animation: page-in 0.32s var(--ease-out) backwards; }
-.anim-slide { animation: slide-in 0.3s var(--ease-out) backwards; }
-.anim-up { animation: up 0.45s var(--ease-out) both; }
-.anim-node { animation: node-in 0.45s var(--ease-spring) both; }
-.anim-ring { animation: ring-fill 0.9s var(--ease-out) 0.15s both; }
-.anim-grow-x { transform-origin: left; animation: grow-x 0.8s var(--ease-out) both; }
-.anim-grow-y { transform-origin: bottom; animation: grow-y 0.6s var(--ease-out) both; }
-.anim-nudge { animation: nudge 0.35s var(--ease-spring); }
-.anim-tile { animation: tile-in 0.22s var(--ease-spring) backwards; }
-.anim-stamp { animation: stamp 0.6s var(--ease-out) 0.1s both; }
-.anim-ripple { animation: ripple 0.9s var(--ease-out) 0.38s both; }
-.anim-spark { animation: spark 0.8s var(--ease-out) 0.4s both; }
+.anim-page { animation: page-in 0.24s var(--ease-out) backwards; }
+.anim-slide { animation: slide-in 0.24s var(--ease-out) backwards; }
+.anim-up { animation: up 0.3s var(--ease-out) both; }
+.anim-ring { animation: ring-fill 0.8s var(--ease-out) 0.1s both; }
+.anim-grow-x { transform-origin: left; animation: grow-x 0.6s var(--ease-out) both; }
+.anim-grow-y { transform-origin: bottom; animation: grow-y 0.5s var(--ease-out) both; }
+.anim-nudge { animation: nudge 0.25s var(--ease-out); }
+.anim-tile { animation: tile-in 0.18s var(--ease-out) backwards; }
+.anim-stamp { animation: stamp 0.5s var(--ease-out) 0.15s both; }
 
-/* Staggered entrance for short lists. */
-.stagger > * { animation: up 0.4s var(--ease-out) backwards; }
-.stagger > :nth-child(2) { animation-delay: 40ms; }
-.stagger > :nth-child(3) { animation-delay: 80ms; }
-.stagger > :nth-child(4) { animation-delay: 120ms; }
-.stagger > :nth-child(5) { animation-delay: 160ms; }
-.stagger > :nth-child(6) { animation-delay: 200ms; }
-.stagger > :nth-child(7) { animation-delay: 240ms; }
-.stagger > :nth-child(n + 8) { animation-delay: 280ms; }
-
-/* Chunky game buttons: a darker lip that presses in. Works on any fill colour. */
+/* Tactile feedback on tappable things. */
 .press {
-  box-shadow: inset 0 -4px 0 rgb(0 0 0 / 0.18);
-  transition: transform 0.12s var(--ease-out), box-shadow 0.12s var(--ease-out), background-color 0.2s, color 0.2s;
+  transition: transform 0.16s var(--ease-out), background-color 0.2s, color 0.2s, border-color 0.2s;
 }
-.press:active:not(:disabled) {
-  transform: translateY(2px);
-  box-shadow: inset 0 -2px 0 rgb(0 0 0 / 0.18);
-}
-.press:disabled { box-shadow: none; }
+.press:active:not(:disabled) { transform: scale(0.98); }
 
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -221,5 +248,4 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .anim-spark, .anim-ripple { display: none; }
 }

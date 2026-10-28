@@ -125,7 +125,7 @@ function Intro({ data, word, onResult }: ItemProps & { word: string }) {
       <Hanzi text={w.hanzi} className="mt-2 block text-3xl text-muted" />
       <p className="mt-4 text-xl">{glossOf(w)}</p>
       {ex && (
-        <div className="mt-8 w-full rounded-2xl bg-surface p-4 text-left">
+        <div className="mt-8 w-full rounded-2xl bg-surface p-4 text-left border border-line">
           <div className="flex items-center gap-3">
             <button onClick={() => void play(ex.id)} aria-label="Play the example" className="rounded-full bg-jade-soft p-2 text-jade">
               <Speaker className="h-5 w-5" />
@@ -201,7 +201,7 @@ function ListenMeaning({ data, word, onResult, onUnknown }: ItemProps & { word: 
             placeholder="Type the meaning (optional)"
             aria-label="The meaning in English"
             autoComplete="off"
-            className="w-full rounded-2xl border-2 border-line bg-surface px-4 py-4 text-lg outline-none focus:border-jade"
+            className="w-full rounded-2xl border border-line bg-surface px-4 py-4 text-lg outline-none focus:border-jade"
           />
           <button onClick={() => setShown(true)} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
             Show the answer
@@ -209,7 +209,7 @@ function ListenMeaning({ data, word, onResult, onUnknown }: ItemProps & { word: 
           <DontKnow onUnknown={onUnknown} />
         </div>
       ) : (
-        <div className="anim-rise mt-8 rounded-2xl bg-surface p-4">
+        <div className="anim-rise mt-8 rounded-2xl bg-surface p-4 border border-line">
           <TonePinyin pinyin={w.pinyin} className="text-3xl font-semibold" /> <Hanzi text={w.hanzi} className="ml-2 text-2xl text-muted" />
           <p className="mt-1 text-lg">{glossOf(w)}</p>
           {match !== null && <p className={`mt-1 text-sm ${match ? 'text-jade' : 'text-muted'}`}>{match ? 'Your answer matches.' : `You wrote “${typed.trim()}”.`}</p>}
@@ -248,7 +248,7 @@ function SelfGrade({ onGrade, suggest }: { onGrade: (r: RatingName) => void; sug
           <button
             key={o.r}
             onClick={() => onGrade(o.r)}
-            className={`flex h-16 flex-col items-center justify-center rounded-2xl border-2 font-semibold transition active:scale-95 ${suggest === o.r ? 'border-jade bg-jade-soft' : 'border-line bg-surface'}`}
+            className={`flex h-16 flex-col items-center justify-center rounded-2xl border font-semibold transition active:scale-95 ${suggest === o.r ? 'border-jade bg-jade-soft' : 'border-line bg-surface'}`}
           >
             {o.label}
             <span className="text-[11px] font-normal text-muted">
@@ -309,7 +309,7 @@ function MeaningToPinyin({ data, word, onResult, onUnknown }: ItemProps & { word
   return (
     <div>
       <Prompt>How do you say it? Type the pinyin with tones</Prompt>
-      <p className="rounded-2xl bg-surface p-5 text-center text-2xl font-semibold">{glossOf(w)}</p>
+      <p className="rounded-2xl bg-surface p-5 text-center text-2xl font-semibold border border-line">{glossOf(w)}</p>
       <TypeBox {...t} onUnknown={onUnknown} />
     </div>
   );
@@ -346,18 +346,18 @@ function SentenceMeaning({ data, sentence, onResult }: ItemProps & { sentence: s
           Show what it says
         </button>
       ) : (
-        <div className="anim-rise mt-8 rounded-2xl bg-surface p-4">
+        <div className="anim-rise mt-8 rounded-2xl bg-surface p-4 border border-line">
           <TonePinyin pinyin={s.pinyin} className="block text-xl" />
           <Hanzi text={s.hanzi} className="block text-lg text-muted" />
           <p className="mt-1">{s.english[0]}</p>
           <div className="mt-4 grid grid-cols-3 gap-2">
-            <button onClick={() => answer('wrong')} className="h-14 rounded-2xl border-2 border-line bg-surface font-semibold">
+            <button onClick={() => answer('wrong')} className="h-14 rounded-2xl border border-line bg-surface font-semibold">
               Not really
             </button>
-            <button onClick={() => answer('almost')} className="h-14 rounded-2xl border-2 border-line bg-surface font-semibold">
+            <button onClick={() => answer('almost')} className="h-14 rounded-2xl border border-line bg-surface font-semibold">
               Partly
             </button>
-            <button onClick={() => answer('correct')} className="h-14 rounded-2xl border-2 border-jade bg-jade-soft font-semibold">
+            <button onClick={() => answer('correct')} className="h-14 rounded-2xl border border-jade bg-jade-soft font-semibold">
               Yes
             </button>
           </div>
@@ -440,7 +440,7 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
                     onClick={() => pick(slot, t)}
                     disabled={done}
                     aria-label={`${TONE_WORD[t]} tone${gym.tones.length > 1 ? `, syllable ${slot + 1}` : ''}`}
-                    className={`h-14 rounded-2xl border-2 text-lg font-semibold ${TONE_TEXT[t]} ${right ? 'border-jade bg-jade-soft' : done && chosen ? 'border-cinnabar bg-cinnabar-soft' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'}`}
+                    className={`h-14 rounded-2xl border text-lg font-semibold ${TONE_TEXT[t]} ${right ? 'border-jade bg-jade-soft' : done && chosen ? 'border-cinnabar bg-cinnabar-soft' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'}`}
                   >
                     {markSyllable({ base: gym.bases[slot], tone: t })}
                   </button>
