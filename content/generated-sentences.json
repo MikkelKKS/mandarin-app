@@ -1,0 +1,2129 @@
+{
+ "_about": "Example sentences written for this app for HSK 1–4 words that had no Tatoeba or course sentence. Marked 'generated' in content/data/sentences.json and listed in content/REVIEW_NEEDED.md for a native speaker to check. Pinyin uses dictionary tones, like the Tatoeba sentences.",
+ "sentences": [
+  {
+   "word": "nin2-32af0",
+   "zh": "老师，您好！",
+   "py": "Lǎoshī, nín hǎo!",
+   "en": "Hello, teacher! (polite)"
+  },
+  {
+   "word": "da3qiu2-gt1x6",
+   "zh": "我们下午去打球吧。",
+   "py": "Wǒmen xiàwǔ qù dǎqiú ba.",
+   "en": "Let's go and play ball this afternoon."
+  },
+  {
+   "word": "li3bian5-dywp3",
+   "zh": "里边有很多人。",
+   "py": "Lǐbian yǒu hěn duō rén.",
+   "en": "There are a lot of people inside."
+  },
+  {
+   "word": "ben3zi5-a9cwf",
+   "zh": "这是我的本子。",
+   "py": "Zhè shì wǒ de běnzi.",
+   "en": "This is my notebook."
+  },
+  {
+   "word": "hou4bian5-2q74h",
+   "zh": "学校后边有一个公园。",
+   "py": "Xuéxiào hòubian yǒu yī gè gōngyuán.",
+   "en": "There's a park behind the school."
+  },
+  {
+   "word": "bao1zi5-kpnxb",
+   "zh": "我早上吃了两个包子。",
+   "py": "Wǒ zǎoshang chī le liǎng gè bāozi.",
+   "en": "I had two steamed buns this morning."
+  },
+  {
+   "word": "qian2bian5-79cyn",
+   "zh": "前边就是医院。",
+   "py": "Qiánbian jiù shì yīyuàn.",
+   "en": "The hospital is just ahead."
+  },
+  {
+   "word": "wang3you3-7l6lx",
+   "zh": "他是我的网友。",
+   "py": "Tā shì wǒ de wǎngyǒu.",
+   "en": "He's a friend I met online."
+  },
+  {
+   "word": "ting1xie3-jq5ba",
+   "zh": "今天我们有听写。",
+   "py": "Jīntiān wǒmen yǒu tīngxiě.",
+   "en": "We have a dictation today."
+  },
+  {
+   "word": "mian4tiao2r5-bqvno",
+   "zh": "我想吃面条儿。",
+   "py": "Wǒ xiǎng chī miàntiáor.",
+   "en": "I'd like to eat noodles."
+  },
+  {
+   "word": "de2-6kfcp",
+   "zh": "他得了第一名。",
+   "py": "Tā dé le dì yī míng.",
+   "en": "He came first."
+  },
+  {
+   "word": "tou5-x2we2",
+   "zh": "外头很冷。",
+   "py": "Wàitou hěn lěng.",
+   "en": "It's cold outside."
+  },
+  {
+   "word": "dao4-8jfn3",
+   "zh": "请给我倒一杯水。",
+   "py": "Qǐng gěi wǒ dào yī bēi shuǐ.",
+   "en": "Please pour me a glass of water."
+  },
+  {
+   "word": "xiao3zu3-gi67w",
+   "zh": "我们分成三个小组。",
+   "py": "Wǒmen fēnchéng sān gè xiǎozǔ.",
+   "en": "We split into three groups."
+  },
+  {
+   "word": "gao1ji2-4t85l",
+   "zh": "这是一家高级饭店。",
+   "py": "Zhè shì yī jiā gāojí fàndiàn.",
+   "en": "This is a high-end restaurant."
+  },
+  {
+   "word": "zhou1nian2-b5jyo",
+   "zh": "今天是我们结婚十周年。",
+   "py": "Jīntiān shì wǒmen jiéhūn shí zhōunián.",
+   "en": "Today is our tenth wedding anniversary."
+  },
+  {
+   "word": "li4ru2-zn6lq",
+   "zh": "我喜欢运动，例如跑步。",
+   "py": "Wǒ xǐhuan yùndòng, lìrú pǎobù.",
+   "en": "I like sport, for example running."
+  },
+  {
+   "word": "zhe4shi2-561dp",
+   "zh": "这时，电话响了。",
+   "py": "Zhè shí, diànhuà xiǎng le.",
+   "en": "Just then, the phone rang."
+  },
+  {
+   "word": "lv3ke4-z97c7",
+   "zh": "车上的旅客都很累。",
+   "py": "Chē shang de lǚkè dōu hěn lèi.",
+   "en": "The passengers on the train are all tired."
+  },
+  {
+   "word": "yuan4zhang3-y1ydu",
+   "zh": "医院的院长是一个医生。",
+   "py": "Yīyuàn de yuànzhǎng shì yī gè yīshēng.",
+   "en": "The head of the hospital is a doctor."
+  },
+  {
+   "word": "dong1bei3-kcvww",
+   "zh": "东北的冬天很冷。",
+   "py": "Dōngběi de dōngtiān hěn lěng.",
+   "en": "Winters in the northeast are very cold."
+  },
+  {
+   "word": "zhong1nian2-y6wi1",
+   "zh": "我爸爸是中年人。",
+   "py": "Wǒ bàba shì zhōngnián rén.",
+   "en": "My dad is middle-aged."
+  },
+  {
+   "word": "ming2cheng1-7kryl",
+   "zh": "这个公司的名称是什么？",
+   "py": "Zhège gōngsī de míngchēng shì shénme?",
+   "en": "What's the name of this company?"
+  },
+  {
+   "word": "ju3shou3-cgdww",
+   "zh": "知道的同学请举手。",
+   "py": "Zhīdào de tóngxué qǐng jǔshǒu.",
+   "en": "Raise your hand if you know."
+  },
+  {
+   "word": "xi1nan2-oqxck",
+   "zh": "这个城市在中国西南。",
+   "py": "Zhège chéngshì zài Zhōngguó xīnán.",
+   "en": "This city is in southwest China."
+  },
+  {
+   "word": "xi1bei3-hlecc",
+   "zh": "西北有很多山。",
+   "py": "Xīběi yǒu hěn duō shān.",
+   "en": "There are many mountains in the northwest."
+  },
+  {
+   "word": "zhu4fang2-7v8g6",
+   "zh": "这里的住房很贵。",
+   "py": "Zhèlǐ de zhùfáng hěn guì.",
+   "en": "Housing here is expensive."
+  },
+  {
+   "word": "ti3yu4guan3-pbtq0",
+   "zh": "我们在体育馆打球。",
+   "py": "Wǒmen zài tǐyùguǎn dǎqiú.",
+   "en": "We play ball in the sports hall."
+  },
+  {
+   "word": "da3yin4-6gdga",
+   "zh": "请帮我打印一下。",
+   "py": "Qǐng bāng wǒ dǎyìn yīxià.",
+   "en": "Please print this for me."
+  },
+  {
+   "word": "lao3nian2-dn87b",
+   "zh": "老年人要多休息。",
+   "py": "Lǎonián rén yào duō xiūxi.",
+   "en": "Old people need plenty of rest."
+  },
+  {
+   "word": "zhao4xiang4-1qfi3",
+   "zh": "我们在这儿照相吧。",
+   "py": "Wǒmen zài zhèr zhàoxiàng ba.",
+   "en": "Let's take a photo here."
+  },
+  {
+   "word": "yao4dian4-wmkec",
+   "zh": "前边有一家药店。",
+   "py": "Qiánbian yǒu yī jiā yàodiàn.",
+   "en": "There's a pharmacy up ahead."
+  },
+  {
+   "word": "ban1zhang3-wsep0",
+   "zh": "他是我们的班长。",
+   "py": "Tā shì wǒmen de bānzhǎng.",
+   "en": "He's our class monitor."
+  },
+  {
+   "word": "li3tou5-520ei",
+   "zh": "包里头有什么？",
+   "py": "Bāo lǐtou yǒu shénme?",
+   "en": "What's in the bag?"
+  },
+  {
+   "word": "dong1nan2-zhg7k",
+   "zh": "风从东南来。",
+   "py": "Fēng cóng dōngnán lái.",
+   "en": "The wind is coming from the southeast."
+  },
+  {
+   "word": "zhan4zhu4-d6egd",
+   "zh": "站住！别走！",
+   "py": "Zhànzhù! Bié zǒu!",
+   "en": "Stop! Don't go!"
+  },
+  {
+   "word": "kai1ji1-tw3g9",
+   "zh": "我的手机开不了机。",
+   "py": "Wǒ de shǒujī kāi bu liǎo jī.",
+   "en": "My phone won't turn on."
+  },
+  {
+   "word": "gan1bei1-sjl88",
+   "zh": "为我们的朋友干杯！",
+   "py": "Wèi wǒmen de péngyou gānbēi!",
+   "en": "To our friends, cheers!"
+  },
+  {
+   "word": "fang1bian4mian4-alpjx",
+   "zh": "我晚上吃了方便面。",
+   "py": "Wǒ wǎnshang chī le fāngbiànmiàn.",
+   "en": "I had instant noodles tonight."
+  },
+  {
+   "word": "qiu2xie2-z8jws",
+   "zh": "我买了一双新球鞋。",
+   "py": "Wǒ mǎi le yī shuāng xīn qiúxié.",
+   "en": "I bought a new pair of trainers."
+  },
+  {
+   "word": "wan3bao4-y5qp1",
+   "zh": "爷爷每天看晚报。",
+   "py": "Yéye měitiān kàn wǎnbào.",
+   "en": "Grandpa reads the evening paper every day."
+  },
+  {
+   "word": "nan2ting1-nylu3",
+   "zh": "这首歌很难听。",
+   "py": "Zhè shǒu gē hěn nántīng.",
+   "en": "This song sounds awful."
+  },
+  {
+   "word": "yao4shui3-g9imv",
+   "zh": "这个药水一天喝三次。",
+   "py": "Zhège yàoshuǐ yī tiān hē sān cì.",
+   "en": "Take this liquid medicine three times a day."
+  },
+  {
+   "word": "zhong1yi1-1gux5",
+   "zh": "她妈妈是中医。",
+   "py": "Tā māma shì zhōngyī.",
+   "en": "Her mum is a doctor of Chinese medicine."
+  },
+  {
+   "word": "huai4chu5-x6abk",
+   "zh": "睡得太少有很多坏处。",
+   "py": "Shuì de tài shǎo yǒu hěn duō huàichu.",
+   "en": "Sleeping too little does a lot of harm."
+  },
+  {
+   "word": "qian2nian2-pnpab",
+   "zh": "我前年去了北京。",
+   "py": "Wǒ qiánnián qù le Běijīng.",
+   "en": "I went to Beijing the year before last."
+  },
+  {
+   "word": "qian1ke4-1suhx",
+   "zh": "这个西瓜五千克。",
+   "py": "Zhège xīguā wǔ qiānkè.",
+   "en": "This watermelon weighs five kilos."
+  },
+  {
+   "word": "jiao4zuo4-n0qxv",
+   "zh": "这种花叫作什么？",
+   "py": "Zhè zhǒng huā jiàozuò shénme?",
+   "en": "What's this kind of flower called?"
+  },
+  {
+   "word": "zhong1ji2-h8nbx",
+   "zh": "我在上中级班。",
+   "py": "Wǒ zài shàng zhōngjí bān.",
+   "en": "I'm in the intermediate class."
+  },
+  {
+   "word": "xi1yi1-8xn7u",
+   "zh": "他看了西医，也看了中医。",
+   "py": "Tā kàn le xīyī, yě kàn le zhōngyī.",
+   "en": "He saw a Western doctor and a Chinese one."
+  },
+  {
+   "word": "kao3sheng1-nrn8j",
+   "zh": "考生们都很紧张。",
+   "py": "Kǎoshēngmen dōu hěn jǐnzhāng.",
+   "en": "The candidates are all nervous."
+  },
+  {
+   "word": "du2yin1-azadn",
+   "zh": "这个字的读音是什么？",
+   "py": "Zhège zì de dúyīn shì shénme?",
+   "en": "How is this character pronounced?"
+  },
+  {
+   "word": "zhong1xiao3xue2-8vmeo",
+   "zh": "中小学明天放假。",
+   "py": "Zhōngxiǎoxué míngtiān fàngjià.",
+   "en": "Schools are closed tomorrow."
+  },
+  {
+   "word": "xi1can1-pjdgt",
+   "zh": "你喜欢吃西餐吗？",
+   "py": "Nǐ xǐhuan chī xīcān ma?",
+   "en": "Do you like Western food?"
+  },
+  {
+   "word": "bu4yi1hui4r5-fkp3q",
+   "zh": "不一会儿，他就回来了。",
+   "py": "Bù yīhuìr, tā jiù huílai le.",
+   "en": "He was back in no time."
+  },
+  {
+   "word": "gan4huo2r5-ufc8s",
+   "zh": "他在外面干活儿。",
+   "py": "Tā zài wàimiàn gànhuór.",
+   "en": "He's working outside."
+  },
+  {
+   "word": "lao3wang2-3y2z9",
+   "zh": "老王是我的邻居。",
+   "py": "Lǎo Wáng shì wǒ de línjū.",
+   "en": "Old Wang is my neighbour."
+  },
+  {
+   "word": "xiao4hua5r5-lta2x",
+   "zh": "爸爸给我讲了一个笑话儿。",
+   "py": "Bàba gěi wǒ jiǎng le yī gè xiàohuar.",
+   "en": "Dad told me a joke."
+  },
+  {
+   "word": "you3kong4r5-bs1u5",
+   "zh": "你明天有空儿吗？",
+   "py": "Nǐ míngtiān yǒu kòngr ma?",
+   "en": "Are you free tomorrow?"
+  },
+  {
+   "word": "liao3-7435x",
+   "zh": "这么多菜，我吃不了。",
+   "py": "Zhème duō cài, wǒ chī bu liǎo.",
+   "en": "That's more food than I can eat."
+  },
+  {
+   "word": "wei2-ek0mk",
+   "zh": "大家选他为班长。",
+   "py": "Dàjiā xuǎn tā wéi bānzhǎng.",
+   "en": "Everyone chose him as class monitor."
+  },
+  {
+   "word": "hang2-p28pt",
+   "zh": "请看第三行。",
+   "py": "Qǐng kàn dì sān háng.",
+   "en": "Please look at line three."
+  },
+  {
+   "word": "chong2-drorj",
+   "zh": "请你重写一遍。",
+   "py": "Qǐng nǐ chóng xiě yī biàn.",
+   "en": "Please write it again."
+  },
+  {
+   "word": "jing1shen5-fgb9j",
+   "zh": "你今天很精神。",
+   "py": "Nǐ jīntiān hěn jīngshen.",
+   "en": "You look full of energy today."
+  },
+  {
+   "word": "tiao2-6yyx1",
+   "zh": "房间太冷了，把空调调高一点儿。",
+   "py": "Fángjiān tài lěng le, bǎ kōngtiáo tiáo gāo yīdiǎnr.",
+   "en": "The room's too cold; turn the heating up a bit."
+  },
+  {
+   "word": "bei1-nfuu6",
+   "zh": "他背着一个大包。",
+   "py": "Tā bēi zhe yī gè dà bāo.",
+   "en": "He's carrying a big bag on his back."
+  },
+  {
+   "word": "dui4xiang4-lrmu4",
+   "zh": "你有对象了吗？",
+   "py": "Nǐ yǒu duìxiàng le ma?",
+   "en": "Are you seeing someone?"
+  },
+  {
+   "word": "jue2sai4-dqn2q",
+   "zh": "我们进了决赛！",
+   "py": "Wǒmen jìn le juésài!",
+   "en": "We made it to the final!"
+  },
+  {
+   "word": "chang3-n4hnt",
+   "zh": "他在一家工厂上班。",
+   "py": "Tā zài yī jiā gōngchǎng shàngbān.",
+   "en": "He works at a factory."
+  },
+  {
+   "word": "pei4he2-9884d",
+   "zh": "我们配合得很好。",
+   "py": "Wǒmen pèihé de hěn hǎo.",
+   "en": "We work very well together."
+  },
+  {
+   "word": "jie2he2-wwuqj",
+   "zh": "学习要和生活结合起来。",
+   "py": "Xuéxí yào hé shēnghuó jiéhé qǐlai.",
+   "en": "Study should be linked to daily life."
+  },
+  {
+   "word": "gong1bu4-sovmf",
+   "zh": "考试成绩明天公布。",
+   "py": "Kǎoshì chéngjì míngtiān gōngbù.",
+   "en": "The exam results come out tomorrow."
+  },
+  {
+   "word": "dong4li4-te8qj",
+   "zh": "家人是我学习的动力。",
+   "py": "Jiārén shì wǒ xuéxí de dònglì.",
+   "en": "My family is my motivation to study."
+  },
+  {
+   "word": "ling3xian1-365dh",
+   "zh": "我们队现在领先。",
+   "py": "Wǒmen duì xiànzài lǐngxiān.",
+   "en": "Our team is in the lead now."
+  },
+  {
+   "word": "sheng1ming2-1u1t2",
+   "zh": "公司发了一个声明。",
+   "py": "Gōngsī fā le yī gè shēngmíng.",
+   "en": "The company issued a statement."
+  },
+  {
+   "word": "lu4xian4-9i68m",
+   "zh": "我们走哪条路线？",
+   "py": "Wǒmen zǒu nǎ tiáo lùxiàn?",
+   "en": "Which route shall we take?"
+  },
+  {
+   "word": "shen1ru4-tz4xf",
+   "zh": "我们要深入了解这个问题。",
+   "py": "Wǒmen yào shēnrù liǎojiě zhège wèntí.",
+   "en": "We need to understand this problem in depth."
+  },
+  {
+   "word": "jia1qiang2-cdcsq",
+   "zh": "我要加强口语练习。",
+   "py": "Wǒ yào jiāqiáng kǒuyǔ liànxí.",
+   "en": "I need to do more speaking practice."
+  },
+  {
+   "word": "ba3wo4-gzhus",
+   "zh": "这次考试我很有把握。",
+   "py": "Zhè cì kǎoshì wǒ hěn yǒu bǎwò.",
+   "en": "I'm confident about this exam."
+  },
+  {
+   "word": "chuan2shuo1-f85ec",
+   "zh": "这是一个古老的传说。",
+   "py": "Zhè shì yī gè gǔlǎo de chuánshuō.",
+   "en": "This is an old legend."
+  },
+  {
+   "word": "zhu3chi2-fb5ep",
+   "zh": "今天的会由她主持。",
+   "py": "Jīntiān de huì yóu tā zhǔchí.",
+   "en": "She's chairing today's meeting."
+  },
+  {
+   "word": "xi1bu4-i1cab",
+   "zh": "中国西部有很多高山。",
+   "py": "Zhōngguó xībù yǒu hěn duō gāo shān.",
+   "en": "Western China has many high mountains."
+  },
+  {
+   "word": "zhi2bo1-40ul3",
+   "zh": "比赛在电视上直播。",
+   "py": "Bǐsài zài diànshì shang zhíbō.",
+   "en": "The match is shown live on TV."
+  },
+  {
+   "word": "ge4zi4-1bpre",
+   "zh": "下课以后，大家各自回家。",
+   "py": "Xiàkè yǐhòu, dàjiā gèzì huí jiā.",
+   "en": "After class, everyone went their own way home."
+  },
+  {
+   "word": "ti3hui4-9l0qi",
+   "zh": "我体会到了学中文的快乐。",
+   "py": "Wǒ tǐhuì dào le xué Zhōngwén de kuàilè.",
+   "en": "I've come to feel the joy of learning Chinese."
+  },
+  {
+   "word": "gao1su4-enwfw",
+   "zh": "我们走高速吧。",
+   "py": "Wǒmen zǒu gāosù ba.",
+   "en": "Let's take the motorway."
+  },
+  {
+   "word": "huan1le4-jjco1",
+   "zh": "新年是一个欢乐的节日。",
+   "py": "Xīnnián shì yī gè huānlè de jiérì.",
+   "en": "New Year is a joyful holiday."
+  },
+  {
+   "word": "jia1kuai4-gugsb",
+   "zh": "我们得加快速度。",
+   "py": "Wǒmen děi jiākuài sùdù.",
+   "en": "We need to speed up."
+  },
+  {
+   "word": "dai4ling3-5uvie",
+   "zh": "老师带领学生去参观。",
+   "py": "Lǎoshī dàilǐng xuésheng qù cānguān.",
+   "en": "The teacher took the students on a visit."
+  },
+  {
+   "word": "ti3xian4-anehy",
+   "zh": "这件事体现了他的能力。",
+   "py": "Zhè jiàn shì tǐxiàn le tā de nénglì.",
+   "en": "This shows what he's capable of."
+  },
+  {
+   "word": "nan2du4-b1m97",
+   "zh": "这次考试难度很大。",
+   "py": "Zhè cì kǎoshì nándù hěn dà.",
+   "en": "This exam is very difficult."
+  },
+  {
+   "word": "fan3fu4-wlzn6",
+   "zh": "我反复听了很多遍。",
+   "py": "Wǒ fǎnfù tīng le hěn duō biàn.",
+   "en": "I listened to it over and over."
+  },
+  {
+   "word": "chu1bu4-ugv1f",
+   "zh": "我们有了一个初步的计划。",
+   "py": "Wǒmen yǒu le yī gè chūbù de jìhuà.",
+   "en": "We have a rough plan."
+  },
+  {
+   "word": "bi3li4-zws8r",
+   "zh": "我们班男女生的比例是一比一。",
+   "py": "Wǒmen bān nánnǚshēng de bǐlì shì yī bǐ yī.",
+   "en": "Our class is half boys, half girls."
+  },
+  {
+   "word": "shu1ru4-90pyh",
+   "zh": "请输入你的名字。",
+   "py": "Qǐng shūrù nǐ de míngzi.",
+   "en": "Please enter your name."
+  },
+  {
+   "word": "zong3jie2-4ivoo",
+   "zh": "最后，我来总结一下。",
+   "py": "Zuìhòu, wǒ lái zǒngjié yīxià.",
+   "en": "Finally, let me sum up."
+  },
+  {
+   "word": "ling4yi1fang1mian4-8oolx",
+   "zh": "另一方面，这样也很贵。",
+   "py": "Lìng yī fāngmiàn, zhèyàng yě hěn guì.",
+   "en": "On the other hand, it's also expensive."
+  },
+  {
+   "word": "ren4ke3-ox8ys",
+   "zh": "他的能力得到了大家的认可。",
+   "py": "Tā de nénglì dédào le dàjiā de rènkě.",
+   "en": "Everyone recognises his ability."
+  },
+  {
+   "word": "jia1shu3-cmrb3",
+   "zh": "病人的家属在外面等。",
+   "py": "Bìngrén de jiāshǔ zài wàimiàn děng.",
+   "en": "The patient's family are waiting outside."
+  },
+  {
+   "word": "jian1jue2-vpylx",
+   "zh": "他坚决不同意。",
+   "py": "Tā jiānjué bù tóngyì.",
+   "en": "He's firmly against it."
+  },
+  {
+   "word": "she4li4-u81j1",
+   "zh": "学校设立了一个新专业。",
+   "py": "Xuéxiào shèlì le yī gè xīn zhuānyè.",
+   "en": "The university set up a new programme."
+  },
+  {
+   "word": "shou3xu4-r4xp6",
+   "zh": "手续都办好了。",
+   "py": "Shǒuxù dōu bàn hǎo le.",
+   "en": "All the paperwork is done."
+  },
+  {
+   "word": "lu4yin1-2plaz",
+   "zh": "请听录音。",
+   "py": "Qǐng tīng lùyīn.",
+   "en": "Please listen to the recording."
+  },
+  {
+   "word": "bei3bu4-rl1k2",
+   "zh": "北部比南部冷。",
+   "py": "Běibù bǐ nánbù lěng.",
+   "en": "The north is colder than the south."
+  },
+  {
+   "word": "shi4yong4-xuyp4",
+   "zh": "这个方法很适用。",
+   "py": "Zhège fāngfǎ hěn shìyòng.",
+   "en": "This method works well."
+  },
+  {
+   "word": "wan2shan4-l3s4p",
+   "zh": "这里的服务很完善。",
+   "py": "Zhèlǐ de fúwù hěn wánshàn.",
+   "en": "The services here are excellent."
+  },
+  {
+   "word": "duan3qi1-xdv4p",
+   "zh": "我在北京短期学习。",
+   "py": "Wǒ zài Běijīng duǎnqī xuéxí.",
+   "en": "I'm on a short study stay in Beijing."
+  },
+  {
+   "word": "quan2chang3-m8gas",
+   "zh": "全场的人都站了起来。",
+   "py": "Quánchǎng de rén dōu zhàn le qǐlai.",
+   "en": "Everyone in the hall stood up."
+  },
+  {
+   "word": "kai1zhan3-q5kxu",
+   "zh": "学校开展了很多活动。",
+   "py": "Xuéxiào kāizhǎn le hěn duō huódòng.",
+   "en": "The school put on lots of activities."
+  },
+  {
+   "word": "mei3shi2-qe7pw",
+   "zh": "北京有很多美食。",
+   "py": "Běijīng yǒu hěn duō měishí.",
+   "en": "Beijing has lots of good food."
+  },
+  {
+   "word": "tui1guang3-2y1k0",
+   "zh": "他们在推广新产品。",
+   "py": "Tāmen zài tuīguǎng xīn chǎnpǐn.",
+   "en": "They're promoting a new product."
+  },
+  {
+   "word": "gu3dai4-knu3v",
+   "zh": "古代的人也喜欢喝茶。",
+   "py": "Gǔdài de rén yě xǐhuan hē chá.",
+   "en": "People in ancient times liked tea too."
+  },
+  {
+   "word": "zhong1hua2min2zu2-e2c7k",
+   "zh": "春节是中华民族的节日。",
+   "py": "Chūnjié shì Zhōnghuá mínzú de jiérì.",
+   "en": "Spring Festival is a festival of the Chinese people."
+  },
+  {
+   "word": "jia1gong1-2pybb",
+   "zh": "这些水果要加工一下。",
+   "py": "Zhèxiē shuǐguǒ yào jiāgōng yīxià.",
+   "en": "This fruit needs to be processed."
+  },
+  {
+   "word": "zhong1bu4-wes96",
+   "zh": "他家住在中国中部。",
+   "py": "Tā jiā zhù zài Zhōngguó zhōngbù.",
+   "en": "His family lives in central China."
+  },
+  {
+   "word": "shu4-v910c",
+   "zh": "我送了她一束花。",
+   "py": "Wǒ sòng le tā yī shù huā.",
+   "en": "I gave her a bunch of flowers."
+  },
+  {
+   "word": "ban4li3-vlxiw",
+   "zh": "我去银行办理手续。",
+   "py": "Wǒ qù yínháng bànlǐ shǒuxù.",
+   "en": "I'm going to the bank to sort out the paperwork."
+  },
+  {
+   "word": "gui1fan4-zafrh",
+   "zh": "你的发音很规范。",
+   "py": "Nǐ de fāyīn hěn guīfàn.",
+   "en": "Your pronunciation is very standard."
+  },
+  {
+   "word": "zi4zhu3-ae83z",
+   "zh": "孩子要学会自主学习。",
+   "py": "Háizi yào xuéhuì zìzhǔ xuéxí.",
+   "en": "Children should learn to study on their own."
+  },
+  {
+   "word": "ge1mi2-vprgp",
+   "zh": "她是这个歌手的歌迷。",
+   "py": "Tā shì zhège gēshǒu de gēmí.",
+   "en": "She's a fan of this singer."
+  },
+  {
+   "word": "min2jian1-0cvcv",
+   "zh": "这是一个民间故事。",
+   "py": "Zhè shì yī gè mínjiān gùshi.",
+   "en": "This is a folk tale."
+  },
+  {
+   "word": "chu1zhong1-c9mub",
+   "zh": "我妹妹在上初中。",
+   "py": "Wǒ mèimei zài shàng chūzhōng.",
+   "en": "My younger sister is in middle school."
+  },
+  {
+   "word": "yi1fang1mian4-pp0a9",
+   "zh": "一方面我想去，一方面我没有时间。",
+   "py": "Yī fāngmiàn wǒ xiǎng qù, yī fāngmiàn wǒ méiyǒu shíjiān.",
+   "en": "On the one hand I want to go, on the other I have no time."
+  },
+  {
+   "word": "dong4ren2-8w4fg",
+   "zh": "这个故事很动人。",
+   "py": "Zhège gùshi hěn dòngrén.",
+   "en": "This story is very moving."
+  },
+  {
+   "word": "lao3bai3xing4-s5m7n",
+   "zh": "老百姓都喜欢这个政策。",
+   "py": "Lǎobǎixìng dōu xǐhuan zhège zhèngcè.",
+   "en": "Ordinary people all like this policy."
+  },
+  {
+   "word": "kai1ye4-fjeoj",
+   "zh": "这家饭馆明天开业。",
+   "py": "Zhè jiā fànguǎn míngtiān kāiyè.",
+   "en": "This restaurant opens tomorrow."
+  },
+  {
+   "word": "sheng1dong4-h438c",
+   "zh": "老师讲得很生动。",
+   "py": "Lǎoshī jiǎng de hěn shēngdòng.",
+   "en": "The teacher explains things vividly."
+  },
+  {
+   "word": "cai3se4-ecfsi",
+   "zh": "这是一张彩色照片。",
+   "py": "Zhè shì yī zhāng cǎisè zhàopiàn.",
+   "en": "This is a colour photo."
+  },
+  {
+   "word": "dan1yuan2-nfchu",
+   "zh": "我们学到第三单元了。",
+   "py": "Wǒmen xué dào dì sān dānyuán le.",
+   "en": "We've got to unit three."
+  },
+  {
+   "word": "hai3guan1-cc5q8",
+   "zh": "我们在海关等了很久。",
+   "py": "Wǒmen zài hǎiguān děng le hěn jiǔ.",
+   "en": "We waited a long time at customs."
+  },
+  {
+   "word": "zi4jue2-ibub1",
+   "zh": "他很自觉，每天都学习。",
+   "py": "Tā hěn zìjué, měitiān dōu xuéxí.",
+   "en": "He's very self-disciplined and studies every day."
+  },
+  {
+   "word": "shou1kan4-j7v4y",
+   "zh": "很多人收看了这场比赛。",
+   "py": "Hěn duō rén shōukàn le zhè chǎng bǐsài.",
+   "en": "A lot of people watched the match."
+  },
+  {
+   "word": "gong1wu4yuan2-y2fl3",
+   "zh": "她爸爸是公务员。",
+   "py": "Tā bàba shì gōngwùyuán.",
+   "en": "Her dad is a civil servant."
+  },
+  {
+   "word": "bian4wei2-qwua2",
+   "zh": "水变为了冰。",
+   "py": "Shuǐ biànwéi le bīng.",
+   "en": "The water turned into ice."
+  },
+  {
+   "word": "zhi2gong1-r3qel",
+   "zh": "这家公司有一百个职工。",
+   "py": "Zhè jiā gōngsī yǒu yī bǎi gè zhígōng.",
+   "en": "This company has a hundred employees."
+  },
+  {
+   "word": "bao4dao4-em6xu",
+   "zh": "新同学明天来报到。",
+   "py": "Xīn tóngxué míngtiān lái bàodào.",
+   "en": "The new student is checking in tomorrow."
+  },
+  {
+   "word": "mei3shu4-j5tmq",
+   "zh": "我最喜欢上美术课。",
+   "py": "Wǒ zuì xǐhuan shàng měishù kè.",
+   "en": "Art is my favourite class."
+  },
+  {
+   "word": "wu3shu4-p3jxh",
+   "zh": "他从小学习武术。",
+   "py": "Tā cóng xiǎo xuéxí wǔshù.",
+   "en": "He's studied martial arts since he was little."
+  },
+  {
+   "word": "duan3ku4-jqsbj",
+   "zh": "天热了，我穿短裤。",
+   "py": "Tiān rè le, wǒ chuān duǎnkù.",
+   "en": "It's got hot, so I'm wearing shorts."
+  },
+  {
+   "word": "guang3da4-nzcmt",
+   "zh": "这本书受到广大读者的喜欢。",
+   "py": "Zhè běn shū shòudào guǎngdà dúzhě de xǐhuan.",
+   "en": "This book is popular with lots of readers."
+  },
+  {
+   "word": "shou1ting1-83ly4",
+   "zh": "我每天早上收听新闻。",
+   "py": "Wǒ měitiān zǎoshang shōutīng xīnwén.",
+   "en": "I listen to the news every morning."
+  },
+  {
+   "word": "chu1ji2-6u0hv",
+   "zh": "我在上初级中文课。",
+   "py": "Wǒ zài shàng chūjí Zhōngwén kè.",
+   "en": "I'm taking a beginners' Chinese class."
+  },
+  {
+   "word": "xian4dai4hua4-5t3rq",
+   "zh": "这个城市很现代化。",
+   "py": "Zhège chéngshì hěn xiàndàihuà.",
+   "en": "This city is very modern."
+  },
+  {
+   "word": "zhuan1ti2-hi7ei",
+   "zh": "今天的专题是环境。",
+   "py": "Jīntiān de zhuāntí shì huánjìng.",
+   "en": "Today's topic is the environment."
+  },
+  {
+   "word": "chuang4ye4-9v6l4",
+   "zh": "他毕业以后自己创业。",
+   "py": "Tā bìyè yǐhòu zìjǐ chuàngyè.",
+   "en": "After graduating he started his own business."
+  },
+  {
+   "word": "ben3ling3-c1v38",
+   "zh": "他的本领很大。",
+   "py": "Tā de běnlǐng hěn dà.",
+   "en": "He's very capable."
+  },
+  {
+   "word": "hua4ju4-6ai28",
+   "zh": "我们晚上去看话剧。",
+   "py": "Wǒmen wǎnshang qù kàn huàjù.",
+   "en": "We're going to see a play tonight."
+  },
+  {
+   "word": "fen1zu3-lip31",
+   "zh": "老师让我们分组讨论。",
+   "py": "Lǎoshī ràng wǒmen fēnzǔ tǎolùn.",
+   "en": "The teacher had us discuss in groups."
+  },
+  {
+   "word": "nian2di3-wrucu",
+   "zh": "我年底回丹麦。",
+   "py": "Wǒ niándǐ huí Dānmài.",
+   "en": "I'm going back to Denmark at the end of the year."
+  },
+  {
+   "word": "dai4dong4-0i0w3",
+   "zh": "他带动大家一起运动。",
+   "py": "Tā dàidòng dàjiā yīqǐ yùndòng.",
+   "en": "He gets everyone exercising together."
+  },
+  {
+   "word": "ying3shi4-ragpq",
+   "zh": "她在一家影视公司工作。",
+   "py": "Tā zài yī jiā yǐngshì gōngsī gōngzuò.",
+   "en": "She works at a film and TV company."
+  },
+  {
+   "word": "guo2qing4-bghyi",
+   "zh": "国庆的时候我们去旅游。",
+   "py": "Guóqìng de shíhou wǒmen qù lǚyóu.",
+   "en": "We travel over National Day."
+  },
+  {
+   "word": "piao4jia4-30ab1",
+   "zh": "票价是五十块。",
+   "py": "Piàojià shì wǔshí kuài.",
+   "en": "The ticket costs fifty kuai."
+  },
+  {
+   "word": "you3de5shi4-t6ojt",
+   "zh": "别着急，我们有的是时间。",
+   "py": "Bié zháojí, wǒmen yǒudeshì shíjiān.",
+   "en": "Don't worry, we have plenty of time."
+  },
+  {
+   "word": "pi2bao1-pqyxi",
+   "zh": "她的皮包很好看。",
+   "py": "Tā de píbāo hěn hǎokàn.",
+   "en": "Her handbag is lovely."
+  },
+  {
+   "word": "lian2xu4ju4-ex0r7",
+   "zh": "我每天晚上看连续剧。",
+   "py": "Wǒ měitiān wǎnshang kàn liánxùjù.",
+   "en": "I watch a TV series every evening."
+  },
+  {
+   "word": "tu2hua4-huzov",
+   "zh": "孩子画了一张图画。",
+   "py": "Háizi huà le yī zhāng túhuà.",
+   "en": "The child drew a picture."
+  },
+  {
+   "word": "bai2cai4-284yj",
+   "zh": "冬天北京人常吃白菜。",
+   "py": "Dōngtiān Běijīng rén cháng chī báicài.",
+   "en": "In winter people in Beijing often eat Chinese cabbage."
+  },
+  {
+   "word": "nian2chu1-5fm93",
+   "zh": "我年初开始学中文。",
+   "py": "Wǒ niánchū kāishǐ xué Zhōngwén.",
+   "en": "I started learning Chinese at the start of the year."
+  },
+  {
+   "word": "shi4ti2-hkkxl",
+   "zh": "这次的试题不太难。",
+   "py": "Zhè cì de shìtí bù tài nán.",
+   "en": "The exam questions weren't too hard this time."
+  },
+  {
+   "word": "ji1ji2xing4-4stsx",
+   "zh": "学生的积极性很高。",
+   "py": "Xuésheng de jījíxìng hěn gāo.",
+   "en": "The students are very keen."
+  },
+  {
+   "word": "chu1yi1-pu8vu",
+   "zh": "大年初一，大家都去拜年。",
+   "py": "Dànián chūyī, dàjiā dōu qù bàinián.",
+   "en": "On the first day of the New Year, everyone pays New Year visits."
+  },
+  {
+   "word": "yin2pai2-u033r",
+   "zh": "她得了一块银牌。",
+   "py": "Tā dé le yī kuài yínpái.",
+   "en": "She won a silver medal."
+  },
+  {
+   "word": "ren2min2bi4-nu2sx",
+   "zh": "这个多少人民币？",
+   "py": "Zhège duōshao rénmínbì?",
+   "en": "How much is this in RMB?"
+  },
+  {
+   "word": "lao3tou2r5-jjkzt",
+   "zh": "那个老头儿是我爷爷。",
+   "py": "Nàge lǎotóur shì wǒ yéye.",
+   "en": "That old man is my grandpa."
+  },
+  {
+   "word": "jiao1fei4-me5uu",
+   "zh": "我们去前边交费吧。",
+   "py": "Wǒmen qù qiánbian jiāofèi ba.",
+   "en": "Let's go and pay at the front."
+  },
+  {
+   "word": "tiao4gao1-r0447",
+   "zh": "他跳高跳得很好。",
+   "py": "Tā tiàogāo tiào de hěn hǎo.",
+   "en": "He's very good at the high jump."
+  },
+  {
+   "word": "wai4wen2-a2uoz",
+   "zh": "她会三种外文。",
+   "py": "Tā huì sān zhǒng wàiwén.",
+   "en": "She knows three foreign languages."
+  },
+  {
+   "word": "yu4xi2-s29u6",
+   "zh": "上课以前要预习。",
+   "py": "Shàngkè yǐqián yào yùxí.",
+   "en": "You should prepare before class."
+  },
+  {
+   "word": "tiao4yuan3-9augj",
+   "zh": "我最喜欢跳远。",
+   "py": "Wǒ zuì xǐhuan tiàoyuǎn.",
+   "en": "The long jump is my favourite."
+  },
+  {
+   "word": "jing1ju4-5n620",
+   "zh": "爷爷喜欢听京剧。",
+   "py": "Yéye xǐhuan tīng jīngjù.",
+   "en": "Grandpa likes listening to Beijing opera."
+  },
+  {
+   "word": "hou4nian2-4ozaf",
+   "zh": "我后年大学毕业。",
+   "py": "Wǒ hòunián dàxué bìyè.",
+   "en": "I graduate from university the year after next."
+  },
+  {
+   "word": "lian2mang2-roxz3",
+   "zh": "他连忙说对不起。",
+   "py": "Tā liánmáng shuō duìbuqǐ.",
+   "en": "He quickly said sorry."
+  },
+  {
+   "word": "hao4-2gt38",
+   "zh": "她很好学。",
+   "py": "Tā hěn hàoxué.",
+   "en": "She loves learning."
+  },
+  {
+   "word": "zhao2-k5oij",
+   "zh": "我昨天晚上没睡着。",
+   "py": "Wǒ zuótiān wǎnshang méi shuì zháo.",
+   "en": "I couldn't get to sleep last night."
+  },
+  {
+   "word": "a1-ppasl",
+   "zh": "啊！下雪了！",
+   "py": "Ā! Xià xuě le!",
+   "en": "Oh! It's snowing!"
+  },
+  {
+   "word": "da2-kvp1l",
+   "zh": "我买了一打鸡蛋。",
+   "py": "Wǒ mǎi le yī dá jīdàn.",
+   "en": "I bought a dozen eggs."
+  },
+  {
+   "word": "zhong4-2op4c",
+   "zh": "奶奶在家里种花。",
+   "py": "Nǎinai zài jiāli zhòng huā.",
+   "en": "Grandma grows flowers at home."
+  },
+  {
+   "word": "di4fang1-66wdg",
+   "zh": "他在地方政府工作。",
+   "py": "Tā zài dìfāng zhèngfǔ gōngzuò.",
+   "en": "He works for the local government."
+  },
+  {
+   "word": "na5-17rxh",
+   "zh": "天哪，太贵了！",
+   "py": "Tiān na, tài guì le!",
+   "en": "Oh my god, that's so expensive!"
+  },
+  {
+   "word": "yu2shi4-b5t7w",
+   "zh": "下雨了，于是我们回家了。",
+   "py": "Xià yǔ le, yúshì wǒmen huí jiā le.",
+   "en": "It started raining, so we went home."
+  },
+  {
+   "word": "kong4-dfd1u",
+   "zh": "你什么时候有空？",
+   "py": "Nǐ shénme shíhou yǒu kòng?",
+   "en": "When are you free?"
+  },
+  {
+   "word": "ji4-j4wh1",
+   "zh": "请系好安全带。",
+   "py": "Qǐng jì hǎo ānquándài.",
+   "en": "Please fasten your seat belt."
+  },
+  {
+   "word": "wen3ding4-ce035",
+   "zh": "他的工作很稳定。",
+   "py": "Tā de gōngzuò hěn wěndìng.",
+   "en": "His job is very stable."
+  },
+  {
+   "word": "jie1duan4-pmxz5",
+   "zh": "现在是最重要的阶段。",
+   "py": "Xiànzài shì zuì zhòngyào de jiēduàn.",
+   "en": "This is the most important stage."
+  },
+  {
+   "word": "juan4-9wrik",
+   "zh": "请把试卷交给我。",
+   "py": "Qǐng bǎ shìjuàn jiāo gěi wǒ.",
+   "en": "Please hand me your exam paper."
+  },
+  {
+   "word": "xi4lie4-pvoxo",
+   "zh": "这是一系列的问题。",
+   "py": "Zhè shì yī xìliè de wèntí.",
+   "en": "These are a whole series of problems."
+  },
+  {
+   "word": "jian3ce4-dsrdh",
+   "zh": "医生给我检测了一下。",
+   "py": "Yīshēng gěi wǒ jiǎncè le yīxià.",
+   "en": "The doctor tested me."
+  },
+  {
+   "word": "tiao3-8kxwk",
+   "zh": "他挑起眉毛看着我。",
+   "py": "Tā tiǎoqǐ méimao kàn zhe wǒ.",
+   "en": "He raised his eyebrows and looked at me."
+  },
+  {
+   "word": "jing1dian3-vstug",
+   "zh": "这是一部经典电影。",
+   "py": "Zhè shì yī bù jīngdiǎn diànyǐng.",
+   "en": "This is a classic film."
+  },
+  {
+   "word": "bei4jing3-auc2f",
+   "zh": "这张照片的背景是长城。",
+   "py": "Zhè zhāng zhàopiàn de bèijǐng shì Chángchéng.",
+   "en": "The Great Wall is in the background of this photo."
+  },
+  {
+   "word": "jing4tou2-scr5t",
+   "zh": "看镜头，笑一笑！",
+   "py": "Kàn jìngtóu, xiào yī xiào!",
+   "en": "Look at the camera and smile!"
+  },
+  {
+   "word": "zhi3hui1-e8h6s",
+   "zh": "警察在路口指挥交通。",
+   "py": "Jǐngchá zài lùkǒu zhǐhuī jiāotōng.",
+   "en": "A policeman is directing traffic at the junction."
+  },
+  {
+   "word": "zao4xing2-sn0d8",
+   "zh": "你的新造型很好看。",
+   "py": "Nǐ de xīn zàoxíng hěn hǎokàn.",
+   "en": "Your new look is great."
+  },
+  {
+   "word": "yin3-b9brh",
+   "zh": "他把大家引到了门口。",
+   "py": "Tā bǎ dàjiā yǐn dào le ménkǒu.",
+   "en": "He led everyone to the door."
+  },
+  {
+   "word": "ruo4-sg1he",
+   "zh": "我的听力比较弱。",
+   "py": "Wǒ de tīnglì bǐjiào ruò.",
+   "en": "My listening is quite weak."
+  },
+  {
+   "word": "hua4-x4tip",
+   "zh": "请把钱划到我的卡上。",
+   "py": "Qǐng bǎ qián huà dào wǒ de kǎ shang.",
+   "en": "Please transfer the money to my card."
+  },
+  {
+   "word": "ji1lie4-w16cf",
+   "zh": "比赛非常激烈。",
+   "py": "Bǐsài fēicháng jīliè.",
+   "en": "The match was very intense."
+  },
+  {
+   "word": "wei2hu4-yf75x",
+   "zh": "我们要维护自己的权利。",
+   "py": "Wǒmen yào wéihù zìjǐ de quánlì.",
+   "en": "We need to stand up for our rights."
+  },
+  {
+   "word": "dui4fu5-ikxau",
+   "zh": "这个问题不好对付。",
+   "py": "Zhège wèntí bù hǎo duìfu.",
+   "en": "This problem is hard to deal with."
+  },
+  {
+   "word": "zong3zhi1-yc17y",
+   "zh": "总之，我不同意。",
+   "py": "Zǒngzhī, wǒ bù tóngyì.",
+   "en": "In short, I don't agree."
+  },
+  {
+   "word": "wen3-twuu9",
+   "zh": "他开车开得很稳。",
+   "py": "Tā kāichē kāi de hěn wěn.",
+   "en": "He drives very steadily."
+  },
+  {
+   "word": "tong3yi1-mm6w2",
+   "zh": "我们的意见统一了。",
+   "py": "Wǒmen de yìjiàn tǒngyī le.",
+   "en": "We've come to an agreement."
+  },
+  {
+   "word": "shen1cai2-mxooi",
+   "zh": "她身材很好。",
+   "py": "Tā shēncái hěn hǎo.",
+   "en": "She's got a great figure."
+  },
+  {
+   "word": "yun4yong4-hp8nw",
+   "zh": "要学会运用新词。",
+   "py": "Yào xuéhuì yùnyòng xīn cí.",
+   "en": "You need to learn to use new words."
+  },
+  {
+   "word": "du2te4-jwyly",
+   "zh": "这个城市很独特。",
+   "py": "Zhège chéngshì hěn dútè.",
+   "en": "This city is unique."
+  },
+  {
+   "word": "fu1qi1-srpeo",
+   "zh": "他们是一对老夫妻。",
+   "py": "Tāmen shì yī duì lǎo fūqī.",
+   "en": "They're an old married couple."
+  },
+  {
+   "word": "te4zheng1-wb2sj",
+   "zh": "这种花有什么特征？",
+   "py": "Zhè zhǒng huā yǒu shénme tèzhēng?",
+   "en": "What are the features of this flower?"
+  },
+  {
+   "word": "gong1ying4-cxkpd",
+   "zh": "这里供应早饭。",
+   "py": "Zhèlǐ gōngyìng zǎofàn.",
+   "en": "Breakfast is served here."
+  },
+  {
+   "word": "pei2xun4-qx0yc",
+   "zh": "公司给新员工培训。",
+   "py": "Gōngsī gěi xīn yuángōng péixùn.",
+   "en": "The company trains new staff."
+  },
+  {
+   "word": "da4ge1-dcelj",
+   "zh": "大哥，请问去车站怎么走？",
+   "py": "Dàgē, qǐngwèn qù chēzhàn zěnme zǒu?",
+   "en": "Excuse me, how do I get to the station?"
+  },
+  {
+   "word": "ji4qiao3-eunsy",
+   "zh": "学习也要有技巧。",
+   "py": "Xuéxí yě yào yǒu jìqiǎo.",
+   "en": "Studying takes technique too."
+  },
+  {
+   "word": "zhuan3shen1-zoxvi",
+   "zh": "他转身就走了。",
+   "py": "Tā zhuǎnshēn jiù zǒu le.",
+   "en": "He turned round and left."
+  },
+  {
+   "word": "tou2su4-sfm29",
+   "zh": "我要投诉这家饭馆。",
+   "py": "Wǒ yào tóusù zhè jiā fànguǎn.",
+   "en": "I want to complain about this restaurant."
+  },
+  {
+   "word": "hui4bao4-da1e7",
+   "zh": "我明天向经理汇报。",
+   "py": "Wǒ míngtiān xiàng jīnglǐ huìbào.",
+   "en": "I'm reporting to the manager tomorrow."
+  },
+  {
+   "word": "pang4zi5-3bcid",
+   "zh": "别叫他胖子。",
+   "py": "Bié jiào tā pàngzi.",
+   "en": "Don't call him fatty."
+  },
+  {
+   "word": "han2liang4-tmqm5",
+   "zh": "这个饮料的糖含量很高。",
+   "py": "Zhège yǐnliào de táng hánliàng hěn gāo.",
+   "en": "This drink has a high sugar content."
+  },
+  {
+   "word": "dan1chun2-2szil",
+   "zh": "她是一个很单纯的人。",
+   "py": "Tā shì yī gè hěn dānchún de rén.",
+   "en": "She's a very simple, sincere person."
+  },
+  {
+   "word": "jian4shen1-9h1ly",
+   "zh": "我每天去健身。",
+   "py": "Wǒ měitiān qù jiànshēn.",
+   "en": "I work out every day."
+  },
+  {
+   "word": "dai4yu4-vye3l",
+   "zh": "这家公司的待遇很好。",
+   "py": "Zhè jiā gōngsī de dàiyù hěn hǎo.",
+   "en": "This company pays well."
+  },
+  {
+   "word": "qi4guan1-mru6j",
+   "zh": "心是人体的重要器官。",
+   "py": "Xīn shì réntǐ de zhòngyào qìguān.",
+   "en": "The heart is an important organ."
+  },
+  {
+   "word": "xiong1bu4-si06g",
+   "zh": "我胸部有点儿疼。",
+   "py": "Wǒ xiōngbù yǒudiǎnr téng.",
+   "en": "My chest hurts a bit."
+  },
+  {
+   "word": "zan4zhu4-iklww",
+   "zh": "这次比赛有公司赞助。",
+   "py": "Zhè cì bǐsài yǒu gōngsī zànzhù.",
+   "en": "This competition is sponsored by a company."
+  },
+  {
+   "word": "yu4-v3moy",
+   "zh": "这块玉很漂亮。",
+   "py": "Zhè kuài yù hěn piàoliang.",
+   "en": "This piece of jade is beautiful."
+  },
+  {
+   "word": "suo1xiao3-5wstt",
+   "zh": "我们之间的差距缩小了。",
+   "py": "Wǒmen zhījiān de chājù suōxiǎo le.",
+   "en": "The gap between us has narrowed."
+  },
+  {
+   "word": "chao2-5gjha",
+   "zh": "她穿得很潮。",
+   "py": "Tā chuān de hěn cháo.",
+   "en": "She dresses very fashionably."
+  },
+  {
+   "word": "zhu4zuo4-h452b",
+   "zh": "这位老师有很多著作。",
+   "py": "Zhè wèi lǎoshī yǒu hěn duō zhùzuò.",
+   "en": "This teacher has written many books."
+  },
+  {
+   "word": "gu3tou5-deptb",
+   "zh": "小狗喜欢吃骨头。",
+   "py": "Xiǎo gǒu xǐhuan chī gǔtou.",
+   "en": "The puppy likes eating bones."
+  },
+  {
+   "word": "chen2zhong4-5djq9",
+   "zh": "这个包很沉重。",
+   "py": "Zhège bāo hěn chénzhòng.",
+   "en": "This bag is very heavy."
+  },
+  {
+   "word": "shang1wu4-2x18c",
+   "zh": "他去上海参加商务会议。",
+   "py": "Tā qù Shànghǎi cānjiā shāngwù huìyì.",
+   "en": "He's going to Shanghai for a business meeting."
+  },
+  {
+   "word": "ti4dai4-0ifng",
+   "zh": "电脑不能替代老师。",
+   "py": "Diànnǎo bù néng tìdài lǎoshī.",
+   "en": "Computers can't replace teachers."
+  },
+  {
+   "word": "an1zhi4-iunin",
+   "zh": "他们安置好了新家。",
+   "py": "Tāmen ānzhì hǎo le xīn jiā.",
+   "en": "They've got their new home set up."
+  },
+  {
+   "word": "shu4ma3-i5r9n",
+   "zh": "我买了一个数码相机。",
+   "py": "Wǒ mǎi le yī gè shùmǎ xiàngjī.",
+   "en": "I bought a digital camera."
+  },
+  {
+   "word": "xing4zhi4-nag7h",
+   "zh": "这两个问题的性质不一样。",
+   "py": "Zhè liǎng gè wèntí de xìngzhì bù yīyàng.",
+   "en": "These two problems are different in nature."
+  },
+  {
+   "word": "kao3cha2-wmorr",
+   "zh": "他们去南方考察。",
+   "py": "Tāmen qù nánfāng kǎochá.",
+   "en": "They went south on a study visit."
+  },
+  {
+   "word": "ji1yu4-3iwo8",
+   "zh": "这是一个很好的机遇。",
+   "py": "Zhè shì yī gè hěn hǎo de jīyù.",
+   "en": "This is a great opportunity."
+  },
+  {
+   "word": "jin3mi4-3mwpk",
+   "zh": "我们的关系很紧密。",
+   "py": "Wǒmen de guānxi hěn jǐnmì.",
+   "en": "We're very close."
+  },
+  {
+   "word": "shun4xu4-gzwb3",
+   "zh": "请按照顺序排队。",
+   "py": "Qǐng ànzhào shùnxù páiduì.",
+   "en": "Please queue in order."
+  },
+  {
+   "word": "yu3yin1-rnay9",
+   "zh": "我给你发一条语音。",
+   "py": "Wǒ gěi nǐ fā yī tiáo yǔyīn.",
+   "en": "I'll send you a voice message."
+  },
+  {
+   "word": "ji4lv4-rmbvl",
+   "zh": "学校的纪律很严。",
+   "py": "Xuéxiào de jìlǜ hěn yán.",
+   "en": "The school is very strict."
+  },
+  {
+   "word": "ji4zai3-g2yco",
+   "zh": "书上记载了这个故事。",
+   "py": "Shū shang jìzǎi le zhège gùshi.",
+   "en": "The story is recorded in the book."
+  },
+  {
+   "word": "liang2shi5-1yqr2",
+   "zh": "我们不能浪费粮食。",
+   "py": "Wǒmen bù néng làngfèi liángshi.",
+   "en": "We mustn't waste food."
+  },
+  {
+   "word": "qu1shi4-qw8d0",
+   "zh": "这是一个新的趋势。",
+   "py": "Zhè shì yī gè xīn de qūshì.",
+   "en": "This is a new trend."
+  },
+  {
+   "word": "yang2tai2-vpgpj",
+   "zh": "妈妈在阳台上种花。",
+   "py": "Māma zài yángtái shang zhòng huā.",
+   "en": "Mum grows flowers on the balcony."
+  },
+  {
+   "word": "zhi4li4-aaofa",
+   "zh": "这个游戏能提高智力。",
+   "py": "Zhège yóuxì néng tígāo zhìlì.",
+   "en": "This game can make you smarter."
+  },
+  {
+   "word": "zhi4neng2-0qsp1",
+   "zh": "现在人人都有智能手机。",
+   "py": "Xiànzài rénrén dōu yǒu zhìnéng shǒujī.",
+   "en": "Everyone has a smartphone now."
+  },
+  {
+   "word": "deng1lu4-08dy3",
+   "zh": "请先登录你的账号。",
+   "py": "Qǐng xiān dēnglù nǐ de zhànghào.",
+   "en": "Please log in first."
+  },
+  {
+   "word": "jie2sheng3-xmfa4",
+   "zh": "坐地铁可以节省时间。",
+   "py": "Zuò dìtiě kěyǐ jiéshěng shíjiān.",
+   "en": "Taking the metro saves time."
+  },
+  {
+   "word": "ning2jing4-1l7ur",
+   "zh": "晚上的公园很宁静。",
+   "py": "Wǎnshang de gōngyuán hěn níngjìng.",
+   "en": "The park is peaceful in the evening."
+  },
+  {
+   "word": "yi3nei4-vjy3k",
+   "zh": "请在十分钟以内回来。",
+   "py": "Qǐng zài shí fēnzhōng yǐnèi huílai.",
+   "en": "Please be back within ten minutes."
+  },
+  {
+   "word": "kuai4di4-woikz",
+   "zh": "我的快递到了。",
+   "py": "Wǒ de kuàidì dào le.",
+   "en": "My parcel has arrived."
+  },
+  {
+   "word": "fen1bu4-ua23h",
+   "zh": "这种树分布在南方。",
+   "py": "Zhè zhǒng shù fēnbù zài nánfāng.",
+   "en": "This kind of tree grows in the south."
+  },
+  {
+   "word": "gao1shang4-0z6rq",
+   "zh": "他是一个高尚的人。",
+   "py": "Tā shì yī gè gāoshàng de rén.",
+   "en": "He's a man of noble character."
+  },
+  {
+   "word": "xia4ji4-3awva",
+   "zh": "夏季的北京很热。",
+   "py": "Xiàjì de Běijīng hěn rè.",
+   "en": "Beijing is hot in summer."
+  },
+  {
+   "word": "huo4jiang3-0d5lc",
+   "zh": "他的电影获奖了。",
+   "py": "Tā de diànyǐng huòjiǎng le.",
+   "en": "His film won a prize."
+  },
+  {
+   "word": "zhong4zhi2-1eag8",
+   "zh": "这里种植了很多水果。",
+   "py": "Zhèlǐ zhòngzhí le hěn duō shuǐguǒ.",
+   "en": "Lots of fruit is grown here."
+  },
+  {
+   "word": "cu4shi3-j1gck",
+   "zh": "这件事促使他努力学习。",
+   "py": "Zhè jiàn shì cùshǐ tā nǔlì xuéxí.",
+   "en": "This pushed him to study hard."
+  },
+  {
+   "word": "ge4ti3-3f482",
+   "zh": "每个人都是不同的个体。",
+   "py": "Měi gè rén dōu shì bùtóng de gètǐ.",
+   "en": "Every person is a different individual."
+  },
+  {
+   "word": "yuan2man3-vhdnk",
+   "zh": "会议圆满结束了。",
+   "py": "Huìyì yuánmǎn jiéshù le.",
+   "en": "The meeting ended successfully."
+  },
+  {
+   "word": "re4xin1-v11ms",
+   "zh": "我的邻居很热心。",
+   "py": "Wǒ de línjū hěn rèxīn.",
+   "en": "My neighbour is very helpful."
+  },
+  {
+   "word": "fen1fen1-g6dp9",
+   "zh": "下课了，同学们纷纷走出教室。",
+   "py": "Xiàkè le, tóngxuémen fēnfēn zǒuchū jiàoshì.",
+   "en": "Class is over and the students file out one after another."
+  },
+  {
+   "word": "liu2chuan2-3os2h",
+   "zh": "这个故事流传了很多年。",
+   "py": "Zhège gùshi liúchuán le hěn duō nián.",
+   "en": "This story has been passed down for many years."
+  },
+  {
+   "word": "zhong1jie4-aaju0",
+   "zh": "我们通过中介找到了房子。",
+   "py": "Wǒmen tōngguò zhōngjiè zhǎodào le fángzi.",
+   "en": "We found a flat through an agent."
+  },
+  {
+   "word": "lie4ru4-lzxk0",
+   "zh": "这个地方被列入了旅游计划。",
+   "py": "Zhège dìfang bèi lièrù le lǚyóu jìhuà.",
+   "en": "This place was added to the travel plan."
+  },
+  {
+   "word": "pai2lie4-rtqp0",
+   "zh": "请把这些字排列好。",
+   "py": "Qǐng bǎ zhèxiē zì páiliè hǎo.",
+   "en": "Please put these characters in order."
+  },
+  {
+   "word": "yong4tu2-81vm3",
+   "zh": "这个东西有什么用途？",
+   "py": "Zhège dōngxi yǒu shénme yòngtú?",
+   "en": "What is this thing used for?"
+  },
+  {
+   "word": "ti3jian3-a67ld",
+   "zh": "我明天去医院体检。",
+   "py": "Wǒ míngtiān qù yīyuàn tǐjiǎn.",
+   "en": "I'm going for a check-up at the hospital tomorrow."
+  },
+  {
+   "word": "xin1lang2-vfqtj",
+   "zh": "新郎今天很高兴。",
+   "py": "Xīnláng jīntiān hěn gāoxìng.",
+   "en": "The groom is very happy today."
+  },
+  {
+   "word": "ji1lei3-4w41o",
+   "zh": "学语言要慢慢积累。",
+   "py": "Xué yǔyán yào mànmàn jīlěi.",
+   "en": "You build up a language bit by bit."
+  },
+  {
+   "word": "yan2zhi4-hkedc",
+   "zh": "他们在研制新药。",
+   "py": "Tāmen zài yánzhì xīn yào.",
+   "en": "They're developing a new medicine."
+  },
+  {
+   "word": "ge2wai4-3tgkw",
+   "zh": "今天的月亮格外圆。",
+   "py": "Jīntiān de yuèliang géwài yuán.",
+   "en": "The moon is especially round tonight."
+  },
+  {
+   "word": "lie4wei2-r4lup",
+   "zh": "这个地方被列为重点景区。",
+   "py": "Zhège dìfang bèi lièwéi zhòngdiǎn jǐngqū.",
+   "en": "This place has been listed as a key scenic spot."
+  },
+  {
+   "word": "dong4yao2-2xkb9",
+   "zh": "他的决心没有动摇。",
+   "py": "Tā de juéxīn méiyǒu dòngyáo.",
+   "en": "His determination didn't waver."
+  },
+  {
+   "word": "da4ye5-1epnz",
+   "zh": "大爷，你身体好吗？",
+   "py": "Dàye, nǐ shēntǐ hǎo ma?",
+   "en": "How are you keeping? (to an older man)"
+  },
+  {
+   "word": "kuo4zhan3-3r6l4",
+   "zh": "我们要扩展业务。",
+   "py": "Wǒmen yào kuòzhǎn yèwù.",
+   "en": "We need to expand the business."
+  },
+  {
+   "word": "tong4kuai4-n2j61",
+   "zh": "今天玩得真痛快！",
+   "py": "Jīntiān wán de zhēn tòngkuai!",
+   "en": "We had a great time today!"
+  },
+  {
+   "word": "ping2wen3-wqgmm",
+   "zh": "飞机飞得很平稳。",
+   "py": "Fēijī fēi de hěn píngwěn.",
+   "en": "The flight was very smooth."
+  },
+  {
+   "word": "miao2xie3-mva36",
+   "zh": "这本书描写了北京的生活。",
+   "py": "Zhè běn shū miáoxiě le Běijīng de shēnghuó.",
+   "en": "This book describes life in Beijing."
+  },
+  {
+   "word": "xiang4pian4-5x2mt",
+   "zh": "这是我小时候的相片。",
+   "py": "Zhè shì wǒ xiǎo shíhou de xiàngpiàn.",
+   "en": "This is a photo of me as a child."
+  },
+  {
+   "word": "da4jie3-gkqqq",
+   "zh": "大姐，这个多少钱？",
+   "py": "Dàjiě, zhège duōshao qián?",
+   "en": "Excuse me, how much is this? (to a woman)"
+  },
+  {
+   "word": "qi4qiu2-23hc7",
+   "zh": "孩子手里拿着一个气球。",
+   "py": "Háizi shǒu li ná zhe yī gè qìqiú.",
+   "en": "The child is holding a balloon."
+  },
+  {
+   "word": "chun1ji4-1xzzp",
+   "zh": "春季的天气很舒服。",
+   "py": "Chūnjì de tiānqì hěn shūfu.",
+   "en": "The weather in spring is lovely."
+  },
+  {
+   "word": "zan4shang3-xhn13",
+   "zh": "老板很赞赏他的工作。",
+   "py": "Lǎobǎn hěn zànshǎng tā de gōngzuò.",
+   "en": "The boss really appreciates his work."
+  },
+  {
+   "word": "fa1piao4-8awgt",
+   "zh": "请给我开一张发票。",
+   "py": "Qǐng gěi wǒ kāi yī zhāng fāpiào.",
+   "en": "Please give me a receipt."
+  },
+  {
+   "word": "bu4yao4jin3-c0prg",
+   "zh": "不要紧，我没事。",
+   "py": "Bùyàojǐn, wǒ méi shì.",
+   "en": "It doesn't matter, I'm fine."
+  },
+  {
+   "word": "pei2yu4-fuyv0",
+   "zh": "这里培育了很多新品种。",
+   "py": "Zhèlǐ péiyù le hěn duō xīn pǐnzhǒng.",
+   "en": "Many new varieties were bred here."
+  },
+  {
+   "word": "lun2yi3-azyra",
+   "zh": "爷爷坐在轮椅上。",
+   "py": "Yéye zuò zài lúnyǐ shang.",
+   "en": "Grandpa is sitting in a wheelchair."
+  },
+  {
+   "word": "xiao3chi1-zprhm",
+   "zh": "北京有很多好吃的小吃。",
+   "py": "Běijīng yǒu hěn duō hǎochī de xiǎochī.",
+   "en": "Beijing has lots of tasty snacks."
+  },
+  {
+   "word": "te4jia4-d1ehc",
+   "zh": "今天的水果是特价。",
+   "py": "Jīntiān de shuǐguǒ shì tèjià.",
+   "en": "The fruit is on special offer today."
+  },
+  {
+   "word": "ai4hu4-k4kjb",
+   "zh": "我们要爱护环境。",
+   "py": "Wǒmen yào àihù huánjìng.",
+   "en": "We should take care of the environment."
+  },
+  {
+   "word": "you1liang2-xaemn",
+   "zh": "他的成绩很优良。",
+   "py": "Tā de chéngjì hěn yōuliáng.",
+   "en": "His grades are excellent."
+  },
+  {
+   "word": "fang1zhen1-a9j0r",
+   "zh": "学校的方针是快乐学习。",
+   "py": "Xuéxiào de fāngzhēn shì kuàilè xuéxí.",
+   "en": "The school's guiding principle is learning with joy."
+  },
+  {
+   "word": "cao1chang3-i7t24",
+   "zh": "学生们在操场上跑步。",
+   "py": "Xuéshengmen zài cāochǎng shang pǎobù.",
+   "en": "The students are running on the sports field."
+  },
+  {
+   "word": "shang4lou2-ksso4",
+   "zh": "我先上楼了。",
+   "py": "Wǒ xiān shàng lóu le.",
+   "en": "I'm going upstairs first."
+  },
+  {
+   "word": "lu4di4-e817r",
+   "zh": "船终于到了陆地。",
+   "py": "Chuán zhōngyú dào le lùdì.",
+   "en": "The boat finally reached land."
+  },
+  {
+   "word": "jiang4wen1-br17t",
+   "zh": "明天要降温了。",
+   "py": "Míngtiān yào jiàngwēn le.",
+   "en": "It's going to get colder tomorrow."
+  },
+  {
+   "word": "chou1jiang3-1vdmc",
+   "zh": "我在抽奖中得了一个手机。",
+   "py": "Wǒ zài chōujiǎng zhōng dé le yī gè shǒujī.",
+   "en": "I won a phone in a raffle."
+  },
+  {
+   "word": "gai4kuo4-9w5yv",
+   "zh": "请概括一下这篇文章。",
+   "py": "Qǐng gàikuò yīxià zhè piān wénzhāng.",
+   "en": "Please summarise this article."
+  },
+  {
+   "word": "sun1nv3-23bxv",
+   "zh": "奶奶很爱她的孙女。",
+   "py": "Nǎinai hěn ài tā de sūnnǚ.",
+   "en": "Grandma loves her granddaughter very much."
+  },
+  {
+   "word": "gao1jia4-oukfg",
+   "zh": "他用高价买了这张票。",
+   "py": "Tā yòng gāojià mǎi le zhè zhāng piào.",
+   "en": "He paid a high price for this ticket."
+  },
+  {
+   "word": "da4ma1-vzjis",
+   "zh": "楼下的大妈很热心。",
+   "py": "Lóu xià de dàmā hěn rèxīn.",
+   "en": "The auntie downstairs is very kind."
+  },
+  {
+   "word": "sui2shou3-5mt5a",
+   "zh": "出门的时候请随手关灯。",
+   "py": "Chūmén de shíhou qǐng suíshǒu guān dēng.",
+   "en": "Please turn off the light on your way out."
+  },
+  {
+   "word": "zhuan3gao4-7pkf1",
+   "zh": "请你转告他，我明天不来了。",
+   "py": "Qǐng nǐ zhuǎngào tā, wǒ míngtiān bù lái le.",
+   "en": "Please tell him I won't come tomorrow."
+  },
+  {
+   "word": "gong1yuan2-3h6hp",
+   "zh": "长城是公元前修建的。",
+   "py": "Chángchéng shì gōngyuán qián xiūjiàn de.",
+   "en": "The Great Wall was built BC."
+  },
+  {
+   "word": "zhi4ding4-yzu5c",
+   "zh": "我们制订了一个学习计划。",
+   "py": "Wǒmen zhìdìng le yī gè xuéxí jìhuà.",
+   "en": "We drew up a study plan."
+  },
+  {
+   "word": "lu4xu4-hsk9i",
+   "zh": "客人们陆续到了。",
+   "py": "Kèrenmen lùxù dào le.",
+   "en": "The guests arrived one after another."
+  },
+  {
+   "word": "shuai4xian1-608d9",
+   "zh": "他率先完成了比赛。",
+   "py": "Tā shuàixiān wánchéng le bǐsài.",
+   "en": "He was the first to finish the race."
+  },
+  {
+   "word": "bing1xue3-tjh9h",
+   "zh": "哈尔滨的冰雪节很有名。",
+   "py": "Hā'ěrbīn de bīngxuě jié hěn yǒumíng.",
+   "en": "Harbin's Ice and Snow Festival is famous."
+  },
+  {
+   "word": "kuang4quan2shui3-o5pw8",
+   "zh": "我要一瓶矿泉水。",
+   "py": "Wǒ yào yī píng kuàngquánshuǐ.",
+   "en": "I'd like a bottle of mineral water."
+  },
+  {
+   "word": "da3zhen1-ofxue",
+   "zh": "孩子怕打针。",
+   "py": "Háizi pà dǎzhēn.",
+   "en": "The child is scared of injections."
+  },
+  {
+   "word": "zai4san1-xwe40",
+   "zh": "他再三说谢谢。",
+   "py": "Tā zàisān shuō xièxie.",
+   "en": "He said thank you again and again."
+  },
+  {
+   "word": "guo3shi2-kz8v3",
+   "zh": "树上结满了果实。",
+   "py": "Shù shang jiē mǎn le guǒshí.",
+   "en": "The tree is full of fruit."
+  },
+  {
+   "word": "nei4ke1-tvqig",
+   "zh": "你应该去看内科。",
+   "py": "Nǐ yīnggāi qù kàn nèikē.",
+   "en": "You should see a general physician."
+  },
+  {
+   "word": "shen1hou4-mty0x",
+   "zh": "我们的友谊很深厚。",
+   "py": "Wǒmen de yǒuyì hěn shēnhòu.",
+   "en": "Our friendship runs deep."
+  },
+  {
+   "word": "jiang4jia4-mrkp2",
+   "zh": "这个手机降价了。",
+   "py": "Zhège shǒujī jiàngjià le.",
+   "en": "This phone has come down in price."
+  },
+  {
+   "word": "tong1zhi1shu1-6gix2",
+   "zh": "我收到了大学的通知书。",
+   "py": "Wǒ shōudào le dàxué de tōngzhīshū.",
+   "en": "I got my university admission letter."
+  },
+  {
+   "word": "pei2xun4ban1-oywxr",
+   "zh": "我参加了一个中文培训班。",
+   "py": "Wǒ cānjiā le yī gè Zhōngwén péixùnbān.",
+   "en": "I joined a Chinese training course."
+  },
+  {
+   "word": "wai4hui4-21lgl",
+   "zh": "我去银行换外汇。",
+   "py": "Wǒ qù yínháng huàn wàihuì.",
+   "en": "I'm going to the bank to change money."
+  },
+  {
+   "word": "lun2zi5-isx0y",
+   "zh": "自行车的轮子坏了。",
+   "py": "Zìxíngchē de lúnzi huài le.",
+   "en": "The bike's wheel is broken."
+  },
+  {
+   "word": "xue2fen1-975p7",
+   "zh": "这门课有三个学分。",
+   "py": "Zhè mén kè yǒu sān gè xuéfēn.",
+   "en": "This course is worth three credits."
+  },
+  {
+   "word": "bai3dong4-ol2iq",
+   "zh": "树在风中摆动。",
+   "py": "Shù zài fēng zhōng bǎidòng.",
+   "en": "The trees are swaying in the wind."
+  },
+  {
+   "word": "hong2bao1-v13k9",
+   "zh": "春节的时候，孩子们会收到红包。",
+   "py": "Chūnjié de shíhou, háizimen huì shōudào hóngbāo.",
+   "en": "At Spring Festival, children get red envelopes."
+  },
+  {
+   "word": "dao3che1-rjya7",
+   "zh": "去机场要倒车吗？",
+   "py": "Qù jīchǎng yào dǎochē ma?",
+   "en": "Do I need to change buses to get to the airport?"
+  },
+  {
+   "word": "dao4che1-i2uwa",
+   "zh": "他慢慢地倒车。",
+   "py": "Tā mànmàn de dàochē.",
+   "en": "He reversed slowly."
+  },
+  {
+   "word": "hou4tou5-e46z6",
+   "zh": "他在后头等我们。",
+   "py": "Tā zài hòutou děng wǒmen.",
+   "en": "He's waiting for us at the back."
+  },
+  {
+   "word": "ben3ke1-u95ij",
+   "zh": "她是本科生。",
+   "py": "Tā shì běnkēshēng.",
+   "en": "She's an undergraduate."
+  },
+  {
+   "word": "lun2chuan2-hbbaq",
+   "zh": "我们坐轮船去上海。",
+   "py": "Wǒmen zuò lúnchuán qù Shànghǎi.",
+   "en": "We're taking a ship to Shanghai."
+  },
+  {
+   "word": "kuan1guang3-dw5za",
+   "zh": "这里的马路很宽广。",
+   "py": "Zhèlǐ de mǎlù hěn kuānguǎng.",
+   "en": "The roads here are wide."
+  },
+  {
+   "word": "qian2tou5-y4d7q",
+   "zh": "前头有一个超市。",
+   "py": "Qiántou yǒu yī gè chāoshì.",
+   "en": "There's a supermarket up ahead."
+  },
+  {
+   "word": "qi1zhong1-mls1z",
+   "zh": "下个星期是期中考试。",
+   "py": "Xià gè xīngqī shì qīzhōng kǎoshì.",
+   "en": "Next week is the midterm exam."
+  },
+  {
+   "word": "wang3zhi3-20a6m",
+   "zh": "你知道这个网址吗？",
+   "py": "Nǐ zhīdào zhège wǎngzhǐ ma?",
+   "en": "Do you know this web address?"
+  },
+  {
+   "word": "xi1guan3-cma9s",
+   "zh": "请给我一根吸管。",
+   "py": "Qǐng gěi wǒ yī gēn xīguǎn.",
+   "en": "Please give me a straw."
+  },
+  {
+   "word": "xue2nian2-618cf",
+   "zh": "新的学年开始了。",
+   "py": "Xīn de xuénián kāishǐ le.",
+   "en": "The new school year has begun."
+  },
+  {
+   "word": "shou4huo4yuan2-1ecwg",
+   "zh": "售货员很热情。",
+   "py": "Shòuhuòyuán hěn rèqíng.",
+   "en": "The shop assistant is very friendly."
+  },
+  {
+   "word": "kou3yu3-egzs4",
+   "zh": "我的口语还不太好。",
+   "py": "Wǒ de kǒuyǔ hái bù tài hǎo.",
+   "en": "My spoken Chinese isn't very good yet."
+  },
+  {
+   "word": "jin4dai4-f3tzi",
+   "zh": "这是一本近代史的书。",
+   "py": "Zhè shì yī běn jìndài shǐ de shū.",
+   "en": "This is a book about modern history."
+  },
+  {
+   "word": "liao2yang3-i0wmi",
+   "zh": "爷爷去海边疗养了。",
+   "py": "Yéye qù hǎibiān liáoyǎng le.",
+   "en": "Grandpa has gone to the seaside to recuperate."
+  },
+  {
+   "word": "ai3xiao3-wrv9r",
+   "zh": "他长得很矮小。",
+   "py": "Tā zhǎng de hěn ǎixiǎo.",
+   "en": "He's short and slight."
+  },
+  {
+   "word": "shua1zi5-kjqbe",
+   "zh": "用刷子把鞋刷干净。",
+   "py": "Yòng shuāzi bǎ xié shuā gānjìng.",
+   "en": "Scrub the shoes clean with a brush."
+  },
+  {
+   "word": "hao2mi3-ltore",
+   "zh": "这张纸厚一毫米。",
+   "py": "Zhè zhāng zhǐ hòu yī háomǐ.",
+   "en": "This sheet of paper is one millimetre thick."
+  },
+  {
+   "word": "ya4yun4hui4-32epj",
+   "zh": "亚运会在中国举行。",
+   "py": "Yàyùnhuì zài Zhōngguó jǔxíng.",
+   "en": "The Asian Games are being held in China."
+  },
+  {
+   "word": "gao1tie3-aty31",
+   "zh": "坐高铁去上海很快。",
+   "py": "Zuò gāotiě qù Shànghǎi hěn kuài.",
+   "en": "The high-speed train to Shanghai is quick."
+  },
+  {
+   "word": "dian4dong4che1-ksj8h",
+   "zh": "我骑电动车上班。",
+   "py": "Wǒ qí diàndòngchē shàngbān.",
+   "en": "I ride an e-bike to work."
+  },
+  {
+   "word": "hao2sheng1-2p0kv",
+   "zh": "这瓶水有五百毫升。",
+   "py": "Zhè píng shuǐ yǒu wǔbǎi háoshēng.",
+   "en": "This bottle holds five hundred millilitres."
+  },
+  {
+   "word": "wu3yan2liu4se4-p2woh",
+   "zh": "公园里的花五颜六色。",
+   "py": "Gōngyuán li de huā wǔyánliùsè.",
+   "en": "The flowers in the park are all sorts of colours."
+  },
+  {
+   "word": "ge2kai1-a0w5d",
+   "zh": "一条河把两个村子隔开了。",
+   "py": "Yī tiáo hé bǎ liǎng gè cūnzi gékāi le.",
+   "en": "A river separates the two villages."
+  },
+  {
+   "word": "mo2te4r5-zfj1m",
+   "zh": "她以前是一个模特儿。",
+   "py": "Tā yǐqián shì yī gè mótèr.",
+   "en": "She used to be a model."
+  },
+  {
+   "word": "chao1xie3-gt6iz",
+   "zh": "请把生词抄写三遍。",
+   "py": "Qǐng bǎ shēngcí chāoxiě sān biàn.",
+   "en": "Please copy out the new words three times."
+  },
+  {
+   "word": "mei2fa3r5-hofb0",
+   "zh": "他不听，我也没法儿。",
+   "py": "Tā bù tīng, wǒ yě méi fǎr.",
+   "en": "He won't listen, and there's nothing I can do."
+  },
+  {
+   "word": "chun2jing4shui3-wulm8",
+   "zh": "我只喝纯净水。",
+   "py": "Wǒ zhǐ hē chúnjìngshuǐ.",
+   "en": "I only drink purified water."
+  },
+  {
+   "word": "tian2kong4-cws35",
+   "zh": "请在空白处填空。",
+   "py": "Qǐng zài kòngbái chù tiánkòng.",
+   "en": "Please fill in the blanks."
+  },
+  {
+   "word": "xue2shi2-d8e97",
+   "zh": "这门课一共四十个学时。",
+   "py": "Zhè mén kè yīgòng sìshí gè xuéshí.",
+   "en": "This course is forty class hours in total."
+  },
+  {
+   "word": "ming2pai2r5-rsejh",
+   "zh": "他穿的都是名牌儿。",
+   "py": "Tā chuān de dōu shì míngpáir.",
+   "en": "He only wears designer brands."
+  },
+  {
+   "word": "you3jin4r5-yu8xj",
+   "zh": "他说话很有劲儿。",
+   "py": "Tā shuōhuà hěn yǒu jìnr.",
+   "en": "He speaks with real energy."
+  }
+ ]
+}

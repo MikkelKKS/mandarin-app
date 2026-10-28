@@ -9,6 +9,7 @@ on:
       - scripts/build-vocab.ts
       - scripts/fetch-vocab-sources.sh
       - src/content/vocab.ts
+      - content/generated-sentences.json
 permissions:
   contents: write
 concurrency:
