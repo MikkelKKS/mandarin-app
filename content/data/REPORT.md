@@ -12,22 +12,28 @@ sentences Tatoeba (CC BY 2.0 FR) and the course.
 
 | HSK level | Words | With an example | Still need one |
 |---|---|---|---|
-| 1 | 511 | 501 | 10 |
-| 2 | 758 | 709 | 49 |
-| 3 | 961 | 847 | 114 |
-| 4 | 987 | 806 | 181 |
-| 5 | 1064 | 638 | 426 |
+| 1 | 511 | 511 | 0 |
+| 2 | 758 | 758 | 0 |
+| 3 | 961 | 961 | 0 |
+| 4 | 987 | 987 | 0 |
+| 5 | 1064 | 641 | 423 |
 | 6 | 1132 | 618 | 514 |
-| 7–9 | 5627 | 2075 | 3552 |
+| 7–9 | 5627 | 2079 | 3548 |
 | course only | 34 | 34 | 0 |
 
 ## Sentences
 
-9990 sentences: 9190 from Tatoeba, 800 from the course, 0 generated.
+10343 sentences: 9190 from Tatoeba, 800 from the course, 353 generated.
 Tatoeba had 89211 Chinese sentences; 27164 were simplified, short, translated into English and used only HSK words.
 
-## Problems (5)
+## Problems (11)
 
+- Generated sentence uses characters outside the HSK list: 我的手机开不了机。
+- Generated sentence uses characters outside the HSK list: 他坚决不同意。
+- Generated sentence uses characters outside the HSK list: 你的发音很规范。
+- Generated sentence uses characters outside the HSK list: 总之，我不同意。
+- Generated sentence uses characters outside the HSK list: 哈尔滨的冰雪节很有名。
+- Generated sentence uses characters outside the HSK list: 这是一本近代史的书。
 - Word peng2you5men5-1011e 朋友们: no English gloss
 - Word lao3wang2-3y2z9 老王: no English gloss
 - Word xiao3wang2-lvib2 小王: no English gloss
