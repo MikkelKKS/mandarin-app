@@ -6,6 +6,7 @@
  *   (speaking, step 9) → a Tone Gym round.
  * Pure: everything it needs is passed in.
  */
+import { samePinyin, sharesMeaning } from '../../lib/gloss';
 import { parseCardId, type Facet } from '../../lib/review';
 import type { SentenceRow, VocabData, VocabRow } from '../../lib/vocabData';
 import type { GymItem } from '../tonegym/model';
@@ -95,10 +96,23 @@ function shuffle<T>(xs: T[], rng: () => number): T[] {
   return a;
 }
 
-/** Three other words with different meanings, close in level, for the first-exposure choice. */
-export function distractors(word: VocabRow, data: VocabData, rng: () => number): string[] {
-  const near = data.words.filter((w) => w.id !== word.id && Math.abs(w.order - word.order) < 400 && w.gloss[0] && w.gloss[0] !== word.gloss[0]);
-  return shuffle(near, rng).slice(0, 3).map((w) => w.id);
+/**
+ * Three other words for a "what does it mean?" choice: close in level, sharing
+ * no meaning term with the word (no near-synonyms) and not sounding exactly
+ * like it (no homophones), nor like each other.
+ */
+export function distractors(word: Pick<VocabRow, 'id' | 'order' | 'gloss' | 'pinyin'>, words: VocabRow[], rng: () => number, n = 3): string[] {
+  const near = shuffle(
+    words.filter((w) => w.id !== word.id && Math.abs(w.order - word.order) < 400 && w.gloss[0] && !samePinyin(w.pinyin, word.pinyin) && !sharesMeaning(w.gloss, word.gloss)),
+    rng,
+  );
+  const out: VocabRow[] = [];
+  for (const w of near) {
+    if (out.some((o) => sharesMeaning(o.gloss, w.gloss) || samePinyin(o.pinyin, w.pinyin))) continue;
+    out.push(w);
+    if (out.length >= n) break;
+  }
+  return out.map((w) => w.id);
 }
 
 /** New words: meet each one (intro + first choice), then type each twice (by ear, from English), then hear it in a sentence. */
@@ -107,7 +121,7 @@ export function newWordItems(words: string[], data: VocabData, rng: () => number
   const out: SItem[] = [];
   for (const w of ws) {
     out.push({ kind: 'intro', word: w.id });
-    if (wordHasAudio(w)) out.push({ kind: 'choose-meaning', word: w.id, options: shuffle([w.id, ...distractors(w, data, rng)], rng) });
+    if (wordHasAudio(w)) out.push({ kind: 'choose-meaning', word: w.id, options: shuffle([w.id, ...distractors(w, data.words, rng)], rng) });
   }
   const typed: SItem[] = [];
   for (const w of ws) {
@@ -149,8 +163,17 @@ export interface PlanInput {
   rng?: () => number;
 }
 
+/** What a session will hold, for the Home screen (the same caps as planSession). */
+export function sessionPreview(mode: SessionMode, due: number, fresh: number, tones: boolean): { reviews: number; newWords: number; tones: number } {
+  if (mode === 'quick') {
+    const reviews = Math.min(due, QUICK.reviews);
+    return { reviews, newWords: reviews < QUICK.fewReviews ? Math.min(fresh, QUICK.newWhenFew) : 0, tones: tones ? QUICK.tones : 0 };
+  }
+  return { reviews: Math.min(due, DEEP.reviews), newWords: Math.min(fresh, DEEP.newWords), tones: tones ? DEEP.tones : 0 };
+}
+
 export const QUICK = { reviews: 24, toneEvery: 4, tones: 6, newWhenFew: 3, fewReviews: 8 };
-export const DEEP = { reviews: 80, newWords: 10, listening: 8, speaking: 8, speakNew: 4, tones: 20 };
+export const DEEP = { reviews: 80, newWords: 10, listening: 8, speaking: 8, speakNew: 4, tones: 12 };
 
 export function planSession(p: PlanInput): SessionPlan {
   const rng = p.rng ?? Math.random;

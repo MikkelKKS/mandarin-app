@@ -54,11 +54,11 @@ describe('streak', () => {
 });
 
 describe('achievements', () => {
-  const base = { xp: 0, bestStreak: 0, matureWords: 0, startedWords: 0, reviews: 0, gymPairsRight: 0, gymBest: 0, bestCombo: 0, sessions: 0 };
+  const base = { xp: 0, bestStreak: 0, matureWords: 0, startedWords: 0, reviews: 0, gymRight: 0, gymBest: 0, bestCombo: 0, sessions: 0 };
   it('unlocks once, by condition', () => {
-    const s = { ...base, sessions: 1, bestStreak: 8, gymPairsRight: 120 };
+    const s = { ...base, sessions: 1, bestStreak: 8, gymRight: 520 };
     const got = newlyUnlocked(s, new Set()).map((a) => a.id);
-    expect(got).toEqual(expect.arrayContaining(['first-session', 'streak-7', 'pairs-100']));
+    expect(got).toEqual(expect.arrayContaining(['first-session', 'streak-7', 'tones-500']));
     expect(got).not.toContain('streak-30');
     expect(newlyUnlocked(s, new Set(got))).toEqual([]);
   });

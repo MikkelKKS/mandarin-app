@@ -39,7 +39,8 @@ test('a quick session from the home screen earns XP and counts towards the goal'
   await page.route('**/audio/**', (r) => r.abort());
   await page.goto('./');
   await expect(page.getByText(/day streak/)).toBeVisible();
-  await expect(page.getByText(/\d+ new words?\./).first()).toBeVisible({ timeout: 15000 });
+  // A fresh start: the quick session holds 3 new words (not the whole day's 10).
+  await expect(page.getByText(/About 5 minutes: 3 new words/)).toBeVisible({ timeout: 15000 });
   await page.getByRole('button', { name: /Quick session/ }).click();
   await expect(page.getByRole('progressbar', { name: 'Session progress' })).toBeVisible({ timeout: 15000 });
   // A fresh start: new words first.

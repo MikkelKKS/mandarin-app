@@ -6,8 +6,8 @@ import { cardOf, itemCount, listeningItems, newWordItems, planSession, QUICK, re
 const word = (i: number, extra: Partial<VocabRow> = {}): VocabRow => ({
   id: `w${i}`,
   hanzi: String.fromCodePoint(0x4e00 + i),
-  pinyin: 'mā',
-  gloss: [`gloss ${i}`],
+  pinyin: `mā${'a'.repeat(i)}`,
+  gloss: [`g${'x'.repeat(i + 1)}`],
   level: 1,
   order: i + 1,
   examples: [`s${i}`],
@@ -73,7 +73,7 @@ describe('planning sessions', () => {
   it('deep: reviews, new words, listening, Tone Gym', () => {
     const plan = planSession({ ...base, mode: 'deep', reviews: ['w1#lm', 'w2#lp'], newWords: ['w10', 'w11'] });
     expect(plan.blocks.map((b) => b.id)).toEqual(['reviews', 'new', 'listening', 'tones']);
-    expect(plan.blocks[3].items).toHaveLength(20);
+    expect(plan.blocks[3].items).toHaveLength(12);
     expect(itemCount(plan)).toBeGreaterThan(25);
   });
   it('deep with the microphone on: a speaking block of due and new speaking cards', () => {
@@ -93,5 +93,40 @@ describe('planning sessions', () => {
   it('works with nothing due and nothing new', () => {
     const plan = planSession({ ...base, mode: 'quick', reviews: [], newWords: [] });
     expect(plan.blocks.map((b) => b.id)).toEqual(['tones']);
+  });
+});
+
+describe('wrong options for "what does it mean?"', async () => {
+  const { distractors } = await import('./plan');
+  const row = (id: string, pinyin: string, gloss: string[], order: number) => ({ id, hanzi: id, pinyin, gloss, level: 1, order, examples: [], azure: true });
+  const de = row('de', 'dé', ['to obtain', 'to get'], 10);
+  const words = [
+    de,
+    row('huode', 'huòdé', ['to acquire; to get; to obtain'], 11),
+    row('shi', 'dé', ['virtue'], 12), // a homophone
+    row('ma', 'mǎ', ['horse'], 13),
+    row('mai', 'mǎi', ['to buy'], 14),
+    row('chi', 'chī', ['to eat'], 15),
+    row('he', 'hē', ['to drink'], 16),
+  ];
+  it('never offers a near-synonym or a homophone', () => {
+    for (let seed = 1; seed < 20; seed++) {
+      let x = seed;
+      const ids = distractors(de, words, () => ((x = (x * 9301 + 49297) % 233280) / 233280));
+      expect(ids).toHaveLength(3);
+      expect(ids).not.toContain('huode');
+      expect(ids).not.toContain('shi');
+    }
+  });
+});
+
+describe('what Home says a session holds', async () => {
+  const { sessionPreview } = await import('./plan');
+  it('a quick session: at most 24 reviews, new words only when little is due', () => {
+    expect(sessionPreview('quick', 30, 10, true)).toEqual({ reviews: 24, newWords: 0, tones: 6 });
+    expect(sessionPreview('quick', 2, 10, false)).toEqual({ reviews: 2, newWords: 3, tones: 0 });
+  });
+  it('a deep session: up to 10 new words', () => {
+    expect(sessionPreview('deep', 30, 10, true)).toEqual({ reviews: 30, newWords: 10, tones: 12 });
   });
 });

@@ -6,7 +6,7 @@
 import { PageHeader } from '../../components/PageHeader';
 import { useMemo } from 'react';
 import { db } from '../../db/db';
-import { loadGameStats } from '../../lib/gameStats';
+import { useGameStats } from '../../lib/gameStats';
 import { ACHIEVEMENTS } from '../../lib/gamify';
 import { ProgressBar } from '../../components/ProgressBar';
 import { go } from '../../lib/router';
@@ -50,7 +50,7 @@ export function StatsView() {
   const vocab = useVocab();
   const cards = useLive(() => db.reviewItems.toArray(), [], null);
   const logs = useLive(() => db.reviewLogs.toArray(), [], null);
-  const game = useLive(() => loadGameStats(settings.dailyGoal), [settings.dailyGoal], null);
+  const game = useGameStats(settings.dailyGoal);
   const now = useMemo(() => Date.now(), [logs]);
 
   const levels = useMemo(() => (vocab && cards ? wordsByLevel(vocab, cards) : null), [vocab, cards]);

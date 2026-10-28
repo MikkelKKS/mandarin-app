@@ -3,11 +3,12 @@
  * session on a phone, Deep session on a PC); resume; the Tone Gym with your
  * weakest pair of the week; the next achievement. Everything else is in Library.
  */
+import { sessionPreview } from '../session/plan';
 import { useEffect, useMemo, useState } from 'react';
 import { wordOrder } from '../session/beijing';
 import { db } from '../../db/db';
 import { ACHIEVEMENTS } from '../../lib/gamify';
-import { loadGameStats } from '../../lib/gameStats';
+import { useGameStats } from '../../lib/gameStats';
 import { todaysQueue, type Queue } from '../../lib/review';
 import { go } from '../../lib/router';
 import { micActive, setSpeakPausedUntil, useSettings, useSpeakPausedUntil } from '../../lib/settings';
@@ -48,7 +49,7 @@ export function HomeView() {
   const settings = useSettings();
   const speakPaused = useSpeakPausedUntil();
   const vocab = useVocab();
-  const game = useLive(() => loadGameStats(settings.dailyGoal), [settings.dailyGoal], null);
+  const game = useGameStats(settings.dailyGoal);
   const resume = useLive(() => loadSession(), [], null);
   const toneLogs = useLive(() => db.reviewLogs.where('at').above(Date.now() - WEEK).filter((l) => !!l.tones && !l.replaced).toArray(), [], []);
   const cards = useLive(() => db.reviewItems.count(), [], 0);
@@ -67,11 +68,19 @@ export function HomeView() {
   const due = queue?.reviews.length ?? 0;
   const fresh = queue?.newWords.length ?? 0;
   const plural = (n: number, w: string) => `${n} ${w}${n === 1 ? '' : 's'}`;
-  const whatsUp = queue ? (due || fresh ? [due ? plural(due, 'review') : '', fresh ? plural(fresh, 'new word') : ''].filter(Boolean).join(' and ') : 'Nothing due') : 'Checking what’s due…';
+  /** "24 reviews, 3 new words and 6 tone questions": what that session will actually hold. */
+  const contents = (mode: 'quick' | 'deep') => {
+    if (!queue) return 'Checking what’s due…';
+    const p = sessionPreview(mode, due, fresh, settings.sessionTones);
+    const parts = [p.reviews ? plural(p.reviews, 'review') : '', p.newWords ? plural(p.newWords, 'new word') : '', p.tones ? plural(p.tones, 'tone question') : ''].filter(Boolean);
+    if (mode === 'deep') parts.push('listening', ...(settings.speaking && micSupported ? ['speaking'] : []));
+    if (!parts.length) return 'Nothing due right now';
+    return parts.length === 1 ? parts[0] : `${parts.slice(0, -1).join(', ')} and ${parts[parts.length - 1]}`;
+  };
 
   const sessions = [
-    { mode: 'quick', title: 'Quick session', detail: `About 5 minutes. ${whatsUp}.` },
-    { mode: 'deep', title: 'Deep session', detail: '20+ minutes: reviews, new words, then listening and speaking.' },
+    { mode: 'quick' as const, title: 'Quick session', detail: `About 5 minutes: ${contents('quick')}.` },
+    { mode: 'deep' as const, title: 'Deep session', detail: `20+ minutes: ${contents('deep')}.` },
   ];
   if (wide) sessions.reverse();
   const resumable = resume && remainingItems(resume) > 0 ? resume : null;
@@ -133,7 +142,7 @@ export function HomeView() {
             <button key={x.mode} onClick={() => go(`session/${x.mode}`)} className="press card flex w-full items-center gap-4 p-5 text-left hover:border-ink/20">
               <span className="min-w-0 flex-1">
                 <span className="block text-lg font-semibold">{x.title}</span>
-                <span className="block text-sm text-muted">{x.mode === 'quick' ? `About 5 minutes. ${whatsUp}.` : x.detail}</span>
+                <span className="block text-sm text-muted">{x.detail}</span>
               </span>
               <ChevronRight className="h-5 w-5 text-muted" />
             </button>

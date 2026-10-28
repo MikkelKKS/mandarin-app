@@ -128,8 +128,8 @@ export interface AchievementStats {
   matureWords: number;
   startedWords: number;
   reviews: number;
-  /** Tone pairs answered right in the Tone Gym. */
-  gymPairsRight: number;
+  /** Tone questions answered right (Tone Gym rounds and the tone questions in sessions). */
+  gymRight: number;
   /** Best Tone Gym round score (out of 20). */
   gymBest: number;
   bestCombo: number;
@@ -161,8 +161,8 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: 'mature-100', title: '100 words mature', hanzi: '熟', detail: '100 words with every skill 21+ days out', ...goalOf((s) => s.matureWords, 100) },
   { id: 'mature-500', title: '500 words mature', hanzi: '熟练', detail: '500 words mature', ...goalOf((s) => s.matureWords, 500) },
   { id: 'mature-2000', title: '2,000 words mature', hanzi: '精通', detail: '2,000 words mature', ...goalOf((s) => s.matureWords, 2000) },
-  { id: 'pairs-100', title: '100 perfect tone pairs', hanzi: '声调', detail: '100 tone pairs right in the Tone Gym', ...goalOf((s) => s.gymPairsRight, 100) },
-  { id: 'pairs-1000', title: 'Tone ear', hanzi: '耳朵', detail: '1,000 tone pairs right', ...goalOf((s) => s.gymPairsRight, 1000) },
+  { id: 'tones-500', title: 'Tone ear', hanzi: '声调', detail: '500 tone questions right (Tone Gym and sessions)', ...goalOf((s) => s.gymRight, 500) },
+  { id: 'tones-2000', title: 'Golden ear', hanzi: '耳朵', detail: '2,000 tone questions right', ...goalOf((s) => s.gymRight, 2000) },
   { id: 'gym-20', title: 'Flawless round', hanzi: '完美', detail: '20 out of 20 in a Tone Gym round', ...goalOf((s) => s.gymBest, 20) },
   { id: 'combo-25', title: 'On a roll', hanzi: '连胜', detail: '25 right in a row', ...goalOf((s) => s.bestCombo, 25) },
   { id: 'reviews-1000', title: '1,000 reviews', hanzi: '千次', detail: 'Answer 1,000 reviews', ...goalOf((s) => s.reviews, 1000) },

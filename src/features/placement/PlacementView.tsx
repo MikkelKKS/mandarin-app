@@ -38,6 +38,7 @@ export function PlacementView() {
     return (
       <PlacementTest
         vocab={vocab}
+        onStop={() => setPhase({ kind: 'start' })}
         onDone={(rs, ok) => {
           setResults(rs);
           setRight(ok);
@@ -133,7 +134,7 @@ export function PlacementView() {
   );
 }
 
-function PlacementTest({ vocab, onDone }: { vocab: VocabRow[]; onDone: (r: LevelResult[], right: Set<string>) => void }) {
+function PlacementTest({ vocab, onDone, onStop }: { vocab: VocabRow[]; onDone: (r: LevelResult[], right: Set<string>) => void; onStop: () => void }) {
   const [li, setLi] = useState(0);
   const [i, setI] = useState(0);
   const [text, setText] = useState('');
@@ -192,7 +193,7 @@ function PlacementTest({ vocab, onDone }: { vocab: VocabRow[]; onDone: (r: Level
     <LessonCtx.Provider value={api}>
       <div className="mx-auto max-w-xl pb-10">
         <div className="flex items-center justify-between text-sm">
-          <button onClick={() => go('placement')} className="font-medium text-jade">
+          <button onClick={onStop} className="font-medium text-jade">
             ✕ Stop
           </button>
           <span className="tabular-nums text-muted">

@@ -26,7 +26,7 @@ import { GradeChip } from '../lesson/GradeChip';
 import type { Outcome } from '../lesson/types';
 import { patternStats, pickRound, sessionPool } from '../tonegym/model';
 import { SessionItem, type ItemResult } from './items';
-import { BLOCK_TITLE, cardOf, newWordItems, planSession, type SItem, type SessionMode } from './plan';
+import { BLOCK_TITLE, cardOf, DEEP, newWordItems, planSession, QUICK, type SItem, type SessionMode } from './plan';
 import { SessionEnd } from './SessionEnd';
 import { loadSession, saveSession, type SessionState } from './state';
 
@@ -47,7 +47,7 @@ async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerD
     .map((c) => c.word!)
     .sort((a, b) => (order.get(a) ?? 1e9) - (order.get(b) ?? 1e9));
   const logs = await db.reviewLogs.where('at').above(now - 60 * 864e5).filter((l) => !!l.tones).toArray();
-  const tones = !currentSettings().sessionTones ? [] : pickRound(sessionPool(data.words, BASE), 'mixed', patternStats(logs), Math.random, mode === 'quick' ? 6 : 12);
+  const tones = !currentSettings().sessionTones ? [] : pickRound(sessionPool(data.words, BASE), 'mixed', patternStats(logs), Math.random, mode === 'quick' ? QUICK.tones : DEEP.tones);
   const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, now });
   return { id: 'session', plan, block: 0, item: 0, xp: 0, combo: 0, bestCombo: 0, right: 0, answered: 0, newWords: [], tones: [], done: false, startedAt: now, updatedAt: now };
 }
