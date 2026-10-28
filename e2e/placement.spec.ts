@@ -64,7 +64,7 @@ test('a right dictation is followed by the meaning; the word counts only if both
   await page.getByRole('button', { name: 'Start the test' }).click();
   await page.getByRole('button', { name: "I don't know" }).click();
   const feedback = page.locator('.anim-rise');
-  const pinyin = (await feedback.innerText()).split('\n')[1];
+  const pinyin = await feedback.locator(':scope > :nth-child(2)').innerText();
   const meaning = await feedback.locator('p.text-muted').innerText();
   await page.getByRole('button', { name: '✕ Stop' }).click();
   await page.getByRole('button', { name: 'Start the test' }).click();
@@ -82,7 +82,7 @@ test('pinyin right but meaning unknown: not counted as known', async ({ page }) 
   await page.goto('./#/placement');
   await page.getByRole('button', { name: 'Start the test' }).click();
   await page.getByRole('button', { name: "I don't know" }).click();
-  const pinyin = (await page.locator('.anim-rise').innerText()).split('\n')[1];
+  const pinyin = await page.locator('.anim-rise > :nth-child(2)').innerText();
   await page.getByRole('button', { name: '✕ Stop' }).click();
   await page.getByRole('button', { name: 'Start the test' }).click();
   await page.getByRole('textbox').fill(pinyin.trim());
