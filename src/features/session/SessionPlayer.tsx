@@ -15,7 +15,7 @@ import { db } from '../../db/db';
 import { comboMultiplier, xpFor, XP } from '../../lib/gamify';
 import { play, prefetchForOffline, stop } from '../../lib/audio';
 import { isPass } from '../../lib/pinyinAnswer';
-import { introduceWord, todaysQueue, type RatingName } from '../../lib/review';
+import { forgetWord, introduceWord, todaysQueue, type RatingName } from '../../lib/review';
 import { go } from '../../lib/router';
 import { micActive, useSettings } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
@@ -26,7 +26,7 @@ import { GradeChip } from '../lesson/GradeChip';
 import type { Outcome } from '../lesson/types';
 import { buildPool, patternStats, pickRound } from '../tonegym/model';
 import { SessionItem, type ItemResult } from './items';
-import { BLOCK_TITLE, cardOf, planSession, type SItem, type SessionMode } from './plan';
+import { BLOCK_TITLE, cardOf, newWordItems, planSession, type SItem, type SessionMode } from './plan';
 import { SessionEnd } from './SessionEnd';
 import { loadSession, saveSession, type SessionState } from './state';
 
@@ -235,6 +235,23 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
     persist({ ...st, plan: { ...st.plan, blocks } });
   }, [graded, result, st, item, persist]);
 
+  /**
+   * "I don't know this word": its cards go back to new, the rest of its review
+   * questions in this session are dropped, and it's taught right after this
+   * one, like any new word.
+   */
+  const unknown = useCallback(() => {
+    if (!item || result || !('word' in item)) return;
+    const word = item.word;
+    void forgetWord(word);
+    sfx.wrong();
+    const later = (k: number, j: number) => k > st.block || (k === st.block && j > st.item);
+    const blocks = st.plan.blocks.map((bl, k) => ({ ...bl, items: bl.items.filter((x, j) => !later(k, j) || !('word' in x) || x.word !== word) }));
+    blocks[st.block].items.splice(st.item + 1, 0, ...newWordItems([word], data, Math.random));
+    persist({ ...st, plan: { ...st.plan, blocks }, combo: 0, answered: st.answered + 1 });
+    setResult({ outcome: { verdict: 'wrong', note: "Moved back to your new words. It's taught again next, and its reviews start over." } });
+  }, [item, result, st, data, persist]);
+
   /** "No mic right now": take the speaking questions out of the rest of this session (skipped, not failed). */
   const noMic = useCallback(() => {
     stop();
@@ -327,7 +344,13 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
         )}
         <div key={`${st.block}-${st.item}`} className="anim-slide mt-6 flex-1">
           {item!.retry && <p className="mb-3 text-sm font-medium text-cinnabar">One more time</p>}
-          <SessionItem item={item!} data={data} onResult={onResult} onNoMic={noMic} />
+          <SessionItem
+            item={item!}
+            data={data}
+            onResult={onResult}
+            onNoMic={noMic}
+            onUnknown={block.id !== 'new' && !item!.retry && (item!.kind === 'listen-meaning' || item!.kind === 'dictation' || item!.kind === 'meaning-pinyin') ? unknown : undefined}
+          />
           {browserVoice && <p className="mt-3 text-center text-xs text-muted">No recording yet, so this was your browser's voice.</p>}
         </div>
       </div>
@@ -367,7 +390,7 @@ function Feedback({
     btn.current?.focus({ preventScroll: true });
   }, []);
   const tone = o.verdict === 'wrong' ? 'bg-cinnabar-soft' : o.verdict === 'almost' || o.verdict === 'typo' ? 'bg-amber-soft' : 'bg-jade-soft';
-  const title = o.verdict === 'wrong' ? 'Not quite' : o.verdict === 'almost' ? 'Almost' : o.verdict === 'typo' ? 'Right, with a typo' : 'Right';
+  const title = o.note?.startsWith('Moved back') ? "Here's the word" : o.verdict === 'wrong' ? 'Not quite' : o.verdict === 'almost' ? 'Almost' : o.verdict === 'typo' ? 'Right, with a typo' : 'Right';
   const audioId = 'word' in item ? item.word : 'sentence' in item ? item.sentence : null;
   const a = o.answer ?? (audioId ? answerFor(item, data) : undefined);
   return (

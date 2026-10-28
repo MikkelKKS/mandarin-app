@@ -35,6 +35,18 @@ export interface ItemProps {
   onResult: (r: ItemResult) => void;
   /** "No mic right now": drop the speaking questions from this session. */
   onNoMic?: () => void;
+  /** "I don't know this word" (review questions only): back to new words, taught again. */
+  onUnknown?: () => void;
+}
+
+/** A quiet button under a review question: you've never really known this word. */
+function DontKnow({ onUnknown }: { onUnknown?: () => void }) {
+  if (!onUnknown) return null;
+  return (
+    <button onClick={onUnknown} className="mt-3 h-11 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
+      I don't know this word
+    </button>
+  );
 }
 
 const glossOf = (w: VocabRow) => shortGloss(w.gloss);
@@ -165,7 +177,7 @@ function ChooseMeaning({ data, word, options, onResult }: ItemProps & { word: st
 }
 
 /** Review, listening → meaning: hear it, think (or type) the meaning, then grade yourself. */
-function ListenMeaning({ data, word, onResult }: ItemProps & { word: string }) {
+function ListenMeaning({ data, word, onResult, onUnknown }: ItemProps & { word: string }) {
   const w = useWord(data, word);
   const [shown, setShown] = useState(false);
   const [typed, setTyped] = useState('');
@@ -194,6 +206,7 @@ function ListenMeaning({ data, word, onResult }: ItemProps & { word: string }) {
           <button onClick={() => setShown(true)} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
             Show the answer
           </button>
+          <DontKnow onUnknown={onUnknown} />
         </div>
       ) : (
         <div className="anim-rise mt-8 rounded-2xl bg-surface p-4">
@@ -201,6 +214,7 @@ function ListenMeaning({ data, word, onResult }: ItemProps & { word: string }) {
           <p className="mt-1 text-lg">{glossOf(w)}</p>
           {match !== null && <p className={`mt-1 text-sm ${match ? 'text-jade' : 'text-muted'}`}>{match ? 'Your answer matches.' : `You wrote “${typed.trim()}”.`}</p>}
           <SelfGrade onGrade={grade} suggest={match === true ? 'good' : match === false ? 'again' : undefined} />
+          <DontKnow onUnknown={onUnknown} />
         </div>
       )}
     </div>
@@ -263,39 +277,40 @@ function useTyped(expected: { pinyin: string; hanzi: string; english?: string },
   return { text, setText, check };
 }
 
-function TypeBox({ text, setText, check }: ReturnType<typeof useTyped>) {
+function TypeBox({ text, setText, check, onUnknown }: ReturnType<typeof useTyped> & { onUnknown?: () => void }) {
   return (
     <div className="mt-8">
       <PinyinInput value={text} onChange={setText} />
       <button onClick={check} disabled={!text.trim()} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted">
         Check
       </button>
+      <DontKnow onUnknown={onUnknown} />
     </div>
   );
 }
 
 /** Review, listening → pinyin: dictation. */
-function Dictation({ data, word, onResult }: ItemProps & { word: string }) {
+function Dictation({ data, word, onResult, onUnknown }: ItemProps & { word: string }) {
   const w = useWord(data, word);
   const t = useTyped({ pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) }, onResult);
   return (
     <div>
       <Prompt>Type what you hear, with tones</Prompt>
       <AudioControls id={w.id} ladder />
-      <TypeBox {...t} />
+      <TypeBox {...t} onUnknown={onUnknown} />
     </div>
   );
 }
 
 /** Review, meaning → pinyin: active recall. */
-function MeaningToPinyin({ data, word, onResult }: ItemProps & { word: string }) {
+function MeaningToPinyin({ data, word, onResult, onUnknown }: ItemProps & { word: string }) {
   const w = useWord(data, word);
   const t = useTyped({ pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) }, onResult);
   return (
     <div>
       <Prompt>How do you say it? Type the pinyin with tones</Prompt>
       <p className="rounded-2xl bg-surface p-5 text-center text-2xl font-semibold">{glossOf(w)}</p>
-      <TypeBox {...t} />
+      <TypeBox {...t} onUnknown={onUnknown} />
     </div>
   );
 }

@@ -387,6 +387,26 @@ export async function introduceWord(word: string, now = Date.now()): Promise<voi
   });
 }
 
+/**
+ * "I don't know this word": put all of its cards back to new (not started), so
+ * it's taught again as a new word. Used when placement or an old card marked a
+ * word as known that isn't. Logged without a card, so it doesn't count against
+ * retention. Returns how many cards were reset.
+ */
+export async function forgetWord(word: string, now = Date.now()): Promise<number> {
+  let n = 0;
+  await db.transaction('rw', db.reviewItems, db.reviewLogs, async () => {
+    for (const f of FACETS) {
+      const id = cardId(word, f);
+      if (!(await db.reviewItems.get(id))) continue;
+      await db.reviewItems.put({ ...newCard(id, now), migratedFrom: 'forgotten' });
+      n++;
+    }
+    await db.reviewLogs.add({ id: uuid(), itemId: word, verdict: 'wrong', at: now, exercise: 'unknown', xp: 0, updatedAt: now });
+  });
+  return n;
+}
+
 /** Today's queue, from the local database and settings. */
 export async function todaysQueue(
   wordsInOrder: string[],

@@ -190,3 +190,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Beijing pack** (Settings, off by default): the words from the Beijing-family conversations (incl. 儿化 words) come first among new words.
 - **Speed ladder:** the speed button cycles 0.75× → 1× → 1.2× in sessions. **s** = slow on PC, alongside space = replay.
 - **Open in Pleco** link on the feedback after each session answer.
+
+## 2026-10-28: "I don't know this word"
+- Review questions about a word (listening → meaning, dictation, meaning → pinyin) have an **"I don't know this word"** button, before and (for listening → meaning) after showing the answer. Not on new-word lessons or retries.
+- It puts all the word's cards back to new (not started), shows the word, drops its other review questions from the session, and teaches it straight away like a new word (intro, first choice, typing). Its reviews start over from scratch.
+- Logged as exercise `unknown` without a card, so it doesn't count against true retention (the word was never really in long-term memory). Asked for because placement marked words as known that weren't.

@@ -10,6 +10,7 @@ import {
   dayStart,
   doneSince,
   facetForExercise,
+  forgetWord,
   migrateLegacy,
   newCard,
   parseCardId,
@@ -223,5 +224,25 @@ describe('recording and changing grades', () => {
     const out = courseCards(rows);
     expect(out.map((r) => r.id).sort()).toEqual(['s-nihao', 'w-ni']);
     expect(out.find((r) => r.id === 'w-ni')!.stability).toBe(rows[1].stability); // the weakest facet
+  });
+});
+
+describe("I don't know this word", () => {
+  beforeEach(async () => {
+    await db.reviewItems.clear();
+    await db.reviewLogs.clear();
+  });
+  it('puts every card of the word back to new, so it is taught again as a new word', async () => {
+    const now = Date.UTC(2026, 9, 28);
+    const mature = (f: string) => ({ ...newCard(`w-x#${f}`, now), state: 2, reps: 1, scheduledDays: 40, due: now + 40 * 864e5, migratedFrom: 'placement' });
+    await db.reviewItems.bulkPut([mature('lm'), mature('lp'), mature('mp'), { ...mature('lm'), id: 'w-y#lm', word: 'w-y' }]);
+    expect(await forgetWord('w-x', now)).toBe(3);
+    const cards = await db.reviewItems.toArray();
+    const q = buildQueue(cards, ['w-x', 'w-y'], { now, newPerDay: 10, reviewsPerDay: 100, mic: false, doneToday: { newWords: 0, reviews: 0 } });
+    expect(q.newWords).toEqual(['w-x']);
+    expect(q.reviews).toEqual([]);
+    const log = await db.reviewLogs.toArray();
+    expect(log).toHaveLength(1);
+    expect(log[0].card).toBeUndefined(); // doesn't count against retention
   });
 });
