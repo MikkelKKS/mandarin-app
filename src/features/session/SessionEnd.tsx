@@ -9,7 +9,7 @@ import type { Achievement } from '../../lib/gamify';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
-import { shortGloss, useVocabData } from '../../lib/vocabData';
+import { meaningOf, useVocabData } from '../../lib/vocabData';
 import { patternLabel, patternStats, weakestPair } from '../tonegym/model';
 import type { SessionState } from './state';
 
@@ -97,7 +97,7 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
               return (
                 w && (
                   <li key={id} className="rounded-xl border border-line bg-surface px-3 py-1.5">
-                    <TonePinyin pinyin={w.pinyin} className="font-semibold" /> <span className="text-sm text-muted">{shortGloss(w.gloss)}</span>
+                    <TonePinyin pinyin={w.pinyin} className="font-semibold" /> <span className="text-sm text-muted">{meaningOf(w)}</span>
                   </li>
                 )
               );

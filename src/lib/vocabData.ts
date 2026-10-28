@@ -111,6 +111,11 @@ export function useVocabData(): VocabData | null {
   return v;
 }
 
+/** The meaning to show in exercises: the hand-written learner gloss (HSK 1–4), else a trimmed CC-CEDICT one. */
+export function meaningOf(w: Pick<VocabRow, 'gloss' | 'short'>): string {
+  return w.short ?? shortGloss(w.gloss);
+}
+
 /**
  * A short meaning for exercises: the first gloss without bracketed notes,
  * plus the second when both are short ("to eat; to have a meal").

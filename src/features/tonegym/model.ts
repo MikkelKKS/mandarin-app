@@ -94,7 +94,7 @@ export function toItem(w: VocabRow, base: string): GymItem | null {
     pattern: tones.join('-'),
     sandhi: sandhiOf(w.hanzi, bases, tones),
     sources,
-    gloss: w.gloss[0] ?? '',
+    gloss: w.short ?? w.gloss[0] ?? '',
   };
 }
 
@@ -130,7 +130,7 @@ export function tonePerfectPool(vocab: VocabRow[], base: string): GymItem[] {
         tones: [tone],
         pattern: String(tone),
         sources: speakers.map((sp) => ({ url: tpUrl(base, syllable, tone, sp), speaker: TP_SPEAKERS[sp] ?? sp })),
-        gloss: w ? `${w.hanzi} ${w.gloss[0] ?? ''}`.trim() : '',
+        gloss: w ? `${w.hanzi} ${w.short ?? w.gloss[0] ?? ''}`.trim() : '',
       });
     }
   }

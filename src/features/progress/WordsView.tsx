@@ -8,7 +8,7 @@ import { parseCardId, wordState, type WordState } from '../../lib/review';
 import { currentSettings, useSettings } from '../../lib/settings';
 import { moveWords } from '../../lib/wordMove';
 import { useLive } from '../../lib/useLive';
-import { shortGloss, useVocab, type VocabRow } from '../../lib/vocabData';
+import { meaningOf, useVocab, type VocabRow } from '../../lib/vocabData';
 
 const GROUPS: Array<{ id: WordState; title: string; note: string; cls: string }> = [
   { id: 'mature', title: 'Mature', note: 'Every skill 21+ days out', cls: 'border-jade bg-jade-soft' },
@@ -134,7 +134,7 @@ export function WordsView() {
                       <button
                         onClick={(ev) => (selecting ? toggle(w.id) : setPicked({ w, anchor: ev.currentTarget.getBoundingClientRect() }))}
                         className={`flex flex-col items-center rounded-xl border px-2.5 py-1.5 ${g.cls} ${selecting && sel.has(w.id) ? 'outline-3 outline-offset-1 outline-ink' : ''}`}
-                        aria-label={`${w.pinyin}: ${shortGloss(w.gloss)}`}
+                        aria-label={`${w.pinyin}: ${meaningOf(w)}`}
                         aria-pressed={selecting ? sel.has(w.id) : undefined}
                       >
                         <TonePinyin pinyin={w.pinyin} className="text-base font-semibold" />

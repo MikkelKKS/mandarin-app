@@ -12,7 +12,7 @@ import { parsePinyin, type Tone } from '../../lib/pinyin';
 import { contourOf, decodeAudio, recordMic, type ContourPoint, type MicRecording } from '../../lib/pitchTrack';
 import { courseIdFor, type RatingName } from '../../lib/review';
 import { setSpeakPausedUntil, useSettings } from '../../lib/settings';
-import { shortGloss, type VocabData } from '../../lib/vocabData';
+import { meaningOf, type VocabData } from '../../lib/vocabData';
 import type { ItemResult } from './items';
 
 const BASE = import.meta.env.BASE_URL;
@@ -147,7 +147,7 @@ export function Speak({ data, word, onResult, onNoMic }: { data: VocabData; word
               {w.hanzi}
             </span>
           )}
-          <p className="text-sm text-muted">{shortGloss(w.gloss)}</p>
+          <p className="text-sm text-muted">{meaningOf(w)}</p>
         </div>
       </div>
 

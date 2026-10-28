@@ -7,7 +7,7 @@ import { isPass } from '../../lib/pinyinAnswer';
 import { rememberText } from '../../lib/audio';
 import { updateSettings, useSettings } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
-import { shortGloss, useVocab, type VocabRow } from '../../lib/vocabData';
+import { meaningOf, useVocab, type VocabRow } from '../../lib/vocabData';
 import { checkTyped } from '../exercises/check';
 import { AudioControls, PinyinInput } from '../exercises/parts';
 import { LessonCtx, type LessonApi } from '../lesson/context';
@@ -220,7 +220,7 @@ function PlacementTest({ vocab, onDone, onStop }: { vocab: VocabRow[]; onDone: (
           <div className={`anim-rise mt-8 rounded-2xl p-4 ${answer.ok ? 'bg-jade-soft' : 'bg-sunk'}`}>
             <p className="font-semibold">{answer.ok ? 'Right' : 'Not this time'}</p>
             <TonePinyin pinyin={answer.w.pinyin} className="text-2xl font-semibold" />
-            <p className="text-sm text-muted">{shortGloss(answer.w.gloss)}</p>
+            <p className="text-sm text-muted">{meaningOf(answer.w)}</p>
             <button onClick={next} className="press mt-4 h-12 w-full rounded-2xl bg-jade font-semibold text-jade-ink">
               Next
             </button>

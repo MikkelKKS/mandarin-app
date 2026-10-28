@@ -22,7 +22,7 @@ import { go } from '../../lib/router';
 import { micActive, useSettings } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
 import { recordSessionAnswer, regradeAll } from '../../lib/srs';
-import { loadVocabData, shortGloss, type VocabData } from '../../lib/vocabData';
+import { loadVocabData, meaningOf, type VocabData } from '../../lib/vocabData';
 import { LessonCtx, type LessonApi } from '../lesson/context';
 import { GradeChip } from '../lesson/GradeChip';
 import type { Outcome } from '../lesson/types';
@@ -465,7 +465,7 @@ function Feedback({
 function answerFor(item: SItem, data: VocabData): Outcome['answer'] {
   if ('word' in item) {
     const w = data.byId.get(item.word);
-    return w && { pinyin: w.pinyin, hanzi: w.hanzi, english: shortGloss(w.gloss) };
+    return w && { pinyin: w.pinyin, hanzi: w.hanzi, english: meaningOf(w) };
   }
   if ('sentence' in item) {
     const s = data.sentences.get(item.sentence);

@@ -15,7 +15,7 @@ import { Speaker } from '../../components/icons';
 import { play, playUrl, rememberText } from '../../lib/audio';
 import { markSyllable, type Tone } from '../../lib/pinyin';
 import { useSettings } from '../../lib/settings';
-import { shortGloss, type SentenceRow, type VocabData, type VocabRow } from '../../lib/vocabData';
+import { meaningOf, type SentenceRow, type VocabData, type VocabRow } from '../../lib/vocabData';
 import { checkTyped } from '../exercises/check';
 import { AudioControls, Options, PinyinInput, Prompt } from '../exercises/parts';
 import { useCheck } from '../lesson/context';
@@ -57,7 +57,7 @@ function DontKnow({ onUnknown }: { onUnknown?: () => void }) {
   );
 }
 
-const glossOf = (w: VocabRow) => w.short ?? shortGloss(w.gloss);
+const glossOf = (w: VocabRow) => meaningOf(w);
 
 /** Part of speech in plain words ("verb", "measure word"…), or nothing when it's unclear. */
 export function posLabel(pos?: string[]): string | null {
@@ -236,7 +236,7 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
   const c = useContext(data, w, ctx);
   const [shown, setShown] = useState(false);
   const [typed, setTyped] = useState('');
-  const match = shown && typed.trim() ? meaningMatches(typed, w.gloss) : null;
+  const match = shown && typed.trim() ? meaningMatches(typed, w.short ? [w.short, ...w.gloss] : w.gloss) : null;
   const grade = (r: RatingName) =>
     onResult({ outcome: { verdict: r === 'again' ? 'wrong' : r === 'hard' ? 'almost' : 'correct' }, rating: r, skipFeedback: true });
   useCheck(() => {
