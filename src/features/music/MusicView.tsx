@@ -1,22 +1,29 @@
-/** Music: Mandarin songs from Spotify, ranked by how much of the lyrics you'd understand. */
+/**
+ * Music: Mandarin songs from the song catalogue (lyrics on LRCLIB), ranked
+ * instantly by how much of the lyrics you'd understand. Spotify is only used
+ * to play a song, save the playlist and Follow along.
+ */
 import { PageHeader } from '../../components/PageHeader';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { WordPopover } from '../../components/WordPopover';
 import { Music } from '../../components/icons';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { usePinyinFn } from '../../lib/pinyinPro';
 import { loadDict, type Dict } from '../dictionary/dict';
-import { currentLevel, useWordStates } from '../../lib/knowledge';
-import { useVocab } from '../../lib/vocabData';
-import { findSongs, loadKnowledge, loadResults, loadT2s, saveResults, savePlaylist, type SavedResults, type ScoredSong } from './finder';
-import { SCENES, sceneById, suggestScenes } from './genres';
-import { fetchLyrics, type Lyrics } from './lyrics';
-import { tokenize, type Knowledge, type LyricToken, type SongScore } from './score';
+import { translateIfSetUp } from '../dictionary/translate';
+import { currentLevel, isKnownState, isStartedState, useWordStates } from '../../lib/knowledge';
+import { useVocab, type VocabRow } from '../../lib/vocabData';
+import { loadCatalogue, namesOf, rankSongs, scoreSong, type Band, type Catalogue, type CatalogueSong, type Filters, type RankedSong, type SongScore } from './catalogue';
+import { SCENES } from './genres';
+import { lyricsById, searchLyrics, type Lyrics } from './lyrics';
+import { pickLrcMatch, sameName } from './match';
+import { loadKnowledge, loadT2s, PLAYLIST_SIZE, savePlaylist } from './playlist';
+import { tokenize, type Knowledge, type LyricToken } from './score';
 import * as sp from './spotify';
+import { findOnSpotify, songOfTrack } from './spotifyIds';
 
-const K_SCENES = 'music:scenes';
-const K_TASTE = 'music:taste';
+const K_FILTERS = 'music:filters:v2';
 
 function readJson<T>(key: string, fallback: T): T {
   try {
@@ -33,14 +40,14 @@ function writeJson(key: string, v: unknown): void {
   }
 }
 
-const BAND: Record<SongScore['band'], { label: string; cls: string }> = {
-  comfortable: { label: 'At your level', cls: 'bg-jade-soft text-jade' },
-  stretch: { label: 'Stretch', cls: 'bg-amber-soft text-gold' },
-  tough: { label: 'Tough', cls: 'bg-cinnabar-soft text-cinnabar' },
+const BAND: Record<Band, { label: string; cls: string; blurb: string }> = {
+  comfortable: { label: 'Comfortable', cls: 'bg-jade-soft text-jade', blurb: '95%+ of the words known' },
+  stretch: { label: 'Stretch', cls: 'bg-amber-soft text-gold', blurb: '85–95% known' },
+  tough: { label: 'Tough', cls: 'bg-cinnabar-soft text-cinnabar', blurb: 'under 85% known' },
 };
 
 export function MusicRoute({ route }: { route: string[] }) {
-  if (route[1] === 'song' && route[2]) return <SongView id={route[2]} />;
+  if (route[1] === 'song' && route[2]) return <SongView id={Number(route[2])} />;
   if (route[1] === 'now') return <NowPlaying />;
   return <MusicView />;
 }
@@ -56,115 +63,90 @@ function useLevel(): number | undefined {
   return vocab && states ? currentLevel(vocab, states) : undefined;
 }
 
+function useCatalogue(): Catalogue | null | 'error' {
+  const [c, setC] = useState<Catalogue | null | 'error'>(null);
+  useEffect(() => {
+    let live = true;
+    loadCatalogue()
+      .then((x) => live && setC(x))
+      .catch(() => live && setC('error'));
+    return () => {
+      live = false;
+    };
+  }, []);
+  return c;
+}
+
+/** Known or learning (you've met it), by HSK word id; and frequency order for ties. */
+function useKnown(): { known: (id: string) => boolean; order: (id: string) => number; byId: Map<string, VocabRow> } | null {
+  const vocab = useVocab();
+  const states = useWordStates();
+  return useMemo(() => {
+    if (!vocab || !states) return null;
+    const byId = new Map(vocab.map((w) => [w.id, w]));
+    return {
+      known: (id: string) => {
+        const s = states.get(id);
+        return isKnownState(s) || isStartedState(s);
+      },
+      order: (id: string) => byId.get(id)?.order ?? 1e9,
+      byId,
+    };
+  }, [vocab, states]);
+}
+
 export function MusicView() {
   const level = useLevel() ?? 1;
+  const cat = useCatalogue();
+  const k = useKnown();
+  const [filters, setFilters] = useState<Filters>(() => readJson<Filters>(K_FILTERS, { scenes: [], band: 'any', syncedOnly: false }));
+  const [shown, setShown] = useState(40);
   const [connected, setConnected] = useState(sp.isConnected());
   const [error, setError] = useState<string | null>(null);
-  const [scenes, setScenes] = useState<string[]>(() => readJson<string[]>(K_SCENES, []));
-  const [taste, setTaste] = useState<{ artists: string[]; from: string[] } | null>(() => readJson(K_TASTE, null));
-  const [results, setResults] = useState<SavedResults | null>(() => loadResults());
-  const [progress, setProgress] = useState<{ done: number; total: number; found: number } | null>(null);
-  const [playlist, setPlaylist] = useState<{ busy: boolean; url?: string; failed?: boolean; copied?: boolean }>({ busy: false });
+  const [playlist, setPlaylist] = useState<{ busy: boolean; done?: number; total?: number; url?: string; found?: number; missing?: number }>({ busy: false });
 
-  // Finish a Spotify login, then read the listener's taste once.
   useEffect(() => {
-    void sp.finishLogin().then(async (err) => {
+    void sp.finishLogin().then((err) => {
       if (err) setError(err);
-      const ok = sp.isConnected();
-      setConnected(ok);
-      if (ok && !readJson(K_TASTE, null)) {
-        try {
-          const artists = await sp.topArtists();
-          const s = suggestScenes(artists);
-          const t = { artists: s.chineseArtists, from: artists.slice(0, 5).map((a) => a.name) };
-          writeJson(K_TASTE, t);
-          setTaste(t);
-          if (!readJson<string[]>(K_SCENES, []).length) {
-            const pick = level <= 2 ? ['easy', ...s.scenes.slice(0, 2)] : s.scenes;
-            writeJson(K_SCENES, pick);
-            setScenes(pick);
-          }
-        } catch {
-          // Spotify doesn't allow every app to read top artists. Fall back to a sensible start.
-          const t = { artists: [], from: [] };
-          writeJson(K_TASTE, t);
-          setTaste(t);
-          if (!readJson<string[]>(K_SCENES, []).length) {
-            const pick = level <= 2 ? ['easy', 'pop', 'ballad'] : ['pop', 'ballad', 'folk'];
-            writeJson(K_SCENES, pick);
-            setScenes(pick);
-          }
-        }
-      }
+      setConnected(sp.isConnected());
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const toggle = (id: string) => {
-    const next = scenes.includes(id) ? scenes.filter((s) => s !== id) : [...scenes, id];
-    setScenes(next);
-    writeJson(K_SCENES, next);
+  const update = (f: Partial<Filters>) => {
+    const next = { ...filters, ...f };
+    setFilters(next);
+    writeJson(K_FILTERS, next);
+    setShown(40);
   };
+  const toggleScene = (id: string) => update({ scenes: filters.scenes.includes(id) ? filters.scenes.filter((s) => s !== id) : [...filters.scenes, id] });
 
-  const find = async () => {
-    setError(null);
-    setPlaylist({ busy: false });
-    setProgress({ done: 0, total: 0, found: 0 });
-    try {
-      const dict = await loadDict();
-      if (!dict) throw new Error('The dictionary is needed to read lyrics. Open the app once with internet, then try again.');
-      const songs = await findSongs({
-        scenes,
-        extraArtists: taste?.artists ?? [],
-        knowledge: await loadKnowledge(level),
-        dict,
-        onProgress: (done, total, found) => setProgress({ done, total, found }),
-      });
-      const r: SavedResults = { at: Date.now(), level, scenes, songs };
-      saveResults(r);
-      setResults(r);
-      if (!songs.length) setError('No songs with Chinese lyrics turned up this time. Try again, or pick other genres.');
-    } catch (e) {
-      setError(`Couldn't search Spotify: ${(e as Error).message}`);
-      setConnected(sp.isConnected());
-    } finally {
-      setProgress(null);
-    }
-  };
-
-  const save = async () => {
-    if (!results) return;
-    setPlaylist({ busy: true });
-    try {
-      const url = await savePlaylist(results.songs, results.level);
-      setPlaylist({ busy: false, url });
-    } catch (e) {
-      setError(`Spotify wouldn't create the playlist (${(e as Error).message}). Use "Copy song links" instead: paste them into any Spotify playlist on your PC with Ctrl+V.`);
-      setPlaylist({ busy: false, failed: true });
-    }
-  };
-
-  const copyLinks = async () => {
-    if (!results) return;
-    const text = results.songs.map((s) => s.track.url).join('\n');
-    try {
-      await navigator.clipboard.writeText(text);
-      setPlaylist((p) => ({ ...p, copied: true }));
-    } catch {
-      setError("Couldn't copy to the clipboard.");
-    }
-  };
-
+  const all = useMemo(() => (cat && cat !== 'error' && k ? rankSongs(cat, { ...filters, band: 'any' }, k.known, k.order) : null), [cat, k, filters]);
+  const ranked = useMemo(() => (all ? (filters.band === 'any' ? all : all.filter((r) => r.score.band === filters.band)) : null), [all, filters.band]);
   const counts = useMemo(() => {
     const c = { comfortable: 0, stretch: 0, tough: 0 };
-    for (const s of results?.songs ?? []) c[s.score.band]++;
+    for (const r of all ?? []) c[r.score.band]++;
     return c;
-  }, [results]);
+  }, [all]);
+
+  const save = async () => {
+    if (!ranked) return;
+    setError(null);
+    setPlaylist({ busy: true, done: 0, total: Math.min(PLAYLIST_SIZE, ranked.length) });
+    try {
+      const r = await savePlaylist(ranked, level, (done, total) => setPlaylist((p) => ({ ...p, done, total })));
+      setPlaylist({ busy: false, ...r });
+    } catch (e) {
+      setError(`Spotify wouldn't save the playlist (${(e as Error).message}).`);
+      setPlaylist({ busy: false });
+      setConnected(sp.isConnected());
+    }
+  };
 
   return (
     <div className="pb-8">
-      <PageHeader back={{ label: 'Library', to: 'library' }} title="Music" />
-      <p className="mt-1 text-muted">Mandarin songs from Spotify, sorted by how much of the lyrics you'd understand at {levelLabel(level)}.</p>
+      <PageHeader back={{ label: 'Library', to: 'library' }} title="Music">
+        Mandarin songs with lyrics, sorted by how much you'd understand at {levelLabel(level)}. Open one for its lyrics with pinyin.
+      </PageHeader>
 
       {error && (
         <p role="alert" className="mt-4 rounded-2xl bg-cinnabar-soft p-4 text-sm text-cinnabar">
@@ -172,102 +154,81 @@ export function MusicView() {
         </p>
       )}
 
-      {!sp.clientId() ? (
-        <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">Spotify isn't set up for this app yet.</p>
-      ) : !connected ? (
-        <div className="mt-6 rounded-3xl bg-surface p-5 border border-line">
-          <Music className="h-8 w-8 text-jade" />
-          <h2 className="mt-3 text-lg font-semibold">Connect your Spotify</h2>
-          <p className="mt-1 text-sm text-muted">
-            The app looks at your top artists to pick genres, then saves a playlist of Mandarin songs at your level to your account. Needs Spotify Premium.
-          </p>
-          <button onClick={() => void sp.login()} className="mt-4 h-12 w-full rounded-2xl bg-jade font-semibold text-jade-ink">
-            Connect Spotify
-          </button>
-        </div>
-      ) : (
-        <>
-          <section className="mt-6">
-            <h2 className="text-lg font-semibold">Genres</h2>
-            {taste && taste.from.length > 0 && <p className="text-sm text-muted">Picked from your top artists ({taste.from.slice(0, 3).join(', ')}). Change them any time.</p>}
-            <div className="mt-3 flex flex-wrap gap-2">
-              {SCENES.map((s) => {
-                const on = scenes.includes(s.id);
-                return (
-                  <button
-                    key={s.id}
-                    onClick={() => toggle(s.id)}
-                    aria-pressed={on}
-                    className={`rounded-full border px-3.5 py-1.5 text-sm font-medium ${on ? 'border-jade bg-jade-soft text-jade' : 'border-line bg-surface'}`}
-                  >
-                    <span className="han mr-1.5" lang="zh-CN">
-                      {s.hanzi}
-                    </span>
-                    {s.label}
-                  </button>
-                );
-              })}
-            </div>
-            {scenes.length === 1 && <p className="mt-2 text-sm text-muted">{sceneById(scenes[0])?.note}</p>}
-            <button
-              onClick={() => void find()}
-              disabled={!scenes.length || !!progress}
-              className="mt-4 h-12 w-full rounded-2xl bg-jade font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted"
-            >
-              {progress ? 'Finding songs…' : results ? 'Find new songs' : 'Find songs'}
-            </button>
-            {progress && (
-              <div className="mt-3">
-                <div className="h-2 overflow-hidden rounded-full bg-sunk">
-                  <span className="block h-full bg-jade transition-all" style={{ width: `${progress.total ? (progress.done / progress.total) * 100 : 5}%` }} />
-                </div>
-                <p className="mt-1 text-sm text-muted">
-                  {progress.total ? `Reading lyrics: ${progress.done} of ${progress.total} songs, ${progress.found} in Mandarin so far` : 'Searching Spotify…'}
-                </p>
-              </div>
-            )}
-          </section>
-
-          {results && results.songs.length > 0 && !progress && (
-            <section className="mt-8">
-              <div className="flex items-baseline justify-between">
-                <h2 className="text-lg font-semibold">{results.songs.length} songs</h2>
-                <span className="text-sm text-muted">
-                  {counts.comfortable} comfortable, {counts.stretch} stretch, {counts.tough} tough
+      <section className="mt-5">
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Scenes">
+          {SCENES.map((s) => {
+            const on = filters.scenes.includes(s.id);
+            return (
+              <button
+                key={s.id}
+                onClick={() => toggleScene(s.id)}
+                aria-pressed={on}
+                className={`rounded-full border px-3.5 py-1.5 text-sm font-medium ${on ? 'border-jade bg-jade-soft text-jade' : 'border-line bg-surface'}`}
+              >
+                <span className="han mr-1.5" lang="zh-CN">
+                  {s.hanzi}
                 </span>
-              </div>
-              <div className="mt-3 flex gap-2">
-                <button onClick={() => void save()} disabled={playlist.busy} className="h-12 flex-1 rounded-2xl bg-jade font-semibold text-jade-ink disabled:opacity-60">
-                  {playlist.busy ? 'Saving…' : playlist.url ? 'Saved to Spotify' : 'Save as Spotify playlist'}
-                </button>
-                <button onClick={() => go('music/now')} className="h-12 rounded-2xl border border-line px-4 font-medium">
-                  Follow along
-                </button>
-              </div>
-              {playlist.failed && (
-                <button onClick={() => void copyLinks()} className="mt-2 h-11 w-full rounded-2xl border border-line font-medium">
-                  {playlist.copied ? 'Copied! Paste into a Spotify playlist' : 'Copy song links'}
-                </button>
-              )}
-              {playlist.url && (
-                <a href={playlist.url} target="_blank" rel="noreferrer" className="mt-2 block text-center text-sm font-medium text-jade underline">
-                  Open the playlist in Spotify
-                </a>
-              )}
-              <ul className="mt-4 flex flex-col gap-2">
-                {results.songs.map((s) => (
-                  <SongRow key={s.track.id} s={s} />
-                ))}
-              </ul>
-            </section>
-          )}
+                {s.label}
+              </button>
+            );
+          })}
+        </div>
+        <p className="mt-1.5 text-xs text-muted">{filters.scenes.length ? 'Showing the scenes you picked.' : 'All scenes. Tap some to narrow it down.'}</p>
+        <div className="mt-4 grid grid-cols-4 gap-1.5" role="radiogroup" aria-label="Difficulty">
+          {(['any', 'comfortable', 'stretch', 'tough'] as const).map((b) => (
+            <button
+              key={b}
+              role="radio"
+              aria-checked={filters.band === b}
+              onClick={() => update({ band: b })}
+              className={`rounded-xl border px-1 py-2 text-sm font-medium ${filters.band === b ? 'border-jade bg-jade text-jade-ink' : 'border-line bg-surface'}`}
+            >
+              {b === 'any' ? 'All' : BAND[b].label}
+              {b !== 'any' && all && <span className="block text-[11px] font-normal opacity-80 tabular-nums">{counts[b]}</span>}
+            </button>
+          ))}
+        </div>
+        <label className="mt-3 flex items-center gap-2 text-sm">
+          <input type="checkbox" checked={filters.syncedOnly} onChange={(e) => update({ syncedOnly: e.target.checked })} className="h-4 w-4 accent-[var(--jade)]" />
+          Only songs with timed lyrics (for Follow along)
+        </label>
+      </section>
 
-          <p className="mt-10 text-xs text-muted">
-            Lyrics come from{' '}
-            <a className="underline" href="https://lrclib.net" target="_blank" rel="noreferrer">
-              LRCLIB
-            </a>{' '}
-            and are read on your device only.{' '}
+      {cat === 'error' ? (
+        <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">The song list couldn't load. Check your connection and open Music again.</p>
+      ) : !ranked ? (
+        <p className="mt-6 text-muted">Loading songs…</p>
+      ) : cat && cat.songs.length === 0 ? (
+        <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">The song list is being built. It's ready after the next update.</p>
+      ) : (
+        <section className="mt-6">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-lg font-semibold">{ranked.length.toLocaleString('en-GB')} songs</h2>
+            {filters.band !== 'any' && <span className="text-sm text-muted">{BAND[filters.band].blurb}</span>}
+          </div>
+          <SpotifyBar connected={connected} playlist={playlist} onSave={() => void save()} disabled={!ranked.length} />
+          <ul className="mt-4 flex flex-col gap-2">
+            {ranked.slice(0, shown).map((r) => (
+              <SongRow key={r.song.id} r={r} byId={k!.byId} />
+            ))}
+          </ul>
+          {ranked.length > shown && (
+            <button onClick={() => setShown(shown + 40)} className="mt-3 h-12 w-full rounded-2xl border border-line font-medium">
+              Show more
+            </button>
+          )}
+        </section>
+      )}
+
+      <p className="mt-10 text-xs text-muted">
+        Lyrics come from{' '}
+        <a className="underline" href="https://lrclib.net" target="_blank" rel="noreferrer">
+          LRCLIB
+        </a>{' '}
+        and are read on your device only; the song list was built from MusicBrainz and LRCLIB{cat && cat !== 'error' && cat.generated ? ` (updated ${cat.generated})` : ''}.
+        {connected && (
+          <>
+            {' '}
             <button
               className="underline"
               onClick={() => {
@@ -277,26 +238,72 @@ export function MusicView() {
             >
               Disconnect Spotify
             </button>
-          </p>
-        </>
+          </>
+        )}
+      </p>
+    </div>
+  );
+}
+
+function SpotifyBar({ connected, playlist, onSave, disabled }: { connected: boolean; playlist: { busy: boolean; done?: number; total?: number; url?: string; found?: number; missing?: number }; onSave: () => void; disabled: boolean }) {
+  if (!sp.clientId()) return null;
+  if (!connected)
+    return (
+      <div className="mt-3 flex items-center gap-3 rounded-2xl border border-line bg-surface p-3">
+        <Music className="h-6 w-6 shrink-0 text-jade" />
+        <p className="min-w-0 flex-1 text-sm text-muted">Connect Spotify to play songs, save a playlist and follow along.</p>
+        <button onClick={() => void sp.login()} className="h-10 shrink-0 rounded-full bg-jade px-4 text-sm font-semibold text-jade-ink">
+          Connect
+        </button>
+      </div>
+    );
+  return (
+    <div className="mt-3">
+      <div className="flex gap-2">
+        <button onClick={onSave} disabled={playlist.busy || disabled} className="h-12 flex-1 rounded-2xl bg-jade font-semibold text-jade-ink disabled:opacity-60">
+          {playlist.busy ? `Finding them on Spotify… ${playlist.done ?? 0}/${playlist.total ?? PLAYLIST_SIZE}` : playlist.url ? 'Playlist saved' : `Save the top ${PLAYLIST_SIZE} as a playlist`}
+        </button>
+        <button onClick={() => go('music/now')} className="h-12 rounded-2xl border border-line px-4 font-medium">
+          Follow along
+        </button>
+      </div>
+      {playlist.url && (
+        <p className="mt-2 text-center text-sm">
+          <a href={playlist.url} target="_blank" rel="noreferrer" className="font-medium text-jade underline">
+            Open “学中文: songs at my level” in Spotify
+          </a>
+          {playlist.missing ? <span className="text-muted"> · {playlist.missing} weren't on Spotify, so they were skipped</span> : null}
+        </p>
       )}
     </div>
   );
 }
 
-function SongRow({ s }: { s: ScoredSong }) {
-  const b = BAND[s.score.band];
+function SongRow({ r, byId }: { r: RankedSong; byId: Map<string, VocabRow> }) {
+  const b = BAND[r.score.band];
   return (
     <li>
-      <button onClick={() => go(`music/song/${s.track.id}`)} className="flex w-full items-center gap-3 rounded-2xl bg-surface p-3 text-left transition duration-150 hover:bg-sunk active:scale-[0.99] border border-line">
-        {s.track.image ? <img src={s.track.image} alt="" className="h-12 w-12 shrink-0 rounded-lg object-cover" loading="lazy" /> : <span className="h-12 w-12 shrink-0 rounded-lg bg-sunk" />}
+      <button onClick={() => go(`music/song/${r.song.id}`)} className="flex w-full items-center gap-3 rounded-2xl border border-line bg-surface p-3 text-left transition duration-150 hover:bg-sunk active:scale-[0.99]">
         <span className="min-w-0 flex-1">
-          <span className="han block truncate font-semibold">{s.track.name}</span>
-          <span className="han block truncate text-sm text-muted">{s.track.artists.join(', ')}</span>
+          <span className="han block truncate font-semibold">{r.song.title}</span>
+          <span className="han block truncate text-sm text-muted">{r.song.artist}</span>
+          {r.score.unknown.length > 0 && (
+            <span className="mt-1 block truncate text-xs text-muted">
+              New:{' '}
+              <span className="han" lang="zh-CN">
+                {r.score.unknown
+                  .slice(0, 4)
+                  .map((id) => byId.get(id)?.hanzi)
+                  .filter(Boolean)
+                  .join('、')}
+              </span>
+            </span>
+          )}
         </span>
-        <span className="text-right">
+        <span className="shrink-0 text-right">
           <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${b.cls}`}>{b.label}</span>
-          <span className="mt-0.5 block text-xs tabular-nums text-muted">you know {Math.round(s.score.knownShare * 100)}%</span>
+          <span className="mt-0.5 block text-xs tabular-nums text-muted">you know {Math.floor(r.score.knownShare * 100)}%</span>
+          {r.song.synced && <span className="block text-[11px] text-muted">timed lyrics</span>}
         </span>
       </button>
     </li>
@@ -318,42 +325,90 @@ function useReader(): { dict: Dict; t2s: Record<string, string>; k: Knowledge } 
   return r;
 }
 
-function SongView({ id }: { id: string }) {
-  const saved = loadResults()?.songs.find((s) => s.track.id === id);
-  const [track, setTrack] = useState<sp.Track | null>(saved?.track ?? null);
-  const [lyrics, setLyrics] = useState<Lyrics | null | 'none' | 'error'>(null);
+type LyricsState = { kind: 'loading' } | { kind: 'ok'; lyrics: Lyrics } | { kind: 'none' } | { kind: 'error' };
+
+/** Lyrics by LRCLIB id, with retries; "Try again" retries. */
+function useLyrics(id: number | null): { state: LyricsState; retry: () => void } {
+  const [state, setState] = useState<LyricsState>({ kind: 'loading' });
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    if (id === null) return;
+    let live = true;
+    setState({ kind: 'loading' });
+    lyricsById(id)
+      .then((l) => live && setState(l ? { kind: 'ok', lyrics: l } : { kind: 'none' }))
+      .catch(() => live && setState({ kind: 'error' }));
+    return () => {
+      live = false;
+    };
+  }, [id, attempt]);
+  return { state, retry: useCallback(() => setAttempt((a) => a + 1), []) };
+}
+
+function LyricsError({ retry, what = 'the lyrics' }: { retry: () => void; what?: string }) {
+  return (
+    <div className="mt-4 rounded-2xl bg-sunk p-4">
+      <p className="text-muted">Couldn't load {what}: the lyrics service didn't answer after a few tries. Check your connection.</p>
+      <button onClick={retry} className="mt-3 h-11 rounded-full bg-jade px-5 font-semibold text-jade-ink">
+        Try again
+      </button>
+    </div>
+  );
+}
+
+type SpotifyState = { kind: 'off' } | { kind: 'looking' } | { kind: 'found'; track: sp.Track } | { kind: 'missing' } | { kind: 'error'; message: string };
+
+function SongView({ id }: { id: number }) {
+  const cat = useCatalogue();
+  const k = useKnown();
+  const song = cat && cat !== 'error' ? cat.songs.find((s) => s.id === id) : undefined;
+  const score = useMemo(() => (cat && cat !== 'error' && song && k ? scoreSong(cat, song, k.known, k.order) : null), [cat, song, k]);
+  const { state, retry } = useLyrics(id);
   const reader = useReader();
   const [showPy, setShowPy] = useState(true);
   const [word, setWord] = useState<OpenWord | null>(null);
+  const [spot, setSpot] = useState<SpotifyState>({ kind: sp.isConnected() ? 'looking' : 'off' });
 
   useEffect(() => {
-    if (!track && sp.isConnected()) void sp.track(id).then(setTrack).catch(() => setLyrics('error'));
-  }, [id, track]);
-  useEffect(() => {
-    if (!track) return;
-    fetchLyrics(track)
-      .then((l) => setLyrics(l ?? 'none'))
-      .catch(() => setLyrics('error'));
-  }, [track]);
+    if (!song || !sp.isConnected()) return;
+    let live = true;
+    void loadT2s()
+      .then((t2s) => findOnSpotify(song, t2s))
+      .then((t) => live && setSpot(t ? { kind: 'found', track: t } : { kind: 'missing' }))
+      .catch((e) => live && setSpot({ kind: 'error', message: (e as Error).message }));
+    return () => {
+      live = false;
+    };
+  }, [song]);
 
   return (
     <div className="pb-8">
-      <button onClick={() => go('music')} className="mb-3 text-sm font-medium text-jade">
-        ← Music
-      </button>
-      {track && (
-        <div className="flex items-center gap-4">
-          {track.image && <img src={track.image} alt="" className="h-20 w-20 rounded-xl object-cover" />}
-          <div className="min-w-0 flex-1">
-            <h1 className="han truncate text-2xl font-semibold">{track.name}</h1>
-            <p className="han truncate text-muted">{track.artists.join(', ')}</p>
-            <a href={track.url} target="_blank" rel="noreferrer" className="mt-2 inline-flex h-10 items-center rounded-full bg-jade px-4 text-sm font-semibold text-jade-ink">
+      <PageHeader back={{ label: 'Music', to: 'music' }} title={song?.title ?? 'Song'} />
+      {song && (
+        <p className="han -mt-1 text-muted" lang="zh-CN">
+          {song.artist}
+        </p>
+      )}
+      {song && (
+        <div className="mt-3">
+          {spot.kind === 'found' ? (
+            <a href={spot.track.url} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center rounded-full bg-jade px-4 text-sm font-semibold text-jade-ink">
               Play in Spotify
             </a>
-          </div>
+          ) : spot.kind === 'looking' ? (
+            <p className="text-sm text-muted">Looking for it on Spotify…</p>
+          ) : spot.kind === 'missing' ? (
+            <p className="text-sm text-muted">This song isn't on Spotify (or not under this name). The lyrics are below.</p>
+          ) : spot.kind === 'error' ? (
+            <p className="text-sm text-muted">Couldn't ask Spotify ({spot.message}). The lyrics are below.</p>
+          ) : sp.clientId() ? (
+            <button onClick={() => void sp.login()} className="text-sm font-medium text-jade underline">
+              Connect Spotify to play it
+            </button>
+          ) : null}
         </div>
       )}
-      {saved && <Summary score={saved.score} reader={reader} onWord={(token, anchor) => setWord({ token, anchor })} />}
+      {score && k && <Summary score={score} byId={k.byId} reader={reader} onWord={(token, anchor) => setWord({ token, anchor })} />}
       <div className="mt-6 flex items-center justify-between">
         <h2 className="text-lg font-semibold">Lyrics</h2>
         <label className="flex items-center gap-2 text-sm">
@@ -362,17 +417,17 @@ function SongView({ id }: { id: string }) {
         </label>
       </div>
       <Legend />
-      {lyrics === null || !reader ? (
+      {state.kind === 'error' ? (
+        <LyricsError retry={retry} />
+      ) : state.kind === 'loading' || !reader ? (
         <p className="mt-4 text-muted">Loading lyrics…</p>
       ) : reader === 'nodict' ? (
         <p className="mt-4 text-muted">The dictionary hasn't downloaded yet. Open the app with internet and try again.</p>
-      ) : lyrics === 'none' ? (
-        <p className="mt-4 text-muted">No lyrics found for this song.</p>
-      ) : lyrics === 'error' ? (
-        <p className="mt-4 text-muted">Couldn't load the lyrics. Check your connection.</p>
+      ) : state.kind === 'none' ? (
+        <p className="mt-4 text-muted">LRCLIB no longer has lyrics for this song.</p>
       ) : (
         <div className="mt-3 flex flex-col gap-3">
-          {dedupe(lyrics.lines.map((l) => l.text)).map((line, i) =>
+          {dedupe(state.lyrics.lines.map((l) => l.text)).map((line, i) =>
             line ? <LyricLine key={i} text={line} reader={reader} showPy={showPy} onWord={(token, anchor) => setWord({ token, anchor })} /> : <span key={i} className="h-2" />,
           )}
         </div>
@@ -400,24 +455,23 @@ function Legend() {
   );
 }
 
-function Summary({ score, reader, onWord }: { score: SongScore; reader: ReturnType<typeof useReader>; onWord: OnWord }) {
+function Summary({ score, byId, reader, onWord }: { score: SongScore; byId: Map<string, VocabRow>; reader: ReturnType<typeof useReader>; onWord: OnWord }) {
   const b = BAND[score.band];
   const entryOf = (h: string) => (reader && reader !== 'nodict' ? reader.dict.byHanzi.get(h)?.[0] : undefined);
+  const words = score.unknown.map((id) => byId.get(id)).filter((w): w is VocabRow => !!w);
   return (
-    <div className="mt-5 rounded-2xl bg-surface p-4 border border-line">
+    <div className="mt-5 rounded-2xl border border-line bg-surface p-4">
       <div className="flex items-center gap-3">
         <span className={`rounded-full px-2.5 py-1 text-sm font-semibold ${b.cls}`}>{b.label}</span>
-        <span className="text-sm text-muted">
-          You know {Math.round(score.knownShare * 100)}% of the words. {Math.round(score.fit * 100)}% are within your level.
-        </span>
+        <span className="text-sm text-muted">You know {Math.floor(score.knownShare * 100)}% of the words.</span>
       </div>
-      {score.unknown.length > 0 && (
+      {words.length > 0 && (
         <>
           <p className="mt-3 text-sm font-medium">Words to learn from this song</p>
           <div className="mt-2 flex flex-wrap gap-2">
-            {score.unknown.slice(0, 10).map((u) => (
-              <button key={u.hanzi} onClick={(ev) => onWord({ text: u.hanzi, entry: entryOf(u.hanzi), status: 'hard' }, ev.currentTarget.getBoundingClientRect())} className="han rounded-lg bg-sunk px-2 py-1 text-lg">
-                {u.hanzi}
+            {words.slice(0, 10).map((w) => (
+              <button key={w.id} onClick={(ev) => onWord({ text: w.hanzi, entry: entryOf(w.hanzi), status: 'hard' }, ev.currentTarget.getBoundingClientRect())} className="han rounded-lg bg-sunk px-2 py-1 text-lg">
+                {w.hanzi}
               </button>
             ))}
           </div>
@@ -467,7 +521,7 @@ function LyricLine({
         const len = [...t.text].length;
         const start = offset;
         offset += len;
-        const reading = syllables ? syllables.slice(start, start + len).join('') : t.entry?.pinyin.replace(/ /g, '') ?? '';
+        const reading = syllables ? syllables.slice(start, start + len).join('') : (t.entry?.pinyin.replace(/ /g, '') ?? '');
         const lit = sung >= 0 && start < sung;
         return (
           <button
@@ -494,15 +548,37 @@ interface OpenWord {
   anchor: DOMRect;
 }
 
+/** Timing nudge per Spotify track, on this device: lyrics running early or late. */
+const K_NUDGE = 'music:nudge:';
+function loadNudge(trackId: string): number {
+  return readJson<number>(K_NUDGE + trackId, 0);
+}
+
+/** The catalogue song a playing track is: remembered Spotify match, else same title within 5 s. */
+export function catalogueMatch(cat: Catalogue, track: Pick<sp.Track, 'name' | 'artists' | 'durationMs'>, t2s: Record<string, string>): CatalogueSong | null {
+  const secs = track.durationMs / 1000;
+  const recs = cat.songs
+    .filter((s) => Math.abs(s.dur - secs) <= 5 && namesOf(s).some((n) => sameName(track.name, n.title, t2s)))
+    .map((s) => ({ s, id: s.id, trackName: track.name, artistName: namesOf(s).some((n) => track.artists.some((a) => sameName(a, n.artist, t2s))) ? track.artists[0] : s.artist, duration: s.dur, instrumental: false, plainLyrics: s.synced ? null : 'x', syncedLyrics: s.synced ? 'x' : null }));
+  const best = pickLrcMatch(recs, { duration: secs, names: [{ title: track.name, artist: track.artists[0] ?? '' }] }, t2s, 5);
+  return best ? recs.find((r) => r.id === best.id)!.s : null;
+}
+
+type FollowLyrics = { kind: 'loading' } | { kind: 'ok'; lyrics: Lyrics; from: 'catalogue' | 'search' } | { kind: 'none' } | { kind: 'error' };
+
 /** Shows the line being sung in whatever is playing on Spotify right now. */
 function NowPlaying() {
   const [now, setNow] = useState<sp.NowPlaying | null | 'idle'>(null);
-  const [lyrics, setLyrics] = useState<Lyrics | null | 'none'>(null);
+  const [lyrics, setLyrics] = useState<FollowLyrics>({ kind: 'loading' });
+  const [attempt, setAttempt] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [tick, setTick] = useState(0);
   const reader = useReader();
+  const cat = useCatalogue();
   const [word, setWord] = useState<OpenWord | null>(null);
   const trackId = now && now !== 'idle' ? now.track.id : null;
+  const [nudge, setNudge] = useState(0);
+  const [english, setEnglish] = useState<{ line: string; text: string | null } | null>(null);
   const current = useRef<HTMLDivElement>(null);
 
   // Ask Spotify what's playing every few seconds.
@@ -523,23 +599,51 @@ function NowPlaying() {
       clearInterval(t);
     };
   }, []);
+  // Lyrics: the catalogue song's LRCLIB id if it's in the catalogue, else a live LRCLIB search.
   useEffect(() => {
-    if (!trackId || now === null || now === 'idle') return;
-    setLyrics(null);
-    fetchLyrics(now.track)
-      .then((l) => setLyrics(l ?? 'none'))
-      .catch(() => setLyrics('none'));
+    if (!trackId || now === null || now === 'idle' || cat === null) return;
+    let live = true;
+    setLyrics({ kind: 'loading' });
+    setNudge(loadNudge(trackId));
+    void (async () => {
+      try {
+        const t2s = await loadT2s();
+        const known = (await songOfTrack(trackId)) ?? (cat !== 'error' ? catalogueMatch(cat, now.track, t2s)?.id : undefined);
+        if (known) {
+          const l = await lyricsById(known);
+          if (l) return live && setLyrics({ kind: 'ok', lyrics: l, from: 'catalogue' });
+        }
+        const found = await searchLyrics(
+          now.track.artists.map((a) => ({ title: now.track.name, artist: a })),
+          now.track.durationMs / 1000,
+          t2s,
+        );
+        if (live) setLyrics(found ? { kind: 'ok', lyrics: found.lyrics, from: 'search' } : { kind: 'none' });
+      } catch {
+        if (live) setLyrics({ kind: 'error' });
+      }
+    })();
+    return () => {
+      live = false;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trackId]);
+  }, [trackId, cat, attempt]);
   // Smooth clock between polls.
   useEffect(() => {
     const t = setInterval(() => setTick((x) => x + 1), 250);
     return () => clearInterval(t);
   }, []);
 
-  const position = now && now !== 'idle' ? now.progressMs + (now.playing ? Date.now() - now.at : 0) : 0;
-  const lines = lyrics && lyrics !== 'none' ? lyrics.lines : [];
-  const synced = lyrics && lyrics !== 'none' && lyrics.synced;
+  const changeNudge = (d: number) => {
+    if (!trackId) return;
+    const v = Math.round((nudge + d) * 10) / 10;
+    setNudge(v);
+    writeJson(K_NUDGE + trackId, v);
+  };
+
+  const position = (now && now !== 'idle' ? now.progressMs + (now.playing ? Date.now() - now.at : 0) : 0) + nudge * 1000;
+  const lines = lyrics.kind === 'ok' ? lyrics.lyrics.lines : [];
+  const synced = lyrics.kind === 'ok' && lyrics.lyrics.synced;
   let idx = -1;
   if (synced) for (let i = 0; i < lines.length; i++) if ((lines[i].t ?? 0) <= position + 300) idx = i;
   // Lyrics are timed per line, not per word: spread the line's words evenly until the next line starts.
@@ -551,18 +655,37 @@ function NowPlaying() {
     lineProgress = Math.max(0, Math.min(1, (position - start) / span));
   }
   void tick;
+  const line = idx >= 0 ? lines[idx].text : '';
 
   useEffect(() => {
     // Don't pull the page away while you're looking up a word.
     if (!word) current.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idx]);
+  // The English of the current line, when the app's translation function is set up (otherwise nothing).
+  useEffect(() => {
+    if (!line) return;
+    const ctl = new AbortController();
+    void translateIfSetUp(line, ctl.signal)
+      .then((text) => setEnglish({ line, text }))
+      .catch(() => {});
+    return () => ctl.abort();
+  }, [line]);
 
   return (
     <div className="pb-8">
       <PageHeader back={{ label: 'Music', to: 'music' }} title="Follow along" />
       {error && <p className="mt-3 rounded-2xl bg-cinnabar-soft p-4 text-sm text-cinnabar">{error}</p>}
-      {now === null ? (
+      {!sp.isConnected() ? (
+        <div className="mt-4 rounded-2xl bg-sunk p-4">
+          <p className="text-muted">Follow along reads what's playing on your Spotify.</p>
+          {sp.clientId() && (
+            <button onClick={() => void sp.login()} className="mt-3 h-11 rounded-full bg-jade px-5 font-semibold text-jade-ink">
+              Connect Spotify
+            </button>
+          )}
+        </div>
+      ) : now === null ? (
         <p className="mt-4 text-muted">Checking Spotify…</p>
       ) : now === 'idle' ? (
         <p className="mt-4 rounded-2xl bg-sunk p-4 text-muted">Play a song on Spotify (your playlist works well), and its lyrics follow along here.</p>
@@ -570,26 +693,47 @@ function NowPlaying() {
         <>
           <div className="mt-4 flex items-center gap-3">
             {now.track.image && <img src={now.track.image} alt="" className="h-12 w-12 rounded-lg object-cover" />}
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <p className="han truncate font-semibold">{now.track.name}</p>
               <p className="han truncate text-sm text-muted">{now.track.artists.join(', ')}</p>
             </div>
           </div>
-          {!reader || lyrics === null ? (
+          {lyrics.kind === 'error' ? (
+            <LyricsError retry={() => setAttempt((a) => a + 1)} />
+          ) : !reader || lyrics.kind === 'loading' ? (
             <p className="mt-6 text-muted">Loading lyrics…</p>
-          ) : reader === 'nodict' || lyrics === 'none' ? (
-            <p className="mt-6 text-muted">No lyrics found for this song.</p>
+          ) : reader === 'nodict' ? (
+            <p className="mt-6 text-muted">The dictionary hasn't downloaded yet. Open the app with internet and try again.</p>
+          ) : lyrics.kind === 'none' ? (
+            <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">No lyrics found for this song on LRCLIB, under this title or artist.</p>
           ) : (
-            <div className="mt-6 flex flex-col gap-4">
-              {!synced && <p className="text-sm text-muted">These lyrics aren't timed, so they don't scroll by themselves.</p>}
-              {lines.map((l, i) =>
-                l.text ? (
-                  <div key={i} ref={i === idx ? current : undefined} className={`transition ${!synced || i === idx ? '' : 'opacity-40'}`}>
-                    <LyricLine text={l.text} reader={reader} showPy alwaysPy onWord={(token, anchor) => setWord({ token, anchor })} big={i === idx} progress={i === idx ? lineProgress : undefined} />
-                  </div>
-                ) : null,
+            <>
+              {synced ? (
+                <div className="mt-4 flex items-center gap-2 text-sm" role="group" aria-label="Lyrics timing">
+                  <span className="text-muted">Timing</span>
+                  <button onClick={() => changeNudge(-0.5)} className="h-9 rounded-full border border-line px-3 font-medium" aria-label="Lyrics half a second earlier">
+                    −0.5 s
+                  </button>
+                  <span className="min-w-12 text-center tabular-nums">{nudge > 0 ? `+${nudge}` : nudge} s</span>
+                  <button onClick={() => changeNudge(0.5)} className="h-9 rounded-full border border-line px-3 font-medium" aria-label="Lyrics half a second later">
+                    +0.5 s
+                  </button>
+                  <span className="text-xs text-muted">remembered for this song</span>
+                </div>
+              ) : (
+                <p className="mt-4 text-sm text-muted">Only untimed lyrics exist for this song, so they don't follow the music by themselves.</p>
               )}
-            </div>
+              <div className="mt-5 flex flex-col gap-4">
+                {lines.map((l, i) =>
+                  l.text ? (
+                    <div key={i} ref={i === idx ? current : undefined} className={`transition ${!synced || i === idx ? '' : 'opacity-40'}`}>
+                      <LyricLine text={l.text} reader={reader} showPy alwaysPy onWord={(token, anchor) => setWord({ token, anchor })} big={i === idx} progress={i === idx ? lineProgress : undefined} />
+                      {i === idx && english?.line === l.text && english.text && <p className="mt-1 text-muted">{english.text}</p>}
+                    </div>
+                  ) : null,
+                )}
+              </div>
+            </>
           )}
         </>
       )}

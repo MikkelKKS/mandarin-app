@@ -8,7 +8,7 @@ const AUTH = 'https://accounts.spotify.com/authorize';
 const TOKEN = 'https://accounts.spotify.com/api/token';
 const API = 'https://api.spotify.com/v1';
 // user-read-private is needed for market=from_token (songs playable in your country).
-const SCOPES = ['user-read-private', 'user-top-read', 'playlist-read-private', 'playlist-modify-private', 'playlist-modify-public', 'user-read-currently-playing'];
+const SCOPES = ['user-read-private', 'playlist-read-private', 'playlist-modify-private', 'playlist-modify-public', 'user-read-currently-playing'];
 
 const K_CLIENT = 'spotify:clientId';
 const K_AUTH = 'spotify:auth';
@@ -233,12 +233,7 @@ export async function me(): Promise<{ id: string; name: string; product?: string
   return { id: j!.id, name: j!.display_name ?? j!.id, product: j!.product };
 }
 
-export async function topArtists(): Promise<Array<{ name: string; genres: string[] }>> {
-  const j = await api<{ items: Array<{ name: string; genres?: string[] }> }>('/me/top/artists?limit=30&time_range=medium_term');
-  return (j?.items ?? []).map((a) => ({ name: a.name, genres: a.genres ?? [] }));
-}
-
-/** Track search. Development-mode apps get at most 10 results per page. */
+/** Track search (at most 10 results since Spotify's February 2026 change). */
 export async function searchTracks(q: string, offset = 0): Promise<Track[]> {
   const params = new URLSearchParams({ q, type: 'track', limit: '10', offset: String(offset), market: 'from_token' });
   const j = await api<{ tracks?: { items: Array<ApiTrack | null> } }>(`/search?${params}`);
@@ -259,14 +254,7 @@ export async function createPlaylist(name: string, description: string): Promise
 
 /** Replace a playlist's songs (up to 100). */
 export async function setPlaylistItems(playlistId: string, uris: string[]): Promise<void> {
-  const body = JSON.stringify({ uris: uris.slice(0, 100) });
-  try {
-    await api(`/playlists/${playlistId}/items`, { method: 'PUT', body });
-  } catch (e) {
-    // Older name of the same endpoint.
-    if (e instanceof SpotifyError && e.status === 404) await api(`/playlists/${playlistId}/tracks`, { method: 'PUT', body });
-    else throw e;
-  }
+  await api(`/playlists/${playlistId}/items`, { method: 'PUT', body: JSON.stringify({ uris: uris.slice(0, 100) }) });
 }
 
 export interface NowPlaying {

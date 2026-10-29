@@ -4,7 +4,7 @@
  * words occur and how often, a level profile). Lyrics themselves are never stored.
  * Ranking against what you know is instant and works offline.
  */
-import songsUrl from '../../../content/data/songs.json?url';
+import songsUrl from '../../../content/data/songs.json?url&no-inline';
 import type { NameVariant } from './match';
 
 export interface CatalogueSong {

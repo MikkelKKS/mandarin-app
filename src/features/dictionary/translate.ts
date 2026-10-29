@@ -139,3 +139,23 @@ function decodeEntities(s: string): string {
 export function looksLikeEnglishSentence(q: string): boolean {
   return /^[a-zA-Z][a-zA-Z' ,.?!-]*$/.test(q.trim()) && q.trim().split(/\s+/).length >= 3;
 }
+
+/**
+ * Azure Translator only (the app's own translation function): the English of
+ * a line of lyrics, or null when the function isn't set up or can't be reached.
+ * Cached like other translations; never falls back to the free service.
+ */
+export async function translateIfSetUp(text: string, signal?: AbortSignal): Promise<string | null> {
+  const q = text.trim().slice(0, 450);
+  if (!q) return null;
+  const azKey = `az|zh-en|${q}`;
+  const cache = readCache();
+  if (cache[azKey]) return cache[azKey];
+  if (!navigator.onLine) return null;
+  const az = await viaAzure(q, 'zh-en', signal);
+  if (az) {
+    cache[azKey] = az;
+    writeCache(cache);
+  }
+  return az;
+}

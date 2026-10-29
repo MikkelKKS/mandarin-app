@@ -61,6 +61,18 @@ export default defineConfig({
             options: { cacheName: 'dictionary', cacheableResponse: { statuses: [200] } },
           },
           {
+            // Lyrics of an opened song (LRCLIB, by id): kept on this device for a day, so reopening works offline.
+            urlPattern: ({ url }) => url.origin === 'https://lrclib.net' && /^\/api\/get\/\d+$/.test(url.pathname),
+            handler: 'CacheFirst',
+            options: { cacheName: 'lyrics', expiration: { maxEntries: 200, maxAgeSeconds: 24 * 3600 }, cacheableResponse: { statuses: [200] } },
+          },
+          {
+            // The song catalogue: the cached copy at once, a fresh one in the background.
+            urlPattern: ({ url }) => /\/assets\/songs-[^/]+\.json$/.test(url.pathname),
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'songs', expiration: { maxEntries: 3 }, cacheableResponse: { statuses: [200] } },
+          },
+          {
             urlPattern: ({ url }) => url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com',
             handler: 'CacheFirst',
             options: { cacheName: 'fonts', expiration: { maxEntries: 300 }, cacheableResponse: { statuses: [0, 200] } },

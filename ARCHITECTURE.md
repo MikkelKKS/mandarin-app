@@ -19,7 +19,7 @@ Six tabs (`src/App.tsx`): **Home**, **Tones**, **Reading**, **Library**, **Stats
 | Library | `features/library/` | Links to Conversations, Stories, Music, HSK words, Dictionary |
 | Conversations | `features/path/`, `features/lesson/`, `features/exercises/`, `features/story/` | The 29 hand-written units: lessons, listening stories and role-play. No locks |
 | Stories | `features/read/` | Eight short stories, read aloud paragraph by paragraph; "Characters only" mode feeds reading cards |
-| Music | `features/music/` | Spotify songs scored against what you know; lyrics with pinyin |
+| Music | `features/music/` | The song catalogue (`catalogue.ts`) ranked against what you know, with filters; lyrics by LRCLIB id (`lyrics.ts`, retried); Spotify lookup on demand (`spotifyIds.ts`, `match.ts`); playlist; Follow along with a timing nudge |
 | HSK words | `features/progress/WordsView.tsx` | Every word by level and stage; move words between stages |
 | Dictionary | `features/dictionary/` | CC-CEDICT lookup, sentence breakdown, translation, "Learn next" |
 | Stats | `features/stats/` | Words by level and stage, retention, forecast, tones, time, accuracy, XP, achievements |
@@ -57,6 +57,10 @@ Shared pieces: `components/PageHeader.tsx`, `ProgressBar.tsx`, `WordPopover.tsx`
 ## Sync
 
 `src/sync/`: magic-link sign-in; each record is one JSON row in Supabase with row-level security (`supabase/migrations/`). Last write wins per row, review logs are append-only, lesson progress takes the max. Synced tables: progress, reviewItems, reviewLogs, settings, gameScores, audioReports.
+
+## Song catalogue
+
+`scripts/build-songs.ts` (weekly workflow `songs.yml`) builds `content/data/songs.json` from MusicBrainz artists and LRCLIB songs: derived data only (LRCLIB id, names, duration, timed or not, scene, HSK word counts, level profile), never lyrics. The app loads it as a plain file (cached by the service worker) and ranks it locally.
 
 ## Translation
 
