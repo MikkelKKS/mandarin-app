@@ -281,6 +281,9 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Stored as one synced settings row (`my-sentences`, `lib/mySentences.ts`), each with its own FSRS card `m-<hash>`. Listed on the dictionary's start page with Remove.
 - **In sessions:** new saved sentences come in a "Your sentences" block right after the reviews (2 in a quick session, 5 in a deep one), as "say it in Chinese" from your English; after that they come back as normal reviews. Once the Azure job has recorded one (it reads the row with the service key and records saved sentences first, plus a slow version), its reviews become dictation. Until then it never plays the browser's voice.
 
+## 2026-10-29: Look up from inside a lesson or session (asked)
+- After answering, the feedback has a **Look up** button that opens the dictionary over the exercise (the sentence if there is one, else the word). "Back to the lesson" or Escape closes it and the exercise is exactly where it was. Also on the reveal of listening, sentence and reading exercises.
+
 ## 2026-10-29: Searching the HSK words, and moving one word from its card (asked)
 - The HSK words page has a search box. Characters find every word containing them (学 → 学生, 同学, 学习…), pinyin matches from the start with or without tones or tone numbers (`xue`, `xue2`, `xuéshēng`, `nver` for nǚ'ér), and English matches meanings. It searches all levels at once and shows each word's level.
 - Tapping a word opens its card as before, now with a **Move to** row (Not started / Learning / Young / Mature; its current stage greyed out). That moves just that word, so "Move words" mode is only needed for moving many at once.
