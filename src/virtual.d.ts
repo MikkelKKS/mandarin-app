@@ -25,6 +25,8 @@ declare module 'virtual:audio-progress' {
     slow: { done: number; total: number };
     months: Record<string, number>;
     builtAt: number;
+    /** Ids of "My sentences" (m-…) that have a recording. */
+    custom: string[];
   };
   export default p;
 }

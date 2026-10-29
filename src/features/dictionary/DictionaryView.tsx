@@ -7,6 +7,7 @@ import { azureUrl, dictAudioUrl, hasChineseVoice, play, playUrl, speak } from '.
 import { loadVocab } from '../../lib/vocabData';
 import { guessHanzi, isPinyinSentence, loadDict, plecoLink, romanKey, search, segment, type Dict, type Entry } from './dict';
 import { looksLikeEnglishSentence, translate } from './translate';
+import { MySentenceList, SaveSentenceCard } from './MySentences';
 import { useQueuedWords } from './mywords';
 import { LearnNext } from '../../components/LearnNext';
 import { PageHeader } from '../../components/PageHeader';
@@ -113,7 +114,12 @@ export function DictionaryView() {
         </p>
       )}
 
-      {result?.mode === 'empty' && <UpNext />}
+      {result?.mode === 'empty' && (
+        <>
+          <UpNext />
+          <MySentenceList />
+        </>
+      )}
 
       {result?.mode === 'words' && dict && dict !== 'loading' && isPinyinSentence(dq) && <PinyinSentenceCard dict={dict} q={dq} />}
       {result?.mode === 'words' && !isPinyinSentence(dq) && looksLikeEnglishSentence(dq) && <TranslationCard text={dq} dir="en-zh" dict={dict as Dict} />}
@@ -159,6 +165,7 @@ export function DictionaryView() {
             </div>
           </div>
           <TranslationCard text={dq} dir="zh-en" sourceKey={romanKey(dict as Dict, dq)} />
+          <SaveSentenceCard key={dq} dict={dict as Dict} hanzi={dq.trim()} />
           <ul className="mt-4 flex flex-col gap-2">
             {result.tokens.map((t, i) =>
               t.entries.length ? (

@@ -53,7 +53,7 @@ export function forecast(cards: ReviewItemRow[], now: number, mic: boolean, days
   const out = starts.slice(0, days).map((day) => ({ day, count: 0 }));
   for (const c of cards) {
     if (c.state === 0) continue; // introduced, not reviewed yet
-    if (!c.id.includes('#') && !/^(s\d*-|t\d+$)/.test(c.id)) continue; // old course word cards are superseded
+    if (!c.id.includes('#') && !/^(s\d*-|t\d+$|m-)/.test(c.id)) continue; // old course word cards are superseded
     if (!mic && c.id.endsWith('#sp')) continue;
     if (READING_CARD.test(c.id) !== reading) continue;
     const i = c.due < starts[1] ? 0 : starts.findIndex((s, k) => k > 0 && c.due >= s && c.due < starts[k + 1]);

@@ -56,6 +56,9 @@ export function vocabModules(root: string): Plugin {
           slow: { done: sentences.reduce((n, x) => n + has(`${x.id}.slow.mp3`), 0), total: sentences.length },
           months: usage.months ?? {},
           builtAt: Date.now(),
+          custom: Object.keys(made)
+            .filter((f) => f.startsWith('m-') && f.endsWith('.mp3') && !f.endsWith('.slow.mp3'))
+            .map((f) => f.slice(0, -4)),
         };
         return `export default ${JSON.stringify(out)};`;
       }

@@ -218,3 +218,28 @@ describe('reading (Reading tab rounds and the deep session block)', async () => 
     expect(quick.blocks.some((b) => b.id === 'reading')).toBe(false);
   });
 });
+
+describe('your own sentences (saved from the dictionary)', async () => {
+  const { mySentenceItems, MINE } = await import('./plan');
+  const mine = (id: string, azure: boolean): SentenceRow => ({ id, hanzi: '我想去北京。', pinyin: 'Wǒ xiǎng qù Běijīng.', english: ['I want to go to Beijing.'], words: [], azure, course: false });
+  const withMine: VocabData = { ...data, sentences: new Map([...data.sentences, ['m-a', mine('m-a', false)], ['m-b', mine('m-b', true)]]) };
+  it('new ones: say it in pinyin from your English, on its own card', () => {
+    const items = mySentenceItems(['m-a', 'm-b', 'gone'], withMine, 5);
+    expect(items).toEqual([
+      { kind: 'sentence-pinyin', sentence: 'm-a', card: 'm-a' },
+      { kind: 'sentence-pinyin', sentence: 'm-b', card: 'm-b' },
+    ]);
+    expect(cardOf(items[0])).toBe('m-a');
+  });
+  it('reviews: dictation once recorded, from English until then', () => {
+    expect(reviewItem('m-a', withMine)).toEqual({ kind: 'sentence-pinyin', sentence: 'm-a', card: 'm-a' });
+    expect(reviewItem('m-b', withMine)).toEqual({ kind: 'sentence-dictation', sentence: 'm-b', card: 'm-b' });
+  });
+  it('sessions take a few new ones in their own block', () => {
+    const base = { data: withMine, started: new Set(['w0']), mic: false, now: 1, rng, tones: [], reviews: ['w1#mp'], newWords: [], mySentences: ['m-a', 'm-b'] };
+    const quick = planSession({ ...base, mode: 'quick' });
+    expect(quick.blocks.find((b) => b.id === 'mine')!.items.length).toBe(Math.min(2, MINE.quick));
+    const deep = planSession({ ...base, mode: 'deep' });
+    expect(deep.blocks.map((b) => b.id).slice(0, 2)).toEqual(['reviews', 'mine']);
+  });
+});

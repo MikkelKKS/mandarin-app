@@ -239,6 +239,38 @@ function bulkJobs(): Job[] {
   return [...normal, ...slow];
 }
 
+function supabase(): { url: string; headers: Record<string, string> } | null {
+  // The project URL is public: it's in .env.production next to the anon key.
+  const prod = existsSync(join(ROOT, '.env.production')) ? readFileSync(join(ROOT, '.env.production'), 'utf8') : '';
+  const url = (process.env.SUPABASE_URL ?? prod.match(/^VITE_SUPABASE_URL=(.+)$/m)?.[1])?.trim().replace(/\/$/, '');
+  const service = process.env.SUPABASE_SERVICE_KEY?.trim();
+  if (!url || !service) return null;
+  return { url, headers: { apikey: service, Authorization: `Bearer ${service}`, 'Content-Type': 'application/json' } };
+}
+
+/**
+ * "My sentences" saved in the app's dictionary (the synced settings row
+ * "my-sentences"), recorded first so they reach your sessions quickly.
+ */
+async function mySentenceJobs(): Promise<Job[]> {
+  const sb = supabase();
+  if (!sb) return [];
+  try {
+    const res = await fetch(`${sb.url}/rest/v1/settings?id=eq.my-sentences&select=data`, { headers: sb.headers });
+    if (!res.ok) {
+      console.log(`::warning::My sentences: couldn't read them (HTTP ${res.status}).`);
+      return [];
+    }
+    const rows = (await res.json()) as Array<{ data: { items?: Array<{ id: string; hanzi: string; pinyin: string; removed?: boolean }> } }>;
+    const items = rows.flatMap((r) => r.data?.items ?? []).filter((x) => !x.removed && /^m-[a-z0-9]+$/.test(x.id) && x.hanzi);
+    console.log(`My sentences: ${items.length}.`);
+    return items.map((x) => ({ id: x.id, voice: 'f' as VoiceKey, hanzi: x.hanzi, pinyin: x.pinyin, slow: false, file: `${x.id}.mp3` }));
+  } catch (e) {
+    console.log(`::warning::My sentences: ${(e as Error).message}`);
+    return [];
+  }
+}
+
 /** Fingerprint of what a clip was made from, so edited text gets re-recorded. */
 function fingerprint(voice: VoiceKey, body: string): string {
   return createHash('sha1').update(`${voice}|${body}`).digest('hex').slice(0, 10);
@@ -248,7 +280,8 @@ async function bulk(env: { key: string; region: string } | null, usage: Usage, m
   const stopAt = Date.now() + minutes * 60_000;
   const manifest: Record<string, string> = existsSync(MANIFEST_FILE) ? JSON.parse(readFileSync(MANIFEST_FILE, 'utf8')) : {};
   const format = env ? await probeHintFormat(env, usage) : (usage.hintFormat ?? 'spaced');
-  const jobs = bulkJobs();
+  const mine = await mySentenceJobs();
+  const jobs = [...mine, ...bulkJobs(), ...mine.map((j) => ({ ...j, slow: true, file: `${j.id}.slow.mp3` }))];
   const overrides = loadOverrides();
   for (const j of jobs) {
     const o = overrides[j.id];

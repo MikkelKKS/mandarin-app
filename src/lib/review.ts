@@ -424,7 +424,7 @@ export async function todaysQueue(
   const [cards, logs] = await Promise.all([db.reviewItems.toArray(), db.reviewLogs.where('at').aboveOrEqual(start).toArray()]);
   return buildQueue(
     // Word facets, and sentence cards (course "s…-" and Tatoeba "t…" ids); old course word cards are superseded.
-    cards.filter((c) => (c.id.includes('#') && !READING_CARD.test(c.id)) || /^(s\d*-|t\d+$)/.test(c.id)),
+    cards.filter((c) => (c.id.includes('#') && !READING_CARD.test(c.id)) || /^(s\d*-|t\d+$|m-)/.test(c.id)),
     wordsInOrder,
     { now, newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic: s.mic, doneToday: doneSince(logs.filter((l) => !l.replaced), start) },
   );

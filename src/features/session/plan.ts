@@ -27,7 +27,8 @@ type SItemBase =
   | { kind: 'meaning-pinyin'; word: string; card?: string }
   | { kind: 'sentence-dictation'; sentence: string; card?: string }
   | { kind: 'sentence-meaning'; sentence: string }
-  | { kind: 'sentence-pinyin'; sentence: string }
+  /** card: one of your own sentences (its review card). */
+  | { kind: 'sentence-pinyin'; sentence: string; card?: string }
   | { kind: 'tone'; gym: GymItem }
   | { kind: 'speak'; word: string }
   /** Reading: meet a word's characters (via: the word a character came with). */
@@ -35,10 +36,11 @@ type SItemBase =
   | { kind: 'read-pinyin'; item: string }
   | { kind: 'read-meaning'; item: string };
 
-export type BlockId = 'reviews' | 'new' | 'listening' | 'writing' | 'speaking' | 'reading' | 'tones';
+export type BlockId = 'reviews' | 'new' | 'mine' | 'listening' | 'writing' | 'speaking' | 'reading' | 'tones';
 export const BLOCK_TITLE: Record<BlockId, string> = {
   reviews: 'Reviews',
   new: 'New words',
+  mine: 'Your sentences',
   listening: 'Listening',
   writing: 'Say it in pinyin',
   speaking: 'Speaking',
@@ -69,6 +71,7 @@ export function cardOf(it: SItem): string | null {
     case 'meaning-pinyin':
       return it.card ?? `${it.word}#mp`;
     case 'sentence-dictation':
+    case 'sentence-pinyin':
       return it.card ?? null;
     case 'speak':
       return `${it.word}#sp`;
@@ -105,7 +108,10 @@ export function reviewItem(card: string, data: VocabData, mic = false): SItem | 
   const p = parseCardId(card);
   if (!p) {
     const s = data.sentences.get(card);
-    return s && sentenceHasAudio(s) ? { kind: 'sentence-dictation', sentence: card, card } : null;
+    if (s && sentenceHasAudio(s)) return { kind: 'sentence-dictation', sentence: card, card };
+    // One of your own sentences, not recorded yet: say it in pinyin from your English.
+    if (s && card.startsWith('m-') && s.english[0]) return { kind: 'sentence-pinyin', sentence: card, card };
+    return null;
   }
   const w = data.byId.get(p.word);
   if (!w) return null;
@@ -225,6 +231,8 @@ export interface PlanInput {
   speakNew?: string[];
   /** Recently started words, newest first (for the sentences to type). */
   newest?: string[];
+  /** Your own saved sentences not practised yet (ids, oldest first). */
+  mySentences?: string[];
   /** Deep sessions: the reading queue (Mix), for a Reading block. */
   reading?: ReadQueue;
   now: number;
@@ -257,11 +265,13 @@ export function planSession(p: PlanInput): SessionPlan {
       if ((i + 1) % QUICK.toneEvery === 0 && t < tones.length) items.push({ kind: 'tone', gym: tones[t++] });
     });
     if (revs.length) blocks.push({ id: 'reviews', items });
+    blocks.push({ id: 'mine', items: mySentenceItems(p.mySentences ?? [], p.data, MINE.quick) });
     if (revs.length < QUICK.fewReviews && p.newWords.length) blocks.push({ id: 'new', items: newWordItems(p.newWords.slice(0, QUICK.newWhenFew), p.data, rng) });
     const rest = tones.slice(t).map((g): SItem => ({ kind: 'tone', gym: g }));
     if (rest.length) blocks.push({ id: 'tones', items: rest });
   } else {
     if (reviewItems.length) blocks.push({ id: 'reviews', items: reviewItems.slice(0, DEEP.reviews) });
+    blocks.push({ id: 'mine', items: mySentenceItems(p.mySentences ?? [], p.data, MINE.deep) });
     if (p.newWords.length) blocks.push({ id: 'new', items: newWordItems(p.newWords.slice(0, DEEP.newWords), p.data, rng) });
     const started = new Set([...p.started, ...p.newWords.slice(0, DEEP.newWords)]);
     const listening = listeningItems(p.data, started, DEEP.listening, rng);
@@ -328,6 +338,21 @@ export function readingItems(q: ReadQueue, mode: ReadMode, cap: number): SItem[]
 }
 
 export const READING = { round: 20, deep: 15, deepNew: 3 };
+
+/** How many of your new saved sentences a session takes. */
+export const MINE = { quick: 2, deep: 5 };
+
+/** Your new sentences: hear it and type it when it's recorded, and say it from your English. */
+export function mySentenceItems(ids: string[], data: VocabData, n: number): SItem[] {
+  const out: SItem[] = [];
+  for (const id of ids.slice(0, n)) {
+    const s = data.sentences.get(id);
+    if (!s) continue;
+    if (s.english[0]) out.push({ kind: 'sentence-pinyin', sentence: id, card: id });
+    else if (sentenceHasAudio(s)) out.push({ kind: 'sentence-dictation', sentence: id, card: id });
+  }
+  return out;
+}
 
 export function itemCount(plan: SessionPlan): number {
   return plan.blocks.reduce((n, b) => n + b.items.length, 0);

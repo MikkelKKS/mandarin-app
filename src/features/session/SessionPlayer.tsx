@@ -19,6 +19,7 @@ import { play, prefetchForOffline, stop } from '../../lib/audio';
 import { isPass } from '../../lib/pinyinAnswer';
 import { forgetWord, introduceWord, todaysQueue, type RatingName } from '../../lib/review';
 import { introduceReadItem } from '../../lib/reading';
+import { loadMySentences, withMySentences } from '../../lib/mySentences';
 import { readMode } from '../reading/mode';
 import { readingQueue } from '../reading/queue';
 import { go } from '../../lib/router';
@@ -72,7 +73,10 @@ async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerD
   }
   const newest = [...early].filter(([, e]) => e.reps <= 4).sort((a, b) => b[1].last - a[1].last).map(([w]) => w).slice(0, 60);
   const reading = mode === 'deep' ? await readingQueue('mix', READING.deepNew) : undefined;
-  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, newest, reading, now });
+  // Your saved sentences not practised yet, oldest first.
+  const byCard = new Map(cards.map((c) => [c.id, c]));
+  const mySentences = [...data.sentences.keys()].filter((id) => id.startsWith('m-') && byCard.get(id)?.state === 0);
+  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, newest, reading, mySentences, now });
   return { id: 'session', plan, block: 0, item: 0, xp: 0, combo: 0, bestCombo: 0, right: 0, answered: 0, newWords: [], tones: [], done: false, startedAt: now, updatedAt: now };
 }
 
@@ -98,7 +102,7 @@ export function SessionRoute({ route }: { route: string[] }) {
   useEffect(() => {
     let live = true;
     void (async () => {
-      const d = await loadVocabData();
+      const d = withMySentences(await loadVocabData(), await loadMySentences());
       const resumed = mode === 'resume' ? await loadSession() : mode === 'reading' && route[2] === 'resume' ? await loadSession('reading') : null;
       const s = resumed ?? (await newSession(mode === 'deep' ? 'deep' : mode === 'reading' ? 'reading' : 'quick', settings, d));
       if (!live) return;
@@ -249,10 +253,12 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
       // Play the right answer after a typed or chosen answer (words and sentences).
       if (item.kind !== 'tone' && o.verdict !== 'wrong') {
         const id = 'word' in item ? item.word : 'sentence' in item ? item.sentence : null;
-        if (id && item.kind !== 'dictation' && item.kind !== 'sentence-dictation' && item.kind !== 'choose-meaning') void play(id);
+        // Your own sentences play once the Azure job has recorded them (never the browser's voice).
+        const unrecorded = 'sentence' in item && item.sentence.startsWith('m-') && !data.sentences.get(item.sentence)?.azure;
+        if (id && !unrecorded && item.kind !== 'dictation' && item.kind !== 'sentence-dictation' && item.kind !== 'choose-meaning') void play(id);
       }
     },
-    [item, result, st, persist],
+    [item, result, st, persist, data],
   );
 
   /** "I was right": a differently worded typed answer counts as correct after all (and its card, if it has one, is regraded). */
@@ -423,8 +429,9 @@ function Feedback({
   const tone = o.verdict === 'wrong' ? 'bg-cinnabar-soft' : o.verdict === 'almost' || o.verdict === 'typo' ? 'bg-amber-soft' : 'bg-jade-soft';
   const title = o.note?.startsWith('Moved back') ? "Here's the word" : o.verdict === 'wrong' ? 'Not quite' : o.verdict === 'almost' ? 'Almost' : o.verdict === 'typo' ? 'Right, with a typo' : 'Right';
   // A word heard in a sentence is replayed in that sentence.
-  const audioId = result.context?.id ?? ('word' in item ? item.word : 'sentence' in item ? item.sentence : null);
-  const a = o.answer ?? (audioId ? answerFor(item, data) : undefined);
+  const own = 'sentence' in item && item.sentence.startsWith('m-') && !data.sentences.get(item.sentence)?.azure;
+  const audioId = own ? null : (result.context?.id ?? ('word' in item ? item.word : 'sentence' in item ? item.sentence : null));
+  const a = o.answer ?? (audioId || own ? answerFor(item, data) : undefined);
   return (
     <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)]`}>
       <div className="mx-auto max-w-xl lg:max-w-2xl">
