@@ -1,0 +1,339 @@
+# Song catalogue
+
+Built 2026-10-29 by scripts/build-songs.ts: 4832 songs (3636 with timed lyrics) from 320 artists, 750 LRCLIB searches.
+
+Left out: 548 not mostly Chinese, 32 Cantonese, 0 too short.
+
+| Scene | Songs |
+|---|---|
+| Easy songs | 5 |
+| Mandopop | 4437 |
+| Ballads | 114 |
+| Rock | 74 |
+| Indie | 41 |
+| Folk | 68 |
+| R&B | 28 |
+| Hip hop | 65 |
+
+## Artists
+
+- 周杰伦 (pop, scene): 8 songs
+- 林俊杰 (pop, scene): 16 songs
+- 邓紫棋 (pop, scene): 8 songs
+- 王力宏 (pop, scene): 16 songs
+- 蔡依林 (pop, scene): 12 songs
+- 孙燕姿 (pop, scene): 6 songs
+- 李荣浩 (pop, scene): 11 songs
+- 毛不易 (pop, scene): 9 songs
+- 梁静茹 (ballad, scene): 18 songs
+- 王菲 (ballad, scene): 15 songs
+- 邓丽君 (ballad, scene): 19 songs
+- 莫文蔚 (ballad, scene): 17 songs
+- 田馥甄 (ballad, scene): 17 songs
+- 李健 (ballad, scene): 11 songs
+- 张学友 (ballad, scene): 18 songs
+- 五月天 (rock, scene): 21 songs
+- 新裤子 (rock, scene): 13 songs
+- 痛仰乐队 (rock, scene): 10 songs
+- 崔健 (rock, scene): 8 songs
+- 朴树 (rock, scene): 16 songs
+- 逃跑计划 (rock, scene): 7 songs
+- 草东没有派对 (indie, scene): 2 songs
+- 万能青年旅店 (indie, scene): 7 songs
+- 告五人 (indie, scene): 7 songs
+- 陈粒 (indie, scene): 9 songs
+- deca joins (indie, scene): 9 songs
+- 回春丹 (indie, scene): 7 songs
+- 宋冬野 (folk, scene): 12 songs
+- 马頔 (folk, scene): 7 songs
+- 赵雷 (folk, scene): 15 songs
+- 好妹妹乐队 (folk, scene): 8 songs
+- 陈鸿宇 (folk, scene): 12 songs
+- 房东的猫 (folk, scene): 14 songs
+- 陶喆 (rnb, scene): 9 songs
+- 方大同 (rnb, scene): 14 songs
+- 袁娅维 (rnb, scene): 5 songs
+- 法老 (hiphop, scene): 18 songs
+- 艾热 (hiphop, scene): 10 songs
+- 蛋堡 (hiphop, scene): 9 songs
+- 王以太 (hiphop, scene): 9 songs
+- 马思唯 (hiphop, scene): 2 songs
+- 热狗 (hiphop, scene): 17 songs
+- 女朋友 / S.H.E / Selina.Hebe.Ella (pop, musicbrainz:mandopop): 26 songs
+- 林宥嘉 / Yoga Lin / James Lin (pop, musicbrainz:mandopop): 35 songs
+- 黄丽玲 / 黃麗玲 / A-Lin (pop, musicbrainz:mandopop): 48 songs
+- 周深 / Zhou Shen / Charlie Zhou (pop, musicbrainz:mandopop): 36 songs
+- 張韶涵 / 张韶涵 / Angela (張韶涵) (pop, musicbrainz:mandopop): 36 songs
+- 任賢齊 / 任贤齐 / Rèn Syán-Chí (pop, musicbrainz:mandopop): 21 songs
+- 伍佰 & China Blue / 伍佰&China Blue / 伍佰 and China Blue (pop, musicbrainz:mandopop): 30 songs
+- 王心凌 / 王君如 / Wang Xin Ling (pop, musicbrainz:mandopop): 10 songs
+- 庄心妍 / Ada Zhuang / Ada (pop, musicbrainz:mandopop): 18 songs
+- 楊丞琳 / 杨丞琳 / Rainie Yang (pop, musicbrainz:mandopop): 29 songs
+- 庾澄慶 / 庾澄庆 / 哈林 (pop, musicbrainz:mandopop): 32 songs
+- 張惠妹 / 阿密特 / 阿妹 (pop, musicbrainz:mandopop): 12 songs
+- 品冠 / 黄品冠 / 黃品冠 (pop, musicbrainz:mandopop): 15 songs
+- 張雨生 / 张雨生 / Zhang Yusheng (pop, musicbrainz:mandopop): 43 songs
+- 张杰 / 張傑 / Jason Zhang (pop, musicbrainz:mandopop): 30 songs
+- 丁噹 / 吴娴 / 吳嫻 (pop, musicbrainz:mandopop): 15 songs
+- 蕭敬騰 / 萧敬腾 / Jam Hsiao (pop, musicbrainz:mandopop): 31 songs
+- 郁可唯 / Kewei Yu / Yisa Yu (pop, musicbrainz:mandopop): 21 songs
+- 林淑容 (pop, musicbrainz:mandopop): 9 songs
+- 孫盛希 / 孙盛希 / Shi Shi (pop, musicbrainz:mandopop): 20 songs
+- 彭佳慧 / Julia Peng / Julia Pang (pop, musicbrainz:mandopop): 20 songs
+- 劉若英 / 奶茶 / 刘若英 (pop, musicbrainz:mandopop): 15 songs
+- 伊能靜 / 伊能静 / 呉静怡 (pop, musicbrainz:mandopop): 14 songs
+- 孟庭葦 / 孟庭苇 / 陈秀玫 (pop, musicbrainz:mandopop): 12 songs
+- 萬芳 / 林萬芳 / 万芳 (pop, musicbrainz:mandopop): 29 songs
+- 林志炫 / Terry Lin (pop, musicbrainz:mandopop): 29 songs
+- 华晨宇 / 華晨宇 / Hua Chen Yu (pop, musicbrainz:mandopop): 31 songs
+- 吉克隽逸 / 王隽逸 / Summer Jike (pop, musicbrainz:mandopop): 9 songs
+- 辛曉琪 / 辛晓琪 / ¨¯¾åµX (pop, musicbrainz:mandopop): 24 songs
+- 江美琪 / ¦¿¬üµX / Maggie Chiang (pop, musicbrainz:mandopop): 24 songs
+- 吳克群 / 吴克群 / Kenji Wu (pop, musicbrainz:mandopop): 35 songs
+- 许嵩 / 許嵩 / Vae (pop, musicbrainz:mandopop): 26 songs
+- 城市少女 / City Girls (pop, musicbrainz:mandopop): 2 songs
+- 胡夏 / 胡老板 / 小夏 (pop, musicbrainz:mandopop): 12 songs
+- 张靓颖 / 張靚穎 / Zhang Liangying (pop, musicbrainz:mandopop): 18 songs
+- 刘宇宁 / 摩登兄弟劉宇寧 / 摩登兄弟刘宇宁 (pop, musicbrainz:mandopop): 48 songs
+- SNH48 (pop, musicbrainz:mandopop): 11 songs
+- 黄明志 / 黃明志 / 黃名字 (pop, musicbrainz:mandopop): 28 songs
+- 范曉萱 / 范晓萱 / Mavis Fan (pop, musicbrainz:mandopop): 25 songs
+- 潘越雲 / 潘越云 / 藩越雲 (pop, musicbrainz:mandopop): 31 songs
+- 盧廣仲 / 卢广仲 / Crowd Lu (pop, musicbrainz:mandopop): 31 songs
+- 阿兰·达瓦卓玛 / 阿蘭 / 阿兰 (pop, musicbrainz:mandopop): 25 songs
+- 张蔷 / 張薔 / Sara Chang (pop, musicbrainz:mandopop): 7 songs
+- 周傳雄 / 小剛 / 小刚 (pop, musicbrainz:mandopop): 28 songs
+- 蘇打綠 / 苏打绿 / sodagreen (pop, musicbrainz:mandopop): 25 songs
+- 文慧如 / Boon Hui Lu (pop, musicbrainz:mandopop): 27 songs
+- 羅志祥 / 罗志祥 / Show Lo (pop, musicbrainz:mandopop): 29 songs
+- 羅大佑 / 罗大佑 / Ã¹¤j¦ö (pop, musicbrainz:mandopop): 25 songs
+- 周笔畅 / 周筆暢 / Bibi Chow (pop, musicbrainz:mandopop): 27 songs
+- 黄绮珊 / 小霞 / 黄晓霞 (pop, musicbrainz:mandopop): 15 songs
+- 林曉培 / 林晓培 / Lin Xiao Pei (pop, musicbrainz:mandopop): 21 songs
+- 歐陽菲菲 / 欧陽 菲菲 / 欧阳菲菲 (pop, musicbrainz:mandopop): 20 songs
+- 陳淑樺 / 陈淑桦 / ³¯²Q¾ì (pop, musicbrainz:mandopop): 29 songs
+- 那英 / Natasha Na / Na Ying (pop, musicbrainz:mandopop): 31 songs
+- 李玟 / 李美林 / CoCo Lee (pop, musicbrainz:mandopop): 27 songs
+- 張清芳 / 张清芳 / Stella Cheung (pop, musicbrainz:mandopop): 33 songs
+- 汪苏泷 / 汪蘇瀧 / Silence Wang (pop, musicbrainz:mandopop): 39 songs
+- 唐禹哲 / Tang Yuzhe / Danson Tang (pop, musicbrainz:mandopop): 16 songs
+- 韋禮安 / 韦礼安 / Wéi Lǐ Ān (pop, musicbrainz:mandopop): 8 songs
+- 黄龄 / 黃齡 / Isabelle Huang (pop, musicbrainz:mandopop): 28 songs
+- 郭靜 / 郭伯瑜 / Claire Kuo (pop, musicbrainz:mandopop): 28 songs
+- 黃品源 / 黄品源 / Huang Pin-yuan (pop, musicbrainz:mandopop): 27 songs
+- 范瑋琪 / 范玮琪 / 范范 (pop, musicbrainz:mandopop): 23 songs
+- 刘欢 / 劉歡 / Áõ»¶ (pop, musicbrainz:mandopop): 35 songs
+- 趙傳 / 赵传 / Chief (pop, musicbrainz:mandopop): 28 songs
+- 尚雯婕 / Shang Wenjie / Laure Shang (pop, musicbrainz:mandopop): 7 songs
+- 蕭亞軒 / 蕭雅之 / 萧亚轩 (pop, musicbrainz:mandopop): 14 songs
+- 安心亞 / 廖婧伶 / Amber An (pop, musicbrainz:mandopop): 17 songs
+- 蔡幸娟 / Daphne Tsai (pop, musicbrainz:mandopop): 14 songs
+- 张碧晨 / 張碧晨 / Zhang Bichen (pop, musicbrainz:mandopop): 31 songs
+- 陳綺貞 / 陈绮贞 / ³¯ºö­s (pop, musicbrainz:mandopop): 24 songs
+- 周蕙 / ÖÜÞ¥ / Chou Huei (pop, musicbrainz:mandopop): 19 songs
+- 王源 / Wang Yuan / Roy Wang (pop, musicbrainz:mandopop): 17 songs
+- 葉歡 / Yeh Huan (pop, musicbrainz:mandopop): 13 songs
+- 林凡 / Freya Lim (pop, musicbrainz:mandopop): 16 songs
+- 张远 / 張遠 / Bird Zhang (pop, musicbrainz:mandopop): 28 songs
+- 周渝民 / Zai Zai / Vic Chou (pop, musicbrainz:mandopop): 21 songs
+- 崔子格 / Queena Cui (pop, musicbrainz:mandopop): 19 songs
+- By2 (pop, musicbrainz:mandopop): 11 songs
+- 嚴爵 / Yen-j (pop, musicbrainz:mandopop): 26 songs
+- 林志穎 (pop, musicbrainz:mandopop): 10 songs
+- 苏运莹 / 蘇運瑩 (pop, musicbrainz:mandopop): 16 songs
+- 楊宗緯 / 杨宗纬 / Aska Yang (pop, musicbrainz:mandopop): 19 songs
+- 李翊君 / Lee E-jun (pop, musicbrainz:mandopop): 5 songs
+- 任然 / Ren Ran (pop, musicbrainz:mandopop): 28 songs
+- 李玉刚 / 李玉剛 (pop, musicbrainz:mandopop): 17 songs
+- 薛之谦 / 薛之謙 / Xue Zhiqian (pop, musicbrainz:mandopop): 15 songs
+- 黃子韜 / 黄子韬 / Z.TAO (pop, musicbrainz:mandopop): 14 songs
+- 魏如萱 / Waa Wei / Waa (pop, musicbrainz:mandopop): 21 songs
+- 蔡健雅 / Chua Chian Ya / Tanya Chua (pop, musicbrainz:mandopop): 29 songs
+- 徐良 / Xu Liang (pop, musicbrainz:mandopop): 18 songs
+- 单依纯 / Shan Yichun (pop, musicbrainz:mandopop): 12 songs
+- 童安格 / 安格 / 漁翁 (pop, musicbrainz:mandopop): 13 songs
+- 迪克牛仔 / Dick Cowboy (pop, musicbrainz:mandopop): 10 songs
+- 曾轶可 / Yico Zeng (pop, musicbrainz:mandopop): 12 songs
+- 姚蘇蓉 / 姚苏蓉 / 姚蘇容 (pop, musicbrainz:mandopop): 6 songs
+- 優客李林 / 优客李林 / Àu§J§õªL (pop, musicbrainz:mandopop): 20 songs
+- 溫嵐 / 温岚 / ·Å´P (pop, musicbrainz:mandopop): 29 songs
+- 沈以诚 / 沈以誠 / Shen Yicheng (pop, musicbrainz:mandopop): 32 songs
+- 后弦 / 邓文彬 / 鄧文彬 (pop, musicbrainz:mandopop): 10 songs
+- 蔡詩芸 / 蔡詩蕓 / Dizzy Dizzo (pop, musicbrainz:mandopop): 11 songs
+- 胡彦斌 / 胡彥斌 / Tiger Hu (pop, musicbrainz:mandopop): 30 songs
+- 刘惜君 / 劉惜君 / Liu Xijun (pop, musicbrainz:mandopop): 30 songs
+- 潘瑋柏 / 潘玮柏 / Will Pan (pop, musicbrainz:mandopop): 37 songs
+- 李玖哲 / 李哲玖 / Nicky Lee (pop, musicbrainz:mandopop): 18 songs
+- 吳宗憲 / 吴宗宪 / 宪哥 (pop, musicbrainz:mandopop): 19 songs
+- 曾沛慈 / Pets Tseng (pop, musicbrainz:mandopop): 26 songs
+- 順子 / 顺子 / Shunza (pop, musicbrainz:mandopop): 13 songs
+- 蔡淳佳 / Joi Chua / Cai Chunjia (pop, musicbrainz:mandopop): 25 songs
+- 黃雅莉 / Huang Yali (pop, musicbrainz:mandopop): 24 songs
+- 張宇 / 张宇 / 張博翔 (pop, musicbrainz:mandopop): 29 songs
+- 梁文音 / Rachel Liang / Liang Wenyin (pop, musicbrainz:mandopop): 30 songs
+- 張洪量 / 张洪量 / Chang Hung Liang (pop, musicbrainz:mandopop): 17 songs
+- 金海心 / Jin Haixin / 김해심 (pop, musicbrainz:mandopop): 17 songs
+- 李宗盛 / Chung Shan Lee / Jonathan Lee (pop, musicbrainz:mandopop): 18 songs
+- 杨钰莹 / 楊鈺瑩 / 杨岗丽 (pop, musicbrainz:mandopop): 9 songs
+- 方季惟 / 葉純華 / Fang Ji Wei (pop, musicbrainz:mandopop): 14 songs
+- 黃鴻升 / Huang Hong Sheng / Xiao Gui (pop, musicbrainz:mandopop): 31 songs
+- 南拳媽媽 / 南拳妈妈 / Nan Quan Mama (pop, musicbrainz:mandopop): 33 songs
+- 蘇有朋 / 苏有朋 / Alec Su (pop, musicbrainz:mandopop): 16 songs
+- 劉家昌 / 刘家昌 / Jia-Chang Liu (pop, musicbrainz:mandopop): 26 songs
+- 無印良品 / 光良品冠 / 无印良品 (pop, musicbrainz:mandopop): 23 songs
+- 陈明 / 陳明 (pop, musicbrainz:mandopop): 15 songs
+- 青山 / Ching San / Qing Shang (pop, musicbrainz:mandopop): 4 songs
+- 戴愛玲 / 戴爱玲 / Ailing Tai (pop, musicbrainz:mandopop): 25 songs
+- 于文文 (pop, musicbrainz:mandopop): 12 songs
+- 戴佩妮 / Penny ´÷ÅåÄÝ / ´÷ÅåÄÝ (pop, musicbrainz:mandopop): 20 songs
+- 韦唯 / Wei Wei (pop, musicbrainz:mandopop): 4 songs
+- 李佳薇 / Jess Lee (pop, musicbrainz:mandopop): 30 songs
+- 陳勢安 / 陈势安 / Andrew Tan (pop, musicbrainz:mandopop): 24 songs
+- 韓寶儀 / 江瓊娟 / 韩宝仪 (pop, musicbrainz:mandopop): 13 songs
+- 徐佳瑩 / 徐佳莹 / Jiaying Xu (pop, musicbrainz:mandopop): 19 songs
+- 大嘴巴 / Ta Tsui Pa / Dà Dzwěi Ba (pop, musicbrainz:mandopop): 12 songs
+- 黃小琥 / 黄小琥 / 黃春鳳 (pop, musicbrainz:mandopop): 31 songs
+- 姜育恆 / 姜育恒 / Jiang Yuheng (pop, musicbrainz:mandopop): 17 songs
+- 鄭怡 / 郑怡 / Cheng Yi (pop, musicbrainz:mandopop): 21 songs
+- 弦子 / 张弦子 / 張弦子 (pop, musicbrainz:mandopop): 13 songs
+- F.I.R. 飞儿乐团 / 飞儿乐团 / 飛兒樂團 (pop, musicbrainz:mandopop): 18 songs
+- 張棟樑 / 张栋梁 / Nicholas Teo (pop, musicbrainz:mandopop): 35 songs
+- 金志文 / Jin Zhiwen (pop, musicbrainz:mandopop): 13 songs
+- 阿杜 / 杜成義 / Toh Sing Gee (pop, musicbrainz:mandopop): 17 songs
+- 苏醒 / 蘇醒 / Allen Su (pop, musicbrainz:mandopop): 12 songs
+- 動力火車 / 动力火车 / Dònglì Huǒchē (pop, musicbrainz:mandopop): 31 songs
+- 陈楚生 / 陳楚生 / Chen Chusheng (pop, musicbrainz:mandopop): 36 songs
+- 齊秦 / 齐秦 / Chiy Chin (pop, musicbrainz:mandopop): 18 songs
+- 原子邦妮 / Astro Bunny / Astrobunny (pop, musicbrainz:mandopop): 26 songs
+- 言承旭 / Jerry Yan / ¨¥©Ó¦° (pop, musicbrainz:mandopop): 19 songs
+- 家家 / 紀家盈 / Jia Jia (pop, musicbrainz:mandopop): 7 songs
+- 費玉清 / 張彥亭 / 张彦亭 (pop, musicbrainz:mandopop): 18 songs
+- 袁詠琳 / 袁咏琳 / 吴欣云 (pop, musicbrainz:mandopop): 18 songs
+- 吳青峰 / 青峰 / 吴青峰 (pop, musicbrainz:mandopop): 21 songs
+- 八三夭 / The Last Day of Summer 831 / Bā Sān Yāo (pop, musicbrainz:mandopop): 11 songs
+- 陆虎 / 陸虎 / Tiger Lu (pop, musicbrainz:mandopop): 29 songs
+- 神木與瞳 / 神木与瞳 / Y2J (pop, musicbrainz:mandopop): 19 songs
+- 满文军 / Man Wenjun (pop, musicbrainz:mandopop): 0 songs
+- 王铮亮 / 王錚亮 / Reno Wang (pop, musicbrainz:mandopop): 29 songs
+- 孙楠 / 孫楠 / Sun Nan (pop, musicbrainz:mandopop): 19 songs
+- 大张伟 / 張偉 / 张伟 (pop, musicbrainz:mandopop): 15 songs
+- 阿牛 / O-Gû / O-Giû (pop, musicbrainz:mandopop): 5 songs
+- 黄霄雲 / 黄霄云 / 面包 (pop, musicbrainz:mandopop): 19 songs
+- 伍思凱 / 伍思凯 / Wu Si Kai (pop, musicbrainz:mandopop): 18 songs
+- 楊乃文 / 杨乃文 / ÑîÄËÎÄ (pop, musicbrainz:mandopop): 23 songs
+- 呂建中 / 呂建忠 / 吕建中 (pop, musicbrainz:mandopop): 27 songs
+- 陶晶瑩 / 陶晶莹 / 陶子 (pop, musicbrainz:mandopop): 35 songs
+- 徐若瑄 / Vivian Hsu / Xu Ruo Xuan (pop, musicbrainz:mandopop): 30 songs
+- 韩雪 / 韓雪 / Cecilia Han (pop, musicbrainz:mandopop): 12 songs
+- 易烊千玺 / 易烊千璽 / Jackson Yi (pop, musicbrainz:mandopop): 20 songs
+- 趙詠華 / 赵咏华 / Cyndi Chaw (pop, musicbrainz:mandopop): 12 songs
+- 張震嶽 / 海雅‧谷慕 / 张震岳 (pop, musicbrainz:mandopop): 22 songs
+- 姚贝娜 / 姚貝娜 / Yao Beina (pop, musicbrainz:mandopop): 19 songs
+- 信 / 蘇見信 / 苏见信 (pop, musicbrainz:mandopop): 27 songs
+- 陳明真 / Jennifer Chen / Chen Ming-Jen (pop, musicbrainz:mandopop): 15 songs
+- 吴莫愁 / 吳莫愁 / MoMo Wu (pop, musicbrainz:mandopop): 13 songs
+- 张艺兴 / LAY / Lay (pop, musicbrainz:mandopop): 3 songs
+- 李聖傑 / 李聖杰 / 李圣傑 (pop, musicbrainz:mandopop): 16 songs
+- 徐懷鈺 / 徐怀钰 / Hsü2 Huai2-Yü4 (pop, musicbrainz:mandopop): 15 songs
+- 閻奕格 / Janice Yan (pop, musicbrainz:mandopop): 19 songs
+- 江映蓉 / Vivi Jiang (pop, musicbrainz:mandopop): 4 songs
+- 裘海正 / Donna Chiu (pop, musicbrainz:mandopop): 6 songs
+- 段奥娟 / Duan Aojuan (pop, musicbrainz:mandopop): 9 songs
+- 高勝美 / 高胜美 / Malas Gao (pop, musicbrainz:mandopop): 25 songs
+- 阿桑 / 黄嬿璘 / 黃嬿璘 (pop, musicbrainz:mandopop): 13 songs
+- 赵薇 / 趙薇 / Vickie Zhao (pop, musicbrainz:mandopop): 4 songs
+- 韩红 / 央金卓玛 / 韓紅 (pop, musicbrainz:mandopop): 14 songs
+- 艾薇 / Ivy Lee (pop, musicbrainz:mandopop): 9 songs
+- 宇宙人 / Yǔ Zhòu Rén / Cosmos People (pop, musicbrainz:mandopop): 14 songs
+- 游鴻明 / 游鸿明 / Chris Yu (pop, musicbrainz:mandopop): 37 songs
+- 比莉 / 王雪娥 / Wong Shu Oi (pop, musicbrainz:mandopop): 10 songs
+- 潘美辰 / Pan Mei Chen (pop, musicbrainz:mandopop): 9 songs
+- 劉韻 / 劉桂蘭 / Liu Yun (pop, musicbrainz:mandopop): 1 songs
+- 林嘉欣 (pop, musicbrainz:mandopop): 7 songs
+- 魚丁糸 (pop, musicbrainz:mandopop): 10 songs
+- 2个女生 (pop, musicbrainz:mandopop): 3 songs
+- 杨栝 / ilem (pop, musicbrainz:mandopop): 4 songs
+- 杨坤 / 楊坤 / Yang Kun (pop, musicbrainz:mandopop): 17 songs
+- 韩庚 / 韓庚 / Han Geng (pop, musicbrainz:mandopop): 12 songs
+- 王詩安 / 朱蘭亭 / 王诗安 (pop, musicbrainz:mandopop): 22 songs
+- 林依晨 / Ariel Lin / Lin Yichen (pop, musicbrainz:mandopop): 14 songs
+- 范逸臣 / Fan Yi Chen / Van Fan (pop, musicbrainz:mandopop): 25 songs
+- 元衛覺醒 / 元卫觉醒 / Awaking (pop, musicbrainz:mandopop): 15 songs
+- 徐誉滕 / Xu Yuteng (pop, musicbrainz:mandopop): 7 songs
+- 盧學叡 / 卢学睿 / Afalean Lu (pop, musicbrainz:mandopop): 11 songs
+- 凤凰传奇 / 鳳凰傳奇 / 酷火 (pop, musicbrainz:mandopop): 22 songs
+- 陳嘉樺 / 陈嘉桦 / Chen Jia Hua (pop, musicbrainz:mandopop): 26 songs
+- 谭维维 / 譚維維 / Sitar Tan (pop, musicbrainz:mandopop): 16 songs
+- 汪峰 / Wang Feng (pop, musicbrainz:mandopop): 20 songs
+- JS / Justin & Sophia / J.S (pop, musicbrainz:mandopop): 6 songs
+- 陈红 / Chen Hong (pop, musicbrainz:mandopop): 7 songs
+- 王赫野 / Wang Heye (pop, musicbrainz:mandopop): 12 songs
+- 李玉璽 (pop, musicbrainz:mandopop): 11 songs
+- 陈坤 / 陳坤 (pop, musicbrainz:mandopop): 10 songs
+- 宋念宇 / 小宇-宋念宇 / 小宇 (pop, musicbrainz:mandopop): 16 songs
+- SING女团 / SING女團 (pop, musicbrainz:mandopop): 10 songs
+- 江一燕 / Jiang Yiyan / Jiang Yi Yan (pop, musicbrainz:mandopop): 0 songs
+- 歐得洋 / 沈益嶒 / 欧得洋 (pop, musicbrainz:mandopop): 6 songs
+- 王宏恩 / Biung Wang (pop, musicbrainz:mandopop): 10 songs
+- 羽·泉 / 羽泉 / Yu Quan (pop, musicbrainz:mandopop): 25 songs
+- 周興哲 / 周兴哲 / Xing Zhe Zhou (pop, musicbrainz:mandopop): 19 songs
+- 潘嘉麗 / 潘嘉丽 / Kelly Poon (pop, musicbrainz:mandopop): 23 songs
+- 陳家偉 / 陳品赫 / HUSH (pop, musicbrainz:mandopop): 0 songs
+- 孫淑媚 / May Suen / Sun Shu Mei (pop, musicbrainz:mandopop): 0 songs
+- 希林娜依·高 / Curley Gao / شىرىناي گاۋ (pop, musicbrainz:mandopop): 12 songs
+- 縱貫線 / 纵贯线 / Zòng Guàn Xiàn (pop, musicbrainz:mandopop): 17 songs
+- 筷子兄弟 / Chopsticks Brothers / Chopstick Brothers (pop, musicbrainz:mandopop): 10 songs
+- 何洁 / 何潔 / Angel He (pop, musicbrainz:mandopop): 13 songs
+- 黃立行 / 黄立行 / Huang Li Xing (pop, musicbrainz:mandopop): 26 songs
+- 川島茉樹代 / 川岛茉树代 / ¤t®q­[¾ð¥N (pop, musicbrainz:mandopop): 2 songs
+- 侯湘婷 / Hou Xiang Ting / Hou Hsiang Ting (pop, musicbrainz:mandopop): 14 songs
+- 寶兒 / BoA / ボア (BoA) (pop, musicbrainz:c-pop): 4 songs
+- 阿朵 / 符莹 / ADuo (pop, musicbrainz:c-pop): 3 songs
+- 吴卓玲 / Wu Zhuo Ling / Wu Zhuoling (pop, musicbrainz:c-pop): 0 songs
+- 曹格 / 曹佰豪 / Cao-Ge (pop, musicbrainz:c-pop): 13 songs
+- Soph T. (pop, musicbrainz:c-pop): 6 songs
+- 蔡恩雨 (pop, musicbrainz:c-pop): 12 songs
+- 董書含 / Dong Shuhan (pop, musicbrainz:c-pop): 0 songs
+- 陈婧霏 / 陳婧霏 / Jingfei Chen (pop, musicbrainz:c-pop): 15 songs
+- 七朵组合 (pop, musicbrainz:c-pop): 7 songs
+- 孟慧圆 / 孟慧圓 (pop, musicbrainz:c-pop): 3 songs
+- 李懋扬(T2o) / T2o (pop, musicbrainz:c-pop): 2 songs
+- 蒋雪儿 (pop, musicbrainz:c-pop): 10 songs
+- 宋雨琦 / YUQI / Yuqi (pop, musicbrainz:c-pop): 2 songs
+- NAME组合 / NAME組合 / 组合 (pop, musicbrainz:c-pop): 7 songs
+- 威神V / WayV / WeiShen V (pop, musicbrainz:c-pop): 12 songs
+- GNZ48唐莉佳 (pop, musicbrainz:c-pop): 0 songs
+- 冲吧少女组合 / TSH48 / AKB48 Team SH (pop, musicbrainz:c-pop): 9 songs
+- 向華 / 向华 / Aaron Xiang Hua (pop, musicbrainz:c-pop): 0 songs
+- Juice Boy (pop, musicbrainz:c-pop): 6 songs
+- Mr.XL加大先生 / Mr. XL (pop, musicbrainz:c-pop): 0 songs
+- 叶玉棂 / Yokez (pop, musicbrainz:c-pop): 15 songs
+- 潘裕文 (pop, musicbrainz:c-pop): 14 songs
+- 于淼 (pop, musicbrainz:c-pop): 0 songs
+- 丰玉程 (pop, musicbrainz:c-pop): 0 songs
+- 严俊 (pop, musicbrainz:c-pop): 0 songs
+- 陈乐一 / 陳樂一 / Loger_陈乐一 (pop, musicbrainz:c-pop): 0 songs
+- 徐思博 / Cybelle Xu (pop, musicbrainz:c-pop): 0 songs
+- GNZ48刘力菲 (pop, musicbrainz:c-pop): 0 songs
+- 周柯宇 (pop, musicbrainz:c-pop): 0 songs
+- GNZ48王语晨 (pop, musicbrainz:c-pop): 0 songs
+- GNZ48石竹君 (pop, musicbrainz:c-pop): 0 songs
+- GNZ48徐楚雯 (pop, musicbrainz:c-pop): 0 songs
+- GNZ48朱怡欣 (pop, musicbrainz:c-pop): 0 songs
+- GNZ48叶舒淇 (pop, musicbrainz:c-pop): 0 songs
+- GNZ48张琼予 (pop, musicbrainz:c-pop): 0 songs
+- GNZ48王秭歆 (pop, musicbrainz:c-pop): 0 songs
+- GNZ48黄楚茵 (pop, musicbrainz:c-pop): 0 songs
+- 歐陽娜娜 (pop, musicbrainz:c-pop): 0 songs
+- TPE48 / AKB48 Team TP (pop, musicbrainz:c-pop): 12 songs
+- 张婧 / Jeanie Zhang (pop, musicbrainz:c-pop): 10 songs
+- LBI利比 / 时柏尘 (pop, musicbrainz:c-pop): 22 songs
+- 蔡黃汝 (pop, musicbrainz:c-pop): 7 songs
+- 张紫宁 / 張紫寧(Winnie) / 張紫寧 (pop, musicbrainz:c-pop): 7 songs
+- 娄艺潇 / Loura Lou (pop, musicbrainz:c-pop): 2 songs
+- 艾怡良 / Ai Yiliang / Yi Liang Ai (pop, musicbrainz:c-pop): 11 songs
+- 林逸欣 (pop, musicbrainz:c-pop): 12 songs
+- 李唯楓 / Coke Lee (pop, musicbrainz:c-pop): 9 songs
+- 緋紅魅影Crimzon / HUR+ (pop, musicbrainz:c-pop): 0 songs
+- 李雅微 / Shivia Lee (pop, musicbrainz:c-pop): 0 songs
+- 劉虹翎 / 田雨彤 / 劉虹琳 (pop, musicbrainz:c-pop): 0 songs
