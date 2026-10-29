@@ -19,6 +19,23 @@ const GROUPS: Array<{ id: WordState; title: string; note: string; cls: string }>
 const LEVELS = [1, 2, 3, 4, 5, 6, 7];
 const SHOW = 240;
 
+const toneless = (p: string) => p.toLowerCase().normalize('NFC').replace(/[üǖǘǚǜ]|u:/g, 'v').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+
+/**
+ * Pure: words matching a search: characters anywhere in the word (学 finds
+ * 学生, 同学), pinyin from the start (with or without tones or tone numbers),
+ * or an English meaning containing it.
+ */
+export function searchWords(words: VocabRow[], q: string, meaning: (w: VocabRow) => string = (w) => w.gloss.join('; ')): VocabRow[] {
+  const query = q.trim();
+  if (!query) return [];
+  const han = [...query].filter((c) => /\p{Script=Han}/u.test(c)).join('');
+  if (han) return words.filter((w) => w.hanzi.includes(han));
+  const letters = toneless(query.replace(/[1-5]/g, ''));
+  const english = query.toLowerCase();
+  return words.filter((w) => (letters && toneless(w.pinyin).startsWith(letters)) || (english.length >= 2 && `${meaning(w)}; ${w.gloss.join('; ')}`.toLowerCase().includes(english)));
+}
+
 export function WordsView() {
   const vocab = useVocab();
   const cards = useLive(() => db.reviewItems.toArray(), [], null);
@@ -31,6 +48,15 @@ export function WordsView() {
   const [sel, setSel] = useState<Set<string>>(new Set());
   const [busy, setBusy] = useState(false);
   const [moved, setMoved] = useState<string | null>(null);
+  const [q, setQ] = useState('');
+  /** Move the one word in the card that's open. */
+  const moveOne = async (w: VocabRow, to: WordState) => {
+    setBusy(true);
+    await moveWords([w.id], to, currentSettings().retention);
+    setBusy(false);
+    setPicked(null);
+    setMoved(`${w.pinyin} moved to ${GROUPS.find((g) => g.id === to)!.title}.`);
+  };
   const toggle = (id: string) => {
     const next = new Set(sel);
     if (next.has(id)) next.delete(id);
@@ -54,16 +80,24 @@ export function WordsView() {
       if (p && p.facet !== 'sp') byWord.set(p.word, [...(byWord.get(p.word) ?? []), c]);
     }
     const out: Record<WordState, VocabRow[]> = { mature: [], young: [], learning: [], new: [] };
-    for (const w of vocab ?? []) if (w.level === level) out[wordState(byWord.get(w.id) ?? [])].push(w);
-    return out;
-  }, [vocab, cards, level]);
+    const state = new Map<string, WordState>();
+    // Searching looks through every level.
+    const list = q.trim() ? searchWords(vocab ?? [], q, meaningOf) : (vocab ?? []).filter((w) => w.level === level);
+    for (const w of list) {
+      const s = wordState(byWord.get(w.id) ?? []);
+      state.set(w.id, s);
+      out[s].push(w);
+    }
+    return Object.assign(out, { state });
+  }, [vocab, cards, level, q]);
+  const searching = !!q.trim();
   const total = GROUPS.reduce((n, g) => n + grouped[g.id].length, 0);
 
   return (
     <div className={selecting ? 'pb-44' : 'pb-8'}>
       <PageHeader back={{ label: 'Library', to: 'library' }} title="HSK words" />
       <p className="mt-1 text-muted">
-        {selecting ? 'Tap words to select them, then choose where to move them.' : 'All HSK 3.0 words, most common first. Tap one to hear it.'}
+        {selecting ? 'Tap words to select them, then choose where to move them.' : 'All HSK 3.0 words, most common first. Tap one to hear it or move it.'}
       </p>
       <button
         onClick={() => {
@@ -81,13 +115,27 @@ export function WordsView() {
           {moved}
         </p>
       )}
-      <div className="mt-5 grid grid-cols-7 gap-1.5" role="tablist" aria-label="HSK level">
+      <input
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+        type="search"
+        placeholder="Search: 学, xue, xue2, or study"
+        aria-label="Search the HSK words"
+        autoCapitalize="off"
+        autoCorrect="off"
+        spellCheck={false}
+        className="mt-4 w-full rounded-2xl border border-line bg-surface px-4 py-3 outline-none focus:border-jade"
+      />
+      <div className={`mt-3 grid grid-cols-7 gap-1.5 ${searching ? 'opacity-40' : ''}`} role="tablist" aria-label="HSK level">
         {LEVELS.map((l) => (
           <button
             key={l}
             role="tab"
             aria-selected={level === l}
-            onClick={() => setLevel(l)}
+            onClick={() => {
+              setLevel(l);
+              setQ('');
+            }}
             className={`h-11 rounded-xl border text-sm font-semibold ${level === l ? 'border-jade bg-jade text-jade-ink' : 'border-line bg-surface'}`}
           >
             {l === 7 ? '7–9' : l}
@@ -95,7 +143,7 @@ export function WordsView() {
         ))}
       </div>
       <p className="mt-2 text-sm text-muted">
-        {total - grouped.new.length} of {total} started
+        {searching ? `${total} word${total === 1 ? '' : 's'} found in all levels` : `${total - grouped.new.length} of ${total} started`}
       </p>
       {!vocab || !cards ? (
         <p className="mt-6 text-muted">Loading…</p>
@@ -138,7 +186,8 @@ export function WordsView() {
                         aria-pressed={selecting ? sel.has(w.id) : undefined}
                       >
                         <TonePinyin pinyin={w.pinyin} className="text-base font-semibold" />
-                        {showHanzi && <span className="han text-sm text-muted">{w.hanzi}</span>}
+                        {(showHanzi || searching) && <span className="han text-sm text-muted">{w.hanzi}</span>}
+                        {searching && <span className="text-[10px] text-muted">{w.level === 7 ? 'HSK 7–9' : `HSK ${w.level}`}</span>}
                       </button>
                     </li>
                   ))}
@@ -176,7 +225,27 @@ export function WordsView() {
           audioId={picked.w.id}
           anchor={picked.anchor}
           onClose={() => setPicked(null)}
-        />
+        >
+          <div className="mt-3 border-t border-line pt-3" role="group" aria-label={`Move ${picked.w.pinyin} to`}>
+            <p className="text-xs font-medium text-muted">Move to</p>
+            <div className="mt-1.5 grid grid-cols-4 gap-1">
+              {[...GROUPS].reverse().map((g) => {
+                const here = grouped.state.get(picked.w.id) === g.id;
+                return (
+                  <button
+                    key={g.id}
+                    disabled={busy || here}
+                    onClick={() => void moveOne(picked.w, g.id)}
+                    aria-current={here || undefined}
+                    className={`h-10 rounded-lg border text-xs font-semibold ${g.cls} ${here ? 'opacity-50' : ''}`}
+                  >
+                    {g.id === 'new' ? 'Not started' : g.title}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </WordPopover>
       )}
     </div>
   );

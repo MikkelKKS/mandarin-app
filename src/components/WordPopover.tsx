@@ -18,6 +18,7 @@ export function WordPopover({
   audioId,
   anchor,
   onClose,
+  children,
 }: {
   text: string;
   entry?: Entry;
@@ -28,6 +29,8 @@ export function WordPopover({
   audioId?: string;
   anchor: DOMRect;
   onClose: () => void;
+  /** Extra actions at the bottom (the HSK word list: move this word). */
+  children?: React.ReactNode;
 }) {
   const box = useRef<HTMLDivElement>(null);
   const close = useRef(onClose);
@@ -90,6 +93,7 @@ export function WordPopover({
           Open in Pleco
         </a>
       </div>
+      {children}
       {audioId && <ReportAudio id={audioId} hanzi={e?.hanzi ?? text} pinyin={e?.pinyin} className="mt-2 block text-muted" />}
     </div>,
     document.body,

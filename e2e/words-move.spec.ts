@@ -30,3 +30,22 @@ test('move words between not started, learning, young and mature', async ({ page
   await page.getByRole('group', { name: 'Move the selected words' }).getByRole('button', { name: 'Not started' }).click();
   await expect.poll(() => count('Not started')).toBe(total);
 });
+
+test('search the HSK words by character, and move one word from its card', async ({ page }) => {
+  await page.route('**/audio/**', (r) => r.abort());
+  await page.goto('./#/progress/words');
+  const section = (title: string) => page.locator('section').filter({ has: page.getByRole('heading', { name: title, exact: true }) });
+  await expect(section('Not started').getByRole('button').first()).toBeVisible();
+  await page.getByRole('searchbox', { name: 'Search the HSK words' }).fill('学');
+  await expect(page.getByText(/words? found in all levels/)).toBeVisible();
+  // Words from more than one level, each showing its level.
+  await expect(page.getByText('HSK 1', { exact: true }).first()).toBeVisible();
+  const first = section('Not started').getByRole('listitem').first().getByRole('button');
+  await expect(first).toContainText('学');
+  await first.click();
+  const move = page.getByRole('group', { name: /^Move .* to$/ });
+  await expect(move.getByRole('button', { name: 'Not started' })).toBeDisabled();
+  await move.getByRole('button', { name: 'Mature' }).click();
+  await expect(page.getByText(/moved to Mature\./)).toBeVisible();
+  await expect(section('Mature').getByRole('listitem')).toHaveCount(1);
+});
