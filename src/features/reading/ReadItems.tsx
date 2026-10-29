@@ -21,6 +21,7 @@ import { meaningMatches } from '../session/meaning';
 import type { SItem } from '../session/plan';
 import { SelfGrade, TypeBox, useTyped, type ItemResult } from '../session/items';
 import { syllableUrl } from '../tonegym/model';
+import { LookUp } from '../../components/LookUp';
 import { useReadData, wordsWith, type ReadData } from './data';
 
 const BASE = import.meta.env.BASE_URL;
@@ -245,6 +246,7 @@ function ReadPinyin({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult: 
         ...r,
         outcome: { ...r.outcome, answer: undefined, canOverride: wrong },
         audio: () => playItem(d, it),
+        lookup: it.hanzi,
         panel: <ReadAnswer d={d} it={it} lookalikes={wrong} />,
       });
     },
@@ -301,7 +303,7 @@ function ReadMeaning({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult:
     graded.current = true;
     const verdict = r === 'again' ? 'wrong' : r === 'hard' ? 'almost' : 'correct';
     // A miss on a character with look-alikes: show them side by side before moving on.
-    if (r === 'again' && hasLookalikes) onResult({ outcome: { verdict }, rating: r, audio: () => playItem(d, it), panel: <ReadAnswer d={d} it={it} lookalikes /> });
+    if (r === 'again' && hasLookalikes) onResult({ outcome: { verdict }, rating: r, audio: () => playItem(d, it), lookup: it.hanzi, panel: <ReadAnswer d={d} it={it} lookalikes /> });
     else onResult({ outcome: { verdict }, rating: r, skipFeedback: true });
   };
   return (
@@ -335,6 +337,7 @@ function ReadMeaning({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult:
             <PlayButton d={d} it={it} />
           </div>
           {match !== null && <p className={`mt-1 text-sm ${match ? 'text-jade' : 'text-muted'}`}>{match ? 'Your guess matches.' : `You wrote “${typed.trim()}”.`}</p>}
+          <LookUp text={it.hanzi} className="mt-1" />
           <div className="mt-4 border-t border-line pt-3">
             <Details d={d} it={it} example />
           </div>

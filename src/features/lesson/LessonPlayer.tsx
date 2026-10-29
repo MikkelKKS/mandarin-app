@@ -1,3 +1,4 @@
+import { LookUp } from '../../components/LookUp';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { ReportAudio } from '../../components/ReportAudio';
 import { focusNoScroll } from '../../lib/router';
@@ -367,6 +368,7 @@ function Feedback({
               {a.english && <p className="text-base opacity-80">{a.english}</p>}
               {a.text && <p>{a.text}</p>}
               {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} className="mt-1 block" />}
+              {a.hanzi && <LookUp text={a.hanzi} className="mt-1" />}
             </div>
             {audioId && (
               <button onClick={() => play(audioId, { voice })} aria-label="Play again" className="rounded-full bg-surface/70 p-3 transition active:scale-90">

@@ -1,5 +1,6 @@
 import { GrammarToggle } from '../../components/GrammarNote';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { Close } from '../../components/icons';
 import { ToneText, TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { wordByHanzi } from '../../content';
@@ -62,17 +63,13 @@ function useDebounced<T>(v: T, ms: number): T {
   return d;
 }
 
-export function DictionaryView() {
-  const [dict, setDict] = useState<Dict | null | 'loading'>('loading');
-  const [q, setQ] = useState(() => new URLSearchParams(location.hash.split('?')[1] ?? '').get('q') ?? '');
-  const dq = useDebounced(q, 200);
-  const input = useRef<HTMLInputElement>(null);
-  const [noVoice, setNoVoice] = useState(false);
-  showNoVoice = setNoVoice;
+/** "Break it down" and similar: search something else (in the page: a link; in a lesson's look-up sheet: in place). */
+const SearchCtx = createContext<(q: string) => void>((q) => {
+  location.hash = `#/dictionary?q=${encodeURIComponent(q)}`;
+});
 
-  useEffect(() => {
-    void loadDict().then(setDict);
-  }, []);
+export function DictionaryView() {
+  const [q, setQ] = useState(() => new URLSearchParams(location.hash.split('?')[1] ?? '').get('q') ?? '');
   // Follow "#/dictionary?q=…" links from elsewhere in the app.
   useEffect(() => {
     const h = () => {
@@ -82,12 +79,74 @@ export function DictionaryView() {
     window.addEventListener('hashchange', h);
     return () => window.removeEventListener('hashchange', h);
   }, []);
-
-  const result = useMemo(() => (dict && dict !== 'loading' ? search(dict, dq) : null), [dict, dq]);
-
   return (
     <div className="pb-10">
       <PageHeader back={{ label: 'Library', to: 'library' }} title="Dictionary" />
+      <DictionarySearch q={q} setQ={setQ} />
+    </div>
+  );
+}
+
+/**
+ * The dictionary over a lesson or session: look up the words or the sentence
+ * you just answered without leaving it. Close (or Escape) to carry on.
+ */
+export function DictionarySheet({ query, onClose }: { query: string; onClose: () => void }) {
+  const [q, setQ] = useState(query);
+  const box = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    box.current?.focus();
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+  return (
+    <SearchCtx.Provider value={setQ}>
+      <div
+        ref={box}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Dictionary"
+        // The lesson's own keys (Enter, space, 1–4) stay with the lesson while this is open.
+        onKeyDown={(e) => {
+          e.stopPropagation();
+          if (e.key === 'Escape') onClose();
+        }}
+        className="anim-rise fixed inset-0 z-50 overflow-y-auto bg-bg px-4 pb-10 pt-[max(0.75rem,env(safe-area-inset-top))] outline-none"
+      >
+        <div className="mx-auto max-w-xl">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold">Dictionary</h2>
+            <button onClick={onClose} className="flex h-10 items-center gap-1.5 rounded-full border border-line px-4 font-medium">
+              <Close className="h-4 w-4" /> Back to the lesson
+            </button>
+          </div>
+          <DictionarySearch q={q} setQ={setQ} />
+        </div>
+      </div>
+    </SearchCtx.Provider>
+  );
+}
+
+function DictionarySearch({ q, setQ }: { q: string; setQ: (q: string) => void }) {
+  const [dict, setDict] = useState<Dict | null | 'loading'>('loading');
+  const dq = useDebounced(q, 200);
+  const input = useRef<HTMLInputElement>(null);
+  const [noVoice, setNoVoice] = useState(false);
+  showNoVoice = setNoVoice;
+
+  useEffect(() => {
+    void loadDict().then(setDict);
+  }, []);
+
+  const result = useMemo(() => (dict && dict !== 'loading' ? search(dict, dq) : null), [dict, dq]);
+  const toToken = (i: number) => document.getElementById(`tok-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  return (
+    <>
       <div className="sticky top-0 z-10 -mx-4 bg-bg/95 px-4 pb-3 pt-3 backdrop-blur">
         <input
           ref={input}
@@ -141,10 +200,10 @@ export function DictionaryView() {
             <div className="flex flex-wrap items-end gap-x-2 gap-y-3" lang="zh-CN">
               {result.tokens.map((t, i) =>
                 t.entries.length ? (
-                  <a key={i} href={`#tok-${i}`} className="flex flex-col items-center rounded-lg px-1 hover:bg-sunk">
+                  <button key={i} onClick={() => toToken(i)} className="flex flex-col items-center rounded-lg px-1 hover:bg-sunk">
                     <TonePinyin pinyin={t.entries[0].pinyin} className="text-xs" />
                     <ToneText hanzi={t.text} pinyin={t.entries[0].pinyin} className="han text-2xl" />
-                  </a>
+                  </button>
                 ) : (
                   <span key={i} className="han text-2xl text-muted">
                     {t.text}
@@ -185,7 +244,7 @@ export function DictionaryView() {
         </a>
         ).
       </p>
-    </div>
+    </>
   );
 }
 
@@ -303,9 +362,7 @@ function TranslationCard({ text, dir, sourceKey, dict }: { text: string; dir: 'z
             <button onClick={() => void saySentence(zh, [...zh].filter((c) => /\p{Script=Han}/u.test(c)))} className="flex items-center gap-2 rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
               <Speaker className="h-4 w-4" /> Listen
             </button>
-            <a href={`#/dictionary?q=${encodeURIComponent(zh)}`} className="rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
-              Break it down
-            </a>
+            <BreakDown q={zh} />
           </div>
         </div>
       )}
@@ -329,12 +386,19 @@ function PinyinSentenceCard({ dict, q }: { dict: Dict; q: string }) {
           <button onClick={() => void saySentence(guess.hanzi, [...guess.hanzi])} className="flex items-center gap-2 rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
             <Speaker className="h-4 w-4" /> Listen
           </button>
-          <a href={`#/dictionary?q=${encodeURIComponent(guess.hanzi)}`} className="rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
-            Break it down
-          </a>
+          <BreakDown q={guess.hanzi} />
         </div>
       </section>
       {guess.complete && <TranslationCard text={guess.hanzi} dir="zh-en" sourceKey={romanKey(dict, guess.hanzi)} />}
     </>
+  );
+}
+
+function BreakDown({ q }: { q: string }) {
+  const open = useContext(SearchCtx);
+  return (
+    <button onClick={() => open(q)} className="rounded-xl border border-line px-3 py-1.5 text-sm font-medium">
+      Break it down
+    </button>
   );
 }

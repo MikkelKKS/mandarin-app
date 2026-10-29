@@ -10,6 +10,7 @@ import { wordOrder } from './beijing';
 import { currentSettings } from '../../lib/settings';
 import { TonePinyin } from '../../components/Hanzi';
 import { ReportAudio } from '../../components/ReportAudio';
+import { LookUp } from '../../components/LookUp';
 import { plecoLink } from '../dictionary/dict';
 import { Speaker } from '../../components/icons';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
@@ -432,6 +433,8 @@ function Feedback({
   const own = 'sentence' in item && item.sentence.startsWith('m-') && !data.sentences.get(item.sentence)?.azure;
   const audioId = own ? null : (result.context?.id ?? ('word' in item ? item.word : 'sentence' in item ? item.sentence : null));
   const a = o.answer ?? (audioId || own ? answerFor(item, data) : undefined);
+  // Look up: the sentence the word was heard in, else the answer's characters (or the reading item's).
+  const lookup = (result.context?.id && data.sentences.get(result.context.id)?.hanzi) || a?.hanzi || result.lookup || '';
   return (
     <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)]`}>
       <div className="mx-auto max-w-xl lg:max-w-2xl">
@@ -486,6 +489,7 @@ function Feedback({
             )}
           </div>
         )}
+        {lookup && <LookUp text={lookup} className="mt-2" />}
         {grade}
         <button ref={btn} onClick={onContinue} className="press mt-4 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
           Continue
