@@ -4,7 +4,7 @@ import { expect, test, type Page } from '@playwright/test';
 async function step(page: Page) {
   const done = page.getByText('Fixed along the way');
   if (await done.isVisible()) return true;
-  if (await page.getByRole('heading', { name: 'Conversations' }).isVisible()) return true;
+  if (await page.getByRole('heading', { name: 'Conversations', exact: true }).isVisible()) return true;
 
   const cont = page.getByRole('button', { name: /^(Continue|Got it)$/ });
   if (await cont.first().isVisible()) {

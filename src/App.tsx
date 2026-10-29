@@ -1,6 +1,7 @@
 import { useEffect, type ReactNode } from 'react';
 import { WordPopupProvider } from './components/Hanzi';
-import { Chart, Cog, Home, Library, Waves } from './components/icons';
+import { Chart, Cog, Glyph, Home, Library, Waves } from './components/icons';
+import { ReadingView } from './features/reading/ReadingView';
 import { StatsView } from './features/stats/StatsView';
 import { WordsView } from './features/progress/WordsView';
 import { MusicRoute } from './features/music/MusicView';
@@ -56,6 +57,9 @@ export default function App() {
         );
       body = <ToneGymRoute route={route} />;
       break;
+    case 'reading':
+      body = <ReadingView />;
+      break;
     case 'library':
       body = <LibraryView />;
       break;
@@ -107,6 +111,7 @@ export default function App() {
 const TABS = [
   { id: '', label: 'Home', icon: Home },
   { id: 'tone-gym', label: 'Tones', icon: Waves },
+  { id: 'reading', label: 'Reading', icon: Glyph },
   { id: 'library', label: 'Library', icon: Library },
   { id: 'progress', label: 'Stats', icon: Chart },
   { id: 'settings', label: 'Settings', icon: Cog },
@@ -143,7 +148,7 @@ function Shell({ active, children }: { active: string; children: ReactNode }) {
               key={t.id}
               onClick={() => go(t.id)}
               aria-current={on ? 'page' : undefined}
-              className={`relative flex min-w-0 flex-1 flex-col items-center gap-1 pb-1.5 pt-2.5 text-[11px] font-medium transition-colors duration-200 md:flex-none md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-2.5 md:text-[0.9375rem] ${on ? 'text-jade md:bg-surface md:text-ink md:shadow-sm' : 'text-muted hover:text-ink'}`}
+              className={`relative flex min-w-0 flex-1 flex-col items-center gap-1 pb-1.5 pt-2.5 text-[10.5px] font-medium transition-colors duration-200 md:flex-none md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-2.5 md:text-[0.9375rem] ${on ? 'text-jade md:bg-surface md:text-ink md:shadow-sm' : 'text-muted hover:text-ink'}`}
             >
               <t.icon className={`h-[22px] w-[22px] transition-transform duration-200 ${on ? 'md:text-jade' : ''}`} />
               <span className="max-w-full truncate">{t.label}</span>
@@ -162,7 +167,8 @@ function OfflinePrefetch() {
     if (!navigator.onLine) return;
     const t = setTimeout(async () => {
       const soon = await db.reviewItems.where('due').below(Date.now() + 2 * 864e5).toArray();
-      const ids = [...new Set(soon.filter((c) => c.state !== 0).map((c) => c.word ?? c.id))];
+      // Reading cards play their word's recording: "<item>#rp" → "<item>" (characters that aren't words have none).
+      const ids = [...new Set(soon.filter((c) => c.state !== 0).map((c) => c.word ?? c.id.replace(/#r[pm]$/, '')).filter((id) => !id.startsWith('c-')))];
       void prefetchForOffline(ids);
     }, 4000);
     return () => clearTimeout(t);

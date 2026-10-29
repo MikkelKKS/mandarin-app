@@ -8,7 +8,8 @@ import { db } from '../../db/db';
 import type { SessionPlan } from './plan';
 
 export interface SessionState {
-  id: 'session';
+  /** 'session': quick and deep sessions; 'reading': a Reading tab round (kept apart so neither replaces the other). */
+  id: 'session' | 'reading';
   plan: SessionPlan;
   block: number;
   item: number;
@@ -30,8 +31,8 @@ const table = () => db.settings as unknown as Table<SessionState, string>;
 /** Sessions older than this aren't offered for resuming. */
 export const RESUME_HOURS = 18;
 
-export async function loadSession(now = Date.now()): Promise<SessionState | null> {
-  const s = await table().get('session');
+export async function loadSession(key: SessionState['id'] = 'session', now = Date.now()): Promise<SessionState | null> {
+  const s = await table().get(key);
   if (!s || s.done || now - s.updatedAt > RESUME_HOURS * 3600e3) return null;
   return s;
 }

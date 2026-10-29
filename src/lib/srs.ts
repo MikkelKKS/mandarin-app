@@ -84,6 +84,8 @@ export async function recordSessionAnswer(a: {
   syllables?: number;
   tones?: ReviewLogRow['tones'];
   xp: number;
+  /** Reading: the word a new character came with. */
+  via?: string;
   now?: number;
 }): Promise<RecordedAnswer> {
   const now = a.now ?? Date.now();
@@ -93,6 +95,6 @@ export async function recordSessionAnswer(a: {
     await recordReview(a.card, rating, ctx, currentSettings().retention, now);
     return { card: a.card, rating };
   }
-  await db.reviewLogs.add({ id: uuid(), itemId: a.itemId, verdict: a.verdict, at: now, exercise: a.exercise, tones: a.tones, ms: a.ms, xp: a.xp, updatedAt: now });
+  await db.reviewLogs.add({ id: uuid(), itemId: a.itemId, verdict: a.verdict, at: now, exercise: a.exercise, tones: a.tones, ms: a.ms, xp: a.xp, via: a.via, updatedAt: now });
   return {};
 }

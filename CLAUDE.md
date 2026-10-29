@@ -15,7 +15,7 @@ You are redesigning an existing personal Mandarin learning app for one user, Mik
 - Has some Mandarin basics and some speaking experience; wants to push into higher HSK levels.
 - **Biggest weakness: tones** (hearing and producing them).
 - Priorities: **listening** first, then speaking, and a **large vocabulary** (breadth matters more than a small set of polished sentences).
-- **Pinyin only.** He does not want to learn to write characters. Do not build any stroke-order or handwriting features. Hanzi may be shown as an optional, off-by-default toggle, never required to answer anything.
+- **Pinyin first; read characters, never write them.** He does not want to learn to write characters: no stroke-order or handwriting features. Since 29 Oct 2026 he does want to learn to **read** them, in a separate Reading track (character → pinyin, character → meaning) that follows what he already knows by ear. In the listening and typing exercises hanzi stay an optional, off-by-default toggle, never required to answer.
 - Girlfriend's family is from Beijing, so standard Putonghua with a Beijing flavour (儿化 / erhua) is relevant later — low priority, an optional content pack.
 - Already owns Pleco (paid). No need to build a full dictionary; a "open in Pleco" deep link from a word is a nice touch.
 
@@ -67,6 +67,12 @@ Research on perceptual tone training (Wang et al. 1999/2003 and follow-ups) show
 - **Sentence comprehension:** hear a sentence of known words, pick the meaning.
 - Always a **replay** button and a **slow** button; keyboard shortcuts on PC (space = replay, s = slow).
 
+### 3.5 Reading track (added 29 Oct 2026)
+- Two extra FSRS cards per word: character → pinyin (`#rp`, typed, auto-graded) and character → meaning (`#rm`, reveal and self-grade). Their own **reading stage**, which never changes the word stage (that stays listening + typing).
+- A word becomes readable once its listening → meaning card has graduated to review (or it's marked known); most common words first; 10 new reading words a day by default, their characters on top.
+- Whole words and the single characters in them; a character that is also a word shares one set of cards. Most common reading and meaning, 1–2 known words containing it, building blocks from Make Me a Hanzi, look-alikes from a data-derived list.
+- Lives in a **Reading** tab, a Reading block in deep sessions, a "Characters only" mode in Stories, and a Reading section in Stats. No games, timers or speed rounds.
+
 ## 4. Pinyin input (he chose "mostly typing")
 - Accept **tone numbers** (`ni3 hao3`, `nǐ hǎo`, `ni3hao3`), convert to tone marks live as he types. `v` or `u:` → `ü`. Neutral tone as `5`, `0`, or no number.
 - Ignore case, spaces, apostrophes and hyphens when comparing; normalise syllable segmentation.
@@ -117,7 +123,7 @@ Write the generation as a **Node or Python script in `/scripts`**, idempotent (s
 - **Clozemaster/Tatoeba-based tools:** words in real example sentences, filtered to known vocabulary.
 
 ## 9. Out of scope
-Character writing/handwriting, stroke order, social features, ads, paid subscriptions, user accounts beyond Mikkel's.
+Character writing/handwriting, stroke order (reading characters is in scope, see §1), social features, ads, paid subscriptions, user accounts beyond Mikkel's.
 
 ## 10. Suggested build order
 1. Audit existing repo; write a short `ARCHITECTURE.md` of what exists.

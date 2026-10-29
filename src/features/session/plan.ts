@@ -9,10 +9,11 @@
 import { inContext, isNeutralParticle, needsContext } from '../../lib/context';
 import { samePinyin, sharesMeaning } from '../../lib/gloss';
 import { parseCardId, type Facet } from '../../lib/review';
+import { parseReadId, type ReadMode, type ReadQueue } from '../../lib/reading';
 import type { SentenceRow, VocabData, VocabRow } from '../../lib/vocabData';
 import type { GymItem } from '../tonegym/model';
 
-export type SessionMode = 'quick' | 'deep';
+export type SessionMode = 'quick' | 'deep' | 'reading';
 
 /** One step of a session. `retry`: a wrong answer asked again at the end of its block. */
 export type SItem = SItemBase & { retry?: boolean };
@@ -28,15 +29,20 @@ type SItemBase =
   | { kind: 'sentence-meaning'; sentence: string }
   | { kind: 'sentence-pinyin'; sentence: string }
   | { kind: 'tone'; gym: GymItem }
-  | { kind: 'speak'; word: string };
+  | { kind: 'speak'; word: string }
+  /** Reading: meet a word's characters (via: the word a character came with). */
+  | { kind: 'read-intro'; item: string; via?: string }
+  | { kind: 'read-pinyin'; item: string }
+  | { kind: 'read-meaning'; item: string };
 
-export type BlockId = 'reviews' | 'new' | 'listening' | 'writing' | 'speaking' | 'tones';
+export type BlockId = 'reviews' | 'new' | 'listening' | 'writing' | 'speaking' | 'reading' | 'tones';
 export const BLOCK_TITLE: Record<BlockId, string> = {
   reviews: 'Reviews',
   new: 'New words',
   listening: 'Listening',
   writing: 'Say it in pinyin',
   speaking: 'Speaking',
+  reading: 'Reading',
   tones: 'Tone Gym',
 };
 
@@ -66,6 +72,10 @@ export function cardOf(it: SItem): string | null {
       return it.card ?? null;
     case 'speak':
       return `${it.word}#sp`;
+    case 'read-pinyin':
+      return `${it.item}#rp`;
+    case 'read-meaning':
+      return `${it.item}#rm`;
     default:
       return null;
   }
@@ -215,6 +225,8 @@ export interface PlanInput {
   speakNew?: string[];
   /** Recently started words, newest first (for the sentences to type). */
   newest?: string[];
+  /** Deep sessions: the reading queue (Mix), for a Reading block. */
+  reading?: ReadQueue;
   now: number;
   rng?: () => number;
 }
@@ -271,10 +283,51 @@ export function planSession(p: PlanInput): SessionPlan {
       if (reviewsBlock) reviewsBlock.items = reviewsBlock.items.filter((x) => x.kind !== 'speak');
       if (speak.length) blocks.push({ id: 'speaking', items: speak });
     }
+    // Reading: due reading cards and a few new ones, both directions.
+    if (p.reading) {
+      const reading = readingItems(p.reading, 'mix', READING.deep);
+      if (reading.length) blocks.push({ id: 'reading', items: reading });
+    }
     if (p.tones.length) blocks.push({ id: 'tones', items: p.tones.slice(0, DEEP.tones).map((g): SItem => ({ kind: 'tone', gym: g })) });
   }
   return { id: `${p.now.toString(36)}-${Math.floor(rng() * 1e6).toString(36)}`, mode: p.mode, blocks: blocks.filter((b) => b.items.length), createdAt: p.now };
 }
+
+/** How many new characters are met before the first question on one (so it tests memory). */
+export const READ_GAP = 2;
+
+/**
+ * Reading items from the reading queue: due cards first, then cards of items
+ * met but not yet asked, then new items (meet it, then a question a couple of
+ * items later; in Mix both directions). At most `cap` items in all.
+ */
+export function readingItems(q: ReadQueue, mode: ReadMode, cap: number): SItem[] {
+  const ask = (card: string): SItem | null => {
+    const p = parseReadId(card);
+    return p ? (p.facet === 'rp' ? { kind: 'read-pinyin', item: p.item } : { kind: 'read-meaning', item: p.item }) : null;
+  };
+  const out: SItem[] = [];
+  for (const c of [...q.due, ...q.pending]) {
+    if (out.length >= cap) return out;
+    const it = ask(c);
+    if (it) out.push(it);
+  }
+  const questions = (item: string): SItem[] =>
+    mode === 'rp' ? [{ kind: 'read-pinyin', item }] : mode === 'rm' ? [{ kind: 'read-meaning', item }] : [{ kind: 'read-meaning', item }, { kind: 'read-pinyin', item }];
+  const per = 1 + questions('x').length;
+  const fresh = q.fresh.slice(0, Math.max(0, Math.floor((cap - out.length) / per)));
+  const later: SItem[] = [];
+  fresh.forEach((f, i) => {
+    out.push({ kind: 'read-intro', item: f.item, ...(f.via && { via: f.via }) });
+    if (i >= READ_GAP) out.push(questions(fresh[i - READ_GAP].item)[0]);
+    later.push(...questions(f.item).slice(1));
+  });
+  for (const f of fresh.slice(Math.max(0, fresh.length - READ_GAP))) out.push(questions(f.item)[0]);
+  out.push(...later);
+  return out;
+}
+
+export const READING = { round: 20, deep: 15, deepNew: 3 };
 
 export function itemCount(plan: SessionPlan): number {
   return plan.blocks.reduce((n, b) => n + b.items.length, 0);

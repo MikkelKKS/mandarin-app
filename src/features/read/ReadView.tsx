@@ -14,6 +14,34 @@ import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { usePinyinFn } from '../../lib/pinyinPro';
 import { loadDict, type Dict, type Entry } from '../dictionary/dict';
+import { db } from '../../db/db';
+import { readableShare, readCardId, readingStates } from '../../lib/reading';
+import { recordSessionAnswer } from '../../lib/srs';
+import { useLive } from '../../lib/useLive';
+import { loadReadData, useReadData } from '../reading/data';
+
+const CHARS_ONLY = 'read:chars-only';
+function loadCharsOnly(): boolean {
+  try {
+    return localStorage.getItem(CHARS_ONLY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * "Characters only": a tapped word counts as a miss on its character → meaning
+ * card, if it has reading cards already (once per word per visit). Untapped words aren't graded.
+ */
+async function tappedWhileReading(hanzi: string): Promise<void> {
+  const d = await loadReadData();
+  const w = d.vocab.words.find((x) => x.hanzi === hanzi);
+  const item = (w && d.index.itemOfWord.get(w.id)) ?? d.index.itemOfChar.get(hanzi);
+  if (!item) return;
+  const card = readCardId(item, 'rm');
+  if (!(await db.reviewItems.get(card))) return;
+  await recordSessionAnswer({ card, itemId: item, verdict: 'wrong', rating: 'again', exercise: 'read-story', xp: 0 });
+}
 
 const modules = import.meta.glob('../../../content/stories/*.json', { eager: true, import: 'default' });
 const unitIndex = new Map(units.map((u, i) => [u.id, i]));
@@ -44,6 +72,9 @@ function StoryList() {
   const vocab = useVocab();
   const states = useWordStates();
   const known = useMemo(() => (vocab && states ? hanziKnowledge(vocab, states).known : null), [vocab, states]);
+  const rd = useReadData();
+  const cards = useLive(() => db.reviewItems.toArray(), [], null);
+  const reading = useMemo(() => (cards ? readingStates(cards) : null), [cards]);
   return (
     <div className="pb-8">
       <PageHeader back={{ label: 'Library', to: 'library' }} title="Stories">
@@ -67,6 +98,14 @@ function StoryList() {
                     <span className="mt-2 flex items-center gap-3">
                       <ProgressBar value={share} label={`${s.title}: words you know`} className="w-24" />
                       <span className="text-xs tabular-nums text-muted">You know {Math.round(share * 100)}% of the words</span>
+                    </span>
+                  )}
+                  {rd && reading && (
+                    <span className="mt-1 flex items-center gap-3">
+                      <ProgressBar value={readableShare(s.paragraphs.map((p) => p.zh).join(''), rd.index, reading) ?? 0} label={`${s.title}: characters you can read`} className="w-24" />
+                      <span className="text-xs tabular-nums text-muted">
+                        You can read {Math.round((readableShare(s.paragraphs.map((p) => p.zh).join(''), rd.index, reading) ?? 0) * 100)}% of the characters
+                      </span>
                     </span>
                   )}
                 </span>
@@ -104,6 +143,17 @@ function StoryReader({ id }: { id: string }) {
   const py = usePinyinFn();
   const [dict, setDict] = useState<Dict | null>(null);
   const [english, setEnglish] = useState(false);
+  const [charsOnly, setCharsOnly] = useState(loadCharsOnly);
+  const missed = useRef(new Set<string>());
+  const toggleCharsOnly = () => {
+    const v = !charsOnly;
+    setCharsOnly(v);
+    try {
+      localStorage.setItem(CHARS_ONLY, v ? '1' : '0');
+    } catch {
+      // not remembered
+    }
+  };
   const [picked, setPicked] = useState<Picked | null>(null);
   /** Paragraph being read aloud (Play all, or one paragraph). */
   const [reading, setReading] = useState<number | null>(null);
@@ -137,7 +187,7 @@ function StoryReader({ id }: { id: string }) {
 
   const vocab = new Set([...allVocab, ...story.extra.map((e) => e.hanzi)]);
   const extra = new Map(story.extra.map((e) => [e.hanzi, e]));
-  const mode = settings.pinyinDisplay;
+  const mode = charsOnly ? 'never' : settings.pinyinDisplay;
 
   const pick = (text: string, anchor: DOMRect) => {
     const w = wordByHanzi(text);
@@ -147,6 +197,10 @@ function StoryReader({ id }: { id: string }) {
       ? { hanzi: w.hanzi, pinyin: w.pinyin, key: '', defs: w.english, hsk: w.hsk, tones: '' }
       : fromDict;
     setPicked({ text, entry: x ? undefined : entry, gloss: x ? { pinyin: x.pinyin, english: x.english } : undefined, audioId: w?.id, anchor });
+    if (charsOnly && !missed.current.has(text)) {
+      missed.current.add(text);
+      void tappedWhileReading(text);
+    }
   };
 
   return (
@@ -163,7 +217,11 @@ function StoryReader({ id }: { id: string }) {
         <button onClick={() => setEnglish(!english)} aria-pressed={english} className="btn btn-quiet h-11 px-4">
           {english ? 'Hide English' : 'Show English'}
         </button>
+        <button onClick={toggleCharsOnly} aria-pressed={charsOnly} className={`btn h-11 px-4 ${charsOnly ? 'btn-primary' : 'btn-quiet'}`}>
+          Characters only
+        </button>
       </div>
+      {charsOnly && <p className="mt-2 text-sm text-muted">No pinyin. Tap a word to see it: that counts as a miss for reading it (words you read without tapping aren't graded).</p>}
       <VolumeSlider className="mt-3" />
 
       <article className="mt-7 flex flex-col gap-6">

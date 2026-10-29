@@ -103,6 +103,14 @@ export function SettingsView() {
         <Row title="New words per day">
           <Segmented label="New words per day" value={String(s.newPerDay)} onChange={(v) => set({ newPerDay: Number(v) })} options={['5', '10', '15', '20'].map((v) => ({ v, label: v }))} />
         </Row>
+        <Row title="New reading words per day" hint="Words to start reading (Reading tab and deep sessions). Their characters come on top.">
+          <Segmented
+            label="New reading words per day"
+            value={String(s.readingNewPerDay)}
+            onChange={(v) => set({ readingNewPerDay: Number(v) })}
+            options={['5', '10', '15', '20'].map((v) => ({ v, label: v }))}
+          />
+        </Row>
         <Row title="Reviews per day" hint="A cap for busy days. Reviews left over wait until tomorrow.">
           <Segmented
             label="Reviews per day"

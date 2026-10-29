@@ -18,6 +18,9 @@ import { comboMultiplier, xpFor, XP } from '../../lib/gamify';
 import { play, prefetchForOffline, stop } from '../../lib/audio';
 import { isPass } from '../../lib/pinyinAnswer';
 import { forgetWord, introduceWord, todaysQueue, type RatingName } from '../../lib/review';
+import { introduceReadItem } from '../../lib/reading';
+import { readMode } from '../reading/mode';
+import { readingQueue } from '../reading/queue';
 import { go } from '../../lib/router';
 import { micActive, useSettings } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
@@ -28,14 +31,24 @@ import { GradeChip } from '../lesson/GradeChip';
 import type { Outcome } from '../lesson/types';
 import { patternStats, pickRound, sessionPool } from '../tonegym/model';
 import { ContextLine, SessionItem, type ItemResult } from './items';
-import { BLOCK_TITLE, cardOf, DEEP, newWordItems, planSession, QUICK, type SItem, type SessionMode } from './plan';
+import { BLOCK_TITLE, cardOf, DEEP, newWordItems, planSession, QUICK, READING, readingItems, type SItem, type SessionMode } from './plan';
 import { SessionEnd } from './SessionEnd';
 import { loadSession, saveSession, type SessionState } from './state';
 
 const BASE = import.meta.env.BASE_URL;
 
+/** A Reading tab round: due reading cards, then new ones, in the chosen direction. */
+async function newReadingRound(): Promise<SessionState> {
+  const now = Date.now();
+  const mode = readMode();
+  const items = readingItems(await readingQueue(mode), mode, READING.round);
+  const plan = { id: now.toString(36), mode: 'reading' as const, blocks: items.length ? [{ id: 'reading' as const, items }] : [], createdAt: now };
+  return { id: 'reading', plan, block: 0, item: 0, xp: 0, combo: 0, bestCombo: 0, right: 0, answered: 0, newWords: [], tones: [], done: false, startedAt: now, updatedAt: now };
+}
+
 /** Make a fresh session plan from today's queue. */
 async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerDay: number; speaking: boolean }, data: VocabData): Promise<SessionState> {
+  if (mode === 'reading') return newReadingRound();
   const now = Date.now();
   const mic = micActive();
   const queue = await todaysQueue(wordOrder(data.words.map((w) => w.id), currentSettings().beijingPack, currentSettings().nextWords), { newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic }, now);
@@ -58,7 +71,8 @@ async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerD
     early.set(c.word, { reps: Math.max(e.reps, c.reps), last: Math.max(e.last, c.lastReview ?? 0) });
   }
   const newest = [...early].filter(([, e]) => e.reps <= 4).sort((a, b) => b[1].last - a[1].last).map(([w]) => w).slice(0, 60);
-  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, newest, now });
+  const reading = mode === 'deep' ? await readingQueue('mix', READING.deepNew) : undefined;
+  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, newest, reading, now });
   return { id: 'session', plan, block: 0, item: 0, xp: 0, combo: 0, bestCombo: 0, right: 0, answered: 0, newWords: [], tones: [], done: false, startedAt: now, updatedAt: now };
 }
 
@@ -85,8 +99,8 @@ export function SessionRoute({ route }: { route: string[] }) {
     let live = true;
     void (async () => {
       const d = await loadVocabData();
-      const resumed = mode === 'resume' ? await loadSession() : null;
-      const s = resumed ?? (await newSession(mode === 'deep' ? 'deep' : 'quick', settings, d));
+      const resumed = mode === 'resume' ? await loadSession() : mode === 'reading' && route[2] === 'resume' ? await loadSession('reading') : null;
+      const s = resumed ?? (await newSession(mode === 'deep' ? 'deep' : mode === 'reading' ? 'reading' : 'quick', settings, d));
       if (!live) return;
       setData(d);
       if (!s.plan.blocks.length) setEmpty(true);
@@ -107,7 +121,11 @@ export function SessionRoute({ route }: { route: string[] }) {
       <div className="mx-auto max-w-xl p-8 text-center">
         <p className="han text-5xl text-jade">好</p>
         <h1 className="mt-4 text-xl font-semibold">Nothing to do right now</h1>
-        <p className="mt-2 text-muted">No reviews due and no new words left for today. The Tone Gym is always open.</p>
+        <p className="mt-2 text-muted">
+          {mode === 'reading'
+            ? 'No reading due and no new words to read today. Words become readable once you know them by ear.'
+            : 'No reviews due and no new words left for today. The Tone Gym is always open.'}
+        </p>
         <div className="mt-6 flex flex-col gap-3">
           <button onClick={() => go('tone-gym')} className="press h-12 rounded-2xl bg-jade font-semibold text-jade-ink">
             Tone Gym
@@ -175,7 +193,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
       if (!item || result) return;
       const o = r.outcome;
       const ms = Date.now() - shownAt.current;
-      const isIntro = item.kind === 'intro';
+      const isIntro = item.kind === 'intro' || item.kind === 'read-intro';
       // XP and combo (intros give a flat bonus and don't touch the combo).
       const pass = isPass(o.verdict);
       const combo = isIntro ? st.combo : pass ? st.combo + 1 : 0;
@@ -188,8 +206,10 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
       // Record it.
       const card = cardOf(item);
       const exercise = item.kind === 'tone' ? 'tonegym:session' : item.kind;
-      const itemId = 'word' in item ? item.word : 'sentence' in item ? item.sentence : item.kind === 'tone' ? item.gym.word : '';
-      if (isIntro) {
+      const itemId = 'word' in item ? item.word : 'sentence' in item ? item.sentence : 'item' in item ? item.item : item.kind === 'tone' ? item.gym.word : '';
+      if (item.kind === 'read-intro') {
+        void introduceReadItem(item.item).then(() => recordSessionAnswer({ itemId, verdict: 'correct', exercise: 'read-intro', xp, via: item.via }));
+      } else if (item.kind === 'intro') {
         void introduceWord(item.word).then(() => recordSessionAnswer({ itemId, verdict: 'correct', exercise: 'intro', xp }));
       } else {
         void recordSessionAnswer({ card, itemId, verdict: o.verdict, rating: r.rating, exercise, ms, typed: r.typed, syllables: o.syllables?.length, tones: o.tones, xp }).then((rec) => {
@@ -207,7 +227,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
         bestCombo: Math.max(st.bestCombo, combo),
         right: st.right + (pass && !isIntro ? 1 : 0),
         answered: st.answered + (isIntro ? 0 : 1),
-        newWords: isIntro ? [...st.newWords, item.word] : st.newWords,
+        newWords: item.kind === 'intro' ? [...st.newWords, item.word] : st.newWords,
         tones: o.tones ? [...st.tones, o.tones] : st.tones,
       };
       setGained(xp);
@@ -312,6 +332,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
   });
 
   if (finished) return <SessionEnd st={st} onAgain={() => go(`session/${st.plan.mode}/${Date.now().toString(36)}`)} />;
+  const home = st.plan.mode === 'reading' ? 'reading' : '';
 
   const total = st.plan.blocks.reduce((n, b) => n + b.items.length, 0);
   const doneCount = st.plan.blocks.slice(0, st.block).reduce((n, b) => n + b.items.length, 0) + st.item;
@@ -319,7 +340,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
     <LessonCtx.Provider value={api}>
       <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pb-72 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl">
         <header className="flex items-center gap-3">
-          <button onClick={() => go('')} aria-label="Leave the session (it's saved)" className="rounded-full p-2 text-muted hover:bg-sunk">
+          <button onClick={() => go(home)} aria-label="Leave the session (it's saved)" className="rounded-full p-2 text-muted hover:bg-sunk">
             ✕
           </button>
           <div className="flex flex-1 gap-1" role="progressbar" aria-valuenow={doneCount} aria-valuemax={total} aria-label="Session progress">
@@ -416,6 +437,16 @@ function Feedback({
             {result.context.english && <p className="text-sm opacity-80">{result.context.english}</p>}
           </div>
         )}
+        {result.panel && (
+          <div className="flex items-start gap-3">
+            <div className="min-w-0 flex-1">{result.panel}</div>
+            {result.audio && (
+              <button onClick={result.audio} aria-label="Play again" className="mt-3 rounded-full bg-surface/70 p-3 active:scale-90">
+                <Speaker className="h-6 w-6" />
+              </button>
+            )}
+          </div>
+        )}
         {a && (
           <div className="mt-3 flex items-start gap-3">
             <div className="min-w-0 flex-1">
@@ -454,7 +485,7 @@ function Feedback({
         </button>
         {o.verdict === 'wrong' && o.canOverride && onOverride && (
           <button onClick={onOverride} className="mt-2 h-11 w-full rounded-2xl text-sm font-medium opacity-80 hover:opacity-100">
-            I was right: my answer means the same
+            {result.panel ? "I was right" : "I was right: my answer means the same"}
           </button>
         )}
       </div>

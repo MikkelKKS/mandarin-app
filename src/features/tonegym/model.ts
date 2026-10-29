@@ -300,3 +300,12 @@ export function pairConfusions(logs: ToneLog[], top = 5): Array<{ expected: stri
 
 export const TONE_WORD = ['', '1st', '2nd', '3rd', '4th', 'neutral'];
 export const patternLabel = (p: string) => p.replace('-', '–').replace(/5/g, '0');
+
+/** A real recording of one toned syllable (Tone Perfect, a random speaker), for single characters without a word recording. */
+export function syllableUrl(pinyin: string, base: string, rng: () => number = Math.random): string | null {
+  const syl = parsePinyin(pinyin);
+  if (!syl || syl.length !== 1 || syl[0].tone < 1 || syl[0].tone > 4 || syl[0].erhua) return null;
+  const speakers = TP[syl[0].base]?.[String(syl[0].tone)];
+  if (!speakers?.length) return null;
+  return tpUrl(base, syl[0].base, syl[0].tone, speakers[Math.floor(rng() * speakers.length)]);
+}

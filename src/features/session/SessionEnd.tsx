@@ -43,7 +43,7 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
     <div className="mx-auto max-w-xl px-4 pb-12 pt-[max(2.5rem,env(safe-area-inset-top))]">
       <Seal hanzi={verdict.hanzi} small />
       <p className="anim-up mt-4 text-center text-sm text-muted [animation-delay:250ms]">
-        {st.plan.mode === 'quick' ? 'Quick session' : 'Deep session'} done · {verdict.title}
+        {st.plan.mode === 'quick' ? 'Quick session' : st.plan.mode === 'reading' ? 'Reading round' : 'Deep session'} done · {verdict.title}
       </p>
       <p className="anim-up mt-1 text-center text-5xl font-semibold tabular-nums text-gold [animation-delay:300ms]">+{st.xp} XP</p>
       {game && (
@@ -106,11 +106,11 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
         </section>
       )}
       <div className="mt-8 flex flex-col gap-3">
-        <button onClick={() => go('')} className="btn btn-primary h-13">
-          Home
+        <button onClick={() => go(st.plan.mode === 'reading' ? 'reading' : '')} className="btn btn-primary h-13">
+          {st.plan.mode === 'reading' ? 'Back to Reading' : 'Home'}
         </button>
         <button onClick={onAgain} className="btn btn-quiet h-12">
-          Another {st.plan.mode} session
+          {st.plan.mode === 'reading' ? 'Another round' : `Another ${st.plan.mode} session`}
         </button>
       </div>
     </div>

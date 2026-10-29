@@ -103,3 +103,10 @@ export const Flame = ({ className }: P) => (
     <path d="M12 21c-1.6 0-2.6-1.1-2.6-2.5 0-1.6 1.4-2.6 2.6-4 1.2 1.4 2.6 2.4 2.6 4 0 1.4-1 2.5-2.6 2.5z" />
   </svg>
 );
+/** Reading: a character in a box. */
+export const Glyph = ({ className }: P) => (
+  <svg {...base} className={className} aria-hidden>
+    <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" />
+    <path d="M8 9h8M12 6.5v11M8.5 13.5h7" />
+  </svg>
+);

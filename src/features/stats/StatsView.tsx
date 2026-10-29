@@ -18,6 +18,9 @@ import { TONE_WORD } from '../tonegym/model';
 import { ToneMatrix } from '../tonegym/ToneMatrix';
 import { Columns, Legend, StackBar, TableView, Tile } from './charts';
 import { ReviewCards } from '../progress/ReviewCards';
+import { readingByLevel, readingStates } from '../../lib/reading';
+import { useReadData } from '../reading/data';
+import type { ReviewItemRow, ReviewLogRow } from '../../db/db';
 
 /** Words by state: one hue (jade), light to dark as a word settles. */
 const STATE_COLOR: Record<string, string> = {
@@ -129,6 +132,8 @@ export function StatsView() {
 
       <ReviewCards />
 
+      <ReadingStats cards={cards} logs={logs} />
+
       <Section title="Tones" note="From the Tone Gym, tone exercises and every typed answer. Rows are the right tone, columns what you heard or typed.">
         <div className="mb-4 grid grid-cols-5 gap-2 text-center">
           {tones.map((t) => (
@@ -215,5 +220,80 @@ export function StatsView() {
         </ul>
       </Section>
     </div>
+  );
+}
+
+type LevelRows = ReturnType<typeof readingByLevel>['words'];
+
+function LevelBars({ rows, noun }: { rows: LevelRows; noun: string }) {
+  return (
+    <>
+      <ul className="mt-3 flex flex-col gap-3">
+        {rows.map((l) => (
+          <li key={l.level}>
+            <div className="mb-1 flex items-baseline justify-between text-sm">
+              <span className="font-medium">{l.level === 7 ? 'HSK 7–9' : `HSK ${l.level}`}</span>
+              <span className="tabular-nums text-muted">
+                {(l.counts.young + l.counts.mature).toLocaleString('en-GB')} / {l.total.toLocaleString('en-GB')} readable · {l.counts.mature} mature
+              </span>
+            </div>
+            <StackBar
+              total={l.total}
+              label={`${noun}, HSK ${l.level}: ${STATES.map((s) => `${l.counts[s]} ${s}`).join(', ')}`}
+              segments={(['mature', 'young', 'learning', 'new'] as const).map((s) => ({ key: s, value: l.counts[s], color: STATE_COLOR[s], label: STATE_LABEL[s] }))}
+            />
+          </li>
+        ))}
+      </ul>
+      <TableView
+        caption={`${noun} by HSK level and reading stage`}
+        head={['Level', 'New', 'Learning', 'Young', 'Mature']}
+        rows={rows.map((l) => [l.level === 7 ? '7–9' : String(l.level), l.counts.new, l.counts.learning, l.counts.young, l.counts.mature])}
+      />
+    </>
+  );
+}
+
+/** Reading: its own stage per word and character (it never changes the word stage above), retention and forecast. */
+function ReadingStats({ cards, logs }: { cards: ReviewItemRow[]; logs: ReviewLogRow[] }) {
+  const settings = useSettings();
+  const d = useReadData();
+  const now = useMemo(() => Date.now(), [logs]);
+  const states = useMemo(() => readingStates(cards), [cards]);
+  const rows = useMemo(() => (d ? readingByLevel(d.index, d.vocab.words, states) : null), [d, states]);
+  const fc = useMemo(() => forecast(cards, now, true, 14, true), [cards, now]);
+  if (!rows) return null;
+  const r30 = retention(logs, now, 30, true);
+  const started = states.size;
+  return (
+    <Section title="Reading" note="Reading characters has its own stage: a word you know by ear stays known above, however far its reading is. Readable: young or mature.">
+      {started === 0 ? (
+        <p className="text-sm text-muted">
+          Nothing read yet.{' '}
+          <button onClick={() => go('reading')} className="underline underline-offset-2">
+            Open Reading
+          </button>
+        </p>
+      ) : (
+        <>
+          <div className="grid grid-cols-2 gap-3">
+            <Tile label="Reading retention, 30 days" value={pct(r30.rate)} note={r30.n ? `${r30.n} reviews · target ${pct(settings.retention)}` : 'No long-term reviews yet'} />
+            <Tile label="Started reading" value={started.toLocaleString('en-GB')} note="words and characters" />
+          </div>
+          <h3 className="mt-5 font-semibold">Words</h3>
+          <Legend items={STATES.map((s) => ({ label: STATE_LABEL[s], color: STATE_COLOR[s] }))} />
+          <LevelBars rows={rows.words} noun="Words" />
+          <h3 className="mt-6 font-semibold">Characters</h3>
+          <p className="text-sm text-muted">Each character counted once, at the first HSK level it appears in.</p>
+          <LevelBars rows={rows.chars} noun="Characters" />
+          <h3 className="mt-6 font-semibold">Reading reviews coming up</h3>
+          <Columns
+            caption="Reading reviews due per day, next 14 days"
+            data={fc.map((x, i) => ({ key: x.day, label: weekday(x.day, i), value: x.count, detail: `${i === 0 ? 'Today' : dayLabel(x.day)}: ${x.count} due` }))}
+            labelEvery={1}
+          />
+        </>
+      )}
+    </Section>
   );
 }

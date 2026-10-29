@@ -8,16 +8,17 @@ Vite 7, React 19, TypeScript (strict), Tailwind v4 and `vite-plugin-pwa`, deploy
 
 ## Screens
 
-Five tabs (`src/App.tsx`): **Home**, **Tones**, **Library**, **Stats**, **Settings**.
+Six tabs (`src/App.tsx`): **Home**, **Tones**, **Reading**, **Library**, **Stats**, **Settings**.
 
 | Screen | Where | What it does |
 |---|---|---|
 | Home | `features/home/` | Goal ring, streak, level; Quick or Deep session; resume; Tone Gym; placement; next achievement |
 | Session | `features/session/` | `plan.ts` builds the blocks (reviews → new words → listening → say it in pinyin → speaking → tones); `SessionPlayer.tsx` runs them; `items.tsx` has each question type; `Speak.tsx` the pitch comparison |
 | Tone Gym | `features/tonegym/` | Rounds of 20 from Tone Perfect recordings: Workout (adaptive, `model.ts`) or Even mix; confusion matrix |
+| Reading | `features/reading/` | Character → meaning / → pinyin / Mix (remembered per device), due and new counts, rounds of 20 run by the session player (`ReadItems.tsx` has the exercises) |
 | Library | `features/library/` | Links to Conversations, Stories, Music, HSK words, Dictionary |
 | Conversations | `features/path/`, `features/lesson/`, `features/exercises/`, `features/story/` | The 29 hand-written units: lessons, listening stories and role-play. No locks |
-| Stories | `features/read/` | Eight short stories, read aloud paragraph by paragraph |
+| Stories | `features/read/` | Eight short stories, read aloud paragraph by paragraph; "Characters only" mode feeds reading cards |
 | Music | `features/music/` | Spotify songs scored against what you know; lyrics with pinyin |
 | HSK words | `features/progress/WordsView.tsx` | Every word by level and stage; move words between stages |
 | Dictionary | `features/dictionary/` | CC-CEDICT lookup, sentence breakdown, translation, "Learn next" |
@@ -36,6 +37,7 @@ Shared pieces: `components/PageHeader.tsx`, `ProgressBar.tsx`, `WordPopover.tsx`
 - **Example sentences:** Tatoeba first; HSK 1–4 words without one have a sentence written for the app (`content/generated-sentences.json`, marked generated, listed in `content/REVIEW_NEEDED.md`).
 - **Words in context** (`lib/context.ts`): homophones and neutral-tone particles among HSK 1–4 are heard and dictated inside their example sentence, with the word marked or blanked.
 - **Grammar notes** (`content/grammar-notes.json`, `lib/grammar.ts`): 50 function words, shown on the intro and behind "Grammar" buttons; their examples are recorded with Azure.
+- **Reading** (`lib/reading.ts`): reading items are HSK words of two or more characters and single characters (a character that is a word uses that word's id; others `c-<character>`). Cards `<item>#rp` (character → pinyin) and `#rm` (character → meaning) have their own reading stage and queue (`buildReadQueue`): a word is ready once its `#lm` card is in review; its characters follow it. They never enter the word queue, word stage, main retention or forecast (`READING_CARD` in `lib/review.ts`). Character data (`content/data/hanzi.json`, look-alike candidates) is built by `scripts/build-hanzi.py` from Make Me a Hanzi; the curated look-alike groups are in `content/lookalikes.json`. Both load as lazy chunks.
 - Answers in a Conversations lesson update the same HSK word cards (`lib/srs.ts`), and lessons skip introducing words you've already met.
 - **Gamification** (`lib/gamify.ts`, `lib/gameStats.ts`): XP is stored on each log entry, so it syncs with the log. Streaks, freezes and levels are computed from the log; achievements are kept as `ach:<id>` rows in `gameScores`.
 

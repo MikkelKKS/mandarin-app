@@ -176,3 +176,45 @@ describe('homophones and particles are heard in a sentence', async () => {
     expect(items(['le'], d, () => 0.3).some((x) => x.kind === 'dictation')).toBe(false);
   });
 });
+
+describe('reading (Reading tab rounds and the deep session block)', async () => {
+  const { readingItems, READING, READ_GAP } = await import('./plan');
+  const q = (fresh: number, due: string[] = [], pending: string[] = []) => ({
+    due,
+    pending,
+    fresh: Array.from({ length: fresh }, (_, i) => (i % 3 ? { item: `c${i}`, via: 'w' } : { item: `w${i}` })),
+    newLeft: 10,
+  });
+  it('due cards first, then met-but-unasked, then new items', () => {
+    const items = readingItems(q(2, ['a#rm', 'b#rp'], ['c#rm']), 'mix', 20);
+    expect(items.slice(0, 3)).toEqual([
+      { kind: 'read-meaning', item: 'a' },
+      { kind: 'read-pinyin', item: 'b' },
+      { kind: 'read-meaning', item: 'c' },
+    ]);
+    expect(items[3]).toEqual({ kind: 'read-intro', item: 'w0' });
+  });
+  it("a new item's first question comes a couple of intros later; Mix asks both directions", () => {
+    const items = readingItems(q(4), 'mix', 20);
+    const firstQ = items.findIndex((x) => x.kind === 'read-meaning' && x.item === 'w0');
+    expect(items.slice(0, firstQ).filter((x) => x.kind === 'read-intro')).toHaveLength(READ_GAP + 1);
+    expect(items.filter((x) => x.kind === 'read-pinyin')).toHaveLength(4);
+    expect(items.find((x) => x.kind === 'read-intro' && x.item === 'c1')).toEqual({ kind: 'read-intro', item: 'c1', via: 'w' });
+  });
+  it('one direction only, and never more than the cap', () => {
+    const items = readingItems(q(30, Array.from({ length: 5 }, (_, i) => `d${i}#rp`)), 'rp', READING.round);
+    expect(items.length).toBeLessThanOrEqual(READING.round);
+    expect(items.some((x) => x.kind === 'read-meaning')).toBe(false);
+  });
+  it("deep sessions get a Reading block (both directions, at most 15 items); quick sessions don't", () => {
+    const base = { data, started: new Set(['w0']), mic: false, now: 1, rng, tones: [], reviews: [], newWords: [], reading: q(10, ['x#rp']) };
+    const deep = planSession({ ...base, mode: 'deep' });
+    const block = deep.blocks.find((b) => b.id === 'reading')!;
+    expect(block.items.length).toBeLessThanOrEqual(READING.deep);
+    expect(block.items[0]).toEqual({ kind: 'read-pinyin', item: 'x' });
+    expect(new Set(block.items.map((x) => x.kind))).toEqual(new Set(['read-pinyin', 'read-intro', 'read-meaning']));
+    expect(cardOf(block.items[0])).toBe('x#rp');
+    const quick = planSession({ ...base, mode: 'quick' });
+    expect(quick.blocks.some((b) => b.id === 'reading')).toBe(false);
+  });
+});

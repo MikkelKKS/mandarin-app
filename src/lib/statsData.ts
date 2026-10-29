@@ -5,7 +5,7 @@
  */
 import type { ReviewItemRow, ReviewLogRow } from '../db/db';
 import { isPass } from './pinyinAnswer';
-import { dayStart, parseCardId, wordState, type WordState } from './review';
+import { dayStart, parseCardId, READING_CARD, wordState, type WordState } from './review';
 
 export const STATES: WordState[] = ['new', 'learning', 'young', 'mature'];
 
@@ -38,15 +38,16 @@ export function wordsByLevel(words: Array<{ id: string; level: number }>, cards:
  * True retention: of the reviews of cards that were in long-term review (not new
  * or relearning), the share remembered (graded Hard or better), over the last `days`.
  */
-export function retention(logs: ReviewLogRow[], now: number, days: number): { n: number; rate: number | null } {
+export function retention(logs: ReviewLogRow[], now: number, days: number, reading = false): { n: number; rate: number | null } {
   const since = now - days * 864e5;
-  const xs = logs.filter((l) => !l.replaced && l.stateBefore === 2 && l.rating && l.at > since);
+  // Reading cards have their own retention (reading = true), so they don't blur the listening numbers.
+  const xs = logs.filter((l) => !l.replaced && l.stateBefore === 2 && l.rating && l.at > since && READING_CARD.test(l.card ?? '') === reading);
   const ok = xs.filter((l) => l.rating! > 1).length;
   return { n: xs.length, rate: xs.length ? ok / xs.length : null };
 }
 
 /** Reviews due on each of the next `days` days; today includes everything overdue. */
-export function forecast(cards: ReviewItemRow[], now: number, mic: boolean, days = 14): Array<{ day: number; count: number }> {
+export function forecast(cards: ReviewItemRow[], now: number, mic: boolean, days = 14, reading = false): Array<{ day: number; count: number }> {
   const today = dayStart(now);
   const starts = Array.from({ length: days + 1 }, (_, i) => dayStart(today + i * 864e5 + 6 * 3600e3));
   const out = starts.slice(0, days).map((day) => ({ day, count: 0 }));
@@ -54,6 +55,7 @@ export function forecast(cards: ReviewItemRow[], now: number, mic: boolean, days
     if (c.state === 0) continue; // introduced, not reviewed yet
     if (!c.id.includes('#') && !/^(s\d*-|t\d+$)/.test(c.id)) continue; // old course word cards are superseded
     if (!mic && c.id.endsWith('#sp')) continue;
+    if (READING_CARD.test(c.id) !== reading) continue;
     const i = c.due < starts[1] ? 0 : starts.findIndex((s, k) => k > 0 && c.due >= s && c.due < starts[k + 1]);
     if (i >= 0 && i < days) out[i].count++;
   }
@@ -80,7 +82,7 @@ export function perDay(logs: ReviewLogRow[], now: number, days = 30): DayRow[] {
     const r = rows[i];
     r.ms += Math.min(60_000, l.ms ?? 8_000);
     r.xp += l.xp ?? 0;
-    if (l.exercise !== 'intro') {
+    if (!l.exercise.endsWith('intro')) {
       r.answers++;
       if (isPass(l.verdict)) r.ok++;
     }

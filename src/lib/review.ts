@@ -25,6 +25,9 @@ export const TEXT_FACETS: Facet[] = ['lm', 'lp', 'mp'];
 export type RatingName = 'again' | 'hard' | 'good' | 'easy';
 export const RATING: Record<RatingName, Grade> = { again: Rating.Again, hard: Rating.Hard, good: Rating.Good, easy: Rating.Easy };
 
+/** Reading cards (`#rp`, `#rm`, see lib/reading.ts) are scheduled on their own, outside the daily word queue. */
+export const READING_CARD = /#r[pm]$/;
+
 export function cardId(word: string, facet: Facet): string {
   return `${word}#${facet}`;
 }
@@ -263,7 +266,7 @@ export function doneSince(logs: Array<Pick<ReviewLogRow, 'card' | 'stateBefore' 
   const newWords = new Set<string>();
   let reviews = 0;
   for (const l of logs) {
-    if (l.at < dayStart || !l.card) continue;
+    if (l.at < dayStart || !l.card || READING_CARD.test(l.card)) continue;
     const p = parseCardId(l.card);
     if (l.stateBefore === State.New) {
       if (p) newWords.add(p.word);
@@ -421,7 +424,7 @@ export async function todaysQueue(
   const [cards, logs] = await Promise.all([db.reviewItems.toArray(), db.reviewLogs.where('at').aboveOrEqual(start).toArray()]);
   return buildQueue(
     // Word facets, and sentence cards (course "s…-" and Tatoeba "t…" ids); old course word cards are superseded.
-    cards.filter((c) => c.id.includes('#') || /^(s\d*-|t\d+$)/.test(c.id)),
+    cards.filter((c) => (c.id.includes('#') && !READING_CARD.test(c.id)) || /^(s\d*-|t\d+$)/.test(c.id)),
     wordsInOrder,
     { now, newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic: s.mic, doneToday: doneSince(logs.filter((l) => !l.replaced), start) },
   );

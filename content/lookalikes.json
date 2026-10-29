@@ -1,0 +1,11 @@
+{
+  "_about": "Characters that are easy to mix up when reading. Each group is picked by hand from content/data/lookalike-candidates.tsv (made by scripts/build-hanzi.py from Make Me a Hanzi stroke data and decompositions); a test checks that every group is connected by candidate pairs. Shown side by side after a wrong reading answer.",
+  "groups": [
+    "己已巴", "买卖", "人入八", "大太犬", "未末", "木本术", "土士王", "千干于十", "日目",
+    "天夫失无", "王玉主", "儿几九", "晴睛情请清精", "休体", "今令", "鸟马乌", "了子", "水永",
+    "免兔", "字宇", "牌脾啤", "待持特", "折拆", "炼练", "复夏", "因困", "国图", "描猫",
+    "贝见", "午牛", "刀力", "阳阴", "极级", "线钱", "块快决", "活话", "很跟根银眼", "住注",
+    "准谁难推", "我找", "吗妈", "吧把", "他她地", "北比", "喝渴", "校较饺", "作昨", "部都",
+    "材村", "责贵", "止正", "季李", "温湿", "白百", "们门"
+  ]
+}

@@ -65,6 +65,8 @@ export interface ReviewLogRow {
   replaced?: boolean;
   /** XP earned (session answers). */
   xp?: number;
+  /** Reading: the word a character was met with (so it doesn't count towards the daily limit). */
+  via?: string;
   updatedAt: number;
 }
 
@@ -99,6 +101,8 @@ export interface Settings {
   sessionTones: boolean;
   /** HSK words you asked to learn next (from the dictionary), first among new words. */
   nextWords: string[];
+  /** New reading words a day (their characters come on top). */
+  readingNewPerDay: number;
   theme: Theme;
 }
 
@@ -159,6 +163,7 @@ export const DEFAULT_SETTINGS: Settings = {
   beijingPack: false,
   sessionTones: true,
   nextWords: [],
+  readingNewPerDay: 10,
   theme: 'system',
 };
 

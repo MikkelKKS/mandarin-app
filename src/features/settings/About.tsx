@@ -9,6 +9,7 @@ const CREDITS: Array<{ name: string; what: string; licence: string; url: string 
   { name: 'pitchy', what: 'Pitch detection for speaking practice', licence: 'MIT', url: 'https://github.com/ianprime0509/pitchy' },
   { name: 'pinyin-pro', what: 'Pinyin conversion and the syllable list', licence: 'MIT', url: 'https://github.com/zh-lx/pinyin-pro' },
   { name: 'ts-fsrs', what: 'Spaced-repetition scheduling', licence: 'MIT', url: 'https://github.com/open-spaced-repetition/ts-fsrs' },
+  { name: 'Make Me a Hanzi', what: 'Character readings, meanings, building blocks and origins for the Reading track (derived from Unihan and CJKlib); stroke outlines used only to find look-alike characters.', licence: 'LGPL 3.0 (data), Arphic Public License (outlines)', url: 'https://github.com/skishore/makemeahanzi' },
   { name: 'Tone Perfect (Michigan State University Libraries)', what: 'Every Mandarin syllable in all four tones by six native speakers, used for single tones in the Tone Gym and sessions. Converted to mono MP3.', licence: 'CC BY-NC 4.0', url: 'https://listings.lib.msu.edu/toneperfect/' },
   { name: 'Azure AI Speech', what: 'Speech audio (voices Xiaoxiao and Yunxi), generated once and stored', licence: 'Microsoft Azure terms', url: 'https://azure.microsoft.com/products/ai-services/text-to-speech' },
   { name: 'Microsoft neural voices via edge-tts', what: 'Older speech audio, used until the Azure recordings replace it', licence: 'see the edge-tts repository; voices by Microsoft', url: 'https://github.com/rany2/edge-tts' },

@@ -24,6 +24,7 @@ import type { RatingName } from '../../lib/review';
 import { patternLabel, TONE_WORD, type GymItem } from '../tonegym/model';
 import { meaningMatches } from './meaning';
 import { Speak } from './Speak';
+import { ReadingItem } from '../reading/ReadItems';
 import type { SItem } from './plan';
 
 export interface ItemResult {
@@ -35,6 +36,10 @@ export interface ItemResult {
   typed?: boolean;
   /** Skip the feedback panel (intro, self-graded items). */
   skipFeedback?: boolean;
+  /** Extra content for the feedback panel (reading: meaning, building blocks, look-alikes). */
+  panel?: React.ReactNode;
+  /** Audio to replay from the feedback panel instead of the item's own. */
+  audio?: () => void;
 }
 
 export interface ItemProps {
@@ -48,7 +53,7 @@ export interface ItemProps {
 }
 
 /** A quiet button under a review question: you've never really known this word. */
-function DontKnow({ onUnknown }: { onUnknown?: () => void }) {
+export function DontKnow({ onUnknown }: { onUnknown?: () => void }) {
   if (!onUnknown) return null;
   return (
     <button onClick={onUnknown} className="mt-3 h-11 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
@@ -116,6 +121,10 @@ export function SessionItem(p: ItemProps) {
       return <ToneQuestion {...p} gym={p.item.gym} />;
     case 'speak':
       return <Speak data={p.data} word={p.item.word} onResult={p.onResult} onNoMic={p.onNoMic ?? (() => {})} />;
+    case 'read-intro':
+    case 'read-pinyin':
+    case 'read-meaning':
+      return <ReadingItem item={p.item} onResult={p.onResult} />;
   }
 }
 
@@ -278,7 +287,7 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
   );
 }
 
-function SelfGrade({ onGrade, suggest }: { onGrade: (r: RatingName) => void; suggest?: RatingName }) {
+export function SelfGrade({ onGrade, suggest }: { onGrade: (r: RatingName) => void; suggest?: RatingName }) {
   const opts: Array<{ r: RatingName; label: string; hint: string }> = [
     { r: 'again', label: 'Again', hint: "Didn't know" },
     { r: 'hard', label: 'Hard', hint: 'Took a while' },
@@ -320,7 +329,7 @@ function SelfGrade({ onGrade, suggest }: { onGrade: (r: RatingName) => void; sug
 }
 
 /** Typed pinyin, checked syllable by syllable (or by a custom checker). */
-function useTyped(expected: { pinyin: string; hanzi: string; english?: string }, onResult: (r: ItemResult) => void, checker?: (text: string) => Outcome) {
+export function useTyped(expected: { pinyin: string; hanzi: string; english?: string }, onResult: (r: ItemResult) => void, checker?: (text: string) => Outcome) {
   const [text, setText] = useState('');
   const done = useRef(false);
   const check = () => {
@@ -334,7 +343,7 @@ function useTyped(expected: { pinyin: string; hanzi: string; english?: string },
   return { text, setText, check };
 }
 
-function TypeBox({ text, setText, check, onUnknown }: ReturnType<typeof useTyped> & { onUnknown?: () => void }) {
+export function TypeBox({ text, setText, check, onUnknown }: ReturnType<typeof useTyped> & { onUnknown?: () => void }) {
   return (
     <div className="mt-8">
       <PinyinInput value={text} onChange={setText} />
