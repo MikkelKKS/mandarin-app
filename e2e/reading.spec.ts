@@ -53,9 +53,14 @@ test('Stories: characters only, and how much of each story you can read', async 
   await page.goto('./#/read');
   await expect(page.getByText(/You can read \d+% of the characters/).first()).toBeVisible({ timeout: 20000 });
   await page.getByRole('button').filter({ hasText: /You know/ }).first().click();
+  // Off: pinyin under the characters (whatever the pinyin setting elsewhere).
+  const word = page.locator('article p.han > span > button').first();
+  await expect(word.locator(':scope > span')).toHaveCount(2);
+  await expect(word.locator(':scope > span').nth(1)).toHaveText(/[a-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü]+/);
   await page.getByRole('button', { name: 'Characters only' }).click();
   await expect(page.getByRole('button', { name: 'Characters only' })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByText(/No pinyin. Tap a word/)).toBeVisible();
+  await expect(word.locator(':scope > span')).toHaveCount(1);
 });
 
 test('six tabs, Reading among them', async ({ page }) => {

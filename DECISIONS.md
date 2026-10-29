@@ -287,3 +287,6 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 ## 2026-10-29: Searching the HSK words, and moving one word from its card (asked)
 - The HSK words page has a search box. Characters find every word containing them (学 → 学生, 同学, 学习…), pinyin matches from the start with or without tones or tone numbers (`xue`, `xue2`, `xuéshēng`, `nver` for nǚ'ér), and English matches meanings. It searches all levels at once and shows each word's level.
 - Tapping a word opens its card as before, now with a **Move to** row (Not started / Learning / Young / Mature; its current stage greyed out). That moves just that word, so "Move words" mode is only needed for moving many at once.
+
+## 2026-10-29: Stories: pinyin under the characters (asked)
+- In a story, the "Characters only" button is now the one switch: off shows tone-coloured pinyin **under** every word, on hides it. Before, "off" followed the general pinyin setting, which on the phone (Hover, or Never) meant no pinyin at all, so the button seemed to do nothing.

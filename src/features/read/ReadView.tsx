@@ -11,7 +11,7 @@ import { play, rememberText, stop } from '../../lib/audio';
 import { hanziKnowledge, useWordStates } from '../../lib/knowledge';
 import { useVocab } from '../../lib/vocabData';
 import { go } from '../../lib/router';
-import { useSettings } from '../../lib/settings';
+import { TonePinyin } from '../../components/Hanzi';
 import { usePinyinFn } from '../../lib/pinyinPro';
 import { loadDict, type Dict, type Entry } from '../dictionary/dict';
 import { db } from '../../db/db';
@@ -139,7 +139,6 @@ interface Picked {
 
 function StoryReader({ id }: { id: string }) {
   const story = stories.find((s) => s.id === id);
-  const settings = useSettings();
   const py = usePinyinFn();
   const [dict, setDict] = useState<Dict | null>(null);
   const [english, setEnglish] = useState(false);
@@ -187,7 +186,7 @@ function StoryReader({ id }: { id: string }) {
 
   const vocab = new Set([...allVocab, ...story.extra.map((e) => e.hanzi)]);
   const extra = new Map(story.extra.map((e) => [e.hanzi, e]));
-  const mode = charsOnly ? 'never' : settings.pinyinDisplay;
+  // The "Characters only" button is the one switch here: off = pinyin under every word.
 
   const pick = (text: string, anchor: DOMRect) => {
     const w = wordByHanzi(text);
@@ -232,13 +231,13 @@ function StoryReader({ id }: { id: string }) {
           return (
             <div key={pi} className={`-mx-3 rounded-2xl px-3 py-2 transition-colors duration-300 ${reading === pi ? 'bg-jade-soft/60' : ''}`}>
               <div className="flex items-start gap-2">
-              <p className="han flex min-w-0 flex-1 flex-wrap items-end gap-x-0.5 gap-y-1 text-2xl leading-snug" lang="zh-CN">
+              <p className="han flex min-w-0 flex-1 flex-wrap items-start gap-x-0.5 gap-y-1 text-2xl leading-snug" lang="zh-CN">
                 {groupPunctuation(tokens).map((g, gi) => (
-                  <span key={gi} className="inline-flex items-end">
+                  <span key={gi} className="inline-flex items-start">
                     {g.map((t, ti) => {
                   if (!t.word)
                     return (
-                      <span key={ti} className="self-end">
+                      <span key={ti} className="self-start">
                         {t.text}
                       </span>
                     );
@@ -251,10 +250,8 @@ function StoryReader({ id }: { id: string }) {
                       onClick={(ev) => pick(t.text, ev.currentTarget.getBoundingClientRect())}
                       className={`group inline-flex flex-col items-center rounded px-0.5 leading-none hover:bg-sunk ${extra.has(t.text) ? 'border-b-2 border-dotted border-gold' : ''}`}
                     >
-                      {(mode === 'always' || mode === 'hover') && (
-                        <span className={`mb-1 font-sans text-[0.42em] leading-none text-muted ${mode === 'hover' ? 'invisible group-hover:visible' : ''}`}>{reading || ' '}</span>
-                      )}
                       <span>{t.text}</span>
+                      {!charsOnly && <TonePinyin pinyin={reading || ' '} className="mt-1 font-sans text-[0.5em] leading-none" />}
                     </button>
                   );
                     })}
