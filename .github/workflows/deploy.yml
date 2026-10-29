@@ -3,6 +3,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # A new song catalogue (committed by the bot, which doesn't trigger pushes) goes live too.
+  workflow_run:
+    workflows: [build-songs, build-vocabulary]
+    types: [completed]
 permissions:
   contents: write
   pages: write
