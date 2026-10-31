@@ -111,6 +111,7 @@ test("a song that isn't on Spotify still shows its lyrics; a lyrics outage offer
   await page.goto('./#/music/song/102');
   await expect(page.getByText(/isn't on Spotify/)).toBeVisible({ timeout: 15_000 });
   await expect(page.getByRole('button', { name: 'Try again' })).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByText(/LRCLIB, the free lyrics service the app uses, is down right now/)).toBeVisible();
   await page.getByRole('button', { name: 'Try again' }).click();
   await expect(page.locator('p.han > button').first()).toBeVisible({ timeout: 15_000 });
 });

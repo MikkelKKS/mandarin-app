@@ -290,3 +290,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## 2026-10-29: Stories: pinyin under the characters (asked)
 - In a story, the "Characters only" button is now the one switch: off shows tone-coloured pinyin **under** every word, on hides it. Before, "off" followed the general pinyin setting, which on the phone (Hover, or Never) meant no pinyin at all, so the button seemed to do nothing.
+
+## 2026-10-31: Follow along when LRCLIB is down (reported: "Follow along doesn't work")
+- Checked from GitHub's servers: LRCLIB answered every request (search and by-id) with 502, so the lyrics service itself was down, not the app or his connection.
+- The error now says which it is: "LRCLIB … is down right now (for everyone)" for a server error, "check your connection" otherwise; and it tries again by itself every minute while the page is open.
+- The live search got sturdier too: punctuation is stripped from the title (你喔！ → 你喔), one failing search no longer stops the rest, and a last search by title alone (still checked on title and length) finds songs whose artist LRCLIB spells differently (sodagreen vs 苏打绿).

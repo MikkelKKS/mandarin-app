@@ -17,7 +17,7 @@ import { useVocab, type VocabRow } from '../../lib/vocabData';
 import { loadCatalogue, namesOf, rankSongs, scoreSong, type Band, type Catalogue, type CatalogueSong, type Filters, type RankedSong, type SongScore } from './catalogue';
 import { SCENES } from './genres';
 import { lyricsById, searchLyrics, type Lyrics } from './lyrics';
-import { pickLrcMatch, sameName } from './match';
+import { HttpError, pickLrcMatch, sameName } from './match';
 import { loadKnowledge, loadT2s, PLAYLIST_SIZE, savePlaylist } from './playlist';
 import { tokenize, type Knowledge, type LyricToken } from './score';
 import * as sp from './spotify';
@@ -325,7 +325,10 @@ function useReader(): { dict: Dict; t2s: Record<string, string>; k: Knowledge } 
   return r;
 }
 
-type LyricsState = { kind: 'loading' } | { kind: 'ok'; lyrics: Lyrics } | { kind: 'none' } | { kind: 'error' };
+type LyricsState = { kind: 'loading' } | { kind: 'ok'; lyrics: Lyrics } | { kind: 'none' } | { kind: 'error'; down: boolean };
+
+/** LRCLIB answered with a server error (it's down), rather than this device having no connection. */
+const lrclibDown = (e: unknown) => e instanceof HttpError && e.status >= 500;
 
 /** Lyrics by LRCLIB id, with retries; "Try again" retries. */
 function useLyrics(id: number | null): { state: LyricsState; retry: () => void } {
@@ -337,7 +340,7 @@ function useLyrics(id: number | null): { state: LyricsState; retry: () => void }
     setState({ kind: 'loading' });
     lyricsById(id)
       .then((l) => live && setState(l ? { kind: 'ok', lyrics: l } : { kind: 'none' }))
-      .catch(() => live && setState({ kind: 'error' }));
+      .catch((e) => live && setState({ kind: 'error', down: lrclibDown(e) }));
     return () => {
       live = false;
     };
@@ -345,10 +348,19 @@ function useLyrics(id: number | null): { state: LyricsState; retry: () => void }
   return { state, retry: useCallback(() => setAttempt((a) => a + 1), []) };
 }
 
-function LyricsError({ retry, what = 'the lyrics' }: { retry: () => void; what?: string }) {
+function LyricsError({ retry, down, what = 'the lyrics' }: { retry: () => void; down: boolean; what?: string }) {
+  // Try again by itself every minute while the page is open (LRCLIB outages are usually short).
+  useEffect(() => {
+    const t = setInterval(() => navigator.onLine && retry(), 60_000);
+    return () => clearInterval(t);
+  }, [retry]);
   return (
     <div className="mt-4 rounded-2xl bg-sunk p-4">
-      <p className="text-muted">Couldn't load {what}: the lyrics service didn't answer after a few tries. Check your connection.</p>
+      <p className="text-muted">
+        {down
+          ? `Couldn't load ${what}: LRCLIB, the free lyrics service the app uses, is down right now (for everyone, not just you). The app tries again every minute while this page is open.`
+          : `Couldn't load ${what}: the lyrics service didn't answer. Check your connection; the app tries again every minute.`}
+      </p>
       <button onClick={retry} className="mt-3 h-11 rounded-full bg-jade px-5 font-semibold text-jade-ink">
         Try again
       </button>
@@ -418,7 +430,7 @@ function SongView({ id }: { id: number }) {
       </div>
       <Legend />
       {state.kind === 'error' ? (
-        <LyricsError retry={retry} />
+        <LyricsError retry={retry} down={state.down} />
       ) : state.kind === 'loading' || !reader ? (
         <p className="mt-4 text-muted">Loading lyrics…</p>
       ) : reader === 'nodict' ? (
@@ -564,7 +576,7 @@ export function catalogueMatch(cat: Catalogue, track: Pick<sp.Track, 'name' | 'a
   return best ? recs.find((r) => r.id === best.id)!.s : null;
 }
 
-type FollowLyrics = { kind: 'loading' } | { kind: 'ok'; lyrics: Lyrics; from: 'catalogue' | 'search' } | { kind: 'none' } | { kind: 'error' };
+type FollowLyrics = { kind: 'loading' } | { kind: 'ok'; lyrics: Lyrics; from: 'catalogue' | 'search' } | { kind: 'none' } | { kind: 'error'; down: boolean };
 
 /** Shows the line being sung in whatever is playing on Spotify right now. */
 function NowPlaying() {
@@ -580,6 +592,7 @@ function NowPlaying() {
   const [nudge, setNudge] = useState(0);
   const [english, setEnglish] = useState<{ line: string; text: string | null } | null>(null);
   const current = useRef<HTMLDivElement>(null);
+  const retryFollow = useCallback(() => setAttempt((a) => a + 1), []);
 
   // Ask Spotify what's playing every few seconds.
   useEffect(() => {
@@ -619,8 +632,8 @@ function NowPlaying() {
           t2s,
         );
         if (live) setLyrics(found ? { kind: 'ok', lyrics: found.lyrics, from: 'search' } : { kind: 'none' });
-      } catch {
-        if (live) setLyrics({ kind: 'error' });
+      } catch (e) {
+        if (live) setLyrics({ kind: 'error', down: lrclibDown(e) });
       }
     })();
     return () => {
@@ -699,7 +712,7 @@ function NowPlaying() {
             </div>
           </div>
           {lyrics.kind === 'error' ? (
-            <LyricsError retry={() => setAttempt((a) => a + 1)} />
+            <LyricsError retry={retryFollow} down={lyrics.down} />
           ) : !reader || lyrics.kind === 'loading' ? (
             <p className="mt-6 text-muted">Loading lyrics…</p>
           ) : reader === 'nodict' ? (
