@@ -26,24 +26,60 @@ export function lyricsById(id: number, retry: Parameters<typeof withRetry>[1] = 
   return p;
 }
 
+/** Letters, digits and spaces only: punctuation like "！" or "?" can make LRCLIB's search fail. */
+export const searchText = (s: string) => s.replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+
+/** The LRCLIB searches to try for a song, most precise first, without repeats. */
+export function lyricSearches(names: NameVariant[], t2s: Record<string, string>): Array<Record<string, string>> {
+  const out: Array<Record<string, string>> = [];
+  const seen = new Set<string>();
+  const add = (p: Record<string, string>) => {
+    const k = JSON.stringify(p);
+    if (!seen.has(k) && Object.values(p).every(Boolean)) seen.add(k) && out.push(p);
+  };
+  const variants = searchVariants(names, t2s)
+    .slice(0, 4)
+    .map((v) => ({ title: searchText(v.title), artist: searchText(v.artist) }));
+  for (const v of variants) add({ track_name: v.title, artist_name: v.artist });
+  for (const v of variants) add({ q: `${v.title} ${v.artist}` });
+  // The artist may be spelled differently on LRCLIB (sodagreen vs 苏打绿): the title alone,
+  // still matched on title and length.
+  for (const v of variants) add({ track_name: v.title });
+  return out;
+}
+
 /**
  * Lyrics for a song that isn't in the catalogue (Follow along): search LRCLIB
  * with each title/artist spelling and take a record with the same title,
  * within 8 seconds of the song's length. Returns the record's id too.
+ * One failing search doesn't stop the others; it only throws when every search
+ * failed (so "not found" and "LRCLIB is down" are told apart).
  */
-export async function searchLyrics(names: NameVariant[], durationS: number, t2s: Record<string, string>): Promise<{ id: number; lyrics: Lyrics } | null> {
+export async function searchLyrics(
+  names: NameVariant[],
+  durationS: number,
+  t2s: Record<string, string>,
+  retry: Parameters<typeof withRetry>[1] = { tries: 2 },
+): Promise<{ id: number; lyrics: Lyrics } | null> {
   const song = { duration: durationS, names };
-  for (const v of searchVariants(names, t2s).slice(0, 4)) {
-    const searches: Array<Record<string, string>> = [{ track_name: v.title, artist_name: v.artist }, { q: `${v.title} ${v.artist}` }];
-    for (const params of searches) {
-      const found = (await withRetry(() => getJson<LrcRecord[]>(`${BASE}/search?${new URLSearchParams(params)}`), { tries: 3 })) ?? [];
-      const best = pickLrcMatch(found, song, t2s);
-      const lyrics = best && lyricsOf(best);
-      if (best && lyrics) {
-        byId.set(best.id, Promise.resolve(lyrics));
-        return { id: best.id, lyrics };
-      }
+  let answered = 0;
+  let lastError: unknown = null;
+  for (const params of lyricSearches(names, t2s)) {
+    let found: LrcRecord[];
+    try {
+      found = (await withRetry(() => getJson<LrcRecord[]>(`${BASE}/search?${new URLSearchParams(params)}`), retry)) ?? [];
+      answered++;
+    } catch (e) {
+      lastError = e;
+      continue;
+    }
+    const best = pickLrcMatch(found, song, t2s);
+    const lyrics = best && lyricsOf(best);
+    if (best && lyrics) {
+      byId.set(best.id, Promise.resolve(lyrics));
+      return { id: best.id, lyrics };
     }
   }
+  if (!answered && lastError) throw lastError;
   return null;
 }
