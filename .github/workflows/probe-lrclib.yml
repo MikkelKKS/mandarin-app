@@ -1,0 +1,12 @@
+name: probe-lrclib
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in "search?track_name=%E4%BD%A0%E5%96%94%EF%BC%81&artist_name=sodagreen" "search?q=%E4%BD%A0%E5%96%94%EF%BC%81+sodagreen" "search?track_name=%E4%BD%A0%E5%96%94&artist_name=sodagreen" "search?q=%E4%BD%A0%E5%96%94" "search?track_name=%E4%BD%A0%E5%96%94" "get/14930574"; do
+            echo "== $u"
+            curl -s -m 30 -D - -H 'Origin: https://mikkelkks.github.io' -o body.json -w "status %{http_code} time %{time_total}\n" "https://lrclib.net/api/$u" | grep -i -E "^HTTP|access-control|status|retry|ratelimit"
+            python3 -c "import json;d=json.load(open('body.json'));d=d if isinstance(d,list) else [d];print(len(d));[print(r.get('id'),r.get('trackName'),'|',r.get('artistName'),r.get('duration'),bool(r.get('syncedLyrics'))) for r in d[:12]]" || head -c 300 body.json
+          done
