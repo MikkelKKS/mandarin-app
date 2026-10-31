@@ -1,5 +1,7 @@
 name: probe-lrclib
-on: workflow_dispatch
+on:
+  push:
+    branches: [probe-lrclib]
 jobs:
   probe:
     runs-on: ubuntu-latest
