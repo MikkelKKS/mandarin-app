@@ -3,6 +3,7 @@
  * tone changes), with several speakers, weighted to what you mix up most.
  * Answers are logged with their tones, which feeds the confusion matrix.
  */
+import { DictionaryButton } from '../../components/LookUp';
 import { VolumeSlider } from '../../components/VolumeSlider';
 import { PageHeader } from '../../components/PageHeader';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -232,6 +233,7 @@ function Round({ mode }: { mode: GymMode }) {
         <span className="text-sm tabular-nums text-muted">
           {answers.filter((a) => a.right).length}/{items.length}
         </span>
+        <DictionaryButton className="-mr-2" />
       </header>
 
       <div className="mt-10 flex flex-col items-center">

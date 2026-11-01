@@ -10,7 +10,7 @@ import { wordOrder } from './beijing';
 import { currentSettings } from '../../lib/settings';
 import { TonePinyin } from '../../components/Hanzi';
 import { ReportAudio } from '../../components/ReportAudio';
-import { LookUp } from '../../components/LookUp';
+import { DictionaryButton, LookUp } from '../../components/LookUp';
 import { plecoLink } from '../dictionary/dict';
 import { Speaker } from '../../components/icons';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
@@ -363,6 +363,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           <span className="min-w-16 text-right text-sm font-semibold tabular-nums text-gold" aria-label={`${st.xp} XP this session`}>
             {st.xp} XP
           </span>
+          <DictionaryButton className="-mr-2" />
         </header>
         <div className="mt-2 flex items-center justify-between text-sm">
           <span className="font-medium text-muted">

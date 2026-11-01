@@ -31,7 +31,29 @@ test('after answering, "Look up" opens the dictionary over the session; closing 
   await box.fill('是');
   await box.press('Enter');
   await expect(sheet.getByText('to be')).toBeVisible();
-  await sheet.getByRole('button', { name: 'Back to the lesson' }).click();
+  await sheet.getByRole('button', { name: 'Back to the exercise' }).click();
   await expect(sheet).toHaveCount(0);
   await expect(status.getByRole('button', { name: 'Continue' })).toBeVisible();
+});
+
+test('the dictionary button opens the dictionary at any time, before answering too', async ({ page }) => {
+  await page.route('**/audio/**', (r) => r.abort());
+  await page.route('**/dict/cedict.tsv', (r) => r.fulfill({ body: DICT, contentType: 'text/plain' }));
+  await page.goto('./#/session/quick/x');
+  const got = page.getByRole('button', { name: 'Got it' });
+  await expect(got).toBeVisible({ timeout: 20_000 });
+  await page.getByRole('button', { name: 'Open the dictionary' }).click();
+  const sheet = page.getByRole('dialog', { name: 'Dictionary' });
+  const box = sheet.getByRole('textbox', { name: 'Search the dictionary' });
+  await expect(box).toBeFocused();
+  await expect(box).toHaveValue('');
+  await page.keyboard.type('是');
+  await expect(sheet.getByText('to be')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+  await expect(got).toBeVisible();
+  // In a lesson and the Tone Gym too.
+  await page.goto('./#/tone-gym/single');
+  await page.getByRole('button', { name: 'Open the dictionary' }).click();
+  await expect(sheet).toBeVisible();
 });

@@ -301,3 +301,7 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Now every question that can be got wrong has a quiet **"I don't know"** under it: lesson exercises (all except meeting a word, repeating, and the matching game), session questions of every kind (first meaning choice, listening, dictation, sentences, Tone Gym questions, speaking, reading), and the Tone Gym rounds. Placement already had one.
 - It counts as a miss (Again), shows the answer and plays it, and the question comes back like any miss. No "I was right" after it.
 - Tones: a give-up on a tone question is logged with `given: '?'`. It counts as a miss for that tone and pair in the adaptive drill (so a pattern you keep not knowing gets drilled), but adds nothing to the confusion matrix, since no tone was heard as another.
+
+## 2026-11-01: A dictionary button on every exercise screen (asked)
+- A magnifier at the top right of lessons, sessions (including Reading) and Tone Gym rounds opens the dictionary over the exercise at any time, before answering too, straight into an empty search box. "Back to the exercise" or Escape returns to the exercise exactly as it was. "Look up" after answering stays (it opens with the answer searched).
+- Not in the placement test, where looking things up would mark words as known that aren't.

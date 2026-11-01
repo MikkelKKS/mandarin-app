@@ -15,3 +15,16 @@ export function LookUp({ text, className = '' }: { text: string; className?: str
     </>
   );
 }
+
+/** In the header of every exercise screen: open the dictionary over it, at any time (the exercise waits underneath). */
+export function DictionaryButton({ className = '' }: { className?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button onClick={() => setOpen(true)} aria-label="Open the dictionary" title="Dictionary" className={`rounded-full p-2 text-muted hover:bg-sunk hover:text-ink ${className}`}>
+        <Search className="h-5 w-5" />
+      </button>
+      {open && <DictionarySheet query="" onClose={() => setOpen(false)} />}
+    </>
+  );
+}

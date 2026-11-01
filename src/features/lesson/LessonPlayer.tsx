@@ -1,4 +1,4 @@
-import { LookUp } from '../../components/LookUp';
+import { DictionaryButton, LookUp } from '../../components/LookUp';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { ReportAudio } from '../../components/ReportAudio';
 import { focusNoScroll } from '../../lib/router';
@@ -286,6 +286,7 @@ export function LessonPlayer({
               No audio
             </button>
           )}
+          <DictionaryButton className="-mr-2" />
         </header>
 
         <main className="anim-slide flex-1 px-4 pb-48 pt-4" key={current.ex.key}>

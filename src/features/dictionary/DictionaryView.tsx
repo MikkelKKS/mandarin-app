@@ -95,7 +95,10 @@ export function DictionarySheet({ query, onClose }: { query: string; onClose: ()
   const [q, setQ] = useState(query);
   const box = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    box.current?.focus();
+    // Opened empty (the dictionary button): straight into the search box. With a word: on the result.
+    const input = query ? null : box.current?.querySelector('input');
+    if (input) input.focus();
+    else box.current?.focus();
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
@@ -121,7 +124,7 @@ export function DictionarySheet({ query, onClose }: { query: string; onClose: ()
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">Dictionary</h2>
             <button onClick={onClose} className="flex h-10 items-center gap-1.5 rounded-full border border-line px-4 font-medium">
-              <Close className="h-4 w-4" /> Back to the lesson
+              <Close className="h-4 w-4" /> Back to the exercise
             </button>
           </div>
           <DictionarySearch q={q} setQ={setQ} />
