@@ -96,7 +96,11 @@ describe('retrying the lyrics service', () => {
     const waits: number[] = [];
     const fn = vi.fn().mockRejectedValueOnce(new HttpError(502, 'x')).mockRejectedValueOnce(new HttpError(502, 'x')).mockResolvedValue(1);
     await withRetry(fn, { baseMs: 100, sleep: async (ms) => void waits.push(ms) });
-    expect(waits[1]).toBeGreaterThan(waits[0]);
+    // Doubling, plus up to 200 ms of random jitter.
+    expect(waits[0]).toBeGreaterThanOrEqual(100);
+    expect(waits[0]).toBeLessThan(300);
+    expect(waits[1]).toBeGreaterThanOrEqual(200);
+    expect(waits[1]).toBeLessThan(400);
   });
 });
 
