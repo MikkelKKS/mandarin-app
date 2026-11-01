@@ -13,7 +13,7 @@ import { shuffle } from '../../lib/random';
 import { recordAnswer, regradeAll } from '../../lib/srs';
 import type { RatingName } from '../../lib/review';
 import { GradeChip } from './GradeChip';
-import { audioOf, ExerciseView, itemsOf } from '../exercises/ExerciseView';
+import { audioOf, ExerciseView, giveUpOutcome, itemsOf, NO_GIVE_UP } from '../exercises/ExerciseView';
 import { LessonCtx, type LessonApi } from './context';
 import { AUDIO_ONLY, type Exercise, type ExerciseKind, type Outcome } from './types';
 
@@ -303,6 +303,11 @@ export function LessonPlayer({
                   className="press h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted"
                 >
                   {isIntro ? 'Continue' : 'Check'}
+                </button>
+              )}
+              {!NO_GIVE_UP.has(current.ex.kind) && (
+                <button onClick={() => handleOutcome(giveUpOutcome(current.ex))} className="mt-1 h-10 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
+                  I don't know
                 </button>
               )}
             </div>

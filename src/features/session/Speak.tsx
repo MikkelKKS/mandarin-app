@@ -196,6 +196,11 @@ export function Speak({ data, word, onResult, onNoMic }: { data: VocabData; word
         </div>
       )}
 
+      {!mine && (
+        <button onClick={() => grade('again')} className="mt-3 h-11 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
+          I don't know
+        </button>
+      )}
       <button
         onClick={() => {
           void setSpeakPausedUntil(Date.now() + 3600_000);

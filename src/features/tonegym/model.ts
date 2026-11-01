@@ -160,6 +160,9 @@ export interface PatternStat {
   wrong: number;
 }
 
+/** `given` for "I don't know" on a tone question: a miss for the drill's pattern, but nothing for the confusion matrix. */
+export const GAVE_UP_TONES = '?';
+
 /** 3+3 sandhi: a 2nd tone typed for the first of two 3rd tones isn't a mistake. */
 const sameTone = (exp: number[], giv: number[], i: number) => giv[i] === exp[i] || (exp[i] === 3 && exp[i + 1] === 3 && giv[i] === 2);
 
@@ -178,6 +181,15 @@ export function patternStats(logs: ToneLog[]): Map<string, PatternStat> {
   for (const l of logs) {
     if (!l.tones) continue;
     const exp = l.tones.expected.split('-').map(Number);
+    if (l.tones.given === GAVE_UP_TONES) {
+      // Didn't know: every tone and pair in it counts as missed.
+      exp.forEach((e, i) => {
+        if (e < 1 || e > 4) return;
+        add(String(e), false);
+        if (i + 1 < exp.length) add(`${e}-${exp[i + 1]}`, false);
+      });
+      continue;
+    }
     const giv = l.tones.given.split('-').map(Number);
     for (let i = 0; i < exp.length; i++) {
       if (!giv[i] || exp[i] < 1 || exp[i] > 5) continue;

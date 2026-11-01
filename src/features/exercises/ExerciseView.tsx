@@ -1,5 +1,5 @@
-import { exchanges } from '../../content';
-import type { Exercise } from '../lesson/types';
+import { exchanges, lookup } from '../../content';
+import type { Exercise, Outcome } from '../lesson/types';
 import { BuildSentence, EnToPinyin, FillGap, ListenTiles } from './Building';
 import { Dictation, ListenMeaning, ListenSentence, MinimalPair, ReplyType, ToneId, WhatWouldYouSay } from './Listening';
 import { Intro, MatchPairs, PickCharacter, ReadSentence } from './Recognition';
@@ -90,4 +90,14 @@ export function audioOf(ex: Exercise): string[] {
     default:
       return [];
   }
+}
+
+/** Exercises with nothing to get wrong ("I don't know" isn't offered): meeting a word, repeating, and the matching game. */
+export const NO_GIVE_UP: ReadonlySet<Exercise['kind']> = new Set(['intro', 'repeat', 'match-pairs']);
+
+/** "I don't know": counted as a miss, with the answer shown (no tones logged, as none were guessed). */
+export function giveUpOutcome(ex: Exercise): Outcome {
+  const id = ex.kind === 'minimal-pair' ? (ex.answer === 0 ? ex.a : ex.b) : itemsOf(ex)[0];
+  const a = id ? lookup(id) : undefined;
+  return { verdict: 'wrong', answer: a, note: "Here's the answer. It comes back for another go." };
 }

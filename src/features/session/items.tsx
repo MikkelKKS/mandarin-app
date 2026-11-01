@@ -21,7 +21,7 @@ import { AudioControls, Options, PinyinInput, Prompt } from '../exercises/parts'
 import { useCheck } from '../lesson/context';
 import type { Outcome } from '../lesson/types';
 import type { RatingName } from '../../lib/review';
-import { patternLabel, TONE_WORD, type GymItem } from '../tonegym/model';
+import { GAVE_UP_TONES, patternLabel, TONE_WORD, type GymItem } from '../tonegym/model';
 import { meaningMatches } from './meaning';
 import { Speak } from './Speak';
 import { LookUp } from '../../components/LookUp';
@@ -43,7 +43,12 @@ export interface ItemResult {
   audio?: () => void;
   /** What "Look up" searches in the feedback panel, when the answer doesn't show characters. */
   lookup?: string;
+  /** Answered "I don't know" (a miss, nothing guessed: no "I was right"). */
+  gaveUp?: boolean;
 }
+
+/** The note under the answer after "I don't know". */
+export const GAVE_UP_NOTE = "Here's the answer. It comes back for another go.";
 
 export interface ItemProps {
   item: SItem;
@@ -55,12 +60,17 @@ export interface ItemProps {
   onUnknown?: () => void;
 }
 
-/** A quiet button under a review question: you've never really known this word. */
-export function DontKnow({ onUnknown }: { onUnknown?: () => void }) {
-  if (!onUnknown) return null;
+/**
+ * A quiet button under every question. On a review of a word: "I don't know
+ * this word" (back to new words, taught again). Anywhere else: "I don't know"
+ * (a miss, and the answer is shown).
+ */
+export function DontKnow({ onUnknown, onGiveUp }: { onUnknown?: () => void; onGiveUp?: () => void }) {
+  const fn = onUnknown ?? onGiveUp;
+  if (!fn) return null;
   return (
-    <button onClick={onUnknown} className="mt-3 h-11 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
-      I don't know this word
+    <button onClick={fn} className="mt-3 h-11 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
+      {onUnknown ? "I don't know this word" : "I don't know"}
     </button>
   );
 }
@@ -238,6 +248,7 @@ function ChooseMeaning({ data, word, options, ctx, onResult }: ItemProps & { wor
           stateOf={(i) => (picked === null ? 'idle' : i === right ? 'right' : i === picked ? 'wrong' : 'idle')}
         />
       </div>
+      {picked === null && <DontKnow onGiveUp={() => choose(-1)} />}
     </div>
   );
 }
@@ -255,6 +266,13 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
     setShown(true);
     return null as unknown as Outcome;
   }, []);
+  const giveUp = () =>
+    onResult({
+      outcome: { verdict: 'wrong', answer: { pinyin: w.pinyin, english: glossOf(w), hanzi: w.hanzi }, note: GAVE_UP_NOTE },
+      rating: 'again',
+      gaveUp: true,
+      context: c ? { ...c, english: c.sentence.english[0], id: c.sentence.id } : undefined,
+    });
   return (
     <div>
       <Prompt>{c ? 'What does the marked word mean here?' : 'What does it mean?'}</Prompt>
@@ -274,7 +292,7 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
           <button onClick={() => setShown(true)} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
             Show the answer
           </button>
-          <DontKnow onUnknown={onUnknown} />
+          <DontKnow onUnknown={onUnknown} onGiveUp={giveUp} />
         </div>
       ) : (
         <div className="anim-rise mt-8 rounded-2xl bg-surface p-4 border border-line">
@@ -344,17 +362,22 @@ export function useTyped(expected: { pinyin: string; hanzi: string; english?: st
     return null as unknown as Outcome;
   };
   useCheck(check, [text]);
-  return { text, setText, check };
+  const giveUp = () => {
+    if (done.current) return;
+    done.current = true;
+    onResult({ outcome: { verdict: 'wrong', answer: { pinyin: expected.pinyin, hanzi: expected.hanzi, english: expected.english }, note: GAVE_UP_NOTE }, typed: true, gaveUp: true });
+  };
+  return { text, setText, check, giveUp };
 }
 
-export function TypeBox({ text, setText, check, onUnknown }: ReturnType<typeof useTyped> & { onUnknown?: () => void }) {
+export function TypeBox({ text, setText, check, giveUp, onUnknown }: ReturnType<typeof useTyped> & { onUnknown?: () => void }) {
   return (
     <div className="mt-8">
       <PinyinInput value={text} onChange={setText} />
       <button onClick={check} disabled={!text.trim()} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted">
         Check
       </button>
-      <DontKnow onUnknown={onUnknown} />
+      <DontKnow onUnknown={onUnknown} onGiveUp={giveUp} />
     </div>
   );
 }
@@ -448,9 +471,12 @@ function SentenceMeaning({ data, sentence, onResult }: ItemProps & { sentence: s
       <Prompt>Listen. Do you understand it?</Prompt>
       <AudioControls id={s.id} ladder />
       {!shown ? (
-        <button onClick={() => setShown(true)} className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
-          Show what it says
-        </button>
+        <>
+          <button onClick={() => setShown(true)} className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
+            Show what it says
+          </button>
+          <DontKnow onGiveUp={() => onResult({ outcome: { verdict: 'wrong', answer: { pinyin: s.pinyin, hanzi: s.hanzi, english: s.english[0] }, note: GAVE_UP_NOTE }, gaveUp: true })} />
+        </>
       ) : (
         <div className="anim-rise mt-8 rounded-2xl bg-surface p-4 border border-line">
           <TonePinyin pinyin={s.pinyin} className="block text-xl" />
@@ -557,6 +583,15 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
           </div>
         ))}
       </div>
+      {!done && (
+        <DontKnow
+          onGiveUp={() => {
+            setDone(true);
+            onResult({ outcome: { verdict: 'wrong', answer: { pinyin: gym.pinyin, english: gym.gloss }, note: `It was ${patternLabel(gym.pattern)}.${gym.sandhi ? ` Spoken ${gym.sandhi.spoken}.` : ''}`, tones: { expected: gym.tones.join('-'), given: GAVE_UP_TONES } }, gaveUp: true });
+            setTimeout(() => say(), 350);
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -19,7 +19,7 @@ import { useCheck } from '../lesson/context';
 import type { Outcome } from '../lesson/types';
 import { meaningMatches } from '../session/meaning';
 import type { SItem } from '../session/plan';
-import { SelfGrade, TypeBox, useTyped, type ItemResult } from '../session/items';
+import { DontKnow, GAVE_UP_NOTE, SelfGrade, TypeBox, useTyped, type ItemResult } from '../session/items';
 import { syllableUrl } from '../tonegym/model';
 import { LookUp } from '../../components/LookUp';
 import { useReadData, wordsWith, type ReadData } from './data';
@@ -244,7 +244,7 @@ function ReadPinyin({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult: 
       const wrong = r.outcome.verdict === 'wrong';
       onResult({
         ...r,
-        outcome: { ...r.outcome, answer: undefined, canOverride: wrong },
+        outcome: { ...r.outcome, answer: undefined, canOverride: wrong && !r.gaveUp },
         audio: () => playItem(d, it),
         lookup: it.hanzi,
         panel: <ReadAnswer d={d} it={it} lookalikes={wrong} />,
@@ -326,6 +326,14 @@ function ReadMeaning({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult:
           <button onClick={reveal} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
             Reveal
           </button>
+          <DontKnow
+            onGiveUp={() => {
+              if (graded.current) return;
+              graded.current = true;
+              playItem(d, it);
+              onResult({ outcome: { verdict: 'wrong', note: GAVE_UP_NOTE }, rating: 'again', gaveUp: true, audio: () => playItem(d, it), lookup: it.hanzi, panel: <ReadAnswer d={d} it={it} lookalikes={hasLookalikes} /> });
+            }}
+          />
         </div>
       ) : (
         <div className="anim-rise mt-6 rounded-2xl border border-line bg-surface p-4">

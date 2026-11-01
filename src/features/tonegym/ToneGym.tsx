@@ -15,7 +15,7 @@ import { go } from '../../lib/router';
 import { sfx } from '../../lib/sfx';
 import { useLive } from '../../lib/useLive';
 import { useVocab } from '../../lib/vocabData';
-import { buildPool, MODES, patternLabel, patternStats, pickRound, ROUND, TONE_WORD, weakestPair, type GymItem, type GymMode } from './model';
+import { buildPool, GAVE_UP_TONES, MODES, patternLabel, patternStats, pickRound, ROUND, TONE_WORD, weakestPair, type GymItem, type GymMode } from './model';
 import { ToneMatrix } from './ToneMatrix';
 
 const BASE = import.meta.env.BASE_URL;
@@ -137,7 +137,8 @@ function Round({ mode }: { mode: GymMode }) {
   const submit = useCallback(
     (given: Tone[]) => {
       if (!item || answer) return;
-      const right = given.every((t, k) => t === item.tones[k]);
+      // given = [] is "I don't know".
+      const right = given.length > 0 && given.every((t, k) => t === item.tones[k]);
       setAnswers((a) => [...a, { item, given, right }]);
       if (right) sfx.correct();
       else {
@@ -153,7 +154,7 @@ function Round({ mode }: { mode: GymMode }) {
         verdict: right ? 'correct' : 'wrong',
         at: now,
         ms: now - shownAt.current,
-        tones: { expected: item.tones.join('-'), given: given.join('-') },
+        tones: { expected: item.tones.join('-'), given: given.length ? given.join('-') : GAVE_UP_TONES },
         updatedAt: now,
       });
     },
@@ -284,6 +285,12 @@ function Round({ mode }: { mode: GymMode }) {
         ))}
       </div>
 
+      {!answer && (
+        <button onClick={() => submit([])} className="mt-4 h-11 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
+          I don't know
+        </button>
+      )}
+
       {answer && <Feedback answer={answer} pool={pool} voice={answer.item.sources[speaker]?.speaker} onNext={next} onReplay={() => void playSource(answer.item, speaker)} />}
     </div>
   );
@@ -293,7 +300,7 @@ function Feedback({ answer, pool, voice, onNext, onReplay }: { answer: Answer; p
   const { item, given, right } = answer;
   // What you thought you heard: the same syllables with your tones if a recording exists, else any word with that tone pattern.
   const yours = useMemo(() => {
-    if (right) return null;
+    if (right || !given.length) return null;
     const pattern = given.join('-');
     const same = pool.find((x) => x.pattern === pattern && x.bases.join() === item.bases.join());
     return same ?? pool.find((x) => x.pattern === pattern) ?? null;
@@ -305,7 +312,7 @@ function Feedback({ answer, pool, voice, onNext, onReplay }: { answer: Answer; p
   return (
     <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 ${right ? 'bg-jade-soft' : 'bg-cinnabar-soft'}`}>
       <div className="mx-auto max-w-xl">
-        <p className="text-xl font-semibold">{right ? 'Right' : `It was ${patternLabel(item.pattern)}, not ${patternLabel(given.join('-'))}`}</p>
+        <p className="text-xl font-semibold">{right ? 'Right' : given.length ? `It was ${patternLabel(item.pattern)}, not ${patternLabel(given.join('-'))}` : `It was ${patternLabel(item.pattern)}`}</p>
         <p className="mt-2 flex flex-wrap items-baseline gap-x-3">
           <TonePinyin pinyin={item.pinyin} className="text-2xl font-semibold" />
           <span className="text-sm opacity-80">{item.gloss}</span>
@@ -345,7 +352,7 @@ function RoundEnd({ mode, answers, ms, onAgain }: { mode: GymMode; answers: Answ
       await db.gameScores.put({ id, best: Math.max(row?.best ?? 0, score), plays: (row?.plays ?? 0) + 1, updatedAt: Date.now() });
     })();
   }, [mode, score]);
-  const logs = answers.map((a) => ({ tones: { expected: a.item.tones.join('-'), given: a.given.join('-') } }));
+  const logs = answers.map((a) => ({ tones: { expected: a.item.tones.join('-'), given: a.given.length ? a.given.join('-') : GAVE_UP_TONES } }));
   const weak = weakestPair(patternStats(logs));
   const missed = answers.filter((a) => !a.right);
   return (
@@ -368,7 +375,7 @@ function RoundEnd({ mode, answers, ms, onAgain }: { mode: GymMode; answers: Answ
                   <Speaker className="h-4 w-4" />
                 </button>
                 <TonePinyin pinyin={a.item.pinyin} className="text-lg font-semibold" />
-                <span className="text-sm text-muted">you: {patternLabel(a.given.join('-'))}</span>
+                <span className="text-sm text-muted">{a.given.length ? `you: ${patternLabel(a.given.join('-'))}` : "you didn't know"}</span>
               </li>
             ))}
           </ul>

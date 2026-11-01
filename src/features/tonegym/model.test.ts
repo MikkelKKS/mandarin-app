@@ -139,3 +139,14 @@ describe('Tone Perfect: single tones by six real speakers', async () => {
     expect(sessionPool(vocab, '/').every((x) => x.word.startsWith('tp-'))).toBe(true);
   });
 });
+
+describe("I don't know on a tone question", () => {
+  it('counts as a miss for the pattern, and nothing in the confusion matrix', async () => {
+    const { patternStats, toneMatrix, pairConfusions, GAVE_UP_TONES } = await import('./model');
+    const logs = [{ tones: { expected: '2-3', given: GAVE_UP_TONES } }];
+    expect(patternStats(logs).get('2-3')).toEqual({ n: 1, wrong: 1 });
+    expect(patternStats(logs).get('3')).toEqual({ n: 1, wrong: 1 });
+    expect(toneMatrix(logs).flat().every((x) => x === 0)).toBe(true);
+    expect(pairConfusions(logs)).toEqual([]);
+  });
+});

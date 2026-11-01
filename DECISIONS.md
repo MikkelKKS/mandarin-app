@@ -295,3 +295,9 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Checked from GitHub's servers: LRCLIB answered every request (search and by-id) with 502, so the lyrics service itself was down, not the app or his connection.
 - The error now says which it is: "LRCLIB … is down right now (for everyone)" for a server error, "check your connection" otherwise; and it tries again by itself every minute while the page is open.
 - The live search got sturdier too: punctuation is stripped from the title (你喔！ → 你喔), one failing search no longer stops the rest, and a last search by title alone (still checked on title and length) finds songs whose artist LRCLIB spells differently (sodagreen vs 苏打绿).
+
+## 2026-11-01: "I don't know" on every question (asked)
+- Before, only reviews of a word had it ("I don't know this word", which moves the word back to new words and teaches it again; that stays as it was).
+- Now every question that can be got wrong has a quiet **"I don't know"** under it: lesson exercises (all except meeting a word, repeating, and the matching game), session questions of every kind (first meaning choice, listening, dictation, sentences, Tone Gym questions, speaking, reading), and the Tone Gym rounds. Placement already had one.
+- It counts as a miss (Again), shows the answer and plays it, and the question comes back like any miss. No "I was right" after it.
+- Tones: a give-up on a tone question is logged with `given: '?'`. It counts as a miss for that tone and pair in the adaptive drill (so a pattern you keep not knowing gets drilled), but adds nothing to the confusion matrix, since no tone was heard as another.
