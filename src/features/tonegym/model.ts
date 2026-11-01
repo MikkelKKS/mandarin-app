@@ -314,6 +314,18 @@ export const TONE_WORD = ['', '1st', '2nd', '3rd', '4th', 'neutral'];
 export const patternLabel = (p: string) => p.replace('-', '–').replace(/5/g, '0');
 
 /** A real recording of one toned syllable (Tone Perfect, a random speaker), for single characters without a word recording. */
+/**
+ * The same syllable said with other tones (what you thought you heard), by the
+ * same speaker as `heardUrl` when they recorded it. Single syllables only.
+ */
+export function otherToneUrl(item: Pick<GymItem, 'bases'>, given: Tone[], heardUrl: string, base: string): string | null {
+  if (item.bases.length !== 1 || given.length !== 1) return null;
+  const speakers = TP[item.bases[0]]?.[String(given[0])];
+  if (!speakers?.length) return null;
+  const heard = /_([^_/]+)\.mp3$/.exec(heardUrl)?.[1];
+  return tpUrl(base, item.bases[0], given[0], heard && speakers.includes(heard) ? heard : speakers[0]);
+}
+
 export function syllableUrl(pinyin: string, base: string, rng: () => number = Math.random): string | null {
   const syl = parsePinyin(pinyin);
   if (!syl || syl.length !== 1 || syl[0].tone < 1 || syl[0].tone > 4 || syl[0].erhua) return null;

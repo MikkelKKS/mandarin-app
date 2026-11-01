@@ -21,7 +21,7 @@ import { AudioControls, Options, PinyinInput, Prompt } from '../exercises/parts'
 import { useCheck } from '../lesson/context';
 import type { Outcome } from '../lesson/types';
 import type { RatingName } from '../../lib/review';
-import { GAVE_UP_TONES, patternLabel, TONE_WORD, type GymItem } from '../tonegym/model';
+import { GAVE_UP_TONES, otherToneUrl, patternLabel, TONE_WORD, type GymItem } from '../tonegym/model';
 import { meaningMatches } from './meaning';
 import { Speak } from './Speak';
 import { LookUp } from '../../components/LookUp';
@@ -529,6 +529,24 @@ function SentenceMeaning({ data, sentence, onResult }: ItemProps & { sentence: s
 
 const TONE_TEXT = ['', 'text-t1', 'text-t2', 'text-t3', 'text-t4', 'text-t5'];
 
+/** After a wrong tone: hear the right one again, and what your guess sounds like (as in the Tone Gym). */
+export function ToneCompare({ gym, given, heard }: { gym: GymItem; given: Tone[]; heard: string }) {
+  const guess = useMemo(() => otherToneUrl(gym, given, heard, import.meta.env.BASE_URL), [gym, given, heard]);
+  const guessed = given.map((t, k) => markSyllable({ base: gym.bases[k], tone: t })).join(' ');
+  return (
+    <div className="mt-3 flex flex-wrap gap-2">
+      <button onClick={() => void playUrl(heard)} className="flex h-11 items-center gap-2 rounded-xl bg-surface/70 px-3 font-medium">
+        <Speaker className="h-5 w-5" /> Right: {gym.pinyin}
+      </button>
+      {guess && (
+        <button onClick={() => void playUrl(guess)} className="flex h-11 items-center gap-2 rounded-xl bg-surface/70 px-3 font-medium">
+          <Speaker className="h-5 w-5" /> Your guess: {guessed}
+        </button>
+      )}
+    </div>
+  );
+}
+
 /** A Tone Gym question inside a session. */
 function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
   const [picked, setPicked] = useState<Array<Tone | null>>([null, null]);
@@ -556,6 +574,7 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
           note: right ? gym.sandhi && `Spoken ${gym.sandhi.spoken}. ${gym.sandhi.why}` : `It was ${patternLabel(gym.pattern)}, not ${patternLabel(given.join('-'))}.${gym.sandhi ? ` Spoken ${gym.sandhi.spoken}.` : ''}`,
           tones: { expected: gym.tones.join('-'), given: given.join('-') },
         },
+        panel: right ? undefined : <ToneCompare gym={gym} given={given as Tone[]} heard={gym.sources[speaker % gym.sources.length].url} />,
       });
       if (!right) setTimeout(() => say(), 350);
     }
@@ -614,7 +633,7 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
         <DontKnow
           onGiveUp={() => {
             setDone(true);
-            onResult({ outcome: { verdict: 'wrong', answer: { pinyin: gym.pinyin, english: gym.gloss }, note: `It was ${patternLabel(gym.pattern)}.${gym.sandhi ? ` Spoken ${gym.sandhi.spoken}.` : ''}`, tones: { expected: gym.tones.join('-'), given: GAVE_UP_TONES } }, gaveUp: true });
+            onResult({ outcome: { verdict: 'wrong', answer: { pinyin: gym.pinyin, english: gym.gloss }, note: `It was ${patternLabel(gym.pattern)}.${gym.sandhi ? ` Spoken ${gym.sandhi.spoken}.` : ''}`, tones: { expected: gym.tones.join('-'), given: GAVE_UP_TONES } }, gaveUp: true, panel: <ToneCompare gym={gym} given={[]} heard={gym.sources[speaker % gym.sources.length].url} /> });
             setTimeout(() => say(), 350);
           }}
         />

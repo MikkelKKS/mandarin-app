@@ -150,3 +150,13 @@ describe("I don't know on a tone question", () => {
     expect(pairConfusions(logs)).toEqual([]);
   });
 });
+
+describe('otherToneUrl (hear your guess)', () => {
+  it('gives the same syllable with your tone, by the same speaker when recorded', async () => {
+    const { otherToneUrl, tpUrl } = await import('./model');
+    const heard = tpUrl('/', 'ma', 1, 'FV1');
+    const url = otherToneUrl({ bases: ['ma'] }, [3], heard, '/');
+    expect(url).toMatch(/audio\/tp\/ma3_\w+\.mp3$/);
+    expect(otherToneUrl({ bases: ['ma', 'ma'] }, [3, 3], heard, '/')).toBeNull();
+  });
+});
