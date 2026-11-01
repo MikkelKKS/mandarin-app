@@ -73,6 +73,7 @@ export interface ReviewLogRow {
 export type PinyinDisplay = 'always' | 'hover' | 'tap' | 'never';
 export type VoicePref = 'alternate' | 'f' | 'm';
 export type Theme = 'system' | 'light' | 'dark';
+export type SentenceScript = 'pinyin' | 'both' | 'hanzi';
 
 export interface Settings {
   speaking: boolean;
@@ -93,6 +94,8 @@ export interface Settings {
   dailyGoal: number;
   /** Show Chinese characters next to pinyin in sessions (off by default: pinyin only). */
   showHanzi: boolean;
+  /** The sentence around a word in exercises (dictation gaps, marked words): pinyin, characters, or both. */
+  sentenceScript: SentenceScript;
   /** When the placement test (or a chosen starting level) was done; 0 = not yet. */
   placedAt: number;
   /** Optional Beijing pack: 儿化 words and Beijing everyday words come first among new words. */
@@ -159,6 +162,7 @@ export const DEFAULT_SETTINGS: Settings = {
   reviewsPerDay: 200,
   dailyGoal: 100,
   showHanzi: false,
+  sentenceScript: 'pinyin',
   placedAt: 0,
   beijingPack: false,
   sessionTones: true,

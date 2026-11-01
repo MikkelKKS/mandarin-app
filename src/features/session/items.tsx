@@ -31,7 +31,7 @@ import type { SItem } from './plan';
 export interface ItemResult {
   outcome: Outcome;
   /** The sentence the word was heard in (homophones and particles), shown with the word highlighted. */
-  context?: { before: string; target: string; after: string; english?: string; id?: string };
+  context?: { before: string; target: string; after: string; han?: { before: string; target: string; after: string }; english?: string; id?: string };
   /** A self-grade (listening for meaning): recorded as given, no feedback panel. */
   rating?: RatingName;
   typed?: boolean;
@@ -151,10 +151,37 @@ function useContext(data: VocabData, w: VocabRow, ctx?: string): InContext | nul
   }, [data, w, ctx]);
 }
 
-/** A sentence's pinyin with the word highlighted, or left blank to fill in. */
-export function ContextLine({ c, blank = false, className = '' }: { c: { before: string; target: string; after: string }; blank?: boolean; className?: string }) {
+type Parts = { before: string; target: string; after: string };
+
+/**
+ * The sentence around a word, with the word highlighted or left blank: in
+ * pinyin, characters, or both, as set in Settings ("Sentences in exercises").
+ */
+export function ContextLine({ c, blank = false, className = '' }: { c: Parts & { han?: Parts }; blank?: boolean; className?: string }) {
+  const { sentenceScript } = useSettings();
+  const han = c.han && sentenceScript !== 'pinyin' ? c.han : null;
+  const pinyin = !han || sentenceScript === 'both';
   return (
-    <p className={`text-center text-xl leading-relaxed ${className}`}>
+    <div className={`text-center text-xl ${className}`}>
+      {pinyin && <PinyinContext c={c} blank={blank} />}
+      {han && (
+        <p className={`han leading-relaxed ${pinyin ? 'mt-1 text-[1.2em]' : 'text-[1.5em]'}`} lang="zh-CN">
+          {han.before}
+          {blank ? (
+            <span className="mx-1 inline-block w-10 border-b-2 border-ink align-baseline" aria-label={pinyin ? undefined : 'missing word'} aria-hidden={pinyin || undefined} />
+          ) : (
+            <mark className="rounded-md bg-amber-soft px-0.5 text-inherit">{han.target}</mark>
+          )}
+          {han.after}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function PinyinContext({ c, blank }: { c: Parts; blank: boolean }) {
+  return (
+    <p className="leading-relaxed">
       {c.before && <TonePinyin pinyin={c.before} className="mr-1.5" />}
       {blank ? (
         <span className="mx-0.5 inline-block w-14 border-b-2 border-ink align-baseline" aria-label="missing word" />

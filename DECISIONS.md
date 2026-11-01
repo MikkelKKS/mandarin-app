@@ -305,3 +305,7 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 ## 2026-11-01: A dictionary button on every exercise screen (asked)
 - A magnifier at the top right of lessons, sessions (including Reading) and Tone Gym rounds opens the dictionary over the exercise at any time, before answering too, straight into an empty search box. "Back to the exercise" or Escape returns to the exercise exactly as it was. "Look up" after answering stays (it opens with the answer searched).
 - Not in the placement test, where looking things up would mark words as known that aren't.
+
+## 2026-11-01: Characters in exercise sentences (asked)
+- New setting **Settings → Sentences in exercises: Pinyin / Both / Characters** (default Pinyin, as before). It changes the sentence around a word in exercises: the dictation gap ("zuǒ kàn ___ kàn"), the marked word in "What does the marked word mean here?", the example in "How do you say it?", and the sentence in the feedback. Both = pinyin with the characters underneath; Characters = characters only. Answers are still typed in pinyin.
+- "Show characters" stays as it was (characters next to the word itself).

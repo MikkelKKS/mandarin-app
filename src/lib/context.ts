@@ -38,6 +38,27 @@ export interface InContext {
   before: string;
   target: string;
   after: string;
+  /** The same in characters (punctuation included). */
+  han: { before: string; target: string; after: string };
+}
+
+/** Pure: split a sentence's characters around the n-th..(n+len-1)-th Chinese character (punctuation doesn't count). */
+export function splitHanzi(text: string, at: number, len: number): { before: string; target: string; after: string } {
+  const chars = [...text];
+  let k = 0;
+  let start = -1;
+  let end = chars.length;
+  for (let i = 0; i < chars.length; i++) {
+    if (!/\p{Script=Han}/u.test(chars[i])) continue;
+    if (k === at) start = i;
+    if (k === at + len - 1) {
+      end = i + 1;
+      break;
+    }
+    k++;
+  }
+  if (start < 0) return { before: text, target: '', after: '' };
+  return { before: chars.slice(0, start).join(''), target: chars.slice(start, end).join(''), after: chars.slice(end).join('') };
 }
 
 /** Pure: the word inside one of its example sentences (with a recording), the shortest that lines up. */
@@ -60,7 +81,7 @@ export function inContext(w: VocabRow, data: VocabData, hasAudio: (s: SentenceRo
     const target = al.syls.slice(first, last + 1).map(markSyllable).join('');
     // The sentence must really say this word here (same pinyin, so 的 de isn't matched inside 目的 mùdì).
     if (!samePinyin(target, w.pinyin)) continue;
-    return { sentence: s, before: say(0, first), target, after: say(last + 1, al.syls.length) };
+    return { sentence: s, before: say(0, first), target, after: say(last + 1, al.syls.length), han: splitHanzi(s.hanzi, at, n) };
   }
   return null;
 }

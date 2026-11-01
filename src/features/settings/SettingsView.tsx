@@ -156,6 +156,18 @@ export function SettingsView() {
           />
         </Row>
         <Row title="Show characters" hint="In sessions. Pinyin is always shown; characters are never needed to answer." side={<Toggle label="Show characters" on={s.showHanzi} onChange={(on) => set({ showHanzi: on })} />} />
+        <Row title="Sentences in exercises" hint="The sentence around a word, e.g. a dictation gap. You always answer in pinyin.">
+          <Segmented
+            label="Sentences in exercises"
+            value={s.sentenceScript}
+            onChange={(v) => set({ sentenceScript: v })}
+            options={[
+              { v: 'pinyin', label: 'Pinyin' },
+              { v: 'both', label: 'Both' },
+              { v: 'hanzi', label: 'Characters' },
+            ]}
+          />
+        </Row>
         <Row title="Tone colours" hint="Red 1st, orange 2nd, green 3rd, blue 4th, grey neutral." side={<Toggle label="Tone colours" on={s.toneColors} onChange={(on) => set({ toneColors: on })} />} />
         <Row title="Pinyin above characters" hint="In Conversations, stories and song lyrics.">
           <Segmented

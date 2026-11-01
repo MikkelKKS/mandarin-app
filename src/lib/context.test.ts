@@ -25,3 +25,11 @@ describe('words that need a sentence', () => {
     expect(inContext(de, data, () => true)).toBeNull();
   });
 });
+
+describe('splitHanzi', () => {
+  it('splits around the n-th Chinese character, keeping punctuation', async () => {
+    const { splitHanzi } = await import('./context');
+    expect(splitHanzi('左看，右看。', 2, 1)).toEqual({ before: '左看，', target: '右', after: '看。' });
+    expect(splitHanzi('我是学生。', 2, 2)).toEqual({ before: '我是', target: '学生', after: '。' });
+  });
+});
