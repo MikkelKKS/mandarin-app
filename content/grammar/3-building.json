@@ -1,0 +1,767 @@
+{
+  "level": 3,
+  "topics": [
+    {
+      "id": "result-complements",
+      "title": "Result complements: 看见 kànjiàn, 听懂 tīngdǒng",
+      "summary": "A second word after the verb says how the action ended.",
+      "pattern": "Verb + Result (完 wán, 好 hǎo, 懂 dǒng, 见 jiàn, 到 dào, 错 cuò …)",
+      "text": [
+        "Chinese often splits \"doing\" from \"succeeding\". kàn is to look; kànjiàn is to look and actually see. tīng is to listen; tīngdǒng is to listen and understand.",
+        "Common results: wán finished (chīwán, eaten up), hǎo done properly (zuòhǎo), dǒng understood, jiàn perceived, dào reached or managed (zhǎodào, found), cuò wrongly (xiěcuò, wrote it wrong), gānjìng clean (xǐ gānjìng).",
+        "The negative is méi: wǒ méi tīngdǒng, I didn't understand. le goes after the result: wǒ chīwánle."
+      ],
+      "examples": [
+        {
+          "t": "我/wǒ 看见/kànjiàn 他/tā 了/le 。",
+          "en": "I saw him."
+        },
+        {
+          "t": "你/nǐ 听懂/tīngdǒng 了/le 吗/ma ？",
+          "en": "Did you understand (what you heard)?"
+        },
+        {
+          "t": "我/wǒ 吃完/chīwán 了/le 。",
+          "en": "I've finished eating."
+        },
+        {
+          "t": "我/wǒ 找到/zhǎodào 我/wǒ 的/de 钥匙/yàoshi 了/le 。",
+          "en": "I've found my keys."
+        },
+        {
+          "t": "对不起/duìbuqǐ ， 我/wǒ 写错/xiěcuò 了/le 。",
+          "en": "Sorry, I wrote it wrong."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "我/wǒ 没/méi 听懂/tīngdǒng 了/le 。",
+          "right": "我/wǒ 没/méi 听懂/tīngdǒng 。",
+          "why": "méi replaces le."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "order",
+          "t": "我/wǒ 已经/yǐjīng 做完/zuòwán 作业/zuòyè 了/le 。",
+          "en": "I've already finished my homework."
+        },
+        {
+          "type": "order",
+          "t": "你/nǐ 看见/kànjiàn 我/wǒ 的/de 手机/shǒujī 了/le 吗/ma ？",
+          "en": "Have you seen my phone?"
+        },
+        {
+          "type": "choose",
+          "t": "老师/lǎoshī 说/shuō 的/de 话/huà 我/wǒ 都/dōu 听/tīng _ 了/le 。",
+          "en": "I understood everything the teacher said.",
+          "options": [
+            "懂/dǒng",
+            "见/jiàn",
+            "完/wán"
+          ],
+          "answer": 0,
+          "why": "Listening that ends in understanding: tīngdǒng."
+        },
+        {
+          "type": "choose",
+          "t": "我/wǒ 找/zhǎo _ 工作/gōngzuò 了/le ！",
+          "en": "I've found a job!",
+          "options": [
+            "到/dào",
+            "懂/dǒng",
+            "错/cuò"
+          ],
+          "answer": 0,
+          "why": "Looking that succeeds: zhǎodào."
+        },
+        {
+          "type": "spot",
+          "en": "I didn't see it.",
+          "options": [
+            "我/wǒ 没/méi 看见/kànjiàn 。",
+            "我/wǒ 不/bù 看见/kànjiàn 了/le 。"
+          ],
+          "answer": 0,
+          "why": "méi + verb + result."
+        },
+        {
+          "type": "spot",
+          "en": "Have you finished the book?",
+          "options": [
+            "你/nǐ 看完/kànwán 那/nà 本/běn 书/shū 了/le 吗/ma ？",
+            "你/nǐ 看/kàn 那/nà 本/běn 书/shū 完/wán 了/le 吗/ma ？"
+          ],
+          "answer": 0,
+          "why": "The result sticks to the verb: kànwán."
+        }
+      ]
+    },
+    {
+      "id": "direction-complements",
+      "title": "Direction: 来 lái, 去 qù, 上来 shànglai",
+      "summary": "lái means towards the speaker, qù away; they follow the verb.",
+      "pattern": "Verb + (上 shàng / 下 xià / 进 jìn / 出 chū / 回 huí / 过 guò / 起 qǐ) + 来 lai / 去 qu",
+      "text": [
+        "After a verb of movement, lai means towards me (the speaker) and qu means away: jìnlai! come in! (to where I am); tā chūqu le, he went out.",
+        "A direction can come in between: zǒu shànglai, walk up (towards me); ná chūqu, take it out (away); pǎo huílai, run back here.",
+        "A place goes before lái/qù: tā huí jiā qù le, he went home. Huí Zhōngguó lái, come back to China."
+      ],
+      "examples": [
+        {
+          "t": "请/qǐng 进来/jìnlai 。",
+          "en": "Please come in."
+        },
+        {
+          "t": "他/tā 出去/chūqu 了/le 。",
+          "en": "He's gone out."
+        },
+        {
+          "t": "你/nǐ 什么/shénme 时候/shíhou 回来/huílai ？",
+          "en": "When are you coming back?"
+        },
+        {
+          "t": "她/tā 从/cóng 楼上/lóushàng 走/zǒu 下来/xiàlai 了/le 。",
+          "en": "She came down from upstairs."
+        },
+        {
+          "t": "把/bǎ 书/shū 拿/ná 出来/chūlai 。",
+          "en": "Take the book out."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "他/tā 回去/huíqu 家/jiā 了/le 。",
+          "right": "他/tā 回/huí 家/jiā 去/qu 了/le 。",
+          "why": "A place goes before lái/qù."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "order",
+          "t": "你/nǐ 快/kuài 下来/xiàlai 吧/ba 。",
+          "en": "Come down quickly."
+        },
+        {
+          "type": "order",
+          "t": "他/tā 跑/pǎo 回来/huílai 了/le 。",
+          "en": "He ran back (here)."
+        },
+        {
+          "type": "choose",
+          "t": "（ 你/nǐ 在/zài 房间/fángjiān 里/li ） 请/qǐng 进/jìn _ ！",
+          "en": "(You're in the room) Please come in!",
+          "options": [
+            "来/lai",
+            "去/qu"
+          ],
+          "answer": 0,
+          "why": "Towards you, the speaker: jìnlai."
+        },
+        {
+          "type": "choose",
+          "t": "（ 在/zài 家/jiā ） 妈妈/māma 说/shuō ： 快/kuài 回/huí _ ！",
+          "en": "(At home) Mum says: come back quickly!",
+          "options": [
+            "来/lai",
+            "去/qu"
+          ],
+          "answer": 0,
+          "why": "Towards the speaker (mum, at home): huílai."
+        },
+        {
+          "type": "spot",
+          "en": "She went back to Beijing.",
+          "options": [
+            "她/tā 回/huí 北京/Běijīng 去/qu 了/le 。",
+            "她/tā 回去/huíqu 北京/Běijīng 了/le 。"
+          ],
+          "answer": 0,
+          "why": "The place goes before qù."
+        },
+        {
+          "type": "spot",
+          "en": "Bring it over (here).",
+          "options": [
+            "拿/ná 过来/guòlai 。",
+            "拿/ná 过去/guòqu 。"
+          ],
+          "answer": 0,
+          "why": "Towards the speaker: lai."
+        }
+      ]
+    },
+    {
+      "id": "potential-complements",
+      "title": "Can or can't manage it: 听得懂 tīng de dǒng",
+      "summary": "Put de or bu between a verb and its result: able or unable to.",
+      "pattern": "Verb + 得 de / 不 bu + Result",
+      "text": [
+        "Insert de into a result complement and it means \"can manage to\": tīng de dǒng, can understand (by listening). Insert bu and it means \"can't manage to\": tīng bu dǒng, can't understand.",
+        "These are how Chinese usually says can/can't for results: kàn bu jiàn, can't see; chī bu wán, can't finish (eating); mǎi bu dào, can't get hold of; huí bu lái, can't come back.",
+        "Ask with the two together: nǐ tīng de dǒng tīng bu dǒng? or just nǐ tīng de dǒng ma?"
+      ],
+      "examples": [
+        {
+          "t": "我/wǒ 听/tīng 得/de 懂/dǒng 。",
+          "en": "I can understand (what I hear)."
+        },
+        {
+          "t": "他/tā 说/shuō 得/de 太/tài 快/kuài ， 我/wǒ 听/tīng 不/bu 懂/dǒng 。",
+          "en": "He speaks too fast, I can't understand."
+        },
+        {
+          "t": "太/tài 多/duō 了/le ， 我/wǒ 吃/chī 不/bu 完/wán 。",
+          "en": "It's too much, I can't finish it."
+        },
+        {
+          "t": "后面/hòumian 的/de 人/rén 看/kàn 得/de 见/jiàn 吗/ma ？",
+          "en": "Can the people at the back see?"
+        },
+        {
+          "t": "今天/jīntiān 我/wǒ 回/huí 不/bu 来/lái 了/le 。",
+          "en": "I can't come back today."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "order",
+          "t": "这/zhè 个/ge 字/zì 你/nǐ 看/kàn 得/de 懂/dǒng 吗/ma ？",
+          "en": "Can you read this character?"
+        },
+        {
+          "type": "order",
+          "t": "我/wǒ 一个人/yīgèrén 吃/chī 不/bu 完/wán 。",
+          "en": "I can't finish it on my own."
+        },
+        {
+          "type": "choose",
+          "t": "字/zì 太/tài 小/xiǎo 了/le ， 我/wǒ 看/kàn _ 清楚/qīngchu 。",
+          "en": "The characters are too small, I can't see them clearly.",
+          "options": [
+            "不/bu",
+            "得/de",
+            "没/méi"
+          ],
+          "answer": 0,
+          "why": "Can't manage: verb + bu + result."
+        },
+        {
+          "type": "choose",
+          "t": "你/nǐ 说/shuō 慢/màn 一点儿/yīdiǎnr 我/wǒ 就/jiù 听/tīng _ 懂/dǒng 。",
+          "en": "If you speak a bit slower I can understand.",
+          "options": [
+            "得/de",
+            "不/bu",
+            "了/le"
+          ],
+          "answer": 0,
+          "why": "Can manage: verb + de + result."
+        },
+        {
+          "type": "spot",
+          "en": "I can't find it.",
+          "options": [
+            "我/wǒ 找/zhǎo 不/bu 到/dào 。",
+            "我/wǒ 不/bù 找/zhǎo 到/dào 。"
+          ],
+          "answer": 0,
+          "why": "bu goes between the verb and the result."
+        },
+        {
+          "type": "spot",
+          "en": "Can you hear me?",
+          "options": [
+            "你/nǐ 听/tīng 得/de 见/jiàn 吗/ma ？",
+            "你/nǐ 听见/tīngjiàn 得/de 吗/ma ？"
+          ],
+          "answer": 0,
+          "why": "de goes between verb and result: tīng de jiàn."
+        }
+      ]
+    },
+    {
+      "id": "ba",
+      "title": "把 bǎ: doing something to something",
+      "summary": "bǎ moves the object before the verb to say what happens to it.",
+      "pattern": "Subject + 把 bǎ + Object + Verb + Result/Place",
+      "text": [
+        "With bǎ the object moves in front of the verb, and the sentence is about what happens to it: wǒ bǎ shū fàng zài zhuōzi shang, I put the book on the table.",
+        "The verb can't stand alone: something must follow it, such as a result, a place, a direction or le. Bǎ mén guān shang, close the door. Bǎ zhè ge chī le, eat this.",
+        "The object is something specific (this book, the door). Use bǎ for instructions and for putting, giving, moving and changing things; a negative goes before bǎ: bié bǎ shǒujī wàng le, don't forget your phone."
+      ],
+      "examples": [
+        {
+          "t": "我/wǒ 把/bǎ 书/shū 放/fàng 在/zài 桌子/zhuōzi 上/shang 了/le 。",
+          "en": "I put the book on the table."
+        },
+        {
+          "t": "请/qǐng 把/bǎ 门/mén 关上/guānshang 。",
+          "en": "Please close the door."
+        },
+        {
+          "t": "他/tā 把/bǎ 我/wǒ 的/de 蛋糕/dàngāo 吃/chī 了/le ！",
+          "en": "He ate my cake!"
+        },
+        {
+          "t": "你/nǐ 把/bǎ 作业/zuòyè 做完/zuòwán 了/le 吗/ma ？",
+          "en": "Have you finished your homework?"
+        },
+        {
+          "t": "别/bié 把/bǎ 手机/shǒujī 忘/wàng 了/le 。",
+          "en": "Don't forget your phone."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "我/wǒ 把/bǎ 书/shū 看/kàn 。",
+          "right": "我/wǒ 把/bǎ 书/shū 看完/kànwán 了/le 。",
+          "why": "After bǎ the verb needs something after it (a result, le …)."
+        },
+        {
+          "wrong": "我/wǒ 把/bǎ 门/mén 没/méi 关/guān 。",
+          "right": "我/wǒ 没/méi 把/bǎ 门/mén 关上/guānshang 。",
+          "why": "The negative goes before bǎ."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "order",
+          "t": "请/qǐng 把/bǎ 窗户/chuānghu 打开/dǎkāi 。",
+          "en": "Please open the window."
+        },
+        {
+          "type": "order",
+          "t": "我/wǒ 把/bǎ 钱/qián 给/gěi 他/tā 了/le 。",
+          "en": "I gave him the money."
+        },
+        {
+          "type": "spot",
+          "en": "I put the keys in the bag.",
+          "options": [
+            "我/wǒ 把/bǎ 钥匙/yàoshi 放/fàng 在/zài 包/bāo 里/li 了/le 。",
+            "我/wǒ 把/bǎ 钥匙/yàoshi 放/fàng 。",
+            "我/wǒ 放/fàng 把/bǎ 钥匙/yàoshi 在/zài 包/bāo 里/li 。"
+          ],
+          "answer": 0,
+          "why": "bǎ + object + verb + where it went."
+        },
+        {
+          "type": "spot",
+          "en": "I didn't bring the book.",
+          "options": [
+            "我/wǒ 把/bǎ 书/shū 没/méi 带来/dàilai 。",
+            "我/wǒ 没/méi 把/bǎ 书/shū 带来/dàilai 。"
+          ],
+          "answer": 1,
+          "why": "méi goes before bǎ."
+        },
+        {
+          "type": "choose",
+          "t": "你/nǐ _ 这/zhè 杯/bēi 水/shuǐ 喝/hē 了/le 吧/ba 。",
+          "en": "Drink this glass of water.",
+          "options": [
+            "把/bǎ",
+            "被/bèi",
+            "比/bǐ"
+          ],
+          "answer": 0,
+          "why": "Doing something to a specific object: bǎ."
+        },
+        {
+          "type": "choose",
+          "t": "请/qǐng 把/bǎ 衣服/yīfu 洗/xǐ _ 。",
+          "en": "Please wash the clothes clean.",
+          "options": [
+            "干净/gānjìng",
+            "得/de",
+            "过/guo"
+          ],
+          "answer": 0,
+          "why": "After bǎ the verb needs a result: xǐ gānjìng."
+        }
+      ]
+    },
+    {
+      "id": "bei",
+      "title": "被 bèi: something was done to it",
+      "summary": "The passive: what something had done to it, often unwelcome.",
+      "pattern": "Thing + 被 bèi (+ Doer) + Verb + Result/了 le",
+      "text": [
+        "bèi turns the sentence round: wǒ de zìxíngchē bèi tōu le, my bike was stolen. The doer can follow bèi: bèi xiǎotōu tōu le, stolen by a thief.",
+        "It's mostly used for things that went badly: being stolen, broken, criticised, caught in the rain. For neutral things Chinese usually just drops the doer: fàn zuò hǎo le, the food is ready (no bèi).",
+        "As with bǎ, the verb needs something after it (le, a result), and méi goes before bèi."
+      ],
+      "examples": [
+        {
+          "t": "我/wǒ 的/de 自行车/zìxíngchē 被/bèi 偷/tōu 了/le 。",
+          "en": "My bike was stolen."
+        },
+        {
+          "t": "他/tā 被/bèi 老师/lǎoshī 批评/pīpíng 了/le 。",
+          "en": "He was told off by the teacher."
+        },
+        {
+          "t": "蛋糕/dàngāo 被/bèi 弟弟/dìdi 吃完/chīwán 了/le 。",
+          "en": "The cake was eaten up by my little brother."
+        },
+        {
+          "t": "我/wǒ 的/de 手机/shǒujī 没/méi 被/bèi 拿走/názǒu 。",
+          "en": "My phone wasn't taken."
+        },
+        {
+          "t": "杯子/bēizi 被/bèi 打破/dǎpò 了/le 。",
+          "en": "The glass got broken."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "我/wǒ 的/de 钱包/qiánbāo 被/bèi 偷/tōu 。",
+          "right": "我/wǒ 的/de 钱包/qiánbāo 被/bèi 偷/tōu 了/le 。",
+          "why": "The verb after bèi needs le or a result."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "order",
+          "t": "我/wǒ 的/de 电脑/diànnǎo 被/bèi 弟弟/dìdi 弄坏/nònghuài 了/le 。",
+          "en": "My computer was broken by my little brother."
+        },
+        {
+          "type": "order",
+          "t": "他/tā 被/bèi 雨/yǔ 淋/lín 湿/shī 了/le 。",
+          "en": "He got soaked by the rain."
+        },
+        {
+          "type": "choose",
+          "t": "我/wǒ 的/de 钱包/qiánbāo _ 偷/tōu 了/le 。",
+          "en": "My wallet was stolen.",
+          "options": [
+            "被/bèi",
+            "把/bǎ",
+            "比/bǐ"
+          ],
+          "answer": 0,
+          "why": "Something was done to it: bèi."
+        },
+        {
+          "type": "spot",
+          "en": "The window was broken by the kids.",
+          "options": [
+            "窗户/chuānghu 被/bèi 孩子们/háizimen 打破/dǎpò 了/le 。",
+            "孩子们/háizimen 被/bèi 窗户/chuānghu 打破/dǎpò 了/le 。"
+          ],
+          "answer": 0,
+          "why": "Thing + bèi + doer + verb."
+        },
+        {
+          "type": "spot",
+          "en": "My bike wasn't stolen.",
+          "options": [
+            "我/wǒ 的/de 自行车/zìxíngchē 没/méi 被/bèi 偷/tōu 。",
+            "我/wǒ 的/de 自行车/zìxíngchē 被/bèi 没/méi 偷/tōu 。"
+          ],
+          "answer": 0,
+          "why": "méi goes before bèi."
+        },
+        {
+          "type": "choose",
+          "t": "他/tā 把/bǎ 我/wǒ 的/de 咖啡/kāfēi 喝/hē 了/le 。 = 我/wǒ 的/de 咖啡/kāfēi _ 他/tā 喝/hē 了/le 。",
+          "en": "He drank my coffee. = My coffee was drunk by him.",
+          "options": [
+            "被/bèi",
+            "把/bǎ"
+          ],
+          "answer": 0,
+          "why": "bǎ (he did it to the coffee) turned round is bèi (the coffee had it done to it)."
+        }
+      ]
+    },
+    {
+      "id": "shi-de",
+      "title": "是…的 shì … de: when, where, how it happened",
+      "summary": "For past events: stress the when, where, how or who.",
+      "pattern": "Subject + 是 shì + Detail + Verb + 的 de",
+      "text": [
+        "When you already know something happened and want to talk about a detail, wrap the detail in shì … de: wǒ shì zuótiān lái de, I came yesterday (it was yesterday that I came).",
+        "It's how you ask the classic questions: nǐ shì shénme shíhou lái de? when did you come? nǐ shì zěnme lái de? how did you get here? Wǒ shì zuò fēijī lái de, I came by plane.",
+        "shì is often dropped in speech, but de stays. The negative is bú shì … de: wǒ bú shì zuò huǒchē lái de."
+      ],
+      "examples": [
+        {
+          "t": "我/wǒ 是/shì 昨天/zuótiān 到/dào 的/de 。",
+          "en": "I arrived yesterday."
+        },
+        {
+          "t": "你/nǐ 是/shì 怎么/zěnme 来/lái 的/de ？",
+          "en": "How did you get here?"
+        },
+        {
+          "t": "我/wǒ 是/shì 坐/zuò 飞机/fēijī 来/lái 的/de 。",
+          "en": "I came by plane."
+        },
+        {
+          "t": "你们/nǐmen 是/shì 在/zài 哪儿/nǎr 认识/rènshi 的/de ？",
+          "en": "Where did you meet?"
+        },
+        {
+          "t": "这/zhè 不/bú 是/shì 我/wǒ 做/zuò 的/de 。",
+          "en": "I wasn't the one who did this."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "我/wǒ 是/shì 昨天/zuótiān 来/lái 了/le 。",
+          "right": "我/wǒ 是/shì 昨天/zuótiān 来/lái 的/de 。",
+          "why": "shì … de, not shì … le."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "order",
+          "t": "我/wǒ 是/shì 二〇二四年/èrlíngèrsìnián 开始/kāishǐ 学/xué 中文/Zhōngwén 的/de 。",
+          "en": "I started learning Chinese in 2024."
+        },
+        {
+          "type": "order",
+          "t": "你/nǐ 是/shì 跟/gēn 谁/shéi 一起/yīqǐ 去/qù 的/de ？",
+          "en": "Who did you go with?"
+        },
+        {
+          "type": "choose",
+          "t": "你/nǐ 是/shì 什么/shénme 时候/shíhou 回来/huílai _ ？",
+          "en": "When did you get back?",
+          "options": [
+            "的/de",
+            "了/le",
+            "吗/ma"
+          ],
+          "answer": 0,
+          "why": "Asking when it happened: shì … de."
+        },
+        {
+          "type": "spot",
+          "en": "We met in Beijing.",
+          "options": [
+            "我们/wǒmen 是/shì 在/zài 北京/Běijīng 认识/rènshi 的/de 。",
+            "我们/wǒmen 认识/rènshi 是/shì 在/zài 北京/Běijīng 的/de 。"
+          ],
+          "answer": 0,
+          "why": "shì + the detail + verb + de."
+        },
+        {
+          "type": "spot",
+          "en": "I didn't come by train.",
+          "options": [
+            "我/wǒ 没/méi 是/shì 坐/zuò 火车/huǒchē 来/lái 的/de 。",
+            "我/wǒ 不/bú 是/shì 坐/zuò 火车/huǒchē 来/lái 的/de 。"
+          ],
+          "answer": 1,
+          "why": "shì is negated with bù."
+        },
+        {
+          "type": "choose",
+          "t": "这/zhè 件/jiàn 衣服/yīfu 是/shì 在/zài 哪儿/nǎr 买/mǎi _ ？",
+          "en": "Where did you buy this piece of clothing?",
+          "options": [
+            "的/de",
+            "了/le",
+            "过/guo"
+          ],
+          "answer": 0,
+          "why": "Asking where it happened: shì … de."
+        }
+      ]
+    },
+    {
+      "id": "jiu-cai",
+      "title": "就 jiù and 才 cái: sooner or later than expected",
+      "summary": "jiù: already, as early as. cái: only then, not until.",
+      "pattern": "Time + 就 jiù + Verb + 了 le · Time + 才 cái + Verb",
+      "text": [
+        "jiù and cái go before the verb and say how a time feels: tā liù diǎn jiù qǐchuáng le, he was up as early as six. Tā shí diǎn cái qǐchuáng, he didn't get up until ten.",
+        "jiù usually comes with le; cái never does.",
+        "jiù also means \"then, right away\": wǒ chīle fàn jiù zǒu, I'll leave right after eating. And it links conditions: rúguǒ xià yǔ, wǒ jiù bú qù, if it rains, then I won't go."
+      ],
+      "examples": [
+        {
+          "t": "他/tā 六/liù 点/diǎn 就/jiù 起床/qǐchuáng 了/le 。",
+          "en": "He was up at six already."
+        },
+        {
+          "t": "她/tā 十/shí 点/diǎn 才/cái 来/lái 。",
+          "en": "She didn't come until ten."
+        },
+        {
+          "t": "我/wǒ 马上/mǎshàng 就/jiù 到/dào 。",
+          "en": "I'll be there right away."
+        },
+        {
+          "t": "你/nǐ 怎么/zěnme 现在/xiànzài 才/cái 来/lái ？",
+          "en": "Why are you only coming now?"
+        },
+        {
+          "t": "如果/rúguǒ 下雨/xiàyǔ ， 我们/wǒmen 就/jiù 不/bù 去/qù 了/le 。",
+          "en": "If it rains, we won't go."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "他/tā 十二/shí'èr 点/diǎn 才/cái 睡觉/shuìjiào 了/le 。",
+          "right": "他/tā 十二/shí'èr 点/diǎn 才/cái 睡觉/shuìjiào 。",
+          "why": "cái doesn't take le."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "order",
+          "t": "我/wǒ 吃/chī 了/le 饭/fàn 就/jiù 走/zǒu 。",
+          "en": "I'll leave right after eating."
+        },
+        {
+          "type": "order",
+          "t": "他/tā 学/xué 了/le 三/sān 年/nián 才/cái 学会/xuéhuì 。",
+          "en": "It took him three years to learn it."
+        },
+        {
+          "type": "choose",
+          "t": "电影/diànyǐng 七/qī 点/diǎn 开始/kāishǐ ， 他/tā 八/bā 点/diǎn _ 到/dào 。",
+          "en": "The film started at seven; he didn't arrive until eight.",
+          "options": [
+            "才/cái",
+            "就/jiù"
+          ],
+          "answer": 0,
+          "why": "Later than expected: cái."
+        },
+        {
+          "type": "choose",
+          "t": "她/tā 五/wǔ 岁/suì _ 会/huì 游泳/yóuyǒng 了/le 。",
+          "en": "She could already swim at five.",
+          "options": [
+            "就/jiù",
+            "才/cái"
+          ],
+          "answer": 0,
+          "why": "Earlier than expected, with le: jiù."
+        },
+        {
+          "type": "spot",
+          "en": "I only got up at eleven.",
+          "options": [
+            "我/wǒ 十一/shíyī 点/diǎn 才/cái 起床/qǐchuáng 。",
+            "我/wǒ 十一/shíyī 点/diǎn 才/cái 起床/qǐchuáng 了/le 。"
+          ],
+          "answer": 0,
+          "why": "cái without le."
+        },
+        {
+          "type": "spot",
+          "en": "If you're tired, then rest.",
+          "options": [
+            "如果/rúguǒ 你/nǐ 累/lèi 了/le ， 就/jiù 休息/xiūxi 吧/ba 。",
+            "如果/rúguǒ 你/nǐ 累/lèi 了/le ， 才/cái 休息/xiūxi 吧/ba 。"
+          ],
+          "answer": 0,
+          "why": "Linking a condition and what follows: jiù."
+        }
+      ]
+    },
+    {
+      "id": "because-although",
+      "title": "Because, so, although, but",
+      "summary": "Pairs: 因为…所以 yīnwèi … suǒyǐ, 虽然…但是 suīrán … dànshì.",
+      "pattern": "因为 yīnwèi A，所以 suǒyǐ B · 虽然 suīrán A，但是 dànshì B",
+      "text": [
+        "Chinese likes to mark both halves: yīnwèi xià yǔ, suǒyǐ wǒ méi qù, because it rained, (so) I didn't go. Either word can be left out, but using both is natural, and the reason usually comes first.",
+        "Same with \"although\": suīrán hěn guì, dànshì hěn hǎo, although it's expensive, (but) it's good. English drops the \"but\"; Chinese keeps it. kěshì can replace dànshì.",
+        "Asking why: wèishénme? Answer with yīnwèi …"
+      ],
+      "examples": [
+        {
+          "t": "因为/yīnwèi 下雨/xiàyǔ ， 所以/suǒyǐ 我/wǒ 没/méi 去/qù 。",
+          "en": "Because it rained, I didn't go."
+        },
+        {
+          "t": "虽然/suīrán 中文/Zhōngwén 很/hěn 难/nán ， 但是/dànshì 很/hěn 有意思/yǒuyìsi 。",
+          "en": "Although Chinese is hard, it's interesting."
+        },
+        {
+          "t": "我/wǒ 学/xué 中文/Zhōngwén ， 因为/yīnwèi 我/wǒ 女朋友/nǚpéngyou 是/shì 中国人/Zhōngguórén 。",
+          "en": "I learn Chinese because my girlfriend is Chinese."
+        },
+        {
+          "t": "他/tā 虽然/suīrán 很/hěn 忙/máng ， 可是/kěshì 每天/měitiān 都/dōu 跑步/pǎobù 。",
+          "en": "Although he's busy, he runs every day."
+        },
+        {
+          "t": "我/wǒ 太/tài 累/lèi 了/le ， 所以/suǒyǐ 早/zǎo 睡/shuì 了/le 。",
+          "en": "I was too tired, so I went to bed early."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "所以/suǒyǐ 我/wǒ 没/méi 去/qù ， 因为/yīnwèi 下雨/xiàyǔ 。",
+          "right": "因为/yīnwèi 下雨/xiàyǔ ， 所以/suǒyǐ 我/wǒ 没/méi 去/qù 。",
+          "why": "suǒyǐ introduces the result, which comes second."
+        }
+      ],
+      "exercises": [
+        {
+          "type": "order",
+          "t": "因为/yīnwèi 我/wǒ 病/bìng 了/le ， 所以/suǒyǐ 没/méi 去/qù 上班/shàngbān 。",
+          "en": "Because I was ill, I didn't go to work."
+        },
+        {
+          "type": "order",
+          "t": "虽然/suīrán 很/hěn 贵/guì ， 但是/dànshì 我/wǒ 很/hěn 喜欢/xǐhuan 。",
+          "en": "Although it's expensive, I really like it."
+        },
+        {
+          "type": "choose",
+          "t": "虽然/suīrán 下雨/xiàyǔ 了/le ， _ 我们/wǒmen 还是/háishi 去/qù 了/le 。",
+          "en": "Although it rained, we still went.",
+          "options": [
+            "但是/dànshì",
+            "所以/suǒyǐ",
+            "因为/yīnwèi"
+          ],
+          "answer": 0,
+          "why": "suīrán … dànshì."
+        },
+        {
+          "type": "choose",
+          "t": "_ 太/tài 晚/wǎn 了/le ， 所以/suǒyǐ 我/wǒ 打车/dǎchē 回家/huíjiā 。",
+          "en": "Because it was too late, I took a taxi home.",
+          "options": [
+            "因为/yīnwèi",
+            "虽然/suīrán",
+            "但是/dànshì"
+          ],
+          "answer": 0,
+          "why": "yīnwèi … suǒyǐ."
+        },
+        {
+          "type": "spot",
+          "en": "Although he is tall, he doesn't play basketball.",
+          "options": [
+            "虽然/suīrán 他/tā 很/hěn 高/gāo ， 但是/dànshì 他/tā 不/bù 打/dǎ 篮球/lánqiú 。",
+            "虽然/suīrán 他/tā 很/hěn 高/gāo ， 所以/suǒyǐ 他/tā 不/bù 打/dǎ 篮球/lánqiú 。"
+          ],
+          "answer": 0,
+          "why": "suīrán pairs with dànshì, not suǒyǐ."
+        },
+        {
+          "type": "spot",
+          "en": "Why are you learning Chinese?",
+          "options": [
+            "你/nǐ 为什么/wèishénme 学/xué 中文/Zhōngwén ？",
+            "你/nǐ 因为/yīnwèi 学/xué 中文/Zhōngwén ？"
+          ],
+          "answer": 0,
+          "why": "Asking why: wèishénme."
+        }
+      ]
+    }
+  ]
+}

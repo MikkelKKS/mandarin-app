@@ -21,6 +21,7 @@ Six tabs (`src/App.tsx`): **Home**, **Tones**, **Reading**, **Library**, **Stats
 | Stories | `features/read/` | Eight short stories, read aloud paragraph by paragraph; "Characters only" mode feeds reading cards |
 | Music | `features/music/` | The song catalogue (`catalogue.ts`) ranked against what you know, with filters; lyrics by LRCLIB id (`lyrics.ts`, retried); Spotify lookup on demand (`spotifyIds.ts`, `match.ts`); playlist; Follow along with a timing nudge |
 | HSK words | `features/progress/WordsView.tsx` | Every word by level and stage; search (characters, pinyin, English) across levels; move one word from its card or many in "Move words" mode |
+| Grammar | `features/grammar/` (GrammarView: list, topic page, practice; Question: order / choose / spot, also used in sessions), `lib/grammarTopics.ts` (token format, helpers; no I/O), `lib/grammarData.ts` (bundles content/grammar/*.json) | Grammar topics to read, with practice; topic cards `gram-<id>` bring questions into sessions |
 | Dictionary | `features/dictionary/` | CC-CEDICT lookup, sentence breakdown, translation, "Learn next", saving your own sentences for practice (`MySentences.tsx`, `lib/mySentences.ts`) |
 | Stats | `features/stats/` | Words by level and stage, retention, forecast, tones, time, accuracy, XP, achievements |
 | Placement | `features/placement/` | A short test (dictation, then the meaning) or a chosen starting level marks known words |

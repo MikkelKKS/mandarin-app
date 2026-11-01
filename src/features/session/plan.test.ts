@@ -243,3 +243,19 @@ describe('your own sentences (saved from the dictionary)', async () => {
     expect(deep.blocks.map((b) => b.id).slice(0, 2)).toEqual(['reviews', 'mine']);
   });
 });
+
+describe('grammar in sessions', async () => {
+  const { GRAMMAR } = await import('./plan');
+  const due = Array.from({ length: 8 }, (_, i) => ({ topic: `t${i}`, exercises: 6 }));
+  const base = { data, started: new Set(['w0']), mic: false, now: 1, rng, tones: [], reviews: ['w1#mp'], newWords: [], grammar: due };
+  it('one question from each due topic, a few per session, graded on the topic card', () => {
+    const quick = planSession({ ...base, mode: 'quick' });
+    const q = quick.blocks.find((b) => b.id === 'grammar')!;
+    expect(q.items).toHaveLength(GRAMMAR.quick);
+    expect(q.items[0]).toEqual({ kind: 'grammar', topic: 't0', ex: Math.floor(0.42 * 6) });
+    expect(cardOf(q.items[0])).toBe('gram-t0');
+    const deep = planSession({ ...base, mode: 'deep' });
+    expect(deep.blocks.find((b) => b.id === 'grammar')!.items).toHaveLength(GRAMMAR.deep);
+    expect(planSession({ ...base, grammar: [], mode: 'quick' }).blocks.some((b) => b.id === 'grammar')).toBe(false);
+  });
+});

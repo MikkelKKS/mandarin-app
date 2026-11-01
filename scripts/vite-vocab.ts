@@ -59,6 +59,10 @@ export function vocabModules(root: string): Plugin {
           custom: Object.keys(made)
             .filter((f) => f.startsWith('m-') && f.endsWith('.mp3') && !f.endsWith('.slow.mp3'))
             .map((f) => f.slice(0, -4)),
+          // Grammar topic sentences recorded so far (gr-<topic>-<n>, gr-<topic>-x<n>).
+          grammar: Object.keys(made)
+            .filter((f) => f.startsWith('gr-') && f.endsWith('.mp3') && !f.endsWith('.slow.mp3'))
+            .map((f) => f.slice(0, -4)),
         };
         return `export default ${JSON.stringify(out)};`;
       }

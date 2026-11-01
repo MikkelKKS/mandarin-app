@@ -27,6 +27,8 @@ import { Speak } from './Speak';
 import { LookUp } from '../../components/LookUp';
 import { ReadingItem } from '../reading/ReadItems';
 import type { SItem } from './plan';
+import { GrammarQuestion } from '../grammar/Question';
+import { topicById } from '../../lib/grammarData';
 
 export interface ItemResult {
   outcome: Outcome;
@@ -138,6 +140,10 @@ export function SessionItem(p: ItemProps) {
     case 'read-pinyin':
     case 'read-meaning':
       return <ReadingItem item={p.item} onResult={p.onResult} />;
+    case 'grammar': {
+      const topic = topicById.get(p.item.topic);
+      return topic ? <GrammarQuestion topic={topic} index={p.item.ex % topic.exercises.length} onResult={p.onResult} /> : null;
+    }
   }
 }
 

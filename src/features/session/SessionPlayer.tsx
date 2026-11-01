@@ -32,6 +32,8 @@ import { LessonCtx, type LessonApi } from '../lesson/context';
 import { GradeChip } from '../lesson/GradeChip';
 import type { Outcome } from '../lesson/types';
 import { patternStats, pickRound, sessionPool } from '../tonegym/model';
+import { GRAMMAR_CARD } from '../../lib/grammarTopics';
+import { topicById } from '../../lib/grammarData';
 import { ContextLine, SessionItem, type ItemResult } from './items';
 import { BLOCK_TITLE, cardOf, DEEP, newWordItems, planSession, QUICK, READING, readingItems, type SItem, type SessionMode } from './plan';
 import { SessionEnd } from './SessionEnd';
@@ -77,7 +79,14 @@ async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerD
   // Your saved sentences not practised yet, oldest first.
   const byCard = new Map(cards.map((c) => [c.id, c]));
   const mySentences = [...data.sentences.keys()].filter((id) => id.startsWith('m-') && byCard.get(id)?.state === 0);
-  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, newest, reading, mySentences, now });
+  // Grammar topics you've practised whose review is due, most overdue first.
+  const grammar = cards
+    .filter((c) => GRAMMAR_CARD.test(c.id) && c.state !== 0 && c.due <= now)
+    .sort((a, b) => a.due - b.due)
+    .map((c) => topicById.get(c.id.slice(5)))
+    .filter((t): t is NonNullable<typeof t> => !!t)
+    .map((t) => ({ topic: t.id, exercises: t.exercises.length }));
+  const plan = planSession({ mode, reviews: queue.reviews, newWords: queue.newWords, data, started, tones, mic, speakNew, newest, reading, mySentences, grammar, now });
   return { id: 'session', plan, block: 0, item: 0, xp: 0, combo: 0, bestCombo: 0, right: 0, answered: 0, newWords: [], tones: [], done: false, startedAt: now, updatedAt: now };
 }
 
@@ -211,7 +220,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
       // Record it.
       const card = cardOf(item);
       const exercise = item.kind === 'tone' ? 'tonegym:session' : item.kind;
-      const itemId = 'word' in item ? item.word : 'sentence' in item ? item.sentence : 'item' in item ? item.item : item.kind === 'tone' ? item.gym.word : '';
+      const itemId = 'word' in item ? item.word : 'sentence' in item ? item.sentence : 'item' in item ? item.item : item.kind === 'tone' ? item.gym.word : item.kind === 'grammar' ? `${item.topic}#${item.ex}` : '';
       if (item.kind === 'read-intro') {
         void introduceReadItem(item.item).then(() => recordSessionAnswer({ itemId, verdict: 'correct', exercise: 'read-intro', xp, via: item.via }));
       } else if (item.kind === 'intro') {

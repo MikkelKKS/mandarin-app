@@ -27,6 +27,7 @@ declare module 'virtual:audio-progress' {
     builtAt: number;
     /** Ids of "My sentences" (m-…) that have a recording. */
     custom: string[];
+    grammar: string[];
   };
   export default p;
 }

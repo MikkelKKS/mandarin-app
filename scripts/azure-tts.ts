@@ -17,6 +17,7 @@
  * monthly free quota (it picks up where it left off the next month).
  */
 import { allGrammarNotes } from '../src/lib/grammar';
+import { exampleAudioId, exerciseAudioId, hanziOf, pinyinOf, sentenceOf, spokenLine, topicsOf, type TopicFile } from '../src/lib/grammarTopics';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import {
@@ -212,6 +213,25 @@ function storyParagraphs(): Array<{ id: string; hanzi: string }> {
     });
 }
 
+function grammarTopicJobs(): Job[] {
+  const dir = join(ROOT, 'content', 'grammar');
+  if (!existsSync(dir)) return [];
+  const files = readdirSync(dir)
+    .filter((f) => f.endsWith('.json'))
+    .sort()
+    .map((f) => JSON.parse(readFileSync(join(dir, f), 'utf8')) as TopicFile);
+  const out: Job[] = [];
+  const add = (id: string, line: string) => {
+    const said = spokenLine(line);
+    out.push({ id, voice: 'f', hanzi: hanziOf(said), pinyin: pinyinOf(said), slow: false, file: `${id}.mp3` });
+  };
+  for (const t of topicsOf(files)) {
+    t.examples.forEach((e, i) => add(exampleAudioId(t.id, i), e.t));
+    t.exercises.forEach((x, i) => add(exerciseAudioId(t.id, i), sentenceOf(x)));
+  }
+  return out;
+}
+
 function bulkJobs(): Job[] {
   const male = maleLines();
   const words = readList<{ id: string; hanzi: string; pinyin: string; order: number; examples: string[] }>('words.json', 'words').sort((a, b) => a.order - b.order);
@@ -229,6 +249,8 @@ function bulkJobs(): Job[] {
   for (const st of storyParagraphs()) normal.push({ id: st.id, voice: 'm', hanzi: st.hanzi, pinyin: '', slow: false, file: `${st.id}.mp3` });
   // Grammar-note examples (content/grammar-notes.json).
   for (const g of allGrammarNotes()) normal.push({ id: g.id, voice: 'f', hanzi: g.zh, pinyin: g.py, slow: false, file: `${g.id}.mp3` });
+  // Grammar topics (content/grammar): the examples, then each exercise's right sentence.
+  for (const j of grammarTopicJobs()) normal.push(j);
   for (const w of words) {
     normal.push({ id: w.id, voice: 'f', hanzi: w.hanzi, pinyin: w.pinyin, slow: false, file: `${w.id}.mp3` });
     for (const e of w.examples) addSentence(e);

@@ -10,6 +10,7 @@ import { DictionaryView } from './features/dictionary/DictionaryView';
 import { NodeRunner } from './features/lesson/Runners';
 import { PathView } from './features/path/PathView';
 import { LibraryView } from './features/library/LibraryView';
+import { GrammarRoute } from './features/grammar/GrammarView';
 import { About } from './features/settings/About';
 import { AudioSample } from './features/settings/AudioSample';
 import { ToneGymRoute } from './features/tonegym/ToneGym';
@@ -78,6 +79,18 @@ export default function App() {
     case 'words':
       body = <WordsView />;
       break;
+    case 'grammar':
+      // Practice is full screen, like a session (room for the answer panel at the bottom).
+      if (route[2] === 'practice')
+        return (
+          <WordPopupProvider>
+            <div className="mx-auto max-w-xl px-4 pt-[max(1rem,env(safe-area-inset-top))]">
+              <GrammarRoute key={route.join('/')} route={route} />
+            </div>
+          </WordPopupProvider>
+        );
+      body = <GrammarRoute route={route} />;
+      break;
     case 'placement':
       body = <PlacementView />;
       break;
@@ -126,6 +139,7 @@ const TAB_OF: Record<string, string> = {
   music: 'library',
   dictionary: 'library',
   words: 'library',
+  grammar: 'library',
   placement: '',
 };
 

@@ -1,0 +1,326 @@
+{
+  "level": 2,
+  "topics": [
+    {
+      "id": "verb-not-verb",
+      "title": "Questions like 去不去 qù bu qù",
+      "summary": "Say the verb, then bù and the verb again: \"go or not go?\"",
+      "pattern": "Subject + Verb + 不 bu + Verb (+ Object)?",
+      "text": [
+        "Another way to ask a yes/no question is to offer both answers: nǐ qù bu qù? Are you going (or not)? It means the same as nǐ qù ma? but sounds more direct and is very common in speech.",
+        "The middle bù is said lightly, in the neutral tone. It works with adjectives too: hǎo bu hǎo? is it good? and with shì: nǐ shì bu shì Zhōngguórén?",
+        "For yǒu it's yǒu méiyǒu: nǐ yǒu méiyǒu shíjiān? Never add ma to this kind of question: it already is one."
+      ],
+      "examples": [
+        { "t": "你/nǐ 去/qù 不/bu 去/qù ？", "en": "Are you going?" },
+        { "t": "你/nǐ 是/shì 不/bu 是/shì 老师/lǎoshī ？", "en": "Are you a teacher?" },
+        { "t": "这个/zhège 好/hǎo 不/bu 好/hǎo 吃/chī ？", "en": "Is this tasty?" },
+        { "t": "你/nǐ 有/yǒu 没有/méiyǒu 时间/shíjiān ？", "en": "Do you have time?" },
+        { "t": "你/nǐ 喜欢/xǐhuan 不/bu 喜欢/xǐhuan 他/tā ？", "en": "Do you like him?" }
+      ],
+      "mistakes": [
+        { "wrong": "你/nǐ 去/qù 不/bu 去/qù 吗/ma ？", "right": "你/nǐ 去/qù 不/bu 去/qù ？", "why": "No ma: the question is already in the verb." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "你/nǐ 想/xiǎng 不/bu 想/xiǎng 去/qù ？", "en": "Do you want to go?" },
+        { "type": "order", "t": "他/tā 是/shì 不/bu 是/shì 你/nǐ 哥哥/gēge ？", "en": "Is he your older brother?" },
+        { "type": "choose", "t": "你/nǐ 有/yǒu _ 哥哥/gēge ？", "en": "Do you have an older brother?", "options": ["没有/méiyǒu", "不有/bùyǒu", "不/bu"], "answer": 0, "why": "With yǒu: yǒu méiyǒu." },
+        { "type": "spot", "en": "Is it expensive?", "options": ["贵/guì 不/bu 贵/guì ？", "贵/guì 不/bu 贵/guì 吗/ma ？"], "answer": 0, "why": "No ma after a verb-not-verb question." },
+        { "type": "spot", "en": "Do you drink coffee?", "options": ["你/nǐ 喝/hē 不/bu 喝/hē 咖啡/kāfēi ？", "你/nǐ 喝/hē 咖啡/kāfēi 不/bu ？", "你/nǐ 不/bu 喝/hē 喝/hē 咖啡/kāfēi ？"], "answer": 0, "why": "Verb, bu, verb again, then the object." },
+        { "type": "choose", "t": "今天/jīntiān 冷/lěng _ 冷/lěng ？", "en": "Is it cold today?", "options": ["不/bu", "没/méi", "吗/ma"], "answer": 0, "why": "Adjective + bu + adjective." }
+      ]
+    },
+    {
+      "id": "le-done",
+      "title": "了 le after a verb: it happened",
+      "summary": "Verb + le says an action is done.",
+      "pattern": "Subject + Verb + 了 le + (amount) Object",
+      "text": [
+        "le right after a verb marks the action as completed: wǒ mǎile yì běn shū, I bought a book. It isn't a past tense: it can be about the future too (míngtiān xiàle kè wǒ qù zhǎo nǐ, tomorrow when class has finished I'll come and find you).",
+        "With a plain object, a sentence like wǒ chīle fàn sounds unfinished. Give the object an amount or description (chīle liǎng wǎn fàn), or add a second le at the end, or keep going: wǒ chīle fàn jiù zǒu, after eating I'll leave.",
+        "Habits and states don't take le, even in the past: yǐqián wǒ chángcháng qù, I used to go often. The negative is méi + verb, without le."
+      ],
+      "examples": [
+        { "t": "我/wǒ 买/mǎi 了/le 两/liǎng 本/běn 书/shū 。", "en": "I bought two books." },
+        { "t": "他/tā 喝/hē 了/le 三/sān 杯/bēi 咖啡/kāfēi 。", "en": "He drank three cups of coffee." },
+        { "t": "我/wǒ 昨天/zuótiān 看/kàn 了/le 一/yī 个/ge 电影/diànyǐng 。", "en": "I saw a film yesterday." },
+        { "t": "下/xià 了/le 课/kè 我/wǒ 去/qù 找/zhǎo 你/nǐ 。", "en": "After class I'll come and find you." },
+        { "t": "我/wǒ 没/méi 买/mǎi 那/nà 件/jiàn 衣服/yīfu 。", "en": "I didn't buy that piece of clothing." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 没/méi 去/qù 了/le 。", "right": "我/wǒ 没/méi 去/qù 。", "why": "méi replaces le." },
+        { "wrong": "以前/yǐqián 我/wǒ 常常/chángcháng 去/qù 了/le 。", "right": "以前/yǐqián 我/wǒ 常常/chángcháng 去/qù 。", "why": "A habit takes no le." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 喝/hē 了/le 一/yī 杯/bēi 茶/chá 。", "en": "I drank a cup of tea." },
+        { "type": "order", "t": "她/tā 买/mǎi 了/le 很/hěn 多/duō 东西/dōngxi 。", "en": "She bought lots of things." },
+        { "type": "choose", "t": "我/wǒ 昨天/zuótiān 吃/chī _ 三/sān 个/ge 苹果/píngguǒ 。", "en": "I ate three apples yesterday.", "options": ["了/le", "过/guo", "着/zhe"], "answer": 0, "why": "A completed action with an amount: le." },
+        { "type": "spot", "en": "I didn't see him.", "options": ["我/wǒ 没/méi 看见/kànjiàn 他/tā 。", "我/wǒ 没/méi 看见/kànjiàn 了/le 他/tā 。", "我/wǒ 不/bù 看见/kànjiàn 了/le 他/tā 。"], "answer": 0, "why": "méi + verb, without le." },
+        { "type": "spot", "en": "I used to swim every day.", "options": ["我/wǒ 以前/yǐqián 每天/měitiān 游泳/yóuyǒng 。", "我/wǒ 以前/yǐqián 每天/měitiān 游/yóu 了/le 泳/yǒng 。"], "answer": 0, "why": "A habit in the past takes no le." },
+        { "type": "choose", "t": "他/tā 写/xiě _ 一/yī 封/fēng 信/xìn 。", "en": "He wrote a letter.", "options": ["了/le", "的/de", "得/de"], "answer": 0, "why": "Completed: verb + le." }
+      ]
+    },
+    {
+      "id": "le-change",
+      "title": "了 le at the end: now it's different",
+      "summary": "Sentence-final le says something has changed or is now the case.",
+      "pattern": "Statement + 了 le",
+      "text": [
+        "At the end of a sentence le announces a new situation: xià yǔ le, it's started raining. Wǒ èr shí wǔ suì le, I'm 25 now. Tiān hēi le, it's got dark.",
+        "With bù it means \"not any more\" or a change of plan: wǒ bù qù le, I'm not going after all. Wǒ bù è le, I'm not hungry any more.",
+        "kuài … le and yào … le mean \"about to\": kuài xià yǔ le, it's about to rain. tài … le is \"too, so\": tài guì le, too expensive!"
+      ],
+      "examples": [
+        { "t": "下雨/xiàyǔ 了/le 。", "en": "It's started raining." },
+        { "t": "我/wǒ 饿/è 了/le 。", "en": "I'm hungry (now)." },
+        { "t": "我/wǒ 不/bù 去/qù 了/le 。", "en": "I'm not going after all." },
+        { "t": "快/kuài 到/dào 了/le 。", "en": "We're nearly there." },
+        { "t": "太/tài 好/hǎo 了/le ！", "en": "Great!" }
+      ],
+      "mistakes": [
+        { "wrong": "太/tài 贵/guì 。", "right": "太/tài 贵/guì 了/le 。", "why": "tài … le go together." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "他/tā 已经/yǐjīng 回家/huíjiā 了/le 。", "en": "He has already gone home." },
+        { "type": "order", "t": "我/wǒ 现在/xiànzài 不/bù 忙/máng 了/le 。", "en": "I'm not busy any more." },
+        { "type": "choose", "t": "天/tiān 黑/hēi _ 。", "en": "It's got dark.", "options": ["了/le", "吗/ma", "的/de"], "answer": 0, "why": "A new situation: le at the end." },
+        { "type": "choose", "t": "快/kuài 下雨/xiàyǔ _ 。", "en": "It's about to rain.", "options": ["了/le", "过/guo", "呢/ne"], "answer": 0, "why": "kuài … le: about to." },
+        { "type": "spot", "en": "I don't want it any more.", "options": ["我/wǒ 不/bù 要/yào 了/le 。", "我/wǒ 没/méi 要/yào 了/le 。"], "answer": 0, "why": "bù … le: not any more." },
+        { "type": "spot", "en": "It's too hot!", "options": ["太/tài 热/rè 了/le ！", "很/hěn 热/rè 了/le 太/tài ！", "热/rè 太/tài 了/le ！"], "answer": 0, "why": "tài + adjective + le." }
+      ]
+    },
+    {
+      "id": "guo",
+      "title": "过 guo: ever done it",
+      "summary": "Verb + guo: you have the experience of doing it.",
+      "pattern": "Subject + Verb + 过 guo + Object",
+      "text": [
+        "guo after a verb says you have done something at some point, as an experience: wǒ qùguo Běijīng, I've been to Beijing. It's the \"have you ever …?\" of Chinese.",
+        "The negative is méi + verb + guo: wǒ méi chīguo Běijīng kǎoyā, I've never had Peking duck. Here guo stays (unlike le).",
+        "Ask with ma or with … guo méiyǒu: nǐ qùguo Zhōngguó ma? / nǐ qùguo Zhōngguó méiyǒu?"
+      ],
+      "examples": [
+        { "t": "我/wǒ 去/qù 过/guo 北京/Běijīng 。", "en": "I've been to Beijing." },
+        { "t": "你/nǐ 吃/chī 过/guo 饺子/jiǎozi 吗/ma ？", "en": "Have you ever had dumplings?" },
+        { "t": "我/wǒ 没/méi 见/jiàn 过/guo 他/tā 。", "en": "I've never met him." },
+        { "t": "她/tā 学/xué 过/guo 两/liǎng 年/nián 日语/Rìyǔ 。", "en": "She studied Japanese for two years (at some point)." },
+        { "t": "这个/zhège 电影/diànyǐng 我/wǒ 看/kàn 过/guo 。", "en": "I've seen this film." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 没/méi 去/qù 过/guo 了/le 中国/Zhōngguó 。", "right": "我/wǒ 没/méi 去/qù 过/guo 中国/Zhōngguó 。", "why": "méi … guo, without le." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 没/méi 喝/hē 过/guo 白酒/báijiǔ 。", "en": "I've never drunk baijiu." },
+        { "type": "order", "t": "你/nǐ 去/qù 过/guo 长城/Chángchéng 吗/ma ？", "en": "Have you been to the Great Wall?" },
+        { "type": "choose", "t": "我/wǒ 小时候/xiǎoshíhou 学/xué _ 钢琴/gāngqín 。", "en": "I learned piano as a child.", "options": ["过/guo", "着/zhe", "的/de"], "answer": 0, "why": "An experience at some point: guo." },
+        { "type": "choose", "t": "我/wǒ _ 去/qù 过/guo 上海/Shànghǎi 。", "en": "I've never been to Shanghai.", "options": ["没/méi", "不/bù"], "answer": 0, "why": "méi … guo." },
+        { "type": "spot", "en": "Have you met my girlfriend?", "options": ["你/nǐ 见/jiàn 过/guo 我/wǒ 女朋友/nǚpéngyou 吗/ma ？", "你/nǐ 过/guo 见/jiàn 我/wǒ 女朋友/nǚpéngyou 吗/ma ？"], "answer": 0, "why": "guo comes right after the verb." },
+        { "type": "spot", "en": "I've never been to Denmark.", "options": ["我/wǒ 不/bù 去/qù 过/guo 丹麦/Dānmài 。", "我/wǒ 没/méi 去/qù 过/guo 丹麦/Dānmài 。"], "answer": 1, "why": "With guo the negative is méi." }
+      ]
+    },
+    {
+      "id": "progressive",
+      "title": "在 zài, 正在 zhèngzài: doing it right now",
+      "summary": "zài before a verb: in the middle of doing it.",
+      "pattern": "Subject + (正)在 (zhèng)zài + Verb (+ 呢 ne)",
+      "text": [
+        "zài before a verb means the action is going on: wǒ zài chīfàn, I'm eating. zhèngzài stresses \"right now\". ne at the end adds the same idea and is very common in speech: wǒ chīfàn ne.",
+        "This is the same zài as \"at\" a place, now used as \"in the middle of\". Both can combine: wǒ zài jiā kàn diànshì, I'm watching TV at home (or I watch TV at home).",
+        "The negative is méi (zài): wǒ méi zài shuìjiào, I'm not sleeping."
+      ],
+      "examples": [
+        { "t": "我/wǒ 在/zài 吃饭/chīfàn 。", "en": "I'm eating." },
+        { "t": "他/tā 正在/zhèngzài 开会/kāihuì 。", "en": "He's in a meeting right now." },
+        { "t": "你/nǐ 在/zài 做/zuò 什么/shénme 呢/ne ？", "en": "What are you doing?" },
+        { "t": "外面/wàimian 在/zài 下雨/xiàyǔ 。", "en": "It's raining outside." },
+        { "t": "我/wǒ 没/méi 在/zài 睡觉/shuìjiào 。", "en": "I'm not sleeping." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 吃饭/chīfàn 在/zài 。", "right": "我/wǒ 在/zài 吃饭/chīfàn 。", "why": "zài goes before the verb." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "妈妈/māma 正在/zhèngzài 做/zuò 饭/fàn 。", "en": "Mum is cooking right now." },
+        { "type": "order", "t": "你/nǐ 在/zài 看/kàn 什么/shénme 呢/ne ？", "en": "What are you watching?" },
+        { "type": "choose", "t": "他/tā _ 打电话/dǎdiànhuà 。", "en": "He's on the phone.", "options": ["在/zài", "了/le", "过/guo"], "answer": 0, "why": "Going on now: zài + verb." },
+        { "type": "spot", "en": "I'm studying.", "options": ["我/wǒ 在/zài 学习/xuéxí 。", "我/wǒ 学习/xuéxí 在/zài 。", "在/zài 我/wǒ 学习/xuéxí 。"], "answer": 0, "why": "Subject + zài + verb." },
+        { "type": "spot", "en": "I'm not watching TV.", "options": ["我/wǒ 不/bù 在/zài 看/kàn 电视/diànshì 。", "我/wǒ 没/méi 在/zài 看/kàn 电视/diànshì 。"], "answer": 1, "why": "The negative of zài + verb is méi zài." },
+        { "type": "choose", "t": "我/wǒ 正在/zhèngzài 写/xiě 作业/zuòyè _ 。", "en": "I'm doing my homework.", "options": ["呢/ne", "吗/ma", "过/guo"], "answer": 0, "why": "ne at the end goes with an ongoing action." }
+      ]
+    },
+    {
+      "id": "want-will",
+      "title": "想 xiǎng, 要 yào, 会 huì: want and will",
+      "summary": "xiǎng would like, yào want/going to, huì will (likely).",
+      "pattern": "Subject + 想 xiǎng / 要 yào / 会 huì + Verb",
+      "text": [
+        "xiǎng + verb is \"would like to\", soft and polite: wǒ xiǎng qù Zhōngguó. yào + verb is a firmer \"want to\" or \"am going to\": wǒ yào qù, I'm going. On its own with a noun, yào means \"want\" (wǒ yào zhège).",
+        "huì + verb predicts: míngtiān huì xià yǔ, it will rain tomorrow. (huì also means \"can\" for skills: next topic.)",
+        "Negatives: bù xiǎng, I don't want to. \"Don't want\" with yào is usually bù xiǎng, because bú yào means \"don't!\": bú yào zǒu, don't go."
+      ],
+      "examples": [
+        { "t": "我/wǒ 想/xiǎng 喝/hē 点儿/diǎnr 水/shuǐ 。", "en": "I'd like some water." },
+        { "t": "我/wǒ 明年/míngnián 要/yào 去/qù 中国/Zhōngguó 。", "en": "I'm going to China next year." },
+        { "t": "明天/míngtiān 会/huì 下雨/xiàyǔ 吗/ma ？", "en": "Will it rain tomorrow?" },
+        { "t": "我/wǒ 不/bù 想/xiǎng 去/qù 。", "en": "I don't want to go." },
+        { "t": "不/bú 要/yào 担心/dānxīn 。", "en": "Don't worry." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 不/bú 要/yào 去/qù 。", "right": "我/wǒ 不/bù 想/xiǎng 去/qù 。", "why": "bú yào sounds like an order (\"don't go!\"). \"I don't want to\" is bù xiǎng." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 想/xiǎng 学/xué 做/zuò 中国菜/Zhōngguócài 。", "en": "I'd like to learn to cook Chinese food." },
+        { "type": "order", "t": "他/tā 不/bù 会/huì 来/lái 的/de 。", "en": "He won't come." },
+        { "type": "choose", "t": "明天/míngtiān 可能/kěnéng _ 很/hěn 冷/lěng 。", "en": "It will probably be cold tomorrow.", "options": ["会/huì", "想/xiǎng", "要/yào"], "answer": 0, "why": "A prediction: huì." },
+        { "type": "choose", "t": "_ 迟到/chídào ！", "en": "Don't be late!", "options": ["不要/búyào", "不想/bùxiǎng", "没有/méiyǒu"], "answer": 0, "why": "An instruction: bú yào." },
+        { "type": "spot", "en": "I'd like a coffee.", "options": ["我/wǒ 想/xiǎng 喝/hē 咖啡/kāfēi 。", "我/wǒ 喝/hē 咖啡/kāfēi 想/xiǎng 。"], "answer": 0, "why": "xiǎng + verb." },
+        { "type": "spot", "en": "I don't want to eat.", "options": ["我/wǒ 不/bú 要/yào 吃/chī 。", "我/wǒ 不/bù 想/xiǎng 吃/chī 。"], "answer": 1, "why": "\"Don't want to\": bù xiǎng." }
+      ]
+    },
+    {
+      "id": "can",
+      "title": "能 néng, 会 huì, 可以 kěyǐ: can",
+      "summary": "huì a learned skill, néng able to, kěyǐ allowed to.",
+      "pattern": "Subject + 会 huì / 能 néng / 可以 kěyǐ + Verb",
+      "text": [
+        "huì is \"can\" for skills you learned: wǒ huì shuō Zhōngwén, I can speak Chinese; tā bú huì kāichē, he can't drive.",
+        "néng is being able to, given the circumstances: wǒ jīntiān bù néng lái, I can't come today. Also for capacity: tā néng hē shí píng píjiǔ.",
+        "kěyǐ is permission: wǒ kěyǐ jìnlái ma? May I come in? Zhèr bù kěyǐ chōuyān, no smoking here. In questions néng and kěyǐ often overlap."
+      ],
+      "examples": [
+        { "t": "我/wǒ 会/huì 游泳/yóuyǒng 。", "en": "I can swim." },
+        { "t": "我/wǒ 今天/jīntiān 不/bù 能/néng 来/lái 。", "en": "I can't come today." },
+        { "t": "我/wǒ 可以/kěyǐ 坐/zuò 这儿/zhèr 吗/ma ？", "en": "May I sit here?" },
+        { "t": "你/nǐ 会/huì 说/shuō 中文/Zhōngwén 吗/ma ？", "en": "Can you speak Chinese?" },
+        { "t": "这儿/zhèr 不/bù 可以/kěyǐ 拍照/pāizhào 。", "en": "No photos here." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 能/néng 说/shuō 一点儿/yīdiǎnr 中文/Zhōngwén 。", "right": "我/wǒ 会/huì 说/shuō 一点儿/yīdiǎnr 中文/Zhōngwén 。", "why": "A language is a learned skill: huì." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 不/bú 会/huì 开车/kāichē 。", "en": "I can't drive." },
+        { "type": "order", "t": "我/wǒ 可以/kěyǐ 用/yòng 你/nǐ 的/de 电脑/diànnǎo 吗/ma ？", "en": "May I use your computer?" },
+        { "type": "choose", "t": "她/tā _ 弹/tán 钢琴/gāngqín 。", "en": "She can play the piano.", "options": ["会/huì", "可以/kěyǐ", "要/yào"], "answer": 0, "why": "A learned skill: huì." },
+        { "type": "choose", "t": "我/wǒ 生病/shēngbìng 了/le ， 明天/míngtiān 不/bù _ 上班/shàngbān 。", "en": "I'm ill, I can't go to work tomorrow.", "options": ["能/néng", "会/huì"], "answer": 0, "why": "Not able, because of circumstances: néng." },
+        { "type": "spot", "en": "May I come in?", "options": ["我/wǒ 可以/kěyǐ 进来/jìnlai 吗/ma ？", "我/wǒ 会/huì 进来/jìnlai 吗/ma ？"], "answer": 0, "why": "Asking permission: kěyǐ." },
+        { "type": "spot", "en": "Can you cook?", "options": ["你/nǐ 会/huì 做饭/zuòfàn 吗/ma ？", "你/nǐ 做饭/zuòfàn 会/huì 吗/ma ？"], "answer": 0, "why": "huì goes before the verb." }
+      ]
+    },
+    {
+      "id": "bi-compare",
+      "title": "Comparing with 比 bǐ",
+      "summary": "A bǐ B + adjective: A is more … than B.",
+      "pattern": "A + 比 bǐ + B + Adjective (+ difference)",
+      "text": [
+        "tā bǐ wǒ gāo, he is taller than me (\"he compared-to me tall\"). No hěn here: tā bǐ wǒ hěn gāo is wrong. To say \"much taller\" add duō le or de duō after it: tā bǐ wǒ gāo duō le.",
+        "The difference goes at the end: tā bǐ wǒ dà liǎng suì, she's two years older than me. A little: yìdiǎnr: zhège bǐ nàge guì yìdiǎnr.",
+        "\"Not as … as\" is méiyǒu: wǒ méiyǒu tā gāo, I'm not as tall as him. \"The same as\" is gēn … yíyàng: wǒ gēn nǐ yíyàng dà, I'm as old as you."
+      ],
+      "examples": [
+        { "t": "他/tā 比/bǐ 我/wǒ 高/gāo 。", "en": "He is taller than me." },
+        { "t": "今天/jīntiān 比/bǐ 昨天/zuótiān 冷/lěng 多/duō 了/le 。", "en": "Today is much colder than yesterday." },
+        { "t": "她/tā 比/bǐ 我/wǒ 大/dà 两/liǎng 岁/suì 。", "en": "She's two years older than me." },
+        { "t": "我/wǒ 没有/méiyǒu 他/tā 那么/nàme 忙/máng 。", "en": "I'm not as busy as him." },
+        { "t": "我/wǒ 的/de 手机/shǒujī 跟/gēn 你/nǐ 的/de 一样/yīyàng 。", "en": "My phone is the same as yours." }
+      ],
+      "mistakes": [
+        { "wrong": "他/tā 比/bǐ 我/wǒ 很/hěn 高/gāo 。", "right": "他/tā 比/bǐ 我/wǒ 高/gāo 多/duō 了/le 。", "why": "No hěn after bǐ; \"much\" is duō le at the end." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "北京/Běijīng 比/bǐ 哥本哈根/Gēběnhāgēn 大/dà 。", "en": "Beijing is bigger than Copenhagen." },
+        { "type": "order", "t": "这/zhè 件/jiàn 比/bǐ 那/nà 件/jiàn 贵/guì 一点儿/yīdiǎnr 。", "en": "This one is a little more expensive than that one." },
+        { "type": "choose", "t": "我/wǒ 哥哥/gēge _ 我/wǒ 高/gāo 。", "en": "My older brother is taller than me.", "options": ["比/bǐ", "跟/gēn", "很/hěn"], "answer": 0, "why": "A bǐ B + adjective." },
+        { "type": "spot", "en": "Tea is cheaper than coffee.", "options": ["茶/chá 比/bǐ 咖啡/kāfēi 便宜/piányi 。", "茶/chá 比/bǐ 咖啡/kāfēi 很/hěn 便宜/piányi 。", "茶/chá 便宜/piányi 比/bǐ 咖啡/kāfēi 。"], "answer": 0, "why": "A bǐ B + adjective, no hěn." },
+        { "type": "spot", "en": "I'm not as tall as you.", "options": ["我/wǒ 不/bù 比/bǐ 你/nǐ 高/gāo 。", "我/wǒ 没有/méiyǒu 你/nǐ 高/gāo 。"], "answer": 1, "why": "\"Not as … as\": méiyǒu. (bù bǐ means \"not taller\", maybe the same.)" },
+        { "type": "choose", "t": "我/wǒ 跟/gēn 你/nǐ _ 大/dà 。", "en": "I'm as old as you.", "options": ["一样/yīyàng", "比/bǐ", "很/hěn"], "answer": 0, "why": "gēn … yíyàng: the same as." }
+      ]
+    },
+    {
+      "id": "de-complement",
+      "title": "得 de: how well something is done",
+      "summary": "Verb + de + description says how an action is done.",
+      "pattern": "Subject + (Object +) Verb + 得 de + Adjective",
+      "text": [
+        "To say how someone does something, put de after the verb and the description after it: tā pǎo de hěn kuài, he runs fast. Nǐ shuō de hěn hǎo, you speak well.",
+        "With an object, say the verb twice or put the object first: tā shuō Zhōngwén shuō de hěn hǎo, or tā Zhōngwén shuō de hěn hǎo. Never put the object between de and the adjective.",
+        "Three de, one sound: 的 before a noun (wǒ de shū), 得 after a verb (shuō de hǎo), and 地 before a verb (mànmān de zǒu, walk slowly). In speech they sound the same; in writing the character tells them apart."
+      ],
+      "examples": [
+        { "t": "他/tā 跑/pǎo 得/de 很/hěn 快/kuài 。", "en": "He runs fast." },
+        { "t": "你/nǐ 中文/Zhōngwén 说/shuō 得/de 很/hěn 好/hǎo 。", "en": "You speak Chinese well." },
+        { "t": "我/wǒ 昨天/zuótiān 睡/shuì 得/de 不/bù 好/hǎo 。", "en": "I didn't sleep well last night." },
+        { "t": "她/tā 做/zuò 菜/cài 做/zuò 得/de 非常/fēicháng 好吃/hǎochī 。", "en": "She cooks really well." },
+        { "t": "请/qǐng 慢慢/mànmàn 地/de 说/shuō 。", "en": "Please speak slowly." }
+      ],
+      "mistakes": [
+        { "wrong": "他/tā 说/shuō 得/de 中文/Zhōngwén 很/hěn 好/hǎo 。", "right": "他/tā 中文/Zhōngwén 说/shuō 得/de 很/hěn 好/hǎo 。", "why": "The object can't go between de and the adjective." },
+        { "wrong": "他/tā 很/hěn 好/hǎo 地/de 唱/chàng 。", "right": "他/tā 唱/chàng 得/de 很/hěn 好/hǎo 。", "why": "How well something is done: verb + 得 + adjective." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "你/nǐ 写/xiě 得/de 很/hěn 漂亮/piàoliang 。", "en": "You write beautifully." },
+        { "type": "order", "t": "我/wǒ 女朋友/nǚpéngyou 唱歌/chànggē 唱/chàng 得/de 很/hěn 好/hǎo 。", "en": "My girlfriend sings well." },
+        { "type": "choose", "t": "他/tā 走/zǒu _ 很/hěn 慢/màn 。", "en": "He walks slowly.", "options": ["得/de", "的/de", "地/de"], "answer": 0, "why": "After a verb, describing how: 得." },
+        { "type": "choose", "t": "这/zhè 是/shì 我/wǒ _ 电脑/diànnǎo 。", "en": "This is my computer.", "options": ["的/de", "得/de", "地/de"], "answer": 0, "why": "Before a noun: 的." },
+        { "type": "choose", "t": "他/tā 高兴/gāoxìng _ 笑/xiào 了/le 。", "en": "He laughed happily.", "options": ["地/de", "得/de", "的/de"], "answer": 0, "why": "Before a verb, saying how it's done: 地." },
+        { "type": "spot", "en": "She dances well.", "options": ["她/tā 跳舞/tiàowǔ 跳/tiào 得/de 很/hěn 好/hǎo 。", "她/tā 跳/tiào 得/de 舞/wǔ 很/hěn 好/hǎo 。"], "answer": 0, "why": "Repeat the verb (or put the object first) before de." }
+      ]
+    },
+    {
+      "id": "duration",
+      "title": "How long: duration after the verb",
+      "summary": "\"I studied for two years\" puts the time span after the verb.",
+      "pattern": "Subject + Verb + (了 le) + Duration (+ Object)",
+      "text": [
+        "A point in time (zuótiān, sān diǎn) goes before the verb, but a length of time goes after it: wǒ xuéle liǎng nián, I studied for two years. Tā shuìle bā ge xiǎoshí, she slept eight hours.",
+        "With an object, either repeat the verb (wǒ xué Zhōngwén xuéle liǎng nián) or put the duration between verb and object with an optional de: wǒ xuéle liǎng nián (de) Zhōngwén.",
+        "If it's still going on, add le at the end too: wǒ xué Zhōngwén xuéle liǎng nián le, I've been studying Chinese for two years (and still am)."
+      ],
+      "examples": [
+        { "t": "我/wǒ 等/děng 了/le 二十/èrshí 分钟/fēnzhōng 。", "en": "I waited twenty minutes." },
+        { "t": "她/tā 睡/shuì 了/le 八/bā 个/ge 小时/xiǎoshí 。", "en": "She slept eight hours." },
+        { "t": "我/wǒ 学/xué 了/le 一/yī 年/nián 中文/Zhōngwén 。", "en": "I studied Chinese for a year." },
+        { "t": "我/wǒ 学/xué 中文/Zhōngwén 学/xué 了/le 两/liǎng 年/nián 了/le 。", "en": "I've been learning Chinese for two years." },
+        { "t": "我们/wǒmen 在/zài 北京/Běijīng 住/zhù 了/le 一/yī 个/ge 星期/xīngqī 。", "en": "We stayed in Beijing for a week." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 两/liǎng 个/ge 小时/xiǎoshí 学习/xuéxí 了/le 。", "right": "我/wǒ 学习/xuéxí 了/le 两/liǎng 个/ge 小时/xiǎoshí 。", "why": "A length of time comes after the verb." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 跑/pǎo 了/le 一/yī 个/ge 小时/xiǎoshí 。", "en": "I ran for an hour." },
+        { "type": "order", "t": "他/tā 在/zài 中国/Zhōngguó 住/zhù 了/le 三/sān 年/nián 。", "en": "He lived in China for three years." },
+        { "type": "spot", "en": "I waited for half an hour.", "options": ["我/wǒ 半/bàn 个/ge 小时/xiǎoshí 等/děng 了/le 。", "我/wǒ 等/děng 了/le 半/bàn 个/ge 小时/xiǎoshí 。"], "answer": 1, "why": "Duration after the verb." },
+        { "type": "spot", "en": "I've been working here for five years (and still am).", "options": ["我/wǒ 在/zài 这儿/zhèr 工作/gōngzuò 了/le 五/wǔ 年/nián 了/le 。", "我/wǒ 五/wǔ 年/nián 在/zài 这儿/zhèr 工作/gōngzuò 。"], "answer": 0, "why": "Duration after the verb, with a second le because it's still going on." },
+        { "type": "choose", "t": "我/wǒ 每天/měitiān 学/xué _ 中文/Zhōngwén 。", "en": "I study Chinese for half an hour every day.", "options": ["半/bàn 个/ge 小时/xiǎoshí", "三/sān 点/diǎn", "今天/jīntiān"], "answer": 0, "why": "A length of time goes between the verb and the object." },
+        { "type": "choose", "t": "我/wǒ _ 起床/qǐchuáng 。", "en": "I got up at seven.", "options": ["七/qī 点/diǎn", "七/qī 个/ge 小时/xiǎoshí"], "answer": 0, "why": "A point in time (seven o'clock) goes before the verb." }
+      ]
+    },
+    {
+      "id": "haishi-huozhe",
+      "title": "\"Or\": 还是 háishi and 或者 huòzhě",
+      "summary": "háishi in questions (A or B?), huòzhě in statements (A or B is fine).",
+      "pattern": "A 还是 háishi B? · A 或者 huòzhě B",
+      "text": [
+        "When you ask someone to choose, use háishi: nǐ hē chá háishi kāfēi? Tea or coffee? The question is in háishi itself, so no ma.",
+        "In a statement, \"or\" is huòzhě: wǒ míngtiān huòzhě hòutiān qù, I'll go tomorrow or the day after. Either is fine.",
+        "háishi can also link whole verbs: nǐ qù háishi bú qù? Are you going or not?"
+      ],
+      "examples": [
+        { "t": "你/nǐ 喝/hē 茶/chá 还是/háishi 咖啡/kāfēi ？", "en": "Would you like tea or coffee?" },
+        { "t": "你/nǐ 是/shì 学生/xuésheng 还是/háishi 老师/lǎoshī ？", "en": "Are you a student or a teacher?" },
+        { "t": "我/wǒ 周六/zhōuliù 或者/huòzhě 周日/zhōurì 去/qù 。", "en": "I'll go on Saturday or Sunday." },
+        { "t": "你/nǐ 今天/jīntiān 去/qù 还是/háishi 明天/míngtiān 去/qù ？", "en": "Are you going today or tomorrow?" },
+        { "t": "坐/zuò 地铁/dìtiě 或者/huòzhě 打车/dǎchē 都/dōu 可以/kěyǐ 。", "en": "Taking the metro or a taxi are both fine." }
+      ],
+      "mistakes": [
+        { "wrong": "你/nǐ 要/yào 米饭/mǐfàn 或者/huòzhě 面条/miàntiáo ？", "right": "你/nǐ 要/yào 米饭/mǐfàn 还是/háishi 面条/miàntiáo ？", "why": "Asking someone to choose: háishi." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "你/nǐ 想/xiǎng 吃/chī 中国菜/Zhōngguócài 还是/háishi 西餐/xīcān ？", "en": "Do you want Chinese or Western food?" },
+        { "type": "order", "t": "我/wǒ 晚上/wǎnshang 看书/kànshū 或者/huòzhě 看/kàn 电视/diànshì 。", "en": "In the evening I read or watch TV." },
+        { "type": "choose", "t": "你/nǐ 是/shì 中国人/Zhōngguórén _ 日本人/Rìběnrén ？", "en": "Are you Chinese or Japanese?", "options": ["还是/háishi", "或者/huòzhě", "和/hé"], "answer": 0, "why": "A question asking to choose: háishi." },
+        { "type": "choose", "t": "你/nǐ 可以/kěyǐ 打/dǎ 电话/diànhuà _ 发/fā 短信/duǎnxìn 。", "en": "You can call or send a text.", "options": ["或者/huòzhě", "还是/háishi"], "answer": 0, "why": "A statement: huòzhě." },
+        { "type": "spot", "en": "Red or blue?", "options": ["红/hóng 的/de 还是/háishi 蓝/lán 的/de ？", "红/hóng 的/de 还是/háishi 蓝/lán 的/de 吗/ma ？"], "answer": 0, "why": "No ma with háishi." },
+        { "type": "spot", "en": "I'll come on Monday or Tuesday.", "options": ["我/wǒ 星期一/xīngqīyī 还是/háishi 星期二/xīngqī'èr 来/lái 。", "我/wǒ 星期一/xīngqīyī 或者/huòzhě 星期二/xīngqī'èr 来/lái 。"], "answer": 1, "why": "A statement: huòzhě." }
+      ]
+    }
+  ]
+}

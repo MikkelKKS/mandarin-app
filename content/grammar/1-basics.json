@@ -1,0 +1,356 @@
+{
+  "level": 1,
+  "topics": [
+    {
+      "id": "word-order",
+      "title": "Basic word order",
+      "summary": "Subject, verb, object: the same order as English.",
+      "pattern": "Subject + Verb + Object",
+      "text": [
+        "A plain Chinese sentence runs like an English one: who does it, what they do, then what they do it to. Wǒ hē chá is word for word \"I drink tea\".",
+        "Verbs never change. There is no \"he drinks\" versus \"I drink\", no past or future ending: hē is hē for everyone and every time. Time and other details are added with separate words, which the next topics cover.",
+        "Nouns don't change either: shū is one book or many books. Context, a number or a measure word tells you how many."
+      ],
+      "examples": [
+        { "t": "我/wǒ 喝/hē 茶/chá 。", "en": "I drink tea." },
+        { "t": "她/tā 学/xué 中文/Zhōngwén 。", "en": "She studies Chinese." },
+        { "t": "我们/wǒmen 看/kàn 电影/diànyǐng 。", "en": "We watch a film." },
+        { "t": "他/tā 喜欢/xǐhuan 咖啡/kāfēi 。", "en": "He likes coffee." },
+        { "t": "妈妈/māma 做/zuò 饭/fàn 。", "en": "Mum cooks." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 茶/chá 喝/hē 。", "right": "我/wǒ 喝/hē 茶/chá 。", "why": "The object comes after the verb, as in English." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 喜欢/xǐhuan 音乐/yīnyuè 。", "en": "I like music." },
+        { "type": "order", "t": "他们/tāmen 吃/chī 米饭/mǐfàn 。", "en": "They eat rice." },
+        { "type": "order", "t": "我/wǒ 朋友/péngyou 学/xué 汉语/Hànyǔ 。", "en": "My friend studies Chinese." },
+        { "type": "spot", "en": "I read books.", "options": ["我/wǒ 看/kàn 书/shū 。", "我/wǒ 书/shū 看/kàn 。", "书/shū 我/wǒ 看/kàn 。"], "answer": 0, "why": "Subject, then verb, then object." },
+        { "type": "spot", "en": "She drinks water.", "options": ["她/tā 水/shuǐ 喝/hē 。", "她/tā 喝/hē 水/shuǐ 。"], "answer": 1, "why": "The verb hē comes before what is drunk." },
+        { "type": "choose", "t": "我/wǒ _ 中文/Zhōngwén 。", "en": "I study Chinese.", "options": ["学/xué", "学/xué 了/le", "学/xué 的/de"], "answer": 0, "why": "The verb is the same for every person and time: just xué." }
+      ]
+    },
+    {
+      "id": "shi",
+      "title": "是 shì: \"to be\" with nouns",
+      "summary": "shì links two nouns: \"A is B\".",
+      "pattern": "A + 是 shì + B (a noun)",
+      "text": [
+        "shì means \"to be\", but only between two nouns or names: wǒ shì xuésheng, I am a student. It says what something is or who someone is.",
+        "It is not used before an adjective. \"I am busy\" is wǒ hěn máng, without shì (see the next topic).",
+        "To say \"is not\", put bù in front: wǒ bù shì lǎoshī, I'm not a teacher. bù is said bú before a 4th tone, as in bú shì, but it is written bù."
+      ],
+      "examples": [
+        { "t": "我/wǒ 是/shì 学生/xuésheng 。", "en": "I am a student." },
+        { "t": "她/tā 是/shì 我/wǒ 的/de 朋友/péngyou 。", "en": "She is my friend." },
+        { "t": "这/zhè 是/shì 我/wǒ 的/de 手机/shǒujī 。", "en": "This is my phone." },
+        { "t": "他/tā 不/bù 是/shì 老师/lǎoshī 。", "en": "He is not a teacher." },
+        { "t": "我/wǒ 是/shì 丹麦人/Dānmàirén 。", "en": "I am Danish." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 是/shì 忙/máng 。", "right": "我/wǒ 很/hěn 忙/máng 。", "why": "No shì before an adjective: use hěn." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "他/tā 是/shì 我/wǒ 哥哥/gēge 。", "en": "He is my older brother." },
+        { "type": "order", "t": "我/wǒ 不/bù 是/shì 中国人/Zhōngguórén 。", "en": "I am not Chinese." },
+        { "type": "choose", "t": "她/tā _ 医生/yīshēng 。", "en": "She is a doctor.", "options": ["是/shì", "很/hěn", "有/yǒu"], "answer": 0, "why": "Between two nouns (she, doctor): shì." },
+        { "type": "choose", "t": "我/wǒ _ 是/shì 老师/lǎoshī 。", "en": "I am not a teacher.", "options": ["不/bù", "没/méi"], "answer": 0, "why": "shì is always negated with bù, never méi." },
+        { "type": "spot", "en": "I am tired.", "options": ["我/wǒ 是/shì 累/lèi 。", "我/wǒ 很/hěn 累/lèi 。"], "answer": 1, "why": "lèi (tired) is an adjective: hěn, not shì." },
+        { "type": "spot", "en": "This is my book.", "options": ["这/zhè 是/shì 我/wǒ 的/de 书/shū 。", "这/zhè 很/hěn 我/wǒ 的/de 书/shū 。"], "answer": 0, "why": "\"This\" and \"my book\" are both nouns: shì." }
+      ]
+    },
+    {
+      "id": "hen-adjectives",
+      "title": "Adjectives with 很 hěn",
+      "summary": "\"I'm busy\" is wǒ hěn máng: no \"to be\".",
+      "pattern": "Subject + 很 hěn + Adjective",
+      "text": [
+        "In Chinese an adjective works like a verb: máng is \"to be busy\". So there is no shì: wǒ hěn máng, I'm busy.",
+        "hěn literally means \"very\", but in this pattern it is usually just glue and isn't stressed. A bare wǒ máng sounds like a comparison (\"I'm the busy one\"). For a real \"very\", use fēicháng or tài … le.",
+        "Negate with bù and drop hěn: wǒ bù máng, I'm not busy."
+      ],
+      "examples": [
+        { "t": "我/wǒ 很/hěn 忙/máng 。", "en": "I'm busy." },
+        { "t": "今天/jīntiān 很/hěn 冷/lěng 。", "en": "It's cold today." },
+        { "t": "这个/zhège 菜/cài 很/hěn 好吃/hǎochī 。", "en": "This dish is delicious." },
+        { "t": "他/tā 不/bù 高/gāo 。", "en": "He isn't tall." },
+        { "t": "中文/Zhōngwén 非常/fēicháng 难/nán 。", "en": "Chinese is very hard." }
+      ],
+      "mistakes": [
+        { "wrong": "今天/jīntiān 是/shì 热/rè 。", "right": "今天/jīntiān 很/hěn 热/rè 。", "why": "Adjectives don't take shì." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 妈妈/māma 很/hěn 高兴/gāoxìng 。", "en": "My mum is happy." },
+        { "type": "order", "t": "这/zhè 本/běn 书/shū 很/hěn 有意思/yǒuyìsi 。", "en": "This book is interesting." },
+        { "type": "choose", "t": "北京/Běijīng _ 大/dà 。", "en": "Beijing is big.", "options": ["很/hěn", "是/shì", "的/de"], "answer": 0, "why": "Before an adjective: hěn." },
+        { "type": "choose", "t": "我/wǒ _ 累/lèi 。", "en": "I'm not tired.", "options": ["不/bù", "不/bù 是/shì", "没/méi 是/shì"], "answer": 0, "why": "Just bù before the adjective." },
+        { "type": "spot", "en": "The weather is good.", "options": ["天气/tiānqì 是/shì 好/hǎo 。", "天气/tiānqì 很/hěn 好/hǎo 。"], "answer": 1, "why": "hǎo is an adjective: hěn hǎo." },
+        { "type": "spot", "en": "Coffee is expensive.", "options": ["咖啡/kāfēi 很/hěn 贵/guì 。", "咖啡/kāfēi 是/shì 贵/guì 。", "咖啡/kāfēi 贵/guì 是/shì 。"], "answer": 0, "why": "Adjective with hěn, no shì." }
+      ]
+    },
+    {
+      "id": "bu-mei",
+      "title": "不 bù or 没 méi: saying \"not\"",
+      "summary": "bù for now, habits and the future; méi for what didn't happen, and for yǒu.",
+      "pattern": "不 bù + Verb (now, usually, will)  ·  没 méi + Verb (didn't, hasn't)",
+      "text": [
+        "bù negates what is true now, in general, or what someone won't do: wǒ bù hē kāfēi, I don't drink coffee (or: I won't drink it). It also goes before adjectives and shì.",
+        "méi (or méiyǒu) says something did not happen or hasn't happened yet: wǒ méi hē kāfēi, I didn't drink coffee. With méi, le disappears from the sentence.",
+        "\"Not have\" is always méiyǒu, never bù yǒu: wǒ méiyǒu chē, I don't have a car."
+      ],
+      "examples": [
+        { "t": "我/wǒ 不/bù 吃/chī 肉/ròu 。", "en": "I don't eat meat." },
+        { "t": "我/wǒ 昨天/zuótiān 没/méi 去/qù 。", "en": "I didn't go yesterday." },
+        { "t": "他/tā 没有/méiyǒu 哥哥/gēge 。", "en": "He doesn't have an older brother." },
+        { "t": "明天/míngtiān 我/wǒ 不/bù 上班/shàngbān 。", "en": "I'm not working tomorrow." },
+        { "t": "我/wǒ 还/hái 没/méi 吃饭/chīfàn 。", "en": "I haven't eaten yet." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 不/bù 有/yǒu 时间/shíjiān 。", "right": "我/wǒ 没有/méiyǒu 时间/shíjiān 。", "why": "yǒu is only negated with méi." },
+        { "wrong": "我/wǒ 没/méi 吃/chī 了/le 。", "right": "我/wǒ 没/méi 吃/chī 。", "why": "méi and le don't go together." }
+      ],
+      "exercises": [
+        { "type": "choose", "t": "我/wǒ _ 有/yǒu 钱/qián 。", "en": "I don't have money.", "options": ["没/méi", "不/bù"], "answer": 0, "why": "\"Not have\" is méiyǒu." },
+        { "type": "choose", "t": "我/wǒ 昨天/zuótiān _ 看/kàn 电视/diànshì 。", "en": "I didn't watch TV yesterday.", "options": ["没/méi", "不/bù"], "answer": 0, "why": "Something that didn't happen: méi." },
+        { "type": "choose", "t": "我/wǒ _ 喜欢/xǐhuan 下雨/xiàyǔ 。", "en": "I don't like rain.", "options": ["不/bù", "没/méi"], "answer": 0, "why": "Liking is a state, true now: bù." },
+        { "type": "order", "t": "他/tā 今天/jīntiān 没/méi 来/lái 。", "en": "He didn't come today." },
+        { "type": "spot", "en": "I didn't buy it.", "options": ["我/wǒ 没/méi 买/mǎi 。", "我/wǒ 没/méi 买/mǎi 了/le 。", "我/wǒ 不/bù 买/mǎi 了/le 。"], "answer": 0, "why": "méi + verb, without le. (bù mǎi le means \"I won't buy it after all\".)" },
+        { "type": "spot", "en": "We don't have class tomorrow.", "options": ["我们/wǒmen 明天/míngtiān 不/bù 有/yǒu 课/kè 。", "我们/wǒmen 明天/míngtiān 没有/méiyǒu 课/kè 。"], "answer": 1, "why": "yǒu takes méi, even about the future." }
+      ]
+    },
+    {
+      "id": "ma-questions",
+      "title": "Yes/no questions with 吗 ma",
+      "summary": "Add ma to the end of a statement to ask about it.",
+      "pattern": "Statement + 吗 ma ?",
+      "text": [
+        "Take any statement and put ma at the end: nǐ shì xuésheng → nǐ shì xuésheng ma? Are you a student? The word order stays the same.",
+        "Chinese has no word for \"yes\" or \"no\". You answer by repeating the verb: Nǐ hē chá ma? Hē. (Yes.) or Bù hē. (No.)",
+        "Don't use ma when the question already has a question word like shénme (what) or shéi (who)."
+      ],
+      "examples": [
+        { "t": "你/nǐ 是/shì 学生/xuésheng 吗/ma ？", "en": "Are you a student?" },
+        { "t": "你/nǐ 喝/hē 茶/chá 吗/ma ？", "en": "Do you drink tea?" },
+        { "t": "你/nǐ 忙/máng 吗/ma ？", "en": "Are you busy?" },
+        { "t": "他/tā 会/huì 说/shuō 中文/Zhōngwén 吗/ma ？", "en": "Can he speak Chinese?" },
+        { "t": "你/nǐ 吃饭/chīfàn 了/le 吗/ma ？", "en": "Have you eaten?" }
+      ],
+      "mistakes": [
+        { "wrong": "你/nǐ 叫/jiào 什么/shénme 名字/míngzi 吗/ma ？", "right": "你/nǐ 叫/jiào 什么/shénme 名字/míngzi ？", "why": "A question with shénme doesn't take ma." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "你/nǐ 喜欢/xǐhuan 北京/Běijīng 吗/ma ？", "en": "Do you like Beijing?" },
+        { "type": "order", "t": "你/nǐ 有/yǒu 时间/shíjiān 吗/ma ？", "en": "Do you have time?" },
+        { "type": "choose", "t": "你/nǐ 是/shì 中国人/Zhōngguórén _ ？", "en": "Are you Chinese?", "options": ["吗/ma", "呢/ne", "吧/ba"], "answer": 0, "why": "A yes/no question: ma." },
+        { "type": "spot", "en": "Where are you going?", "options": ["你/nǐ 去/qù 哪儿/nǎr 吗/ma ？", "你/nǐ 去/qù 哪儿/nǎr ？"], "answer": 1, "why": "nǎr is already a question word: no ma." },
+        { "type": "spot", "en": "Is it expensive?", "options": ["贵/guì 吗/ma ？", "吗/ma 贵/guì ？"], "answer": 0, "why": "ma goes at the very end." },
+        { "type": "choose", "t": "A: 你/nǐ 去/qù 吗/ma ？ B: _ 。", "en": "A: Are you going? B: Yes.", "options": ["去/qù", "是/shì", "对/duì"], "answer": 0, "why": "Answer yes by repeating the verb." }
+      ]
+    },
+    {
+      "id": "question-words",
+      "title": "Question words stay in place",
+      "summary": "Put the question word where the answer would go.",
+      "pattern": "Nǐ qù nǎr? → Wǒ qù Běijīng.",
+      "text": [
+        "English moves question words to the front (\"Where are you going?\"). Chinese doesn't: the question word sits exactly where the answer will be. Nǐ qù nǎr? You go where? Wǒ qù Běijīng.",
+        "The common ones: shénme what, shéi who, nǎr / nǎlǐ where, shénme shíhou when, wèishénme why, zěnme how, duōshao / jǐ how many, nǎ + measure word which.",
+        "jǐ is for small numbers you expect to be under ten and needs a measure word: jǐ ge rén? duōshao is for anything: duōshao qián? how much money?"
+      ],
+      "examples": [
+        { "t": "你/nǐ 去/qù 哪儿/nǎr ？", "en": "Where are you going?" },
+        { "t": "他/tā 是/shì 谁/shéi ？", "en": "Who is he?" },
+        { "t": "你/nǐ 什么/shénme 时候/shíhou 回来/huílai ？", "en": "When are you coming back?" },
+        { "t": "这个/zhège 多少/duōshao 钱/qián ？", "en": "How much is this?" },
+        { "t": "你/nǐ 家/jiā 有/yǒu 几/jǐ 个/ge 人/rén ？", "en": "How many people are in your family?" }
+      ],
+      "mistakes": [
+        { "wrong": "哪儿/nǎr 你/nǐ 去/qù ？", "right": "你/nǐ 去/qù 哪儿/nǎr ？", "why": "The question word stays where the place would be." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "你/nǐ 喜欢/xǐhuan 什么/shénme 音乐/yīnyuè ？", "en": "What music do you like?" },
+        { "type": "order", "t": "你/nǐ 明天/míngtiān 去/qù 哪儿/nǎr ？", "en": "Where are you going tomorrow?" },
+        { "type": "order", "t": "你/nǐ 为什么/wèishénme 学/xué 中文/Zhōngwén ？", "en": "Why do you study Chinese?" },
+        { "type": "spot", "en": "What are you eating?", "options": ["什么/shénme 你/nǐ 吃/chī ？", "你/nǐ 吃/chī 什么/shénme ？"], "answer": 1, "why": "shénme goes where the food would go: after the verb." },
+        { "type": "choose", "t": "你/nǐ 有/yǒu _ 个/ge 哥哥/gēge ？", "en": "How many older brothers do you have?", "options": ["几/jǐ", "什么/shénme", "哪/nǎ"], "answer": 0, "why": "A small number, with the measure word ge: jǐ." },
+        { "type": "choose", "t": "这/zhè 是/shì _ 的/de 书/shū ？", "en": "Whose book is this?", "options": ["谁/shéi", "哪儿/nǎr", "几/jǐ"], "answer": 0, "why": "shéi de: whose." }
+      ]
+    },
+    {
+      "id": "measure-words",
+      "title": "Measure words",
+      "summary": "Between a number (or zhè/nà) and a noun goes a measure word.",
+      "pattern": "Number / 这 zhè / 那 nà + Measure word + Noun",
+      "text": [
+        "You can't say \"three book\" in Chinese: a measure word sits between the number and the noun, like \"three cups of tea\" in English, but for everything. sān běn shū, three books.",
+        "ge is the all-purpose one and is fine when you're unsure: yí ge rén, one person. Others: běn for books, bēi for cups and glasses, zhāng for flat things (tickets, tables), jiàn for clothes and matters, zhī for many animals, kuài for pieces (and money), liàng for vehicles.",
+        "zhè and nà (this, that) also need one: zhè ge, nà běn shū. Two of something is liǎng, not èr: liǎng ge rén."
+      ],
+      "examples": [
+        { "t": "我/wǒ 有/yǒu 一/yī 个/ge 妹妹/mèimei 。", "en": "I have a younger sister." },
+        { "t": "我/wǒ 要/yào 两/liǎng 杯/bēi 咖啡/kāfēi 。", "en": "I'd like two coffees." },
+        { "t": "这/zhè 本/běn 书/shū 很/hěn 好/hǎo 。", "en": "This book is good." },
+        { "t": "他/tā 买/mǎi 了/le 三/sān 张/zhāng 票/piào 。", "en": "He bought three tickets." },
+        { "t": "那/nà 件/jiàn 衣服/yīfu 很/hěn 贵/guì 。", "en": "That piece of clothing is expensive." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 有/yǒu 二/èr 个/ge 哥哥/gēge 。", "right": "我/wǒ 有/yǒu 两/liǎng 个/ge 哥哥/gēge 。", "why": "Two of something is liǎng." },
+        { "wrong": "三/sān 书/shū", "right": "三/sān 本/běn 书/shū", "why": "A number needs a measure word before the noun." }
+      ],
+      "exercises": [
+        { "type": "choose", "t": "我/wǒ 想/xiǎng 喝/hē 一/yī _ 茶/chá 。", "en": "I'd like a cup of tea.", "options": ["杯/bēi", "本/běn", "张/zhāng"], "answer": 0, "why": "Cups and glasses: bēi." },
+        { "type": "choose", "t": "桌子/zhuōzi 上/shang 有/yǒu 三/sān _ 书/shū 。", "en": "There are three books on the table.", "options": ["本/běn", "杯/bēi", "件/jiàn"], "answer": 0, "why": "Books: běn." },
+        { "type": "choose", "t": "我/wǒ 买/mǎi 了/le _ 张/zhāng 票/piào 。", "en": "I bought two tickets.", "options": ["两/liǎng", "二/èr"], "answer": 0, "why": "Before a measure word, two is liǎng." },
+        { "type": "order", "t": "我/wǒ 家/jiā 有/yǒu 一/yī 只/zhī 猫/māo 。", "en": "We have a cat at home." },
+        { "type": "spot", "en": "These three people", "options": ["这/zhè 三/sān 个/ge 人/rén", "这/zhè 三/sān 人/rén", "三/sān 这/zhè 个/ge 人/rén"], "answer": 0, "why": "zhè + number + measure word + noun." },
+        { "type": "spot", "en": "I want that one.", "options": ["我/wǒ 要/yào 那/nà 。", "我/wǒ 要/yào 那/nà 个/ge 。"], "answer": 1, "why": "\"That one\" needs a measure word: nà ge." }
+      ]
+    },
+    {
+      "id": "de-possession",
+      "title": "的 de: my, your, and descriptions",
+      "summary": "de links an owner or a description to a noun.",
+      "pattern": "Owner / Description + 的 de + Noun",
+      "text": [
+        "de works like English 's: wǒ de shū, my book; lǎoshī de diànhuà, the teacher's phone number. The owner or description always comes first.",
+        "It also links longer descriptions: hěn guì de chē, an expensive car; wǒ mǎi de yīfu, the clothes I bought. Whatever describes the noun goes before de, however long it is.",
+        "With close relationships de is usually dropped: wǒ māma, my mum; wǒmen jiā, our home. One-syllable adjectives often drop it too: hǎo péngyou, a good friend."
+      ],
+      "examples": [
+        { "t": "这/zhè 是/shì 我/wǒ 的/de 手机/shǒujī 。", "en": "This is my phone." },
+        { "t": "他/tā 是/shì 我/wǒ 女朋友/nǚpéngyou 的/de 哥哥/gēge 。", "en": "He is my girlfriend's older brother." },
+        { "t": "我/wǒ 喜欢/xǐhuan 红色/hóngsè 的/de 。", "en": "I like the red one." },
+        { "t": "我/wǒ 妈妈/māma 做/zuò 的/de 菜/cài 很/hěn 好吃/hǎochī 。", "en": "The food my mum makes is delicious." },
+        { "t": "他/tā 是/shì 我/wǒ 的/de 好/hǎo 朋友/péngyou 。", "en": "He is my good friend." }
+      ],
+      "mistakes": [
+        { "wrong": "书/shū 的/de 我/wǒ", "right": "我/wǒ 的/de 书/shū", "why": "The owner comes first." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "这/zhè 是/shì 老师/lǎoshī 的/de 书/shū 。", "en": "This is the teacher's book." },
+        { "type": "order", "t": "我/wǒ 买/mǎi 的/de 苹果/píngguǒ 很/hěn 甜/tián 。", "en": "The apples I bought are sweet." },
+        { "type": "choose", "t": "那/nà 是/shì 他/tā _ 车/chē 。", "en": "That's his car.", "options": ["的/de", "得/de", "地/de"], "answer": 0, "why": "Before a noun, for an owner: 的." },
+        { "type": "spot", "en": "my friend's dog", "options": ["我/wǒ 朋友/péngyou 的/de 狗/gǒu", "狗/gǒu 的/de 我/wǒ 朋友/péngyou", "我/wǒ 的/de 狗/gǒu 朋友/péngyou"], "answer": 0, "why": "Owner (my friend) + de + the thing (dog)." },
+        { "type": "spot", "en": "a very expensive restaurant", "options": ["一/yī 个/ge 饭馆/fànguǎn 很/hěn 贵/guì 的/de", "一/yī 个/ge 很/hěn 贵/guì 的/de 饭馆/fànguǎn"], "answer": 1, "why": "The description (hěn guì) goes before de and the noun." },
+        { "type": "choose", "t": "我/wǒ 喜欢/xǐhuan 你/nǐ 买/mǎi _ 衣服/yīfu 。", "en": "I like the clothes you bought.", "options": ["的/de", "了/le", "吗/ma"], "answer": 0, "why": "\"You bought\" describes the clothes: de." }
+      ]
+    },
+    {
+      "id": "zai-place",
+      "title": "在 zài: where something is or happens",
+      "summary": "zài + place says where; it goes before the verb.",
+      "pattern": "Subject + 在 zài + Place + Verb",
+      "text": [
+        "On its own, zài means \"to be at\": wǒ zài jiā, I'm at home. To say where you do something, zài + place goes before the verb: wǒ zài jiā chīfàn, I eat at home. English puts the place at the end; Chinese puts it in front.",
+        "Locations often end in a position word: zhuōzi shang, on the table; fángjiān li, in the room; yīyuàn pángbiān, next to the hospital.",
+        "\"Where is …?\" is … zài nǎr? Cèsuǒ zài nǎr? Where is the toilet?"
+      ],
+      "examples": [
+        { "t": "我/wǒ 在/zài 家/jiā 。", "en": "I'm at home." },
+        { "t": "我/wǒ 在/zài 大学/dàxué 学习/xuéxí 。", "en": "I study at university." },
+        { "t": "你/nǐ 的/de 书/shū 在/zài 桌子/zhuōzi 上/shang 。", "en": "Your book is on the table." },
+        { "t": "厕所/cèsuǒ 在/zài 哪儿/nǎr ？", "en": "Where is the toilet?" },
+        { "t": "他们/tāmen 在/zài 北京/Běijīng 工作/gōngzuò 。", "en": "They work in Beijing." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 吃饭/chīfàn 在/zài 家/jiā 。", "right": "我/wǒ 在/zài 家/jiā 吃饭/chīfàn 。", "why": "zài + place comes before the verb." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 在/zài 公司/gōngsī 吃/chī 午饭/wǔfàn 。", "en": "I have lunch at the office." },
+        { "type": "order", "t": "我/wǒ 的/de 手机/shǒujī 在/zài 包/bāo 里/li 。", "en": "My phone is in the bag." },
+        { "type": "spot", "en": "She works in a hospital.", "options": ["她/tā 工作/gōngzuò 在/zài 医院/yīyuàn 。", "她/tā 在/zài 医院/yīyuàn 工作/gōngzuò 。"], "answer": 1, "why": "Place before the verb." },
+        { "type": "choose", "t": "你/nǐ 现在/xiànzài _ 哪儿/nǎr ？", "en": "Where are you now?", "options": ["在/zài", "是/shì", "有/yǒu"], "answer": 0, "why": "Being somewhere: zài." },
+        { "type": "spot", "en": "Where is the station?", "options": ["车站/chēzhàn 在/zài 哪儿/nǎr ？", "车站/chēzhàn 是/shì 哪儿/nǎr ？", "哪儿/nǎr 车站/chēzhàn 在/zài ？"], "answer": 0, "why": "… zài nǎr?" },
+        { "type": "choose", "t": "猫/māo 在/zài 桌子/zhuōzi _ 。", "en": "The cat is under the table.", "options": ["下面/xiàmian", "上面/shàngmian", "里面/lǐmian"], "answer": 0, "why": "Under: xiàmian." }
+      ]
+    },
+    {
+      "id": "you-have",
+      "title": "有 yǒu: have, and \"there is\"",
+      "summary": "yǒu is both \"to have\" and \"there is/are\".",
+      "pattern": "Person + 有 yǒu + Thing  ·  Place + 有 yǒu + Thing",
+      "text": [
+        "wǒ yǒu yí ge dìdi, I have a younger brother. The same verb with a place in front means \"there is\": zhèr yǒu yì jiā kāfēiguǎn, there's a café here.",
+        "The negative is always méiyǒu (never bù yǒu): wǒ méiyǒu qián, I don't have money. Zhèr méiyǒu rén, there's nobody here.",
+        "yǒu also builds handy phrases: yǒu yìsi, interesting (\"has meaning\"); yǒu shíhou, sometimes; yǒu diǎnr, a bit."
+      ],
+      "examples": [
+        { "t": "我/wǒ 有/yǒu 一/yī 个/ge 弟弟/dìdi 。", "en": "I have a younger brother." },
+        { "t": "这儿/zhèr 有/yǒu 一/yī 家/jiā 咖啡馆/kāfēiguǎn 。", "en": "There's a café here." },
+        { "t": "我/wǒ 今天/jīntiān 没有/méiyǒu 时间/shíjiān 。", "en": "I don't have time today." },
+        { "t": "冰箱/bīngxiāng 里/li 有/yǒu 牛奶/niúnǎi 吗/ma ？", "en": "Is there milk in the fridge?" },
+        { "t": "这/zhè 个/ge 电影/diànyǐng 很/hěn 有意思/yǒuyìsi 。", "en": "This film is interesting." }
+      ],
+      "mistakes": [
+        { "wrong": "他/tā 不/bù 有/yǒu 车/chē 。", "right": "他/tā 没有/méiyǒu 车/chē 。", "why": "yǒu is negated with méi." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 家/jiā 附近/fùjìn 有/yǒu 一/yī 个/ge 公园/gōngyuán 。", "en": "There's a park near my home." },
+        { "type": "order", "t": "你/nǐ 有/yǒu 中文/Zhōngwén 名字/míngzi 吗/ma ？", "en": "Do you have a Chinese name?" },
+        { "type": "choose", "t": "我/wǒ _ 兄弟/xiōngdì 姐妹/jiěmèi 。", "en": "I don't have brothers or sisters.", "options": ["没有/méiyǒu", "不/bù 有/yǒu", "不/bù 是/shì"], "answer": 0, "why": "\"Not have\" is méiyǒu." },
+        { "type": "spot", "en": "There are many people in the park.", "options": ["公园/gōngyuán 里/li 有/yǒu 很/hěn 多/duō 人/rén 。", "很/hěn 多/duō 人/rén 是/shì 公园/gōngyuán 里/li 。"], "answer": 0, "why": "Place + yǒu + what's there." },
+        { "type": "choose", "t": "桌子/zhuōzi 上/shang _ 一/yī 杯/bēi 水/shuǐ 。", "en": "There's a glass of water on the table.", "options": ["有/yǒu", "在/zài", "是/shì"], "answer": 0, "why": "Place first, then yǒu: \"there is\"." },
+        { "type": "spot", "en": "Is there a toilet here?", "options": ["这儿/zhèr 有/yǒu 厕所/cèsuǒ 吗/ma ？", "厕所/cèsuǒ 有/yǒu 这儿/zhèr 吗/ma ？"], "answer": 0, "why": "Place + yǒu + thing." }
+      ]
+    },
+    {
+      "id": "time-place-order",
+      "title": "When, where, then what",
+      "summary": "Time and place come before the verb: who, when, where, does what.",
+      "pattern": "Subject + Time + 在 zài Place + Verb + Object",
+      "text": [
+        "Chinese sets the scene before the action. The usual order is: who, when, where, then the verb. Wǒ míngtiān zài jiā xuéxí, I'll study at home tomorrow (\"I tomorrow at home study\").",
+        "The time can also go first, before the subject: míngtiān wǒ zài jiā xuéxí. It can never go at the end like in English.",
+        "Clock times go from big to small: xīngqīyī shàngwǔ jiǔ diǎn, Monday morning at nine. Dates too: 2026 nián shíyī yuè yī hào."
+      ],
+      "examples": [
+        { "t": "我/wǒ 明天/míngtiān 在/zài 家/jiā 学习/xuéxí 。", "en": "I'll study at home tomorrow." },
+        { "t": "今天/jīntiān 晚上/wǎnshang 我们/wǒmen 去/qù 看/kàn 电影/diànyǐng 。", "en": "We're going to see a film tonight." },
+        { "t": "他/tā 每天/měitiān 早上/zǎoshang 七/qī 点/diǎn 起床/qǐchuáng 。", "en": "He gets up at seven every morning." },
+        { "t": "我/wǒ 周末/zhōumò 在/zài 公园/gōngyuán 跑步/pǎobù 。", "en": "I go running in the park at weekends." },
+        { "t": "星期一/xīngqīyī 上午/shàngwǔ 九/jiǔ 点/diǎn 上课/shàngkè 。", "en": "Class is at nine on Monday morning." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 学习/xuéxí 中文/Zhōngwén 每天/měitiān 。", "right": "我/wǒ 每天/měitiān 学习/xuéxí 中文/Zhōngwén 。", "why": "Time goes before the verb, never at the end." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 明天/míngtiān 在/zài 图书馆/túshūguǎn 看书/kànshū 。", "en": "Tomorrow I'll read in the library." },
+        { "type": "order", "t": "我/wǒ 晚上/wǎnshang 十/shí 点/diǎn 睡觉/shuìjiào 。", "en": "I go to bed at ten in the evening." },
+        { "type": "order", "t": "她/tā 昨天/zuótiān 在/zài 商店/shāngdiàn 买/mǎi 了/le 一/yī 件/jiàn 衣服/yīfu 。", "en": "She bought a piece of clothing at the shop yesterday." },
+        { "type": "spot", "en": "I work in Copenhagen every day.", "options": ["我/wǒ 每天/měitiān 在/zài 哥本哈根/Gēběnhāgēn 工作/gōngzuò 。", "我/wǒ 工作/gōngzuò 在/zài 哥本哈根/Gēběnhāgēn 每天/měitiān 。", "我/wǒ 在/zài 哥本哈根/Gēběnhāgēn 工作/gōngzuò 每天/měitiān 。"], "answer": 0, "why": "Who, when, where, then the verb." },
+        { "type": "spot", "en": "We eat at seven.", "options": ["我们/wǒmen 吃饭/chīfàn 七/qī 点/diǎn 。", "我们/wǒmen 七/qī 点/diǎn 吃饭/chīfàn 。"], "answer": 1, "why": "The time goes before the verb." },
+        { "type": "spot", "en": "Monday at 3 pm", "options": ["下午/xiàwǔ 三/sān 点/diǎn 星期一/xīngqīyī", "星期一/xīngqīyī 下午/xiàwǔ 三/sān 点/diǎn"], "answer": 1, "why": "From the biggest unit to the smallest." }
+      ]
+    },
+    {
+      "id": "ye-dou",
+      "title": "也 yě and 都 dōu",
+      "summary": "\"Also\" and \"all\" go right before the verb, never at the start or end.",
+      "pattern": "Subject + 也 yě / 都 dōu + Verb",
+      "text": [
+        "yě (also, too) and dōu (all, both) are adverbs, and Chinese adverbs sit right after the subject, before the verb. Wǒ yě shì xuésheng, I'm a student too. Wǒmen dōu hē chá, we all drink tea.",
+        "Together it's always yě dōu: wǒmen yě dōu qù, we're all going too.",
+        "dōu points back at the things before it: zhèxiē shū wǒ dōu kàn guo, I've read all of these books."
+      ],
+      "examples": [
+        { "t": "我/wǒ 也/yě 是/shì 学生/xuésheng 。", "en": "I'm a student too." },
+        { "t": "我们/wǒmen 都/dōu 喜欢/xǐhuan 中国菜/Zhōngguócài 。", "en": "We all like Chinese food." },
+        { "t": "他/tā 也/yě 不/bù 喝/hē 酒/jiǔ 。", "en": "He doesn't drink alcohol either." },
+        { "t": "我/wǒ 爸爸/bàba 妈妈/māma 都/dōu 是/shì 老师/lǎoshī 。", "en": "My dad and mum are both teachers." },
+        { "t": "他们/tāmen 也/yě 都/dōu 来/lái 了/le 。", "en": "They all came too." }
+      ],
+      "mistakes": [
+        { "wrong": "我/wǒ 喜欢/xǐhuan 茶/chá 也/yě 。", "right": "我/wǒ 也/yě 喜欢/xǐhuan 茶/chá 。", "why": "yě goes before the verb, not at the end." },
+        { "wrong": "都/dōu 我们/wǒmen 去/qù 。", "right": "我们/wǒmen 都/dōu 去/qù 。", "why": "dōu comes after the subject." }
+      ],
+      "exercises": [
+        { "type": "order", "t": "我/wǒ 也/yě 想/xiǎng 去/qù 中国/Zhōngguó 。", "en": "I want to go to China too." },
+        { "type": "order", "t": "我们/wǒmen 都/dōu 是/shì 丹麦人/Dānmàirén 。", "en": "We are all Danish." },
+        { "type": "spot", "en": "She is busy too.", "options": ["她/tā 也/yě 很/hěn 忙/máng 。", "她/tā 很/hěn 忙/máng 也/yě 。", "也/yě 她/tā 很/hěn 忙/máng 。"], "answer": 0, "why": "Subject + yě + the rest." },
+        { "type": "spot", "en": "They are all coming too.", "options": ["他们/tāmen 都/dōu 也/yě 来/lái 。", "他们/tāmen 也/yě 都/dōu 来/lái 。"], "answer": 1, "why": "The order is always yě dōu." },
+        { "type": "choose", "t": "我/wǒ 喜欢/xǐhuan 跑步/pǎobù ， 我/wǒ 女朋友/nǚpéngyou _ 喜欢/xǐhuan 。", "en": "I like running, and my girlfriend does too.", "options": ["也/yě", "都/dōu", "和/hé"], "answer": 0, "why": "\"Too\": yě." },
+        { "type": "choose", "t": "这些/zhèxiē 菜/cài 我/wǒ _ 喜欢/xǐhuan 。", "en": "I like all of these dishes.", "options": ["都/dōu", "也/yě", "很/hěn"], "answer": 0, "why": "\"All of these\": dōu after them." }
+      ]
+    }
+  ]
+}

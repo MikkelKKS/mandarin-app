@@ -10,6 +10,7 @@ import { courseWordState, isKnownState, isStartedState, useWordStates } from '..
 import { go } from '../../lib/router';
 import { useVocab } from '../../lib/vocabData';
 import { stories } from '../read/ReadView';
+import { TOPICS } from '../../lib/grammarData';
 
 export function LibraryView() {
   const [q, setQ] = useState('');
@@ -49,6 +50,7 @@ export function LibraryView() {
       <ul className="group-list mt-6">
         <Row to="conversations" glyph="对话" title="Conversations" detail={conv ? `${units.length} units of everyday dialogues. You know ${conv.known} of their ${conv.total} words.` : `${units.length} units of everyday dialogues`} />
         <Row to="read" glyph="故事" title="Stories" detail={`${stories.length} short stories, read aloud`} />
+        <Row to="grammar" glyph="语法" title="Grammar" detail={`${TOPICS.length} topics on how sentences are built, with practice`} />
         <Row to="music" glyph="音乐" title="Music" detail="Mandarin songs at your level, from Spotify" />
       </ul>
       <ul className="group-list mt-4">

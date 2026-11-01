@@ -10,6 +10,7 @@ import { inContext, isNeutralParticle, needsContext } from '../../lib/context';
 import { samePinyin, sharesMeaning } from '../../lib/gloss';
 import { parseCardId, type Facet } from '../../lib/review';
 import { parseReadId, type ReadMode, type ReadQueue } from '../../lib/reading';
+import { grammarCardId } from '../../lib/grammarTopics';
 import type { SentenceRow, VocabData, VocabRow } from '../../lib/vocabData';
 import type { GymItem } from '../tonegym/model';
 
@@ -34,13 +35,16 @@ type SItemBase =
   /** Reading: meet a word's characters (via: the word a character came with). */
   | { kind: 'read-intro'; item: string; via?: string }
   | { kind: 'read-pinyin'; item: string }
-  | { kind: 'read-meaning'; item: string };
+  | { kind: 'read-meaning'; item: string }
+  /** Grammar: one exercise of a topic whose review card is due. */
+  | { kind: 'grammar'; topic: string; ex: number };
 
-export type BlockId = 'reviews' | 'new' | 'mine' | 'listening' | 'writing' | 'speaking' | 'reading' | 'tones';
+export type BlockId = 'reviews' | 'new' | 'mine' | 'grammar' | 'listening' | 'writing' | 'speaking' | 'reading' | 'tones';
 export const BLOCK_TITLE: Record<BlockId, string> = {
   reviews: 'Reviews',
   new: 'New words',
   mine: 'Your sentences',
+  grammar: 'Grammar',
   listening: 'Listening',
   writing: 'Say it in pinyin',
   speaking: 'Speaking',
@@ -79,6 +83,8 @@ export function cardOf(it: SItem): string | null {
       return `${it.item}#rp`;
     case 'read-meaning':
       return `${it.item}#rm`;
+    case 'grammar':
+      return grammarCardId(it.topic);
     default:
       return null;
   }
@@ -233,6 +239,8 @@ export interface PlanInput {
   newest?: string[];
   /** Your own saved sentences not practised yet (ids, oldest first). */
   mySentences?: string[];
+  /** Grammar topics whose review card is due, most overdue first, each with its number of exercises. */
+  grammar?: Array<{ topic: string; exercises: number }>;
   /** Deep sessions: the reading queue (Mix), for a Reading block. */
   reading?: ReadQueue;
   now: number;
@@ -266,12 +274,14 @@ export function planSession(p: PlanInput): SessionPlan {
     });
     if (revs.length) blocks.push({ id: 'reviews', items });
     blocks.push({ id: 'mine', items: mySentenceItems(p.mySentences ?? [], p.data, MINE.quick) });
+    blocks.push({ id: 'grammar', items: grammarItems(p.grammar ?? [], GRAMMAR.quick, rng) });
     if (revs.length < QUICK.fewReviews && p.newWords.length) blocks.push({ id: 'new', items: newWordItems(p.newWords.slice(0, QUICK.newWhenFew), p.data, rng) });
     const rest = tones.slice(t).map((g): SItem => ({ kind: 'tone', gym: g }));
     if (rest.length) blocks.push({ id: 'tones', items: rest });
   } else {
     if (reviewItems.length) blocks.push({ id: 'reviews', items: reviewItems.slice(0, DEEP.reviews) });
     blocks.push({ id: 'mine', items: mySentenceItems(p.mySentences ?? [], p.data, MINE.deep) });
+    blocks.push({ id: 'grammar', items: grammarItems(p.grammar ?? [], GRAMMAR.deep, rng) });
     if (p.newWords.length) blocks.push({ id: 'new', items: newWordItems(p.newWords.slice(0, DEEP.newWords), p.data, rng) });
     const started = new Set([...p.started, ...p.newWords.slice(0, DEEP.newWords)]);
     const listening = listeningItems(p.data, started, DEEP.listening, rng);
@@ -301,6 +311,14 @@ export function planSession(p: PlanInput): SessionPlan {
     if (p.tones.length) blocks.push({ id: 'tones', items: p.tones.slice(0, DEEP.tones).map((g): SItem => ({ kind: 'tone', gym: g })) });
   }
   return { id: `${p.now.toString(36)}-${Math.floor(rng() * 1e6).toString(36)}`, mode: p.mode, blocks: blocks.filter((b) => b.items.length), createdAt: p.now };
+}
+
+/** Due grammar topics per session (one question each). */
+export const GRAMMAR = { quick: 2, deep: 5 };
+
+/** One random exercise from each due topic, at most `cap`. */
+export function grammarItems(due: Array<{ topic: string; exercises: number }>, cap: number, rng: () => number): SItem[] {
+  return due.slice(0, cap).map((d): SItem => ({ kind: 'grammar', topic: d.topic, ex: Math.floor(rng() * d.exercises) }));
 }
 
 /** How many new characters are met before the first question on one (so it tests memory). */
