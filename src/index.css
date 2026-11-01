@@ -219,6 +219,18 @@ h1, h2, h3 {
 
 .anim-pop { animation: pop 0.22s var(--ease-out) both; }
 .anim-rise { animation: rise 0.28s var(--ease-out) both; }
+/* The dictionary over an exercise: rises from the bottom on a phone, slides in from the right on a PC. */
+.anim-dict { animation: rise 0.28s var(--ease-out) both; }
+@keyframes side-in {
+  from { transform: translateX(100%); }
+}
+@media (min-width: 1024px) {
+  .anim-dict { animation-name: side-in; }
+  /* On a PC the dictionary is a side panel: the exercise (and its fixed bars) move over to make room. */
+  html.dict-open body { padding-right: var(--dict-w); }
+  html.dict-open .fixed.inset-x-0 { right: var(--dict-w); }
+}
+:root { --dict-w: 28rem; }
 .anim-sheet { animation: sheet 0.26s var(--ease-out) both; }
 .anim-shake { animation: shake 0.3s ease-in-out; }
 .anim-breathe { animation: breathe 1.8s ease-in-out infinite; }

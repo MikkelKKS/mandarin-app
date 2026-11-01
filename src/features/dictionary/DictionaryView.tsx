@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom';
 import { GrammarToggle } from '../../components/GrammarNote';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Close } from '../../components/icons';
@@ -91,34 +92,52 @@ export function DictionaryView() {
  * The dictionary over a lesson or session: look up the words or the sentence
  * you just answered without leaving it. Close (or Escape) to carry on.
  */
+/** A PC-sized screen (the dictionary opens beside the exercise instead of over it). */
+function useWide(): boolean {
+  const q = '(min-width: 1024px)';
+  const [wide, setWide] = useState(() => typeof matchMedia !== 'undefined' && matchMedia(q).matches);
+  useEffect(() => {
+    const m = matchMedia(q);
+    const on = () => setWide(m.matches);
+    m.addEventListener('change', on);
+    return () => m.removeEventListener('change', on);
+  }, []);
+  return wide;
+}
+
 export function DictionarySheet({ query, onClose }: { query: string; onClose: () => void }) {
   const [q, setQ] = useState(query);
   const box = useRef<HTMLDivElement>(null);
+  const side = useWide();
   useEffect(() => {
     // Opened empty (the dictionary button): straight into the search box. With a word: on the result.
     const input = query ? null : box.current?.querySelector('input');
     if (input) input.focus();
     else box.current?.focus();
+    // Phone: covers the screen, so the page behind doesn't scroll. PC: a side panel, the exercise stays usable.
     const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    if (!side) document.body.style.overflow = 'hidden';
+    document.documentElement.classList.add('dict-open');
     return () => {
       document.body.style.overflow = prev;
+      document.documentElement.classList.remove('dict-open');
     };
-  }, []);
-  return (
+  }, [side]);
+  // In a portal: a transformed parent (the feedback panel's slide-in) would otherwise trap a fixed element inside it.
+  return createPortal(
     <SearchCtx.Provider value={setQ}>
       <div
         ref={box}
         tabIndex={-1}
         role="dialog"
-        aria-modal="true"
+        aria-modal={side ? undefined : 'true'}
         aria-label="Dictionary"
         // The lesson's own keys (Enter, space, 1–4) stay with the lesson while this is open.
         onKeyDown={(e) => {
           e.stopPropagation();
           if (e.key === 'Escape') onClose();
         }}
-        className="anim-rise fixed inset-0 z-50 overflow-y-auto bg-bg px-4 pb-10 pt-[max(0.75rem,env(safe-area-inset-top))] outline-none"
+        className="anim-dict fixed inset-0 z-50 overflow-y-auto bg-bg px-4 pb-10 pt-[max(0.75rem,env(safe-area-inset-top))] outline-none lg:left-auto lg:w-[var(--dict-w)] lg:border-l lg:border-line lg:px-5 lg:shadow-[-8px_0_24px_rgb(0_0_0/0.08)]"
       >
         <div className="mx-auto max-w-xl">
           <div className="flex items-center justify-between">
@@ -130,7 +149,8 @@ export function DictionarySheet({ query, onClose }: { query: string; onClose: ()
           <DictionarySearch q={q} setQ={setQ} />
         </div>
       </div>
-    </SearchCtx.Provider>
+    </SearchCtx.Provider>,
+    document.body,
   );
 }
 

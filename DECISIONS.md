@@ -309,3 +309,7 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 ## 2026-11-01: Characters in exercise sentences (asked)
 - New setting **Settings → Sentences in exercises: Pinyin / Both / Characters** (default Pinyin, as before). It changes the sentence around a word in exercises: the dictation gap ("zuǒ kàn ___ kàn"), the marked word in "What does the marked word mean here?", the example in "How do you say it?", and the sentence in the feedback. Both = pinyin with the characters underneath; Characters = characters only. Answers are still typed in pinyin.
 - "Show characters" stays as it was (characters next to the word itself).
+
+## 2026-11-01: The dictionary opens beside the exercise on a PC (asked)
+- On screens 1024 px and wider, the dictionary (dictionary button or "Look up") is a panel on the right, 28rem wide, sliding in from the side. The exercise and its bars move left to make room and stay usable: you can keep answering with the dictionary open. On the phone it still covers the screen from the bottom.
+- The sheet is rendered in a portal on document.body: inside the feedback panel (which slides in with a transform) a fixed-position panel was trapped in the panel's box.
