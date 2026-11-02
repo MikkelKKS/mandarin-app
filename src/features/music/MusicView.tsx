@@ -100,7 +100,7 @@ export function MusicView() {
   const cat = useCatalogue();
   const k = useKnown();
   const [filters, setFilters] = useState<Filters>(() => readJson<Filters>(K_FILTERS, { scenes: [], band: 'any', syncedOnly: false }));
-  const [shown, setShown] = useState(40);
+  const [shown, setShown] = useState(15);
   const [connected, setConnected] = useState(sp.isConnected());
   const [error, setError] = useState<string | null>(null);
   const [playlist, setPlaylist] = useState<{ busy: boolean; done?: number; total?: number; url?: string; found?: number; missing?: number }>({ busy: false });
@@ -116,7 +116,7 @@ export function MusicView() {
     const next = { ...filters, ...f };
     setFilters(next);
     writeJson(K_FILTERS, next);
-    setShown(40);
+    setShown(15);
   };
   const toggleScene = (id: string) => update({ scenes: filters.scenes.includes(id) ? filters.scenes.filter((s) => s !== id) : [...filters.scenes, id] });
 

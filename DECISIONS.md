@@ -27,7 +27,7 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Citation tones** for neutral-tone leniency are computed at build time (Vite plugin) so the ~300 KB pinyin dictionary isn't shipped to the browser.
 - **Routing** uses URL hashes (`#/lesson/…`), so GitHub Pages never returns 404s on refresh.
 - **Sound effects** are synthesised with the Web Audio API, so there are no audio assets to license.
-- **Look:** jade green for progress and correct answers, cinnabar red for the seal-style app icon and wrong answers, gold for mastery rings. Characters and pinyin are coloured by tone (1 red, 2 orange, 3 blue, 4 purple, neutral grey), which can be switched off in Settings.
+- **Look:** jade green for progress and correct answers, cinnabar red for the seal-style app icon and wrong answers, gold for mastery rings. Characters and pinyin are coloured by tone (now 1 red, 2 orange, 3 green, 4 blue, neutral grey; see 2026-10-27 step 3), which can be switched off in Settings.
 
 ## Phases 4–8
 - **Learner's Chinese name** ("Mi'ge") is written 米格 Mǐgé, flagged in REVIEW_NEEDED.md to confirm.

@@ -16,7 +16,7 @@ import { go } from '../../lib/router';
 import { sfx } from '../../lib/sfx';
 import { useLive } from '../../lib/useLive';
 import { useVocab } from '../../lib/vocabData';
-import { buildPool, GAVE_UP_TONES, MODES, patternLabel, patternStats, pickRound, ROUND, TONE_WORD, weakestPair, type GymItem, type GymMode } from './model';
+import { buildPool, GAVE_UP_TONES, MODES, patternLabel, patternStats, pickRound, ROUND, TONE_WORD, toneMatrix, weakestPair, type GymItem, type GymMode } from './model';
 import { ToneMatrix } from './ToneMatrix';
 
 const BASE = import.meta.env.BASE_URL;
@@ -42,7 +42,7 @@ function GymHome() {
   return (
     <div className="pb-10">
       <PageHeader title="Tone Gym">
-        Short rounds of {ROUND}. Single tones are recorded by six native speakers (Tone Perfect, Michigan State University), so your ear learns the tone rather than one voice.
+        Rounds of {ROUND}. Single tones come from six native speakers (Tone Perfect, Michigan State), so you learn the tone, not one voice.
       </PageHeader>
       {weak && (
         <p className="mt-4 rounded-2xl bg-amber-soft p-4">
@@ -64,7 +64,7 @@ function GymHome() {
               <span className="text-right">
                 <span className={`block text-xs ${i === 0 ? 'opacity-80' : 'text-muted'}`}>Best</span>
                 <span className="block text-xl font-semibold tabular-nums">
-                  {best.get(`tonegym:${m.id}`) ?? 0}/{ROUND}
+                  {best.has(`tonegym:${m.id}`) ? `${best.get(`tonegym:${m.id}`)}/${ROUND}` : '–'}
                 </span>
               </span>
             </button>
@@ -72,9 +72,11 @@ function GymHome() {
         ))}
       </ul>
       <h2 className="mt-8 text-lg font-semibold">Your tone matrix</h2>
-      <p className="mb-3 text-sm text-muted">
-        Each row is the tone it really was; the columns show what you heard or typed. Mix-ups are red. From the Tone Gym, tone exercises and every typed answer.
-      </p>
+      {logs && toneMatrix(logs).flat().some(Boolean) && (
+        <p className="mb-3 text-sm text-muted">
+          Each row is the tone it really was; the columns show what you heard or typed. Mix-ups are red. From the Tone Gym, tone exercises and every typed answer.
+        </p>
+      )}
       {logs ? <ToneMatrix logs={logs} /> : <p className="text-muted">Loading…</p>}
     </div>
   );

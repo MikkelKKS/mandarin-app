@@ -108,7 +108,7 @@ export function WordsView() {
         aria-pressed={selecting}
         className={`mt-3 h-11 rounded-2xl border px-4 font-medium ${selecting ? 'border-ink bg-sunk' : 'border-line bg-surface'}`}
       >
-        {selecting ? 'Done moving' : 'Move words'}
+        {selecting ? 'Done moving' : 'Move words between stages'}
       </button>
       {moved && (
         <p role="status" className="mt-2 text-sm font-medium text-jade">

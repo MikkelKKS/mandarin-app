@@ -63,7 +63,7 @@ export function ReadingView() {
   return (
     <div className="pb-10">
       <PageHeader title="Reading">
-        Learn to read the words you already know by ear: the whole word and each of its characters. A word becomes readable once its listening card is in long-term review.
+        Learn to read the words you already know by ear: the whole word and each of its characters. Words become readable once their listening card is in long-term review.
       </PageHeader>
 
       <div className="mt-5 flex flex-col gap-2" role="radiogroup" aria-label="What to train">
@@ -112,7 +112,7 @@ export function ReadingView() {
         <p className="mt-2 text-sm text-muted">
           {newWords === 0 && q.newLeft === 0
             ? `That's today's ${settings.readingNewPerDay} new words. More tomorrow.`
-            : 'No words ready yet: words become readable once you know them by ear (keep doing sessions).'}
+            : 'No words ready yet. Keep doing sessions.'}
         </p>
       )}
 

@@ -35,8 +35,8 @@ const TONE_TEXT = ['', 'text-t1', 'text-t2', 'text-t3', 'text-t4', 'text-t5'];
 const pct = (x: number | null) => (x === null ? '–' : `${Math.round(x * 100)}%`);
 const dayLabel = (t: number) => new Date(t).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
 const weekday = (t: number, i: number) => (i === 0 ? 'Now' : new Date(t).toLocaleDateString('en-GB', { weekday: 'narrow' }));
-/** Axis label: the day of the month (the tooltip has the full date). */
-const dom = (t: number) => String(new Date(t).getDate());
+/** Axis label: day and month, e.g. "2 Nov" (only every 7th day is labelled). */
+const dom = dayLabel;
 
 function Section({ title, note, children }: { title: string; note?: string; children: React.ReactNode }) {
   return (

@@ -27,13 +27,19 @@ export function Columns({
   data: Column[];
   color?: string;
   height?: number;
-  /** Show every nth axis label (the first and last are always shown). */
+  /** Show every nth axis label, counted back from the last (always shown). */
   labelEvery?: number;
   format?: (v: number) => string;
   caption: string;
 }) {
   const max = Math.max(1, ...data.map((d) => d.value));
   const peak = data.reduce((b, d, i) => (d.value > data[b].value ? i : b), 0);
+  if (data.every((d) => !d.value))
+    return (
+      <figure>
+        <p className="rounded-2xl bg-sunk p-4 text-sm text-muted">No data yet.</p>
+      </figure>
+    );
   return (
     <figure>
       <div className="relative flex items-end gap-[2px] border-b border-line" style={{ height }} role="img" aria-label={caption}>
@@ -57,8 +63,11 @@ export function Columns({
       </div>
       <div className="mt-1 flex gap-[2px] text-[10px] text-muted">
         {data.map((d, i) => (
-          <span key={d.key} className="flex-1 truncate text-center">
-            {i === 0 || i === data.length - 1 || i % labelEvery === 0 ? d.label : ''}
+          <span
+            key={d.key}
+            className={`flex min-w-0 flex-1 whitespace-nowrap ${i === data.length - 1 ? 'justify-end' : i === 0 ? 'justify-start' : 'justify-center'}`}
+          >
+            {(data.length - 1 - i) % labelEvery === 0 ? d.label : ''}
           </span>
         ))}
       </div>

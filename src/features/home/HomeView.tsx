@@ -108,10 +108,13 @@ export function HomeView() {
           </p>
         </div>
         {game && (
-          <div className="w-16 text-right">
+          <div className="w-16 shrink-0 text-right">
             <p className="text-xs text-muted">Level</p>
             <p className="text-2xl font-semibold tabular-nums">{game.level.level}</p>
             <ProgressBar value={game.level.into / game.level.span} label="Progress to the next level" tone="gold" className="mt-1" />
+            <p className="mt-0.5 whitespace-nowrap text-[10px] tabular-nums text-muted">
+              {game.level.into}/{game.level.span} XP
+            </p>
           </div>
         )}
       </section>
@@ -150,16 +153,19 @@ export function HomeView() {
         )}
       </div>
       {settings.speaking && micSupported && (
-        <p className="mt-3 text-center text-sm text-muted">
+        <p className="mt-2 text-center text-sm text-muted">
           {speakPaused > Date.now() ? (
             <>
               Speaking paused until {new Date(speakPaused).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}.{' '}
-              <button onClick={() => void setSpeakPausedUntil(0)} className="font-medium text-jade">
+              <button onClick={() => void setSpeakPausedUntil(0)} className="inline-flex min-h-11 items-center px-1 font-medium text-jade">
                 Turn the mic back on
               </button>
             </>
           ) : (
-            <button onClick={() => void setSpeakPausedUntil(Date.now() + 3600_000)} className="font-medium text-muted hover:text-ink">
+            <button
+              onClick={() => void setSpeakPausedUntil(Date.now() + 3600_000)}
+              className="inline-flex min-h-11 items-center rounded-xl px-3 font-medium text-muted underline decoration-line underline-offset-4 hover:text-ink"
+            >
               No mic right now? Skip speaking for an hour
             </button>
           )}

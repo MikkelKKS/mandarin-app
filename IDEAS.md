@@ -20,3 +20,5 @@ Size: **S** = an hour or two · **M** = about a day · **L** = several days
 
 | ID | Title | Status | Type | Why | Size | Source | Added |
 |----|-------|--------|------|-----|------|--------|-------|
+| 1 | Collapsible achievements on Stats | proposed | polish | Stats is ~12,000px tall on phone; 15 achievement cards fill the bottom half. Show the 3–4 closest and a "Show all" | M | ux-reviewer, qa | 2026-11-02 |
+| 2 | Two-column Home on PC | proposed | polish | At 1440px Home is one ~600px column with lots of empty space; put the sessions and the Tone Gym/next-step list side by side | M | ux-reviewer, qa | 2026-11-02 |
