@@ -392,7 +392,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             </span>
           )}
         </div>
-        <div key={`${st.block}-${st.item}`} className="anim-slide mt-6 flex-1">
+        <div key={`${st.block}-${st.item}`} className="anim-slide mt-6 flex-1 md:flex md:flex-col md:justify-center">
           {item!.retry && <p className="mb-3 text-sm font-medium text-cinnabar">One more time</p>}
           <SessionItem
             item={item!}
@@ -456,7 +456,7 @@ function Feedback({
   // Look up: the sentence the word was heard in, else the answer's characters (or the reading item's).
   const lookup = (result.context?.id && data.sentences.get(result.context.id)?.hanzi) || a?.hanzi || result.lookup || '';
   return (
-    <div ref={sheet} role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-transparent md:pt-0 md:shadow-none`}>
+    <div ref={sheet} role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
       <div className={`mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
         <p className="text-xl font-semibold">{title}</p>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}

@@ -14,7 +14,7 @@ import { play, playUrl } from '../../lib/audio';
 import { lookalikesOf, type ReadItem } from '../../lib/reading';
 import type { RatingName } from '../../lib/review';
 import { checkTyped } from '../exercises/check';
-import { Prompt } from '../exercises/parts';
+import { ActionBar, Prompt } from '../exercises/parts';
 import { useCheck } from '../lesson/context';
 import type { Outcome } from '../lesson/types';
 import { meaningMatches } from '../session/meaning';
@@ -228,9 +228,11 @@ function ReadIntro({ d, it, via, onResult }: { d: ReadData; it: ReadItem; via?: 
       <div className="mt-6 w-full rounded-2xl border border-line bg-surface p-4">
         <Details d={d} it={it} example />
       </div>
-      <button onClick={done} className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
-        Got it
-      </button>
+      <ActionBar>
+        <button onClick={done} className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
+          Got it
+        </button>
+      </ActionBar>
     </div>
   );
 }
@@ -323,6 +325,7 @@ function ReadMeaning({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult:
             autoComplete="off"
             className="w-full rounded-2xl border border-line bg-surface px-4 py-4 text-lg outline-none focus:border-jade"
           />
+          <ActionBar>
           <button onClick={reveal} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
             Reveal
           </button>
@@ -334,6 +337,7 @@ function ReadMeaning({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult:
               onResult({ outcome: { verdict: 'wrong', note: GAVE_UP_NOTE }, rating: 'again', gaveUp: true, audio: () => playItem(d, it), lookup: it.hanzi, panel: <ReadAnswer d={d} it={it} lookalikes={hasLookalikes} /> });
             }}
           />
+          </ActionBar>
         </div>
       ) : (
         <div className="anim-rise mt-6 rounded-2xl border border-line bg-surface p-4">

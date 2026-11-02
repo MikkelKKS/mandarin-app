@@ -359,3 +359,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## 2026-11-02: End-screen count-up and goal moment (IDEAS #14)
 - The big "+N XP" counts up (0.7 s, ease-out, after the seal; `lib/countUp.ts`), the level bar starts where this session began and fills to the new value, and when this session took you over today's goal a jade "Daily goal reached · N-day streak" pill pops in with the "correct" sound. With reduced motion everything shows its final value at once.
+
+## 2026-11-02: Main button always in the same spot (IDEAS #15)
+- A question's main button (Got it, Check, Show the answer, Show what it says, Reveal) sits in a bar fixed to the bottom of the screen (`ActionBar` in `exercises/parts.tsx`, used by session and Reading items), the same place as the feedback sheet's Continue. "I don't know" sits above it, so the main button is exactly the same spot on every question. The bar renders in a portal, because the slide-in animation would otherwise make it "fixed" to the moving question for a moment. Lessons already had a fixed footer.
+- On PC (md+) short questions are centred vertically; on PC the feedback card's surround is opaque so the bar doesn't show around it.
+- The viewport meta has `interactive-widget=resizes-content`, so on Android the bar sits above the keyboard.

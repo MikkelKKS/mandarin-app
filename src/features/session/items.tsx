@@ -18,7 +18,7 @@ import { useSettings } from '../../lib/settings';
 import { meaningOf, type SentenceRow, type VocabData, type VocabRow } from '../../lib/vocabData';
 import { checkTyped } from '../exercises/check';
 import { toneTwinOf, twinIndexFor } from '../../lib/toneTwins';
-import { AudioControls, Options, PinyinInput, Prompt } from '../exercises/parts';
+import { ActionBar, AudioControls, Options, PinyinInput, Prompt } from '../exercises/parts';
 import { useCheck } from '../lesson/context';
 import type { Outcome } from '../lesson/types';
 import type { RatingName } from '../../lib/review';
@@ -254,12 +254,14 @@ function Intro({ data, word, onResult }: ItemProps & { word: string }) {
           </div>
         </div>
       )}
-      <button
-        onClick={() => onResult({ outcome: { verdict: 'correct' }, skipFeedback: true })}
-        className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink"
-      >
-        Got it
-      </button>
+      <ActionBar>
+        <button
+          onClick={() => onResult({ outcome: { verdict: 'correct' }, skipFeedback: true })}
+          className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink"
+        >
+          Got it
+        </button>
+      </ActionBar>
     </div>
   );
 }
@@ -331,10 +333,12 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
             autoComplete="off"
             className="w-full rounded-2xl border border-line bg-surface px-4 py-4 text-lg outline-none focus:border-jade"
           />
-          <button onClick={() => setShown(true)} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
-            Show the answer
-          </button>
-          <DontKnow onUnknown={onUnknown} onGiveUp={giveUp} />
+          <ActionBar>
+            <button onClick={() => setShown(true)} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
+              Show the answer
+            </button>
+            <DontKnow onUnknown={onUnknown} onGiveUp={giveUp} />
+          </ActionBar>
         </div>
       ) : (
         <div className="anim-rise mt-8 rounded-2xl bg-surface p-4 border border-line">
@@ -416,10 +420,12 @@ export function TypeBox({ text, setText, check, giveUp, onUnknown }: ReturnType<
   return (
     <div className="mt-8">
       <PinyinInput value={text} onChange={setText} />
-      <button onClick={check} disabled={!text.trim()} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted">
-        Check
-      </button>
-      <DontKnow onUnknown={onUnknown} onGiveUp={giveUp} />
+      <ActionBar>
+        <button onClick={check} disabled={!text.trim()} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted">
+          Check
+        </button>
+        <DontKnow onUnknown={onUnknown} onGiveUp={giveUp} />
+      </ActionBar>
     </div>
   );
 }
@@ -519,10 +525,12 @@ function SentenceMeaning({ data, sentence, onResult }: ItemProps & { sentence: s
       <AudioControls id={s.id} ladder />
       {!shown ? (
         <>
-          <button onClick={() => setShown(true)} className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
-            Show what it says
-          </button>
-          <DontKnow onGiveUp={() => onResult({ outcome: { verdict: 'wrong', answer: { pinyin: s.pinyin, hanzi: s.hanzi, english: s.english[0] }, note: GAVE_UP_NOTE }, gaveUp: true })} />
+          <ActionBar>
+            <button onClick={() => setShown(true)} className="press mt-8 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
+              Show what it says
+            </button>
+            <DontKnow onGiveUp={() => onResult({ outcome: { verdict: 'wrong', answer: { pinyin: s.pinyin, hanzi: s.hanzi, english: s.english[0] }, note: GAVE_UP_NOTE }, gaveUp: true })} />
+          </ActionBar>
         </>
       ) : (
         <div className="anim-rise mt-8 rounded-2xl bg-surface p-4 border border-line">

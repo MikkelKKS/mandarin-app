@@ -1,4 +1,5 @@
 /** Building blocks shared by exercise components. */
+import { createPortal } from 'react-dom';
 import { VolumeSlider } from '../../components/VolumeSlider';
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import type { Voice } from '../../content/audioPaths';
@@ -105,6 +106,24 @@ export function MiniPlay({ id, voice, label = 'Play' }: { id: string; voice?: Vo
     >
       <Speaker className="h-5 w-5" />
     </button>
+  );
+}
+
+/**
+ * The main button of a question (Got it, Check, Reveal…) and its "I don't know", pinned to the
+ * bottom of the screen so the thumb always finds it in the same place (IDEAS #15). The feedback
+ * sheet covers it after answering.
+ */
+export function ActionBar({ children }: { children: ReactNode }) {
+  // In a portal: the question slides in with a transform, which would make this bar "fixed" to the
+  // sliding box (mid-screen for a moment) instead of the screen.
+  return createPortal(
+    // Column-reverse: the main button (first child) is always the bottom row, so it sits in exactly
+    // the same spot whether or not an "I don't know" link is shown (that goes above it).
+    <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-bg/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur">
+      <div className="mx-auto flex max-w-xl flex-col-reverse gap-1 lg:max-w-2xl [&>*]:mt-0">{children}</div>
+    </div>,
+    document.body,
   );
 }
 
