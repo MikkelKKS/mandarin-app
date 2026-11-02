@@ -327,3 +327,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Sync:** a SessionStart hook (`.claude/settings.json`) runs `git pull --rebase --autostash` at the start of every session; `--autostash` so leftover local edits don't block the pull. On failure it prints `SYNC FAILED` so Claude stops and explains. Rules in CLAUDE.md §12: test, commit and push after every task.
 - **Idea panel:** subagents `learning-expert` and `creative` (haiku), `critic` and `qa` (sonnet) in `.claude/agents/`; commands `/brainstorm`, `/build`, `/qa` in `.claude/commands/`; ideas and their status in `IDEAS.md`.
 - **QA screen tour:** `npm run qa:screens` (`playwright.qa.config.ts`, `qa/screens.spec.ts`), every main screen at 412px and 1440px, failing on console errors, crashes and horizontal scrolling. It runs on the installed Google Chrome because Playwright's Chromium download hung on the owner's PC. CI is unchanged (`e2e/`, Playwright's Chromium).
+
+## 2026-11-02: /polish, visible progress, /build on Opus 5.5 (asked)
+- **`/polish [notes]`** with a new `ux-reviewer` subagent (sonnet) that reviews only the existing app. Size-S fixes are made directly; M/L items go to IDEAS.md as `proposed`, type `polish`. IDEAS.md gained a Type column (`feature` / `polish` / `bug`).
+- **`/build`** runs on `claude-opus-5-5` at `effort: medium`, set in the command's frontmatter (supported per the Claude Code docs), so the global default effort is unchanged.
+- Tasks with more than two steps keep a to-do list; /build and /polish announce "Idea X of Y" / "Fix X of Y".

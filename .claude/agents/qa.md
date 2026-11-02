@@ -16,8 +16,9 @@ You are the QA tester for Mikkel's Mandarin app (a Vite + React PWA; see `ARCHIT
 
 ## Fixing
 - **Small issues** (a few lines: layout, spacing, a label, a missing back button, an obvious bug): fix them yourself, then re-run `npm test` and the relevant check.
-- **Bigger issues** (unclear fix, a design decision, more than ~30 lines): don't fix. Add a row to the Ideas table in `IDEAS.md` with status `bug`, a one-line why, a size, source `qa` and today's date.
-- Don't commit or push; whoever called you (/build or /qa) does that.
+- **Bigger issues** (unclear fix, a design decision, more than ~30 lines): don't fix. Add a row to the Ideas table in `IDEAS.md` with status `bug`, type `bug`, a one-line why, a size, source `qa` and today's date.
+- If you are told to only report (e.g. by /polish), don't fix anything; list each problem with a size instead.
+- Don't commit or push; whoever called you (/build, /polish or /qa) does that.
 
 ## Report
 End with a short plain-language summary: what you checked (screens, widths), what you fixed (file and one line each), what you logged as bugs, and anything you could not test (e.g. microphone, real audio).
