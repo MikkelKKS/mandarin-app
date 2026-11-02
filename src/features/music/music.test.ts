@@ -38,6 +38,14 @@ describe('song catalogue ranking', () => {
     expect(rankSongs(cat, { scenes: [], band: 'stretch', syncedOnly: false }, known).map((r) => r.song.id)).toEqual([4]);
     expect(rankSongs(cat, { scenes: [], band: 'any', syncedOnly: true }, known).some((r) => r.song.id === 3)).toBe(false);
   });
+  it('counts new words, sorts by fewest new words and finds next-level songs', () => {
+    expect(scoreSong(cat, cat.songs[2], known).newWords).toBe(2);
+    expect(scoreSong(cat, cat.songs[3], known).newWords).toBe(0); // other (non-HSK) words aren't counted
+    const fewest = rankSongs(cat, { scenes: [], band: 'any', syncedOnly: false, sort: 'fewest' }, known);
+    expect(fewest.map((r) => r.song.id)).toEqual([1, 5, 4, 2, 3]);
+    const near = (id: string) => id !== 'sinian'; // sinian is two levels up
+    expect(rankSongs(cat, { scenes: [], band: 'any', syncedOnly: false, nextLevel: true }, known, undefined, near).map((r) => r.song.id)).toEqual([2]);
+  });
   it('at most three songs per artist before the rest', () => {
     const many: Catalogue = { ...cat, songs: Array.from({ length: 5 }, (_, i) => song(10 + i, '0:10')).concat([song(20, '0:9,3:1', { artist: 'Z' })]) };
     const ids = rankSongs(many, { scenes: [], band: 'any', syncedOnly: false }, known).map((r) => r.song.id);

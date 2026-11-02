@@ -120,7 +120,9 @@ export function MusicView() {
   };
   const toggleScene = (id: string) => update({ scenes: filters.scenes.includes(id) ? filters.scenes.filter((s) => s !== id) : [...filters.scenes, id] });
 
-  const all = useMemo(() => (cat && cat !== 'error' && k ? rankSongs(cat, { ...filters, band: 'any' }, k.known, k.order) : null), [cat, k, filters]);
+  // A word is "near" when it's at most one HSK level above yours (for the Next level filter).
+  const near = useMemo(() => (k ? (id: string) => (k.byId.get(id)?.level ?? 99) <= level + 1 : undefined), [k, level]);
+  const all = useMemo(() => (cat && cat !== 'error' && k ? rankSongs(cat, { ...filters, band: 'any' }, k.known, k.order, near) : null), [cat, k, filters, near]);
   const ranked = useMemo(() => (all ? (filters.band === 'any' ? all : all.filter((r) => r.score.band === filters.band)) : null), [all, filters.band]);
   const counts = useMemo(() => {
     const c = { comfortable: 0, stretch: 0, tough: 0 };
@@ -188,6 +190,38 @@ export function MusicView() {
             </button>
           ))}
         </div>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <div className="grid flex-1 grid-cols-2 gap-1.5" role="radiogroup" aria-label="Sort">
+            {(
+              [
+                ['known', 'Most known'],
+                ['fewest', 'Fewest new words'],
+              ] as const
+            ).map(([id, label]) => {
+              const on = (filters.sort ?? 'known') === id;
+              return (
+                <button
+                  key={id}
+                  role="radio"
+                  aria-checked={on}
+                  onClick={() => update({ sort: id })}
+                  className={`h-10 rounded-xl border px-2 text-sm font-medium ${on ? 'border-ink bg-sunk' : 'border-line bg-surface'}`}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
+          <button
+            aria-pressed={!!filters.nextLevel}
+            onClick={() => update({ nextLevel: !filters.nextLevel })}
+            title={`New words nearly all at ${levelLabel(Math.min(7, level + 1))} or below`}
+            className={`h-10 rounded-full border px-3 text-sm font-medium ${filters.nextLevel ? 'border-jade bg-jade text-jade-ink' : 'border-line bg-surface'}`}
+          >
+            Next level: {levelLabel(Math.min(7, level + 1))}
+          </button>
+        </div>
+        {filters.nextLevel && <p className="mt-1.5 text-xs text-muted">Songs whose new words are nearly all at {levelLabel(Math.min(7, level + 1))} or easier: the next step up.</p>}
         <label className="mt-3 flex items-center gap-2 text-sm">
           <input type="checkbox" checked={filters.syncedOnly} onChange={(e) => update({ syncedOnly: e.target.checked })} className="h-4 w-4 accent-[var(--jade)]" />
           Only songs with timed lyrics (for Follow along)
@@ -303,6 +337,7 @@ function SongRow({ r, byId }: { r: RankedSong; byId: Map<string, VocabRow> }) {
         <span className="shrink-0 text-right">
           <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${b.cls}`}>{b.label}</span>
           <span className="mt-0.5 block text-xs tabular-nums text-muted">you know {Math.floor(r.score.knownShare * 100)}%</span>
+          <span className="block text-xs tabular-nums text-muted">{r.score.newWords ? `${r.score.newWords} new word${r.score.newWords === 1 ? '' : 's'}` : 'no new words'}</span>
           {r.song.synced && <span className="block text-[11px] text-muted">timed lyrics</span>}
         </span>
       </button>

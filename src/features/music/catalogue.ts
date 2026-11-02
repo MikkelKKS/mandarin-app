@@ -54,8 +54,12 @@ export interface SongScore {
   /** Share of word tokens you know or are learning (fillers count as known). */
   knownShare: number;
   band: Band;
-  /** HSK words you don't know yet, most sung first. */
+  /** HSK words you don't know yet, most sung first (the first 12). */
   unknown: string[];
+  /** How many different HSK words you don't know yet: what it costs to learn the song (IDEAS #6). */
+  newWords: number;
+  /** Of those, how many are at most one HSK level above yours (only when `near` is given). */
+  newNear: number;
   tokens: number;
 }
 
@@ -63,7 +67,13 @@ export interface SongScore {
  * Score a song against what you know. `known(id)` is true for words you know
  * or are learning; `order(id)` breaks ties (more common words first).
  */
-export function scoreSong(c: Catalogue, s: CatalogueSong, known: (id: string) => boolean, order: (id: string) => number = () => 0): SongScore {
+export function scoreSong(
+  c: Catalogue,
+  s: CatalogueSong,
+  known: (id: string) => boolean,
+  order: (id: string) => number = () => 0,
+  near: (id: string) => boolean = () => true,
+): SongScore {
   const ws = decodeWords(c, s);
   let ok = s.f;
   let total = s.f + s.o;
@@ -75,7 +85,14 @@ export function scoreSong(c: Catalogue, s: CatalogueSong, known: (id: string) =>
   }
   unknown.sort((a, b) => b.n - a.n || order(a.id) - order(b.id));
   const knownShare = total ? ok / total : 0;
-  return { knownShare, band: bandOf(knownShare), unknown: unknown.slice(0, 12).map((u) => u.id), tokens: total };
+  return {
+    knownShare,
+    band: bandOf(knownShare),
+    unknown: unknown.slice(0, 12).map((u) => u.id),
+    newWords: unknown.length,
+    newNear: unknown.filter((u) => near(u.id)).length,
+    tokens: total,
+  };
 }
 
 export interface Filters {
@@ -83,20 +100,32 @@ export interface Filters {
   scenes: string[];
   band: Band | 'any';
   syncedOnly: boolean;
+  /** Most known first (default), or fewest new words first. */
+  sort?: 'known' | 'fewest';
+  /** Only songs whose new words are nearly all at most one HSK level above yours. */
+  nextLevel?: boolean;
 }
+
+/** "Next level": at least one new word, and at least 80% of them at most one HSK level above yours. */
+export const NEXT_LEVEL_SHARE = 0.8;
+export const isNextLevel = (s: SongScore) => s.newWords > 0 && s.newNear >= NEXT_LEVEL_SHARE * s.newWords;
 
 export interface RankedSong {
   song: CatalogueSong;
   score: SongScore;
 }
 
-/** Filter, then easiest first, at most 3 songs per artist before the rest. */
-export function rankSongs(c: Catalogue, f: Filters, known: (id: string) => boolean, order?: (id: string) => number): RankedSong[] {
+/**
+ * Filter, then easiest first (most known, or fewest new words), at most 3 songs
+ * per artist before the rest. `near(id)`: the word is at most one HSK level above yours.
+ */
+export function rankSongs(c: Catalogue, f: Filters, known: (id: string) => boolean, order?: (id: string) => number, near?: (id: string) => boolean): RankedSong[] {
+  const byKnown = (a: RankedSong, b: RankedSong) => b.score.knownShare - a.score.knownShare || b.score.tokens - a.score.tokens;
   const scored = c.songs
     .filter((s) => (!f.scenes.length || f.scenes.includes(s.scene)) && (!f.syncedOnly || s.synced))
-    .map((song) => ({ song, score: scoreSong(c, song, known, order) }))
-    .filter((r) => f.band === 'any' || r.score.band === f.band)
-    .sort((a, b) => b.score.knownShare - a.score.knownShare || b.score.tokens - a.score.tokens);
+    .map((song) => ({ song, score: scoreSong(c, song, known, order, near) }))
+    .filter((r) => (f.band === 'any' || r.score.band === f.band) && (!f.nextLevel || isNextLevel(r.score)))
+    .sort(f.sort === 'fewest' ? (a, b) => a.score.newWords - b.score.newWords || byKnown(a, b) : byKnown);
   const per = new Map<string, number>();
   const first: RankedSong[] = [];
   const later: RankedSong[] = [];
