@@ -89,6 +89,9 @@ export function HomeView() {
     <div className="pb-10">
       <InstallBanner />
 
+      {/* PC (lg): two columns. Left: today, resume and the sessions; right: Tone Gym, placement, next achievement. */}
+      <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
+        <div>
       <section className="card flex items-center gap-5 p-5" aria-label="Today">
         <div className="relative" aria-label={`Daily goal: ${todayXp} of ${settings.dailyGoal} XP`}>
           <GoalRing value={todayXp} goal={settings.dailyGoal} />
@@ -171,8 +174,9 @@ export function HomeView() {
           )}
         </p>
       )}
+        </div>
 
-      <ul className="group-list mt-6">
+      <ul className="group-list mt-6 lg:mt-0">
         <li>
           <button onClick={() => go('tone-gym')} className="flex w-full items-center gap-4 px-4 py-4 text-left hover:bg-sunk/50">
             <ToneMark />
@@ -223,6 +227,7 @@ export function HomeView() {
           </li>
         )}
       </ul>
+      </div>
     </div>
   );
 }

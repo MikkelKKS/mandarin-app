@@ -170,7 +170,7 @@ function Shell({ active, children }: { active: string; children: ReactNode }) {
           );
         })}
       </nav>
-      <main className="mx-auto w-full max-w-xl px-4 pb-28 pt-[max(1.5rem,env(safe-area-inset-top))] md:max-w-2xl md:px-8 md:pb-12 md:pt-12">{children}</main>
+      <main className={`mx-auto w-full max-w-xl px-4 pb-28 pt-[max(1.5rem,env(safe-area-inset-top))] md:max-w-2xl md:px-8 md:pb-12 md:pt-12 ${active === '' ? 'lg:max-w-5xl' : ''}`}>{children}</main>
     </div>
   );
 }

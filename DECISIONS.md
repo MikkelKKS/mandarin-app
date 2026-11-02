@@ -335,3 +335,4 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## 2026-11-02: Ideas from /polish and /brainstorm
 - **Achievements on Stats (IDEAS #1):** collapsed by default to the 4 locked achievements closest to done (most progress first, ties in list order; `closestAchievements` in `gamify.ts`), with "Show all 15". Home still shows the single closest one.
+- **Two-column Home on PC (IDEAS #2):** from 1024px (lg) the Home page alone widens to `max-w-5xl` (set in `Shell` in `App.tsx`) and splits in two: today, resume and the session cards on the left; Tone Gym, placement and the next achievement on the right. Every other page keeps its narrow reading column; phones are unchanged.
