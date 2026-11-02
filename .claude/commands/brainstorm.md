@@ -10,7 +10,7 @@ Run the idea panel for this app. Optional focus topic: $ARGUMENTS
 4. Count votes, three voters per idea: the proposer (always supports its own idea), the other proposer, and the critic. Ask the other proposer's view only by judging whether the idea clearly serves its area (learning value for learning-expert, fun/motivation for creative); if unsure, it does not count as support. Keep only ideas with **at least two of the three** in support. Drop duplicates.
 5. Add each winner as a new row in the Ideas table in `IDEAS.md`: next free ID, short title, status `proposed`, type `feature`, a one-line why, size S/M/L, source (`learning`, `creative` or both), today's date.
 6. Commit (`Brainstorm: N new ideas`) and push to main.
-7. **Open IDEAS.md for Mikkel** (only if this run added at least one new `proposed` row; skip it otherwise). Do this once, as the very last tool call, after the push: run `cmd.exe /c start "" IDEAS.md` with the **PowerShell** tool from the repo root (in the Bash tool, Git Bash mangles `/c`, so don't use that). It opens the file in his default editor.
-8. Tell Mikkel in plain language: the winning ideas (one line each), how many were rejected and the main reasons, and remind him to change `proposed` to `approved` or `rejected` in IDEAS.md, then run /build.
+7. **Ask in the chat** (only if this run added at least one new `proposed` row): never open IDEAS.md in an editor. In the final message, list the new ideas numbered by their ID and end with: "Reply e.g. `approve 1 3, reject 2` (or `approve all`)." When he replies, change only those rows' Status to `approved` or `rejected`, commit (`Ideas: approved X, rejected Y`), push, and say in one line what changed and that `/build` will build the approved ones.
+8. Tell Mikkel in plain language: the winning ideas (one line each), how many were rejected and the main reasons, then the reply line from step 7.
 
 Subagents use the model set in their own files; never use opus for a subagent.

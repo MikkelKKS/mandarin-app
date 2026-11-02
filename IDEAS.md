@@ -5,7 +5,7 @@ Improvement ideas for the app, from the idea panel (`/brainstorm`), polish revie
 ## How to use this (Mikkel)
 
 1. Run **/brainstorm** for new feature ideas, or **/polish** to tidy up what already exists (you can add your own notes, e.g. `/polish the stats page feels cluttered`). New ideas appear in the table below with status `proposed`. /polish also fixes small, safe things straight away and only lists the bigger ones here.
-2. Read them. Quickest: run **/ideas**. It opens this file and lists everything waiting for you in the chat; reply e.g. `approve 1 3, reject 2` and it updates the table for you. Or do it by hand: for each one, change the word in the **Status** column:
+2. Read them. Quickest: answer in the terminal. /brainstorm and /polish ask you at the end, and **/ideas** lists everything waiting for you; reply e.g. `approve 1 3, reject 2` and it updates the table for you. Or do it by hand: for each one, change the word in the **Status** column:
    - `proposed` → `approved` if you want it built
    - `proposed` → `rejected` if you don't (it stays here so it isn't suggested again)
 3. Save the file and run **/build**. Claude builds every `approved` idea, tests it, runs QA, pushes it and marks it `done`.
