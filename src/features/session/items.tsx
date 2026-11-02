@@ -17,6 +17,7 @@ import { markSyllable, type Tone } from '../../lib/pinyin';
 import { useSettings } from '../../lib/settings';
 import { meaningOf, type SentenceRow, type VocabData, type VocabRow } from '../../lib/vocabData';
 import { checkTyped } from '../exercises/check';
+import { toneTwinOf, twinIndexFor } from '../../lib/toneTwins';
 import { AudioControls, Options, PinyinInput, Prompt } from '../exercises/parts';
 import { useCheck } from '../lesson/context';
 import type { Outcome } from '../lesson/types';
@@ -78,6 +79,14 @@ export function DontKnow({ onUnknown, onGiveUp }: { onUnknown?: () => void; onGi
 }
 
 const glossOf = (w: VocabRow) => meaningOf(w);
+
+/** Adds the tone twin (买 typed as mài → 卖) to a wrong typed word answer. */
+function withTwin(o: Outcome, w: VocabRow, data: VocabData): Outcome {
+  if (isPass(o.verdict) && o.verdict !== 'almost') return o;
+  const t = toneTwinOf(w, o.syllables, twinIndexFor(data.words));
+  const row = t && data.byId.get(t.id);
+  return row ? { ...o, twin: { id: row.id, hanzi: row.hanzi, pinyin: row.pinyin, english: glossOf(row) } } : o;
+}
 
 /** Part of speech in plain words ("verb", "measure word"…), or nothing when it's unclear. */
 export function posLabel(pos?: string[]): string | null {
@@ -419,7 +428,12 @@ export function TypeBox({ text, setText, check, giveUp, onUnknown }: ReturnType<
 function Dictation({ data, word, ctx, onResult, onUnknown }: ItemProps & { word: string; ctx?: string }) {
   const w = useWord(data, word);
   const c = useContext(data, w, ctx);
-  const t = useTyped({ pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) }, (r) => onResult(c ? { ...r, context: { ...c, english: c.sentence.english[0], id: c.sentence.id } } : r));
+  const expected = { pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) };
+  const t = useTyped(
+    expected,
+    (r) => onResult(c ? { ...r, context: { ...c, english: c.sentence.english[0], id: c.sentence.id } } : r),
+    (text) => withTwin(checkTyped(text, expected), w, data),
+  );
   return (
     <div>
       <Prompt>{c ? 'Listen, then type the missing word with tones' : 'Type what you hear, with tones'}</Prompt>
@@ -442,7 +456,7 @@ function MeaningToPinyin({ data, word, onResult, onUnknown }: ItemProps & { word
     // Another HSK word with this meaning: right, just not the one we meant.
     const other = others.find((x) => isPass(checkTyped(text, { pinyin: x.pinyin, hanzi: x.hanzi }).verdict));
     if (other) return { verdict: 'correct', answer: o.answer, note: `Also right: ${other.pinyin} means that too. We were looking for ${w.pinyin}.` };
-    return o;
+    return withTwin(o, w, data);
   });
   const pos = posLabel(w.pos);
   return (

@@ -73,4 +73,6 @@ export interface Outcome {
   extra?: string[];
   /** A typed answer with different wording: the learner may mark it as right ("I was right"). */
   canOverride?: boolean;
+  /** Right syllables, wrong tones, and those tones spell another HSK word: that word (IDEAS #3). */
+  twin?: { id: string; hanzi: string; pinyin: string; english: string };
 }

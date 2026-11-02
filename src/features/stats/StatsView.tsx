@@ -13,7 +13,11 @@ import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { forecast, OPTIMISE_AFTER, optimiserReviews, perDay, retention, STATES, toneAccuracy, wordsByLevel } from '../../lib/statsData';
 import { useLive } from '../../lib/useLive';
-import { useVocab } from '../../lib/vocabData';
+import { meaningOf, useVocab, type VocabRow } from '../../lib/vocabData';
+import { twinIndexFor, twinPairs } from '../../lib/toneTwins';
+import { play } from '../../lib/audio';
+import { TonePinyin } from '../../components/Hanzi';
+import { Speaker } from '../../components/icons';
 import { TONE_WORD } from '../tonegym/model';
 import { ToneMatrix } from '../tonegym/ToneMatrix';
 import { Columns, Legend, StackBar, TableView, Tile } from './charts';
@@ -147,6 +151,8 @@ export function StatsView() {
         </div>
         <ToneMatrix logs={toneLogs} />
       </Section>
+
+      <ToneTwins vocab={vocab} logs={toneLogs} hanzi={settings.showHanzi} />
 
       <Section title="Time studied" note={`Minutes answering per day, last 30 days: ${minutes30} in all.`}>
         <Columns
@@ -297,6 +303,45 @@ function ReadingStats({ cards, logs }: { cards: ReviewItemRow[]; logs: ReviewLog
             labelEvery={1}
           />
         </>
+      )}
+    </Section>
+  );
+}
+
+/** Tone twins (IDEAS #3): words you typed with tones that spell another HSK word, most often first. */
+function ToneTwins({ vocab, logs, hanzi }: { vocab: VocabRow[] | null; logs: ReviewLogRow[]; hanzi: boolean }) {
+  const pairs = useMemo(() => (vocab ? twinPairs(logs, new Map(vocab.map((w) => [w.id, w])), twinIndexFor(vocab)).slice(0, 8) : []), [vocab, logs]);
+  const Word = ({ w }: { w: VocabRow }) => (
+    <button onClick={() => void play(w.id)} className="flex min-w-0 flex-1 items-center gap-2 rounded-xl px-2 py-1.5 text-left hover:bg-sunk/60" aria-label={`Play ${w.pinyin}`}>
+      <Speaker className="h-4 w-4 shrink-0 text-muted" />
+      <span className="min-w-0">
+        <TonePinyin pinyin={w.pinyin} className="font-semibold" />
+        {hanzi && (
+          <span className="han ml-1 text-muted" lang="zh-CN">
+            {w.hanzi}
+          </span>
+        )}
+        <span className="block truncate text-xs text-muted">{meaningOf(w)}</span>
+      </span>
+    </button>
+  );
+  return (
+    <Section title="Tone twins" note="Words whose tones you swapped into another real word. Tap to hear each.">
+      {pairs.length ? (
+        <ul className="group-list">
+          {pairs.map((p) => (
+            <li key={`${p.word.id}|${p.twin.id}`} className="flex items-center gap-1 px-2 py-1.5">
+              <Word w={p.word as VocabRow} />
+              <span className="text-muted" aria-label="mixed up with">
+                ↔
+              </span>
+              <Word w={p.twin as VocabRow} />
+              <span className="w-8 shrink-0 text-right text-sm tabular-nums text-muted">{p.count}×</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="rounded-2xl bg-sunk p-4 text-sm text-muted">None yet.</p>
       )}
     </Section>
   );

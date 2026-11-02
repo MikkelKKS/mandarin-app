@@ -451,6 +451,22 @@ function Feedback({
         <p className="text-xl font-semibold">{title}</p>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}
         {o.syllables && o.verdict !== 'correct' && <SyllableBreakdown syllables={o.syllables} extra={o.extra} />}
+        {o.twin && (
+          <div className="mt-2 flex items-center gap-3 rounded-2xl bg-surface/60 px-3 py-2">
+            <p className="min-w-0 flex-1 text-sm">
+              Those tones make another word: <TonePinyin pinyin={o.twin.pinyin} className="font-semibold" />
+              {showHanzi && (
+                <span className="han ml-1" lang="zh-CN">
+                  {o.twin.hanzi}
+                </span>
+              )}
+              , “{o.twin.english}”.
+            </p>
+            <button onClick={() => void play(o.twin!.id)} aria-label={`Play ${o.twin.pinyin}`} className="shrink-0 rounded-full bg-surface/70 p-2 active:scale-90">
+              <Speaker className="h-5 w-5" />
+            </button>
+          </div>
+        )}
         {result.context && (
           <div className="mt-2">
             <ContextLine c={result.context} className="!text-left !text-lg" />
