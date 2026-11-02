@@ -15,7 +15,7 @@ const fmt = (t: number, now: number) =>
 
 function When({ f, now }: { f: Forecast; now: number }) {
   if (f.at - now > 5 * YEAR) return <span className="text-muted">years away at this pace</span>;
-  const range = f.late === Infinity || f.late - now > 5 * YEAR ? `${fmt(f.early, now)} or later` : `${fmt(f.early, now)} – ${fmt(f.late, now)}`;
+  const range = f.late === Infinity || f.late - now > 5 * YEAR ? `${fmt(f.early, now)} or later` : (fmt(f.early, now) === fmt(f.late, now) ? 'same pace every week' : `${fmt(f.early, now)} – ${fmt(f.late, now)}`);
   return (
     <span className="text-right">
       <span className="block font-semibold tabular-nums">around {fmt(f.at, now)}</span>
