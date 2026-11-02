@@ -15,4 +15,5 @@ Polish the existing app (no new features). Mikkel's notes: $ARGUMENTS
 6. Run the **qa** subagent again on the screens you touched, to check the fixes. Fix anything small it finds.
 7. Add every M/L item to the Ideas table in `IDEAS.md`: next free ID, title, status `proposed`, type `polish`, a one-line why, size, source `ux-reviewer` or `qa`, today's date.
 8. Commit (`Polish: N fixes, M ideas`) and push to main.
-9. End with a short plain-language list: **Fixed** (one line each) and **Waiting for your approval in IDEAS.md** (ID and title).
+9. **Open IDEAS.md for Mikkel** (only if this run added at least one new `proposed` row; skip it otherwise). Do this once, as the very last tool call, after the push: run `cmd.exe /c start "" IDEAS.md` with the **PowerShell** tool from the repo root (in the Bash tool, Git Bash mangles `/c`, so don't use that). It opens the file in his default editor.
+10. End with a short plain-language list: **Fixed** (one line each) and **Waiting for your approval in IDEAS.md** (ID and title).
