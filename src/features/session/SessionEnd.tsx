@@ -9,6 +9,7 @@ import type { Achievement } from '../../lib/gamify';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
+import { useCountUp } from '../../lib/countUp';
 import { meaningOf, useVocabData } from '../../lib/vocabData';
 import { patternLabel, patternStats, weakestPair } from '../tonegym/model';
 import type { SessionState } from './state';
@@ -39,17 +40,41 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
   const minutes = Math.max(1, Math.round((st.updatedAt - st.startedAt) / 60000));
   const lvl = game?.level;
   const verdict = verdictText(accuracy / 100);
+  // The XP counts up after the seal lands; the level bar fills from where this session started.
+  const xpShown = useCountUp(st.xp, 700, 350);
+  const [barIn, setBarIn] = useState(() => !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+  useEffect(() => {
+    const t = setTimeout(() => setBarIn(true), 650);
+    return () => clearTimeout(t);
+  }, []);
+  // This session took you over today's goal.
+  const goalNow = !!game && game.streak.todayDone && game.streak.todayXp - st.xp < game.goal;
+  useEffect(() => {
+    if (!goalNow) return;
+    const t = setTimeout(() => sfx.correct(), 900);
+    return () => clearTimeout(t);
+  }, [goalNow]);
   return (
     <div className="mx-auto max-w-xl px-4 pb-12 pt-[max(2.5rem,env(safe-area-inset-top))]">
       <Seal hanzi={verdict.hanzi} small />
       <p className="anim-up mt-4 text-center text-sm text-muted [animation-delay:250ms]">
         {st.plan.mode === 'quick' ? 'Quick session' : st.plan.mode === 'reading' ? 'Reading round' : 'Deep session'} done · {verdict.title}
       </p>
-      <p className="anim-up mt-1 text-center text-5xl font-semibold tabular-nums text-gold [animation-delay:300ms]">+{st.xp} XP</p>
+      <p className="anim-up mt-1 text-center text-5xl font-semibold tabular-nums text-gold [animation-delay:300ms]" aria-label={`+${st.xp} XP`}>
+        +{xpShown} XP
+      </p>
       {game && (
+        goalNow ? (
+          <p className="mt-3 text-center">
+            <span className="anim-pop inline-flex items-center gap-1.5 rounded-full bg-jade px-3 py-1 text-sm font-semibold text-jade-ink shadow-sm [animation-delay:900ms]">
+              Daily goal reached · {game.streak.current}-day streak
+            </span>
+          </p>
+        ) : (
         <p className="anim-up mt-2 text-center text-[0.9375rem] text-muted [animation-delay:360ms]">
           {game.streak.todayDone ? `Daily goal reached. ${game.streak.current}-day streak.` : `${Math.max(0, game.goal - game.streak.todayXp)} XP to today's goal`}
         </p>
+        )
       )}
       <div className="mt-6 grid grid-cols-3 gap-3 text-center">
         <Stat label="Accuracy" value={`${accuracy}%`} delay={420} />
@@ -64,7 +89,7 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
               {lvl.into} / {lvl.span} XP
             </span>
           </div>
-          <ProgressBar value={lvl.into / lvl.span} label="Progress to the next level" tone="gold" className="mt-2" />
+          <ProgressBar value={barIn ? lvl.into / lvl.span : Math.max(0, lvl.into - st.xp) / lvl.span} label="Progress to the next level" tone="gold" className="mt-2" />
         </div>
       )}
       {fresh.length > 0 && (

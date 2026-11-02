@@ -356,3 +356,6 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Sound during QA came from the browser's own voice: when a test blocks the recordings, the app falls back to speechSynthesis, which on Windows plays through the OS speech engine and isn't covered by `--mute-audio`. The speaking test also replaced the launch options and dropped `--mute-audio`.
 - The app now makes no sound when `navigator.webdriver` is true (`src/lib/automated.ts`): audio elements are muted but still play (tests that check audio starts keep working), the browser voice is skipped, sound effects are off. Real browsers are unaffected.
 - All launch options come from `e2e/launch.ts` (headless, `--mute-audio`; `launchMuted()` for scripts).
+
+## 2026-11-02: End-screen count-up and goal moment (IDEAS #14)
+- The big "+N XP" counts up (0.7 s, ease-out, after the seal; `lib/countUp.ts`), the level bar starts where this session began and fills to the new value, and when this session took you over today's goal a jade "Daily goal reached · N-day streak" pill pops in with the "correct" sound. With reduced motion everything shows its final value at once.
