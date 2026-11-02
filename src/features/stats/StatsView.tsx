@@ -22,6 +22,7 @@ import { TONE_WORD } from '../tonegym/model';
 import { ToneMatrix } from '../tonegym/ToneMatrix';
 import { Columns, Legend, StackBar, TableView, Tile } from './charts';
 import { ReviewCards } from '../progress/ReviewCards';
+import { StudyCalendar } from './StudyCalendar';
 import { readingByLevel, readingStates } from '../../lib/reading';
 import { useReadData } from '../reading/data';
 import type { ReviewItemRow, ReviewLogRow } from '../../db/db';
@@ -153,6 +154,10 @@ export function StatsView() {
       </Section>
 
       <ToneTwins vocab={vocab} logs={toneLogs} hanzi={settings.showHanzi} />
+
+      <Section title="Study calendar" note={`Each square is a day, shaded by how much of your ${settings.dailyGoal} XP goal you reached. Tap a day for details.`}>
+        <StudyCalendar logs={logs} goal={settings.dailyGoal} streak={game?.streak ?? null} now={now} />
+      </Section>
 
       <Section title="Time studied" note={`Minutes answering per day, last 30 days: ${minutes30} in all.`}>
         <Columns

@@ -90,6 +90,28 @@ export function perDay(logs: ReviewLogRow[], now: number, days = 30): DayRow[] {
   return rows.map((r) => ({ day: r.day, minutes: Math.round(r.ms / 60000), answers: r.answers, accuracy: r.answers ? r.ok / r.answers : null, xp: r.xp }));
 }
 
+/**
+ * Study calendar (IDEAS #5): days in columns of one week each, Monday on top,
+ * oldest week first. Empty slots (before the first day, after today) are null.
+ */
+export function calendarGrid<T extends { day: number }>(rows: T[]): Array<Array<T | null>> {
+  if (!rows.length) return [];
+  const lead = (new Date(rows[0].day).getDay() + 6) % 7; // Monday = 0
+  const cells: Array<T | null> = [...Array<null>(lead).fill(null), ...rows];
+  while (cells.length % 7) cells.push(null);
+  const out: Array<Array<T | null>> = [];
+  for (let i = 0; i < cells.length; i += 7) out.push(cells.slice(i, i + 7));
+  return out;
+}
+
+/** Shade for a day: 0 nothing, 1 some, 2 at least half the goal, 3 goal met, 4 double the goal. */
+export function goalLevel(xp: number, goal: number): 0 | 1 | 2 | 3 | 4 {
+  if (xp <= 0) return 0;
+  if (xp >= 2 * goal) return 4;
+  if (xp >= goal) return 3;
+  return xp >= goal / 2 ? 2 : 1;
+}
+
 /** Per-tone accuracy from tone answers (Tone Gym, tone exercises, typed pinyin). */
 export function toneAccuracy(logs: ReviewLogRow[]): Array<{ tone: number; n: number; rate: number | null }> {
   const n = [0, 0, 0, 0, 0, 0];

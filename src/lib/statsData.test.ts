@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { ReviewItemRow, ReviewLogRow } from '../db/db';
 import { review } from './review';
-import { forecast, perDay, retention, toneAccuracy, wordsByLevel } from './statsData';
+import { calendarGrid, forecast, goalLevel, perDay, retention, toneAccuracy, wordsByLevel } from './statsData';
 
 const now = new Date(2026, 9, 27, 12).getTime();
 const DAY = 864e5;
@@ -63,5 +63,22 @@ describe('stats', () => {
     const a = toneAccuracy([log({ tones: { expected: '3-3', given: '2-3' } }), log({ tones: { expected: '4', given: '2' } })]);
     expect(a[2]).toEqual({ tone: 3, n: 2, rate: 1 });
     expect(a[3]).toEqual({ tone: 4, n: 1, rate: 0 });
+  });
+});
+
+describe('study calendar', () => {
+  it('puts days in Monday-first week columns', () => {
+    // Wed 5 Nov 2025 … Tue 11 Nov 2025 (4 am starts).
+    const rows = Array.from({ length: 7 }, (_, i) => ({ day: new Date(2025, 10, 5 + i, 4).getTime() }));
+    const g = calendarGrid(rows);
+    expect(g).toHaveLength(2);
+    expect(g[0].slice(0, 2)).toEqual([null, null]);
+    expect(g[0][2]).toBe(rows[0]);
+    expect(g[1][0]).toBe(rows[5]); // Monday 10 Nov
+    expect(g[1].slice(2)).toEqual([null, null, null, null, null]);
+    expect(calendarGrid([])).toEqual([]);
+  });
+  it('shades by daily goal', () => {
+    expect([0, 10, 50, 100, 199, 200].map((x) => goalLevel(x, 100))).toEqual([0, 1, 2, 3, 3, 4]);
   });
 });
