@@ -13,7 +13,9 @@ import { usePinyinFn } from '../../lib/pinyinPro';
 import { loadDict, type Dict } from '../dictionary/dict';
 import { translateIfSetUp } from '../dictionary/translate';
 import { currentLevel, isKnownState, isStartedState, useWordStates } from '../../lib/knowledge';
-import { useVocab, type VocabRow } from '../../lib/vocabData';
+import { meaningOf, useVocab, type VocabRow } from '../../lib/vocabData';
+import { TonePinyin } from '../../components/Hanzi';
+import { unlockingWords } from './unlock';
 import { loadCatalogue, namesOf, rankSongs, scoreSong, type Band, type Catalogue, type CatalogueSong, type Filters, type RankedSong, type SongScore } from './catalogue';
 import { SCENES } from './genres';
 import { lyricsById, searchLyrics, type Lyrics } from './lyrics';
@@ -227,6 +229,8 @@ export function MusicView() {
           Only songs with timed lyrics (for Follow along)
         </label>
       </section>
+
+      {cat && cat !== 'error' && k && <UnlockPanel cat={cat} filters={filters} k={k} />}
 
       {cat === 'error' ? (
         <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">The song list couldn't load. Check your connection and open Music again.</p>
@@ -787,5 +791,52 @@ function NowPlaying() {
       )}
       {word && <WordPopover text={word.token.text} entry={word.token.entry} known={word.token.status === 'known'} anchor={word.anchor} onClose={() => setWord(null)} />}
     </div>
+  );
+}
+
+/** IDEAS #8: the unknown words that would move the most songs (in the scenes you picked) up a band. */
+function UnlockPanel({ cat, filters, k }: { cat: Catalogue; filters: Filters; k: { known: (id: string) => boolean; order: (id: string) => number; byId: Map<string, VocabRow> } }) {
+  const top = useMemo(
+    () =>
+      unlockingWords(
+        cat,
+        cat.songs.filter((s) => (!filters.scenes.length || filters.scenes.includes(s.scene)) && (!filters.syncedOnly || s.synced)),
+        k.known,
+        k.order,
+      ),
+    [cat, filters.scenes, filters.syncedOnly, k],
+  );
+  if (!top.length) return null;
+  return (
+    <section className="mt-6" aria-labelledby="unlock-h">
+      <h2 id="unlock-h" className="text-lg font-semibold">
+        Words that unlock songs
+      </h2>
+      <p className="mt-0.5 text-sm text-muted">Learn one of these and that many songs get a band easier. Tap one to look it up.</p>
+      <ul className="group-list mt-3">
+        {top.map((u) => {
+          const w = k.byId.get(u.id);
+          if (!w) return null;
+          return (
+            <li key={u.id}>
+              <button onClick={() => go(`dictionary?q=${encodeURIComponent(w.hanzi)}`)} className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-sunk/50">
+                <span className="han w-12 shrink-0 text-xl" lang="zh-CN">
+                  {w.hanzi}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <TonePinyin pinyin={w.pinyin} className="block font-medium" />
+                  <span className="block truncate text-xs text-muted">{meaningOf(w)}</span>
+                </span>
+                <span className="shrink-0 text-right text-xs tabular-nums text-muted">
+                  <span className="block text-base font-semibold text-ink">{u.songs}</span>
+                  {u.songs === 1 ? 'song' : 'songs'} easier
+                  {u.comfortable > 0 && <span className="block">{u.comfortable} to comfortable</span>}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
