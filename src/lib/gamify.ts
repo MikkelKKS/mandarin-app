@@ -144,30 +144,35 @@ export interface Achievement {
   done: (s: AchievementStats) => boolean;
   /** Progress towards it, 0 to 1. */
   progress: (s: AchievementStats) => number;
+  /** The number it counts and the value it needs (for the pace forecast). */
+  key: keyof AchievementStats;
+  target: number;
 }
 
-const goalOf = (get: (s: AchievementStats) => number, target: number) => ({
-  done: (s: AchievementStats) => get(s) >= target,
-  progress: (s: AchievementStats) => Math.min(1, get(s) / target),
+const goalOf = (key: keyof AchievementStats, target: number) => ({
+  key,
+  target,
+  done: (s: AchievementStats) => s[key] >= target,
+  progress: (s: AchievementStats) => Math.min(1, s[key] / target),
 });
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'first-session', title: 'First session', hanzi: '开始', detail: 'Finish a session', ...goalOf((s) => s.sessions, 1) },
-  { id: 'streak-7', title: 'A week in a row', hanzi: '一周', detail: '7-day streak', ...goalOf((s) => s.bestStreak, 7) },
-  { id: 'streak-30', title: 'A month in a row', hanzi: '一个月', detail: '30-day streak', ...goalOf((s) => s.bestStreak, 30) },
-  { id: 'streak-100', title: 'Hundred days', hanzi: '百天', detail: '100-day streak', ...goalOf((s) => s.bestStreak, 100) },
-  { id: 'words-100', title: '100 words', hanzi: '一百', detail: 'Start learning 100 words', ...goalOf((s) => s.startedWords, 100) },
-  { id: 'words-1000', title: '1,000 words', hanzi: '一千', detail: 'Start learning 1,000 words', ...goalOf((s) => s.startedWords, 1000) },
-  { id: 'mature-100', title: '100 words mature', hanzi: '熟', detail: '100 words with every skill 21+ days out', ...goalOf((s) => s.matureWords, 100) },
-  { id: 'mature-500', title: '500 words mature', hanzi: '熟练', detail: '500 words mature', ...goalOf((s) => s.matureWords, 500) },
-  { id: 'mature-2000', title: '2,000 words mature', hanzi: '精通', detail: '2,000 words mature', ...goalOf((s) => s.matureWords, 2000) },
-  { id: 'tones-500', title: 'Tone ear', hanzi: '声调', detail: '500 tone questions right (Tone Gym and sessions)', ...goalOf((s) => s.gymRight, 500) },
-  { id: 'tones-2000', title: 'Golden ear', hanzi: '耳朵', detail: '2,000 tone questions right', ...goalOf((s) => s.gymRight, 2000) },
-  { id: 'gym-20', title: 'Flawless round', hanzi: '完美', detail: '20 out of 20 in a Tone Gym round', ...goalOf((s) => s.gymBest, 20) },
-  { id: 'combo-25', title: 'On a roll', hanzi: '连胜', detail: '25 right in a row', ...goalOf((s) => s.bestCombo, 25) },
-  { id: 'reviews-1000', title: '1,000 reviews', hanzi: '千次', detail: 'Answer 1,000 reviews', ...goalOf((s) => s.reviews, 1000) },
+  { id: 'first-session', title: 'First session', hanzi: '开始', detail: 'Finish a session', ...goalOf('sessions', 1) },
+  { id: 'streak-7', title: 'A week in a row', hanzi: '一周', detail: '7-day streak', ...goalOf('bestStreak', 7) },
+  { id: 'streak-30', title: 'A month in a row', hanzi: '一个月', detail: '30-day streak', ...goalOf('bestStreak', 30) },
+  { id: 'streak-100', title: 'Hundred days', hanzi: '百天', detail: '100-day streak', ...goalOf('bestStreak', 100) },
+  { id: 'words-100', title: '100 words', hanzi: '一百', detail: 'Start learning 100 words', ...goalOf('startedWords', 100) },
+  { id: 'words-1000', title: '1,000 words', hanzi: '一千', detail: 'Start learning 1,000 words', ...goalOf('startedWords', 1000) },
+  { id: 'mature-100', title: '100 words mature', hanzi: '熟', detail: '100 words with every skill 21+ days out', ...goalOf('matureWords', 100) },
+  { id: 'mature-500', title: '500 words mature', hanzi: '熟练', detail: '500 words mature', ...goalOf('matureWords', 500) },
+  { id: 'mature-2000', title: '2,000 words mature', hanzi: '精通', detail: '2,000 words mature', ...goalOf('matureWords', 2000) },
+  { id: 'tones-500', title: 'Tone ear', hanzi: '声调', detail: '500 tone questions right (Tone Gym and sessions)', ...goalOf('gymRight', 500) },
+  { id: 'tones-2000', title: 'Golden ear', hanzi: '耳朵', detail: '2,000 tone questions right', ...goalOf('gymRight', 2000) },
+  { id: 'gym-20', title: 'Flawless round', hanzi: '完美', detail: '20 out of 20 in a Tone Gym round', ...goalOf('gymBest', 20) },
+  { id: 'combo-25', title: 'On a roll', hanzi: '连胜', detail: '25 right in a row', ...goalOf('bestCombo', 25) },
+  { id: 'reviews-1000', title: '1,000 reviews', hanzi: '千次', detail: 'Answer 1,000 reviews', ...goalOf('reviews', 1000) },
   // Level 10 = 50·10·9 = 4,500 XP; progress by XP, not by level number.
-  { id: 'level-10', title: 'Level 10', hanzi: '十级', detail: 'Reach level 10', ...goalOf((s) => s.xp, 4500) },
+  { id: 'level-10', title: 'Level 10', hanzi: '十级', detail: 'Reach level 10', ...goalOf('xp', 4500) },
 ];
 
 /** Achievements newly reached (not yet in `unlocked`). */

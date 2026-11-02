@@ -23,6 +23,7 @@ import { ToneMatrix } from '../tonegym/ToneMatrix';
 import { Columns, Legend, StackBar, TableView, Tile } from './charts';
 import { ReviewCards } from '../progress/ReviewCards';
 import { StudyCalendar } from './StudyCalendar';
+import { PaceForecast } from './PaceForecast';
 import { readingByLevel, readingStates } from '../../lib/reading';
 import { useReadData } from '../reading/data';
 import type { ReviewItemRow, ReviewLogRow } from '../../db/db';
@@ -96,6 +97,8 @@ export function StatsView() {
               : `Right on your ${pct(target)} target.`}
         </p>
       )}
+
+      <PaceForecast logs={logs} now={now} mature={mature} levels={levels} game={game} />
 
       <Section title="Words by HSK level" note="A word counts as far as its weakest skill (listening or typing). Mature: next review 21 or more days away.">
         <Legend items={STATES.map((s) => ({ label: STATE_LABEL[s], color: STATE_COLOR[s] }))} />
