@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { mutedLaunch } from './e2e/launch';
 
 /**
  * QA screen tour (used by the qa agent, not by CI).
@@ -6,9 +7,9 @@ import { defineConfig, devices } from '@playwright/test';
  * Screenshots land in qa-screenshots/ (git-ignored).
  * channel 'chrome' uses the Google Chrome already installed on the PC, so no browser download is needed
  * (Playwright's own Chromium download kept hanging on Mikkel's PC).
- * Test browsers are always muted (--mute-audio), so QA runs make no sound on Mikkel's PC.
+ * Test browsers are always headless and muted (e2e/launch.ts), so QA runs make no sound on Mikkel's PC.
  */
-const launchOptions = { args: ['--mute-audio'] };
+const launchOptions = mutedLaunch();
 export default defineConfig({
   testDir: 'qa',
   timeout: 120_000,

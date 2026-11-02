@@ -4,6 +4,7 @@
  * gets a fresh <audio> element: swapping the source of a playing element
  * caused glitches in Firefox.
  */
+import { AUTOMATED, silenceIfAutomated } from './automated';
 import { audioPath, type Voice } from '../content/audioPaths';
 import { lookup, sentences } from '../content';
 import { currentSettings } from './settings';
@@ -167,7 +168,7 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
         return;
       }
       const t = tries[i];
-      a = new Audio(t.url);
+      a = silenceIfAutomated(new Audio(t.url));
       a.preload = 'auto';
       a.defaultPlaybackRate = t.rate;
       a.playbackRate = t.rate;
@@ -195,6 +196,8 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
 export function speak(text: string, opts: PlayOptions = {}): Promise<void> {
   return new Promise((resolve) => {
     if (typeof speechSynthesis === 'undefined') return resolve();
+    // Automated test browsers: no voice at all (the OS speech engine isn't covered by --mute-audio).
+    if (AUTOMATED) return void setTimeout(resolve, 300);
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'zh-CN';
     u.rate = opts.slow ? 0.6 : 0.9;
@@ -242,7 +245,7 @@ export function dictAudioUrl(hanzi: string): string {
 /** Play a URL; resolves true if it played, false if it failed to load. */
 export function playUrl(url: string): Promise<boolean> {
   stop();
-  const a = new Audio(url);
+  const a = silenceIfAutomated(new Audio(url));
   a.volume = volume;
   el = a;
   return new Promise((resolve) => {

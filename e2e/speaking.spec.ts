@@ -1,10 +1,11 @@
 import { expect, test } from '@playwright/test';
+import { mutedLaunch } from './launch';
 
 // Chrome's fake microphone plays a beep, which is enough to get a pitch curve.
 test.use({
   serviceWorkers: 'block',
   permissions: ['microphone'],
-  launchOptions: { args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'] },
+  launchOptions: mutedLaunch('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream'),
 });
 
 /** A word you know by ear (listening card in long-term review), so speaking starts on it. */

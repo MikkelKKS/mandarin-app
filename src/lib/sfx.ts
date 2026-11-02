@@ -1,4 +1,5 @@
 /** Tiny synthesized sound effects (no audio files needed). */
+import { AUTOMATED } from './automated';
 import { currentSettings } from './settings';
 
 let ctx: AudioContext | null = null;
@@ -19,7 +20,7 @@ function tone(freq: number, start: number, dur: number, type: OscillatorType = '
 }
 
 function ready(): boolean {
-  if (!currentSettings().sound) return false;
+  if (!currentSettings().sound || AUTOMATED) return false;
   try {
     ctx ??= new AudioContext();
     if (ctx.state === 'suspended') void ctx.resume();

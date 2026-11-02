@@ -2,8 +2,9 @@ import { defineConfig, devices } from '@playwright/test';
 
 const local = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 import { existsSync } from 'node:fs';
-// Test browsers are always muted (--mute-audio), so test runs make no sound on Mikkel's PC.
-const launchOptions = { args: ['--mute-audio'], ...(!process.env.CI && existsSync(local) ? { executablePath: local } : {}) };
+import { mutedLaunch } from './e2e/launch';
+// Test browsers are always headless and muted (e2e/launch.ts), so test runs make no sound on Mikkel's PC.
+const launchOptions = { ...mutedLaunch(), ...(!process.env.CI && existsSync(local) ? { executablePath: local } : {}) };
 
 export default defineConfig({
   testDir: 'e2e',

@@ -1,4 +1,5 @@
 /** A small card next to a tapped word: reading, meaning, audio, add to practice. No backdrop. */
+import { AUTOMATED } from '../lib/automated';
 import { GrammarToggle } from './GrammarNote';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -52,7 +53,7 @@ export function WordPopover({
   }, []);
   const say = () => {
     if (audioId) return void play(audioId);
-    if (!('speechSynthesis' in window)) return;
+    if (!('speechSynthesis' in window) || AUTOMATED) return;
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'zh-CN';
     speechSynthesis.cancel();
