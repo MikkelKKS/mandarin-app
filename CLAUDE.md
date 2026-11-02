@@ -145,3 +145,24 @@ After each step: deploy, then tell Mikkel in plain language what changed and wha
 - Tone Gym uses multiple real/neural speakers and adapts to his confusion matrix.
 - Stats screen shows retention, forecast, words per HSK level, and the tone confusion matrix.
 - Microphone features can be turned off globally and per session.
+
+## 12. Working rules for Claude (sync, models, idea workflow)
+
+Mikkel switches between two PCs, so the repo on GitHub is the single source of truth.
+
+### Sync
+- **Always pull before starting work** (`git pull --rebase`). A SessionStart hook in `.claude/settings.json` does this automatically; if its output says `SYNC FAILED`, or a pull ever conflicts, **stop and explain the problem to Mikkel in plain language** before doing anything else. Never force-push or discard his changes to get past a conflict.
+- **After finishing any task:** run the tests (`npm test`, plus `npm run build`), then commit and push to `main` yourself. Don't ask first.
+- **Never end a session with uncommitted or unpushed changes.** Check `git status` before your final message.
+- If `node_modules` is missing, run `npm install`. The QA tour uses the Google Chrome installed on the PC (`channel: 'chrome'`), because `npx playwright install` hangs on Mikkel's PC; don't retry that download.
+
+### Models (to save Mikkel's Pro usage)
+- Every subagent file in `.claude/agents/` must set `model:`. `learning-expert` and `creative` use `haiku`; `critic` and `qa` use `sonnet`.
+- **Never use opus for a subagent**, including ad-hoc Agent calls (pass `model: "sonnet"` or `"haiku"`).
+- Only the build work in `/build` runs on the main session model.
+
+### Idea workflow
+- `IDEAS.md` holds all improvement ideas with a status: `proposed` → Mikkel changes it to `approved` or `rejected`; `/build` sets `building` → `done`; QA adds `bug` rows.
+- `/brainstorm` (learning-expert + creative propose, critic reviews, keep ideas 2 of 3 support), `/build` (build approved ideas one at a time: tests → qa → commit and push), `/qa` (QA on its own). Commands are in `.claude/commands/`.
+- QA uses `npm run qa:screens` (`playwright.qa.config.ts`, `qa/screens.spec.ts`): every main screen at 412px and 1440px, screenshots in the git-ignored `qa-screenshots/`. Add new screens to its list.
+- No paid APIs or services in any of this.

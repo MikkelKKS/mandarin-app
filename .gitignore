@@ -8,3 +8,4 @@ __pycache__
 *.log
 public/dict
 .vocab-sources
+qa-screenshots

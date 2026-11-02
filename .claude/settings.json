@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git pull --rebase --autostash 2>&1 || echo 'SYNC FAILED: git pull --rebase did not finish. Stop, explain the problem to Mikkel in plain language, and do not start any work until it is fixed.'",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
