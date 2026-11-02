@@ -175,6 +175,15 @@ export function newlyUnlocked(stats: AchievementStats, unlocked: Set<string>): A
   return ACHIEVEMENTS.filter((a) => !unlocked.has(a.id) && a.done(stats));
 }
 
+/** The `n` locked achievements closest to done (most progress first; ties keep list order). */
+export function closestAchievements(stats: AchievementStats | null, unlocked: { has: (id: string) => boolean }, n = 4): Achievement[] {
+  return ACHIEVEMENTS.filter((a) => !unlocked.has(a.id))
+    .map((a, i) => ({ a, i, p: stats ? a.progress(stats) : 0 }))
+    .sort((x, y) => y.p - x.p || x.i - y.i)
+    .slice(0, n)
+    .map((x) => x.a);
+}
+
 /** Longest run of right answers in the log (in time order, sessions only). */
 export function bestComboOf(logs: Array<{ at: number; verdict: Verdict; xp?: number }>): number {
   let best = 0;

@@ -4,10 +4,10 @@
  * accuracy trend and XP history.
  */
 import { PageHeader } from '../../components/PageHeader';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { db } from '../../db/db';
 import { useGameStats } from '../../lib/gameStats';
-import { ACHIEVEMENTS } from '../../lib/gamify';
+import { ACHIEVEMENTS, closestAchievements } from '../../lib/gamify';
 import { ProgressBar } from '../../components/ProgressBar';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
@@ -54,6 +54,7 @@ export function StatsView() {
   const cards = useLive(() => db.reviewItems.toArray(), [], null);
   const logs = useLive(() => db.reviewLogs.toArray(), [], null);
   const game = useGameStats(settings.dailyGoal);
+  const [allAch, setAllAch] = useState(false);
   const now = useMemo(() => Date.now(), [logs]);
 
   const levels = useMemo(() => (vocab && cards ? wordsByLevel(vocab, cards) : null), [vocab, cards]);
@@ -193,9 +194,9 @@ export function StatsView() {
         </div>
       </Section>
 
-      <Section title="Achievements" note={`${game?.unlocked.size ?? 0} of ${ACHIEVEMENTS.length} unlocked.`}>
+      <Section title="Achievements" note={`${game?.unlocked.size ?? 0} of ${ACHIEVEMENTS.length} unlocked.${allAch ? '' : ' Closest to done:'}`}>
         <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {ACHIEVEMENTS.map((a) => {
+          {(allAch ? ACHIEVEMENTS : closestAchievements(game?.stats ?? null, game?.unlocked ?? new Set<string>(), 4)).map((a) => {
             const at = game?.unlocked.get(a.id);
             const p = game ? a.progress(game.stats) : 0;
             return (
@@ -218,6 +219,9 @@ export function StatsView() {
             );
           })}
         </ul>
+        <button onClick={() => setAllAch(!allAch)} aria-expanded={allAch} className="mt-3 h-11 w-full rounded-2xl border border-line font-medium">
+          {allAch ? 'Show fewer' : `Show all ${ACHIEVEMENTS.length}`}
+        </button>
       </Section>
     </div>
   );

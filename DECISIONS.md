@@ -332,3 +332,6 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **`/polish [notes]`** with a new `ux-reviewer` subagent (sonnet) that reviews only the existing app. Size-S fixes are made directly; M/L items go to IDEAS.md as `proposed`, type `polish`. IDEAS.md gained a Type column (`feature` / `polish` / `bug`).
 - **`/build`** runs on `claude-opus-5-5` at `effort: medium`, set in the command's frontmatter (supported per the Claude Code docs), so the global default effort is unchanged.
 - Tasks with more than two steps keep a to-do list; /build and /polish announce "Idea X of Y" / "Fix X of Y".
+
+## 2026-11-02: Ideas from /polish and /brainstorm
+- **Achievements on Stats (IDEAS #1):** collapsed by default to the 4 locked achievements closest to done (most progress first, ties in list order; `closestAchievements` in `gamify.ts`), with "Show all 15". Home still shows the single closest one.

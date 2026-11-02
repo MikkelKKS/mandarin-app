@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ACHIEVEMENTS, bestComboOf, comboMultiplier, levelFor, newlyUnlocked, streakOf, xpByDay, xpFor } from './gamify';
+import { ACHIEVEMENTS, bestComboOf, closestAchievements, comboMultiplier, levelFor, newlyUnlocked, streakOf, xpByDay, xpFor } from './gamify';
 import { dayStart } from './review';
 
 /** Noon on day n of October 2026, local time. */
@@ -65,6 +65,13 @@ describe('achievements', () => {
   it('shows progress', () => {
     const a = ACHIEVEMENTS.find((x) => x.id === 'mature-500')!;
     expect(a.progress({ ...base, matureWords: 250 })).toBe(0.5);
+  });
+  it('picks the locked achievements closest to done', () => {
+    const s = { ...base, sessions: 1, matureWords: 90, bestStreak: 5 };
+    const got = closestAchievements(s, new Set(['first-session']), 3).map((a) => a.id);
+    expect(got).toEqual(['mature-100', 'streak-7', 'mature-500']);
+    expect(closestAchievements(null, new Set(), 2).map((a) => a.id)).toEqual(['first-session', 'streak-7']);
+    expect(closestAchievements(s, new Set(ACHIEVEMENTS.map((a) => a.id)))).toEqual([]);
   });
   it('finds the best combo in session answers', () => {
     const logs = ['correct', 'correct', 'wrong', 'correct', 'almost', 'correct'].map((verdict, i) => ({ at: i, verdict: verdict as 'correct', xp: 1 }));
