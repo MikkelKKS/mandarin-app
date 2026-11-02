@@ -14,6 +14,7 @@ import { DictionaryButton, LookUp } from '../../components/LookUp';
 import { plecoLink } from '../dictionary/dict';
 import { Speaker } from '../../components/icons';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
+import { SandhiNote } from '../../components/SandhiNote';
 import { db } from '../../db/db';
 import { comboMultiplier, xpFor, XP } from '../../lib/gamify';
 import { play, prefetchForOffline, stop } from '../../lib/audio';
@@ -487,6 +488,7 @@ function Feedback({
           <div className="mt-3 flex items-start gap-3">
             <div className="min-w-0 flex-1">
               {a.pinyin && <TonePinyin pinyin={a.pinyin} className="block text-2xl font-semibold" />}
+              <SandhiNote hanzi={a.hanzi} pinyin={a.pinyin} />
               {showHanzi && a.hanzi && (
                 <span className="han block text-lg opacity-70" lang="zh-CN">
                   {a.hanzi}

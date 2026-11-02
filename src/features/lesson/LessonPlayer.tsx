@@ -1,4 +1,5 @@
 import { DictionaryButton, LookUp } from '../../components/LookUp';
+import { SandhiNote } from '../../components/SandhiNote';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { ReportAudio } from '../../components/ReportAudio';
 import { focusNoScroll } from '../../lib/router';
@@ -371,6 +372,7 @@ function Feedback({
             <div className="min-w-0 flex-1">
               {a.hanzi && a.pinyin && <ToneText hanzi={a.hanzi} pinyin={a.pinyin} className="han block text-2xl" />}
               {a.pinyin && <TonePinyin pinyin={a.pinyin} className="block text-lg" />}
+              <SandhiNote hanzi={a.hanzi} pinyin={a.pinyin} />
               {a.english && <p className="text-base opacity-80">{a.english}</p>}
               {a.text && <p>{a.text}</p>}
               {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} className="mt-1 block" />}
