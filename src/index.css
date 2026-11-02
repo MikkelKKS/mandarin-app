@@ -88,6 +88,15 @@ body,
   min-height: 100%;
 }
 
+/* PC (IDEAS #16): one step larger type. Everything is sized in rem, so text, spacing and
+   controls scale together (16px → 17px from 1024px, 18px from 1440px). Phones are unchanged. */
+@media (min-width: 1024px) {
+  html { font-size: 106.25%; }
+}
+@media (min-width: 1440px) {
+  html { font-size: 112.5%; }
+}
+
 body {
   margin: 0;
   background: var(--bg);
