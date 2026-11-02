@@ -15,6 +15,7 @@ import { plecoLink } from '../dictionary/dict';
 import { Speaker } from '../../components/icons';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { SandhiNote } from '../../components/SandhiNote';
+import { sheetPadding, useSheetSpace } from '../../components/sheetSpace';
 import { db } from '../../db/db';
 import { comboMultiplier, xpFor, XP } from '../../lib/gamify';
 import { play, prefetchForOffline, stop } from '../../lib/audio';
@@ -355,7 +356,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
   const doneCount = st.plan.blocks.slice(0, st.block).reduce((n, b) => n + b.items.length, 0) + st.item;
   return (
     <LessonCtx.Provider value={api}>
-      <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pb-72 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8">
+      <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8" style={sheetPadding()}>
         <header className="relative flex items-center gap-3">
           <button onClick={() => go(home)} aria-label="Leave the session (it's saved)" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted hover:bg-sunk">
             ✕
@@ -438,7 +439,15 @@ function Feedback({
   useEffect(() => {
     btn.current?.focus({ preventScroll: true });
   }, []);
-  const tone = o.verdict === 'wrong' ? 'bg-cinnabar-soft' : o.verdict === 'almost' || o.verdict === 'typo' ? 'bg-amber-soft' : 'bg-jade-soft';
+  // Phone: a full-width sheet in the verdict colour. PC (md+): a card in that colour, centred over the content.
+  const [tone, card] =
+    o.verdict === 'wrong'
+      ? ['bg-cinnabar-soft', 'md:bg-cinnabar-soft']
+      : o.verdict === 'almost' || o.verdict === 'typo'
+        ? ['bg-amber-soft', 'md:bg-amber-soft']
+        : ['bg-jade-soft', 'md:bg-jade-soft'];
+  const sheet = useRef<HTMLDivElement>(null);
+  useSheetSpace(sheet);
   const title = o.note?.startsWith('Moved back') ? "Here's the word" : o.verdict === 'wrong' ? 'Not quite' : o.verdict === 'almost' ? 'Almost' : o.verdict === 'typo' ? 'Right, with a typo' : 'Right';
   // A word heard in a sentence is replayed in that sentence.
   const own = 'sentence' in item && item.sentence.startsWith('m-') && !data.sentences.get(item.sentence)?.azure;
@@ -447,8 +456,8 @@ function Feedback({
   // Look up: the sentence the word was heard in, else the answer's characters (or the reading item's).
   const lookup = (result.context?.id && data.sentences.get(result.context.id)?.hanzi) || a?.hanzi || result.lookup || '';
   return (
-    <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)]`}>
-      <div className="mx-auto max-w-xl lg:max-w-2xl">
+    <div ref={sheet} role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-transparent md:pt-0 md:shadow-none`}>
+      <div className={`mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
         <p className="text-xl font-semibold">{title}</p>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}
         {o.syllables && o.verdict !== 'correct' && <SyllableBreakdown syllables={o.syllables} extra={o.extra} />}
@@ -495,20 +504,6 @@ function Feedback({
                 </span>
               )}
               {a.english && <p className="opacity-80">{a.english}</p>}
-              <span className="mt-1 flex flex-wrap gap-x-4">
-                {audioId &&
-                  (result.context?.id ? (
-                    <ReportAudio id={audioId} hanzi={data.sentences.get(audioId)?.hanzi ?? ''} pinyin={data.sentences.get(audioId)?.pinyin} />
-                  ) : (
-                    <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} />
-                  ))}
-                {'word' in item && a.hanzi && a.pinyin && <GrammarLink word={{ hanzi: a.hanzi, pinyin: a.pinyin }} />}
-                {'word' in item && a.hanzi && (
-                  <a href={plecoLink(a.hanzi)} className="text-xs underline underline-offset-2 opacity-70 hover:opacity-100">
-                    Open in Pleco
-                  </a>
-                )}
-              </span>
             </div>
             {audioId && (
               <button onClick={() => void play(audioId)} aria-label="Play again" className="rounded-full bg-surface/70 p-3 active:scale-90">
@@ -517,7 +512,6 @@ function Feedback({
             )}
           </div>
         )}
-        {lookup && <LookUp text={lookup} className="mt-2" />}
         {grade}
         <button ref={btn} onClick={onContinue} className="press mt-4 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
           Continue
@@ -526,6 +520,28 @@ function Feedback({
           <button onClick={onOverride} className="mt-3 h-11 w-full rounded-2xl border border-ink/15 text-sm font-medium opacity-90 hover:opacity-100">
             {result.panel ? "I was right" : "I was right: my answer means the same"}
           </button>
+        )}
+        {((a && audioId) || lookup || ('word' in item && a?.hanzi)) && (
+          <details className="group mt-2 text-sm">
+            <summary className="flex h-10 cursor-pointer list-none items-center justify-center gap-1 rounded-xl font-medium opacity-80 hover:opacity-100 [&::-webkit-details-marker]:hidden">
+              More <span className="transition-transform group-open:rotate-180" aria-hidden>▾</span>
+            </summary>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pb-1">
+              {lookup && <LookUp text={lookup} />}
+              {a && audioId &&
+                (result.context?.id ? (
+                  <ReportAudio id={audioId} hanzi={data.sentences.get(audioId)?.hanzi ?? ''} pinyin={data.sentences.get(audioId)?.pinyin} />
+                ) : (
+                  <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} />
+                ))}
+              {'word' in item && a?.hanzi && a.pinyin && <GrammarLink word={{ hanzi: a.hanzi, pinyin: a.pinyin }} />}
+              {'word' in item && a?.hanzi && (
+                <a href={plecoLink(a.hanzi)} className="text-xs underline underline-offset-2 opacity-70 hover:opacity-100">
+                  Open in Pleco
+                </a>
+              )}
+            </div>
+          </details>
         )}
       </div>
     </div>

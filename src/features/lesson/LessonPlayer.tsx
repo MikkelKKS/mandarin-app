@@ -1,5 +1,6 @@
 import { DictionaryButton, LookUp } from '../../components/LookUp';
 import { SandhiNote } from '../../components/SandhiNote';
+import { sheetPadding, useSheetSpace } from '../../components/sheetSpace';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { ReportAudio } from '../../components/ReportAudio';
 import { focusNoScroll } from '../../lib/router';
@@ -290,7 +291,7 @@ export function LessonPlayer({
           <DictionaryButton className="-mr-2" />
         </header>
 
-        <main className="anim-slide flex-1 px-4 pb-48 pt-4" key={current.ex.key}>
+        <main className="anim-slide flex-1 px-4 pt-4" style={sheetPadding('12rem')} key={current.ex.key}>
           {current.retry > 0 && !outcome && <p className="mb-3 text-sm font-medium text-gold">Another go at one you missed</p>}
           <ExerciseView ex={current.ex} />
         </main>
@@ -329,11 +330,11 @@ export function LessonPlayer({
   );
 }
 
-const TONE: Record<Verdict, { title: string; cls: string; btn: string; badge: string }> = {
-  correct: { title: 'Correct!', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink', badge: 'bg-jade text-jade-ink' },
-  typo: { title: 'Correct, but mind the typo', cls: 'bg-jade-soft', btn: 'bg-jade text-jade-ink', badge: 'bg-jade text-jade-ink' },
-  almost: { title: 'Almost!', cls: 'bg-amber-soft', btn: 'bg-gold text-white dark:text-black', badge: 'bg-gold text-white dark:text-black' },
-  wrong: { title: 'Not quite', cls: 'bg-cinnabar-soft', btn: 'bg-cinnabar text-white dark:text-black', badge: 'bg-cinnabar text-white dark:text-black' },
+const TONE: Record<Verdict, { title: string; cls: string; card: string; btn: string; badge: string }> = {
+  correct: { title: 'Correct!', cls: 'bg-jade-soft', card: 'md:bg-jade-soft', btn: 'bg-jade text-jade-ink', badge: 'bg-jade text-jade-ink' },
+  typo: { title: 'Correct, but mind the typo', cls: 'bg-jade-soft', card: 'md:bg-jade-soft', btn: 'bg-jade text-jade-ink', badge: 'bg-jade text-jade-ink' },
+  almost: { title: 'Almost!', cls: 'bg-amber-soft', card: 'md:bg-amber-soft', btn: 'bg-gold text-white dark:text-black', badge: 'bg-gold text-white dark:text-black' },
+  wrong: { title: 'Not quite', cls: 'bg-cinnabar-soft', card: 'md:bg-cinnabar-soft', btn: 'bg-cinnabar text-white dark:text-black', badge: 'bg-cinnabar text-white dark:text-black' },
 };
 
 function Feedback({
@@ -356,9 +357,11 @@ function Feedback({
   const audioId = isReply ? itemsOf(ex)[0] : (audioOf(ex)[0] ?? itemsOf(ex)[0]);
   const voice = isReply && ex.voice ? (ex.voice === 'f' ? 'm' : 'f') : ex.voice;
   const showAnswer = a && (outcome.verdict !== 'correct' || a.hanzi);
+  const sheet = useRef<HTMLDivElement>(null);
+  useSheetSpace(sheet);
   return (
-    <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${t.cls} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)]`}>
-      <div className="mx-auto max-w-xl">
+    <div ref={sheet} role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${t.cls} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-transparent md:pt-0 md:shadow-none`}>
+      <div className={`mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg ${t.card}`}>
         <p className="flex items-center gap-2.5 text-xl font-semibold">
           <span aria-hidden className={`anim-pop flex h-8 w-8 shrink-0 items-center justify-center rounded-full [animation-delay:120ms] ${t.badge}`}>
             {outcome.verdict === 'wrong' ? <Close className="h-5 w-5" /> : <Check className="h-5 w-5" />}
@@ -375,8 +378,6 @@ function Feedback({
               <SandhiNote hanzi={a.hanzi} pinyin={a.pinyin} />
               {a.english && <p className="text-base opacity-80">{a.english}</p>}
               {a.text && <p>{a.text}</p>}
-              {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} className="mt-1 block" />}
-              {a.hanzi && <LookUp text={a.hanzi} className="mt-1" />}
             </div>
             {audioId && (
               <button onClick={() => play(audioId, { voice })} aria-label="Play again" className="rounded-full bg-surface/70 p-3 transition active:scale-90">
@@ -390,9 +391,20 @@ function Feedback({
           {outcome.verdict === 'wrong' ? 'Got it' : 'Continue'}
         </button>
         {outcome.verdict === 'wrong' && outcome.canOverride && onOverride && (
-          <button onClick={onOverride} className="mt-2 h-11 w-full rounded-2xl text-sm font-medium opacity-80 hover:opacity-100">
+          <button onClick={onOverride} className="mt-3 h-11 w-full rounded-2xl border border-ink/15 text-sm font-medium opacity-90 hover:opacity-100">
             I was right: my answer means the same
           </button>
+        )}
+        {showAnswer && (audioId || a.hanzi) && (
+          <details className="group mt-2 text-sm">
+            <summary className="flex h-10 cursor-pointer list-none items-center justify-center gap-1 rounded-xl font-medium opacity-80 hover:opacity-100 [&::-webkit-details-marker]:hidden">
+              More <span className="transition-transform group-open:rotate-180" aria-hidden>▾</span>
+            </summary>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pb-1">
+              {a.hanzi && <LookUp text={a.hanzi} />}
+              {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} />}
+            </div>
+          </details>
         )}
       </div>
     </div>

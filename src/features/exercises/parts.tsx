@@ -155,6 +155,7 @@ export function Options({
             type="button"
             role="option"
             aria-selected={selected === i}
+            data-state={st}
             disabled={locked}
             onClick={() => onSelect(i)}
             className={`group flex min-h-14 items-center gap-3 rounded-2xl border px-4 py-3 text-left transition duration-150 active:translate-y-0.5 active:shadow-none disabled:active:translate-y-0 ${extra ? 'flex-1' : ''} ${optionClass(st)}`}

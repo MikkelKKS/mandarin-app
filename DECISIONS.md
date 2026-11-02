@@ -346,3 +346,13 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## 2026-11-02: Pace forecast (IDEAS #11)
 - Stats has "When do I get there?" right after the headline tiles: the next mature-word milestone (100, 250, 500, 1,000…), "On to HSK n+1" (80% of your current level started, when the app moves you on), the next game level, and the soonest achievement that counts something with a pace (XP, reviews, words started or matured). Each shows "around <date>" at your average pace over the last 4 weeks, with your best and slowest week as the range ("or later" if a week had no progress). Under 21 days of history it says "Not enough data yet". Weekly gains come from the review log only (`src/lib/pace.ts`): a word starts at its first listening/typing log and matures when the last of its three listening/typing cards first gets a 21+ day interval. Achievements now carry `key` and `target` so the forecast can read them.
+
+## 2026-11-02: Lighter answer feedback (IDEAS #13)
+- The feedback sheet in sessions and lessons (Conversations) now reads top to bottom: verdict, note and syllable breakdown, the answer with its play button, the review grade, Continue, "I was right". Look up, Report bad audio, Grammar and Open in Pleco moved behind a **More ▾** toggle. The review grade stays visible, because changing it is part of honest grading.
+- The page leaves exactly as much room as the sheet needs (`--sheet-h`, measured by `useSheetSpace` in `components/sheetSpace.ts`), and when it appears the right answer option (`data-state="right"`) is scrolled above it; it keeps checking for the first second because the sheet's height still settles.
+- From 768px the sheet is a rounded card in the verdict colour centred over the content, instead of a full-width coloured bar. Phones keep the full-width sheet.
+
+## 2026-11-02: Silent test browsers (asked)
+- Sound during QA came from the browser's own voice: when a test blocks the recordings, the app falls back to speechSynthesis, which on Windows plays through the OS speech engine and isn't covered by `--mute-audio`. The speaking test also replaced the launch options and dropped `--mute-audio`.
+- The app now makes no sound when `navigator.webdriver` is true (`src/lib/automated.ts`): audio elements are muted but still play (tests that check audio starts keep working), the browser voice is skipped, sound effects are off. Real browsers are unaffected.
+- All launch options come from `e2e/launch.ts` (headless, `--mute-audio`; `launchMuted()` for scripts).

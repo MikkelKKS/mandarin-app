@@ -22,6 +22,7 @@ test('after answering, "Look up" opens the dictionary over the session; closing 
   await page.getByRole('option').first().click();
   const status = page.getByRole('status').filter({ has: page.getByRole('button', { name: 'Continue' }) });
   await expect(status).toBeVisible();
+  await status.getByText('More').click(); // the extra links sit behind More
   await status.getByRole('button', { name: 'Look up' }).click();
   const sheet = page.getByRole('dialog', { name: 'Dictionary' });
   await expect(sheet).toBeVisible();
