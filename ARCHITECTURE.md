@@ -44,7 +44,7 @@ Shared pieces: `components/PageHeader.tsx`, `ProgressBar.tsx`, `WordPopover.tsx`
 
 ## Pinyin
 
-`lib/pinyin.ts` parses and segments; `lib/pinyinAnswer.ts` scores syllables and tones separately (strict or lenient); `lib/pinyinLive.ts` turns tone numbers into marks as you type.
+`lib/pinyin.ts` parses and segments; `lib/pinyinAnswer.ts` scores syllables and tones separately (strict or lenient); `lib/pinyinLive.ts` turns tone numbers into marks as you type. `lib/toneTwins.ts` finds the HSK word that wrong tones spell (买 typed mài → 卖) for feedback and the Stats "Tone twins" list; `lib/sandhi.ts` finds tone changes in an answer (3+3, 不, 一) for the "Said as …" note (`components/SandhiNote.tsx`).
 
 ## Audio
 
