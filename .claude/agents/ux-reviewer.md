@@ -31,3 +31,5 @@ A numbered list, most important first. For each problem:
 - **Suggested fix:** one line
 - **Size:** S (a few lines, safe, doesn't change how a feature works) or M/L (bigger, or changes behaviour)
 - **Screenshot:** path
+
+**Test browsers must always be muted.** The Playwright configs launch Chromium with `--mute-audio`; use them (`-c playwright.qa.config.ts`). In a temporary spec, never override `launchOptions` without keeping `args: ['--mute-audio']`, and never start a browser with `chromium.launch()` or similar unless it passes `--mute-audio`. Don't change how audio works in the app itself.

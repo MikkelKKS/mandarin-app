@@ -6,19 +6,21 @@ import { defineConfig, devices } from '@playwright/test';
  * Screenshots land in qa-screenshots/ (git-ignored).
  * channel 'chrome' uses the Google Chrome already installed on the PC, so no browser download is needed
  * (Playwright's own Chromium download kept hanging on Mikkel's PC).
+ * Test browsers are always muted (--mute-audio), so QA runs make no sound on Mikkel's PC.
  */
+const launchOptions = { args: ['--mute-audio'] };
 export default defineConfig({
   testDir: 'qa',
   timeout: 120_000,
   reporter: 'list',
-  use: { baseURL: 'http://localhost:4173/mandarin-app/', serviceWorkers: 'block' },
+  use: { baseURL: 'http://localhost:4173/mandarin-app/', serviceWorkers: 'block', launchOptions },
   webServer: {
     command: 'npx vite preview --port 4173 --strictPort',
     url: 'http://localhost:4173/mandarin-app/',
     reuseExistingServer: true,
   },
   projects: [
-    { name: 'phone', use: { ...devices['Pixel 7'], viewport: { width: 412, height: 915 }, browserName: 'chromium', channel: 'chrome' } },
-    { name: 'pc', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 }, channel: 'chrome' } },
+    { name: 'phone', use: { ...devices['Pixel 7'], viewport: { width: 412, height: 915 }, browserName: 'chromium', channel: 'chrome', launchOptions } },
+    { name: 'pc', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 }, channel: 'chrome', launchOptions } },
   ],
 });

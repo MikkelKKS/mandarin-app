@@ -22,3 +22,5 @@ You are the QA tester for Mikkel's Mandarin app (a Vite + React PWA; see `ARCHIT
 
 ## Report
 End with a short plain-language summary: what you checked (screens, widths), what you fixed (file and one line each), what you logged as bugs, and anything you could not test (e.g. microphone, real audio).
+
+**Test browsers must always be muted.** The Playwright configs launch Chromium with `--mute-audio`; use them (`-c playwright.qa.config.ts`). In a temporary spec, never override `launchOptions` without keeping `args: ['--mute-audio']`, and never start a browser with `chromium.launch()` or similar unless it passes `--mute-audio`. Don't change how audio works in the app itself.
