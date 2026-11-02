@@ -276,7 +276,7 @@ function Round({ mode }: { mode: GymMode }) {
                       aria-label={`${TONE_WORD[t]} tone`}
                       aria-pressed={chosen}
                       className={`flex h-16 flex-col items-center justify-center rounded-2xl border text-xl font-semibold transition active:scale-95 ${TONE_TEXT[t]} ${
-                        isRight ? 'border-jade bg-jade-soft' : isWrongPick ? 'border-cinnabar bg-cinnabar-soft' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'
+                        isRight ? 'border-jade bg-jade-soft anim-nudge' : isWrongPick ? 'border-cinnabar bg-cinnabar-soft anim-shake' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'
                       }`}
                     >
                       {markSyllable({ base: item!.bases[slot], tone: t })}
@@ -366,20 +366,27 @@ function RoundEnd({ mode, answers, ms, onAgain }: { mode: GymMode; answers: Answ
         <span className="text-3xl text-muted">/{answers.length}</span>
       </p>
       <p className="mt-2 text-center text-muted">
-        {prevBest !== null && score > prevBest ? 'New personal best!' : `Personal best ${Math.max(prevBest ?? 0, score)}`} · {Math.round(ms / 1000)} s
+        {prevBest !== null && score > prevBest ? (
+          <span className="anim-pop inline-block font-semibold text-gold [animation-delay:200ms]">New personal best!</span>
+        ) : (
+          `Personal best ${Math.max(prevBest ?? 0, score)}`
+        )}{' '}
+        · {Math.round(ms / 1000)} s
       </p>
       {weak && <p className="mt-4 rounded-2xl bg-amber-soft p-4 text-center">Weakest pair this round: <span className="font-semibold">{patternLabel(weak.pattern)}</span></p>}
       {missed.length > 0 && (
         <section className="mt-6">
           <h2 className="font-semibold">Missed</h2>
-          <ul className="mt-2 flex flex-col gap-2">
+          <ul className="mt-2 grid grid-cols-2 gap-2 md:grid-cols-3">
             {missed.map((a, k) => (
-              <li key={k} className="flex items-center gap-3 rounded-xl bg-surface p-3">
+              <li key={k} className="flex min-w-0 items-center gap-2 rounded-xl bg-surface px-2.5 py-2">
                 <button onClick={() => void playUrl(a.item.sources[0].url)} aria-label={`Play ${a.item.pinyin}`} className="rounded-full bg-jade-soft p-2 text-jade">
                   <Speaker className="h-4 w-4" />
                 </button>
-                <TonePinyin pinyin={a.item.pinyin} className="text-lg font-semibold" />
-                <span className="text-sm text-muted">{a.given.length ? `you: ${patternLabel(a.given.join('-'))}` : "you didn't know"}</span>
+                <span className="min-w-0">
+                  <TonePinyin pinyin={a.item.pinyin} className="block truncate text-lg font-semibold" />
+                  <span className="block text-xs text-muted">{a.given.length ? `you: ${patternLabel(a.given.join('-'))}` : "you didn't know"}</span>
+                </span>
               </li>
             ))}
           </ul>

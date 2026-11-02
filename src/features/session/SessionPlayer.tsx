@@ -355,9 +355,9 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
   const doneCount = st.plan.blocks.slice(0, st.block).reduce((n, b) => n + b.items.length, 0) + st.item;
   return (
     <LessonCtx.Provider value={api}>
-      <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pb-72 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl">
-        <header className="flex items-center gap-3">
-          <button onClick={() => go(home)} aria-label="Leave the session (it's saved)" className="rounded-full p-2 text-muted hover:bg-sunk">
+      <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pb-72 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8">
+        <header className="relative flex items-center gap-3">
+          <button onClick={() => go(home)} aria-label="Leave the session (it's saved)" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted hover:bg-sunk">
             ✕
           </button>
           <div className="flex flex-1 gap-1" role="progressbar" aria-valuenow={doneCount} aria-valuemax={total} aria-label="Session progress">
@@ -373,6 +373,11 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           <span className="min-w-16 text-right text-sm font-semibold tabular-nums text-gold" aria-label={`${st.xp} XP this session`}>
             {st.xp} XP
           </span>
+          {gained !== null && (
+            <span key={`${st.block}-${st.item}-${gained}`} className="anim-pop pointer-events-none absolute right-9 top-full z-30 mt-1 rounded-full bg-gold px-3 py-1 text-sm font-semibold text-ink shadow" aria-hidden>
+              +{gained} XP
+            </span>
+          )}
           <DictionaryButton className="-mr-2" />
         </header>
         <div className="mt-2 flex items-center justify-between text-sm">
@@ -386,11 +391,6 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             </span>
           )}
         </div>
-        {gained !== null && (
-          <span key={`${st.block}-${st.item}-${gained}`} className="anim-pop pointer-events-none fixed right-6 top-16 z-30 rounded-full bg-gold px-3 py-1 text-sm font-semibold text-ink shadow" aria-hidden>
-            +{gained} XP
-          </span>
-        )}
         <div key={`${st.block}-${st.item}`} className="anim-slide mt-6 flex-1">
           {item!.retry && <p className="mb-3 text-sm font-medium text-cinnabar">One more time</p>}
           <SessionItem
@@ -523,7 +523,7 @@ function Feedback({
           Continue
         </button>
         {o.verdict === 'wrong' && o.canOverride && onOverride && (
-          <button onClick={onOverride} className="mt-2 h-11 w-full rounded-2xl text-sm font-medium opacity-80 hover:opacity-100">
+          <button onClick={onOverride} className="mt-3 h-11 w-full rounded-2xl border border-ink/15 text-sm font-medium opacity-90 hover:opacity-100">
             {result.panel ? "I was right" : "I was right: my answer means the same"}
           </button>
         )}

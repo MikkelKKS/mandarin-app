@@ -113,13 +113,13 @@ export type OptionState = 'idle' | 'selected' | 'right' | 'wrong';
 export function optionClass(state: OptionState): string {
   switch (state) {
     case 'selected':
-      return 'border-jade bg-jade-soft shadow-[0_3px_0_var(--jade)] -translate-y-px';
+      return 'border-jade bg-jade-soft ring-1 ring-jade';
     case 'right':
       return 'border-jade bg-jade-soft anim-nudge';
     case 'wrong':
       return 'border-cinnabar bg-cinnabar-soft anim-shake';
     default:
-      return 'border-line bg-surface shadow-[0_3px_0_var(--line)] hover:border-muted';
+      return 'border-line bg-surface shadow-sm hover:border-muted';
   }
 }
 

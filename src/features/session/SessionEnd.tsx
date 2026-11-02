@@ -47,17 +47,17 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
       </p>
       <p className="anim-up mt-1 text-center text-5xl font-semibold tabular-nums text-gold [animation-delay:300ms]">+{st.xp} XP</p>
       {game && (
-        <p className="mt-2 text-center text-[0.9375rem] text-muted">
+        <p className="anim-up mt-2 text-center text-[0.9375rem] text-muted [animation-delay:360ms]">
           {game.streak.todayDone ? `Daily goal reached. ${game.streak.current}-day streak.` : `${Math.max(0, game.goal - game.streak.todayXp)} XP to today's goal`}
         </p>
       )}
       <div className="mt-6 grid grid-cols-3 gap-3 text-center">
-        <Stat label="Accuracy" value={`${accuracy}%`} />
-        <Stat label="Best combo" value={String(st.bestCombo)} />
-        <Stat label="Minutes" value={String(minutes)} />
+        <Stat label="Accuracy" value={`${accuracy}%`} delay={420} />
+        <Stat label="Best combo" value={String(st.bestCombo)} delay={480} />
+        <Stat label="Minutes" value={String(minutes)} delay={540} />
       </div>
       {lvl && (
-        <div className="mt-6">
+        <div className="anim-up mt-6 [animation-delay:600ms]">
           <div className="flex justify-between text-sm">
             <span className="font-semibold">Level {lvl.level}</span>
             <span className="tabular-nums text-muted">
@@ -68,12 +68,12 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
         </div>
       )}
       {fresh.length > 0 && (
-        <section className="card mt-6 border-gold/40 bg-amber-soft p-4">
+        <section className="card anim-up mt-6 border-gold/60 bg-amber-soft p-4 shadow-md [animation-delay:700ms]">
           <h2 className="font-semibold">New achievement{fresh.length > 1 ? 's' : ''}</h2>
           <ul className="mt-2 flex flex-col gap-2">
-            {fresh.map((a) => (
-              <li key={a.id} className="anim-pop flex items-center gap-3">
-                <span className="han flex h-11 w-11 items-center justify-center rounded-full bg-gold text-sm font-semibold text-ink">{a.hanzi}</span>
+            {fresh.map((a, i) => (
+              <li key={a.id} className="anim-pop flex items-center gap-3" style={{ animationDelay: `${850 + i * 120}ms` }}>
+                <span className="han flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold text-sm font-semibold text-ink shadow-[0_0_0_3px_var(--surface),0_0_0_4.5px_var(--gold)]">{a.hanzi}</span>
                 <span>
                   <span className="block font-semibold">{a.title}</span>
                   <span className="block text-sm text-muted">{a.detail}</span>
@@ -117,9 +117,9 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, value, delay = 0 }: { label: string; value: string; delay?: number }) {
   return (
-    <div className="card p-3">
+    <div className="card anim-up p-3" style={{ animationDelay: `${delay}ms` }}>
       <p className="text-xs text-muted">{label}</p>
       <p className="text-2xl font-semibold tabular-nums">{value}</p>
     </div>

@@ -66,7 +66,7 @@ export const Music = ({ className }: P) => (
 );
 /** The four tone contours: level, rising, dipping, falling. */
 export const Waves = ({ className }: P) => (
-  <svg {...base} className={className} aria-hidden>
+  <svg {...base} strokeWidth={2.1} className={className} aria-hidden>
     <path d="M2 7h4M8 17l4-10M14 9q1.5 8 3 0M19 7l3 10" />
   </svg>
 );

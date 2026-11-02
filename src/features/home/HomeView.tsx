@@ -103,7 +103,7 @@ export function HomeView() {
         <div className="min-w-0 flex-1">
           <p className="flex items-center gap-1.5 whitespace-nowrap text-lg font-semibold">
             <Flame className={`h-5 w-5 ${game?.streak.current ? 'text-cinnabar' : 'text-muted'}`} />
-            {game?.streak.current ?? 0}-day streak
+            {game?.streak.current ? `${game.streak.current}-day streak` : 'Start a streak today'}
           </p>
           <p className="mt-0.5 text-sm text-muted">
             {game?.streak.todayDone ? 'Goal reached today' : `${Math.max(0, settings.dailyGoal - todayXp)} XP to today's goal`}

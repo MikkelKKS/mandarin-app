@@ -69,7 +69,7 @@
   --jade-soft: #163a30;
   --gold: #e9b04a;
   --cinnabar: #ef7464;
-  --cinnabar-soft: #3b1d19;
+  --cinnabar-soft: #3a2422;
   --amber-soft: #352c14;
   --t1: #ff6b5e;
   --t2: #f5a442;
@@ -140,7 +140,7 @@ h1, h2, h3 {
   font-weight: 600;
   transition: transform 0.16s var(--ease-out), background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
-.btn:active:not(:disabled) { transform: scale(0.98); }
+.btn:active:not(:disabled) { transform: scale(0.97); filter: brightness(0.95); }
 .btn:disabled { opacity: 0.45; }
 .btn-primary {
   background: var(--jade);
@@ -205,7 +205,7 @@ h1, h2, h3 {
   from { transform: scaleY(0); }
 }
 @keyframes nudge {
-  40% { transform: scale(1.02); }
+  40% { transform: scale(1.04); }
 }
 @keyframes tile-in {
   from { opacity: 0; transform: scale(0.92); }
@@ -248,9 +248,9 @@ h1, h2, h3 {
 
 /* Tactile feedback on tappable things. */
 .press {
-  transition: transform 0.16s var(--ease-out), background-color 0.2s, color 0.2s, border-color 0.2s;
+  transition: transform 0.16s var(--ease-out), filter 0.16s, background-color 0.2s, color 0.2s, border-color 0.2s;
 }
-.press:active:not(:disabled) { transform: scale(0.98); }
+.press:active:not(:disabled) { transform: scale(0.97); filter: brightness(0.95); }
 
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

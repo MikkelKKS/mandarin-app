@@ -276,15 +276,15 @@ export function LessonPlayer({
             </div>
           </div>
           {hasSpeaking && (
-            <button onClick={noSpeaking} title="Skip speaking exercises for an hour" aria-label="Can't speak now: skip speaking exercises for an hour" className="flex items-center gap-1 rounded-full border border-line px-2.5 py-1 text-xs font-medium text-muted hover:text-ink">
+            <button onClick={noSpeaking} title="Skip speaking exercises for an hour" aria-label="Can't speak now: skip speaking exercises for an hour" className="flex h-9 shrink-0 items-center gap-1 rounded-full border border-line px-2 text-xs font-medium text-muted hover:text-ink sm:px-2.5">
               <MicOff className="h-4 w-4" />
-              No mic
+              <span className="hidden sm:inline">No mic</span>
             </button>
           )}
           {!quiet && (
-            <button onClick={goQuiet} title="Skip listening exercises for an hour" aria-label="Can't listen now: skip audio exercises for an hour" className="flex items-center gap-1 rounded-full border border-line px-2.5 py-1 text-xs font-medium text-muted hover:text-ink">
+            <button onClick={goQuiet} title="Skip listening exercises for an hour" aria-label="Can't listen now: skip audio exercises for an hour" className="flex h-9 shrink-0 items-center gap-1 rounded-full border border-line px-2 text-xs font-medium text-muted hover:text-ink sm:px-2.5">
               <Headphones className="h-4 w-4" />
-              No audio
+              <span className="hidden sm:inline">No audio</span>
             </button>
           )}
           <DictionaryButton className="-mr-2" />

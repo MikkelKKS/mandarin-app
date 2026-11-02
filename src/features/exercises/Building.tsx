@@ -76,7 +76,7 @@ function TileBoard({ tiles, chosen, setChosen }: { tiles: string[]; chosen: numb
       </>
     );
   };
-  const tileClass = 'group flex min-h-12 touch-none select-none flex-col items-center justify-center rounded-xl border border-b-4 px-3 py-1.5 transition';
+  const tileClass = 'group flex min-h-12 touch-none select-none flex-col items-center justify-center rounded-xl border px-3 py-1.5 shadow-sm transition';
   // While dragging, follow the pointer anywhere on the page (tiles re-render under it).
   const live = useRef({ onMove, onUp });
   live.current = { onMove, onUp };
@@ -146,7 +146,7 @@ function TileBoard({ tiles, chosen, setChosen }: { tiles: string[]; chosen: numb
               type="button"
               disabled={locked || used}
               {...handlers(i, null)}
-              className={`${tileClass} ${used ? 'border-transparent bg-sunk text-transparent' : moving?.tile === i && moving.pos === null ? 'border-line bg-surface opacity-30' : 'border-line bg-surface'}`}
+              className={`${tileClass} ${used ? 'border-transparent bg-sunk text-transparent shadow-none' : moving?.tile === i && moving.pos === null ? 'border-line bg-surface opacity-30' : 'border-line bg-surface'}`}
             >
               {face(i, used)}
             </button>
