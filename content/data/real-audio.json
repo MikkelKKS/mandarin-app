@@ -1,0 +1,5845 @@
+{
+ "_about": "Human recordings of HSK words from Wikimedia Commons (mostly Lingua Libre), CC0/CC BY/CC BY-SA only, made by scripts/real-audio.ts. Played before the Azure voice (IDEAS #20). Credits: public/audio/real/CREDITS.txt.",
+ "words": {
+  "ai4qing2-bq57y": {
+   "file": "ai4qing2-bq57y.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%88%B1%E6%83%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "an1pai2-uert4": {
+   "file": "an1pai2-uert4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AE%89%E6%8E%92.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "an1quan2-p0jtn": {
+   "file": "an1quan2-p0jtn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AE%89%E5%85%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "an1zhi4-iunin": {
+   "file": "an1zhi4-iunin.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AE%89%E7%BD%AE.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "an4shi2-o8wlz": {
+   "file": "an4shi2-o8wlz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8C%89%E6%97%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.72
+  },
+  "an4shi4-fifkn": {
+   "file": "an4shi4-fifkn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%9A%97%E7%A4%BA.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "an4zhao4-3ux56": {
+   "file": "an4zhao4-3ux56.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8C%89%E7%85%A7.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "ba4ba5-u8v1i": {
+   "file": "ba4ba5-u8v1i.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%88%B8%E7%88%B8.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "bai3tuo1-ofmna": {
+   "file": "bai3tuo1-ofmna.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%91%86%E8%84%B1.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "ban4fa3-xqzev": {
+   "file": "ban4fa3-xqzev.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8A%9E%E6%B3%95.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.54
+  },
+  "ban4gong1shi4-x8hma": {
+   "file": "ban4gong1shi4-x8hma.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8A%9E%E5%85%AC%E5%AE%A4.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.81
+  },
+  "bang1mang2-9kcrq": {
+   "file": "bang1mang2-9kcrq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%B8%AE%E5%BF%99.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "bao1zi5-kpnxb": {
+   "file": "bao1zi5-kpnxb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8C%85%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "bao3bei4-ja0p6": {
+   "file": "bao3bei4-ja0p6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AE%9D%E8%B4%9D.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "bao3hu4-e2lgs": {
+   "file": "bao3hu4-e2lgs.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%9D%E6%8A%A4.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "bao3mi4-3e8id": {
+   "file": "bao3mi4-3e8id.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BF%9D%E5%AF%86.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.52
+  },
+  "bao3shou3-k05w9": {
+   "file": "bao3shou3-k05w9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BF%9D%E5%AE%88.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "bao3zheng4-qlxz8": {
+   "file": "bao3zheng4-qlxz8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%9D%E8%AF%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "bao4ming2-15zh8": {
+   "file": "bao4ming2-15zh8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8A%A5%E5%90%8D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "bao4zhi3-8uos0": {
+   "file": "bao4zhi3-8uos0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%8A%A5%E7%BA%B8.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "bei1zi5-xlcsv": {
+   "file": "bei1zi5-xlcsv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%9D%AF%E5%AD%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.55
+  },
+  "bei3fang1-tvptf": {
+   "file": "bei3fang1-tvptf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8C%97%E6%96%B9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "bei3jing1-inre0": {
+   "file": "bei3jing1-inre0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8C%97%E4%BA%AC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "ben3lai2-sex7k": {
+   "file": "ben3lai2-sex7k.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9C%AC%E6%9D%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "ben3shi5-rk96r": {
+   "file": "ben3shi5-rk96r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%9C%AC%E4%BA%8B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "bi3ji4-h3mvi": {
+   "file": "bi3ji4-h3mvi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%AC%94%E8%AE%B0.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "bi3ji4ben3-q00pi": {
+   "file": "bi3ji4ben3-q00pi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%AC%94%E8%AE%B0%E6%9C%AC.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "bi3jiao4-bqdi1": {
+   "file": "bi3jiao4-bqdi1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%AF%94%E8%BE%83.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "bi3ru2-5rxzi": {
+   "file": "bi3ru2-5rxzi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AF%94%E5%A6%82.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "bi3sai4-xpcen": {
+   "file": "bi3sai4-xpcen.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%AF%94%E8%B5%9B.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "bi4xu1-5s3ao": {
+   "file": "bi4xu1-5s3ao.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BF%85%E9%A1%BB.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "bi4ye4-02955": {
+   "file": "bi4ye4-02955.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AF%95%E4%B8%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "biao1ti2-bni3x": {
+   "file": "biao1ti2-bni3x.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%A0%87%E9%A2%98.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "biao1zhun3-39bmq": {
+   "file": "biao1zhun3-39bmq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%A0%87%E5%87%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.44
+  },
+  "biao3ge2-t37ij": {
+   "file": "biao3ge2-t37ij.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A1%A8%E6%A0%BC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "biao3shi4-rjcyb": {
+   "file": "biao3shi4-rjcyb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A1%A8%E7%A4%BA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "biao3xian4-pf8yl": {
+   "file": "biao3xian4-pf8yl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A1%A8%E7%8E%B0.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "biao3yan3-66ugm": {
+   "file": "biao3yan3-66ugm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A1%A8%E6%BC%94.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "biao3yang2-8jxzc": {
+   "file": "biao3yang2-8jxzc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A1%A8%E6%89%AC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "bie2de5-6qunm": {
+   "file": "bie2de5-6qunm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%88%AB%E7%9A%84.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.55
+  },
+  "bie2ren5-0oi1m": {
+   "file": "bie2ren5-0oi1m.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%88%AB%E4%BA%BA.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "bing1xiang1-o4k3n": {
+   "file": "bing1xiang1-o4k3n.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%86%B0%E7%AE%B1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "bing4qie3-bs2zn": {
+   "file": "bing4qie3-bs2zn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%B6%E4%B8%94.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "bu4cuo4-yoq6j": {
+   "file": "bu4cuo4-yoq6j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8D%E9%94%99.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "bu4de2bu4-1t8tp": {
+   "file": "bu4de2bu4-1t8tp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%8D%E5%BE%97%E4%B8%8D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "bu4fen5-ncidc": {
+   "file": "bu4fen5-ncidc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%83%A8%E5%88%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.45
+  },
+  "bu4guan3-3eq6w": {
+   "file": "bu4guan3-3eq6w.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%8D%E7%AE%A1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "bu4guo4-a4mqt": {
+   "file": "bu4guo4-a4mqt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%8D%E8%BF%87.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.47
+  },
+  "bu4hao3yi4si5-8t1zs": {
+   "file": "bu4hao3yi4si5-8t1zs.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8D%E5%A5%BD%E6%84%8F%E6%80%9D.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.82
+  },
+  "bu4jin3-ov6o6": {
+   "file": "bu4jin3-ov6o6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%8D%E4%BB%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "bu4ke4qi5-bukyg": {
+   "file": "bu4ke4qi5-bukyg.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Assassas77-%E4%B8%8D%E5%AE%A2%E6%B0%94.wav",
+   "speaker": "Assassas77",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "bu4zhi4-8c27k": {
+   "file": "bu4zhi4-8c27k.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%B8%83%E7%BD%AE.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.54
+  },
+  "cai2fu4-4iw2p": {
+   "file": "cai2fu4-4iw2p.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%B4%A2%E5%AF%8C.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "cai2liao4-50p7y": {
+   "file": "cai2liao4-50p7y.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9D%90%E6%96%99.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "cai4dan1-zuva5": {
+   "file": "cai4dan1-zuva5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%8F%9C%E5%8D%95.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "can1guan1-mzfkw": {
+   "file": "can1guan1-mzfkw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%82%E8%A7%82.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "can1jia1-wtftr": {
+   "file": "can1jia1-wtftr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8F%82%E5%8A%A0.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "cao1zuo4-f81la": {
+   "file": "cao1zuo4-f81la.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%93%8D%E4%BD%9C.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "ce4liang2-2gnbq": {
+   "file": "ce4liang2-2gnbq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%B5%8B%E9%87%8F.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "cha4bu5duo1-vw3tr": {
+   "file": "cha4bu5duo1-vw3tr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B7%AE%E4%B8%8D%E5%A4%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "chang2cheng2-pzfu0": {
+   "file": "chang2cheng2-pzfu0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%95%BF%E5%9F%8E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "chang3he2-nltna": {
+   "file": "chang3he2-nltna.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%9C%BA%E5%90%88.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "chang3suo3-vdia5": {
+   "file": "chang3suo3-vdia5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%9C%BA%E6%89%80.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "chang4ge1-xnol6": {
+   "file": "chang4ge1-xnol6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%94%B1%E6%AD%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "chao1guo4-et6is": {
+   "file": "chao1guo4-et6is.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B6%85%E8%BF%87.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "chao2liu2-83xfr": {
+   "file": "chao2liu2-83xfr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%BD%AE%E6%B5%81.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "chen2zhong4-5djq9": {
+   "file": "chen2zhong4-5djq9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%B2%89%E9%87%8D.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "cheng2gong1-gnv4z": {
+   "file": "cheng2gong1-gnv4z.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%88%90%E5%8A%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.72
+  },
+  "cheng2shi2-40lpu": {
+   "file": "cheng2shi2-40lpu.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%9A%E5%AE%9E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.87
+  },
+  "cheng2shi4-aiao0": {
+   "file": "cheng2shi4-aiao0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%9F%8E%E5%B8%82.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.78
+  },
+  "cheng2wei2-3j6l7": {
+   "file": "cheng2wei2-3j6l7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%88%90%E4%B8%BA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "cheng2yuan2-h6gj7": {
+   "file": "cheng2yuan2-h6gj7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%88%90%E5%91%98.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "chi1fan4-ejp7d": {
+   "file": "chi1fan4-ejp7d.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%90%83%E9%A5%AD.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "chi1jing1-0jaci": {
+   "file": "chi1jing1-0jaci.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%83%E6%83%8A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "chi3cun5-2fpxb": {
+   "file": "chi3cun5-2fpxb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B0%BA%E5%AF%B8.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "chong1dian4qi4-bzh0r": {
+   "file": "chong1dian4qi4-bzh0r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%85%E7%94%B5%E5%99%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.72
+  },
+  "chong2xin1-ly6kd": {
+   "file": "chong2xin1-ly6kd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%87%8D%E6%96%B0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "chou1yan1-uqkv4": {
+   "file": "chou1yan1-uqkv4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8A%BD%E7%83%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "chu1bu4-ugv1f": {
+   "file": "chu1bu4-ugv1f.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%88%9D%E6%AD%A5.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "chu1fa1-qbgk7": {
+   "file": "chu1fa1-qbgk7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%BA%E5%8F%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "chu1sheng1-nqwp3": {
+   "file": "chu1sheng1-nqwp3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%BA%E7%94%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.7
+  },
+  "chu1xian4-i9o6o": {
+   "file": "chu1xian4-i9o6o.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%BA%E7%8E%B0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "chu1zu1che1-oxt5m": {
+   "file": "chu1zu1che1-oxt5m.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%BA%E7%A7%9F%E8%BD%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "chu2le5-ddcy5": {
+   "file": "chu2le5-ddcy5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%99%A4%E4%BA%86.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "chu3li3-qngwe": {
+   "file": "chu3li3-qngwe.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A4%84%E7%90%86.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "chuang1hu5-ftah0": {
+   "file": "chuang1hu5-ftah0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AA%97%E6%88%B7.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "chuang4zuo4-itczm": {
+   "file": "chuang4zuo4-itczm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%88%9B%E4%BD%9C.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "chun1tian1-gxt1v": {
+   "file": "chun1tian1-gxt1v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E6%98%A5%E5%A4%A9.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "ci2yu3-bdx9c": {
+   "file": "ci2yu3-bdx9c.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%8D%E8%AF%AD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "cong2lai2-64q95": {
+   "file": "cong2lai2-64q95.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%8E%E6%9D%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "cu1xin1-1eagy": {
+   "file": "cu1xin1-1eagy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%B2%97%E5%BF%83.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "cuo4wu4-r2dok": {
+   "file": "cuo4wu4-r2dok.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%94%99%E8%AF%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "da2an4-z3ec7": {
+   "file": "da2an4-z3ec7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AD%94%E6%A1%88.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "da3dian4hua4-b7rxe": {
+   "file": "da3dian4hua4-b7rxe.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E7%94%B5%E8%AF%9D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "da3gong1-00i2z": {
+   "file": "da3gong1-00i2z.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E5%B7%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "da3qiu2-gt1x6": {
+   "file": "da3qiu2-gt1x6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%89%93%E7%90%83.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "da3suan4-23afs": {
+   "file": "da3suan4-23afs.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%89%93%E7%AE%97.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "da3yin4-6gdga": {
+   "file": "da3yin4-6gdga.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E5%8D%B0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "da3zhe2-bbw5j": {
+   "file": "da3zhe2-bbw5j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E6%8A%98.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "da3zhen1-ofxue": {
+   "file": "da3zhen1-ofxue.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E9%92%88.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.8
+  },
+  "da4gai4-1ci38": {
+   "file": "da4gai4-1ci38.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%A7%E6%A6%82.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.48
+  },
+  "da4jia1-g4z42": {
+   "file": "da4jia1-g4z42.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%A7%E5%AE%B6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "da4shi3guan3-c765z": {
+   "file": "da4shi3guan3-c765z.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%A7%E4%BD%BF%E9%A6%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "da4xue2-muh1t": {
+   "file": "da4xue2-muh1t.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%A7%E5%AD%A6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "da4yi1-2ob4r": {
+   "file": "da4yi1-2ob4r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%A7%E8%A1%A3.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "da4yue1-v11eh": {
+   "file": "da4yue1-v11eh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%A7%E7%BA%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "dai4fu5-qgfv9": {
+   "file": "dai4fu5-qgfv9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%A7%E5%A4%AB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "dai4ling3-5uvie": {
+   "file": "dai4ling3-5uvie.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%B8%A6%E9%A2%86.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.47
+  },
+  "dan1bao3-qj0p0": {
+   "file": "dan1bao3-qj0p0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%8B%85%E4%BF%9D.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.54
+  },
+  "dan1mai4-rq1gn": {
+   "file": "dan1mai4-rq1gn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%B9%E9%BA%A6.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "dan1xin1-l95jv": {
+   "file": "dan1xin1-l95jv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%8B%85%E5%BF%83.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.79
+  },
+  "dan4shi4-lk3t9": {
+   "file": "dan4shi4-lk3t9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BD%86%E6%98%AF.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "dang1chu1-1g0ub": {
+   "file": "dang1chu1-1g0ub.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%BD%93%E5%88%9D.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "dang1ran2-1ssaq": {
+   "file": "dang1ran2-1ssaq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BD%93%E7%84%B6.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "dang1shi2-xyef3": {
+   "file": "dang1shi2-xyef3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BD%93%E6%97%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.7
+  },
+  "dao3you2-30t85": {
+   "file": "dao3you2-30t85.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%BC%E6%B8%B8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.74
+  },
+  "dao4chu4-2qmix": {
+   "file": "dao4chu4-2qmix.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%88%B0%E5%A4%84.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "dao4di3-jxsgi": {
+   "file": "dao4di3-jxsgi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%88%B0%E5%BA%95.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.44
+  },
+  "de2yi4-igo3a": {
+   "file": "de2yi4-igo3a.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BE%97%E6%84%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "deng1lu4-08dy3": {
+   "file": "deng1lu4-08dy3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%99%BB%E5%BD%95.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "di4di5-x6ky0": {
+   "file": "di4di5-x6ky0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%BC%9F%E5%BC%9F.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "di4dian3-ogzos": {
+   "file": "di4dian3-ogzos.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9C%B0%E7%82%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "di4qiu2-580hc": {
+   "file": "di4qiu2-580hc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9C%B0%E7%90%83.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "di4yi1-n1hhl": {
+   "file": "di4yi1-n1hhl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AC%AC%E4%B8%80.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.48
+  },
+  "di4zhi3-2w5p2": {
+   "file": "di4zhi3-2w5p2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9C%B0%E5%9D%80.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "dian3xing2-l0p49": {
+   "file": "dian3xing2-l0p49.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%85%B8%E5%9E%8B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "dian4hua4-ljw8p": {
+   "file": "dian4hua4-ljw8p.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E7%94%B5%E8%AF%9D.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "dian4nao3-q5qyg": {
+   "file": "dian4nao3-q5qyg.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E7%94%B5%E8%84%91.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.55
+  },
+  "dian4ying3-te4gn": {
+   "file": "dian4ying3-te4gn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%94%B5%E5%BD%B1.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "dian4yuan2-ra3wx": {
+   "file": "dian4yuan2-ra3wx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%94%B5%E6%BA%90.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "diao4cha2-z6m34": {
+   "file": "diao4cha2-z6m34.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B0%83%E6%9F%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "dong4hua4pian4-h2ggz": {
+   "file": "dong4hua4pian4-h2ggz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%A8%E7%94%BB%E7%89%87.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "dong4li4-te8qj": {
+   "file": "dong4li4-te8qj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%8A%A8%E5%8A%9B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.54
+  },
+  "dong4wu4-7d7ks": {
+   "file": "dong4wu4-7d7ks.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-%E9%9B%B2%E8%A7%92-%E5%8A%A8%E7%89%A9.wav",
+   "speaker": "雲角",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.96
+  },
+  "dong4zuo4-d3ixp": {
+   "file": "dong4zuo4-d3ixp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%A8%E4%BD%9C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "du3che1-e9j6n": {
+   "file": "du3che1-e9j6n.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A0%B5%E8%BD%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "du4zi5-3aeta": {
+   "file": "du4zi5-3aeta.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%82%9A%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "duan3xin4-yp71b": {
+   "file": "duan3xin4-yp71b.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9F%AD%E4%BF%A1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "dui4bu5qi3-yd8u1": {
+   "file": "dui4bu5qi3-yd8u1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%AF%B9%E4%B8%8D%E8%B5%B7.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "dui4fu5-ikxau": {
+   "file": "dui4fu5-ikxau.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AF%B9%E4%BB%98.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "dui4hua4-5dsg5": {
+   "file": "dui4hua4-5dsg5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%B9%E8%AF%9D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "dui4mian4-o70qr": {
+   "file": "dui4mian4-o70qr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%B9%E9%9D%A2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.48
+  },
+  "dui4yu2-6qi2c": {
+   "file": "dui4yu2-6qi2c.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%B9%E4%BA%8E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.76
+  },
+  "e3xin1-c6k2s": {
+   "file": "e3xin1-c6k2s.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%81%B6%E5%BF%83.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "er2qie3-tl6w0": {
+   "file": "er2qie3-tl6w0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%80%8C%E4%B8%94.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "er2tong2-dgrcq": {
+   "file": "er2tong2-dgrcq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%84%BF%E7%AB%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "fa1dong4-vb4zi": {
+   "file": "fa1dong4-vb4zi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%8F%91%E5%8A%A8.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.55
+  },
+  "fa1sheng1-2tg6t": {
+   "file": "fa1sheng1-2tg6t.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%91%E7%94%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "fa1xian4-8wgb8": {
+   "file": "fa1xian4-8wgb8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8F%91%E7%8E%B0.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "fa1zhan3-ptp2j": {
+   "file": "fa1zhan3-ptp2j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%91%E5%B1%95.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "fa3lv4-3w2xn": {
+   "file": "fa3lv4-3w2xn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B3%95%E5%BE%8B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "fan1yi4-anz5n": {
+   "file": "fan1yi4-anz5n.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BF%BB%E8%AF%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "fan3dui4-rkuf9": {
+   "file": "fan3dui4-rkuf9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%8D%E5%AF%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "fan4guan3-8wtcb": {
+   "file": "fan4guan3-8wtcb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%A5%AD%E9%A6%86.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "fang1fa3-i16d8": {
+   "file": "fang1fa3-i16d8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%96%B9%E6%B3%95.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "fang1mian4-oyn92": {
+   "file": "fang1mian4-oyn92.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%96%B9%E9%9D%A2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "fang1xiang4-l3nbt": {
+   "file": "fang1xiang4-l3nbt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%96%B9%E5%90%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "fang2dong1-2r20j": {
+   "file": "fang2dong1-2r20j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%88%BF%E4%B8%9C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "fang2zhi3-25cjj": {
+   "file": "fang2zhi3-25cjj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%98%B2%E6%AD%A2.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "fang2zi5-niaia": {
+   "file": "fang2zi5-niaia.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E6%88%BF%E5%AD%90.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "fang3wen4-te1zl": {
+   "file": "fang3wen4-te1zl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%AE%BF%E9%97%AE.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "fang4song1-puff1": {
+   "file": "fang4song1-puff1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%94%BE%E6%9D%BE.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "fei1chang2-muxwf": {
+   "file": "fei1chang2-muxwf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%9D%9E%E5%B8%B8.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "fen1kai1-rklz7": {
+   "file": "fen1kai1-rklz7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%88%86%E5%BC%80.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "fen1san4-v4nig": {
+   "file": "fen1san4-v4nig.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%88%86%E6%95%A3.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "fen1shou3-cm6q6": {
+   "file": "fen1shou3-cm6q6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%88%86%E6%89%8B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "feng1bi4-0zcep": {
+   "file": "feng1bi4-0zcep.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%B0%81%E9%97%AD.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "feng1fu4-zta37": {
+   "file": "feng1fu4-zta37.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%B0%E5%AF%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "fou3ding4-r2t0g": {
+   "file": "fou3ding4-r2t0g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%90%A6%E5%AE%9A.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "fou3ze2-7so28": {
+   "file": "fou3ze2-7so28.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%A6%E5%88%99.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "fu1fu4-1ykim": {
+   "file": "fu1fu4-1ykim.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%A4%AB%E5%A6%87.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "fu1ren5-x68a0": {
+   "file": "fu1ren5-x68a0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%A4%AB%E4%BA%BA.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "fu2hao4-cypfn": {
+   "file": "fu2hao4-cypfn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%AC%A6%E5%8F%B7.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "fu2he2-83p7l": {
+   "file": "fu2he2-83p7l.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AC%A6%E5%90%88.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "fu4dan1-bdzb0": {
+   "file": "fu4dan1-bdzb0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%B4%9F%E6%8B%85.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "fu4jin4-io8yi": {
+   "file": "fu4jin4-io8yi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%99%84%E8%BF%91.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "fu4qin1-qg29d": {
+   "file": "fu4qin1-qg29d.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%88%B6%E4%BA%B2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "fu4xi2-1t55e": {
+   "file": "fu4xi2-1t55e.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%8D%E4%B9%A0.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "fu4yin4-iot6z": {
+   "file": "fu4yin4-iot6z.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%8D%E5%8D%B0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "fu4za2-uwox2": {
+   "file": "fu4za2-uwox2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%8D%E6%9D%82.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.86
+  },
+  "fu4ze2-aephh": {
+   "file": "fu4ze2-aephh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B4%9F%E8%B4%A3.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "gai3bian4-ak0jm": {
+   "file": "gai3bian4-ak0jm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%94%B9%E5%8F%98.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "gan1bei1-sjl88": {
+   "file": "gan1bei1-sjl88.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%B2%E6%9D%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "gan3dong4-xdjgd": {
+   "file": "gan3dong4-xdjgd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%9F%E5%8A%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "gan3jue2-4xn7u": {
+   "file": "gan3jue2-4xn7u.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%9F%E8%A7%89.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "gan3qing2-46k0p": {
+   "file": "gan3qing2-46k0p.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%9F%E6%83%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.76
+  },
+  "gan3xie4-2a9pp": {
+   "file": "gan3xie4-2a9pp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%9F%E8%B0%A2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "gang1cai2-0f1gl": {
+   "file": "gang1cai2-0f1gl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%88%9A%E6%89%8D.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "gao1chao2-vtwis": {
+   "file": "gao1chao2-vtwis.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%AB%98%E6%BD%AE.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "gao1shang4-0z6rq": {
+   "file": "gao1shang4-0z6rq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%AB%98%E5%B0%9A.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "gao1su4gong1lu4-v3b3o": {
+   "file": "gao1su4gong1lu4-v3b3o.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%AB%98%E9%80%9F%E5%85%AC%E8%B7%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.95
+  },
+  "ge1ge5-qltsz": {
+   "file": "ge1ge5-qltsz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%93%A5%E5%93%A5.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "ge1shou3-p5bwd": {
+   "file": "ge1shou3-p5bwd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%AD%8C%E6%89%8B.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "gen1ben3-z6ojv": {
+   "file": "gen1ben3-z6ojv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%A0%B9%E6%9C%AC.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "gen1ju4-b6nf2": {
+   "file": "gen1ju4-b6nf2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%A0%B9%E6%8D%AE.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "gong1fu5-0sq5x": {
+   "file": "gong1fu5-0sq5x.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%9F%E5%A4%AB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "gong1li3-5s6h3": {
+   "file": "gong1li3-5s6h3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%AC%E9%87%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.48
+  },
+  "gong1min2-7y9wo": {
+   "file": "gong1min2-7y9wo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%85%AC%E6%B0%91.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "gong1si1-0wtak": {
+   "file": "gong1si1-0wtak.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%85%AC%E5%8F%B8.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "gong1yuan2-3h6hp": {
+   "file": "gong1yuan2-3h6hp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%AC%E5%85%83.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "gong1yuan2-6wl37": {
+   "file": "gong1yuan2-6wl37.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%85%AC%E5%9B%AD.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "gong1zi1-cfhao": {
+   "file": "gong1zi1-cfhao.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B7%A5%E8%B5%84.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "gong4tong2-wf3v5": {
+   "file": "gong4tong2-wf3v5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%B1%E5%90%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.7
+  },
+  "gou4wu4-qlnou": {
+   "file": "gou4wu4-qlnou.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B4%AD%E7%89%A9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "gu4ke4-10auv": {
+   "file": "gu4ke4-10auv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A1%BE%E5%AE%A2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.79
+  },
+  "gu4shi5-thz38": {
+   "file": "gu4shi5-thz38.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%95%85%E4%BA%8B.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "gu4yi4-hqhdt": {
+   "file": "gu4yi4-hqhdt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%85%E6%84%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.46
+  },
+  "guan1fang1-wrjrx": {
+   "file": "guan1fang1-wrjrx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AE%98%E6%96%B9.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "guan1xi5-96xf5": {
+   "file": "guan1xi5-96xf5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B3%E7%B3%BB.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "guan1xin1-bxjej": {
+   "file": "guan1xin1-bxjej.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B3%E5%BF%83.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.83
+  },
+  "guan1yu2-lecw2": {
+   "file": "guan1yu2-lecw2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B3%E4%BA%8E.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "guan1zhong4-y7438": {
+   "file": "guan1zhong4-y7438.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A7%82%E4%BC%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.8
+  },
+  "guan3li3-zkb3y": {
+   "file": "guan3li3-zkb3y.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AE%A1%E7%90%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "guang1lin2-vajj4": {
+   "file": "guang1lin2-vajj4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%85%89%E4%B8%B4.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "guang1pan2-qbr20": {
+   "file": "guang1pan2-qbr20.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%89%E7%9B%98.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "guang3bo1-81qe8": {
+   "file": "guang3bo1-81qe8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%BF%E6%92%AD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "guang3gao4-7knnu": {
+   "file": "guang3gao4-7knnu.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%BF%E5%91%8A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "gui1ding4-x24bx": {
+   "file": "gui1ding4-x24bx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A7%84%E5%AE%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.43
+  },
+  "guo2ji4-yqfif": {
+   "file": "guo2ji4-yqfif.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9B%BD%E9%99%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "guo2jia1-jdsoc": {
+   "file": "guo2jia1-jdsoc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%9B%BD%E5%AE%B6.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "guo3zhi1-jpc8c": {
+   "file": "guo3zhi1-jpc8c.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9E%9C%E6%B1%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "guo4cheng2-zlolz": {
+   "file": "guo4cheng2-zlolz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%BF%87%E7%A8%8B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.72
+  },
+  "guo4qu4-5edno": {
+   "file": "guo4qu4-5edno.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%BF%87%E5%8E%BB.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "hai2shi5-ekobd": {
+   "file": "hai2shi5-ekobd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%BF%98%E6%98%AF.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "hai2zi5-qjsy4": {
+   "file": "hai2zi5-qjsy4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%AD%A9%E5%AD%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "hai4pa4-jdp22": {
+   "file": "hai4pa4-jdp22.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AE%B3%E6%80%95.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "han2jia4-r16nd": {
+   "file": "han2jia4-r16nd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%92%E5%81%87.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.47
+  },
+  "han2yi4-nbtua": {
+   "file": "han2yi4-nbtua.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%90%AB%E4%B9%89.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "han4zi4-bgkex": {
+   "file": "han4zi4-bgkex.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%B1%89%E5%AD%97.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "hang2ban1-zyl4a": {
+   "file": "hang2ban1-zyl4a.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%88%AA%E7%8F%AD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "hang2kong1-7g4a5": {
+   "file": "hang2kong1-7g4a5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%88%AA%E7%A9%BA.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "hao2mi3-ltore": {
+   "file": "hao2mi3-ltore.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%AF%AB%E7%B1%B3.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.55
+  },
+  "hao3chi1-asyqn": {
+   "file": "hao3chi1-asyqn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A5%BD%E5%90%83.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "hao3chu5-33bz0": {
+   "file": "hao3chu5-33bz0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A5%BD%E5%A4%84.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "hao3jiu3-p4gq1": {
+   "file": "hao3jiu3-p4gq1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A5%BD%E4%B9%85.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "hao3kan4-hn69k": {
+   "file": "hao3kan4-hn69k.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A5%BD%E7%9C%8B.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "hao3xiang4-vg5md": {
+   "file": "hao3xiang4-vg5md.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A5%BD%E5%83%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "hao4ma3-kzzc6": {
+   "file": "hao4ma3-kzzc6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%B7%E7%A0%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "he2ge2-svdg8": {
+   "file": "he2ge2-svdg8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%88%E6%A0%BC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.74
+  },
+  "he2ping2-3r4k7": {
+   "file": "he2ping2-3r4k7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%92%8C%E5%B9%B3.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "he2shi4-zkl32": {
+   "file": "he2shi4-zkl32.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%88%E9%80%82.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "hong2jiu3-tva30": {
+   "file": "hong2jiu3-tva30.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%BA%A2%E9%85%92.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "hong2se4-8yafr": {
+   "file": "hong2se4-8yafr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%BA%A2%E8%89%B2.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "hu1xi1-t5ykr": {
+   "file": "hu1xi1-t5ykr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-%E9%9B%B2%E8%A7%92-%E5%91%BC%E5%90%B8.wav",
+   "speaker": "雲角",
+   "licence": "CC BY-SA 4.0",
+   "dur": 1.02
+  },
+  "hu4lian2wang3-110zx": {
+   "file": "hu4lian2wang3-110zx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BA%92%E8%81%94%E7%BD%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "hu4shi5-qwxs8": {
+   "file": "hu4shi5-qwxs8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8A%A4%E5%A3%AB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "hu4xiang1-weury": {
+   "file": "hu4xiang1-weury.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BA%92%E7%9B%B8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "hua4jia1-fcmfh": {
+   "file": "hua4jia1-fcmfh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%94%BB%E5%AE%B6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "huai2yi2-58oh9": {
+   "file": "huai2yi2-58oh9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%80%E7%96%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "huan1le4-jjco1": {
+   "file": "huan1le4-jjco1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%AC%A2%E4%B9%90.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "huan1ying2-mxtlr": {
+   "file": "huan1ying2-mxtlr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%AC%A2%E8%BF%8E.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.79
+  },
+  "hui2da2-blwy8": {
+   "file": "hui2da2-blwy8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%9B%9E%E7%AD%94.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.71
+  },
+  "hui2jia1-71i3s": {
+   "file": "hui2jia1-71i3s.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%9B%9E%E5%AE%B6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "hui4bao4-da1e7": {
+   "file": "hui4bao4-da1e7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%B1%87%E6%8A%A5.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "hun1li3-kb9pp": {
+   "file": "hun1li3-kb9pp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A9%9A%E7%A4%BC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.49
+  },
+  "huo2dong4-jux3e": {
+   "file": "huo2dong4-jux3e.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B4%BB%E5%8A%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.4
+  },
+  "huo3che1-31opo": {
+   "file": "huo3che1-31opo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%81%AB%E8%BD%A6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "huo4de2-j5yz4": {
+   "file": "huo4de2-j5yz4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%8E%B7%E5%BE%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.75
+  },
+  "huo4xu3-zcjm7": {
+   "file": "huo4xu3-zcjm7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%88%96%E8%AE%B8.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "huo4zhe3-rylnq": {
+   "file": "huo4zhe3-rylnq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%88%96%E8%80%85.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.52
+  },
+  "ji1chu3-d9z50": {
+   "file": "ji1chu3-d9z50.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9F%BA%E7%A1%80.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "ji1dong4-db9ut": {
+   "file": "ji1dong4-db9ut.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%BF%80%E5%8A%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "ji1gou4-9wv6s": {
+   "file": "ji1gou4-9wv6s.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%9C%BA%E6%9E%84.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "ji1hui4-lqw0j": {
+   "file": "ji1hui4-lqw0j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%9C%BA%E4%BC%9A.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "ji1ji2-gmry2": {
+   "file": "ji1ji2-gmry2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A7%AF%E6%9E%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.72
+  },
+  "ji1lei3-4w41o": {
+   "file": "ji1lei3-4w41o.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A7%AF%E7%B4%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "ji2jiang1-5jkf3": {
+   "file": "ji2jiang1-5jkf3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%8D%B3%E5%B0%86.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "ji2shi2-4czto": {
+   "file": "ji2shi2-4czto.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%8A%E6%97%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.8
+  },
+  "ji4de5-u5axn": {
+   "file": "ji4de5-u5axn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%AE%B0%E5%BE%97.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "ji4du4-wkzp8": {
+   "file": "ji4du4-wkzp8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AD%A3%E5%BA%A6.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "ji4hua4-ivns3": {
+   "file": "ji4hua4-ivns3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Aa087159-%E8%AE%A1%E5%88%92.wav",
+   "speaker": "Aa087159",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "ji4qiao3-eunsy": {
+   "file": "ji4qiao3-eunsy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%8A%80%E5%B7%A7.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "ji4ran2-oxd1b": {
+   "file": "ji4ran2-oxd1b.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%97%A2%E7%84%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "ji4shu4-1tn7h": {
+   "file": "ji4shu4-1tn7h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8A%80%E6%9C%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "ji4xu4-shbpj": {
+   "file": "ji4xu4-shbpj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BB%A7%E7%BB%AD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "ji4zai3-g2yco": {
+   "file": "ji4zai3-g2yco.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%AE%B0%E8%BD%BD.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "ji4zhe3-goe6r": {
+   "file": "ji4zhe3-goe6r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AE%B0%E8%80%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "jia1ban1-3mc0p": {
+   "file": "jia1ban1-3mc0p.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%A0%E7%8F%AD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.85
+  },
+  "jia1ju4-usz9g": {
+   "file": "jia1ju4-usz9g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AE%B6%E5%85%B7.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "jia1ren2-fzkwt": {
+   "file": "jia1ren2-fzkwt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%AE%B6%E4%BA%BA.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "jia1shu3-cmrb3": {
+   "file": "jia1shu3-cmrb3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AE%B6%E5%B1%9E.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "jia1you2zhan4-ga0uy": {
+   "file": "jia1you2zhan4-ga0uy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%A0%E6%B2%B9%E7%AB%99.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "jia4ge2-gkqno": {
+   "file": "jia4ge2-gkqno.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%B7%E6%A0%BC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "jian1chi2-p0y3h": {
+   "file": "jian1chi2-p0y3h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9D%9A%E6%8C%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  },
+  "jian3cha2-hbehp": {
+   "file": "jian3cha2-hbehp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%A3%80%E6%9F%A5.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.83
+  },
+  "jian3dan1-phajv": {
+   "file": "jian3dan1-phajv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%AE%80%E5%8D%95.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.81
+  },
+  "jian3fei2-yt1kk": {
+   "file": "jian3fei2-yt1kk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%8F%E8%82%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.72
+  },
+  "jian3shao3-36bzi": {
+   "file": "jian3shao3-36bzi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%8F%E5%B0%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "jian4mian4-hb08v": {
+   "file": "jian4mian4-hb08v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A7%81%E9%9D%A2.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "jian4shen1-9h1ly": {
+   "file": "jian4shen1-9h1ly.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%81%A5%E8%BA%AB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "jian4yi4-mz4wz": {
+   "file": "jian4yi4-mz4wz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BB%BA%E8%AE%AE.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "jiang1lai2-aw9zm": {
+   "file": "jiang1lai2-aw9zm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B0%86%E6%9D%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "jiang3jin1-66hx0": {
+   "file": "jiang3jin1-66hx0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A5%96%E9%87%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "jiang4di1-acobz": {
+   "file": "jiang4di1-acobz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%99%8D%E4%BD%8E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "jiang4luo4-6m218": {
+   "file": "jiang4luo4-6m218.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%99%8D%E8%90%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "jiao1liu2-abh62": {
+   "file": "jiao1liu2-abh62.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BA%A4%E6%B5%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "jiao1tong1-ehh38": {
+   "file": "jiao1tong1-ehh38.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BA%A4%E9%80%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.7
+  },
+  "jiao1yi4-hcsoi": {
+   "file": "jiao1yi4-hcsoi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%A4%E6%98%93.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "jiao3zi5-6a2sz": {
+   "file": "jiao3zi5-6a2sz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A5%BA%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "jiao4shi4-rxo6d": {
+   "file": "jiao4shi4-rxo6d.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%95%99%E5%AE%A4.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "jiao4shou4-g7yh4": {
+   "file": "jiao4shou4-g7yh4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%99%E6%8E%88.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "jiao4yu4-eb3yt": {
+   "file": "jiao4yu4-eb3yt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%99%E8%82%B2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "jie1shou4-aulgl": {
+   "file": "jie1shou4-aulgl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%A5%E5%8F%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "jie1zhe5-jesvj": {
+   "file": "jie1zhe5-jesvj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%A5%E7%9D%80.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "jie2hun1-c6k64": {
+   "file": "jie2hun1-c6k64.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%BB%93%E5%A9%9A.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "jie2mu4-2hpe9": {
+   "file": "jie2mu4-2hpe9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%8A%82%E7%9B%AE.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "jie2yue1-yke95": {
+   "file": "jie2yue1-yke95.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%8A%82%E7%BA%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "jie3jue2-9u9ei": {
+   "file": "jie3jue2-9u9ei.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A7%A3%E5%86%B3.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.84
+  },
+  "jie3shi4-o8xmz": {
+   "file": "jie3shi4-o8xmz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A7%A3%E9%87%8A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "jie4shao4-lf3x8": {
+   "file": "jie4shao4-lf3x8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BB%8B%E7%BB%8D.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "jin1nian2-fusav": {
+   "file": "jin1nian2-fusav.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BB%8A%E5%B9%B4.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "jin1tian1-b55cn": {
+   "file": "jin1tian1-b55cn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BB%8A%E5%A4%A9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.8
+  },
+  "jin3zhang1-kabsp": {
+   "file": "jin3zhang1-kabsp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%B4%A7%E5%BC%A0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "jin4xing2-u9bz1": {
+   "file": "jin4xing2-u9bz1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%BF%9B%E8%A1%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.72
+  },
+  "jin4zhan3-qai3q": {
+   "file": "jin4zhan3-qai3q.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%BF%9B%E5%B1%95.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "jin4zhi3-efeon": {
+   "file": "jin4zhi3-efeon.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A6%81%E6%AD%A2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "jing1cai3-oarlt": {
+   "file": "jing1cai3-oarlt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%B2%BE%E5%BD%A9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "jing1chang2-k7n5i": {
+   "file": "jing1chang2-k7n5i.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%BB%8F%E5%B8%B8.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.8
+  },
+  "jing1ji4-6im60": {
+   "file": "jing1ji4-6im60.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BB%8F%E6%B5%8E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "jing1ju4-5n620": {
+   "file": "jing1ju4-5n620.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BA%AC%E5%89%A7.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "jing1li4-ed6da": {
+   "file": "jing1li4-ed6da.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BB%8F%E5%8E%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "jing1yan4-iwwzf": {
+   "file": "jing1yan4-iwwzf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BB%8F%E9%AA%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.73
+  },
+  "jing3cha2-h3j15": {
+   "file": "jing3cha2-h3j15.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AD%A6%E5%AF%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "jing3se4-1z7l5": {
+   "file": "jing3se4-1z7l5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%99%AF%E8%89%B2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.74
+  },
+  "jing4ran2-gg5gj": {
+   "file": "jing4ran2-gg5gj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AB%9F%E7%84%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "jing4tou2-scr5t": {
+   "file": "jing4tou2-scr5t.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%95%9C%E5%A4%B4.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "jing4zi5-x6pbp": {
+   "file": "jing4zi5-x6pbp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%95%9C%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "jiu1jing4-1m1mp": {
+   "file": "jiu1jing4-1m1mp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A9%B6%E7%AB%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "jiu4shi4-w3105": {
+   "file": "jiu4shi4-w3105.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B0%B1%E6%98%AF.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "ju1min2-c4251": {
+   "file": "ju1min2-c4251.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%B1%85%E6%B0%91.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "ju1zhu4-gpcju": {
+   "file": "ju1zhu4-gpcju.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%B1%85%E4%BD%8F.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "ju3ban4-gx8j0": {
+   "file": "ju3ban4-gx8j0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%BE%E5%8A%9E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "ju3xing2-d18xd": {
+   "file": "ju3xing2-d18xd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%BE%E8%A1%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.86
+  },
+  "ju4hui4-ivzlw": {
+   "file": "ju4hui4-ivzlw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%81%9A%E4%BC%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "ju4li2-8b359": {
+   "file": "ju4li2-8b359.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B7%9D%E7%A6%BB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "jue2de5-sf121": {
+   "file": "jue2de5-sf121.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%A7%89%E5%BE%97.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "jue2ding4-n41ne": {
+   "file": "jue2ding4-n41ne.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%86%B3%E5%AE%9A.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "jue2dui4-1pk2h": {
+   "file": "jue2dui4-1pk2h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%BB%9D%E5%AF%B9.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "ka1fei1-aijpc": {
+   "file": "ka1fei1-aijpc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%92%96%E5%95%A1.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "kai1che1-xbdje": {
+   "file": "kai1che1-xbdje.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%BC%80%E8%BD%A6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "kai1wan2xiao4-17v96": {
+   "file": "kai1wan2xiao4-17v96.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BC%80%E7%8E%A9%E7%AC%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.79
+  },
+  "kai1xin1-x21cc": {
+   "file": "kai1xin1-x21cc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BC%80%E5%BF%83.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "kan4fa3-udljh": {
+   "file": "kan4fa3-udljh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9C%8B%E6%B3%95.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "kao3lv4-vrmc5": {
+   "file": "kao3lv4-vrmc5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%80%83%E8%99%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "kao3yan4-4a918": {
+   "file": "kao3yan4-4a918.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%80%83%E9%AA%8C.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "ke1xue2-1va0h": {
+   "file": "ke1xue2-1va0h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A7%91%E5%AD%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "ke3ai4-ftf6y": {
+   "file": "ke3ai4-ftf6y.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8F%AF%E7%88%B1.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.77
+  },
+  "ke3le4-a833g": {
+   "file": "ke3le4-a833g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8F%AF%E4%B9%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "ke3shi4-rof1g": {
+   "file": "ke3shi4-rof1g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%AF%E6%98%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "ke3yi3-ie067": {
+   "file": "ke3yi3-ie067.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8F%AF%E4%BB%A5.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "ke4ren2-3b6qk": {
+   "file": "ke4ren2-3b6qk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%AE%A2%E4%BA%BA.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "ke4wen2-obdeu": {
+   "file": "ke4wen2-obdeu.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%AF%BE%E6%96%87.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "kong1qi4-nomhr": {
+   "file": "kong1qi4-nomhr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A9%BA%E6%B0%94.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "kong3pa4-dxmo9": {
+   "file": "kong3pa4-dxmo9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%81%90%E6%80%95.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "kuai4zi5-qczh8": {
+   "file": "kuai4zi5-qczh8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%AD%B7%E5%AD%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "kuang4quan2shui3-o5pw8": {
+   "file": "kuang4quan2shui3-o5pw8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9F%BF%E6%B3%89%E6%B0%B4.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "kun4nan5-o5fdj": {
+   "file": "kun4nan5-o5fdj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9B%B0%E9%9A%BE.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "lai2bu5ji2-p62qc": {
+   "file": "lai2bu5ji2-p62qc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9D%A5%E4%B8%8D%E5%8F%8A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.84
+  },
+  "lai2de5ji2-2ckxg": {
+   "file": "lai2de5ji2-2ckxg.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9D%A5%E5%BE%97%E5%8F%8A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.76
+  },
+  "lai2yuan2-t0bmp": {
+   "file": "lai2yuan2-t0bmp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%9D%A5%E6%BA%90.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "lai2zi4-g5sod": {
+   "file": "lai2zi4-g5sod.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9D%A5%E8%87%AA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "lan2qiu2-2kkzk": {
+   "file": "lan2qiu2-2kkzk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%AF%AE%E7%90%83.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "lang4fei4-w7bc8": {
+   "file": "lang4fei4-w7bc8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B5%AA%E8%B4%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "lao3shi1-xka8g": {
+   "file": "lao3shi1-xka8g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%80%81%E5%B8%88.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "le4qu4-gapz9": {
+   "file": "le4qu4-gapz9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%B9%90%E8%B6%A3.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "lei4si4-gcyvw": {
+   "file": "lei4si4-gcyvw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%B1%BB%E4%BC%BC.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "leng3jing4-wyd46": {
+   "file": "leng3jing4-wyd46.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%86%B7%E9%9D%99.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "li2kai1-5mn1n": {
+   "file": "li2kai1-5mn1n.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%A6%BB%E5%BC%80.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "li3fa4-v3y0v": {
+   "file": "li3fa4-v3y0v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%90%86%E5%8F%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "li3jie3-6pbrn": {
+   "file": "li3jie3-6pbrn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%90%86%E8%A7%A3.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "li3mian4-jv0da": {
+   "file": "li3mian4-jv0da.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%87%8C%E9%9D%A2.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "li3wu4-mihti": {
+   "file": "li3wu4-mihti.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%A4%BC%E7%89%A9.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "li3xiang3-py2r4": {
+   "file": "li3xiang3-py2r4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%90%86%E6%83%B3.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "li4qi5-pfzlo": {
+   "file": "li4qi5-pfzlo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%9B%E6%B0%94.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "li4ru2-zn6lq": {
+   "file": "li4ru2-zn6lq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BE%8B%E5%A6%82.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "li4zi5-az3o9": {
+   "file": "li4zi5-az3o9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BE%8B%E5%AD%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "lian2xi4-hpoon": {
+   "file": "lian2xi4-hpoon.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%81%94%E7%B3%BB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "lian4xi2-sft61": {
+   "file": "lian4xi2-sft61.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%BB%83%E4%B9%A0.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.71
+  },
+  "liang2kuai5-4r1wn": {
+   "file": "liang2kuai5-4r1wn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%89%E5%BF%AB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "liao3jie3-nb3qv": {
+   "file": "liao3jie3-nb3qv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%BA%86%E8%A7%A3.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "ling3xian1-365dh": {
+   "file": "ling3xian1-365dh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%A2%86%E5%85%88.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "ling4wai4-v4zsw": {
+   "file": "ling4wai4-v4zsw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%A6%E5%A4%96.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.48
+  },
+  "liu2li4-rhh9i": {
+   "file": "liu2li4-rhh9i.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B5%81%E5%88%A9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.46
+  },
+  "liu2xing2-53wuu": {
+   "file": "liu2xing2-53wuu.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B5%81%E8%A1%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "lv3xing2-39ks3": {
+   "file": "lv3xing2-39ks3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%97%85%E8%A1%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "lv4cha2-pbpba": {
+   "file": "lv4cha2-pbpba.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%BB%BF%E8%8C%B6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "lv4shi1-i5oax": {
+   "file": "lv4shi1-i5oax.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BE%8B%E5%B8%88.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.74
+  },
+  "ma1ma5-ztfp1": {
+   "file": "ma1ma5-ztfp1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A6%88%E5%A6%88.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "ma2fan5-pz97s": {
+   "file": "ma2fan5-pz97s.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%BA%BB%E7%83%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "ma3shang4-uaajf": {
+   "file": "ma3shang4-uaajf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%A9%AC%E4%B8%8A.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "mao2jin1-5ioj3": {
+   "file": "mao2jin1-5ioj3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AF%9B%E5%B7%BE.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "mei2you3-vj8lw": {
+   "file": "mei2you3-vj8lw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%B2%A1%E6%9C%89.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "mei3li4-0ahjr": {
+   "file": "mei3li4-0ahjr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BE%8E%E4%B8%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "mei3tian1-orw0o": {
+   "file": "mei3tian1-orw0o.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%AF%8F%E5%A4%A9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "mei4mei5-yvz0m": {
+   "file": "mei4mei5-yvz0m.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A6%B9%E5%A6%B9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "men2kou3-pte04": {
+   "file": "men2kou3-pte04.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%97%A8%E5%8F%A3.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "mi4ma3-bptht": {
+   "file": "mi4ma3-bptht.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%86%E7%A0%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.47
+  },
+  "mian3fei4-rgttx": {
+   "file": "mian3fei4-rgttx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%8D%E8%B4%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "mian4bao1-zftxu": {
+   "file": "mian4bao1-zftxu.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E9%9D%A2%E5%8C%85.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "min2zu2-l9lnu": {
+   "file": "min2zu2-l9lnu.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B0%91%E6%97%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "ming2bai5-9g9uq": {
+   "file": "ming2bai5-9g9uq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%98%8E%E7%99%BD.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "ming2nian2-bx86i": {
+   "file": "ming2nian2-bx86i.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%8E%E5%B9%B4.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "ming2pian4-ijd40": {
+   "file": "ming2pian4-ijd40.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%8D%E7%89%87.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.48
+  },
+  "ming2tian1-mrtjs": {
+   "file": "ming2tian1-mrtjs.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%8E%E5%A4%A9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "ming2zi5-dm5x8": {
+   "file": "ming2zi5-dm5x8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%90%8D%E5%AD%97.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.55
+  },
+  "mo2xing2-ud6zv": {
+   "file": "mo2xing2-ud6zv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%A8%A1%E5%9E%8B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "mu3qin1-ucumm": {
+   "file": "mu3qin1-ucumm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AF%8D%E4%BA%B2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "mu4di4-qbq2u": {
+   "file": "mu4di4-qbq2u.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9B%AE%E7%9A%84.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "na3li3-mwfuz": {
+   "file": "na3li3-mwfuz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%93%AA%E9%87%8C.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "na3r5-xh4e1": {
+   "file": "na3r5-xh4e1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%93%AA%E5%84%BF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "na4li5-j80u5": {
+   "file": "na4li5-j80u5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%82%A3%E9%87%8C.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "nan2dao4-22v2j": {
+   "file": "nan2dao4-22v2j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%9A%BE%E9%81%93.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "nan2fang1-yq05r": {
+   "file": "nan2fang1-yq05r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8D%97%E6%96%B9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "nan2shou4-eayt0": {
+   "file": "nan2shou4-eayt0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%9A%BE%E5%8F%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "nei4rong2-gge75": {
+   "file": "nei4rong2-gge75.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%86%85%E5%AE%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "neng2bu5neng2-ia102": {
+   "file": "neng2bu5neng2-ia102.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%83%BD%E4%B8%8D%E8%83%BD.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.84
+  },
+  "neng2li4-qixlm": {
+   "file": "neng2li4-qixlm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%83%BD%E5%8A%9B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "ni3hao3-is10l": {
+   "file": "ni3hao3-is10l.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Bakerkobe-%E4%BD%A0%E5%A5%BD.wav",
+   "speaker": "Bakerkobe",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "ni3men5-acguw": {
+   "file": "ni3men5-acguw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BD%A0%E4%BB%AC.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "nian2qing1-ud160": {
+   "file": "nian2qing1-ud160.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%B9%B4%E8%BD%BB.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.77
+  },
+  "niu2nai3-as5gr": {
+   "file": "niu2nai3-as5gr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%89%9B%E5%A5%B6.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "nu3li4-xnlhd": {
+   "file": "nu3li4-xnlhd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8A%AA%E5%8A%9B.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.89
+  },
+  "nuan3huo5-5zsjf": {
+   "file": "nuan3huo5-5zsjf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9A%96%E5%92%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "nv3ren2-8664c": {
+   "file": "nv3ren2-8664c.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%A5%B3%E4%BA%BA.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "nv3shi4-nd5ms": {
+   "file": "nv3shi4-nd5ms.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A5%B3%E5%A3%AB.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "pa2shan1-qvh2c": {
+   "file": "pa2shan1-qvh2c.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%88%AC%E5%B1%B1.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "pai2dui4-bzpx8": {
+   "file": "pai2dui4-bzpx8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%92%E9%98%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.47
+  },
+  "pai2lie4-rtqp0": {
+   "file": "pai2lie4-rtqp0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%92%E5%88%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "pai2qiu2-sxf1r": {
+   "file": "pai2qiu2-sxf1r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%8E%92%E7%90%83.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "pan4duan4-d2xu5": {
+   "file": "pan4duan4-d2xu5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%88%A4%E6%96%AD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "pang2bian1-gw5pi": {
+   "file": "pang2bian1-gw5pi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%81%E8%BE%B9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "peng2you5-6eper": {
+   "file": "peng2you5-6eper.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%9C%8B%E5%8F%8B.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.53
+  },
+  "pi1ping2-4exeo": {
+   "file": "pi1ping2-4exeo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%B9%E8%AF%84.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.73
+  },
+  "pi2jiu3-zetgh": {
+   "file": "pi2jiu3-zetgh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%95%A4%E9%85%92.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "pian2yi5-7dyih": {
+   "file": "pian2yi5-7dyih.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BE%BF%E5%AE%9C.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "pin3zhi4-m8x5n": {
+   "file": "pin3zhi4-m8x5n.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%93%81%E8%B4%A8.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.78
+  },
+  "ping2chang2-3na2p": {
+   "file": "ping2chang2-3na2p.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B9%B3%E5%B8%B8.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "ping2guo3-fu7u8": {
+   "file": "ping2guo3-fu7u8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%8B%B9%E6%9E%9C.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "ping2shi2-2zaai": {
+   "file": "ping2shi2-2zaai.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%B3%E6%97%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "pu3bian4-8tkia": {
+   "file": "pu3bian4-8tkia.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%99%AE%E9%81%8D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "pu3tong1hua4-0by0n": {
+   "file": "pu3tong1hua4-0by0n.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%99%AE%E9%80%9A%E8%AF%9D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.76
+  },
+  "qi1xian4-b22sx": {
+   "file": "qi1xian4-b22sx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%9C%9F%E9%99%90.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.83
+  },
+  "qi2ci4-erovo": {
+   "file": "qi2ci4-erovo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%B6%E6%AC%A1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "qi2guai4-f398q": {
+   "file": "qi2guai4-f398q.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A5%87%E6%80%AA.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "qi2shi2-0v8j9": {
+   "file": "qi2shi2-0v8j9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B6%E5%AE%9E.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.84
+  },
+  "qi2ta1-wm7wt": {
+   "file": "qi2ta1-wm7wt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B6%E4%BB%96.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "qi2zhong1-aypiz": {
+   "file": "qi2zhong1-aypiz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%B6%E4%B8%AD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.79
+  },
+  "qi3chuang2-8tcx9": {
+   "file": "qi3chuang2-8tcx9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%B5%B7%E5%BA%8A.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "qi3lai5-fum9v": {
+   "file": "qi3lai5-fum9v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%B5%B7%E6%9D%A5.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.86
+  },
+  "qi4guan1-mru6j": {
+   "file": "qi4guan1-mru6j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%99%A8%E5%AE%98.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "qi4hou4-hvjgs": {
+   "file": "qi4hou4-hvjgs.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B0%94%E5%80%99.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "qian1wan4-74pg5": {
+   "file": "qian1wan4-74pg5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%83%E4%B8%87.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "qian2bao1-hwyh3": {
+   "file": "qian2bao1-hwyh3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-BlueCamille-%E9%92%B1%E5%8C%85.wav",
+   "speaker": "BlueCamille",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "qian2mian4-ii54i": {
+   "file": "qian2mian4-ii54i.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%89%8D%E9%9D%A2.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "qiao3ke4li4-ljnfa": {
+   "file": "qiao3ke4li4-ljnfa.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B7%A7%E5%85%8B%E5%8A%9B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "qin1ai4-9bai3": {
+   "file": "qin1ai4-9bai3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%BA%B2%E7%88%B1.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.95
+  },
+  "qin1mi4-xg7oe": {
+   "file": "qin1mi4-xg7oe.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%B2%E5%AF%86.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "qing1chu5-a3a3b": {
+   "file": "qing1chu5-a3a3b.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%B8%85%E6%A5%9A.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "qing1song1-z43yc": {
+   "file": "qing1song1-z43yc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%BD%BB%E6%9D%BE.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "qing1xing3-2iirj": {
+   "file": "qing1xing3-2iirj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%B8%85%E9%86%92.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "qing2kuang4-exj5e": {
+   "file": "qing2kuang4-exj5e.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%83%85%E5%86%B5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "qing3wen4-htqi8": {
+   "file": "qing3wen4-htqi8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%AF%B7%E9%97%AE.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.71
+  },
+  "qu1bie2-z7cv9": {
+   "file": "qu1bie2-z7cv9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8C%BA%E5%88%AB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "qu4nian2-j6fy8": {
+   "file": "qu4nian2-j6fy8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8E%BB%E5%B9%B4.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "quan2bu4-fr1rb": {
+   "file": "quan2bu4-fr1rb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%A8%E9%83%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "que1dian3-0aa8x": {
+   "file": "que1dian3-0aa8x.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BC%BA%E7%82%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "que1shao3-nhv9o": {
+   "file": "que1shao3-nhv9o.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BC%BA%E5%B0%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "que4bao3-wjhww": {
+   "file": "que4bao3-wjhww.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%A1%AE%E4%BF%9D.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "que4ding4-tz4nw": {
+   "file": "que4ding4-tz4nw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%A1%AE%E5%AE%9A.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "que4shi2-e8aqs": {
+   "file": "que4shi2-e8aqs.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A1%AE%E5%AE%9E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.75
+  },
+  "ran2er2-cs2ef": {
+   "file": "ran2er2-cs2ef.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%84%B6%E8%80%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "ran2hou4-0x08u": {
+   "file": "ran2hou4-0x08u.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%84%B6%E5%90%8E.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "re4nao5-9xhuh": {
+   "file": "re4nao5-9xhuh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%83%AD%E9%97%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "ren2gong1-9w6vz": {
+   "file": "ren2gong1-9w6vz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%BA%E5%B7%A5.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "ren2jia5-j8dx1": {
+   "file": "ren2jia5-j8dx1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%BA%E5%AE%B6.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "ren2min2-0q0yv": {
+   "file": "ren2min2-0q0yv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E4%BA%BA%E6%B0%91.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "ren4he2-gznbz": {
+   "file": "ren4he2-gznbz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%BB%E4%BD%95.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  },
+  "ren4ke3-ox8ys": {
+   "file": "ren4ke3-ox8ys.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%AE%A4%E5%8F%AF.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "ren4shi5-a09ir": {
+   "file": "ren4shi5-a09ir.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%AE%A4%E8%AF%86.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.57
+  },
+  "ren4wei2-402st": {
+   "file": "ren4wei2-402st.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%AE%A4%E4%B8%BA.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.8
+  },
+  "ren4wu5-k8rnv": {
+   "file": "ren4wu5-k8rnv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%BB%E5%8A%A1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "ren4zhen1-qzks5": {
+   "file": "ren4zhen1-qzks5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%AE%A4%E7%9C%9F.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "reng2ran2-0pm1j": {
+   "file": "reng2ran2-0pm1j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%8D%E7%84%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "ri4ji4-qiqhe": {
+   "file": "ri4ji4-qiqhe.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%97%A5%E8%AE%B0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.48
+  },
+  "ri4qi1-ja507": {
+   "file": "ri4qi1-ja507.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%A5%E6%9C%9F.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "rong2yi4-ok5n7": {
+   "file": "rong2yi4-ok5n7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AE%B9%E6%98%93.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "ru2guo3-znlyk": {
+   "file": "ru2guo3-znlyk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A6%82%E6%9E%9C.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "ru2he2-eg8ek": {
+   "file": "ru2he2-eg8ek.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A6%82%E4%BD%95.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.78
+  },
+  "ru4kou3-o2yuk": {
+   "file": "ru4kou3-o2yuk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%A5%E5%8F%A3.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "san4bu4-49zz4": {
+   "file": "san4bu4-49zz4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%A3%E6%AD%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "sen1lin2-ykx5c": {
+   "file": "sen1lin2-ykx5c.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%A3%AE%E6%9E%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "sha1fa1-psccw": {
+   "file": "sha1fa1-psccw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B2%99%E5%8F%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.7
+  },
+  "shang1liang5-8cr9y": {
+   "file": "shang1liang5-8cr9y.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%95%86%E9%87%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "shang1ren2-svlty": {
+   "file": "shang1ren2-svlty.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%95%86%E4%BA%BA.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.77
+  },
+  "shang1wu4-2x18c": {
+   "file": "shang1wu4-2x18c.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%95%86%E5%8A%A1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "shang1xin1-noxui": {
+   "file": "shang1xin1-noxui.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BC%A4%E5%BF%83.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.86
+  },
+  "shang4ke4-fzs68": {
+   "file": "shang4ke4-fzs68.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8A%E8%AF%BE.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "shang4mian4-qfvv3": {
+   "file": "shang4mian4-qfvv3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8A%E9%9D%A2.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.77
+  },
+  "shang4wang3-l3uo5": {
+   "file": "shang4wang3-l3uo5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Assassas77-%E4%B8%8A%E7%BD%91.wav",
+   "speaker": "Assassas77",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "shang4wu3-1jtzn": {
+   "file": "shang4wu3-1jtzn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8A%E5%8D%88.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "she4hui4-n76mb": {
+   "file": "she4hui4-n76mb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A4%BE%E4%BC%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.7
+  },
+  "she4li4-u81j1": {
+   "file": "she4li4-u81j1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%AE%BE%E7%AB%8B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "she4zhi4-epcpa": {
+   "file": "she4zhi4-epcpa.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%AE%BE%E7%BD%AE.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "shen1qing3-ttmw2": {
+   "file": "shen1qing3-ttmw2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%B3%E8%AF%B7.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.88
+  },
+  "shen2me5-o20oo": {
+   "file": "shen2me5-o20oo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Assassas77-%E4%BB%80%E4%B9%88.wav",
+   "speaker": "Assassas77",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.33
+  },
+  "shen4zhi4-3rdjt": {
+   "file": "shen4zhi4-3rdjt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%9A%E8%87%B3.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "sheng1ci2-gf9az": {
+   "file": "sheng1ci2-gf9az.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%94%9F%E8%AF%8D.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "sheng1cun2-pjov2": {
+   "file": "sheng1cun2-pjov2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%94%9F%E5%AD%98.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "sheng1huo2-ieiwv": {
+   "file": "sheng1huo2-ieiwv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%9F%E6%B4%BB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.76
+  },
+  "sheng1ming2-1u1t2": {
+   "file": "sheng1ming2-1u1t2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%A3%B0%E6%98%8E.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "sheng1ming4-bg2ty": {
+   "file": "sheng1ming4-bg2ty.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%9F%E5%91%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "sheng1qi4-94nwc": {
+   "file": "sheng1qi4-94nwc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%94%9F%E6%B0%94.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "sheng1ri4-0b8k6": {
+   "file": "sheng1ri4-0b8k6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%94%9F%E6%97%A5.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "sheng1yi5-z5bxy": {
+   "file": "sheng1yi5-z5bxy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%9F%E6%84%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  },
+  "sheng1yin1-c3ap7": {
+   "file": "sheng1yin1-c3ap7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A3%B0%E9%9F%B3.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.8
+  },
+  "shi1bai4-g6tmc": {
+   "file": "shi1bai4-g6tmc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%B1%E8%B4%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "shi1qu4-p6gsk": {
+   "file": "shi1qu4-p6gsk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A4%B1%E5%8E%BB.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.8
+  },
+  "shi1wang4-k2ff7": {
+   "file": "shi1wang4-k2ff7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%B1%E6%9C%9B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "shi2fen1-8n3uy": {
+   "file": "shi2fen1-8n3uy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%81%E5%88%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "shi2hou5-pahxz": {
+   "file": "shi2hou5-pahxz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%B6%E5%80%99.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "shi2ji4-24el3": {
+   "file": "shi2ji4-24el3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AE%9E%E9%99%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "shi2jian1-u8wdm": {
+   "file": "shi2jian1-u8wdm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%B6%E9%97%B4.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.8
+  },
+  "shi2li4-fxcuf": {
+   "file": "shi2li4-fxcuf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AE%9E%E5%8A%9B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "shi2shi1-156q1": {
+   "file": "shi2shi1-156q1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AE%9E%E6%96%BD.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.71
+  },
+  "shi2xing2-ebxv1": {
+   "file": "shi2xing2-ebxv1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AE%9E%E8%A1%8C.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.84
+  },
+  "shi2you2-m11n8": {
+   "file": "shi2you2-m11n8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%9F%B3%E6%B2%B9.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "shi2zai4-i1w89": {
+   "file": "shi2zai4-i1w89.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AE%9E%E5%9C%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "shi3yong4-vzwiy": {
+   "file": "shi3yong4-vzwiy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BD%BF%E7%94%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "shi4bu4shi4-yvxfx": {
+   "file": "shi4bu4shi4-yvxfx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%AF%E4%B8%8D%E6%98%AF.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.9
+  },
+  "shi4fou3-wabxh": {
+   "file": "shi4fou3-wabxh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%98%AF%E5%90%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.83
+  },
+  "shi4gu4-xns1j": {
+   "file": "shi4gu4-xns1j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%8B%E6%95%85.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "shi4he2-411j2": {
+   "file": "shi4he2-411j2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%80%82%E5%90%88.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  },
+  "shi4ji4-g12f0": {
+   "file": "shi4ji4-g12f0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%96%E7%BA%AA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "shi4jian4-e6d4g": {
+   "file": "shi4jian4-e6d4g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%8B%E4%BB%B6.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "shi4jie4-nudbn": {
+   "file": "shi4jie4-nudbn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%96%E7%95%8C.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "shi4yan4-1e89q": {
+   "file": "shi4yan4-1e89q.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%AF%95%E9%AA%8C.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "shi4ye4-2mc00": {
+   "file": "shi4ye4-2mc00.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%8B%E4%B8%9A.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "shi4ying4-ajxju": {
+   "file": "shi4ying4-ajxju.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%80%82%E5%BA%94.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.7
+  },
+  "shou1ru4-9ekqd": {
+   "file": "shou1ru4-9ekqd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%94%B6%E5%85%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "shou1yin1ji1-jairr": {
+   "file": "shou1yin1ji1-jairr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%94%B6%E9%9F%B3%E6%9C%BA.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.78
+  },
+  "shou3du1-ed4ri": {
+   "file": "shou3du1-ed4ri.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A6%96%E9%83%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "shou3ji1-ke92o": {
+   "file": "shou3ji1-ke92o.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%89%8B%E6%9C%BA.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "shou3xian1-fjqci": {
+   "file": "shou3xian1-fjqci.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A6%96%E5%85%88.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "shou3zhi3-w00a5": {
+   "file": "shou3zhi3-w00a5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E6%89%8B%E6%8C%87.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "shou4bu4liao3-e3oxt": {
+   "file": "shou4bu4liao3-e3oxt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%97%E4%B8%8D%E4%BA%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  },
+  "shou4dao4-z2447": {
+   "file": "shou4dao4-z2447.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%97%E5%88%B0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "shou4huo4yuan2-1ecwg": {
+   "file": "shou4huo4yuan2-1ecwg.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%94%AE%E8%B4%A7%E5%91%98.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.79
+  },
+  "shu1dian4-czfbt": {
+   "file": "shu1dian4-czfbt.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B9%A6%E5%BA%97.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "shu4liang4-npbd1": {
+   "file": "shu4liang4-npbd1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%B0%E9%87%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "shu4ma3-i5r9n": {
+   "file": "shu4ma3-i5r9n.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%B0%E7%A0%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "shu4zi4-q9m75": {
+   "file": "shu4zi4-q9m75.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%B0%E5%AD%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "shua1ya2-eplkz": {
+   "file": "shua1ya2-eplkz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%88%B7%E7%89%99.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "shui3guo3-n4p7p": {
+   "file": "shui3guo3-n4p7p.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%B0%B4%E6%9E%9C.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.88
+  },
+  "shui4jiao4-myvl3": {
+   "file": "shui4jiao4-myvl3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%9D%A1%E8%A7%89.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "shun4li4-nm03t": {
+   "file": "shun4li4-nm03t.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A1%BA%E5%88%A9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "shun4xu4-gzwb3": {
+   "file": "shun4xu4-gzwb3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A1%BA%E5%BA%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "shuo1hua4-rsiai": {
+   "file": "shuo1hua4-rsiai.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%B4%E8%AF%9D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.52
+  },
+  "shuo1ming2-fga7q": {
+   "file": "shuo1ming2-fga7q.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%B4%E6%98%8E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.78
+  },
+  "su4du4-sb5ch": {
+   "file": "su4du4-sb5ch.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%80%9F%E5%BA%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "su4liao4dai4-q9h9r": {
+   "file": "su4liao4dai4-q9h9r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A1%91%E6%96%99%E8%A2%8B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.83
+  },
+  "sui2bian4-ck3xw": {
+   "file": "sui2bian4-ck3xw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%9A%8F%E4%BE%BF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "sun1zi5-ee4f7": {
+   "file": "sun1zi5-ee4f7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AD%99%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "suo3yi3-g0jv3": {
+   "file": "suo3yi3-g0jv3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%89%80%E4%BB%A5.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "suo3you3-hkbks": {
+   "file": "suo3you3-hkbks.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%80%E6%9C%89.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "ta1men5-0s3ry": {
+   "file": "ta1men5-0s3ry.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Vickylin77amis-%E4%BB%96%E4%BB%AC.wav",
+   "speaker": "Vickylin77amis",
+   "licence": "CC BY-SA 4.0",
+   "dur": 1.03
+  },
+  "tai4du5-x57d6": {
+   "file": "tai4du5-x57d6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%81%E5%BA%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "tai4yang5-1e5os": {
+   "file": "tai4yang5-1e5os.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-KhawaChenpo-%E5%A4%AA%E9%98%B3.wav",
+   "speaker": "KhawaChenpo",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.93
+  },
+  "tao3lun4-lyeh9": {
+   "file": "tao3lun4-lyeh9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AE%A8%E8%AE%BA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "te4bie2-vzp3m": {
+   "file": "te4bie2-vzp3m.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%89%B9%E5%88%AB.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.77
+  },
+  "te4dian3-blm7z": {
+   "file": "te4dian3-blm7z.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%89%B9%E7%82%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.75
+  },
+  "ti2gong1-b0x5t": {
+   "file": "ti2gong1-b0x5t.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8F%90%E4%BE%9B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "ti2mu4-2weii": {
+   "file": "ti2mu4-2weii.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%A2%98%E7%9B%AE.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "ti2qian2-880kq": {
+   "file": "ti2qian2-880kq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8F%90%E5%89%8D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.75
+  },
+  "ti2xing3-q7f55": {
+   "file": "ti2xing3-q7f55.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8F%90%E9%86%92.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "tian1kong1-fvis3": {
+   "file": "tian1kong1-fvis3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%A4%A9%E7%A9%BA.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "tian2kong4-cws35": {
+   "file": "tian2kong4-cws35.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A1%AB%E7%A9%BA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "tiao2jian4-xk7kp": {
+   "file": "tiao2jian4-xk7kp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9D%A1%E4%BB%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "ting1li4-ms968": {
+   "file": "ting1li4-ms968.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%90%AC%E5%8A%9B.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "ting1shuo1-dggjw": {
+   "file": "ting1shuo1-dggjw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%90%AC%E8%AF%B4.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "tong1guo4-1unww": {
+   "file": "tong1guo4-1unww.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%80%9A%E8%BF%87.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "tong1zhi1-mwmnh": {
+   "file": "tong1zhi1-mwmnh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%80%9A%E7%9F%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "tong2hua4-pao79": {
+   "file": "tong2hua4-pao79.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%AB%A5%E8%AF%9D.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "tong2qing2-527tb": {
+   "file": "tong2qing2-527tb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%8C%E6%83%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "tong2shi2-jaku7": {
+   "file": "tong2shi2-jaku7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%8C%E6%97%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "tong2shi4-udaty": {
+   "file": "tong2shi4-udaty.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%90%8C%E4%BA%8B.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "tong2yi4-ipfn6": {
+   "file": "tong2yi4-ipfn6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%90%8C%E6%84%8F.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "tong3ji4-7xkrp": {
+   "file": "tong3ji4-7xkrp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%BB%9F%E8%AE%A1.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "tou2fa5-y375w": {
+   "file": "tou2fa5-y375w.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A4%B4%E5%8F%91.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "tou2su4-sfm29": {
+   "file": "tou2su4-sfm29.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8A%95%E8%AF%89.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.44
+  },
+  "tu1ran2-qvu69": {
+   "file": "tu1ran2-qvu69.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%AA%81%E7%84%B6.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "tu2an4-xkw6h": {
+   "file": "tu2an4-xkw6h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%9B%BE%E6%A1%88.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "tu2shu1guan3-zyec5": {
+   "file": "tu2shu1guan3-zyec5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%9B%BE%E4%B9%A6%E9%A6%86.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "tuan2jie2-9tyfm": {
+   "file": "tuan2jie2-9tyfm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%9B%A2%E7%BB%93.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "tuan2ti3-uh6jc": {
+   "file": "tuan2ti3-uh6jc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%9B%A2%E4%BD%93.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "tui1chi2-zsdn5": {
+   "file": "tui1chi2-zsdn5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%A8%E8%BF%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "tui1xiao1-07lsc": {
+   "file": "tui1xiao1-07lsc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%8E%A8%E9%94%80.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "wa4zi5-3o2sb": {
+   "file": "wa4zi5-3o2sb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A2%9C%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  },
+  "wai4mian4-ct8xl": {
+   "file": "wai4mian4-ct8xl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%96%E9%9D%A2.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "wai4tao4-ok2er": {
+   "file": "wai4tao4-ok2er.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%96%E5%A5%97.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "wan2cheng2-gu1za": {
+   "file": "wan2cheng2-gu1za.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AE%8C%E6%88%90.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.83
+  },
+  "wan2quan2-46bsc": {
+   "file": "wan2quan2-46bsc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AE%8C%E5%85%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "wan3can1-bohu3": {
+   "file": "wan3can1-bohu3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%99%9A%E9%A4%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "wan3fan4-fh22w": {
+   "file": "wan3fan4-fh22w.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%99%9A%E9%A5%AD.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "wan3shang5-dselk": {
+   "file": "wan3shang5-dselk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%99%9A%E4%B8%8A.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "wang3luo4-cfx9g": {
+   "file": "wang3luo4-cfx9g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BD%91%E7%BB%9C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "wang3qiu2-r30xw": {
+   "file": "wang3qiu2-r30xw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BD%91%E7%90%83.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "wang3wang3-yag1v": {
+   "file": "wang3wang3-yag1v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BE%80%E5%BE%80.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.48
+  },
+  "wang3zhan4-nwj26": {
+   "file": "wang3zhan4-nwj26.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BD%91%E7%AB%99.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "wang4ji4-nyzob": {
+   "file": "wang4ji4-nyzob.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BF%98%E8%AE%B0.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "wei1xian3-d6o6w": {
+   "file": "wei1xian3-d6o6w.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%B1%E9%99%A9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "wei2chi2-2mc7l": {
+   "file": "wei2chi2-2mc7l.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%BB%B4%E6%8C%81.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "wei2hu4-yf75x": {
+   "file": "wei2hu4-yf75x.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%BB%B4%E6%8A%A4.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "wei4dao5-gnebn": {
+   "file": "wei4dao5-gnebn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%91%B3%E9%81%93.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.42
+  },
+  "wei4le5-lhoig": {
+   "file": "wei4le5-lhoig.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%BA%E4%BA%86.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.52
+  },
+  "wei4sheng1jian1-mfhan": {
+   "file": "wei4sheng1jian1-mfhan.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%AB%E7%94%9F%E9%97%B4.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.76
+  },
+  "wen1du4-qlvts": {
+   "file": "wen1du4-qlvts.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B8%A9%E5%BA%A6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "wen2zhang1-1hjmn": {
+   "file": "wen2zhang1-1hjmn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%96%87%E7%AB%A0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "wen4ti2-3d9qa": {
+   "file": "wen4ti2-3d9qa.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%97%AE%E9%A2%98.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "wo3men5-0jopw": {
+   "file": "wo3men5-0jopw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Assassas77-%E6%88%91%E4%BB%AC.wav",
+   "speaker": "Assassas77",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.43
+  },
+  "wu2liao2-z6mpo": {
+   "file": "wu2liao2-z6mpo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%97%A0%E8%81%8A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "wu2lun4-z5yo0": {
+   "file": "wu2lun4-z5yo0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%97%A0%E8%AE%BA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.47
+  },
+  "wu3can1-hkjd5": {
+   "file": "wu3can1-hkjd5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8D%88%E9%A4%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "wu3fan4-l82rs": {
+   "file": "wu3fan4-l82rs.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8D%88%E9%A5%AD.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "wu3qi4-n4p80": {
+   "file": "wu3qi4-n4p80.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%AD%A6%E5%99%A8.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "wu4hui4-awzvq": {
+   "file": "wu4hui4-awzvq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%AF%E4%BC%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "xi1gua1-ifo6e": {
+   "file": "xi1gua1-ifo6e.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A5%BF%E7%93%9C.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.84
+  },
+  "xi1yin3-da2ep": {
+   "file": "xi1yin3-da2ep.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%B8%E5%BC%95.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.84
+  },
+  "xi3huan5-y9pf6": {
+   "file": "xi3huan5-y9pf6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%96%9C%E6%AC%A2.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.78
+  },
+  "xi4lie4-pvoxo": {
+   "file": "xi4lie4-pvoxo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%B3%BB%E5%88%97.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "xia4ban1-yl7hh": {
+   "file": "xia4ban1-yl7hh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8B%E7%8F%AD.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "xia4ci4-vdapf": {
+   "file": "xia4ci4-vdapf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8B%E6%AC%A1.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "xia4ke4-zsqw6": {
+   "file": "xia4ke4-zsqw6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8B%E8%AF%BE.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.71
+  },
+  "xia4tian1-zafeg": {
+   "file": "xia4tian1-zafeg.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%A4%8F%E5%A4%A9.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "xia4wu3-qgvr1": {
+   "file": "xia4wu3-qgvr1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8B%E5%8D%88.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.77
+  },
+  "xia4yu3-wwvqf": {
+   "file": "xia4yu3-wwvqf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%8B%E9%9B%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.47
+  },
+  "xia4zai3-u8v3g": {
+   "file": "xia4zai3-u8v3g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Assassas77-%E4%B8%8B%E8%BD%BD.wav",
+   "speaker": "Assassas77",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "xian1jin4-38l44": {
+   "file": "xian1jin4-38l44.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%85%88%E8%BF%9B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "xian4chang3-p8u1h": {
+   "file": "xian4chang3-p8u1h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%8E%B0%E5%9C%BA.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "xian4jin1-8c6fy": {
+   "file": "xian4jin1-8c6fy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%8E%B0%E9%87%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.75
+  },
+  "xian4zai4-g6ns5": {
+   "file": "xian4zai4-g6ns5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%8E%B0%E5%9C%A8.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "xiang1fan3-0cjbk": {
+   "file": "xiang1fan3-0cjbk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9B%B8%E5%8F%8D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.84
+  },
+  "xiang1jiao1-f1c3j": {
+   "file": "xiang1jiao1-f1c3j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E9%A6%99%E8%95%89.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "xiang1tong2-de9g9": {
+   "file": "xiang1tong2-de9g9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9B%B8%E5%90%8C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.78
+  },
+  "xiang1xin4-uoibv": {
+   "file": "xiang1xin4-uoibv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%9B%B8%E4%BF%A1.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.85
+  },
+  "xiao1xi5-eh33s": {
+   "file": "xiao1xi5-eh33s.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B6%88%E6%81%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "xiao3chi1-zprhm": {
+   "file": "xiao3chi1-zprhm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B0%8F%E5%90%83.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "xiao3huo3zi5-f9egq": {
+   "file": "xiao3huo3zi5-f9egq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B0%8F%E4%BC%99%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.99
+  },
+  "xiao3jie5-811wx": {
+   "file": "xiao3jie5-811wx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B0%8F%E5%A7%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "xiao3shuo1-rpo2w": {
+   "file": "xiao3shuo1-rpo2w.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B0%8F%E8%AF%B4.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.88
+  },
+  "xiao3wang2-lvib2": {
+   "file": "xiao3wang2-lvib2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B0%8F%E7%8E%8B.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "xiao3xin1-ri5h1": {
+   "file": "xiao3xin1-ri5h1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%B0%8F%E5%BF%83.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.89
+  },
+  "xiao4guo3-xfoli": {
+   "file": "xiao4guo3-xfoli.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%88%E6%9E%9C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.73
+  },
+  "xiao4hua5-pfywv": {
+   "file": "xiao4hua5-pfywv.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AC%91%E8%AF%9D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "xie4xie5-f1lp0": {
+   "file": "xie4xie5-f1lp0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%B0%A2%E8%B0%A2.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "xin1lang2-vfqtj": {
+   "file": "xin1lang2-vfqtj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%96%B0%E9%83%8E.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "xin1niang2-okq2q": {
+   "file": "xin1niang2-okq2q.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%96%B0%E5%A8%98.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "xin1qing2-amvry": {
+   "file": "xin1qing2-amvry.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BF%83%E6%83%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  },
+  "xin1wen2-bucrq": {
+   "file": "xin1wen2-bucrq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%96%B0%E9%97%BB.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.83
+  },
+  "xin4feng1-2icud": {
+   "file": "xin4feng1-2icud.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%A1%E5%B0%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.73
+  },
+  "xin4xi1-4lplc": {
+   "file": "xin4xi1-4lplc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%A1%E6%81%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.88
+  },
+  "xin4xin1-4588g": {
+   "file": "xin4xin1-4588g.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%A1%E5%BF%83.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "xin4yong4ka3-r0u22": {
+   "file": "xin4yong4ka3-r0u22.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%A1%E7%94%A8%E5%8D%A1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "xing1fen4-psqqo": {
+   "file": "xing1fen4-psqqo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%B4%E5%A5%8B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "xing1qi1-jvwn9": {
+   "file": "xing1qi1-jvwn9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%9F%E6%9C%9F.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.81
+  },
+  "xing1qi1ri4-hvbop": {
+   "file": "xing1qi1ri4-hvbop.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%9F%E6%9C%9F%E6%97%A5.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.89
+  },
+  "xing1qi1tian1-x3qtl": {
+   "file": "xing1qi1tian1-x3qtl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%98%9F%E6%9C%9F%E5%A4%A9.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 1.23
+  },
+  "xing1xing5-noqhj": {
+   "file": "xing1xing5-noqhj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-KhawaChenpo-%E6%98%9F%E6%98%9F.wav",
+   "speaker": "KhawaChenpo",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "xing2dong4-wer0r": {
+   "file": "xing2dong4-wer0r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A1%8C%E5%8A%A8.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.79
+  },
+  "xing4bie2-xddsx": {
+   "file": "xing4bie2-xddsx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%A7%E5%88%AB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  },
+  "xing4fu2-4gxgd": {
+   "file": "xing4fu2-4gxgd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%B8%E7%A6%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.74
+  },
+  "xing4ge2-y7780": {
+   "file": "xing4ge2-y7780.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%A7%E6%A0%BC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.74
+  },
+  "xiong1di4-0v67v": {
+   "file": "xiong1di4-0v67v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%84%E5%BC%9F.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "xiu1li3-7yhly": {
+   "file": "xiu1li3-7yhly.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%AE%E7%90%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "xu1qiu2-46b48": {
+   "file": "xu1qiu2-46b48.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%9C%80%E6%B1%82.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "xu1yao4-7uj9h": {
+   "file": "xu1yao4-7uj9h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%9C%80%E8%A6%81.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "xu3duo1-hjrz0": {
+   "file": "xu3duo1-hjrz0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AE%B8%E5%A4%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.82
+  },
+  "xuan3shou3-uc8yw": {
+   "file": "xuan3shou3-uc8yw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%80%89%E6%89%8B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "xuan3ze2-evb47": {
+   "file": "xuan3ze2-evb47.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%80%89%E6%8B%A9.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.84
+  },
+  "xue2qi1-kqz1v": {
+   "file": "xue2qi1-kqz1v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AD%A6%E6%9C%9F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.77
+  },
+  "xue2sheng5-beqqa": {
+   "file": "xue2sheng5-beqqa.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%AD%A6%E7%94%9F.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.85
+  },
+  "xue2xi2-6xrzg": {
+   "file": "xue2xi2-6xrzg.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%AD%A6%E4%B9%A0.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "xue2xiao4-do4yd": {
+   "file": "xue2xiao4-do4yd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%AD%A6%E6%A0%A1.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "ya1li4-nuyc7": {
+   "file": "ya1li4-nuyc7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8E%8B%E5%8A%9B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "yan2ge2-ane4o": {
+   "file": "yan2ge2-ane4o.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%A5%E6%A0%BC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "yan2jiu1-rks58": {
+   "file": "yan2jiu1-rks58.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A0%94%E7%A9%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "yan2qi1-e3b99": {
+   "file": "yan2qi1-e3b99.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%BB%B6%E6%9C%9F.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "yan2se4-whli9": {
+   "file": "yan2se4-whli9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E9%A2%9C%E8%89%B2.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "yan2xu4-cymff": {
+   "file": "yan2xu4-cymff.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%BB%B6%E7%BB%AD.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "yan2zhong4-jll57": {
+   "file": "yan2zhong4-jll57.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%A5%E9%87%8D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "yan3chu1-4h3op": {
+   "file": "yan3chu1-4h3op.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%BC%94%E5%87%BA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "yan3jing4-vdilc": {
+   "file": "yan3jing4-vdilc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9C%BC%E9%95%9C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "yan3jing5-na2ia": {
+   "file": "yan3jing5-na2ia.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%9C%BC%E7%9D%9B.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.82
+  },
+  "yan3yuan2-0bygj": {
+   "file": "yan3yuan2-0bygj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%BC%94%E5%91%98.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "yang2guang1-fiex3": {
+   "file": "yang2guang1-fiex3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%98%B3%E5%85%89.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "yang2rou4-9q47z": {
+   "file": "yang2rou4-9q47z.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BE%8A%E8%82%89.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.46
+  },
+  "yang3cheng2-2u42h": {
+   "file": "yang3cheng2-2u42h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%BB%E6%88%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.8
+  },
+  "yang4zi5-4s7ev": {
+   "file": "yang4zi5-4s7ev.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%A0%B7%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "yao1qiu2-z49kl": {
+   "file": "yao1qiu2-z49kl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A6%81%E6%B1%82.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.78
+  },
+  "yao4shi5-c9j2v": {
+   "file": "yao4shi5-c9j2v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A6%81%E6%98%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "ye3xu3-v7d4v": {
+   "file": "ye3xu3-v7d4v.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B9%9F%E8%AE%B8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "ye4zi5-2jgqz": {
+   "file": "ye4zi5-2jgqz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%B6%E5%AD%90.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "yi1dian3r5-y3uim": {
+   "file": "yi1dian3r5-y3uim.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%80%E7%82%B9%E5%84%BF.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.49
+  },
+  "yi1ding4-kcvte": {
+   "file": "yi1ding4-kcvte.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%80%E5%AE%9A.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "yi1fu5-x00cc": {
+   "file": "yi1fu5-x00cc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%A1%A3%E6%9C%8D.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "yi1gong4-myou6": {
+   "file": "yi1gong4-myou6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%80%E5%85%B1.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "yi1hui4r5-co2la": {
+   "file": "yi1hui4r5-co2la.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%80%E4%BC%9A%E5%84%BF.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.52
+  },
+  "yi1kao4-zs9zi": {
+   "file": "yi1kao4-zs9zi.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BE%9D%E9%9D%A0.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "yi1qi3-xfub4": {
+   "file": "yi1qi3-xfub4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%80%E8%B5%B7.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "yi1qie4-e6x2a": {
+   "file": "yi1qie4-e6x2a.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%80%E5%88%87.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "yi1xie1-0cpzo": {
+   "file": "yi1xie1-0cpzo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%80%E4%BA%9B.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "yi1yang4-0majg": {
+   "file": "yi1yang4-0majg.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%80%E6%A0%B7.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.56
+  },
+  "yi1zhi2-enca9": {
+   "file": "yi1zhi2-enca9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%80%E7%9B%B4.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "yi2chan3-eg6pk": {
+   "file": "yi2chan3-eg6pk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%81%97%E4%BA%A7.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "yi2chuan2-k3nkf": {
+   "file": "yi2chuan2-k3nkf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%81%97%E4%BC%A0.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "yi3qian2-8i6v5": {
+   "file": "yi3qian2-8i6v5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%BB%A5%E5%89%8D.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.8
+  },
+  "yi3wei2-yz02m": {
+   "file": "yi3wei2-yz02m.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%A5%E4%B8%BA.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "yi3zi5-s9rq9": {
+   "file": "yi3zi5-s9rq9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%A4%85%E5%AD%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "yi4jian4-qrvr3": {
+   "file": "yi4jian4-qrvr3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%8F%E8%A7%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.49
+  },
+  "yi4shu4-9d7ma": {
+   "file": "yi4shu4-9d7ma.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%89%BA%E6%9C%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.49
+  },
+  "yin1ci3-2nnd9": {
+   "file": "yin1ci3-2nnd9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9B%A0%E6%AD%A4.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "yin1wei4-qymdn": {
+   "file": "yin1wei4-qymdn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%9B%A0%E4%B8%BA.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "yin1yue4-v1ey2": {
+   "file": "yin1yue4-v1ey2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%9F%B3%E4%B9%90.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "yin3dao3-mil18": {
+   "file": "yin3dao3-mil18.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%BC%95%E5%AF%BC.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.51
+  },
+  "yin3qi3-z6b8t": {
+   "file": "yin3qi3-z6b8t.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BC%95%E8%B5%B7.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "yin4xiang4-kowsl": {
+   "file": "yin4xiang4-kowsl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%B0%E8%B1%A1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "ying1gai1-xe8t4": {
+   "file": "ying1gai1-xe8t4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BA%94%E8%AF%A5.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "ying1wen2-0hgzp": {
+   "file": "ying1wen2-0hgzp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%8B%B1%E6%96%87.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "ying1yong3-lydkn": {
+   "file": "ying1yong3-lydkn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%8B%B1%E5%8B%87.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.47
+  },
+  "ying1yu3-wheze": {
+   "file": "ying1yu3-wheze.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%8B%B1%E8%AF%AD.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.7
+  },
+  "ying3xiang3-dfytb": {
+   "file": "ying3xiang3-dfytb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BD%B1%E5%93%8D.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "yong3gan3-nxdcf": {
+   "file": "yong3gan3-nxdcf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8B%87%E6%95%A2.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.47
+  },
+  "yong3yuan3-6vq2x": {
+   "file": "yong3yuan3-6vq2x.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B0%B8%E8%BF%9C.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "you1dian3-6m2u1": {
+   "file": "you1dian3-6m2u1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BC%98%E7%82%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.8
+  },
+  "you1xiu4-5z293": {
+   "file": "you1xiu4-5z293.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BC%98%E7%A7%80.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "you2ju2-6o6wf": {
+   "file": "you2ju2-6o6wf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%82%AE%E5%B1%80.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.72
+  },
+  "you2xi4-keu7c": {
+   "file": "you2xi4-keu7c.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%B8%B8%E6%88%8F.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "you2yong3-7rv41": {
+   "file": "you2yong3-7rv41.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%B8%B8%E6%B3%B3.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "you2yu2-ol79j": {
+   "file": "you2yu2-ol79j.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%B1%E4%BA%8E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "you3hao3-not6a": {
+   "file": "you3hao3-not6a.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%8B%E5%A5%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.56
+  },
+  "you3kong4-ekbhp": {
+   "file": "you3kong4-ekbhp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%9C%89%E7%A9%BA.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "you3qu4-k7ulr": {
+   "file": "you3qu4-k7ulr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9C%89%E8%B6%A3.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "you4bian5-admsj": {
+   "file": "you4bian5-admsj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8F%B3%E8%BE%B9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.72
+  },
+  "yu2shi4-b5t7w": {
+   "file": "yu2shi4-b5t7w.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BA%8E%E6%98%AF.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "yu3fa3-wh3q2": {
+   "file": "yu3fa3-wh3q2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%AD%E6%B3%95.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.7
+  },
+  "yu3yan2-2txal": {
+   "file": "yu3yan2-2txal.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%AD%E8%A8%80.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "yu4dao4-mxlqc": {
+   "file": "yu4dao4-mxlqc.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%81%87%E5%88%B0.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "yu4xi2-s29u6": {
+   "file": "yu4xi2-s29u6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A2%84%E4%B9%A0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.69
+  },
+  "yuan2gong1-kfcpl": {
+   "file": "yuan2gong1-kfcpl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%91%98%E5%B7%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "yuan2lai2-nqft8": {
+   "file": "yuan2lai2-nqft8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8E%9F%E6%9D%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "yuan2yin1-wvnm0": {
+   "file": "yuan2yin1-wvnm0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8E%9F%E5%9B%A0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.83
+  },
+  "yuan4yi4-2dof6": {
+   "file": "yuan4yi4-2dof6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%84%BF%E6%84%8F.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "yue1hui4-358c1": {
+   "file": "yue1hui4-358c1.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BA%A6%E4%BC%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.49
+  },
+  "yue4du2-5kj3r": {
+   "file": "yue4du2-5kj3r.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%98%85%E8%AF%BB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "yue4liang5-abfda": {
+   "file": "yue4liang5-abfda.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-KhawaChenpo-%E6%9C%88%E4%BA%AE.wav",
+   "speaker": "KhawaChenpo",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.49
+  },
+  "yun4dong4-70iz7": {
+   "file": "yun4dong4-70iz7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%BF%90%E5%8A%A8.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "za2zhi4-w1468": {
+   "file": "za2zhi4-w1468.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9D%82%E5%BF%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "zai4jia1-pq5dq": {
+   "file": "zai4jia1-pq5dq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%9C%A8%E5%AE%B6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "zan2men5-kfeuq": {
+   "file": "zan2men5-kfeuq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%92%B1%E4%BB%AC.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "zan4zhu4-iklww": {
+   "file": "zan4zhu4-iklww.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%B5%9E%E5%8A%A9.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.6
+  },
+  "zao3can1-qgkhy": {
+   "file": "zao3can1-qgkhy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%A9%E9%A4%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.71
+  },
+  "zao3fan4-h0g6x": {
+   "file": "zao3fan4-h0g6x.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%A9%E9%A5%AD.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.71
+  },
+  "zao3shang5-f45fp": {
+   "file": "zao3shang5-f45fp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%A9%E4%B8%8A.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "zao4xing2-sn0d8": {
+   "file": "zao4xing2-sn0d8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%80%A0%E5%9E%8B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.64
+  },
+  "ze2ren4-irkk9": {
+   "file": "ze2ren4-irkk9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B4%A3%E4%BB%BB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.51
+  },
+  "zeng1jia1-zimn9": {
+   "file": "zeng1jia1-zimn9.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A2%9E%E5%8A%A0.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "zhan4dou4-vomwb": {
+   "file": "zhan4dou4-vomwb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%88%98%E6%96%97.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.52
+  },
+  "zhao2huo3-u1pr5": {
+   "file": "zhao2huo3-u1pr5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9D%80%E7%81%AB.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "zhao4gu5-s0zfp": {
+   "file": "zhao4gu5-s0zfp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%85%A7%E9%A1%BE.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "zhao4pian4-9drzz": {
+   "file": "zhao4pian4-9drzz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%85%A7%E7%89%87.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.75
+  },
+  "zhe4li3-76hrd": {
+   "file": "zhe4li3-76hrd.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%BF%99%E9%87%8C.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "zhen1zheng4-vinbl": {
+   "file": "zhen1zheng4-vinbl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9C%9F%E6%AD%A3.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.64
+  },
+  "zheng1fu2-6i9kx": {
+   "file": "zheng1fu2-6i9kx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%BE%81%E6%9C%8D.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.68
+  },
+  "zheng3ge4-ytdi6": {
+   "file": "zheng3ge4-ytdi6.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%95%B4%E4%B8%AA.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "zheng3li3-k78yy": {
+   "file": "zheng3li3-k78yy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%B4%E7%90%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.46
+  },
+  "zheng4chang2-p9vll": {
+   "file": "zheng4chang2-p9vll.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AD%A3%E5%B8%B8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "zheng4hao3-l8jw4": {
+   "file": "zheng4hao3-l8jw4.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AD%A3%E5%A5%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.82
+  },
+  "zheng4ming2-86rjh": {
+   "file": "zheng4ming2-86rjh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%81%E6%98%8E.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "zheng4que4-jj07h": {
+   "file": "zheng4que4-jj07h.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AD%A3%E7%A1%AE.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "zheng4shi4-452ex": {
+   "file": "zheng4shi4-452ex.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AD%A3%E5%BC%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "zhi1chi2-pgwub": {
+   "file": "zhi1chi2-pgwub.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%94%AF%E6%8C%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.76
+  },
+  "zhi1dao4-ks2bf": {
+   "file": "zhi1dao4-ks2bf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%9F%A5%E9%81%93.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "zhi1shi5-wt1fn": {
+   "file": "zhi1shi5-wt1fn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9F%A5%E8%AF%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "zhi2bo1-40ul3": {
+   "file": "zhi2bo1-40ul3.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%9B%B4%E6%92%AD.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "zhi2de5-hbkwx": {
+   "file": "zhi2de5-hbkwx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%80%BC%E5%BE%97.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "zhi2jie1-glurs": {
+   "file": "zhi2jie1-glurs.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9B%B4%E6%8E%A5.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.58
+  },
+  "zhi2wu4-k6gdw": {
+   "file": "zhi2wu4-k6gdw.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%A4%8D%E7%89%A9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "zhi2ye4-nitbm": {
+   "file": "zhi2ye4-nitbm.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%81%8C%E4%B8%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "zhi3hao3-b28dz": {
+   "file": "zhi3hao3-b28dz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%AA%E5%A5%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.61
+  },
+  "zhi3yao4-p8g3b": {
+   "file": "zhi3yao4-p8g3b.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%AA%E8%A6%81.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "zhi3you3-uv0vy": {
+   "file": "zhi3you3-uv0vy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8F%AA%E6%9C%89.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "zhi4li4-aaofa": {
+   "file": "zhi4li4-aaofa.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%99%BA%E5%8A%9B.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.65
+  },
+  "zhi4liang4-wguwg": {
+   "file": "zhi4liang4-wguwg.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B4%A8%E9%87%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "zhi4shao3-jrqtk": {
+   "file": "zhi4shao3-jrqtk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%87%B3%E5%B0%91.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "zhi4yuan4zhe3-o24ye": {
+   "file": "zhi4yuan4zhe3-o24ye.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Aa087159-%E5%BF%97%E6%84%BF%E8%80%85.wav",
+   "speaker": "Aa087159",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.89
+  },
+  "zhong1guo2-07anr": {
+   "file": "zhong1guo2-07anr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%AD%E5%9B%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "zhong1jie4-aaju0": {
+   "file": "zhong1jie4-aaju0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%AD%E4%BB%8B.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.5
+  },
+  "zhong1wen2-fk0vk": {
+   "file": "zhong1wen2-fk0vk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%AD%E6%96%87.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.71
+  },
+  "zhong1wu3-5iyzk": {
+   "file": "zhong1wu3-5iyzk.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%AD%E5%8D%88.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.63
+  },
+  "zhong1yu2-thmyy": {
+   "file": "zhong1yu2-thmyy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%BB%88%E4%BA%8E.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.79
+  },
+  "zhong3zi5-a1wjj": {
+   "file": "zhong3zi5-a1wjj.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%A7%8D%E5%AD%90.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "zhong4dian3-fub5e": {
+   "file": "zhong4dian3-fub5e.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%87%8D%E7%82%B9.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.54
+  },
+  "zhong4shi4-ylun0": {
+   "file": "zhong4shi4-ylun0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%87%8D%E8%A7%86.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.59
+  },
+  "zhong4yao4-8vets": {
+   "file": "zhong4yao4-8vets.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%87%8D%E8%A6%81.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.62
+  },
+  "zhou1nian2-b5jyo": {
+   "file": "zhou1nian2-b5jyo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%91%A8%E5%B9%B4.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "zhou1wei2-xxowr": {
+   "file": "zhou1wei2-xxowr.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%91%A8%E5%9B%B4.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.75
+  },
+  "zhu3yi5-ux128": {
+   "file": "zhu3yi5-ux128.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%BB%E6%84%8F.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.55
+  },
+  "zhu4ming2-hrrzh": {
+   "file": "zhu4ming2-hrrzh.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%91%97%E5%90%8D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.65
+  },
+  "zhu4yi4-k7knz": {
+   "file": "zhu4yi4-k7knz.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%B3%A8%E6%84%8F.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.69
+  },
+  "zhuan1men2-plypl": {
+   "file": "zhuan1men2-plypl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%93%E9%97%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "zhuan1ye4-j77kp": {
+   "file": "zhuan1ye4-j77kp.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%93%E4%B8%9A.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "zhuan3yi2-vpbk5": {
+   "file": "zhuan3yi2-vpbk5.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%BD%AC%E7%A7%BB.wav",
+   "speaker": "Fake estate",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.58
+  },
+  "zhun3que4-fwp3o": {
+   "file": "zhun3que4-fwp3o.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%86%E7%A1%AE.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.66
+  },
+  "zhun3shi2-hsxnb": {
+   "file": "zhun3shi2-hsxnb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%86%E6%97%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.79
+  },
+  "zhuo1zi5-zxu6k": {
+   "file": "zhuo1zi5-zxu6k.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%A1%8C%E5%AD%90.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "zi4dian3-xiln2": {
+   "file": "zi4dian3-xiln2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AD%97%E5%85%B8.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "zi4ji3-w8cgn": {
+   "file": "zi4ji3-w8cgn.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%87%AA%E5%B7%B1.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.61
+  },
+  "zi4mu3-uydhl": {
+   "file": "zi4mu3-uydhl.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%AD%97%E6%AF%8D.wav",
+   "speaker": "Shangkuanlc",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.52
+  },
+  "zi4ran2-ovlo7": {
+   "file": "zi4ran2-ovlo7.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%87%AA%E7%84%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.67
+  },
+  "zi4xin4-o9fiy": {
+   "file": "zi4xin4-o9fiy.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%87%AA%E4%BF%A1.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.62
+  },
+  "zi4xing2che1-0totb": {
+   "file": "zi4xing2che1-0totb.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%87%AA%E8%A1%8C%E8%BD%A6.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.92
+  },
+  "zi4you2-wa5ug": {
+   "file": "zi4you2-wa5ug.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%87%AA%E7%94%B1.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.76
+  },
+  "zong3jie2-4ivoo": {
+   "file": "zong3jie2-4ivoo.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%BB%E7%BB%93.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.68
+  },
+  "zu2qiu2-8fiur": {
+   "file": "zu2qiu2-8fiur.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%B6%B3%E7%90%83.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.81
+  },
+  "zui3ba5-8thvq": {
+   "file": "zui3ba5-8thvq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%98%B4%E5%B7%B4.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.66
+  },
+  "zui4hao3-mborf": {
+   "file": "zui4hao3-mborf.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9C%80%E5%A5%BD.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.57
+  },
+  "zui4hou4-3gd8x": {
+   "file": "zui4hou4-3gd8x.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%9C%80%E5%90%8E.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.59
+  },
+  "zui4jin4-u10wx": {
+   "file": "zui4jin4-u10wx.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%9C%80%E8%BF%91.wav",
+   "speaker": "Jouketou",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.67
+  },
+  "zuo2tian1-wml91": {
+   "file": "zuo2tian1-wml91.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%A8%E5%A4%A9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.73
+  },
+  "zuo3bian5-keqe0": {
+   "file": "zuo3bian5-keqe0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B7%A6%E8%BE%B9.wav",
+   "speaker": "Luilui6666",
+   "licence": "CC BY-SA 4.0",
+   "dur": 0.74
+  },
+  "zuo3you4-eswe0": {
+   "file": "zuo3you4-eswe0.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B7%A6%E5%8F%B3.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.63
+  },
+  "zuo4jia1-4nvls": {
+   "file": "zuo4jia1-4nvls.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BD%9C%E5%AE%B6.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.71
+  },
+  "zuo4wei4-f24r8": {
+   "file": "zuo4wei4-f24r8.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BA%A7%E4%BD%8D.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.53
+  },
+  "zuo4yong4-91bhq": {
+   "file": "zuo4yong4-91bhq.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BD%9C%E7%94%A8.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.6
+  },
+  "zuo4zhe3-ewtj2": {
+   "file": "zuo4zhe3-ewtj2.mp3",
+   "source": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BD%9C%E8%80%85.wav",
+   "speaker": "CanonNi",
+   "licence": "CC0",
+   "dur": 0.81
+  }
+ },
+ "skipped": {},
+ "rejected": []
+}

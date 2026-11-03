@@ -27,7 +27,7 @@
 import { execFile } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { promisify } from 'node:util';
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 
@@ -75,7 +75,11 @@ export function openLicence(name: string): boolean {
 
 /** Pure: plain text from Commons' HTML artist field. */
 export function plainArtist(html: string): string {
-  return html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() || 'unknown';
+  const text = html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  // Lingua Libre: "Speaker: X Recorder: Y" → "X" (or "X, recorded by Y").
+  const ll = /^Speaker:\s*(.+?)\s+Recorder:\s*(.+)$/.exec(text);
+  if (ll) return ll[1] === ll[2] ? ll[1] : `${ll[1]}, recorded by ${ll[2]}`;
+  return text || 'unknown';
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -153,7 +157,8 @@ async function convert(input: string, out: string): Promise<number> {
   const summary = stderr.slice(stderr.lastIndexOf('Summary:'));
   const lufs = Number(/I:\s+(-?[\d.]+) LUFS/.exec(summary)?.[1] ?? TARGET_LUFS);
   const peak = Number(/Peak:\s+(-?[\d.]+) dBFS/.exec(summary)?.[1] ?? 0);
-  const dur = Number(/time=(\d+):(\d+):([\d.]+)/.exec(stderr)?.slice(1).reduce((a, x, i) => a + Number(x) * [3600, 60, 1][i], 0) ?? 0);
+  // 16-bit mono 24 kHz WAV: 48,000 bytes a second after the 44-byte header.
+  const dur = Math.max(0, statSync(tmp).size - 44) / 48_000;
   const gain = Math.min(TARGET_LUFS - lufs, MAX_PEAK - peak);
   // Padded with silence like the Azure clips, so browsers don't clip the start.
   await run(FF, ['-nostdin', '-y', '-loglevel', 'error', '-i', tmp, '-af', `volume=${gain.toFixed(2)}dB,adelay=150,apad=pad_dur=0.3`, '-c:a', 'libmp3lame', '-b:a', '40k', out]);

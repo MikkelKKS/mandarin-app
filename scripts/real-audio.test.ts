@@ -16,5 +16,7 @@ describe('real speakers from Wikimedia Commons (IDEAS #20)', () => {
   it('turns the HTML artist field into a plain name', () => {
     expect(plainArtist('<a href="//commons.wikimedia.org/wiki/User:X">X</a>')).toBe('X');
     expect(plainArtist('')).toBe('unknown');
+    expect(plainArtist('Speaker: <a>CanonNi</a> Recorder: CanonNi')).toBe('CanonNi');
+    expect(plainArtist('Speaker: A Recorder: B')).toBe('A, recorded by B');
   });
 });
