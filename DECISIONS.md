@@ -370,3 +370,8 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 
 ## 2026-11-03: Easier closing sentence for new words (/polish)
 - A new word's closing "what does this sentence mean?" now uses the word's example with the fewest words you haven't started (today's new words count as started), and is skipped if that example still has more than 2 (`MAX_UNKNOWN_IN_SENTENCE` in `session/plan.ts`). The "I don't know this word" re-teach keeps the first example. Bigger fixes (level cap at build time, choosing examples by what you know everywhere) are IDEAS #17 and #18.
+
+## 2026-11-03: Voice test, Xiaoxiao stays (asked)
+- Blind test of 5 free-tier voices on 17 tricky items (3-3, 一/不, neutral tones, polyphones, 买/卖, a sentence), ~2,800 billed characters: Xiaoxiao, Xiaoyi, Yunyang, Xiaoxiao Multilingual, Yunyi Multilingual. HD/Dragon voices left out (probably not in F0, no `<prosody rate>`, vary between runs).
+- Every voice gave identical audio on a re-run. Xiaoxiao has the widest pitch range (8.4 semitones) and is among the slowest (4.1 syllables/s); Yunyi Multilingual was flattest and fastest. The automatic per-syllable tone score was too noisy to rank voices.
+- The owner's blind favourites were Xiaoxiao Multilingual and Xiaoxiao, i.e. the same speaker. **Xiaoxiao stays**; nothing is re-recorded (that would cost ~268k characters). Better audio comes from real recordings (IDEAS #20, #21) instead.
