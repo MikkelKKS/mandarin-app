@@ -454,6 +454,13 @@ if (existsSync(generatedFile)) {
 const candidates = new Map<string, VocabSentence[]>();
 for (const s of sentences.values()) for (const w of new Set(s.words)) (candidates.get(w) ?? candidates.set(w, []).get(w)!).push(s);
 const MAX_EXAMPLES = 2;
+/** HSK level for difficulty; course-only words (level 0: 每天, 一点, 胡同…) count as level 2. */
+const levelOf = (w: string) => {
+  const l = drafts.get(w)?.level ?? 7;
+  return l === 0 ? 2 : l;
+};
+/** The highest HSK level among a sentence's other words. */
+const hardestOther = (s: VocabSentence, word: string) => Math.max(0, ...s.words.filter((w) => w !== word).map(levelOf));
 const examples = new Map<string, string[]>();
 const used = new Set<string>();
 for (const [id] of ordered) {
@@ -467,16 +474,21 @@ for (const [id] of ordered) {
     const late = s.unlocks > order ? 50 + (s.unlocks - order) / 50 : 0; // uses words learned later
     return late + ideal + course + generated;
   };
+  // Level cap: no other word more than one HSK level above this one (IDEAS #17).
+  const lvl = levelOf(id);
   let pick = list
-    .filter((s) => s.unlocks <= order + 300) // at most slightly ahead
+    .filter((s) => (s.unlocks <= order + 300 || s.source === 'generated') && hardestOther(s, id) <= lvl + 1)
     .sort((a, b) => score(a) - score(b) || a.id.localeCompare(b.id))
     .slice(0, MAX_EXAMPLES);
-  // HSK 1–4 words with nothing at all: a real sentence even if it uses later words
-  // (the fewest and nearest), before any generated one.
-  const lvl = drafts.get(id)!.level;
-  if (!pick.length && lvl >= 1 && lvl <= 4) {
-    const real = list.filter((s) => s.source !== 'generated').sort((a, b) => score(a) - score(b) || a.id.localeCompare(b.id));
-    pick = (real.length ? real : list).slice(0, 1);
+  // HSK 1–4 words with nothing that fits: a real sentence at most two levels above
+  // (the fewest and nearest later words). Anything harder gets no example; such
+  // words get a sentence written for the app instead (content/generated-sentences.json).
+  const hsk = drafts.get(id)!.level;
+  if (!pick.length && hsk >= 1 && hsk <= 4) {
+    pick = list
+      .filter((s) => s.source !== 'generated' && hardestOther(s, id) <= lvl + 2)
+      .sort((a, b) => score(a) - score(b) || a.id.localeCompare(b.id))
+      .slice(0, 1);
   }
   examples.set(id, pick.map((s) => s.id));
   pick.forEach((s) => used.add(s.id));

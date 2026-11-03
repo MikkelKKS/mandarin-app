@@ -25,7 +25,7 @@ Items for a native speaker to check. Remove an entry once checked.
 - Known weak spot: a verb + 得到 / 得了 potential complement (听得到 should be tīng de dào) is split as 听 + 得到 (dédào).
 - Tatoeba sentences are community-written. They are filtered, not hand-checked; the "report bad audio/sentence" button (step 5) will feed fixes back.
 
-## Generated example sentences (28 Oct 2026)
+## Generated example sentences (28 Oct 2026; 168 added or rewritten 3 Nov 2026 for the level cap, IDEAS #17)
 
 Written for this app for HSK 1–4 words that had no Tatoeba or course sentence (`content/generated-sentences.json`). Please check they sound natural; fix or delete a line and the next vocabulary build picks it up. Pinyin uses dictionary tones (yī gè, bù shì), like the Tatoeba sentences.
 
@@ -41,10 +41,7 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 网友 wǎng yǒu | 他是我的网友。 | Tā shì wǒ de wǎngyǒu. | He's a friend I met online. |
 | 听写 tīng xiě | 今天我们有听写。 | Jīntiān wǒmen yǒu tīngxiě. | We have a dictation today. |
 | 面条儿 miàn tiáor | 我想吃面条儿。 | Wǒ xiǎng chī miàntiáor. | I'd like to eat noodles. |
-| 得 dé | 他得了第一名。 | Tā dé le dì yī míng. | He came first. |
-| 头 tou | 外头很冷。 | Wàitou hěn lěng. | It's cold outside. |
 | 倒 dào | 请给我倒一杯水。 | Qǐng gěi wǒ dào yī bēi shuǐ. | Please pour me a glass of water. |
-| 小组 xiǎo zǔ | 我们分成三个小组。 | Wǒmen fēnchéng sān gè xiǎozǔ. | We split into three groups. |
 | 高级 gāo jí | 这是一家高级饭店。 | Zhè shì yī jiā gāojí fàndiàn. | This is a high-end restaurant. |
 | 周年 zhōu nián | 今天是我们结婚十周年。 | Jīntiān shì wǒmen jiéhūn shí zhōunián. | Today is our tenth wedding anniversary. |
 | 例如 lì rú | 我喜欢运动，例如跑步。 | Wǒ xǐhuan yùndòng, lìrú pǎobù. | I like sport, for example running. |
@@ -72,12 +69,9 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 方便面 fāng biàn miàn | 我晚上吃了方便面。 | Wǒ wǎnshang chī le fāngbiànmiàn. | I had instant noodles tonight. |
 | 球鞋 qiú xié | 我买了一双新球鞋。 | Wǒ mǎi le yī shuāng xīn qiúxié. | I bought a new pair of trainers. |
 | 晚报 wǎn bào | 爷爷每天看晚报。 | Yéye měitiān kàn wǎnbào. | Grandpa reads the evening paper every day. |
-| 难听 nán tīng | 这首歌很难听。 | Zhè shǒu gē hěn nántīng. | This song sounds awful. |
 | 药水 yào shuǐ | 这个药水一天喝三次。 | Zhège yàoshuǐ yī tiān hē sān cì. | Take this liquid medicine three times a day. |
 | 中医 Zhōng yī | 她妈妈是中医。 | Tā māma shì zhōngyī. | Her mum is a doctor of Chinese medicine. |
-| 坏处 huài chu | 睡得太少有很多坏处。 | Shuì de tài shǎo yǒu hěn duō huàichu. | Sleeping too little does a lot of harm. |
 | 前年 qián nián | 我前年去了北京。 | Wǒ qiánnián qù le Běijīng. | I went to Beijing the year before last. |
-| 千克 qiān kè | 这个西瓜五千克。 | Zhège xīguā wǔ qiānkè. | This watermelon weighs five kilos. |
 | 叫作 jiào zuò | 这种花叫作什么？ | Zhè zhǒng huā jiàozuò shénme? | What's this kind of flower called? |
 | 中级 zhōng jí | 我在上中级班。 | Wǒ zài shàng zhōngjí bān. | I'm in the intermediate class. |
 | 西医 xī yī | 他看了西医，也看了中医。 | Tā kàn le xīyī, yě kàn le zhōngyī. | He saw a Western doctor and a Chinese one. |
@@ -87,7 +81,6 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 西餐 xī cān | 你喜欢吃西餐吗？ | Nǐ xǐhuan chī xīcān ma? | Do you like Western food? |
 | 不一会儿 bù yī huìr | 不一会儿，他就回来了。 | Bù yīhuìr, tā jiù huílai le. | He was back in no time. |
 | 干活儿 gàn huór | 他在外面干活儿。 | Tā zài wàimiàn gànhuór. | He's working outside. |
-| 老王 Lǎo wáng | 老王是我的邻居。 | Lǎo Wáng shì wǒ de línjū. | Old Wang is my neighbour. |
 | 笑话儿 xiào huar | 爸爸给我讲了一个笑话儿。 | Bàba gěi wǒ jiǎng le yī gè xiàohuar. | Dad told me a joke. |
 | 有空儿 yǒu kòngr | 你明天有空儿吗？ | Nǐ míngtiān yǒu kòngr ma? | Are you free tomorrow? |
 | 了 liǎo | 这么多菜，我吃不了。 | Zhème duō cài, wǒ chī bu liǎo. | That's more food than I can eat. |
@@ -96,7 +89,6 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 重 chóng | 请你重写一遍。 | Qǐng nǐ chóng xiě yī biàn. | Please write it again. |
 | 精神 jīng shen | 你今天很精神。 | Nǐ jīntiān hěn jīngshen. | You look full of energy today. |
 | 调 tiáo | 房间太冷了，把空调调高一点儿。 | Fángjiān tài lěng le, bǎ kōngtiáo tiáo gāo yīdiǎnr. | The room's too cold; turn the heating up a bit. |
-| 背 bēi | 他背着一个大包。 | Tā bēi zhe yī gè dà bāo. | He's carrying a big bag on his back. |
 | 对象 duì xiàng | 你有对象了吗？ | Nǐ yǒu duìxiàng le ma? | Are you seeing someone? |
 | 决赛 jué sài | 我们进了决赛！ | Wǒmen jìn le juésài! | We made it to the final! |
 | 厂 chǎng | 他在一家工厂上班。 | Tā zài yī jiā gōngchǎng shàngbān. | He works at a factory. |
@@ -110,9 +102,7 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 深入 shēn rù | 我们要深入了解这个问题。 | Wǒmen yào shēnrù liǎojiě zhège wèntí. | We need to understand this problem in depth. |
 | 加强 jiā qiáng | 我要加强口语练习。 | Wǒ yào jiāqiáng kǒuyǔ liànxí. | I need to do more speaking practice. |
 | 把握 bǎ wò | 这次考试我很有把握。 | Zhè cì kǎoshì wǒ hěn yǒu bǎwò. | I'm confident about this exam. |
-| 传说 chuán shuō | 这是一个古老的传说。 | Zhè shì yī gè gǔlǎo de chuánshuō. | This is an old legend. |
 | 主持 zhǔ chí | 今天的会由她主持。 | Jīntiān de huì yóu tā zhǔchí. | She's chairing today's meeting. |
-| 西部 xī bù | 中国西部有很多高山。 | Zhōngguó xībù yǒu hěn duō gāo shān. | Western China has many high mountains. |
 | 直播 zhí bō | 比赛在电视上直播。 | Bǐsài zài diànshì shang zhíbō. | The match is shown live on TV. |
 | 各自 gè zì | 下课以后，大家各自回家。 | Xiàkè yǐhòu, dàjiā gèzì huí jiā. | After class, everyone went their own way home. |
 | 体会 tǐ huì | 我体会到了学中文的快乐。 | Wǒ tǐhuì dào le xué Zhōngwén de kuàilè. | I've come to feel the joy of learning Chinese. |
@@ -149,13 +139,11 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 束 shù | 我送了她一束花。 | Wǒ sòng le tā yī shù huā. | I gave her a bunch of flowers. |
 | 办理 bàn lǐ | 我去银行办理手续。 | Wǒ qù yínháng bànlǐ shǒuxù. | I'm going to the bank to sort out the paperwork. |
 | 规范 guī fàn | 你的发音很规范。 | Nǐ de fāyīn hěn guīfàn. | Your pronunciation is very standard. |
-| 自主 zì zhǔ | 孩子要学会自主学习。 | Háizi yào xuéhuì zìzhǔ xuéxí. | Children should learn to study on their own. |
 | 歌迷 gē mí | 她是这个歌手的歌迷。 | Tā shì zhège gēshǒu de gēmí. | She's a fan of this singer. |
 | 民间 mín jiān | 这是一个民间故事。 | Zhè shì yī gè mínjiān gùshi. | This is a folk tale. |
 | 初中 chū zhōng | 我妹妹在上初中。 | Wǒ mèimei zài shàng chūzhōng. | My younger sister is in middle school. |
 | 一方面 yī fāng miàn | 一方面我想去，一方面我没有时间。 | Yī fāngmiàn wǒ xiǎng qù, yī fāngmiàn wǒ méiyǒu shíjiān. | On the one hand I want to go, on the other I have no time. |
 | 动人 dòng rén | 这个故事很动人。 | Zhège gùshi hěn dòngrén. | This story is very moving. |
-| 老百姓 lǎo bǎi xìng | 老百姓都喜欢这个政策。 | Lǎobǎixìng dōu xǐhuan zhège zhèngcè. | Ordinary people all like this policy. |
 | 开业 kāi yè | 这家饭馆明天开业。 | Zhè jiā fànguǎn míngtiān kāiyè. | This restaurant opens tomorrow. |
 | 生动 shēng dòng | 老师讲得很生动。 | Lǎoshī jiǎng de hěn shēngdòng. | The teacher explains things vividly. |
 | 彩色 cǎi sè | 这是一张彩色照片。 | Zhè shì yī zhāng cǎisè zhàopiàn. | This is a colour photo. |
@@ -192,8 +180,6 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 年初 nián chū | 我年初开始学中文。 | Wǒ niánchū kāishǐ xué Zhōngwén. | I started learning Chinese at the start of the year. |
 | 试题 shì tí | 这次的试题不太难。 | Zhè cì de shìtí bù tài nán. | The exam questions weren't too hard this time. |
 | 积极性 jī jí xìng | 学生的积极性很高。 | Xuésheng de jījíxìng hěn gāo. | The students are very keen. |
-| 初一 chū yī | 大年初一，大家都去拜年。 | Dànián chūyī, dàjiā dōu qù bàinián. | On the first day of the New Year, everyone pays New Year visits. |
-| 银牌 yín pái | 她得了一块银牌。 | Tā dé le yī kuài yínpái. | She won a silver medal. |
 | 人民币 rén mín bì | 这个多少人民币？ | Zhège duōshao rénmínbì? | How much is this in RMB? |
 | 老头儿 lǎo tóur | 那个老头儿是我爷爷。 | Nàge lǎotóur shì wǒ yéye. | That old man is my grandpa. |
 | 交费 jiāo fèi | 我们去前边交费吧。 | Wǒmen qù qiánbian jiāofèi ba. | Let's go and pay at the front. |
@@ -204,7 +190,6 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 京剧 Jīng jù | 爷爷喜欢听京剧。 | Yéye xǐhuan tīng jīngjù. | Grandpa likes listening to Beijing opera. |
 | 后年 hòu nián | 我后年大学毕业。 | Wǒ hòunián dàxué bìyè. | I graduate from university the year after next. |
 | 连忙 lián máng | 他连忙说对不起。 | Tā liánmáng shuō duìbuqǐ. | He quickly said sorry. |
-| 好 hào | 她很好学。 | Tā hěn hàoxué. | She loves learning. |
 | 着 zháo | 我昨天晚上没睡着。 | Wǒ zuótiān wǎnshang méi shuì zháo. | I couldn't get to sleep last night. |
 | 啊 ā | 啊！下雪了！ | Ā! Xià xuě le! | Oh! It's snowing! |
 | 打 dá | 我买了一打鸡蛋。 | Wǒ mǎi le yī dá jīdàn. | I bought a dozen eggs. |
@@ -217,9 +202,7 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 稳定 wěn dìng | 他的工作很稳定。 | Tā de gōngzuò hěn wěndìng. | His job is very stable. |
 | 阶段 jiē duàn | 现在是最重要的阶段。 | Xiànzài shì zuì zhòngyào de jiēduàn. | This is the most important stage. |
 | 卷 juàn | 请把试卷交给我。 | Qǐng bǎ shìjuàn jiāo gěi wǒ. | Please hand me your exam paper. |
-| 系列 xì liè | 这是一系列的问题。 | Zhè shì yī xìliè de wèntí. | These are a whole series of problems. |
 | 检测 jiǎn cè | 医生给我检测了一下。 | Yīshēng gěi wǒ jiǎncè le yīxià. | The doctor tested me. |
-| 挑 tiǎo | 他挑起眉毛看着我。 | Tā tiǎoqǐ méimao kàn zhe wǒ. | He raised his eyebrows and looked at me. |
 | 经典 jīng diǎn | 这是一部经典电影。 | Zhè shì yī bù jīngdiǎn diànyǐng. | This is a classic film. |
 | 背景 bèi jǐng | 这张照片的背景是长城。 | Zhè zhāng zhàopiàn de bèijǐng shì Chángchéng. | The Great Wall is in the background of this photo. |
 | 镜头 jìng tóu | 看镜头，笑一笑！ | Kàn jìngtóu, xiào yī xiào! | Look at the camera and smile! |
@@ -235,7 +218,6 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 稳 wěn | 他开车开得很稳。 | Tā kāichē kāi de hěn wěn. | He drives very steadily. |
 | 统一 tǒng yī | 我们的意见统一了。 | Wǒmen de yìjiàn tǒngyī le. | We've come to an agreement. |
 | 身材 shēn cái | 她身材很好。 | Tā shēncái hěn hǎo. | She's got a great figure. |
-| 运用 yùn yòng | 要学会运用新词。 | Yào xuéhuì yùnyòng xīn cí. | You need to learn to use new words. |
 | 独特 dú tè | 这个城市很独特。 | Zhège chéngshì hěn dútè. | This city is unique. |
 | 夫妻 fū qī | 他们是一对老夫妻。 | Tāmen shì yī duì lǎo fūqī. | They're an old married couple. |
 | 特征 tè zhēng | 这种花有什么特征？ | Zhè zhǒng huā yǒu shénme tèzhēng? | What are the features of this flower? |
@@ -251,7 +233,6 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 单纯 dān chún | 她是一个很单纯的人。 | Tā shì yī gè hěn dānchún de rén. | She's a very simple, sincere person. |
 | 健身 jiàn shēn | 我每天去健身。 | Wǒ měitiān qù jiànshēn. | I work out every day. |
 | 待遇 dài yù | 这家公司的待遇很好。 | Zhè jiā gōngsī de dàiyù hěn hǎo. | This company pays well. |
-| 器官 qì guān | 心是人体的重要器官。 | Xīn shì réntǐ de zhòngyào qìguān. | The heart is an important organ. |
 | 胸部 xiōng bù | 我胸部有点儿疼。 | Wǒ xiōngbù yǒudiǎnr téng. | My chest hurts a bit. |
 | 赞助 zàn zhù | 这次比赛有公司赞助。 | Zhè cì bǐsài yǒu gōngsī zànzhù. | This competition is sponsored by a company. |
 | 玉 yù | 这块玉很漂亮。 | Zhè kuài yù hěn piàoliang. | This piece of jade is beautiful. |
@@ -277,7 +258,6 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 阳台 yáng tái | 妈妈在阳台上种花。 | Māma zài yángtái shang zhòng huā. | Mum grows flowers on the balcony. |
 | 智力 zhì lì | 这个游戏能提高智力。 | Zhège yóuxì néng tígāo zhìlì. | This game can make you smarter. |
 | 智能 zhì néng | 现在人人都有智能手机。 | Xiànzài rénrén dōu yǒu zhìnéng shǒujī. | Everyone has a smartphone now. |
-| 登录 dēng lù | 请先登录你的账号。 | Qǐng xiān dēnglù nǐ de zhànghào. | Please log in first. |
 | 节省 jié shěng | 坐地铁可以节省时间。 | Zuò dìtiě kěyǐ jiéshěng shíjiān. | Taking the metro saves time. |
 | 宁静 níng jìng | 晚上的公园很宁静。 | Wǎnshang de gōngyuán hěn níngjìng. | The park is peaceful in the evening. |
 | 以内 yǐ nèi | 请在十分钟以内回来。 | Qǐng zài shí fēnzhōng yǐnèi huílai. | Please be back within ten minutes. |
@@ -302,7 +282,6 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 积累 jī lěi | 学语言要慢慢积累。 | Xué yǔyán yào mànmàn jīlěi. | You build up a language bit by bit. |
 | 研制 yán zhì | 他们在研制新药。 | Tāmen zài yánzhì xīn yào. | They're developing a new medicine. |
 | 格外 gé wài | 今天的月亮格外圆。 | Jīntiān de yuèliang géwài yuán. | The moon is especially round tonight. |
-| 列为 liè wéi | 这个地方被列为重点景区。 | Zhège dìfang bèi lièwéi zhòngdiǎn jǐngqū. | This place has been listed as a key scenic spot. |
 | 动摇 dòng yáo | 他的决心没有动摇。 | Tā de juéxīn méiyǒu dòngyáo. | His determination didn't waver. |
 | 大爷 dà ye | 大爷，你身体好吗？ | Dàye, nǐ shēntǐ hǎo ma? | How are you keeping? (to an older man) |
 | 扩展 kuò zhǎn | 我们要扩展业务。 | Wǒmen yào kuòzhǎn yèwù. | We need to expand the business. |
@@ -381,7 +360,174 @@ Written for this app for HSK 1–4 words that had no Tatoeba or course sentence 
 | 抄写 chāo xiě | 请把生词抄写三遍。 | Qǐng bǎ shēngcí chāoxiě sān biàn. | Please copy out the new words three times. |
 | 没法儿 méi fǎr | 他不听，我也没法儿。 | Tā bù tīng, wǒ yě méi fǎr. | He won't listen, and there's nothing I can do. |
 | 纯净水 chún jìng shuǐ | 我只喝纯净水。 | Wǒ zhǐ hē chúnjìngshuǐ. | I only drink purified water. |
-| 填空 tián kòng | 请在空白处填空。 | Qǐng zài kòngbái chù tiánkòng. | Please fill in the blanks. |
 | 学时 xué shí | 这门课一共四十个学时。 | Zhè mén kè yīgòng sìshí gè xuéshí. | This course is forty class hours in total. |
 | 名牌儿 míng páir | 他穿的都是名牌儿。 | Tā chuān de dōu shì míngpáir. | He only wears designer brands. |
 | 有劲儿 yǒu jìnr | 他说话很有劲儿。 | Tā shuōhuà hěn yǒu jìnr. | He speaks with real energy. |
+| 动作 dòng zuò | 他的动作很快。 | Tā de dòngzuò hěn kuài. | His movements are very quick. |
+| 地点 dì diǎn | 见面的地点在哪里？ | Jiànmiàn de dìdiǎn zài nǎlǐ? | Where is the meeting place? |
+| 妹 mèi | 她是我小妹。 | Tā shì wǒ xiǎo mèi. | She's my little sister. |
+| 路口 lù kǒu | 到了路口你往右走。 | Dào le lùkǒu nǐ wǎng yòu zǒu. | When you get to the crossing, go right. |
+| 请假 qǐng jià | 我明天想请假。 | Wǒ míngtiān xiǎng qǐngjià. | I'd like to take tomorrow off. |
+| 一块儿 yī kuàir | 我们一块儿去吃饭吧。 | Wǒmen yīkuàir qù chīfàn ba. | Let's go and eat together. |
+| 书包 shū bāo | 我的书包在桌子上。 | Wǒ de shūbāo zài zhuōzi shàng. | My school bag is on the table. |
+| 外边 wài bian | 外边下雨了。 | Wàibian xià yǔ le. | It's raining outside. |
+| 西边 xī biān | 学校在西边。 | Xuéxiào zài xībiān. | The school is on the west side. |
+| 东边 dōng bian | 我家在东边。 | Wǒ jiā zài dōngbian. | My home is on the east side. |
+| 女孩儿 nǚ háir | 那个女孩儿是我同学。 | Nàge nǚháir shì wǒ tóngxué. | That girl is my classmate. |
+| 一下儿 yī xiàr | 你等一下儿。 | Nǐ děng yīxiàr. | Wait a moment. |
+| 得 dé | 这次比赛他得第一。 | Zhè cì bǐsài tā dé dì yī. | He came first in this competition. |
+| 头 tou | 这张桌子是木头的。 | Zhè zhāng zhuōzi shì mùtou de. | This table is made of wood. |
+| 比如 bǐ rú | 我喜欢水果，比如苹果。 | Wǒ xǐhuan shuǐguǒ, bǐrú píngguǒ. | I like fruit, apples for example. |
+| 全国 quán guó | 这个节目全国都能看。 | Zhège jiémù quánguó dōu néng kàn. | The whole country can watch this programme. |
+| 级 jí | 他的汉语是几级？ | Tā de Hànyǔ shì jǐ jí? | What level is his Chinese? |
+| 小组 xiǎo zǔ | 我们小组有五个人。 | Wǒmen xiǎozǔ yǒu wǔ gè rén. | There are five people in our group. |
+| 角度 jiǎo dù | 从这个角度看，你说得对。 | Cóng zhège jiǎodù kàn, nǐ shuō de duì. | From this angle, you're right. |
+| 练 liàn | 我每天练一个小时。 | Wǒ měitiān liàn yī gè xiǎoshí. | I practise for an hour every day. |
+| 球队 qiú duì | 这个球队很有名。 | Zhège qiúduì hěn yǒumíng. | This team is very famous. |
+| 组成 zǔ chéng | 这个小组由三个人组成。 | Zhège xiǎozǔ yóu sān gè rén zǔchéng. | This group is made up of three people. |
+| 全体 quán tǐ | 全体同学都来了。 | Quántǐ tóngxué dōu lái le. | All the classmates have come. |
+| 南方 nán fāng | 南方的冬天不太冷。 | Nánfāng de dōngtiān bù tài lěng. | Winters in the south aren't very cold. |
+| 青少年 qīng shào nián | 这本书是给青少年看的。 | Zhè běn shū shì gěi qīngshàonián kàn de. | This book is for teenagers. |
+| 校园 xiào yuán | 我们的校园很大。 | Wǒmen de xiàoyuán hěn dà. | Our campus is very big. |
+| 西方 Xī fāng | 他很喜欢西方音乐。 | Tā hěn xǐhuan Xīfāng yīnyuè. | He really likes Western music. |
+| 坏人 huài rén | 电影里的坏人很多。 | Diànyǐng lǐ de huàirén hěn duō. | There are lots of bad guys in the film. |
+| 路边 lù biān | 车停在路边。 | Chē tíng zài lùbiān. | The car is parked at the roadside. |
+| 常用 cháng yòng | 这是一个常用的词。 | Zhè shì yī gè chángyòng de cí. | This is a common word. |
+| 行人 xíng rén | 路上的行人很多。 | Lùshang de xíngrén hěn duō. | There are lots of people walking on the road. |
+| 难看 nán kàn | 这件衣服太难看了。 | Zhè jiàn yīfu tài nánkàn le. | This piece of clothing is really ugly. |
+| 那会儿 nà huìr | 那会儿我还在上学。 | Nàhuìr wǒ hái zài shàngxué. | At that time I was still at school. |
+| 外卖 wài mài | 今天晚上我们叫外卖吧。 | Jīntiān wǎnshang wǒmen jiào wàimài ba. | Let's order takeaway tonight. |
+| 难听 nán tīng | 他说的话很难听。 | Tā shuō de huà hěn nántīng. | What he said was really unpleasant. |
+| 坏处 huài chu | 少睡觉有很多坏处。 | Shǎo shuìjiào yǒu hěn duō huàichu. | Not sleeping enough does a lot of harm. |
+| 千克 qiān kè | 这些苹果一共两千克。 | Zhèxiē píngguǒ yīgòng liǎng qiānkè. | These apples weigh two kilos altogether. |
+| 药片 yào piàn | 这个药片很小。 | Zhège yàopiàn hěn xiǎo. | This pill is very small. |
+| 留学生 liú xué shēng | 我们班有很多留学生。 | Wǒmen bān yǒu hěn duō liúxuéshēng. | There are many international students in our class. |
+| 画儿 huàr | 这张画儿很好看。 | Zhè zhāng huàr hěn hǎokàn. | This picture is very nice. |
+| 老王 Lǎo wáng | 老王是我们的老师。 | Lǎo Wáng shì wǒmen de lǎoshī. | Old Wang is our teacher. |
+| 媒体 méi tǐ | 这件事媒体都知道了。 | Zhè jiàn shì méitǐ dōu zhīdào le. | The media all know about this. |
+| 年代 nián dài | 这是八十年代的歌。 | Zhè shì bāshí niándài de gē. | This is a song from the eighties. |
+| 姑娘 gū niang | 那个姑娘是我的朋友。 | Nàge gūniang shì wǒ de péngyou. | That girl is my friend. |
+| 保 bǎo | 我保你没问题。 | Wǒ bǎo nǐ méi wèntí. | I guarantee you'll be fine. |
+| 背 bēi | 他每天背书包上学。 | Tā měitiān bēi shūbāo shàngxué. | He carries his school bag to school every day. |
+| 压 yā | 别压我的书包。 | Bié yā wǒ de shūbāo. | Don't squash my school bag. |
+| 队员 duì yuán | 我们队有十个队员。 | Wǒmen duì yǒu shí gè duìyuán. | Our team has ten players. |
+| 相关 xiāng guān | 我想看看相关的书。 | Wǒ xiǎng kànkan xiāngguān de shū. | I'd like to look at some related books. |
+| 内心 nèi xīn | 她的内心很难过。 | Tā de nèixīn hěn nánguò. | Inside, she feels very sad. |
+| 调整 tiáo zhěng | 我要调整一下时间。 | Wǒ yào tiáozhěng yīxià shíjiān. | I need to adjust the time a bit. |
+| 导演 dǎo yǎn | 这个电影的导演很有名。 | Zhège diànyǐng de dǎoyǎn hěn yǒumíng. | The director of this film is very famous. |
+| 形象 xíng xiàng | 他很注意自己的形象。 | Tā hěn zhùyì zìjǐ de xíngxiàng. | He pays a lot of attention to his image. |
+| 商业 shāng yè | 这里是商业中心。 | Zhèlǐ shì shāngyè zhōngxīn. | This is the business centre. |
+| 试验 shì yàn | 这个试验很成功。 | Zhège shìyàn hěn chénggōng. | This experiment was a success. |
+| 联合 lián hé | 两个学校联合办了一个活动。 | Liǎng gè xuéxiào liánhé bàn le yī gè huódòng. | The two schools held an event together. |
+| 实力 shí lì | 这个球队很有实力。 | Zhège qiúduì hěn yǒu shílì. | This team is very strong. |
+| 成立 chéng lì | 我们的公司去年成立。 | Wǒmen de gōngsī qùnián chénglì. | Our company was founded last year. |
+| 飞行 fēi xíng | 这次飞行要十个小时。 | Zhè cì fēixíng yào shí gè xiǎoshí. | This flight takes ten hours. |
+| 分别 fēn bié | 我们分别了三年。 | Wǒmen fēnbié le sān nián. | We were apart for three years. |
+| 情感 qíng gǎn | 他不太会表达情感。 | Tā bù tài huì biǎodá qínggǎn. | He isn't very good at showing his feelings. |
+| 传说 chuán shuō | 这里有一个有名的传说。 | Zhèlǐ yǒu yī gè yǒumíng de chuánshuō. | There is a famous legend about this place. |
+| 至今 zhì jīn | 那件事我至今还记得。 | Nà jiàn shì wǒ zhìjīn hái jìde. | I still remember that to this day. |
+| 先进 xiān jìn | 这里的医院很先进。 | Zhèlǐ de yīyuàn hěn xiānjìn. | The hospitals here are very advanced. |
+| 西部 xī bù | 他的家在中国西部。 | Tā de jiā zài Zhōngguó xībù. | His home is in western China. |
+| 广播 guǎng bō | 我每天早上听广播。 | Wǒ měitiān zǎoshang tīng guǎngbō. | I listen to the radio every morning. |
+| 自身 zì shēn | 你要先看到自身的问题。 | Nǐ yào xiān kàndào zìshēn de wèntí. | First you need to see your own problems. |
+| 推进 tuī jìn | 这个工作推进得很快。 | Zhège gōngzuò tuījìn de hěn kuài. | This work is moving forward quickly. |
+| 安装 ān zhuāng | 他来我家安装电脑。 | Tā lái wǒ jiā ānzhuāng diànnǎo. | He came to my place to set up the computer. |
+| 传播 chuán bō | 这个消息传播得很快。 | Zhège xiāoxi chuánbō de hěn kuài. | This news spread very fast. |
+| 落后 luò hòu | 他的成绩有点落后。 | Tā de chéngjì yǒudiǎn luòhòu. | His grades have fallen behind a bit. |
+| 分配 fēn pèi | 老师给我们分配了工作。 | Lǎoshī gěi wǒmen fēnpèi le gōngzuò. | The teacher gave us our tasks. |
+| 演唱 yǎn chàng | 她演唱了一首中国歌。 | Tā yǎnchàng le yī shǒu Zhōngguó gē. | She sang a Chinese song. |
+| 电视台 diàn shì tái | 他在电视台工作。 | Tā zài diànshìtái gōngzuò. | He works at a TV station. |
+| 播放 bō fàng | 电视上正在播放新闻。 | Diànshì shàng zhèngzài bōfàng xīnwén. | The news is on TV right now. |
+| 其次 qí cì | 首先要努力，其次要有方法。 | Shǒuxiān yào nǔlì, qícì yào yǒu fāngfǎ. | First you must work hard, and second you need a method. |
+| 收费 shōu fèi | 这个公园不收费。 | Zhège gōngyuán bù shōufèi. | This park is free. |
+| 环保 huán bǎo | 骑车上班很环保。 | Qí chē shàngbān hěn huánbǎo. | Cycling to work is good for the environment. |
+| 场所 chǎng suǒ | 学校是学习的场所。 | Xuéxiào shì xuéxí de chǎngsuǒ. | School is a place for learning. |
+| 亲人 qīn rén | 过年的时候我想回家看亲人。 | Guònián de shíhou wǒ xiǎng huí jiā kàn qīnrén. | At New Year I want to go home and see my family. |
+| 创新 chuàng xīn | 这家公司很重视创新。 | Zhè jiā gōngsī hěn zhòngshì chuàngxīn. | This company values innovation. |
+| 互联网 Hù lián wǎng | 我每天都上互联网。 | Wǒ měitiān dōu shàng hùliánwǎng. | I go on the internet every day. |
+| 东部 dōng bù | 上海在中国东部。 | Shànghǎi zài Zhōngguó dōngbù. | Shanghai is in eastern China. |
+| 日常 rì cháng | 这些都是日常用的东西。 | Zhèxiē dōu shì rìcháng yòng de dōngxi. | These are all things for everyday use. |
+| 危害 wēi hài | 抽烟危害健康。 | Chōuyān wēihài jiànkāng. | Smoking harms your health. |
+| 种子 zhǒng zi | 我买了一些花的种子。 | Wǒ mǎi le yīxiē huā de zhǒngzi. | I bought some flower seeds. |
+| 推动 tuī dòng | 他们推动了这个计划。 | Tāmen tuīdòng le zhège jìhuà. | They pushed this plan forward. |
+| 志愿者 zhì yuàn zhě | 我周末去做志愿者。 | Wǒ zhōumò qù zuò zhìyuànzhě. | I volunteer at the weekend. |
+| 普遍 pǔ biàn | 这个问题很普遍。 | Zhège wèntí hěn pǔbiàn. | This problem is very common. |
+| 面积 miàn jī | 这个房间的面积不大。 | Zhège fángjiān de miànjī bù dà. | This room isn't very big. |
+| 前后 qián hòu | 我八点前后到。 | Wǒ bā diǎn qiánhòu dào. | I'll arrive around eight. |
+| 学费 xué fèi | 这个大学的学费很贵。 | Zhège dàxué de xuéfèi hěn guì. | This university's fees are very expensive. |
+| 否定 fǒu dìng | 他否定了我的想法。 | Tā fǒudìng le wǒ de xiǎngfǎ. | He rejected my idea. |
+| 主张 zhǔ zhāng | 我主张早点出发。 | Wǒ zhǔzhāng zǎo diǎn chūfā. | I'm in favour of leaving a bit earlier. |
+| 性别 xìng bié | 请写上你的性别。 | Qǐng xiě shàng nǐ de xìngbié. | Please write down your gender. |
+| 近期 jìn qī | 我近期很忙。 | Wǒ jìnqī hěn máng. | I'm very busy at the moment. |
+| 自主 zì zhǔ | 这件事你可以自主决定。 | Zhè jiàn shì nǐ kěyǐ zìzhǔ juédìng. | You can decide this for yourself. |
+| 解开 jiě kāi | 他解开了这个问题。 | Tā jiěkāi le zhège wèntí. | He solved this problem. |
+| 定期 dìng qī | 我定期去看医生。 | Wǒ dìngqī qù kàn yīshēng. | I see the doctor regularly. |
+| 老百姓 lǎo bǎi xìng | 老百姓都很关心这件事。 | Lǎobǎixìng dōu hěn guānxīn zhè jiàn shì. | Ordinary people all care about this. |
+| 就业 jiù yè | 现在就业不太容易。 | Xiànzài jiùyè bù tài róngyì. | Finding a job isn't easy these days. |
+| 衬衣 chèn yī | 他穿了一件白衬衣。 | Tā chuān le yī jiàn bái chènyī. | He's wearing a white shirt. |
+| 工夫 gōng fu | 我没工夫跟你说话。 | Wǒ méi gōngfu gēn nǐ shuōhuà. | I don't have time to talk to you. |
+| 初一 chū yī | 初一那天我们去看爷爷。 | Chūyī nà tiān wǒmen qù kàn yéye. | On the first day of the month we visit Grandpa. |
+| 银牌 yín pái | 她拿了一块银牌。 | Tā ná le yī kuài yínpái. | She won a silver medal. |
+| 划船 huá chuán | 周末我们去公园划船。 | Zhōumò wǒmen qù gōngyuán huáchuán. | At the weekend we go rowing in the park. |
+| 凉水 liáng shuǐ | 天冷了，别喝凉水。 | Tiān lěng le, bié hē liángshuǐ. | It's got cold, don't drink cold water. |
+| 好 hào | 她好打听别人的事。 | Tā hào dǎting biérén de shì. | She likes to pry into other people's business. |
+| 资料 zī liào | 我在网上找了一些资料。 | Wǒ zài wǎngshàng zhǎo le yīxiē zīliào. | I found some material online. |
+| 心理 xīn lǐ | 他的心理压力很大。 | Tā de xīnlǐ yālì hěn dà. | He's under a lot of mental pressure. |
+| 机构 jī gòu | 这是一个教育机构。 | Zhè shì yī gè jiàoyù jīgòu. | This is an educational institution. |
+| 角色 jué sè | 她在电影里演一个老师的角色。 | Tā zài diànyǐng lǐ yǎn yī gè lǎoshī de juésè. | She plays a teacher in the film. |
+| 即将 jí jiāng | 比赛即将开始。 | Bǐsài jíjiāng kāishǐ. | The match is about to start. |
+| 系列 xì liè | 我很喜欢这个系列的书。 | Wǒ hěn xǐhuan zhège xìliè de shū. | I really like this series of books. |
+| 挑 tiǎo | 你不要挑事。 | Nǐ bùyào tiǎo shì. | Don't stir up trouble. |
+| 苦 kǔ | 这个药很苦。 | Zhège yào hěn kǔ. | This medicine is very bitter. |
+| 来源 lái yuán | 这条消息的来源是哪里？ | Zhè tiáo xiāoxi de láiyuán shì nǎlǐ? | Where does this news come from? |
+| 如今 rú jīn | 如今很多人用手机买东西。 | Rújīn hěn duō rén yòng shǒujī mǎi dōngxi. | Nowadays many people shop on their phones. |
+| 结构 jié gòu | 这个句子的结构很简单。 | Zhège jùzi de jiégòu hěn jiǎndān. | The structure of this sentence is very simple. |
+| 设置 shè zhì | 你可以在手机上设置时间。 | Nǐ kěyǐ zài shǒujī shàng shèzhì shíjiān. | You can set the time on your phone. |
+| 地面 dì miàn | 地面很干净。 | Dìmiàn hěn gānjìng. | The floor is very clean. |
+| 运用 yùn yòng | 学了新词要多运用。 | Xué le xīn cí yào duō yùnyòng. | When you learn new words, use them a lot. |
+| 反而 fǎn ér | 吃了药，他反而更不舒服了。 | Chī le yào, tā fǎn'ér gèng bù shūfu le. | After taking the medicine, he felt even worse instead. |
+| 引导 yǐn dǎo | 老师引导学生自己思考。 | Lǎoshī yǐndǎo xuésheng zìjǐ sīkǎo. | The teacher guides the students to think for themselves. |
+| 规模 guī mó | 这个公司的规模不大。 | Zhège gōngsī de guīmó bù dà. | This company isn't very big. |
+| 吸收 xī shōu | 他很快吸收了新知识。 | Tā hěn kuài xīshōu le xīn zhīshi. | He quickly took in the new knowledge. |
+| 维修 wéi xiū | 我的车在维修。 | Wǒ de chē zài wéixiū. | My car is being repaired. |
+| 无限 wú xiàn | 我对未来有无限的希望。 | Wǒ duì wèilái yǒu wúxiàn de xīwàng. | I have endless hope for the future. |
+| 事先 shì xiān | 你应该事先告诉我。 | Nǐ yīnggāi shìxiān gàosu wǒ. | You should have told me beforehand. |
+| 器官 qì guān | 心是一个重要的器官。 | Xīn shì yī gè zhòngyào de qìguān. | The heart is an important organ. |
+| 小型 xiǎo xíng | 我们开了一个小型会议。 | Wǒmen kāi le yī gè xiǎoxíng huìyì. | We held a small meeting. |
+| 遗产 yí chǎn | 长城是世界文化遗产。 | Chángchéng shì shìjiè wénhuà yíchǎn. | The Great Wall is a world cultural heritage site. |
+| 对比 duì bǐ | 你把这两张照片对比一下。 | Nǐ bǎ zhè liǎng zhāng zhàopiàn duìbǐ yīxià. | Compare these two photos. |
+| 含有 hán yǒu | 这种饮料含有很多糖。 | Zhè zhǒng yǐnliào hányǒu hěn duō táng. | This drink contains a lot of sugar. |
+| 复制 fù zhì | 你可以复制这个文件。 | Nǐ kěyǐ fùzhì zhège wénjiàn. | You can copy this file. |
+| 消化 xiāo huà | 吃得太快不好消化。 | Chī de tài kuài bù hǎo xiāohuà. | Eating too fast is bad for digestion. |
+| 大多 dà duō | 我的朋友大多是学生。 | Wǒ de péngyou dàduō shì xuésheng. | Most of my friends are students. |
+| 男士 nán shì | 这家店卖男士衣服。 | Zhè jiā diàn mài nánshì yīfu. | This shop sells men's clothes. |
+| 市区 shì qū | 我住在市区。 | Wǒ zhù zài shìqū. | I live in the city centre. |
+| 封闭 fēng bì | 这条路封闭了。 | Zhè tiáo lù fēngbì le. | This road is closed. |
+| 遗传 yí chuán | 他的高个子是遗传的。 | Tā de gāo gèzi shì yíchuán de. | He gets his height from his parents. |
+| 燃料 rán liào | 汽车需要燃料。 | Qìchē xūyào ránliào. | Cars need fuel. |
+| 电源 diàn yuán | 走的时候请关上电源。 | Zǒu de shíhou qǐng guān shàng diànyuán. | Please turn off the power when you leave. |
+| 神话 shén huà | 我小时候很喜欢听神话故事。 | Wǒ xiǎoshíhou hěn xǐhuan tīng shénhuà gùshi. | As a child I loved hearing myths. |
+| 图案 tú àn | 这件衣服上的图案很好看。 | Zhè jiàn yīfu shàng de tú'àn hěn hǎokàn. | The pattern on this piece of clothing is very nice. |
+| 得意 dé yì | 他考了第一，很得意。 | Tā kǎo le dì yī, hěn déyì. | He came first in the exam and is very pleased with himself. |
+| 毕业生 bì yè shēng | 今年的毕业生很多。 | Jīnnián de bìyèshēng hěn duō. | There are a lot of graduates this year. |
+| 潮流 cháo liú | 年轻人喜欢跟着潮流走。 | Niánqīngrén xǐhuan gēn zhe cháoliú zǒu. | Young people like to follow trends. |
+| 学术 xué shù | 他在写一篇学术文章。 | Tā zài xiě yī piān xuéshù wénzhāng. | He's writing an academic article. |
+| 抄 chāo | 请把这些词抄在本子上。 | Qǐng bǎ zhèxiē cí chāo zài běnzi shàng. | Please copy these words into your notebook. |
+| 手工 shǒu gōng | 这个包是手工做的。 | Zhège bāo shì shǒugōng zuò de. | This bag is handmade. |
+| 登录 dēng lù | 请先登录再买东西。 | Qǐng xiān dēnglù zài mǎi dōngxi. | Please log in first, then shop. |
+| 符号 fú hào | 这个符号是什么意思？ | Zhège fúhào shì shénme yìsi? | What does this symbol mean? |
+| 赏 shǎng | 我们晚上一起去赏月吧。 | Wǒmen wǎnshang yīqǐ qù shǎng yuè ba. | Let's go and admire the moon together tonight. |
+| 宝石 bǎo shí | 这块宝石很贵。 | Zhè kuài bǎoshí hěn guì. | This gem is very expensive. |
+| 列为 liè wéi | 这个地方被列为世界遗产。 | Zhège dìfang bèi lièwéi shìjiè yíchǎn. | This place has been listed as a world heritage site. |
+| 缩短 suō duǎn | 新的路缩短了上班的时间。 | Xīn de lù suōduǎn le shàngbān de shíjiān. | The new road has shortened the commute. |
+| 熟练 shú liàn | 他开车很熟练。 | Tā kāichē hěn shúliàn. | He's a very skilled driver. |
+| 词汇 cí huì | 我的汉语词汇还不多。 | Wǒ de Hànyǔ cíhuì hái bù duō. | My Chinese vocabulary is still small. |
+| 一再 yī zài | 他一再说对不起。 | Tā yīzài shuō duìbuqǐ. | He kept saying sorry. |
+| 点名 diǎn míng | 上课的时候老师点名。 | Shàngkè de shíhou lǎoshī diǎnmíng. | The teacher takes the register at the start of class. |
+| 潮湿 cháo shī | 这里的天气很潮湿。 | Zhèlǐ de tiānqì hěn cháoshī. | The weather here is very humid. |
+| 坚固 jiān gù | 这座桥很坚固。 | Zhè zuò qiáo hěn jiāngù. | This bridge is very solid. |
+| 套餐 tào cān | 我要一个午饭套餐。 | Wǒ yào yī gè wǔfàn tàocān. | I'd like a lunch set meal. |
+| 单调 dān diào | 这里的生活有点单调。 | Zhèlǐ de shēnghuó yǒudiǎn dāndiào. | Life here is a bit monotonous. |
+| 诚信 chéng xìn | 我们要讲诚信。 | Wǒmen yào jiǎng chéngxìn. | We must be honest. |
+| 开水 kāi shuǐ | 小心，这是开水。 | Xiǎoxīn, zhè shì kāishuǐ. | Careful, this is boiling water. |
+| 填空 tián kòng | 请用这些词填空。 | Qǐng yòng zhèxiē cí tiánkòng. | Please fill in the blanks with these words. |
