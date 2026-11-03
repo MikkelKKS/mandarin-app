@@ -48,6 +48,23 @@ describe('session items', () => {
     expect(items.filter((x) => x.kind === 'dictation' || x.kind === 'meaning-pinyin')).toHaveLength(4);
     expect(items.filter((x) => x.kind === 'sentence-meaning')).toHaveLength(2);
   });
+  it("picks the new word's easiest sentence by what you know, and skips one with too many unknown words", () => {
+    const w = word(1, { examples: ['hard', 'easy'] });
+    const d: VocabData = {
+      words: [w],
+      byId: new Map([['w1', w]]),
+      sentences: new Map([
+        ['hard', { ...sentence(0, ['w1', 'x1', 'x2']), id: 'hard' }],
+        ['easy', { ...sentence(0, ['w1', 'w0', 'x1']), id: 'easy' }],
+      ]),
+    };
+    const pick = (started: Set<string>) => newWordItems(['w1'], d, rng, started).filter((x) => x.kind === 'sentence-meaning');
+    expect(pick(new Set(['w0']))).toEqual([{ kind: 'sentence-meaning', sentence: 'easy' }]);
+    const tooHard = { ...d, sentences: new Map([['hard', { ...sentence(0, ['w1', 'x1', 'x2', 'x3']), id: 'hard' }]]) };
+    expect(newWordItems(['w1'], { ...tooHard, byId: new Map([['w1', { ...w, examples: ['hard'] }]]) }, rng, new Set()).some((x) => x.kind === 'sentence-meaning')).toBe(false);
+    // Without known words (old callers), the first sentence with audio is used as before.
+    expect(newWordItems(['w1'], d, rng).find((x) => x.kind === 'sentence-meaning')).toEqual({ kind: 'sentence-meaning', sentence: 'hard' });
+  });
   it("asks a word's meaning only after the next three words' intros", () => {
     const items = newWordItems(['w1', 'w2', 'w3', 'w4', 'w5'], data, rng);
     const at = (kind: string, w: string) => items.findIndex((x) => x.kind === kind && (x as { word?: string }).word === w);

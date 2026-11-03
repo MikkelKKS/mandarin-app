@@ -167,7 +167,10 @@ export const CHOOSE_GAP = 3;
  * the next few words' intros, so it tests memory, not the last five seconds.
  * Then type each twice (by ear, from English), then hear it in a sentence.
  */
-export function newWordItems(words: string[], data: VocabData, rng: () => number): SItem[] {
+/** Most words in a new word's closing sentence you may not have started yet. */
+export const MAX_UNKNOWN_IN_SENTENCE = 2;
+
+export function newWordItems(words: string[], data: VocabData, rng: () => number, started?: Set<string>): SItem[] {
   const ws = words.map((id) => data.byId.get(id)).filter((w): w is VocabRow => !!w);
   const out: SItem[] = [];
   const choose = (w: VocabRow): SItem[] => {
@@ -187,9 +190,14 @@ export function newWordItems(words: string[], data: VocabData, rng: () => number
     typed.push({ kind: 'meaning-pinyin', word: w.id });
   }
   out.push(...shuffle(typed, rng));
+  // With what you know: the example with the fewest words you haven't started
+  // (today's new words count), skipped if it still has too many.
+  const known = started && new Set([...started, ...ws.map((w) => w.id)]);
+  const unknown = (s: SentenceRow) => (known ? new Set(s.words.filter((x) => !known.has(x))).size : 0);
   for (const w of ws) {
-    const ex = w.examples.map((e) => data.sentences.get(e)).find((s) => sentenceHasAudio(s));
-    if (ex) out.push({ kind: 'sentence-meaning', sentence: ex.id });
+    const exs = w.examples.map((e) => data.sentences.get(e)).filter((s): s is SentenceRow => !!s && sentenceHasAudio(s));
+    const ex = exs.reduce<SentenceRow | undefined>((best, s) => (!best || unknown(s) < unknown(best) ? s : best), undefined);
+    if (ex && unknown(ex) <= MAX_UNKNOWN_IN_SENTENCE) out.push({ kind: 'sentence-meaning', sentence: ex.id });
   }
   return out;
 }
@@ -275,14 +283,14 @@ export function planSession(p: PlanInput): SessionPlan {
     if (revs.length) blocks.push({ id: 'reviews', items });
     blocks.push({ id: 'mine', items: mySentenceItems(p.mySentences ?? [], p.data, MINE.quick) });
     blocks.push({ id: 'grammar', items: grammarItems(p.grammar ?? [], GRAMMAR.quick, rng) });
-    if (revs.length < QUICK.fewReviews && p.newWords.length) blocks.push({ id: 'new', items: newWordItems(p.newWords.slice(0, QUICK.newWhenFew), p.data, rng) });
+    if (revs.length < QUICK.fewReviews && p.newWords.length) blocks.push({ id: 'new', items: newWordItems(p.newWords.slice(0, QUICK.newWhenFew), p.data, rng, p.started) });
     const rest = tones.slice(t).map((g): SItem => ({ kind: 'tone', gym: g }));
     if (rest.length) blocks.push({ id: 'tones', items: rest });
   } else {
     if (reviewItems.length) blocks.push({ id: 'reviews', items: reviewItems.slice(0, DEEP.reviews) });
     blocks.push({ id: 'mine', items: mySentenceItems(p.mySentences ?? [], p.data, MINE.deep) });
     blocks.push({ id: 'grammar', items: grammarItems(p.grammar ?? [], GRAMMAR.deep, rng) });
-    if (p.newWords.length) blocks.push({ id: 'new', items: newWordItems(p.newWords.slice(0, DEEP.newWords), p.data, rng) });
+    if (p.newWords.length) blocks.push({ id: 'new', items: newWordItems(p.newWords.slice(0, DEEP.newWords), p.data, rng, p.started) });
     const started = new Set([...p.started, ...p.newWords.slice(0, DEEP.newWords)]);
     const listening = listeningItems(p.data, started, DEEP.listening, rng);
     if (listening.length) blocks.push({ id: 'listening', items: listening });
