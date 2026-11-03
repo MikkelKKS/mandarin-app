@@ -23,7 +23,7 @@ sentences Tatoeba (CC BY 2.0 FR) and the course.
 
 ## Sentences
 
-10421 sentences: 9122 from Tatoeba, 800 from the course, 499 generated.
+11856 sentences: 10557 from Tatoeba, 800 from the course, 499 generated.
 Tatoeba had 89248 Chinese sentences; 27166 were simplified, short, translated into English and used only HSK words.
 
 ## Problems (11)

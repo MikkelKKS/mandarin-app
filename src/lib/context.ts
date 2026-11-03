@@ -6,6 +6,7 @@
  */
 import { alignToHanzi, hanziOnly, markSyllable, parsePinyin } from './pinyin';
 import { samePinyin } from './gloss';
+import { unknownIn } from './examples';
 import type { SentenceRow, VocabData, VocabRow } from './vocabData';
 
 const flat = (p: string) => p.toLowerCase().replace(/[\s'’-]/g, '');
@@ -61,12 +62,16 @@ export function splitHanzi(text: string, at: number, len: number): { before: str
   return { before: chars.slice(0, start).join(''), target: chars.slice(start, end).join(''), after: chars.slice(end).join('') };
 }
 
-/** Pure: the word inside one of its example sentences (with a recording), the shortest that lines up. */
+/**
+ * Pure: the word inside one of its example sentences (with a recording) that
+ * lines up: the one with the fewest words you haven't started (when
+ * `data.known` is set), then the shortest.
+ */
 export function inContext(w: VocabRow, data: VocabData, hasAudio: (s: SentenceRow) => boolean): InContext | null {
   const options = w.examples
     .map((id) => data.sentences.get(id))
     .filter((s): s is SentenceRow => !!s && hasAudio(s) && s.hanzi.includes(w.hanzi))
-    .sort((a, b) => a.hanzi.length - b.hanzi.length);
+    .sort((a, b) => unknownIn(a, w.id, data.known) - unknownIn(b, w.id, data.known) || a.hanzi.length - b.hanzi.length);
   for (const s of options) {
     const al = alignToHanzi(s.hanzi, s.pinyin);
     if (!al) continue;

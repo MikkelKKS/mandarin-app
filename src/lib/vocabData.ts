@@ -87,6 +87,8 @@ export interface VocabData {
   words: VocabRow[];
   byId: Map<string, VocabRow>;
   sentences: Map<string, SentenceRow>;
+  /** Words you've started, when known: example sentences are then picked by it (lib/examples.ts). */
+  known?: ReadonlySet<string>;
 }
 
 let dataCache: Promise<VocabData> | null = null;

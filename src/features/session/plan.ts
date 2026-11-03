@@ -7,6 +7,7 @@
  * Pure: everything it needs is passed in.
  */
 import { inContext, isNeutralParticle, needsContext } from '../../lib/context';
+import { bestExample } from '../../lib/examples';
 import { samePinyin, sharesMeaning } from '../../lib/gloss';
 import { parseCardId, type Facet } from '../../lib/review';
 import { parseReadId, type ReadMode, type ReadQueue } from '../../lib/reading';
@@ -167,11 +168,11 @@ export const CHOOSE_GAP = 3;
  * the next few words' intros, so it tests memory, not the last five seconds.
  * Then type each twice (by ear, from English), then hear it in a sentence.
  */
-/** Most words in a new word's closing sentence you may not have started yet. */
-export const MAX_UNKNOWN_IN_SENTENCE = 2;
-
-export function newWordItems(words: string[], data: VocabData, rng: () => number, started?: Set<string>): SItem[] {
-  const ws = words.map((id) => data.byId.get(id)).filter((w): w is VocabRow => !!w);
+export function newWordItems(words: string[], vocab: VocabData, rng: () => number, started?: ReadonlySet<string>): SItem[] {
+  const ws = words.map((id) => vocab.byId.get(id)).filter((w): w is VocabRow => !!w);
+  // Examples follow what you know (lib/examples.ts); today's new words count as started.
+  const base = started ?? vocab.known;
+  const data: VocabData = base ? { ...vocab, known: new Set([...base, ...ws.map((w) => w.id)]) } : vocab;
   const out: SItem[] = [];
   const choose = (w: VocabRow): SItem[] => {
     if (!wordHasAudio(w)) return [];
@@ -190,14 +191,10 @@ export function newWordItems(words: string[], data: VocabData, rng: () => number
     typed.push({ kind: 'meaning-pinyin', word: w.id });
   }
   out.push(...shuffle(typed, rng));
-  // With what you know: the example with the fewest words you haven't started
-  // (today's new words count), skipped if it still has too many.
-  const known = started && new Set([...started, ...ws.map((w) => w.id)]);
-  const unknown = (s: SentenceRow) => (known ? new Set(s.words.filter((x) => !known.has(x))).size : 0);
+  // The easiest example with a recording, skipped if it has too many words you haven't started.
   for (const w of ws) {
-    const exs = w.examples.map((e) => data.sentences.get(e)).filter((s): s is SentenceRow => !!s && sentenceHasAudio(s));
-    const ex = exs.reduce<SentenceRow | undefined>((best, s) => (!best || unknown(s) < unknown(best) ? s : best), undefined);
-    if (ex && unknown(ex) <= MAX_UNKNOWN_IN_SENTENCE) out.push({ kind: 'sentence-meaning', sentence: ex.id });
+    const ex = bestExample(w, data, sentenceHasAudio);
+    if (ex) out.push({ kind: 'sentence-meaning', sentence: ex.id });
   }
   return out;
 }

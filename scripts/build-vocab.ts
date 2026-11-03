@@ -453,7 +453,8 @@ if (existsSync(generatedFile)) {
 // ---------- pick examples per word ("i+1": every other word comes earlier) ----------
 const candidates = new Map<string, VocabSentence[]>();
 for (const s of sentences.values()) for (const w of new Set(s.words)) (candidates.get(w) ?? candidates.set(w, []).get(w)!).push(s);
-const MAX_EXAMPLES = 2;
+/** Examples kept per word: three for HSK 1–4 and course words, so the app can show the one you know best (IDEAS #18), two above. */
+const maxExamples = (level: number) => (level <= 4 ? 3 : 2);
 /** HSK level for difficulty; course-only words (level 0: 每天, 一点, 胡同…) count as level 2. */
 const levelOf = (w: string) => {
   const l = drafts.get(w)?.level ?? 7;
@@ -479,7 +480,7 @@ for (const [id] of ordered) {
   let pick = list
     .filter((s) => (s.unlocks <= order + 300 || s.source === 'generated') && hardestOther(s, id) <= lvl + 1)
     .sort((a, b) => score(a) - score(b) || a.id.localeCompare(b.id))
-    .slice(0, MAX_EXAMPLES);
+    .slice(0, maxExamples(drafts.get(id)!.level));
   // HSK 1–4 words with nothing that fits: a real sentence at most two levels above
   // (the fewest and nearest later words). Anything harder gets no example; such
   // words get a sentence written for the app instead (content/generated-sentences.json).

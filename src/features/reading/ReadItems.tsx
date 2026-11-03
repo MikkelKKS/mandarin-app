@@ -12,6 +12,7 @@ import { Speaker } from '../../components/icons';
 import { isKnownState, isStartedState, useWordStates } from '../../lib/knowledge';
 import { play, playUrl } from '../../lib/audio';
 import { lookalikesOf, type ReadItem } from '../../lib/reading';
+import { bestExample } from '../../lib/examples';
 import type { RatingName } from '../../lib/review';
 import { checkTyped } from '../exercises/check';
 import { ActionBar, Prompt } from '../exercises/parts';
@@ -116,7 +117,12 @@ function Details({ d, it, example = false }: { d: ReadData; it: ReadItem; exampl
   const known = (id: string) => isKnownState(states?.get(id)) || isStartedState(states?.get(id));
   const ws = wordsWith(d, it, known);
   const w = it.word ? d.vocab.byId.get(it.word) : undefined;
-  const ex = example && it.kind === 'word' && w ? w.examples.map((e) => d.vocab.sentences.get(e)).find(Boolean) : undefined;
+  // The example with the fewest words you haven't started (lib/examples.ts).
+  const ex = useMemo(() => {
+    if (!example || it.kind !== 'word' || !w) return undefined;
+    const started = states ? new Set([...states].filter(([, s]) => isStartedState(s)).map(([id]) => id)) : undefined;
+    return bestExample(w, { ...d.vocab, known: started });
+  }, [example, it.kind, w, d.vocab, states]);
   return (
     <div className="flex flex-col gap-3 text-left">
       {it.kind === 'char' ? (

@@ -23,6 +23,7 @@ import { isPass } from '../../lib/pinyinAnswer';
 import { forgetWord, introduceWord, todaysQueue, type RatingName } from '../../lib/review';
 import { introduceReadItem } from '../../lib/reading';
 import { loadMySentences, withMySentences } from '../../lib/mySentences';
+import { startedWords } from '../../lib/examples';
 import { readMode } from '../reading/mode';
 import { readingQueue } from '../reading/queue';
 import { go } from '../../lib/router';
@@ -59,7 +60,7 @@ async function newSession(mode: SessionMode, s: { newPerDay: number; reviewsPerD
   const mic = micActive();
   const queue = await todaysQueue(wordOrder(data.words.map((w) => w.id), currentSettings().beijingPack, currentSettings().nextWords), { newPerDay: s.newPerDay, reviewsPerDay: s.reviewsPerDay, mic }, now);
   const cards = await db.reviewItems.toArray();
-  const started = new Set(cards.filter((c) => c.word && (c.reps > 0 || c.state !== 0)).map((c) => c.word!));
+  const started = startedWords(cards);
   // Speaking starts on words you already know by ear (listening card in review), most common first.
   const hasSpeaking = new Set(cards.filter((c) => c.facet === 'sp').map((c) => c.word));
   const order = new Map(data.words.map((w) => [w.id, w.order]));
@@ -114,11 +115,14 @@ export function SessionRoute({ route }: { route: string[] }) {
   useEffect(() => {
     let live = true;
     void (async () => {
-      const d = withMySentences(await loadVocabData(), await loadMySentences());
+      // Words you've started: example sentences are picked by them (lib/examples.ts).
+      const d = { ...withMySentences(await loadVocabData(), await loadMySentences()), known: startedWords(await db.reviewItems.toArray()) };
       const resumed = mode === 'resume' ? await loadSession() : mode === 'reading' && route[2] === 'resume' ? await loadSession('reading') : null;
       const s = resumed ?? (await newSession(mode === 'deep' ? 'deep' : mode === 'reading' ? 'reading' : 'quick', settings, d));
       if (!live) return;
-      setData(d);
+      // Today's new words count as started too, as in the plan's closing sentences.
+      const today = s.plan.blocks.flatMap((b) => b.items).flatMap((x) => (x.kind === 'intro' ? [x.word] : []));
+      setData({ ...d, known: new Set([...d.known, ...today]) });
       if (!s.plan.blocks.length) setEmpty(true);
       else {
         setSt(s);

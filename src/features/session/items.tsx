@@ -6,6 +6,7 @@
 import { glossTerms, samePinyin } from '../../lib/gloss';
 import { isPass } from '../../lib/pinyinAnswer';
 import { inContext, type InContext } from '../../lib/context';
+import { bestExample, MAX_UNKNOWN_IN_EXAMPLE, unknownIn } from '../../lib/examples';
 import { grammarFor } from '../../lib/grammar';
 import { GrammarNoteCard } from '../../components/GrammarNote';
 import { VolumeSlider } from '../../components/VolumeSlider';
@@ -213,7 +214,8 @@ function PinyinContext({ c, blank }: { c: Parts; blank: boolean }) {
 /** Meeting a new word: hear it (twice), see it, see it in a sentence. */
 function Intro({ data, word, onResult }: ItemProps & { word: string }) {
   const w = useWord(data, word);
-  const ex = w.examples.map((e) => data.sentences.get(e)).find(Boolean);
+  // The example with the fewest words you haven't started; none if even that has too many.
+  const ex = useMemo(() => bestExample(w, data), [w, data]);
   const note = grammarFor(w);
   useEffect(() => {
     let live = true;
@@ -243,9 +245,12 @@ function Intro({ data, word, onResult }: ItemProps & { word: string }) {
       {ex && !note && (
         <div className="mt-8 w-full rounded-2xl bg-surface p-4 text-left border border-line">
           <div className="flex items-center gap-3">
-            <button onClick={() => void play(ex.id)} aria-label="Play the example" className="rounded-full bg-jade-soft p-2 text-jade">
-              <Speaker className="h-5 w-5" />
-            </button>
+            {/* Only once it's recorded: never the browser voice for an example. */}
+            {(ex.azure || ex.course) && (
+              <button onClick={() => void play(ex.id)} aria-label="Play the example" className="rounded-full bg-jade-soft p-2 text-jade">
+                <Speaker className="h-5 w-5" />
+              </button>
+            )}
             <div className="min-w-0">
               <TonePinyin pinyin={ex.pinyin} className="block text-lg" />
               <Hanzi text={ex.hanzi} className="block text-muted" />
@@ -453,7 +458,11 @@ function Dictation({ data, word, ctx, onResult, onUnknown }: ItemProps & { word:
 /** Review, meaning → pinyin: active recall, with part of speech and the example sentence (word blanked) to tell near-synonyms apart. */
 function MeaningToPinyin({ data, word, onResult, onUnknown }: ItemProps & { word: string }) {
   const w = useWord(data, word);
-  const c = useMemo(() => inContext(w, data, () => true), [w, data]);
+  // The blanked example is a clue, so only one you can mostly follow (lib/examples.ts).
+  const c = useMemo(() => {
+    const x = inContext(w, data, () => true);
+    return x && unknownIn(x.sentence, w.id, data.known) <= MAX_UNKNOWN_IN_EXAMPLE ? x : null;
+  }, [w, data]);
   const others = useMemo(() => sameMeaning(w, data.words), [w, data.words]);
   const expected = { pinyin: w.pinyin, hanzi: w.hanzi, english: glossOf(w) };
   const t = useTyped(expected, onResult, (text) => {
