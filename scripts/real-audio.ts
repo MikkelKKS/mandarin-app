@@ -20,6 +20,7 @@
  *   npx tsx scripts/real-audio.ts --count     # coverage only, no downloads
  *   npx tsx scripts/real-audio.ts             # download what's missing
  *   npx tsx scripts/real-audio.ts --max-level 4   # only HSK 1–4 (and course) words this run
+ *   npx tsx scripts/real-audio.ts --drop-blocked  # only remove clips by BLOCKED_SPEAKERS
  *
  * Needs ffmpeg (on PATH, or the `ffmpeg-static` npm package installed with
  * `npm i --no-save ffmpeg-static`). Polite to Wikimedia: one request at a time.
@@ -39,6 +40,13 @@ const UA = 'mandarin-app/1.0 (personal, non-commercial language-learning app; ht
 const CATEGORIES = ['Category:Lingua Libre pronunciation-cmn', 'Category:Chinese pronunciation', 'Category:Mandarin pronunciation'];
 const TARGET_LUFS = -20;
 const MAX_PEAK = -2;
+/** Speakers Mikkel asked not to use (3 Nov 2026: Jouketou). Their clips are dropped and never fetched again. */
+export const BLOCKED_SPEAKERS = ['Jouketou'];
+
+/** Pure: is this recording by a blocked speaker (from its Commons title or artist field)? */
+export function blockedSpeaker(title: string, speaker = ''): boolean {
+  return BLOCKED_SPEAKERS.some((b) => title.includes(`-${b}-`) || speaker === b || speaker.startsWith(`${b},`));
+}
 
 export interface RealClip {
   file: string;
@@ -173,6 +181,7 @@ async function main() {
   const index: RealIndex = existsSync(INDEX)
     ? JSON.parse(readFileSync(INDEX, 'utf8'))
     : { _about: '', words: {}, skipped: {}, rejected: [] };
+  dropBlocked(index);
   index._about =
     'Human recordings of HSK words from Wikimedia Commons (mostly Lingua Libre), CC0/CC BY/CC BY-SA only, made by scripts/real-audio.ts. Played before the Azure voice (IDEAS #20). Credits: public/audio/real/CREDITS.txt.';
   const words = JSON.parse(readFileSync(join(ROOT, 'content', 'data', 'words.json'), 'utf8')) as Array<{ id: string; hanzi: string; level: number }>;
@@ -183,6 +192,7 @@ async function main() {
   const byText = new Map<string, string[]>();
   for (const cat of CATEGORIES)
     for (const t of await members(cat)) {
+      if (blockedSpeaker(t)) continue;
       const x = textOfTitle(t);
       if (x) (byText.get(x) ?? byText.set(x, []).get(x)!).push(t);
     }
@@ -194,7 +204,7 @@ async function main() {
   );
   console.log(`${byText.size} recorded texts; ${todo.length} words to look at (${Object.keys(index.words).length} done already).`);
   const meta = await infos(todo.flatMap((w) => byText.get(w.hanzi)!));
-  const plan = todo.map((w) => ({ w, info: byText.get(w.hanzi)!.map((t) => meta.get(t)).find((i) => i && openLicence(i.licence)) }));
+  const plan = todo.map((w) => ({ w, info: byText.get(w.hanzi)!.map((t) => meta.get(t)).find((i) => i && openLicence(i.licence) && !blockedSpeaker(i.title, i.speaker)) }));
   for (const p of plan) if (!p.info) index.skipped[p.w.id] = 'no openly licensed recording';
   const go = plan.filter((p): p is { w: (typeof words)[number]; info: Info } => !!p.info);
   const perLevel: Record<number, number> = {};
@@ -254,6 +264,26 @@ export function rejectReal(wordId: string): boolean {
   return true;
 }
 
+/** Remove clips by blocked speakers (files, index entries, credits). They aren't marked rejected, so another speaker's recording of the word can be used later. */
+function dropBlocked(index: RealIndex): number {
+  let n = 0;
+  for (const [id, c] of Object.entries(index.words))
+    if (blockedSpeaker(c.source.replace(/^.*\/File:/, 'File:'), c.speaker)) {
+      delete index.words[id];
+      rmSync(join(OUT, c.file), { force: true });
+      n++;
+    }
+  return n;
+}
+
+/** Run with --drop-blocked: only remove blocked speakers' clips, no downloads. */
+export function dropBlockedNow(): number {
+  const index = JSON.parse(readFileSync(INDEX, 'utf8')) as RealIndex;
+  const n = dropBlocked(index);
+  save(index);
+  return n;
+}
+
 function save(index: RealIndex) {
   const sorted = (o: Record<string, unknown>) => Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b)));
   writeFileSync(INDEX, JSON.stringify({ ...index, words: sorted(index.words), skipped: sorted(index.skipped), rejected: [...new Set(index.rejected)].sort() }, null, 1) + '\n');
@@ -265,4 +295,7 @@ function save(index: RealIndex) {
   );
 }
 
-if (process.argv[1]?.endsWith('real-audio.ts')) await main();
+if (process.argv[1]?.endsWith('real-audio.ts')) {
+  if (process.argv.includes('--drop-blocked')) console.log(`Dropped ${dropBlockedNow()} clips by blocked speakers.`);
+  else await main();
+}

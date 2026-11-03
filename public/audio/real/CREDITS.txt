@@ -9,11 +9,7 @@ an4shi4-fifkn.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/Fi
 an4zhao4-3ux56.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8C%89%E7%85%A7.wav
 ba4ba5-u8v1i.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%88%B8%E7%88%B8.wav
 bai3tuo1-ofmna.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%91%86%E8%84%B1.wav
-ban4fa3-xqzev.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8A%9E%E6%B3%95.wav
-ban4gong1shi4-x8hma.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8A%9E%E5%85%AC%E5%AE%A4.wav
-bang1mang2-9kcrq.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%B8%AE%E5%BF%99.wav
 bao1zi5-kpnxb.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8C%85%E5%AD%90.wav
-bao3bei4-ja0p6.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AE%9D%E8%B4%9D.wav
 bao3hu4-e2lgs.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%9D%E6%8A%A4.wav
 bao3mi4-3e8id.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BF%9D%E5%AF%86.wav
 bao3shou3-k05w9.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BF%9D%E5%AE%88.wav
@@ -27,20 +23,15 @@ ben3lai2-sex7k.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_
 ben3shi5-rk96r.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%9C%AC%E4%BA%8B.wav
 bi3ji4-h3mvi.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%AC%94%E8%AE%B0.wav
 bi3ji4ben3-q00pi.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%AC%94%E8%AE%B0%E6%9C%AC.wav
-bi3jiao4-bqdi1.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%AF%94%E8%BE%83.wav
 bi3ru2-5rxzi.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AF%94%E5%A6%82.wav
-bi3sai4-xpcen.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%AF%94%E8%B5%9B.wav
-bi4xu1-5s3ao.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BF%85%E9%A1%BB.wav
 bi4ye4-02955.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AF%95%E4%B8%9A.wav
 biao1ti2-bni3x.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%A0%87%E9%A2%98.wav
 biao1zhun3-39bmq.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%A0%87%E5%87%86.wav
 biao3ge2-t37ij.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A1%A8%E6%A0%BC.wav
 biao3shi4-rjcyb.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A1%A8%E7%A4%BA.wav
-biao3xian4-pf8yl.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A1%A8%E7%8E%B0.wav
 biao3yan3-66ugm.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A1%A8%E6%BC%94.wav
 biao3yang2-8jxzc.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A1%A8%E6%89%AC.wav
 bie2de5-6qunm.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%88%AB%E7%9A%84.wav
-bie2ren5-0oi1m.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%88%AB%E4%BA%BA.wav
 bing1xiang1-o4k3n.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%86%B0%E7%AE%B1.wav
 bing4qie3-bs2zn.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%B6%E4%B8%94.wav
 bu4cuo4-yoq6j.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%8D%E9%94%99.wav
@@ -56,7 +47,6 @@ cai2fu4-4iw2p.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/Fi
 cai2liao4-50p7y.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9D%90%E6%96%99.wav
 cai4dan1-zuva5.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%8F%9C%E5%8D%95.wav
 can1guan1-mzfkw.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%82%E8%A7%82.wav
-can1jia1-wtftr.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8F%82%E5%8A%A0.wav
 cao1zuo4-f81la.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%93%8D%E4%BD%9C.wav
 ce4liang2-2gnbq.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%B5%8B%E9%87%8F.wav
 cha4bu5duo1-vw3tr.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B7%AE%E4%B8%8D%E5%A4%9A.wav
@@ -69,7 +59,6 @@ chao2liu2-83xfr.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/
 chen2zhong4-5djq9.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%B2%89%E9%87%8D.wav
 cheng2gong1-gnv4z.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%88%90%E5%8A%9F.wav
 cheng2shi2-40lpu.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%9A%E5%AE%9E.wav
-cheng2shi4-aiao0.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%9F%8E%E5%B8%82.wav
 cheng2wei2-3j6l7.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%88%90%E4%B8%BA.wav
 cheng2yuan2-h6gj7.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%88%90%E5%91%98.wav
 chi1fan4-ejp7d.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%90%83%E9%A5%AD.wav
@@ -83,8 +72,6 @@ chu1fa1-qbgk7.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(
 chu1sheng1-nqwp3.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%BA%E7%94%9F.wav
 chu1xian4-i9o6o.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%BA%E7%8E%B0.wav
 chu1zu1che1-oxt5m.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%BA%E7%A7%9F%E8%BD%A6.wav
-chu2le5-ddcy5.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%99%A4%E4%BA%86.wav
-chu3li3-qngwe.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A4%84%E7%90%86.wav
 chuang1hu5-ftah0.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AA%97%E6%88%B7.wav
 chuang4zuo4-itczm.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%88%9B%E4%BD%9C.wav
 chun1tian1-gxt1v.mp3	Shangkuanlc	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E6%98%A5%E5%A4%A9.wav
@@ -96,7 +83,6 @@ da2an4-z3ec7.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(c
 da3dian4hua4-b7rxe.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E7%94%B5%E8%AF%9D.wav
 da3gong1-00i2z.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E5%B7%A5.wav
 da3qiu2-gt1x6.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%89%93%E7%90%83.wav
-da3suan4-23afs.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%89%93%E7%AE%97.wav
 da3yin4-6gdga.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E5%8D%B0.wav
 da3zhe2-bbw5j.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E6%8A%98.wav
 da3zhen1-ofxue.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%89%93%E9%92%88.wav
@@ -109,11 +95,8 @@ da4yue1-v11eh.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(
 dai4fu5-qgfv9.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%A7%E5%A4%AB.wav
 dai4ling3-5uvie.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%B8%A6%E9%A2%86.wav
 dan1bao3-qj0p0.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%8B%85%E4%BF%9D.wav
-dan1mai4-rq1gn.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%B9%E9%BA%A6.wav
-dan1xin1-l95jv.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%8B%85%E5%BF%83.wav
 dan4shi4-lk3t9.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BD%86%E6%98%AF.wav
 dang1chu1-1g0ub.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%BD%93%E5%88%9D.wav
-dang1ran2-1ssaq.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BD%93%E7%84%B6.wav
 dang1shi2-xyef3.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BD%93%E6%97%B6.wav
 dao3you2-30t85.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%BC%E6%B8%B8.wav
 dao4chu4-2qmix.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%88%B0%E5%A4%84.wav
@@ -144,11 +127,9 @@ dui4hua4-5dsg5.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_
 dui4mian4-o70qr.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%B9%E9%9D%A2.wav
 dui4yu2-6qi2c.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%B9%E4%BA%8E.wav
 e3xin1-c6k2s.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%81%B6%E5%BF%83.wav
-er2qie3-tl6w0.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%80%8C%E4%B8%94.wav
 er2tong2-dgrcq.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%84%BF%E7%AB%A5.wav
 fa1dong4-vb4zi.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%8F%91%E5%8A%A8.wav
 fa1sheng1-2tg6t.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%91%E7%94%9F.wav
-fa1xian4-8wgb8.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8F%91%E7%8E%B0.wav
 fa1zhan3-ptp2j.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%91%E5%B1%95.wav
 fa3lv4-3w2xn.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B3%95%E5%BE%8B.wav
 fan1yi4-anz5n.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BF%BB%E8%AF%91.wav
@@ -168,14 +149,12 @@ fen1san4-v4nig.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/F
 fen1shou3-cm6q6.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%88%86%E6%89%8B.wav
 feng1bi4-0zcep.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%B0%81%E9%97%AD.wav
 feng1fu4-zta37.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%B0%E5%AF%8C.wav
-fou3ding4-r2t0g.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%90%A6%E5%AE%9A.wav
 fou3ze2-7so28.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%A6%E5%88%99.wav
 fu1fu4-1ykim.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%A4%AB%E5%A6%87.wav
 fu1ren5-x68a0.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%A4%AB%E4%BA%BA.wav
 fu2hao4-cypfn.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%AC%A6%E5%8F%B7.wav
 fu2he2-83p7l.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AC%A6%E5%90%88.wav
 fu4dan1-bdzb0.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%B4%9F%E6%8B%85.wav
-fu4jin4-io8yi.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%99%84%E8%BF%91.wav
 fu4qin1-qg29d.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%88%B6%E4%BA%B2.wav
 fu4xi2-1t55e.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%8D%E4%B9%A0.wav
 fu4yin4-iot6z.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%8D%E5%8D%B0.wav
@@ -187,13 +166,11 @@ gan3dong4-xdjgd.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192
 gan3jue2-4xn7u.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%9F%E8%A7%89.wav
 gan3qing2-46k0p.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%9F%E6%83%85.wav
 gan3xie4-2a9pp.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%9F%E8%B0%A2.wav
-gang1cai2-0f1gl.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%88%9A%E6%89%8D.wav
 gao1chao2-vtwis.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%AB%98%E6%BD%AE.wav
 gao1shang4-0z6rq.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%AB%98%E5%B0%9A.wav
 gao1su4gong1lu4-v3b3o.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%AB%98%E9%80%9F%E5%85%AC%E8%B7%AF.wav
 ge1ge5-qltsz.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%93%A5%E5%93%A5.wav
 ge1shou3-p5bwd.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%AD%8C%E6%89%8B.wav
-gen1ben3-z6ojv.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%A0%B9%E6%9C%AC.wav
 gen1ju4-b6nf2.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%A0%B9%E6%8D%AE.wav
 gong1fu5-0sq5x.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%9F%E5%A4%AB.wav
 gong1li3-5s6h3.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%AC%E9%87%8C.wav
@@ -205,12 +182,8 @@ gong1zi1-cfhao.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_
 gong4tong2-wf3v5.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%B1%E5%90%8C.wav
 gou4wu4-qlnou.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B4%AD%E7%89%A9.wav
 gu4ke4-10auv.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A1%BE%E5%AE%A2.wav
-gu4shi5-thz38.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%95%85%E4%BA%8B.wav
 gu4yi4-hqhdt.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%85%E6%84%8F.wav
 guan1fang1-wrjrx.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AE%98%E6%96%B9.wav
-guan1xi5-96xf5.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B3%E7%B3%BB.wav
-guan1xin1-bxjej.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B3%E5%BF%83.wav
-guan1yu2-lecw2.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B3%E4%BA%8E.wav
 guan1zhong4-y7438.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A7%82%E4%BC%97.wav
 guan3li3-zkb3y.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AE%A1%E7%90%86.wav
 guang1lin2-vajj4.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%85%89%E4%B8%B4.wav
@@ -219,13 +192,9 @@ guang3bo1-81qe8.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192
 guang3gao4-7knnu.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%BF%E5%91%8A.wav
 gui1ding4-x24bx.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A7%84%E5%AE%9A.wav
 guo2ji4-yqfif.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9B%BD%E9%99%85.wav
-guo2jia1-jdsoc.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%9B%BD%E5%AE%B6.wav
 guo3zhi1-jpc8c.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9E%9C%E6%B1%81.wav
 guo4cheng2-zlolz.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%BF%87%E7%A8%8B.wav
-guo4qu4-5edno.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%BF%87%E5%8E%BB.wav
-hai2shi5-ekobd.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%BF%98%E6%98%AF.wav
 hai2zi5-qjsy4.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%AD%A9%E5%AD%90.wav
-hai4pa4-jdp22.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AE%B3%E6%80%95.wav
 han2jia4-r16nd.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AF%92%E5%81%87.wav
 han2yi4-nbtua.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%90%AB%E4%B9%89.wav
 han4zi4-bgkex.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%B1%89%E5%AD%97.wav
@@ -250,25 +219,19 @@ hu4xiang1-weury.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192
 hua4jia1-fcmfh.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%94%BB%E5%AE%B6.wav
 huai2yi2-58oh9.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%80%E7%96%91.wav
 huan1le4-jjco1.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%AC%A2%E4%B9%90.wav
-huan1ying2-mxtlr.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%AC%A2%E8%BF%8E.wav
-hui2da2-blwy8.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%9B%9E%E7%AD%94.wav
 hui2jia1-71i3s.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%9B%9E%E5%AE%B6.wav
 hui4bao4-da1e7.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%B1%87%E6%8A%A5.wav
 hun1li3-kb9pp.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A9%9A%E7%A4%BC.wav
 huo2dong4-jux3e.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B4%BB%E5%8A%A8.wav
 huo3che1-31opo.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%81%AB%E8%BD%A6.wav
 huo4de2-j5yz4.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%8E%B7%E5%BE%97.wav
-huo4xu3-zcjm7.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%88%96%E8%AE%B8.wav
-huo4zhe3-rylnq.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%88%96%E8%80%85.wav
 ji1chu3-d9z50.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9F%BA%E7%A1%80.wav
 ji1dong4-db9ut.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%BF%80%E5%8A%A8.wav
 ji1gou4-9wv6s.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%9C%BA%E6%9E%84.wav
-ji1hui4-lqw0j.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%9C%BA%E4%BC%9A.wav
 ji1ji2-gmry2.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A7%AF%E6%9E%81.wav
 ji1lei3-4w41o.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A7%AF%E7%B4%AF.wav
 ji2jiang1-5jkf3.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%8D%B3%E5%B0%86.wav
 ji2shi2-4czto.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%8A%E6%97%B6.wav
-ji4de5-u5axn.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%AE%B0%E5%BE%97.wav
 ji4du4-wkzp8.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%AD%A3%E5%BA%A6.wav
 ji4hua4-ivns3.mp3	Aa087159	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Aa087159-%E8%AE%A1%E5%88%92.wav
 ji4qiao3-eunsy.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%8A%80%E5%B7%A7.wav
@@ -284,11 +247,8 @@ jia1shu3-cmrb3.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/F
 jia1you2zhan4-ga0uy.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%A0%E6%B2%B9%E7%AB%99.wav
 jia4ge2-gkqno.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%B7%E6%A0%BC.wav
 jian1chi2-p0y3h.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9D%9A%E6%8C%81.wav
-jian3cha2-hbehp.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%A3%80%E6%9F%A5.wav
-jian3dan1-phajv.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%AE%80%E5%8D%95.wav
 jian3fei2-yt1kk.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%8F%E8%82%A5.wav
 jian3shao3-36bzi.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%8F%E5%B0%91.wav
-jian4mian4-hb08v.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A7%81%E9%9D%A2.wav
 jian4shen1-9h1ly.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%81%A5%E8%BA%AB.wav
 jian4yi4-mz4wz.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BB%BA%E8%AE%AE.wav
 jiang1lai2-aw9zm.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B0%86%E6%9D%A5.wav
@@ -304,10 +264,7 @@ jiao4shou4-g7yh4.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q919
 jiao4yu4-eb3yt.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%99%E8%82%B2.wav
 jie1shou4-aulgl.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%A5%E5%8F%97.wav
 jie1zhe5-jesvj.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%A5%E7%9D%80.wav
-jie2hun1-c6k64.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%BB%93%E5%A9%9A.wav
-jie2mu4-2hpe9.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%8A%82%E7%9B%AE.wav
 jie2yue1-yke95.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%8A%82%E7%BA%A6.wav
-jie3jue2-9u9ei.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A7%A3%E5%86%B3.wav
 jie3shi4-o8xmz.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A7%A3%E9%87%8A.wav
 jie4shao4-lf3x8.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BB%8B%E7%BB%8D.wav
 jin1nian2-fusav.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BB%8A%E5%B9%B4.wav
@@ -317,7 +274,6 @@ jin4xing2-u9bz1.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192
 jin4zhan3-qai3q.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%BF%9B%E5%B1%95.wav
 jin4zhi3-efeon.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A6%81%E6%AD%A2.wav
 jing1cai3-oarlt.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%B2%BE%E5%BD%A9.wav
-jing1chang2-k7n5i.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%BB%8F%E5%B8%B8.wav
 jing1ji4-6im60.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BB%8F%E6%B5%8E.wav
 jing1ju4-5n620.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BA%AC%E5%89%A7.wav
 jing1li4-ed6da.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BB%8F%E5%8E%86.wav
@@ -336,8 +292,6 @@ ju3xing2-d18xd.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_
 ju4hui4-ivzlw.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%81%9A%E4%BC%9A.wav
 ju4li2-8b359.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B7%9D%E7%A6%BB.wav
 jue2de5-sf121.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%A7%89%E5%BE%97.wav
-jue2ding4-n41ne.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%86%B3%E5%AE%9A.wav
-jue2dui4-1pk2h.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%BB%9D%E5%AF%B9.wav
 ka1fei1-aijpc.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%92%96%E5%95%A1.wav
 kai1che1-xbdje.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%BC%80%E8%BD%A6.wav
 kai1wan2xiao4-17v96.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BC%80%E7%8E%A9%E7%AC%91.wav
@@ -346,7 +300,6 @@ kan4fa3-udljh.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(
 kao3lv4-vrmc5.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%80%83%E8%99%91.wav
 kao3yan4-4a918.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%80%83%E9%AA%8C.wav
 ke1xue2-1va0h.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A7%91%E5%AD%A6.wav
-ke3ai4-ftf6y.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8F%AF%E7%88%B1.wav
 ke3le4-a833g.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8F%AF%E4%B9%90.wav
 ke3shi4-rof1g.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%AF%E6%98%AF.wav
 ke3yi3-ie067.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8F%AF%E4%BB%A5.wav
@@ -367,11 +320,9 @@ lao3shi1-xka8g.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/Fi
 le4qu4-gapz9.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%B9%90%E8%B6%A3.wav
 lei4si4-gcyvw.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%B1%BB%E4%BC%BC.wav
 leng3jing4-wyd46.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%86%B7%E9%9D%99.wav
-li2kai1-5mn1n.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%A6%BB%E5%BC%80.wav
 li3fa4-v3y0v.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%90%86%E5%8F%91.wav
 li3jie3-6pbrn.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%90%86%E8%A7%A3.wav
 li3mian4-jv0da.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%87%8C%E9%9D%A2.wav
-li3wu4-mihti.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%A4%BC%E7%89%A9.wav
 li3xiang3-py2r4.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%90%86%E6%83%B3.wav
 li4qi5-pfzlo.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8A%9B%E6%B0%94.wav
 li4ru2-zn6lq.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BE%8B%E5%A6%82.wav
@@ -379,7 +330,6 @@ li4zi5-az3o9.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File
 lian2xi4-hpoon.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%81%94%E7%B3%BB.wav
 lian4xi2-sft61.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%BB%83%E4%B9%A0.wav
 liang2kuai5-4r1wn.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%89%E5%BF%AB.wav
-liao3jie3-nb3qv.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%BA%86%E8%A7%A3.wav
 ling3xian1-365dh.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%A2%86%E5%85%88.wav
 ling4wai4-v4zsw.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%A6%E5%A4%96.wav
 liu2li4-rhh9i.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B5%81%E5%88%A9.wav
@@ -389,7 +339,6 @@ lv4cha2-pbpba.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/Fil
 lv4shi1-i5oax.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BE%8B%E5%B8%88.wav
 ma1ma5-ztfp1.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A6%88%E5%A6%88.wav
 ma2fan5-pz97s.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%BA%BB%E7%83%A6.wav
-ma3shang4-uaajf.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%A9%AC%E4%B8%8A.wav
 mao2jin1-5ioj3.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AF%9B%E5%B7%BE.wav
 mei2you3-vj8lw.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%B2%A1%E6%9C%89.wav
 mei3li4-0ahjr.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BE%8E%E4%B8%BD.wav
@@ -400,7 +349,6 @@ mi4ma3-bptht.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(c
 mian3fei4-rgttx.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%8D%E8%B4%B9.wav
 mian4bao1-zftxu.mp3	Shangkuanlc	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E9%9D%A2%E5%8C%85.wav
 min2zu2-l9lnu.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B0%91%E6%97%8F.wav
-ming2bai5-9g9uq.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%98%8E%E7%99%BD.wav
 ming2nian2-bx86i.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%8E%E5%B9%B4.wav
 ming2pian4-ijd40.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%8D%E7%89%87.wav
 ming2tian1-mrtjs.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%8E%E5%A4%A9.wav
@@ -419,12 +367,8 @@ neng2bu5neng2-ia102.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wi
 neng2li4-qixlm.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%83%BD%E5%8A%9B.wav
 ni3hao3-is10l.mp3	Bakerkobe	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Bakerkobe-%E4%BD%A0%E5%A5%BD.wav
 ni3men5-acguw.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%BD%A0%E4%BB%AC.wav
-nian2qing1-ud160.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%B9%B4%E8%BD%BB.wav
-niu2nai3-as5gr.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%89%9B%E5%A5%B6.wav
-nu3li4-xnlhd.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8A%AA%E5%8A%9B.wav
 nuan3huo5-5zsjf.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9A%96%E5%92%8C.wav
 nv3ren2-8664c.mp3	Shangkuanlc	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%A5%B3%E4%BA%BA.wav
-nv3shi4-nd5ms.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A5%B3%E5%A3%AB.wav
 pa2shan1-qvh2c.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%88%AC%E5%B1%B1.wav
 pai2dui4-bzpx8.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%92%E9%98%9F.wav
 pai2lie4-rtqp0.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8E%92%E5%88%97.wav
@@ -443,21 +387,15 @@ pu3bian4-8tkia.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_
 pu3tong1hua4-0by0n.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%99%AE%E9%80%9A%E8%AF%9D.wav
 qi1xian4-b22sx.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%9C%9F%E9%99%90.wav
 qi2ci4-erovo.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%B6%E6%AC%A1.wav
-qi2guai4-f398q.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A5%87%E6%80%AA.wav
-qi2shi2-0v8j9.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B6%E5%AE%9E.wav
-qi2ta1-wm7wt.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%B6%E4%BB%96.wav
 qi2zhong1-aypiz.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%B6%E4%B8%AD.wav
 qi3chuang2-8tcx9.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%B5%B7%E5%BA%8A.wav
-qi3lai5-fum9v.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%B5%B7%E6%9D%A5.wav
 qi4guan1-mru6j.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%99%A8%E5%AE%98.wav
 qi4hou4-hvjgs.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B0%94%E5%80%99.wav
 qian1wan4-74pg5.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%83%E4%B8%87.wav
 qian2bao1-hwyh3.mp3	BlueCamille	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-BlueCamille-%E9%92%B1%E5%8C%85.wav
 qian2mian4-ii54i.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%89%8D%E9%9D%A2.wav
 qiao3ke4li4-ljnfa.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B7%A7%E5%85%8B%E5%8A%9B.wav
-qin1ai4-9bai3.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%BA%B2%E7%88%B1.wav
 qin1mi4-xg7oe.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%B2%E5%AF%86.wav
-qing1chu5-a3a3b.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%B8%85%E6%A5%9A.wav
 qing1song1-z43yc.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%BD%BB%E6%9D%BE.wav
 qing1xing3-2iirj.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%B8%85%E9%86%92.wav
 qing2kuang4-exj5e.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%83%85%E5%86%B5.wav
@@ -468,10 +406,8 @@ quan2bu4-fr1rb.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_
 que1dian3-0aa8x.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BC%BA%E7%82%B9.wav
 que1shao3-nhv9o.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BC%BA%E5%B0%91.wav
 que4bao3-wjhww.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%A1%AE%E4%BF%9D.wav
-que4ding4-tz4nw.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%A1%AE%E5%AE%9A.wav
 que4shi2-e8aqs.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%A1%AE%E5%AE%9E.wav
 ran2er2-cs2ef.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%84%B6%E8%80%8C.wav
-ran2hou4-0x08u.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%84%B6%E5%90%8E.wav
 re4nao5-9xhuh.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%83%AD%E9%97%B9.wav
 ren2gong1-9w6vz.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%BA%E5%B7%A5.wav
 ren2jia5-j8dx1.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%BA%E5%AE%B6.wav
@@ -479,15 +415,10 @@ ren2min2-0q0yv.mp3	Shangkuanlc	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/F
 ren4he2-gznbz.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%BB%E4%BD%95.wav
 ren4ke3-ox8ys.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%AE%A4%E5%8F%AF.wav
 ren4shi5-a09ir.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%AE%A4%E8%AF%86.wav
-ren4wei2-402st.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%AE%A4%E4%B8%BA.wav
 ren4wu5-k8rnv.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%BB%E5%8A%A1.wav
-ren4zhen1-qzks5.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%AE%A4%E7%9C%9F.wav
 reng2ran2-0pm1j.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%8D%E7%84%B6.wav
 ri4ji4-qiqhe.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%97%A5%E8%AE%B0.wav
 ri4qi1-ja507.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%A5%E6%9C%9F.wav
-rong2yi4-ok5n7.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AE%B9%E6%98%93.wav
-ru2guo3-znlyk.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A6%82%E6%9E%9C.wav
-ru2he2-eg8ek.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A6%82%E4%BD%95.wav
 ru4kou3-o2yuk.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%A5%E5%8F%A3.wav
 san4bu4-49zz4.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%A3%E6%AD%A5.wav
 sen1lin2-ykx5c.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%A3%AE%E6%9E%97.wav
@@ -511,12 +442,9 @@ sheng1cun2-pjov2.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki
 sheng1huo2-ieiwv.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%9F%E6%B4%BB.wav
 sheng1ming2-1u1t2.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%A3%B0%E6%98%8E.wav
 sheng1ming4-bg2ty.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%9F%E5%91%BD.wav
-sheng1qi4-94nwc.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%94%9F%E6%B0%94.wav
 sheng1ri4-0b8k6.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%94%9F%E6%97%A5.wav
 sheng1yi5-z5bxy.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%9F%E6%84%8F.wav
-sheng1yin1-c3ap7.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A3%B0%E9%9F%B3.wav
 shi1bai4-g6tmc.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%B1%E8%B4%A5.wav
-shi1qu4-p6gsk.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A4%B1%E5%8E%BB.wav
 shi1wang4-k2ff7.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A4%B1%E6%9C%9B.wav
 shi2fen1-8n3uy.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%81%E5%88%86.wav
 shi2hou5-pahxz.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%97%B6%E5%80%99.wav
@@ -534,7 +462,6 @@ shi4gu4-xns1j.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/Fi
 shi4he2-411j2.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%80%82%E5%90%88.wav
 shi4ji4-g12f0.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%96%E7%BA%AA.wav
 shi4jian4-e6d4g.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%8B%E4%BB%B6.wav
-shi4jie4-nudbn.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%96%E7%95%8C.wav
 shi4yan4-1e89q.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%AF%95%E9%AA%8C.wav
 shi4ye4-2mc00.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BA%8B%E4%B8%9A.wav
 shi4ying4-ajxju.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%80%82%E5%BA%94.wav
@@ -552,7 +479,6 @@ shu4liang4-npbd1.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q919
 shu4ma3-i5r9n.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%B0%E7%A0%81.wav
 shu4zi4-q9m75.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%B0%E5%AD%97.wav
 shua1ya2-eplkz.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%88%B7%E7%89%99.wav
-shui3guo3-n4p7p.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%B0%B4%E6%9E%9C.wav
 shui4jiao4-myvl3.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E7%9D%A1%E8%A7%89.wav
 shun4li4-nm03t.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A1%BA%E5%88%A9.wav
 shun4xu4-gzwb3.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A1%BA%E5%BA%8F.wav
@@ -568,7 +494,6 @@ ta1men5-0s3ry.mp3	Vickylin77amis	CC BY-SA 4.0	https://commons.wikimedia.org/wiki
 tai4du5-x57d6.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%81%E5%BA%A6.wav
 tai4yang5-1e5os.mp3	KhawaChenpo	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-KhawaChenpo-%E5%A4%AA%E9%98%B3.wav
 tao3lun4-lyeh9.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AE%A8%E8%AE%BA.wav
-te4bie2-vzp3m.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%89%B9%E5%88%AB.wav
 te4dian3-blm7z.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%89%B9%E7%82%B9.wav
 ti2gong1-b0x5t.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8F%90%E4%BE%9B.wav
 ti2mu4-2weii.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E9%A2%98%E7%9B%AE.wav
@@ -585,11 +510,8 @@ tong2hua4-pao79.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/
 tong2qing2-527tb.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%8C%E6%83%85.wav
 tong2shi2-jaku7.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%8C%E6%97%B6.wav
 tong2shi4-udaty.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%90%8C%E4%BA%8B.wav
-tong2yi4-ipfn6.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%90%8C%E6%84%8F.wav
 tong3ji4-7xkrp.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%BB%9F%E8%AE%A1.wav
-tou2fa5-y375w.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%A4%B4%E5%8F%91.wav
 tou2su4-sfm29.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%8A%95%E8%AF%89.wav
-tu1ran2-qvu69.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%AA%81%E7%84%B6.wav
 tu2an4-xkw6h.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%9B%BE%E6%A1%88.wav
 tu2shu1guan3-zyec5.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%9B%BE%E4%B9%A6%E9%A6%86.wav
 tuan2jie2-9tyfm.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%9B%A2%E7%BB%93.wav
@@ -599,7 +521,6 @@ tui1xiao1-07lsc.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/
 wa4zi5-3o2sb.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A2%9C%E5%AD%90.wav
 wai4mian4-ct8xl.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%96%E9%9D%A2.wav
 wai4tao4-ok2er.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%A4%96%E5%A5%97.wav
-wan2cheng2-gu1za.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AE%8C%E6%88%90.wav
 wan2quan2-46bsc.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AE%8C%E5%85%A8.wav
 wan3can1-bohu3.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%99%9A%E9%A4%90.wav
 wan3fan4-fh22w.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%99%9A%E9%A5%AD.wav
@@ -608,12 +529,10 @@ wang3luo4-cfx9g.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192
 wang3qiu2-r30xw.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BD%91%E7%90%83.wav
 wang3wang3-yag1v.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BE%80%E5%BE%80.wav
 wang3zhan4-nwj26.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BD%91%E7%AB%99.wav
-wang4ji4-nyzob.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BF%98%E8%AE%B0.wav
 wei1xian3-d6o6w.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%B1%E9%99%A9.wav
 wei2chi2-2mc7l.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%BB%B4%E6%8C%81.wav
 wei2hu4-yf75x.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%BB%B4%E6%8A%A4.wav
 wei4dao5-gnebn.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%91%B3%E9%81%93.wav
-wei4le5-lhoig.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%BA%E4%BA%86.wav
 wei4sheng1jian1-mfhan.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%AB%E7%94%9F%E9%97%B4.wav
 wen1du4-qlvts.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B8%A9%E5%BA%A6.wav
 wen2zhang1-1hjmn.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%96%87%E7%AB%A0.wav
@@ -625,7 +544,6 @@ wu3can1-hkjd5.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/Fil
 wu3fan4-l82rs.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%8D%88%E9%A5%AD.wav
 wu3qi4-n4p80.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%AD%A6%E5%99%A8.wav
 wu4hui4-awzvq.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%AF%E4%BC%9A.wav
-xi1gua1-ifo6e.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A5%BF%E7%93%9C.wav
 xi1yin3-da2ep.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%90%B8%E5%BC%95.wav
 xi3huan5-y9pf6.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%96%9C%E6%AC%A2.wav
 xi4lie4-pvoxo.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%B3%BB%E5%88%97.wav
@@ -643,21 +561,18 @@ xian4zai4-g6ns5.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/F
 xiang1fan3-0cjbk.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9B%B8%E5%8F%8D.wav
 xiang1jiao1-f1c3j.mp3	Shangkuanlc	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E9%A6%99%E8%95%89.wav
 xiang1tong2-de9g9.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9B%B8%E5%90%8C.wav
-xiang1xin4-uoibv.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%9B%B8%E4%BF%A1.wav
 xiao1xi5-eh33s.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B6%88%E6%81%AF.wav
 xiao3chi1-zprhm.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B0%8F%E5%90%83.wav
 xiao3huo3zi5-f9egq.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B0%8F%E4%BC%99%E5%AD%90.wav
 xiao3jie5-811wx.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B0%8F%E5%A7%90.wav
 xiao3shuo1-rpo2w.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B0%8F%E8%AF%B4.wav
 xiao3wang2-lvib2.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B0%8F%E7%8E%8B.wav
-xiao3xin1-ri5h1.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%B0%8F%E5%BF%83.wav
 xiao4guo3-xfoli.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%88%E6%9E%9C.wav
 xiao4hua5-pfywv.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%AC%91%E8%AF%9D.wav
 xie4xie5-f1lp0.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%B0%A2%E8%B0%A2.wav
 xin1lang2-vfqtj.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%96%B0%E9%83%8E.wav
 xin1niang2-okq2q.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%96%B0%E5%A8%98.wav
 xin1qing2-amvry.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BF%83%E6%83%85.wav
-xin1wen2-bucrq.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%96%B0%E9%97%BB.wav
 xin4feng1-2icud.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%A1%E5%B0%81.wav
 xin4xi1-4lplc.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%A1%E6%81%AF.wav
 xin4xin1-4588g.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%A1%E5%BF%83.wav
@@ -665,19 +580,14 @@ xin4yong4ka3-r0u22.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9
 xing1fen4-psqqo.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%B4%E5%A5%8B.wav
 xing1qi1-jvwn9.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%9F%E6%9C%9F.wav
 xing1qi1ri4-hvbop.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%9F%E6%9C%9F%E6%97%A5.wav
-xing1qi1tian1-x3qtl.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%98%9F%E6%9C%9F%E5%A4%A9.wav
 xing1xing5-noqhj.mp3	KhawaChenpo	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-KhawaChenpo-%E6%98%9F%E6%98%9F.wav
-xing2dong4-wer0r.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A1%8C%E5%8A%A8.wav
 xing4bie2-xddsx.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%A7%E5%88%AB.wav
 xing4fu2-4gxgd.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B9%B8%E7%A6%8F.wav
 xing4ge2-y7780.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%A7%E6%A0%BC.wav
-xiong1di4-0v67v.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%85%84%E5%BC%9F.wav
 xiu1li3-7yhly.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BF%AE%E7%90%86.wav
 xu1qiu2-46b48.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%9C%80%E6%B1%82.wav
-xu1yao4-7uj9h.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%9C%80%E8%A6%81.wav
 xu3duo1-hjrz0.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AE%B8%E5%A4%9A.wav
 xuan3shou3-uc8yw.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%80%89%E6%89%8B.wav
-xuan3ze2-evb47.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%80%89%E6%8B%A9.wav
 xue2qi1-kqz1v.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%AD%A6%E6%9C%9F.wav
 xue2sheng5-beqqa.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%AD%A6%E7%94%9F.wav
 xue2xi2-6xrzg.mp3	Shangkuanlc	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%AD%A6%E4%B9%A0.wav
@@ -691,51 +601,39 @@ yan2xu4-cymff.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/Fi
 yan2zhong4-jll57.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%A5%E9%87%8D.wav
 yan3chu1-4h3op.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%BC%94%E5%87%BA.wav
 yan3jing4-vdilc.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9C%BC%E9%95%9C.wav
-yan3jing5-na2ia.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%9C%BC%E7%9D%9B.wav
 yan3yuan2-0bygj.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%BC%94%E5%91%98.wav
 yang2guang1-fiex3.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%98%B3%E5%85%89.wav
 yang2rou4-9q47z.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BE%8A%E8%82%89.wav
 yang3cheng2-2u42h.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%85%BB%E6%88%90.wav
 yang4zi5-4s7ev.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%A0%B7%E5%AD%90.wav
-yao1qiu2-z49kl.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%A6%81%E6%B1%82.wav
 yao4shi5-c9j2v.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%A6%81%E6%98%AF.wav
 ye3xu3-v7d4v.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B9%9F%E8%AE%B8.wav
 ye4zi5-2jgqz.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%B6%E5%AD%90.wav
 yi1dian3r5-y3uim.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%80%E7%82%B9%E5%84%BF.wav
-yi1ding4-kcvte.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%80%E5%AE%9A.wav
 yi1fu5-x00cc.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%A1%A3%E6%9C%8D.wav
 yi1gong4-myou6.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%80%E5%85%B1.wav
-yi1hui4r5-co2la.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%80%E4%BC%9A%E5%84%BF.wav
 yi1kao4-zs9zi.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E4%BE%9D%E9%9D%A0.wav
 yi1qi3-xfub4.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%80%E8%B5%B7.wav
 yi1qie4-e6x2a.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%80%E5%88%87.wav
 yi1xie1-0cpzo.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%80%E4%BA%9B.wav
-yi1yang4-0majg.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%80%E6%A0%B7.wav
-yi1zhi2-enca9.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%B8%80%E7%9B%B4.wav
 yi2chan3-eg6pk.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%81%97%E4%BA%A7.wav
 yi2chuan2-k3nkf.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E9%81%97%E4%BC%A0.wav
-yi3qian2-8i6v5.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E4%BB%A5%E5%89%8D.wav
 yi3wei2-yz02m.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BB%A5%E4%B8%BA.wav
 yi3zi5-s9rq9.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%A4%85%E5%AD%90.wav
 yi4jian4-qrvr3.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%84%8F%E8%A7%81.wav
 yi4shu4-9d7ma.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%89%BA%E6%9C%AF.wav
 yin1ci3-2nnd9.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%9B%A0%E6%AD%A4.wav
 yin1wei4-qymdn.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%9B%A0%E4%B8%BA.wav
-yin1yue4-v1ey2.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%9F%B3%E4%B9%90.wav
 yin3dao3-mil18.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%BC%95%E5%AF%BC.wav
 yin3qi3-z6b8t.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%BC%95%E8%B5%B7.wav
 yin4xiang4-kowsl.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8D%B0%E8%B1%A1.wav
-ying1gai1-xe8t4.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BA%94%E8%AF%A5.wav
 ying1wen2-0hgzp.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%8B%B1%E6%96%87.wav
 ying1yong3-lydkn.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%8B%B1%E5%8B%87.wav
-ying1yu3-wheze.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%8B%B1%E8%AF%AD.wav
-ying3xiang3-dfytb.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%BD%B1%E5%93%8D.wav
 yong3gan3-nxdcf.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8B%87%E6%95%A2.wav
 yong3yuan3-6vq2x.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%B0%B8%E8%BF%9C.wav
 you1dian3-6m2u1.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BC%98%E7%82%B9.wav
 you1xiu4-5z293.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BC%98%E7%A7%80.wav
 you2ju2-6o6wf.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%82%AE%E5%B1%80.wav
-you2xi4-keu7c.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%B8%B8%E6%88%8F.wav
 you2yong3-7rv41.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%B8%B8%E6%B3%B3.wav
 you2yu2-ol79j.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%94%B1%E4%BA%8E.wav
 you3hao3-not6a.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%8B%E5%A5%BD.wav
@@ -745,12 +643,10 @@ you4bian5-admsj.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/F
 yu2shi4-b5t7w.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%BA%8E%E6%98%AF.wav
 yu3fa3-wh3q2.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%AD%E6%B3%95.wav
 yu3yan2-2txal.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%AF%AD%E8%A8%80.wav
-yu4dao4-mxlqc.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%81%87%E5%88%B0.wav
 yu4xi2-s29u6.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%A2%84%E4%B9%A0.wav
 yuan2gong1-kfcpl.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%91%98%E5%B7%A5.wav
 yuan2lai2-nqft8.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8E%9F%E6%9D%A5.wav
 yuan2yin1-wvnm0.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8E%9F%E5%9B%A0.wav
-yuan4yi4-2dof6.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%84%BF%E6%84%8F.wav
 yue1hui4-358c1.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%BA%A6%E4%BC%9A.wav
 yue4du2-5kj3r.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%98%85%E8%AF%BB.wav
 yue4liang5-abfda.mp3	KhawaChenpo	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-KhawaChenpo-%E6%9C%88%E4%BA%AE.wav
@@ -767,12 +663,9 @@ ze2ren4-irkk9.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(
 zeng1jia1-zimn9.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%A2%9E%E5%8A%A0.wav
 zhan4dou4-vomwb.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%88%98%E6%96%97.wav
 zhao2huo3-u1pr5.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9D%80%E7%81%AB.wav
-zhao4gu5-s0zfp.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%85%A7%E9%A1%BE.wav
-zhao4pian4-9drzz.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%85%A7%E7%89%87.wav
 zhe4li3-76hrd.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%BF%99%E9%87%8C.wav
 zhen1zheng4-vinbl.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E7%9C%9F%E6%AD%A3.wav
 zheng1fu2-6i9kx.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%BE%81%E6%9C%8D.wav
-zheng3ge4-ytdi6.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%95%B4%E4%B8%AA.wav
 zheng3li3-k78yy.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%95%B4%E7%90%86.wav
 zheng4chang2-p9vll.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AD%A3%E5%B8%B8.wav
 zheng4hao3-l8jw4.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%AD%A3%E5%A5%BD.wav
@@ -789,7 +682,6 @@ zhi2wu4-k6gdw.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(
 zhi2ye4-nitbm.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%81%8C%E4%B8%9A.wav
 zhi3hao3-b28dz.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%AA%E5%A5%BD.wav
 zhi3yao4-p8g3b.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%8F%AA%E8%A6%81.wav
-zhi3you3-uv0vy.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%8F%AA%E6%9C%89.wav
 zhi4li4-aaofa.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E6%99%BA%E5%8A%9B.wav
 zhi4liang4-wguwg.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%B4%A8%E9%87%8F.wav
 zhi4shao3-jrqtk.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%87%B3%E5%B0%91.wav
@@ -798,35 +690,26 @@ zhong1guo2-07anr.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q919
 zhong1jie4-aaju0.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%AD%E4%BB%8B.wav
 zhong1wen2-fk0vk.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%AD%E6%96%87.wav
 zhong1wu3-5iyzk.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E4%B8%AD%E5%8D%88.wav
-zhong1yu2-thmyy.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E7%BB%88%E4%BA%8E.wav
 zhong3zi5-a1wjj.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E7%A7%8D%E5%AD%90.wav
 zhong4dian3-fub5e.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%87%8D%E7%82%B9.wav
 zhong4shi4-ylun0.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E9%87%8D%E8%A7%86.wav
-zhong4yao4-8vets.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E9%87%8D%E8%A6%81.wav
 zhou1nian2-b5jyo.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%91%A8%E5%B9%B4.wav
 zhou1wei2-xxowr.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%91%A8%E5%9B%B4.wav
 zhu3yi5-ux128.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%BB%E6%84%8F.wav
 zhu4ming2-hrrzh.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%91%97%E5%90%8D.wav
-zhu4yi4-k7knz.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%B3%A8%E6%84%8F.wav
 zhuan1men2-plypl.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%93%E9%97%A8.wav
 zhuan1ye4-j77kp.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E4%B8%93%E4%B8%9A.wav
 zhuan3yi2-vpbk5.mp3	Fake estate	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E8%BD%AC%E7%A7%BB.wav
 zhun3que4-fwp3o.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%86%E7%A1%AE.wav
 zhun3shi2-hsxnb.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%87%86%E6%97%B6.wav
 zhuo1zi5-zxu6k.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%A1%8C%E5%AD%90.wav
-zi4dian3-xiln2.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E5%AD%97%E5%85%B8.wav
-zi4ji3-w8cgn.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%87%AA%E5%B7%B1.wav
 zi4mu3-uydhl.mp3	Shangkuanlc	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q727694_(cmn)-Shangkuanlc-%E5%AD%97%E6%AF%8D.wav
 zi4ran2-ovlo7.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%87%AA%E7%84%B6.wav
 zi4xin4-o9fiy.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E8%87%AA%E4%BF%A1.wav
 zi4xing2che1-0totb.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E8%87%AA%E8%A1%8C%E8%BD%A6.wav
-zi4you2-wa5ug.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%87%AA%E7%94%B1.wav
 zong3jie2-4ivoo.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%80%BB%E7%BB%93.wav
-zu2qiu2-8fiur.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E8%B6%B3%E7%90%83.wav
 zui3ba5-8thvq.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%98%B4%E5%B7%B4.wav
 zui4hao3-mborf.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E6%9C%80%E5%A5%BD.wav
-zui4hou4-3gd8x.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%9C%80%E5%90%8E.wav
-zui4jin4-u10wx.mp3	Jouketou	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Jouketou-%E6%9C%80%E8%BF%91.wav
 zuo2tian1-wml91.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E6%98%A8%E5%A4%A9.wav
 zuo3bian5-keqe0.mp3	Luilui6666	CC BY-SA 4.0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Luilui6666-%E5%B7%A6%E8%BE%B9.wav
 zuo3you4-eswe0.mp3	CanonNi	CC0	https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-CanonNi-%E5%B7%A6%E5%8F%B3.wav

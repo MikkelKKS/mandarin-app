@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { openLicence, plainArtist, textOfTitle } from './real-audio';
+import { blockedSpeaker, openLicence, plainArtist, textOfTitle } from './real-audio';
 
 describe('real speakers from Wikimedia Commons (IDEAS #20)', () => {
   it('reads the Chinese text from Lingua Libre and older Commons titles', () => {
@@ -18,5 +18,11 @@ describe('real speakers from Wikimedia Commons (IDEAS #20)', () => {
     expect(plainArtist('')).toBe('unknown');
     expect(plainArtist('Speaker: <a>CanonNi</a> Recorder: CanonNi')).toBe('CanonNi');
     expect(plainArtist('Speaker: A Recorder: B')).toBe('A, recorded by B');
+  });
+
+  it('leaves out blocked speakers (Jouketou)', () => {
+    expect(blockedSpeaker('File:LL-Q9192 (cmn)-Jouketou-办法.wav')).toBe(true);
+    expect(blockedSpeaker('File:x.wav', 'Jouketou, recorded by Y')).toBe(true);
+    expect(blockedSpeaker('File:LL-Q9192 (cmn)-CanonNi-办法.wav', 'CanonNi')).toBe(false);
   });
 });
