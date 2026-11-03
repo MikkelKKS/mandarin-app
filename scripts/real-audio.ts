@@ -19,6 +19,7 @@
  *
  *   npx tsx scripts/real-audio.ts --count     # coverage only, no downloads
  *   npx tsx scripts/real-audio.ts             # download what's missing
+ *   npx tsx scripts/real-audio.ts --max-level 4   # only HSK 1–4 (and course) words this run
  *
  * Needs ffmpeg (on PATH, or the `ffmpeg-static` npm package installed with
  * `npm i --no-save ffmpeg-static`). Polite to Wikimedia: one request at a time.
@@ -162,6 +163,8 @@ async function convert(input: string, out: string): Promise<number> {
 
 async function main() {
   const countOnly = process.argv.includes('--count');
+  // --max-level 4: only words up to that HSK level this run (most useful first; the rest next time).
+  const maxLevel = Number(process.argv[process.argv.indexOf('--max-level') + 1]) || 9;
   const index: RealIndex = existsSync(INDEX)
     ? JSON.parse(readFileSync(INDEX, 'utf8'))
     : { _about: '', words: {}, skipped: {}, rejected: [] };
@@ -182,7 +185,7 @@ async function main() {
   for (const list of byText.values()) list.sort((a, b) => Number(!a.startsWith('File:LL-')) - Number(!b.startsWith('File:LL-')) || a.localeCompare(b));
 
   const todo = words.filter(
-    (w) => [...w.hanzi].length >= 2 && sameHanzi.get(w.hanzi) === 1 && byText.has(w.hanzi) && !index.words[w.id] && !index.skipped[w.id] && !index.rejected.includes(w.id),
+    (w) => w.level <= maxLevel && [...w.hanzi].length >= 2 && sameHanzi.get(w.hanzi) === 1 && byText.has(w.hanzi) && !index.words[w.id] && !index.skipped[w.id] && !index.rejected.includes(w.id),
   );
   console.log(`${byText.size} recorded texts; ${todo.length} words to look at (${Object.keys(index.words).length} done already).`);
   const meta = await infos(todo.flatMap((w) => byText.get(w.hanzi)!));
@@ -224,7 +227,7 @@ async function main() {
       console.log(`${n} / ${go.length}`);
       save(index);
     }
-    await sleep(1500);
+    await sleep(3000); // Wikimedia rate-limits fast downloaders (HTTP 429)
   }
   save(index);
   console.log(`Done: ${Object.keys(index.words).length} words with a real recording.`);
