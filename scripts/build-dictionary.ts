@@ -79,15 +79,16 @@ export function parseCedict(text: string, hsk: Map<string, number>): string[] {
   return out;
 }
 
-async function main() {
+/** Downloads (or reads `from`) CC-CEDICT and writes public/dict. Also used by scripts/ensure-dictionary.ts. */
+export async function buildDictionary(from = fromFile) {
   let buf: Buffer;
-  if (fromFile) buf = readFileSync(fromFile);
+  if (from) buf = readFileSync(from);
   else {
     const res = await fetch(URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     buf = Buffer.from(await res.arrayBuffer());
   }
-  const text = (fromFile && !fromFile.endsWith('.gz') ? buf : gunzipSync(buf)).toString('utf8');
+  const text = (from && !from.endsWith('.gz') ? buf : gunzipSync(buf)).toString('utf8');
   const hskFile = join(root, 'content/hsk/hsk-levels.json');
   const hsk = new Map<string, number>();
   if (existsSync(hskFile)) {
@@ -102,7 +103,7 @@ async function main() {
 }
 
 if (process.argv[1]?.endsWith('build-dictionary.ts')) {
-  main().catch((e) => {
+  buildDictionary().catch((e) => {
     // Never break the deploy over the dictionary: the app shows a friendly message instead.
     console.warn(`Dictionary download failed (${(e as Error).message}); the app will run without it.`);
     process.exit(0);

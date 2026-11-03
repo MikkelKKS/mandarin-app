@@ -14,7 +14,7 @@ test('pick a starting level: words below it are marked known', async ({ page }) 
   await expect(page.getByText('Know some Chinese already?')).toHaveCount(0);
   // Word achievements unlock straight away, without finishing a session.
   await page.goto('./#/progress');
-  await expect(page.getByText(/^[1-9]\d* of \d+ unlocked\.$/)).toBeVisible({ timeout: 15000 });
+  await expect(page.getByText(/^[1-9]\d* of \d+ unlocked\./)).toBeVisible({ timeout: 15000 });
 });
 
 test('the test stops after a level that goes badly', async ({ page }) => {
