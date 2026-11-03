@@ -93,6 +93,10 @@ export function vocabModules(root: string): Plugin {
       const shortFile = join(root, 'content', 'data', 'short-glosses.json');
       if (existsSync(shortFile)) this.addWatchFile(shortFile);
       const short: Record<string, string> = existsSync(shortFile) ? JSON.parse(readFileSync(shortFile, 'utf8')).glosses ?? {} : {};
+      // Real speakers' recordings (scripts/real-audio.ts, IDEAS #20): the speaker per word id, '' if none.
+      const realFile = join(root, 'content', 'data', 'real-audio.json');
+      if (existsSync(realFile)) this.addWatchFile(realFile);
+      const real: Record<string, { speaker: string }> = existsSync(realFile) ? JSON.parse(readFileSync(realFile, 'utf8')).words ?? {} : {};
       const rows = words.map((w) => [
         w.id,
         w.hanzi,
@@ -106,6 +110,7 @@ export function vocabModules(root: string): Plugin {
         w.legacy?.[0] ?? '',
         w.pos ?? [],
         short[w.id] ?? '',
+        real[w.id]?.speaker ?? '',
       ]);
       return `export default ${JSON.stringify(rows)};`;
     },

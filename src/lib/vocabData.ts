@@ -2,6 +2,7 @@
  * The HSK 3.0 word list in the app, loaded on demand (its own cached chunk).
  */
 import { useEffect, useState } from 'react';
+import { registerRealAudio } from './realAudio';
 
 export interface VocabRow {
   id: string;
@@ -19,14 +20,17 @@ export interface VocabRow {
   pos?: string[];
   /** A short everyday meaning for exercises (HSK 1–4); the full CC-CEDICT glosses stay in `gloss`. */
   short?: string;
+  /** Speaker of a real (human) recording from Wikimedia Commons, played before Azure (IDEAS #20). */
+  real?: string;
 }
 
 let cache: Promise<VocabRow[]> | null = null;
 
 export function loadVocab(): Promise<VocabRow[]> {
-  cache ??= import('virtual:vocab').then((m) =>
-    m.default
-      .map(([id, hanzi, pinyin, gloss, level, order, examples, azure, course, pos, short]) => ({
+  cache ??= import('virtual:vocab').then((m) => {
+    registerRealAudio(m.default.map((r): [string, string] => [r[0], r[11]]));
+    return m.default
+      .map(([id, hanzi, pinyin, gloss, level, order, examples, azure, course, pos, short, real]) => ({
         id,
         hanzi,
         pinyin,
@@ -38,9 +42,10 @@ export function loadVocab(): Promise<VocabRow[]> {
         course: course || undefined,
         pos,
         short: short || undefined,
+        real: real || undefined,
       }))
-      .sort((a, b) => a.order - b.order),
-  );
+      .sort((a, b) => a.order - b.order);
+  });
   return cache;
 }
 

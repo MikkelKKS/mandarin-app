@@ -10,6 +10,7 @@ import { lookup, sentences } from '../content';
 import { currentSettings } from './settings';
 import { courseIdFor, newWordId } from './review';
 import { fixedVersion } from './audioReports';
+import { realSpeaker, realUrl } from './realAudio';
 
 const BASE = import.meta.env.BASE_URL;
 let el: HTMLAudioElement | null = null;
@@ -132,6 +133,9 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   const addUrl = (url: string, r: number) => {
     if (!missing.has(url) && !tries.some((t) => t.url === url)) tries.push({ url, rate: r });
   };
+  // A real speaker's recording of the word comes first, when there is one (IDEAS #20).
+  const real = realOf(id);
+  if (real) addUrl(realUrl(real), slow ? SLOW_WORD_RATE : rate);
   if (slow && isSentence) addUrl(azureUrl(id, true), 1);
   addUrl(azureUrl(id, false), slow ? (isSentence ? AZURE_SLOW_RATE : SLOW_WORD_RATE) : rate);
   // Then the older recordings, until every item has an Azure one (HSK words use their course id).
@@ -214,8 +218,15 @@ export function speak(text: string, opts: PlayOptions = {}): Promise<void> {
 export function preload(ids: string[], voice?: Voice): void {
   void voice;
   for (const id of ids) {
-    fetch(azureUrl(id, false), { priority: 'low' } as RequestInit).catch(() => {});
+    const real = realOf(id);
+    fetch(real ? realUrl(real) : azureUrl(id, false), { priority: 'low' } as RequestInit).catch(() => {});
   }
+}
+
+/** The HSK word id of an item with a real speaker's recording (course ids map to their HSK word). */
+export function realOf(id: string): string | undefined {
+  const w = newWordId(id) ?? id;
+  return realSpeaker(w) ? w : undefined;
 }
 
 /** Download all audio for a set of items in the background, for offline use. */
@@ -223,6 +234,8 @@ export async function prefetchForOffline(ids: string[]): Promise<void> {
   const urls = ids.flatMap((id) => {
     const list = [azureUrl(id, false), urlFor(id, 'f', false)];
     if (sentences.has(id)) list.push(azureUrl(id, true));
+    const real = realOf(id);
+    if (real) list.unshift(realUrl(real));
     return list;
   });
   const cache = typeof caches !== 'undefined' ? await caches.open('audio') : null;

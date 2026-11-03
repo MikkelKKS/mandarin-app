@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for p in public/audio-sample public/audio/az content/data/azure-usage.json content/data/azure-audio.json content/data/azure-overrides.json; do if [ -e "$p" ]; then git add "$p"; fi; done
+          for p in public/audio-sample public/audio/az content/data/azure-usage.json content/data/azure-audio.json content/data/azure-overrides.json public/audio/real content/data/real-audio.json; do if [ -e "$p" ]; then git add "$p"; fi; done
           if git diff --cached --quiet; then
             echo "Nothing new"
             echo "CHANGED=0" >> "$GITHUB_ENV"

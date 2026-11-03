@@ -33,6 +33,7 @@ import {
   type VoiceKey,
 } from './azure-tts-lib';
 import { SAMPLE } from './azure-sample';
+import { rejectReal } from './real-audio';
 import { createHash } from 'node:crypto';
 
 const ROOT = join(import.meta.dirname, '..');
@@ -395,22 +396,28 @@ async function reports(env: { key: string; region: string }, usage: Usage): Prom
       continue;
     }
     const voice: VoiceKey = reportVoice(r.data.count ?? 1, male.has(it.id));
-    const hints = hintSpans(it.hanzi, it.pinyin, { all: true });
-    const files = [{ file: `${it.id}.mp3`, slow: false }];
-    if (it.sentence && existsSync(join(AUDIO_DIR, `${it.id}.slow.mp3`))) files.push({ file: `${it.id}.slow.mp3`, slow: true });
-    for (const f of files) {
-      const body = voiceBody({ hanzi: it.hanzi, hints, format, slow: f.slow });
-      write(join(AUDIO_DIR, f.file), await synth(env, usage, voice, body));
-      manifest[f.file] = fingerprint(voice, body);
+    // A word with a real speaker's recording played that one, so that's the clip reported:
+    // drop it (the Azure recording plays from then on) instead of re-recording Azure.
+    const droppedReal = !it.sentence && rejectReal(it.id);
+    if (!droppedReal) {
+      const hints = hintSpans(it.hanzi, it.pinyin, { all: true });
+      const files = [{ file: `${it.id}.mp3`, slow: false }];
+      if (it.sentence && existsSync(join(AUDIO_DIR, `${it.id}.slow.mp3`))) files.push({ file: `${it.id}.slow.mp3`, slow: true });
+      for (const f of files) {
+        const body = voiceBody({ hanzi: it.hanzi, hints, format, slow: f.slow });
+        write(join(AUDIO_DIR, f.file), await synth(env, usage, voice, body));
+        manifest[f.file] = fingerprint(voice, body);
+      }
+      overrides[it.id] = { voice, all: true };
     }
-    overrides[it.id] = { voice, all: true };
     const now = Date.now();
     const patch = await fetch(`${url}/rest/v1/audio_reports?user_id=eq.${r.user_id}&id=eq.${encodeURIComponent(r.id)}`, {
       method: 'PATCH',
       headers,
       body: JSON.stringify({ data: { ...r.data, status: 'fixed', fixedAt: now, updatedAt: now }, updated_at: now }),
     });
-    console.log(`Re-recorded ${it.hanzi} (${{ m: 'Yunxi', f: 'Xiaoxiao', fm: 'Xiaoxiao Multilingual' }[voice]}, spelled out)${patch.ok ? '' : `; couldn't mark it fixed (HTTP ${patch.status})`}.`);
+    const what = droppedReal ? `Dropped the real speaker's recording of ${it.hanzi} (Azure plays now)` : `Re-recorded ${it.hanzi} (${{ m: 'Yunxi', f: 'Xiaoxiao', fm: 'Xiaoxiao Multilingual' }[voice]}, spelled out)`;
+    console.log(`${what}${patch.ok ? '' : `; couldn't mark it fixed (HTTP ${patch.status})`}.`);
   }
   writeFileSync(MANIFEST_FILE, JSON.stringify(manifest, Object.keys(manifest).sort(), 0) + '\n');
   writeFileSync(OVERRIDES_FILE, JSON.stringify(overrides, null, 1) + '\n');

@@ -3,7 +3,8 @@ import { createPortal } from 'react-dom';
 import { VolumeSlider } from '../../components/VolumeSlider';
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import type { Voice } from '../../content/audioPaths';
-import { play } from '../../lib/audio';
+import { play, realOf } from '../../lib/audio';
+import { realSpeaker } from '../../lib/realAudio';
 import { markSyllable, type Tone } from '../../lib/pinyin';
 import { liveToneMarks } from '../../lib/pinyinLive';
 import { TONE_CLASS } from '../../components/Hanzi';
@@ -52,6 +53,8 @@ export function AudioControls({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   const big = size === 'lg';
+  const real = realOf(id);
+  const speaker = real && realSpeaker(real);
   return (
     <div className="flex flex-col items-center gap-3">
     <div className="flex items-center justify-center gap-4">
@@ -87,6 +90,12 @@ export function AudioControls({
         </button>
       )}
     </div>
+    {/* A person, not Azure (IDEAS #20); the turtle slows the same recording down. */}
+    {speaker && (
+      <p className="text-xs text-muted" title={`Recorded by ${speaker} (Wikimedia Commons). Credits in Settings → About.`}>
+        Real speaker · {speaker}
+      </p>
+    )}
     <VolumeSlider />
     </div>
   );
