@@ -98,6 +98,8 @@ export interface PlayOptions {
   slow?: boolean;
   /** Playback speed for the speed ladder (0.75×, 1×, 1.2×); pitch is kept. Ignored when `slow`. */
   rate?: number;
+  /** A recording to try before the item's own ones (falls back to them if it's missing). */
+  url?: string;
 }
 
 export function stop(): void {
@@ -133,7 +135,9 @@ export function play(id: string, opts: PlayOptions = {}): Promise<void> {
   const addUrl = (url: string, r: number) => {
     if (!missing.has(url) && !tries.some((t) => t.url === url)) tries.push({ url, rate: r });
   };
-  // A real speaker's recording of the word comes first, when there is one (IDEAS #20).
+  // A specific recording asked for (e.g. one of the Tone Perfect speakers, IDEAS #21) comes first.
+  if (opts.url) addUrl(opts.url, slow ? SLOW_WORD_RATE : rate);
+  // Then a real speaker's recording of the word, when there is one (IDEAS #20).
   const real = realOf(id);
   if (real) addUrl(realUrl(real), slow ? SLOW_WORD_RATE : rate);
   if (slow && isSentence) addUrl(azureUrl(id, true), 1);

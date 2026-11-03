@@ -23,7 +23,7 @@ import { ActionBar, AudioControls, Options, PinyinInput, Prompt } from '../exerc
 import { useCheck } from '../lesson/context';
 import type { Outcome } from '../lesson/types';
 import type { RatingName } from '../../lib/review';
-import { GAVE_UP_TONES, otherToneUrl, patternLabel, TONE_WORD, type GymItem } from '../tonegym/model';
+import { GAVE_UP_TONES, otherToneUrl, patternLabel, TONE_WORD, wordVoices, type GymItem } from '../tonegym/model';
 import { meaningMatches } from './meaning';
 import { Speak } from './Speak';
 import { LookUp } from '../../components/LookUp';
@@ -158,6 +158,15 @@ export function SessionItem(p: ItemProps) {
 }
 
 /** The word inside its sentence (homophones and particles), when the item has one. */
+/**
+ * Six real speakers (Tone Perfect) for a one-syllable word heard on its own
+ * (IDEAS #21): high-variability listening on the words you learn. None when
+ * the word is heard inside a sentence.
+ */
+function useWordVoices(w: VocabRow, c: InContext | null) {
+  return useMemo(() => (c ? undefined : wordVoices(w.pinyin, import.meta.env.BASE_URL)), [w.pinyin, c]);
+}
+
 function useContext(data: VocabData, w: VocabRow, ctx?: string): InContext | null {
   return useMemo(() => {
     if (!ctx) return null;
@@ -286,7 +295,7 @@ function ChooseMeaning({ data, word, options, ctx, onResult }: ItemProps & { wor
   return (
     <div>
       <Prompt>{c ? 'What does the marked word mean here?' : 'What does it mean?'}</Prompt>
-      <AudioControls id={c?.sentence.id ?? w.id} ladder />
+      <AudioControls id={c?.sentence.id ?? w.id} ladder voices={useWordVoices(w, c)} />
       {c && <ContextLine c={c} className="mt-5" />}
       <div className="mt-8">
         <Options
@@ -325,7 +334,7 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
   return (
     <div>
       <Prompt>{c ? 'What does the marked word mean here?' : 'What does it mean?'}</Prompt>
-      <AudioControls id={c?.sentence.id ?? w.id} ladder />
+      <AudioControls id={c?.sentence.id ?? w.id} ladder voices={useWordVoices(w, c)} />
       {c && <ContextLine c={c} className="mt-5" />}
       {!shown ? (
         <div className="mt-8">
@@ -448,7 +457,7 @@ function Dictation({ data, word, ctx, onResult, onUnknown }: ItemProps & { word:
   return (
     <div>
       <Prompt>{c ? 'Listen, then type the missing word with tones' : 'Type what you hear, with tones'}</Prompt>
-      <AudioControls id={c?.sentence.id ?? w.id} ladder />
+      <AudioControls id={c?.sentence.id ?? w.id} ladder voices={useWordVoices(w, c)} />
       {c && <ContextLine c={c} blank className="mt-5" />}
       <TypeBox {...t} onUnknown={onUnknown} />
     </div>

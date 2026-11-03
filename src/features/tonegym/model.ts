@@ -326,6 +326,18 @@ export function otherToneUrl(item: Pick<GymItem, 'bases'>, given: Tone[], heardU
   return tpUrl(base, item.bases[0], given[0], heard && speakers.includes(heard) ? heard : speakers[0]);
 }
 
+/**
+ * Every Tone Perfect speaker saying a one-syllable word (IDEAS #21), for listening
+ * questions: [] for longer words, the neutral tone, erhua, or syllables Tone
+ * Perfect doesn't have.
+ */
+export function wordVoices(pinyin: string, base: string): Array<{ url: string; speaker: string }> {
+  const syl = parsePinyin(pinyin);
+  if (!syl || syl.length !== 1 || syl[0].tone < 1 || syl[0].tone > 4 || syl[0].erhua) return [];
+  const speakers = TP[syl[0].base]?.[String(syl[0].tone)] ?? [];
+  return speakers.map((sp) => ({ url: tpUrl(base, syl[0].base, syl[0].tone, sp), speaker: TP_SPEAKERS[sp] ?? sp }));
+}
+
 export function syllableUrl(pinyin: string, base: string, rng: () => number = Math.random): string | null {
   const syl = parsePinyin(pinyin);
   if (!syl || syl.length !== 1 || syl[0].tone < 1 || syl[0].tone > 4 || syl[0].erhua) return null;

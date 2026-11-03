@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { VocabRow } from '../../lib/vocabData';
-import { buildPool, candidates, errorRate, pairConfusions, patternStats, pickRound, toItem, toneMatrix, weakestPair } from './model';
+import { buildPool, candidates, errorRate, pairConfusions, patternStats, pickRound, toItem, toneMatrix, weakestPair, wordVoices } from './model';
 
 const w = (id: string, hanzi: string, pinyin: string, extra: Partial<VocabRow> = {}): VocabRow => ({
   id,
@@ -158,5 +158,19 @@ describe('otherToneUrl (hear your guess)', () => {
     const url = otherToneUrl({ bases: ['ma'] }, [3], heard, '/');
     expect(url).toMatch(/audio\/tp\/ma3_\w+\.mp3$/);
     expect(otherToneUrl({ bases: ['ma', 'ma'] }, [3, 3], heard, '/')).toBeNull();
+  });
+});
+
+describe('six real voices for one-syllable words (IDEAS #21)', () => {
+  it('gives every Tone Perfect speaker for a one-syllable word in tones 1–4', () => {
+    const v = wordVoices('hǎo', '/b/');
+    expect(v).toHaveLength(6);
+    expect(v[0]).toEqual({ url: '/b/audio/tp/hao3_f1.mp3', speaker: 'Woman 1' });
+    expect(new Set(v.map((x) => x.speaker)).size).toBe(6);
+  });
+  it('has none for longer words, the neutral tone or erhua', () => {
+    expect(wordVoices('nǐ hǎo', '/')).toEqual([]);
+    expect(wordVoices('ma', '/')).toEqual([]);
+    expect(wordVoices('nǎr', '/')).toEqual([]);
   });
 });

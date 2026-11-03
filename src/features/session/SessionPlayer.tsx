@@ -34,7 +34,7 @@ import { loadVocabData, meaningOf, type VocabData } from '../../lib/vocabData';
 import { LessonCtx, type LessonApi } from '../lesson/context';
 import { GradeChip } from '../lesson/GradeChip';
 import type { Outcome } from '../lesson/types';
-import { patternStats, pickRound, sessionPool } from '../tonegym/model';
+import { patternStats, pickRound, sessionPool, wordVoices } from '../tonegym/model';
 import { GRAMMAR_CARD } from '../../lib/grammarTopics';
 import { topicById } from '../../lib/grammarData';
 import { ContextLine, SessionItem, type ItemResult } from './items';
@@ -457,6 +457,9 @@ function Feedback({
   const own = 'sentence' in item && item.sentence.startsWith('m-') && !data.sentences.get(item.sentence)?.azure;
   const audioId = own ? null : (result.context?.id ?? ('word' in item ? item.word : 'sentence' in item ? item.sentence : null));
   const a = o.answer ?? (audioId || own ? answerFor(item, data) : undefined);
+  // A one-syllable word on its own: each replay is another of the six real speakers (IDEAS #21).
+  const replayVoices = audioId && !result.context?.id && data.byId.get(audioId) ? wordVoices(data.byId.get(audioId)!.pinyin, import.meta.env.BASE_URL) : [];
+  const replay = () => void (audioId && play(audioId, replayVoices.length ? { url: replayVoices[Math.floor(Math.random() * replayVoices.length)].url } : {}));
   // Look up: the sentence the word was heard in, else the answer's characters (or the reading item's).
   const lookup = (result.context?.id && data.sentences.get(result.context.id)?.hanzi) || a?.hanzi || result.lookup || '';
   return (
@@ -510,7 +513,7 @@ function Feedback({
               {a.english && <p className="opacity-80">{a.english}</p>}
             </div>
             {audioId && (
-              <button onClick={() => void play(audioId)} aria-label="Play again" className="rounded-full bg-surface/70 p-3 active:scale-90">
+              <button onClick={replay} aria-label="Play again" className="rounded-full bg-surface/70 p-3 active:scale-90">
                 <Speaker className="h-6 w-6" />
               </button>
             )}

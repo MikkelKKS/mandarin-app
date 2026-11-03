@@ -28,6 +28,7 @@ export function AudioControls({
   autoPlay = true,
   size = 'lg',
   ladder = false,
+  voices,
 }: {
   id: string;
   voice?: Voice;
@@ -35,12 +36,22 @@ export function AudioControls({
   size?: 'lg' | 'sm';
   /** Show the 0.75× → 1× → 1.2× speed button. */
   ladder?: boolean;
+  /** Several real speakers for this item (Tone Perfect, IDEAS #21): one at random, and "Another voice". */
+  voices?: Array<{ url: string; speaker: string }>;
 }) {
   const [playing, setPlaying] = useState(false);
   const [step, setStep] = useState(1);
-  const go = (slow?: boolean, rate?: number) => {
+  const [vi, setVi] = useState(() => Math.floor(Math.random() * (voices?.length || 1)));
+  const v = voices?.length ? voices[vi % voices.length] : undefined;
+  const go = (slow?: boolean, rate?: number, url = v?.url) => {
     setPlaying(true);
-    play(id, { voice, slow, rate }).finally(() => setPlaying(false));
+    play(id, { voice, slow, rate, url }).finally(() => setPlaying(false));
+  };
+  const another = () => {
+    if (!voices || voices.length < 2) return;
+    const next = (vi + 1) % voices.length;
+    setVi(next);
+    go(false, undefined, voices[next].url);
   };
   useReplay(() => go());
   const did = useRef(false);
@@ -54,7 +65,7 @@ export function AudioControls({
   }, [id]);
   const big = size === 'lg';
   const real = realOf(id);
-  const speaker = real && realSpeaker(real);
+  const speaker = v?.speaker ?? (real && realSpeaker(real));
   return (
     <div className="flex flex-col items-center gap-3">
     <div className="flex items-center justify-center gap-4">
@@ -90,10 +101,15 @@ export function AudioControls({
         </button>
       )}
     </div>
-    {/* A person, not Azure (IDEAS #20); the turtle slows the same recording down. */}
+    {/* A person, not Azure (IDEAS #20, #21); the turtle slows the same recording down. */}
     {speaker && (
-      <p className="text-xs text-muted" title={`Recorded by ${speaker} (Wikimedia Commons). Credits in Settings → About.`}>
-        Real speaker · {speaker}
+      <p className="flex items-center gap-3 text-xs text-muted" title={v ? 'Tone Perfect, Michigan State University Libraries' : `Recorded by ${speaker} (Wikimedia Commons). Credits in Settings → About.`}>
+        <span>Real speaker · {speaker}</span>
+        {voices && voices.length > 1 && (
+          <button type="button" onClick={another} className="-my-2 px-2 py-3 text-sm font-medium text-jade">
+            Another voice
+          </button>
+        )}
       </p>
     )}
     <VolumeSlider />
