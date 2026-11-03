@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { billedChars, hintSpans, monthKey, remaining, sapiPhones, ssml, voiceBody } from './azure-tts-lib';
+import { billedChars, hintSpans, monthKey, remaining, reportVoice, sapiPhones, ssml, voiceBody } from './azure-tts-lib';
 
 describe('Azure TTS helpers', () => {
   it('counts Chinese characters twice and markup once, as Azure bills', () => {
@@ -40,6 +40,13 @@ describe('Azure TTS helpers', () => {
     const x = ssml('m', '你好');
     expect(x).toContain('zh-CN-YunxiNeural');
     expect(x).not.toContain('express-as');
+    expect(ssml('fm', '你好')).toContain('zh-CN-XiaoxiaoMultilingualNeural');
+  });
+  it('re-records a reported clip in Xiaoxiao Multilingual, then plain Xiaoxiao; male lines stay Yunxi', () => {
+    expect(reportVoice(1, false)).toBe('fm');
+    expect(reportVoice(2, false)).toBe('f');
+    expect(reportVoice(3, false)).toBe('f');
+    expect(reportVoice(1, true)).toBe('m');
   });
   it('stops before the monthly free quota', () => {
     const now = new Date(Date.UTC(2026, 9, 27));

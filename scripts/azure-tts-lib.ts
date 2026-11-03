@@ -6,9 +6,21 @@
 import { pinyin as pinyinPro } from 'pinyin-pro';
 import { alignToHanzi, hanziOnly, isHanzi, parsePinyin, syllableToNumeric } from '../src/lib/pinyin';
 
-/** Female and male voice. Yunxi replaced Yunjian, which mispronounced too many sentences (owner, 27 Oct). */
-export const VOICES = { f: 'zh-CN-XiaoxiaoNeural', m: 'zh-CN-YunxiNeural' } as const;
+/**
+ * Female and male voice. Yunxi replaced Yunjian, which mispronounced too many sentences (owner, 27 Oct).
+ * `fm` is Xiaoxiao on the newer multilingual model, used for re-recording reported clips (owner, 3 Nov).
+ */
+export const VOICES = { f: 'zh-CN-XiaoxiaoNeural', m: 'zh-CN-YunxiNeural', fm: 'zh-CN-XiaoxiaoMultilingualNeural' } as const;
 export type VoiceKey = keyof typeof VOICES;
+
+/**
+ * Voice for re-recording a reported clip: first report → Xiaoxiao Multilingual,
+ * reported again → plain Xiaoxiao (both spelled out). Male lines stay Yunxi.
+ */
+export function reportVoice(count: number, male: boolean): VoiceKey {
+  if (male) return 'm';
+  return count >= 2 ? 'f' : 'fm';
+}
 
 /** Free tier: 500,000 billed characters a month. Stop a little before it. */
 export const MONTHLY_QUOTA = 500_000;

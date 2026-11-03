@@ -25,6 +25,7 @@ import {
   monthKey,
   hintSpans,
   remaining,
+  reportVoice,
   ssml,
   voiceBody,
   type HintFormat,
@@ -348,8 +349,10 @@ async function bulk(env: { key: string; region: string } | null, usage: Usage, m
 
 /**
  * Re-record items reported as sounding wrong (the app's "Report bad audio").
- * First report: Xiaoxiao again with every word's pronunciation spelled out.
- * Reported again: the other voice (Yunxi). Reads and updates the Supabase
+ * First report: Xiaoxiao Multilingual (the same speaker on Azure's newer model,
+ * the owner's other favourite in the 3 Nov voice test) with every word's
+ * pronunciation spelled out. Reported again: plain Xiaoxiao, spelled out.
+ * Lines only a male character speaks stay Yunxi. Reads and updates the Supabase
  * audio_reports table with the service key (GitHub secret SUPABASE_SERVICE_KEY).
  */
 async function reports(env: { key: string; region: string }, usage: Usage): Promise<void> {
@@ -384,13 +387,14 @@ async function reports(env: { key: string; region: string }, usage: Usage): Prom
   const format = await probeHintFormat(env, usage);
   const manifest: Record<string, string> = existsSync(MANIFEST_FILE) ? JSON.parse(readFileSync(MANIFEST_FILE, 'utf8')) : {};
   const overrides = loadOverrides();
+  const male = maleLines();
   for (const r of open) {
     const it = byId.get(r.id);
     if (!it) {
       console.warn(`Report for unknown item ${r.id} (${r.data.hanzi}): skipped.`);
       continue;
     }
-    const voice: VoiceKey = (r.data.count ?? 1) >= 2 ? 'm' : 'f';
+    const voice: VoiceKey = reportVoice(r.data.count ?? 1, male.has(it.id));
     const hints = hintSpans(it.hanzi, it.pinyin, { all: true });
     const files = [{ file: `${it.id}.mp3`, slow: false }];
     if (it.sentence && existsSync(join(AUDIO_DIR, `${it.id}.slow.mp3`))) files.push({ file: `${it.id}.slow.mp3`, slow: true });
@@ -406,7 +410,7 @@ async function reports(env: { key: string; region: string }, usage: Usage): Prom
       headers,
       body: JSON.stringify({ data: { ...r.data, status: 'fixed', fixedAt: now, updatedAt: now }, updated_at: now }),
     });
-    console.log(`Re-recorded ${it.hanzi} (${voice === 'm' ? 'Yunxi' : 'Xiaoxiao, spelled out'})${patch.ok ? '' : `; couldn't mark it fixed (HTTP ${patch.status})`}.`);
+    console.log(`Re-recorded ${it.hanzi} (${{ m: 'Yunxi', f: 'Xiaoxiao', fm: 'Xiaoxiao Multilingual' }[voice]}, spelled out)${patch.ok ? '' : `; couldn't mark it fixed (HTTP ${patch.status})`}.`);
   }
   writeFileSync(MANIFEST_FILE, JSON.stringify(manifest, Object.keys(manifest).sort(), 0) + '\n');
   writeFileSync(OVERRIDES_FILE, JSON.stringify(overrides, null, 1) + '\n');
