@@ -189,7 +189,7 @@ export function Speak({ data, word, onResult, onNoMic }: { data: VocabData; word
             ).map(([r, label, hint]) => (
               <button key={r} onClick={() => grade(r)} className="flex h-16 flex-col items-center justify-center rounded-2xl border border-line bg-surface font-semibold active:scale-95">
                 {label}
-                <span className="text-[11px] font-normal text-muted">{hint}</span>
+                <span className="text-xs font-normal text-muted">{hint}</span>
               </button>
             ))}
           </div>

@@ -43,18 +43,18 @@ export function LibraryView() {
           autoCapitalize="off"
           autoCorrect="off"
           spellCheck={false}
-          className="h-13 w-full rounded-2xl border border-line bg-surface pl-12 pr-4 text-[1.0625rem] shadow-sm outline-none transition-colors placeholder:text-muted focus:border-jade"
+          className="h-13 w-full rounded-2xl border border-line bg-surface pl-12 pr-4 text-lg shadow-sm outline-none transition-colors placeholder:text-muted focus:border-jade"
         />
       </form>
 
-      <h2 className="mb-2 mt-6 px-1 text-xs font-semibold uppercase tracking-wide text-muted">Practise</h2>
+      <h2 className="label mb-2 mt-6 px-1">Practise</h2>
       <ul className="group-list">
         <Row to="conversations" glyph="对话" title="Conversations" detail={conv ? `${units.length} units of everyday dialogues. You know ${conv.known} of their ${conv.total} words.` : `${units.length} units of everyday dialogues`} />
         <Row to="read" glyph="故事" title="Stories" detail={`${stories.length} short stories, read aloud`} />
         <Row to="grammar" glyph="语法" title="Grammar" detail={`${TOPICS.length} topics on how sentences are built, with practice`} />
         <Row to="music" glyph="音乐" title="Music" detail="Mandarin songs at your level, from Spotify" />
       </ul>
-      <h2 className="mb-2 mt-5 px-1 text-xs font-semibold uppercase tracking-wide text-muted">Look up</h2>
+      <h2 className="label mb-2 mt-5 px-1">Look up</h2>
       <ul className="group-list">
         <Row to="words" glyph="词汇" title="HSK words" detail={started !== null && vocab ? `${started.toLocaleString('en-GB')} of ${vocab.length.toLocaleString('en-GB')} started. Browse them, or move words between stages.` : 'Every word by level'} />
         <Row to="dictionary" glyph="词典" title="Dictionary" detail="Characters, pinyin or English, with sentence breakdown" />
@@ -67,7 +67,7 @@ function Row({ to, glyph, title, detail }: { to: string; glyph: string; title: s
   return (
     <li>
       <button onClick={() => go(to)} className="flex w-full items-center gap-4 px-4 py-3.5 text-left transition-colors hover:bg-sunk/50">
-        <span className="han flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sunk text-[15px] font-medium text-ink" lang="zh-CN" aria-hidden>
+        <span className="han flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sunk text-base font-medium text-ink" lang="zh-CN" aria-hidden>
           {glyph}
         </span>
         <span className="min-w-0 flex-1">

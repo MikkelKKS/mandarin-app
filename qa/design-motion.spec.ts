@@ -52,6 +52,8 @@ async function toQuestion(page: Page) {
       const b = page.getByRole('button', { name, disabled: false }).first();
       if (await b.isVisible().catch(() => false)) {
         await b.click();
+        // Wait for the feedback sheet's exit before looking again (see qa/design.spec.ts).
+        if (name === 'Continue') await expect(page.getByRole('status').getByRole('button', { name: 'Continue' })).toBeHidden();
         break;
       }
     }
@@ -87,6 +89,7 @@ for (const motion of ['full', 'reduced'] as const) {
       await setVerdict(page, 'wrong');
       await record(page, `${base}/answer-wrong`, () => answerNow(page));
       await page.getByRole('button', { name: 'Continue' }).first().click();
+      await expect(page.getByRole('status').getByRole('button', { name: 'Continue' })).toBeHidden();
       await toQuestion(page);
       await setVerdict(page, 'correct');
       await record(page, `${base}/answer-right`, () => answerNow(page));

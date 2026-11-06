@@ -71,7 +71,7 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
             </span>
           </p>
         ) : (
-        <p className="anim-up mt-2 text-center text-[0.9375rem] text-muted [animation-delay:360ms]">
+        <p className="anim-up mt-2 text-center text-base text-muted [animation-delay:360ms]">
           {game.streak.todayDone ? `Daily goal reached. ${game.streak.current}-day streak.` : `${Math.max(0, game.goal - game.streak.todayXp)} XP to today's goal`}
         </p>
         )

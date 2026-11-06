@@ -190,7 +190,7 @@ export function ContextLine({ c, blank = false, className = '' }: { c: Parts & {
     <div className={`py-hero text-center ${className}`}>
       {pinyin && <PinyinContext c={c} blank={blank} />}
       {han && (
-        <p className={`han leading-relaxed ${pinyin ? 'mt-1 text-[1.2em]' : 'text-[1.5em]'}`} lang="zh-CN">
+        <p className={`han leading-relaxed ${pinyin ? 'mt-1 font-normal' : 'text-[1.5em]'}`} lang="zh-CN">
           {han.before}
           {blank ? (
             <span className="mx-1 inline-block w-10 border-b-2 border-ink align-baseline" aria-label={pinyin ? undefined : 'missing word'} aria-hidden={pinyin || undefined} />
@@ -399,7 +399,7 @@ export function SelfGrade({ onGrade, suggest }: { onGrade: (r: RatingName) => vo
             className={`flex h-16 flex-col items-center justify-center rounded-2xl border font-semibold transition active:scale-95 ${suggest === o.r ? 'border-jade bg-jade-soft' : 'border-line bg-surface'}`}
           >
             {o.label}
-            <span className="text-[11px] font-normal text-muted">
+            <span className="text-xs font-normal text-muted">
               <span className="hidden sm:inline">{i + 1} · </span>
               {o.hint}
             </span>

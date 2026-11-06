@@ -188,7 +188,7 @@ export function MusicView() {
               className={`rounded-xl border px-1 py-2 text-sm font-medium ${filters.band === b ? 'border-jade bg-jade text-jade-ink' : 'border-line bg-surface'}`}
             >
               {b === 'any' ? 'All' : BAND[b].label}
-              {b !== 'any' && all && <span className="block text-[11px] font-normal opacity-80 tabular-nums">{counts[b]}</span>}
+              {b !== 'any' && all && <span className="block text-xs font-normal opacity-80 tabular-nums">{counts[b]}</span>}
             </button>
           ))}
         </div>
@@ -342,7 +342,7 @@ function SongRow({ r, byId }: { r: RankedSong; byId: Map<string, VocabRow> }) {
           <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${b.cls}`}>{b.label}</span>
           <span className="mt-0.5 block text-xs tabular-nums text-muted">you know {Math.floor(r.score.knownShare * 100)}%</span>
           <span className="block text-xs tabular-nums text-muted">{r.score.newWords ? `${r.score.newWords} new word${r.score.newWords === 1 ? '' : 's'}` : 'no new words'}</span>
-          {r.song.synced && <span className="block text-[11px] text-muted">timed lyrics</span>}
+          {r.song.synced && <span className="block text-xs text-muted">timed lyrics</span>}
         </span>
       </button>
     </li>

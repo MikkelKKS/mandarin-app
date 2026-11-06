@@ -65,7 +65,7 @@ const GROUPS: [string, string][] = [
 function Group({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <div id={id} className="scroll-mt-16">
-      <h2 className="mt-14 border-t border-line pt-6 text-xs font-semibold uppercase tracking-wider text-muted">{title}</h2>
+      <h2 className="label mt-14 border-t border-line pt-6">{title}</h2>
       <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-10 [&>section:first-child]:mt-4 lg:[&>section:nth-child(2)]:mt-4">{children}</div>
     </div>
   );
@@ -185,7 +185,7 @@ export function StatsView() {
               <div key={t.tone} className="rounded-xl bg-surface p-2">
                 <p className={`text-xs font-semibold ${TONE_TEXT[t.tone]}`}>{TONE_WORD[t.tone]}</p>
                 <p className="text-lg font-semibold tabular-nums">{pct(t.rate)}</p>
-                <p className="text-[10px] text-muted">{t.n} heard</p>
+                <p className="text-xs text-muted">{t.n} heard</p>
               </div>
             ))}
           </div>
@@ -258,7 +258,7 @@ export function StatsView() {
               return (
                 <li key={a.id} className={`card flex items-center gap-3 p-3 ${at ? '' : 'shadow-none'}`}>
                   <span
-                    className={`han flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[11px] font-medium ${at ? 'border-[1.5px] border-gold bg-amber-soft text-gold' : 'border border-line text-muted'}`}
+                    className={`han flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xs font-medium ${at ? 'border-[1.5px] border-gold bg-amber-soft text-gold' : 'border border-line text-muted'}`}
                     aria-hidden
                   >
                     {a.hanzi}

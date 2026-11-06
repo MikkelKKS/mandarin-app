@@ -9,6 +9,8 @@ async function step(page: Page): Promise<boolean> {
     const b = page.getByRole('button', { name }).first();
     if (await b.isVisible().catch(() => false)) {
       await b.click();
+      // The feedback sheet plays a short exit before the next question: wait until it is gone.
+      if (name === 'Continue') await expect(page.getByRole('status').getByRole('button', { name: 'Continue' })).toBeHidden();
       return true;
     }
     return false;

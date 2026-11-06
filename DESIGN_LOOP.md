@@ -1,0 +1,99 @@
+# Design loop log
+
+Memory of `/design-loop` (reviewers never read this file). Each loop: state block, scores per round, and what was changed.
+
+## Loop 1 (started 2026-11-06)
+
+```
+State: parked
+Round: 4
+Phase: show
+Max rounds: 4
+Best lowest: 7
+Rounds without progress: 1
+Confirming: no
+Notes: do a maximum of 4 loops (read as: at most 4 rounds)
+```
+
+| Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
+|-------|--------|------------|--------|--------|---------|--------|------|
+| 1 | 7 | 7 | 6.5 | 7 | 7 | 6.5 | start: main after design review 2026-11-06 |
+| 2 | 7.5 | 6.5 | 7 | 7 | 6.5 | 6.5 | colour and motion up after round 1; T and O down 0.5 (reviewer variance, nothing changed there) |
+| 3 | 7.5 | 7 | 7 | 7 | 7 | 7 | lowest up 6.5 → 7 (typography and overall back to 7) |
+| 4 | 7.5 | 7 | 7 | 7 | 7 | 7 | no change after round 3; stopped: max rounds (4) |
+
+### Round 1
+
+Scores (blind, shots blind-a7f844ecd):
+- Colour 7: coherent palette, real dark mode; light tone colours (T2, T3, T5) and gold under AA; dark borders/sheets muddy.
+- Typography 7: Instrument Sans + tone-coloured hero pinyin good; no type scale below the hero (~30 arbitrary sizes); Stats/Settings tiny and flat; PC chrome small.
+- Motion 6.5: one ease-out curve, good reduced motion; page scrolls under the thumb as the sheet opens (two movements at once); right vs wrong too quiet; no exits.
+- Layout 7: clear primary action, good pinned sheet, real PC columns; PC screens have different frames/left edges; phone Home dead lower third; Stats jump chips <44px and clipped on phone.
+- Overall 7: solid and coherent but generic; reward moments informative not rewarding; seal identity only at the edges; density drifts (Stats/Settings vs Home).
+
+Weakest points per reviewer:
+- Colour: tone colours fail AA on light · gold faint, pale ring track · dark lines 1.28:1, muddy wrong sheet.
+- Typography: no scale below hero · Stats/Settings tiny and flat · PC chrome too small.
+- Motion: scroll jump when the sheet opens · right/wrong feedback quiet · no exit animations, ad-hoc durations.
+- Layout: no shared PC frame · phone Home heavy top/dead bottom · Stats long, chips small.
+- Overall: rewards muted · seal identity confined · density drift.
+
+Plan (target: motion 6.5, then the 7s; P5 Home/PC-layout is rejected by Mikkel, so not used):
+- [x] (40c3d5449) Sheet without the page jump: scroll before the sheet's first paint (one movement), session header stays visible (sticky). Motion.
+- [x] (940dfe359) Sheet that enters in steps and leaves before the next question; +XP chip floats up and fades; shared duration tokens. Motion.
+- [x] (a3fa93d05) Readable tone colours, gold and visible control edges in light mode (same hues and meanings). Colour, typography.
+
+### Round 2
+
+Scores (blind, shots blind-2dde6bba9):
+- Colour 7.5: coherent, AA mostly met; dark primary is a glowing pastel mint; tone colours only just pass on tinted sheets; gold and T2 both ochre.
+- Typography 6.5: no real scale (9/10/10.5/11/13/15px plus Tailwind steps), text-sm everywhere; prompt competes with the pinyin; one word at three sizes in the feedback sheet.
+- Motion 7: shared tokens, stagger, exits, reduced motion fine; right/wrong still mostly colour; sheet grows after appearing; XP chip lingers.
+- Layout 7: consistent rhythm and sheet; mixed left/centre axes on exercises; Home empty areas (P5-type, rejected); Stats long.
+- Overall 6.5: identity is there; rewards still thin (grade admin line first on Right); Home duplicates numbers; Stats feels like another product.
+
+Weakest points per reviewer:
+- Colour: dark mint primary · tone colours near the floor on tinted sheets · edge/gold/T2 muddy.
+- Typography: no scale · pinyin not dominant / prompt competes · hanzi weight and tiny Stats labels.
+- Motion: right vs wrong alike · sheet drifts as it grows · XP chip lingers.
+- Layout: mixed axes on exercises · Home empty areas · Stats long and ragged on PC.
+- Overall: rewards thin · Home hierarchy · screens feel built at different times.
+
+Plan (lowest: typography 6.5 and overall 6.5; Home/Tone Gym layout ideas = Mikkel's rejected P5, not used):
+- [x] (784762e48) One type scale: nothing under 12px, arbitrary sizes folded into named steps, question prompt smaller so the pinyin wins. Typography.
+- [x] (5c3c815ad) Pinyin bigger and consistent: hero larger on phone and PC, the feedback sheet shows the sentence and the answer word at one size. Typography.
+- [x] (0a7c08361) Right answers feel like a reward: the sheet's title row shows +XP and the combo; on right answers the review-grade line moves under More (still one tap to change). Overall, motion.
+
+### Round 3
+
+Scores (blind, shots blind-f39af8c54):
+- Colour 7.5: coherent, nearly all AA; T5/T2 marginal on tinted sheets; gold/amber carry five meanings next to T2 orange; dark feedback surfaces dim.
+- Typography 7: hero pinyin is the star; answer sheet a flat ladder (verdict, sentence, word, gloss, grade all similar); Stats labels tiny and uniform, numbers not data-grade.
+- Motion 7: coherent and fast; page still moves ~32px when the sheet opens (the deliberate scroll that keeps the right option visible); option reaction and right reveal slow; right vs wrong still alike.
+- Layout 7: clear hierarchy, good sidebar; PC content edge differs per tab and Home is lopsided (P5-type, rejected); question screens use space badly.
+- Overall 7: clean and consistent; seal personality only at session end; progress not the hero on Home; Stats and matrix feel like data dumps.
+
+Weakest points per reviewer:
+- Colour: tints vs T5/T2 · dark feedback surfaces · gold overloaded.
+- Typography: Stats tiny/uniform · answer-sheet ladder flat · hanzi weight vs Latin.
+- Motion: jump on sheet open · slow option reaction · right/wrong alike.
+- Layout: PC content edge · phone Home rhythm · question screen space.
+- Overall: seal only at the edges · progress not the hero · Stats like documentation.
+
+Plan (all four 7s; Home/PC-shell layout ideas = Mikkel's rejected P5, not used; the scroll on sheet open stays because it keeps the right option visible, IDEAS #13):
+- [x] (807b30d3b) Faster, distinct answer reaction: the picked option reacts at once (right pops, wrong shakes), the right option lights up sooner after a wrong pick. Motion.
+- [x] (b40cd6f60) Answer sheet with clear roles: verdict smaller, the word to learn is the big line, the sentence and the meta lines quieter. Typography, overall.
+- [x] (11629acc1) Stats numbers that read as data: one small-caps label style for tile labels and section eyebrows, tabular numbers, larger Stats microtext, one-line matrix header. Typography, overall, layout.
+
+### Round 4
+
+Scores (blind, shots blind-0feea8bca):
+- Colour 7.5: disciplined palette, nearly all AA; T5/T2 at the limit on tinted sheets; T2 orange and gold too close; dark feedback sheets muddy; --line very faint.
+- Typography 7: short deliberate scale, pinyin hero reads well; Stats small text still uniform; grey neutral-tone syllables and the bordered target pill weaken the hero; card titles 18/20/24 too close.
+- Motion 7: coherent tokens, stagger, exits; right vs wrong still mainly colour; sheet fades over the options while the right one lights up; reduced motion snaps instead of fading.
+- Layout 7: one main action, consistent cards; PC content edge differs per tab and Home/Library/Settings leave empty space (P5-type, rejected); phone session bottom third empty.
+- Overall 7: clean and coherent but restrained; seal personality appears once; reward and progress understated (Home streak, Stats); width contradictions (deliberate: Quick big on phone, Deep big on PC).
+
+Stopped: max rounds (4). Lowest stuck at 7 for rounds 3–4.
+
+Mikkel chose **Stop** (2026-11-06): branch parked, nothing merged. The next /design-loop resumes from here.

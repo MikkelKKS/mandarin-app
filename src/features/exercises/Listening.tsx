@@ -159,7 +159,7 @@ export function ToneId({ ex }: { ex: Of<'tone-id'> }) {
                     aria-label={`Tone ${t.hint}`}
                   >
                     <span className="text-lg font-semibold">{t.tone === 5 ? '·' : markSyllable({ base: s.base, tone: t.tone })}</span>
-                    <span className="text-[11px] text-muted">{t.hint}</span>
+                    <span className="text-xs text-muted">{t.hint}</span>
                   </button>
                 );
               })}

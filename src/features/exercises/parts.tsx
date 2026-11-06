@@ -12,7 +12,7 @@ import { Speaker, Turtle } from '../../components/icons';
 import { useLesson, useNumberKeys, useReplay } from '../lesson/context';
 
 export function Prompt({ children }: { children: ReactNode }) {
-  return <h2 className="mb-5 text-lg font-semibold text-ink sm:text-xl">{children}</h2>;
+  return <h2 className="mb-5 text-lg font-semibold text-ink">{children}</h2>;
 }
 
 /**
@@ -81,7 +81,7 @@ export function AudioControls({
         type="button"
         onClick={() => go(true)}
         aria-label="Play slowly"
-        className={`flex items-center justify-center rounded-full border border-line bg-surface text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
+        className={`flex items-center justify-center rounded-full border border-edge bg-surface text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
       >
         <Turtle className={big ? 'h-7 w-7' : 'h-5 w-5'} />
       </button>
@@ -95,7 +95,7 @@ export function AudioControls({
           }}
           aria-label={`Play at ${LADDER[(step + 1) % LADDER.length]}× speed`}
           title="Speed ladder: 0.75× → 1× → 1.2×"
-          className={`flex items-center justify-center rounded-full border border-line bg-surface text-sm font-semibold tabular-nums text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
+          className={`flex items-center justify-center rounded-full border border-edge bg-surface text-sm font-semibold tabular-nums text-muted transition hover:border-muted hover:text-ink active:scale-90 ${big ? 'h-14 w-14' : 'h-11 w-11'}`}
         >
           {LADDER[step]}×
         </button>
@@ -158,12 +158,13 @@ export function optionClass(state: OptionState): string {
   switch (state) {
     case 'selected':
       return 'border-jade bg-jade-soft ring-1 ring-jade';
+    // Right and wrong change colour at once (no fade), then pop or shake.
     case 'right':
-      return 'border-jade bg-jade-soft anim-nudge';
+      return 'border-jade bg-jade-soft anim-nudge !duration-0';
     case 'wrong':
-      return 'border-cinnabar bg-cinnabar-soft anim-shake';
+      return 'border-cinnabar bg-cinnabar-soft anim-shake !duration-0';
     default:
-      return 'border-line bg-surface shadow-sm hover:border-muted';
+      return 'border-edge bg-surface shadow-sm hover:border-muted';
   }
 }
 
@@ -306,7 +307,7 @@ export function PinyinInput({
         inputMode="text"
         enterKeyHint="done"
         aria-label="Your answer in pinyin"
-        className="w-full rounded-2xl border border-line bg-surface px-4 py-4 text-xl outline-none transition-[border-color,box-shadow] duration-200 focus:border-jade focus:shadow-[0_0_0_4px_var(--jade-soft)] disabled:opacity-80"
+        className="w-full rounded-2xl border border-edge bg-surface px-4 py-4 text-xl outline-none transition-[border-color,box-shadow] duration-200 focus:border-jade focus:shadow-[0_0_0_4px_var(--jade-soft)] disabled:opacity-80"
       />
       <div className="mt-2 flex gap-2" aria-label="Tone marks">
         {TONE_KEYS.map((k) => (
@@ -316,7 +317,7 @@ export function PinyinInput({
             disabled={locked}
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => insert((v, c) => applyToneAt(v, c, k.tone))}
-            className={`h-11 flex-1 rounded-xl border border-line bg-surface text-xl font-semibold tabular-nums transition hover:border-muted active:scale-95 active:bg-jade-soft ${TONE_CLASS[k.tone]}`}
+            className={`h-11 flex-1 rounded-xl border border-edge bg-surface text-xl font-semibold tabular-nums transition hover:border-muted active:scale-95 active:bg-jade-soft ${TONE_CLASS[k.tone]}`}
             aria-label={`${k.name} on the last syllable`}
           >
             {k.label}
@@ -327,7 +328,7 @@ export function PinyinInput({
           disabled={locked}
           onMouseDown={(e) => e.preventDefault()}
           onClick={() => insert((v, c) => ({ value: v.slice(0, c) + 'ü' + v.slice(c), caret: c + 1 }))}
-          className="h-11 flex-1 rounded-xl border border-line bg-surface text-xl transition hover:border-muted active:scale-95 active:bg-jade-soft"
+          className="h-11 flex-1 rounded-xl border border-edge bg-surface text-xl transition hover:border-muted active:scale-95 active:bg-jade-soft"
           aria-label="Insert ü"
         >
           ü

@@ -16,6 +16,7 @@ import { Speaker } from '../../components/icons';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { SandhiNote } from '../../components/SandhiNote';
 import { sheetPadding, useSheetSpace } from '../../components/sheetSpace';
+import { useLeave } from '../../components/sheetLeave';
 import { db } from '../../db/db';
 import { comboMultiplier, xpFor, XP } from '../../lib/gamify';
 import { play, prefetchForOffline, stop } from '../../lib/audio';
@@ -333,12 +334,14 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
     [result],
   );
 
+  const [leaving, leave] = useLeave();
+
   // Keyboard: Enter checks or continues, space replays.
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        if (result) advance();
+        if (result) leave(advance);
         else checkRef.current?.();
       } else if (e.key === ' ' && (e.target as HTMLElement)?.tagName !== 'INPUT') {
         e.preventDefault();
@@ -364,7 +367,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
   return (
     <LessonCtx.Provider value={api}>
       <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8" style={sheetPadding()}>
-        <header className="relative flex items-center gap-3">
+        <header className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-bg/95 px-4 py-1 backdrop-blur">
           <button onClick={() => go(home)} aria-label="Leave the session (it's saved)" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted hover:bg-sunk">
             ✕
           </button>
@@ -381,7 +384,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           <span className="min-w-16 text-right text-sm font-semibold tabular-nums text-gold" aria-label={`${st.xp} XP this session`}>
             {st.xp} XP
           </span>
-          {gained !== null && (
+          {gained !== null && !result && (
             <span key={`${st.block}-${st.item}-${gained}`} className="anim-xp pointer-events-none absolute right-9 top-full z-30 mt-1 rounded-full bg-gold px-3 py-1 text-sm font-semibold text-ink shadow" aria-hidden>
               +{gained} XP
             </span>
@@ -416,7 +419,10 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           result={result}
           item={item!}
           data={data}
-          onContinue={advance}
+          onContinue={() => leave(advance)}
+          leaving={leaving}
+          xp={gained}
+          combo={st.combo}
           onOverride={override}
           grade={graded ? <GradeChip rating={graded.rating} onChange={(r) => void regradeAll([graded.card], r).then(() => setGraded({ ...graded, rating: r }))} /> : null}
         />
@@ -430,6 +436,9 @@ function Feedback({
   item,
   data,
   onContinue,
+  leaving = false,
+  xp = null,
+  combo = 0,
   onOverride,
   grade,
 }: {
@@ -437,6 +446,10 @@ function Feedback({
   item: SItem;
   data: VocabData;
   onContinue: () => void;
+  leaving?: boolean;
+  /** XP this answer earned and the combo after it: shown in the title row of a right answer. */
+  xp?: number | null;
+  combo?: number;
   onOverride?: () => void;
   grade: React.ReactNode;
 }) {
@@ -455,6 +468,8 @@ function Feedback({
         : ['bg-jade-soft', 'md:bg-jade-soft'];
   const sheet = useRef<HTMLDivElement>(null);
   useSheetSpace(sheet);
+  // A right answer leads with its reward; its review grade (rarely changed) waits under More.
+  const quietGrade = (o.verdict === 'correct' || o.verdict === 'typo') && !o.note?.startsWith('Moved back');
   const title = o.note?.startsWith('Moved back') ? "Here's the word" : o.verdict === 'wrong' ? 'Not quite' : o.verdict === 'almost' ? 'Almost' : o.verdict === 'typo' ? 'Right, with a typo' : 'Right';
   // A word heard in a sentence is replayed in that sentence.
   const own = 'sentence' in item && item.sentence.startsWith('m-') && !data.sentences.get(item.sentence)?.azure;
@@ -466,20 +481,28 @@ function Feedback({
   // Look up: the sentence the word was heard in, else the answer's characters (or the reading item's).
   const lookup = (result.context?.id && data.sentences.get(result.context.id)?.hanzi) || a?.hanzi || result.lookup || '';
   return (
-    <div ref={sheet} role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
-      <div className={`mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
-        <p className={`flex items-center gap-2 text-xl font-semibold ${o.note?.startsWith('Moved back') ? '' : o.verdict === 'wrong' ? 'text-cinnabar' : o.verdict === 'correct' || o.verdict === 'typo' ? 'text-jade' : ''}`}>
+    <div ref={sheet} role="status" aria-live="polite" className={`${leaving ? 'anim-sheet-out' : 'anim-rise'} fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
+      <div className={`sheet-stagger mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+        <p className={`flex items-center gap-2 text-lg font-semibold ${o.note?.startsWith('Moved back') ? '' : o.verdict === 'wrong' ? 'text-cinnabar' : o.verdict === 'correct' || o.verdict === 'typo' ? 'text-jade' : ''}`}>
           {o.note?.startsWith('Moved back') ? null : o.verdict === 'wrong' ? (
-            <svg className="anim-draw h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
+            <svg className="anim-draw h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
               <path d="M7 7l10 10M17 7L7 17" />
             </svg>
           ) : o.verdict === 'correct' || o.verdict === 'typo' ? (
-            <svg className="anim-draw h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <svg className="anim-draw h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M5 12.5l4.5 4.5L19 7.5" />
             </svg>
           ) : null}
           {title}
         </p>
+        {quietGrade && !!xp && (
+          <span className="flex shrink-0 items-center gap-1.5 text-sm font-semibold tabular-nums">
+            <span className="anim-pop rounded-full bg-amber-soft px-2.5 py-0.5 text-gold">+{xp} XP</span>
+            {combo >= 2 && <span className="anim-pop rounded-full bg-amber-soft px-2.5 py-0.5 text-gold [animation-delay:80ms]">{combo} in a row</span>}
+          </span>
+        )}
+        </div>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}
         {o.syllables && o.verdict !== 'correct' && <SyllableBreakdown syllables={o.syllables} extra={o.extra} />}
         {o.twin && (
@@ -500,7 +523,7 @@ function Feedback({
         )}
         {result.context && (
           <div className="mt-2">
-            <ContextLine c={result.context} className="!text-left !text-xl !font-normal" />
+            <ContextLine c={result.context} className="py-context !text-left" />
             {result.context.english && <p className="text-sm opacity-80">{result.context.english}</p>}
           </div>
         )}
@@ -517,14 +540,14 @@ function Feedback({
         {a && (
           <div className="mt-3 flex items-start gap-3">
             <div className="min-w-0 flex-1">
-              {a.pinyin && <TonePinyin pinyin={a.pinyin} className="block text-[1.75rem] leading-tight font-semibold" />}
+              {a.pinyin && <TonePinyin pinyin={a.pinyin} className="py-answer block" />}
               <SandhiNote hanzi={a.hanzi} pinyin={a.pinyin} />
               {showHanzi && a.hanzi && (
                 <span className="han block text-lg opacity-70" lang="zh-CN">
                   {a.hanzi}
                 </span>
               )}
-              {a.english && <p className="opacity-80">{a.english}</p>}
+              {a.english && <p className="mt-0.5 text-lg leading-snug">{a.english}</p>}
             </div>
             {audioId && (
               <button onClick={replay} aria-label="Play again" className="rounded-full bg-surface/70 p-3 active:scale-90">
@@ -533,7 +556,7 @@ function Feedback({
             )}
           </div>
         )}
-        {grade}
+        {!quietGrade && grade}
         <button ref={btn} onClick={onContinue} className="press mt-4 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
           Continue
         </button>
@@ -542,12 +565,13 @@ function Feedback({
             {result.panel ? "I was right" : "I was right: my answer means the same"}
           </button>
         )}
-        {((a && audioId) || lookup || ('word' in item && a?.hanzi)) && (
+        {((a && audioId) || lookup || ('word' in item && a?.hanzi) || (quietGrade && grade)) && (
           <details className="group mt-2 text-sm">
             <summary className="flex h-10 cursor-pointer list-none items-center justify-center gap-1 rounded-xl font-medium opacity-80 hover:opacity-100 [&::-webkit-details-marker]:hidden">
               More <span className="transition-transform group-open:rotate-180" aria-hidden>▾</span>
             </summary>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pb-1">
+              {quietGrade && grade && <div className="w-full text-center [&>*]:mt-0">{grade}</div>}
               {lookup && <LookUp text={lookup} />}
               {a && audioId &&
                 (result.context?.id ? (

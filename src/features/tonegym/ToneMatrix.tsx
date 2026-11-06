@@ -19,7 +19,10 @@ export function ToneMatrix({ logs, caption }: { logs: ToneLog[]; caption?: strin
           {caption && <caption className="mb-1 text-left text-xs text-muted">{caption}</caption>}
           <thead>
             <tr>
-              <th className="w-20 text-left text-xs font-medium text-muted">Right ↓ / You →</th>
+              <th className="w-20 text-left text-xs font-medium leading-tight text-muted">
+                <span className="block">Right ↓</span>
+                <span className="block">You →</span>
+              </th>
               {[1, 2, 3, 4, 5].map((g) => (
                 <th key={g} scope="col" className={`font-semibold ${TONE_TEXT[g]}`}>
                   {g === 5 ? '0' : g}

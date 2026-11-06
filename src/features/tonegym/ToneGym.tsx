@@ -18,6 +18,7 @@ import { useLive } from '../../lib/useLive';
 import { useVocab } from '../../lib/vocabData';
 import { buildPool, GAVE_UP_TONES, MODES, patternLabel, patternStats, pickRound, ROUND, TONE_WORD, toneMatrix, weakestPair, type GymItem, type GymMode } from './model';
 import { ToneMatrix } from './ToneMatrix';
+import { useLeave } from '../../components/sheetLeave';
 
 const BASE = import.meta.env.BASE_URL;
 const TONE_TEXT = ['', 'text-t1', 'text-t2', 'text-t3', 'text-t4', 'text-t5'];
@@ -176,6 +177,7 @@ function Round({ mode }: { mode: GymMode }) {
   );
 
   const next = useCallback(() => setI((x) => x + 1), []);
+  const [leaving, leave] = useLeave();
 
   // Keyboard: space replays, digits pick tones (1–4, 5 or 0 neutral), Enter continues.
   useEffect(() => {
@@ -186,7 +188,7 @@ function Round({ mode }: { mode: GymMode }) {
         void playSource(item, speaker);
       } else if (e.key === 'Enter' && answer) {
         e.preventDefault();
-        next();
+        leave(next);
       } else if (/^[0-5]$/.test(e.key) && !answer) {
         const t = (e.key === '0' ? 5 : Number(e.key)) as Tone;
         if (t === 5 && (item.tones.length === 1 || picked[0] === null)) return;
@@ -276,11 +278,11 @@ function Round({ mode }: { mode: GymMode }) {
                       aria-label={`${TONE_WORD[t]} tone`}
                       aria-pressed={chosen}
                       className={`flex h-16 flex-col items-center justify-center rounded-2xl border text-xl font-semibold transition active:scale-95 ${TONE_TEXT[t]} ${
-                        isRight ? 'border-jade bg-jade-soft anim-nudge' : isWrongPick ? 'border-cinnabar bg-cinnabar-soft anim-shake' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'
+                        isRight ? 'border-jade bg-jade-soft anim-nudge !duration-0' : isWrongPick ? 'border-cinnabar bg-cinnabar-soft anim-shake !duration-0' : chosen ? 'border-ink bg-surface' : 'border-edge bg-surface'
                       }`}
                     >
                       {markSyllable({ base: item!.bases[slot], tone: t })}
-                      <span className="text-[10px] font-normal text-muted">{t === 5 ? '0' : t}</span>
+                      <span className="text-xs font-normal text-muted">{t === 5 ? '0' : t}</span>
                     </button>
                   );
                 })}
@@ -295,12 +297,12 @@ function Round({ mode }: { mode: GymMode }) {
         </button>
       )}
 
-      {answer && <Feedback answer={answer} pool={pool} voice={answer.item.sources[speaker]?.speaker} onNext={next} onReplay={() => void playSource(answer.item, speaker)} />}
+      {answer && <Feedback answer={answer} pool={pool} voice={answer.item.sources[speaker]?.speaker} onNext={() => leave(next)} leaving={leaving} onReplay={() => void playSource(answer.item, speaker)} />}
     </div>
   );
 }
 
-function Feedback({ answer, pool, voice, onNext, onReplay }: { answer: Answer; pool: GymItem[]; voice?: string; onNext: () => void; onReplay: () => void }) {
+function Feedback({ answer, pool, voice, onNext, leaving = false, onReplay }: { answer: Answer; pool: GymItem[]; voice?: string; onNext: () => void; leaving?: boolean; onReplay: () => void }) {
   const { item, given, right } = answer;
   // What you thought you heard: the same syllables with your tones if a recording exists, else any word with that tone pattern.
   const yours = useMemo(() => {
@@ -314,8 +316,8 @@ function Feedback({ answer, pool, voice, onNext, onReplay }: { answer: Answer; p
     btn.current?.focus({ preventScroll: true });
   }, []);
   return (
-    <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 ${right ? 'bg-jade-soft' : 'bg-cinnabar-soft'}`}>
-      <div className="mx-auto max-w-xl">
+    <div role="status" aria-live="polite" className={`${leaving ? 'anim-sheet-out' : 'anim-rise'} fixed inset-x-0 bottom-0 z-20 rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 ${right ? 'bg-jade-soft' : 'bg-cinnabar-soft'}`}>
+      <div className="sheet-stagger mx-auto max-w-xl">
         <p className="text-xl font-semibold">{right ? 'Right' : given.length ? `It was ${patternLabel(item.pattern)}, not ${patternLabel(given.join('-'))}` : `It was ${patternLabel(item.pattern)}`}</p>
         <p className="mt-2 flex flex-wrap items-baseline gap-x-3">
           <TonePinyin pinyin={item.pinyin} className="text-2xl font-semibold" />
