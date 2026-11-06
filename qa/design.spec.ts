@@ -35,6 +35,9 @@ async function clickIf(page: Page, name: string | RegExp) {
   const b = page.getByRole('button', { name, disabled: false }).first();
   if (await b.isVisible().catch(() => false)) {
     await b.click();
+    // The feedback sheet plays a short exit before the next question: wait until it's gone,
+    // or the next step would click the leaving button again and wait for it forever.
+    if (name === 'Continue') await expect(page.getByRole('status').getByRole('button', { name: 'Continue' })).toBeHidden();
     return true;
   }
   return false;
