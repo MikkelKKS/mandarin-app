@@ -112,7 +112,7 @@ export function HomeView() {
         </div>
         {game && (
           <div className="w-16 shrink-0 text-right">
-            <p className="text-xs text-muted">Level</p>
+            <p className="label">Level</p>
             <p className="text-2xl font-semibold tabular-nums">{game.level.level}</p>
             <ProgressBar value={game.level.into / game.level.span} label="Progress to the next level" tone="gold" className="mt-1" />
             <p className="mt-0.5 whitespace-nowrap text-xs tabular-nums text-muted">

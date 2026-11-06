@@ -114,6 +114,8 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: 'ss01';
+  /* Numbers line up in columns everywhere (Stats, XP, counts, timers). */
+  font-variant-numeric: tabular-nums;
   text-rendering: optimizeLegibility;
 }
 
@@ -123,6 +125,16 @@ h1, h2, h3 {
 
 .han {
   font-family: var(--font-han);
+}
+
+/* One small label style: stat tile labels, section eyebrows, "Level". */
+.label {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
 }
 
 /* Pinyin is the star of an exercise: the sentence or word you're asked about. */

@@ -65,7 +65,7 @@ const GROUPS: [string, string][] = [
 function Group({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <div id={id} className="scroll-mt-16">
-      <h2 className="mt-14 border-t border-line pt-6 text-xs font-semibold uppercase tracking-wider text-muted">{title}</h2>
+      <h2 className="label mt-14 border-t border-line pt-6">{title}</h2>
       <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-10 [&>section:first-child]:mt-4 lg:[&>section:nth-child(2)]:mt-4">{children}</div>
     </div>
   );

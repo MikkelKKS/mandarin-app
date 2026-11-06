@@ -145,8 +145,8 @@ export function TableView({ caption, head, rows }: { caption: string; head: stri
 export function Tile({ label, value, note }: { label: string; value: string; note?: ReactNode }) {
   return (
     <div className="rounded-2xl bg-surface p-4 border border-line">
-      <p className="text-xs text-muted">{label}</p>
-      <p className="text-3xl font-semibold tabular-nums">{value}</p>
+      <p className="label">{label}</p>
+      <p className="mt-1 text-3xl font-semibold tabular-nums">{value}</p>
       {note && <p className="mt-0.5 text-xs text-muted">{note}</p>}
     </div>
   );
