@@ -12,6 +12,7 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-edge: var(--edge);
   --color-jade: var(--jade);
   --color-jade-ink: var(--jade-ink);
   --color-jade-soft: var(--jade-soft);
@@ -38,19 +39,21 @@
   --ink: #142120;
   --muted: #5b6866;
   --line: #dde4e1;
+  /* Edge of things you press (answer options, round audio buttons, quiet buttons): stronger than a separator. */
+  --edge: #83928e;
   --jade: #0e6b54;
   --jade-ink: #ffffff;
   --jade-soft: #dcede6;
-  --gold: #a8740e;
+  --gold: #8f6000;
   --cinnabar: #b3362a;
   --cinnabar-soft: #fbe8e5;
   --amber-soft: #f7eed8;
   /* Tone colours (Pleco-style): 1 red, 2 orange, 3 green, 4 blue, neutral grey. */
-  --t1: #d33a2c;
-  --t2: #c96a00;
-  --t3: #2f8a2a;
+  --t1: #c5301f;
+  --t2: #a65500;
+  --t3: #26781f;
   --t4: #1f62c4;
-  --t5: #7a848d;
+  --t5: #646e77;
   --shadow-sm: 0 1px 2px rgb(20 33 32 / 0.05);
   --shadow-md: 0 1px 2px rgb(20 33 32 / 0.04), 0 6px 20px -8px rgb(20 33 32 / 0.14);
   --shadow-lg: 0 2px 6px rgb(20 33 32 / 0.06), 0 24px 48px -16px rgb(20 33 32 / 0.25);
@@ -64,6 +67,7 @@
   --ink: #e4ece9;
   --muted: #94a39f;
   --line: #263231;
+  --edge: #5b6d6a;
   --jade: #43b08b;
   --jade-ink: #04221a;
   --jade-soft: #163a30;
@@ -171,7 +175,7 @@ h1, h2, h3 {
 .btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--jade) 92%, black); }
 .btn-quiet {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid var(--edge);
   color: var(--ink);
   font-weight: 500;
 }
