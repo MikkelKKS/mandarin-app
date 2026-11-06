@@ -5,7 +5,7 @@ Memory of `/design-loop` (reviewers never read this file). Each loop: state bloc
 ## Loop 1 (started 2026-11-06)
 
 ```
-State: stopped (max)
+State: parked
 Round: 4
 Phase: show
 Max rounds: 4
@@ -95,3 +95,5 @@ Scores (blind, shots blind-0feea8bca):
 - Overall 7: clean and coherent but restrained; seal personality appears once; reward and progress understated (Home streak, Stats); width contradictions (deliberate: Quick big on phone, Deep big on PC).
 
 Stopped: max rounds (4). Lowest stuck at 7 for rounds 3–4.
+
+Mikkel chose **Stop** (2026-11-06): branch parked, nothing merged. The next /design-loop resumes from here.
