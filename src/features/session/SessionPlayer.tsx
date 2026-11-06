@@ -211,6 +211,9 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
   const onResult = useCallback(
     (r: ItemResult) => {
       if (!item || result) return;
+      // Screenshot tests (qa/design.spec.ts) set this flag to show a right or a wrong answer on demand.
+      const forced = (window as unknown as { __e2eVerdict?: 'correct' | 'wrong' }).__e2eVerdict;
+      if (forced && item.kind !== 'intro' && item.kind !== 'read-intro') r = { ...r, outcome: { ...r.outcome, verdict: forced } };
       const o = r.outcome;
       const ms = Date.now() - shownAt.current;
       const isIntro = item.kind === 'intro' || item.kind === 'read-intro';

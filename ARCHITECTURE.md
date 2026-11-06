@@ -75,6 +75,8 @@ Shared pieces: `components/PageHeader.tsx`, `ProgressBar.tsx`, `WordPopover.tsx`
 
 Vitest for the pure logic (scoring, scheduling, knowledge, planning, placement, pitch tracking, content checks), Playwright for the main flows on phone and desktop sizes (`e2e/`). Both run before every deploy. Locally `npx playwright test` uses the installed Chrome, and `npm run build` first builds the git-ignored dictionary (`public/dict`) if it's missing (`scripts/ensure-dictionary.ts`).
 
+Design reviews (`/design-review`) use `qa/design.spec.ts` (main screens, light and dark, a session with a forced wrong and right answer via the test-only `window.__e2eVerdict` flag in `SessionPlayer`) and `qa/design-motion.spec.ts` (frame sequences from Chrome's screencast, normal and reduced motion). Both are skipped by the normal QA tour and run through `scripts/design-preview.ts`, which also makes the temporary preview worktrees (`.design-worktrees/`, without the audio files, sharing `node_modules`), runs them on port 4174 (`QA_PORT`) and writes before/after `compare.html` pages under the git-ignored `design-review/`. Scores are kept in `DESIGN_SCORES.md`.
+
 ## Still open
 
 - November's Azure quota: slow (0.7×) sentences, generated example sentences, grammar examples and story paragraphs.

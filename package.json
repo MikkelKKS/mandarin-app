@@ -16,7 +16,9 @@
     "hsk:fetch": "tsx scripts/fetch-hsk.ts",
     "dict:build": "tsx scripts/build-dictionary.ts",
     "vocab:build": "tsx scripts/build-vocab.ts",
-    "qa:screens": "playwright test -c playwright.qa.config.ts"
+    "qa:screens": "playwright test -c playwright.qa.config.ts",
+    "design:shots": "tsx scripts/design-preview.ts shots",
+    "design:motion": "tsx scripts/design-preview.ts motion"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",

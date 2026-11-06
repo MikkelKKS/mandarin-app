@@ -12,8 +12,10 @@ Improvement ideas for the app, from the idea panel (`/brainstorm`), polish revie
 
 You can also add your own idea as a new row with status `approved`. Rows with status `bug` were found by QA; change them to `approved` to get them fixed.
 
+**Design review:** run **/design-review** (optionally with notes, e.g. `/design-review focus on the session screen`). Three strict reviewers score colour, typography and motion from 1 to 10, and you get up to 5 proposals, each with a before/after page (`design-review/<date>/P<n>/compare.html`) to open in your browser. You answer each one in the terminal: **Approve** (built on main straight away), **Reject**, or **Decide later** (it lands here as `proposed`, type `design`; approve it later and /build builds it). The scores and decisions are kept in `DESIGN_SCORES.md`, so you can follow them over time.
+
 Statuses: `proposed` · `approved` · `rejected` · `building` · `done` · `bug`
-Type: `feature` (from /brainstorm) · `polish` (from /polish) · `bug` (from QA)
+Type: `feature` (from /brainstorm) · `polish` (from /polish) · `design` (from /design-review) · `bug` (from QA)
 Size: **S** = an hour or two · **M** = about a day · **L** = several days
 
 ## Ideas

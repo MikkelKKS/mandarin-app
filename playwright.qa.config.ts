@@ -10,14 +10,19 @@ import { mutedLaunch } from './e2e/launch';
  * Test browsers are always headless and muted (e2e/launch.ts), so QA runs make no sound on Mikkel's PC.
  */
 const launchOptions = mutedLaunch();
+// /design-review previews run a second preview server (a worktree build) next to the main one, so the port can change.
+const port = Number(process.env.QA_PORT ?? 4173);
+const url = `http://localhost:${port}/mandarin-app/`;
 export default defineConfig({
   testDir: 'qa',
+  // The design-review specs only run through scripts/design-preview.ts (npm run design:shots / design:motion).
+  testIgnore: process.env.DESIGN_REVIEW ? [] : ['**/design*.spec.ts'],
   timeout: 120_000,
   reporter: 'list',
-  use: { baseURL: 'http://localhost:4173/mandarin-app/', serviceWorkers: 'block', launchOptions },
+  use: { baseURL: url, serviceWorkers: 'block', launchOptions },
   webServer: {
-    command: 'npx vite preview --port 4173 --strictPort',
-    url: 'http://localhost:4173/mandarin-app/',
+    command: `npx vite preview --port ${port} --strictPort`,
+    url,
     reuseExistingServer: true,
   },
   projects: [

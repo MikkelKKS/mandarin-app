@@ -9,3 +9,5 @@ __pycache__
 public/dict
 .vocab-sources
 qa-screenshots
+design-review
+.design-worktrees
