@@ -418,3 +418,9 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - **Fonts are served by the app** (Fontsource packages, OFL) instead of Google Fonts: same fonts as before (Instrument Sans 400–700, Noto Sans SC 400/500/700), so they work offline from the first visit and nothing is requested from a font service.
   - Instrument Sans (latin + latin-ext, which has the pinyin tone marks) is in the main stylesheet and precached.
   - Noto Sans SC's stylesheet is ~150 KB gzipped (one @font-face per block of characters), so `src/fontsHan.ts` loads it with a dynamic import just after start-up instead of blocking the first paint (hanzi briefly use the system font). Its ~100 files per weight are not precached; the service worker caches each one the first time it's used (`fonts-han`).
+
+## 2026-11-06: Design review — Stats with a clear lead
+- After the top tiles and "When do I get there?", Stats has a sticky jump bar and four groups, each under a small uppercase heading over a hairline: **Words** (HSK levels, reviews coming up, review cards, reading), **Tones** (tones + matrix, tone twins), **Habits** (calendar, time, accuracy, XP) and **Scheduler & badges**. All content is kept; nothing is collapsed.
+- The jump bar uses buttons that scroll, not `#` links, because routes live in the URL hash.
+- On PC (lg) each group is two columns, and the Stats page gets the same wide container as Home (`Shell wide`, lg:max-w-5xl); the Words list (`#/progress/words`) keeps the normal width.
+- Headings: group h2, section h3, Reading's sub-parts h4.

@@ -111,7 +111,7 @@ export default function App() {
   }
   return (
     <WordPopupProvider>
-      <Shell active={page ?? ''}>
+      <Shell active={page ?? ''} wide={!page || (page === 'progress' && !arg)}>
         <div key={route.join('/')} className="anim-page">
           {body}
         </div>
@@ -143,7 +143,7 @@ const TAB_OF: Record<string, string> = {
   placement: '',
 };
 
-function Shell({ active, children }: { active: string; children: ReactNode }) {
+function Shell({ active, wide = false, children }: { active: string; wide?: boolean; children: ReactNode }) {
   const current = TAB_OF[active] ?? active;
   return (
     <div className="min-h-dvh md:flex">
@@ -170,7 +170,7 @@ function Shell({ active, children }: { active: string; children: ReactNode }) {
           );
         })}
       </nav>
-      <main className={`mx-auto w-full max-w-xl px-4 pb-28 pt-[max(1.5rem,env(safe-area-inset-top))] md:max-w-2xl md:px-8 md:pb-12 md:pt-12 ${active === '' ? 'lg:max-w-5xl' : ''}`}>{children}</main>
+      <main className={`mx-auto w-full max-w-xl px-4 pb-28 pt-[max(1.5rem,env(safe-area-inset-top))] md:max-w-2xl md:px-8 md:pb-12 md:pt-12 ${wide ? 'lg:max-w-5xl' : ''}`}>{children}</main>
     </div>
   );
 }

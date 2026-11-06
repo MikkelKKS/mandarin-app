@@ -43,8 +43,8 @@ export function ReviewCards() {
   const next = (queue?.newWords ?? []).slice(0, 6).map((id) => byId.get(id)).filter(Boolean);
 
   return (
-    <section className="mt-8" aria-label="Review cards">
-      <h2 className="text-lg font-semibold">Review cards</h2>
+    <section className="mt-10" aria-label="Review cards">
+      <h3 className="text-lg font-semibold">Review cards</h3>
       <p className="text-sm text-muted">
         Every word has a card for each skill, so a word you understand but can't type yet comes back for typing on its own.
       </p>
