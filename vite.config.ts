@@ -41,6 +41,9 @@ export default defineConfig({
         // App shell + bundled content JSON are precached; audio is cached as it's
         // used and prefetched for unlocked units (see src/lib/audio.ts).
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // Noto Sans SC comes as ~100 small files per weight (one per block of characters):
+        // they're cached as the browser asks for them (below) instead of all up front.
+        globIgnores: ['**/noto-sans-sc-*'],
         // The HSK word list and example sentences are big chunks, needed offline.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: 'index.html',
@@ -73,9 +76,9 @@ export default defineConfig({
             options: { cacheName: 'songs', expiration: { maxEntries: 3 }, cacheableResponse: { statuses: [200] } },
           },
           {
-            urlPattern: ({ url }) => url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com',
+            urlPattern: ({ url }) => url.pathname.includes('/assets/noto-sans-sc-'),
             handler: 'CacheFirst',
-            options: { cacheName: 'fonts', expiration: { maxEntries: 300 }, cacheableResponse: { statuses: [0, 200] } },
+            options: { cacheName: 'fonts-han', expiration: { maxEntries: 400 }, cacheableResponse: { statuses: [200] } },
           },
         ],
       },

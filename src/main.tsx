@@ -9,7 +9,14 @@ import { runLegacyMigration } from './lib/review';
 import { startAudioReports } from './lib/audioReports';
 import { loadSpeakPause, migrateSettings } from './lib/settings';
 import { migrateMyWords } from './features/dictionary/mywords';
+// Fonts are served by the app itself (Fontsource, OFL), not a font service, so they work offline from the first visit.
+import '@fontsource/instrument-sans/400.css';
+import '@fontsource/instrument-sans/500.css';
+import '@fontsource/instrument-sans/600.css';
+import '@fontsource/instrument-sans/700.css';
 import './index.css';
+
+void import('./fontsHan');
 
 registerSW({ immediate: true });
 void loadSpeakPause();

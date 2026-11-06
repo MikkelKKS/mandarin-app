@@ -500,7 +500,7 @@ function Feedback({
         )}
         {result.context && (
           <div className="mt-2">
-            <ContextLine c={result.context} className="!text-left !text-lg" />
+            <ContextLine c={result.context} className="!text-left !text-xl !font-normal" />
             {result.context.english && <p className="text-sm opacity-80">{result.context.english}</p>}
           </div>
         )}
@@ -517,7 +517,7 @@ function Feedback({
         {a && (
           <div className="mt-3 flex items-start gap-3">
             <div className="min-w-0 flex-1">
-              {a.pinyin && <TonePinyin pinyin={a.pinyin} className="block text-2xl font-semibold" />}
+              {a.pinyin && <TonePinyin pinyin={a.pinyin} className="block text-[1.75rem] leading-tight font-semibold" />}
               <SandhiNote hanzi={a.hanzi} pinyin={a.pinyin} />
               {showHanzi && a.hanzi && (
                 <span className="han block text-lg opacity-70" lang="zh-CN">

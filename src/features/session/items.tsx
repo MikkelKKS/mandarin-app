@@ -187,7 +187,7 @@ export function ContextLine({ c, blank = false, className = '' }: { c: Parts & {
   const han = c.han && sentenceScript !== 'pinyin' ? c.han : null;
   const pinyin = !han || sentenceScript === 'both';
   return (
-    <div className={`text-center text-xl ${className}`}>
+    <div className={`py-hero text-center ${className}`}>
       {pinyin && <PinyinContext c={c} blank={blank} />}
       {han && (
         <p className={`han leading-relaxed ${pinyin ? 'mt-1 text-[1.2em]' : 'text-[1.5em]'}`} lang="zh-CN">
@@ -211,7 +211,7 @@ function PinyinContext({ c, blank }: { c: Parts; blank: boolean }) {
       {blank ? (
         <span className="mx-0.5 inline-block w-14 border-b-2 border-ink align-baseline" aria-label="missing word" />
       ) : (
-        <mark className="rounded-md bg-amber-soft px-1 font-semibold text-inherit">
+        <mark className="rounded-lg bg-amber-soft px-1.5 font-semibold text-inherit ring-1 ring-gold/50">
           <TonePinyin pinyin={c.target} />
         </mark>
       )}

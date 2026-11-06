@@ -412,3 +412,9 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - Lighter wrong tint in light mode (`--cinnabar-soft` #fbe8e5); the review-grade line under the answer is smaller and quieter.
 - When the sheet would cover the right option, the page scrolls there smoothly, once per new target (`sheetSpace.ts`), instead of jumping.
 - With reduced motion all of this ends in its final state immediately (icons fully drawn, right option lit).
+
+## 2026-11-06: Design review — pinyin as the star, fonts served by the app
+- The sentence you're asked about is the biggest thing in an exercise: `.py-hero` (1.75rem, 2rem from 768px, weight 500, a little extra space between syllables) in `ContextLine`. The marked word keeps its amber highlight and gets a thin gold ring. In the feedback panel the sentence is text-xl and the answer pinyin 1.75rem.
+- **Fonts are served by the app** (Fontsource packages, OFL) instead of Google Fonts: same fonts as before (Instrument Sans 400–700, Noto Sans SC 400/500/700), so they work offline from the first visit and nothing is requested from a font service.
+  - Instrument Sans (latin + latin-ext, which has the pinyin tone marks) is in the main stylesheet and precached.
+  - Noto Sans SC's stylesheet is ~150 KB gzipped (one @font-face per block of characters), so `src/fontsHan.ts` loads it with a dynamic import just after start-up instead of blocking the first paint (hanzi briefly use the system font). Its ~100 files per weight are not precached; the service worker caches each one the first time it's used (`fonts-han`).
