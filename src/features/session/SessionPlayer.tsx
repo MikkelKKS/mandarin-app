@@ -364,7 +364,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
   return (
     <LessonCtx.Provider value={api}>
       <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8" style={sheetPadding()}>
-        <header className="relative flex items-center gap-3">
+        <header className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-bg/95 px-4 py-1 backdrop-blur">
           <button onClick={() => go(home)} aria-label="Leave the session (it's saved)" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted hover:bg-sunk">
             ✕
           </button>
