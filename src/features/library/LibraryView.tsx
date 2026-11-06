@@ -43,7 +43,7 @@ export function LibraryView() {
           autoCapitalize="off"
           autoCorrect="off"
           spellCheck={false}
-          className="h-13 w-full rounded-2xl border border-line bg-surface pl-12 pr-4 text-[1.0625rem] shadow-sm outline-none transition-colors placeholder:text-muted focus:border-jade"
+          className="h-13 w-full rounded-2xl border border-line bg-surface pl-12 pr-4 text-lg shadow-sm outline-none transition-colors placeholder:text-muted focus:border-jade"
         />
       </form>
 
@@ -67,7 +67,7 @@ function Row({ to, glyph, title, detail }: { to: string; glyph: string; title: s
   return (
     <li>
       <button onClick={() => go(to)} className="flex w-full items-center gap-4 px-4 py-3.5 text-left transition-colors hover:bg-sunk/50">
-        <span className="han flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sunk text-[15px] font-medium text-ink" lang="zh-CN" aria-hidden>
+        <span className="han flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sunk text-base font-medium text-ink" lang="zh-CN" aria-hidden>
           {glyph}
         </span>
         <span className="min-w-0 flex-1">

@@ -187,7 +187,7 @@ export function WordsView() {
                       >
                         <TonePinyin pinyin={w.pinyin} className="text-base font-semibold" />
                         {(showHanzi || searching) && <span className="han text-sm text-muted">{w.hanzi}</span>}
-                        {searching && <span className="text-[10px] text-muted">{w.level === 7 ? 'HSK 7–9' : `HSK ${w.level}`}</span>}
+                        {searching && <span className="text-xs text-muted">{w.level === 7 ? 'HSK 7–9' : `HSK ${w.level}`}</span>}
                       </button>
                     </li>
                   ))}

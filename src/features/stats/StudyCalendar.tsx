@@ -49,13 +49,13 @@ export function StudyCalendar({ logs, goal, streak, now }: { logs: ReviewLogRow[
         ].map(([label, n]) => (
           <div key={label} className="rounded-xl bg-surface p-2">
             <p className="text-lg font-semibold tabular-nums">{n}</p>
-            <p className="text-[11px] text-muted">{label}</p>
+            <p className="text-xs text-muted">{label}</p>
           </div>
         ))}
       </div>
       <div className="flex" role="grid" aria-label={`Study calendar, last ${weeks} weeks`}>
         <div className="min-w-0 flex-1">
-          <div className="flex h-4 gap-[2px] text-[9px] leading-none text-muted" aria-hidden>
+          <div className="flex h-4 gap-[2px] text-xs leading-none text-muted" aria-hidden>
             {months.map((m, i) => (
               <span key={i} className="relative flex-1">
                 {m && <span className="absolute left-0 whitespace-nowrap">{m}</span>}
@@ -87,7 +87,7 @@ export function StudyCalendar({ logs, goal, streak, now }: { logs: ReviewLogRow[
         </div>
       </div>
       {shown && <p className="mt-2 text-sm tabular-nums">{describe(shown)}</p>}
-      <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted" aria-label="Legend">
+      <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted" aria-label="Legend">
         {LEGEND.map((l, i) => (
           <li key={l} className="flex items-center gap-1">
             <span className="h-2.5 w-2.5 rounded-sm" style={{ background: SHADE[i] }} aria-hidden />

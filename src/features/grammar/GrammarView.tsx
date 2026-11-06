@@ -93,7 +93,7 @@ function TopicPage({ topic }: { topic: Topic }) {
         {topic.summary}
       </PageHeader>
       <p className="mt-4 rounded-2xl border border-gold/40 bg-amber-soft/60 px-4 py-3 font-medium">{topic.pattern}</p>
-      <div className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
+      <div className="mt-5 flex flex-col gap-3 text-lg leading-relaxed">
         {topic.text.map((p, k) => (
           <p key={k}>{p}</p>
         ))}

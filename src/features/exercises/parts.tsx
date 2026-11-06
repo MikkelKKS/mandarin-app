@@ -12,7 +12,7 @@ import { Speaker, Turtle } from '../../components/icons';
 import { useLesson, useNumberKeys, useReplay } from '../lesson/context';
 
 export function Prompt({ children }: { children: ReactNode }) {
-  return <h2 className="mb-5 text-lg font-semibold text-ink sm:text-xl">{children}</h2>;
+  return <h2 className="mb-5 text-lg font-semibold text-ink">{children}</h2>;
 }
 
 /**

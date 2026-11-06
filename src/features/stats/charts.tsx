@@ -49,7 +49,7 @@ export function Columns({
           return (
             <div key={d.key} tabIndex={0} aria-label={d.detail} className="group relative flex h-full flex-1 items-end justify-center outline-none">
               {showValue && (
-                <span className="absolute text-[11px] tabular-nums text-muted" style={{ bottom: h + 2 }}>
+                <span className="absolute text-xs tabular-nums text-muted" style={{ bottom: h + 2 }}>
                   {format(d.value)}
                 </span>
               )}
@@ -61,7 +61,7 @@ export function Columns({
           );
         })}
       </div>
-      <div className="mt-1 flex gap-[2px] text-[10px] text-muted">
+      <div className="mt-1 flex gap-[2px] text-xs text-muted">
         {data.map((d, i) => (
           <span
             key={d.key}

@@ -17,7 +17,7 @@ export function GradeChip({ rating, onChange }: { rating: RatingName; onChange: 
   const [open, setOpen] = useState(false);
   if (!open)
     return (
-      <p className="mt-3 text-[0.8125rem] opacity-75">
+      <p className="mt-3 text-sm opacity-75">
         Review grade: <span className="font-semibold">{LABEL[rating]}</span>{' '}
         <span className="opacity-70">({HINT[rating]})</span>{' '}
         <button onClick={() => setOpen(true)} className="ml-1 underline underline-offset-2 opacity-80 hover:opacity-100">

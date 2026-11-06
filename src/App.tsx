@@ -153,7 +153,7 @@ function Shell({ active, wide = false, children }: { active: string; wide?: bool
       >
         <a href="#/" className="mb-8 hidden items-center gap-3 px-3 md:flex">
           <span className="han flex h-9 w-9 items-center justify-center rounded-[10px] bg-cinnabar text-lg font-semibold text-white">学</span>
-          <span className="text-[1.0625rem] font-semibold">Mandarin</span>
+          <span className="text-lg font-semibold">Mandarin</span>
         </a>
         {TABS.map((t) => {
           const on = current === t.id;
@@ -162,7 +162,7 @@ function Shell({ active, wide = false, children }: { active: string; wide?: bool
               key={t.id}
               onClick={() => go(t.id)}
               aria-current={on ? 'page' : undefined}
-              className={`relative flex min-w-0 flex-1 flex-col items-center gap-1 pb-1.5 pt-2.5 text-[10.5px] font-medium transition-colors duration-200 md:flex-none md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-2.5 md:text-[0.9375rem] ${on ? 'text-jade md:bg-surface md:text-ink md:shadow-sm' : 'text-muted hover:text-ink'}`}
+              className={`relative flex min-w-0 flex-1 flex-col items-center gap-1 pb-1.5 pt-2.5 text-xs font-medium transition-colors duration-200 md:flex-none md:flex-row md:gap-3 md:rounded-xl md:px-3 md:py-2.5 md:text-base ${on ? 'text-jade md:bg-surface md:text-ink md:shadow-sm' : 'text-muted hover:text-ink'}`}
             >
               <t.icon className={`h-[22px] w-[22px] transition-transform duration-200 ${on ? 'md:text-jade' : ''}`} />
               <span className="max-w-full truncate">{t.label}</span>

@@ -15,7 +15,7 @@ export function GrammarNoteCard({ note, className = '' }: { note: GrammarNote; c
         <Lightbulb className="h-4 w-4 text-gold" />
         {note.title}
       </p>
-      <p className="mt-1.5 text-[0.9375rem] leading-relaxed">{note.note}</p>
+      <p className="mt-1.5 text-base leading-relaxed">{note.note}</p>
       <div className="mt-3 flex items-start gap-3">
         <button onClick={() => void play(note.id)} aria-label="Play the example" className="shrink-0 rounded-full bg-surface p-2 text-jade shadow-sm">
           <Speaker className="h-4 w-4" />

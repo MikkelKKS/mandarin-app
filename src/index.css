@@ -29,6 +29,11 @@
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
   --spacing-13: 3.25rem;
+
+  /* Type scale: xs 12 · sm 14 · base 16 · lg 18 · xl 20 · 2xl 24 · display 28 · 3xl+ for page numbers.
+     Nothing smaller than xs; no one-off sizes. Pinyin heroes use .py-hero. */
+  --text-display: 1.75rem;
+  --text-display--line-height: 1.2;
 }
 
 :root {
@@ -170,7 +175,7 @@ h1, h2, h3 {
   background: var(--jade);
   color: var(--jade-ink);
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12), var(--shadow-sm);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
 }
 .btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--jade) 92%, black); }
 .btn-quiet {

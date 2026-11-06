@@ -97,7 +97,7 @@ export function HomeView() {
           <GoalRing value={todayXp} goal={settings.dailyGoal} />
           <span className="absolute inset-0 flex flex-col items-center justify-center leading-none">
             <span className="text-lg font-semibold tabular-nums">{Math.min(999, todayXp)}</span>
-            <span className="mt-0.5 text-[10px] text-muted">of {settings.dailyGoal}</span>
+            <span className="mt-0.5 text-xs text-muted">of {settings.dailyGoal}</span>
           </span>
         </div>
         <div className="min-w-0 flex-1">
@@ -115,7 +115,7 @@ export function HomeView() {
             <p className="text-xs text-muted">Level</p>
             <p className="text-2xl font-semibold tabular-nums">{game.level.level}</p>
             <ProgressBar value={game.level.into / game.level.span} label="Progress to the next level" tone="gold" className="mt-1" />
-            <p className="mt-0.5 whitespace-nowrap text-[10px] tabular-nums text-muted">
+            <p className="mt-0.5 whitespace-nowrap text-xs tabular-nums text-muted">
               {game.level.into}/{game.level.span} XP
             </p>
           </div>
@@ -139,8 +139,8 @@ export function HomeView() {
           i === 0 ? (
             <button key={x.mode} onClick={() => go(`session/${x.mode}`)} className="press group flex w-full items-center gap-4 rounded-[22px] bg-jade p-6 text-left text-jade-ink shadow-md">
               <span className="min-w-0 flex-1">
-                <span className="block text-[1.625rem] font-semibold leading-tight">{x.title}</span>
-                <span className="mt-1 block text-[0.9375rem] opacity-85">{x.detail}</span>
+                <span className="block text-display font-semibold leading-tight">{x.title}</span>
+                <span className="mt-1 block text-base opacity-85">{x.detail}</span>
               </span>
               <ChevronRight className="h-6 w-6 opacity-80 transition-transform duration-200 group-hover:translate-x-0.5" />
             </button>
@@ -212,7 +212,7 @@ export function HomeView() {
         {nextAch && (
           <li>
             <button onClick={() => go('progress')} className="flex w-full items-center gap-4 px-4 py-4 text-left hover:bg-sunk/50">
-              <span className="han flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/50 text-[11px] font-medium text-gold" aria-hidden>
+              <span className="han flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/50 text-xs font-medium text-gold" aria-hidden>
                 {nextAch.a.hanzi}
               </span>
               <span className="min-w-0 flex-1">

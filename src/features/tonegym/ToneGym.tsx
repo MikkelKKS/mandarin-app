@@ -282,7 +282,7 @@ function Round({ mode }: { mode: GymMode }) {
                       }`}
                     >
                       {markSyllable({ base: item!.bases[slot], tone: t })}
-                      <span className="text-[10px] font-normal text-muted">{t === 5 ? '0' : t}</span>
+                      <span className="text-xs font-normal text-muted">{t === 5 ? '0' : t}</span>
                     </button>
                   );
                 })}
