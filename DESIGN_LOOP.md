@@ -5,7 +5,7 @@ Memory of `/design-loop` (reviewers never read this file). Each loop: state bloc
 ## Loop 1 (started 2026-11-06)
 
 ```
-State: parked
+State: merged
 Round: 4
 Phase: show
 Max rounds: 4
@@ -97,3 +97,4 @@ Scores (blind, shots blind-0feea8bca):
 Stopped: max rounds (4). Lowest stuck at 7 for rounds 3–4.
 
 Mikkel chose **Stop** (2026-11-06): branch parked, nothing merged. The next /design-loop resumes from here.
+Merged into main on 2026-11-06 (all 9 changes approved).

@@ -10,8 +10,22 @@ Each review adds a section below (newest first) with the scores, a one-line reas
 | Date | Colour | Typography | Motion | Layout | Overall |
 |------|--------|------------|--------|--------|---------|
 | 2026-11-06 | 7 | 7 | 6.5 | 6 | 6.5 |
+| 2026-11-06 (design loop 1, round 4) | 7.5 | 7 | 7 | 7 | 7 |
 
 ## Reviews
+
+## 2026-11-06: design loop 1 (merged)
+Notes: at most 4 rounds. Blind reviewers each round; log in `DESIGN_LOOP.md`. Stopped at the round limit (lowest 6.5 → 7); Mikkel approved all 9 changes.
+
+| Area | Score | Reason (final round) |
+|------|-------|--------|
+| Colour | 7.5/10 | Disciplined palette, nearly all AA; T2 orange close to gold, dark feedback sheets flat |
+| Typography | 7/10 | Short deliberate scale and strong pinyin hero; Stats small text and card titles still too uniform |
+| Motion | 7/10 | Coherent tokens, stagger and exits; right vs wrong still mainly colour, reduced motion snaps |
+| Layout | 7/10 | One main action, consistent cards; PC content edge differs per tab (P5-type, rejected) |
+| Overall | 7/10 | Clean and coherent but restrained; seal personality appears once, progress understated |
+
+Built (all kept): sheet without the page jump · sheet that enters in steps and leaves · readable tone colours and edges (IDEAS #24) · one type scale · bigger consistent pinyin · right answers lead with their reward · faster answer reaction · answer sheet with clear roles · Stats numbers that read as data.
 
 ## 2026-11-06
 Notes: none

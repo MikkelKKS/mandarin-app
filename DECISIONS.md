@@ -424,3 +424,13 @@ Choices made where CLAUDE.md was silent, plus notable incidents. Newest at the b
 - The jump bar uses buttons that scroll, not `#` links, because routes live in the URL hash.
 - On PC (lg) each group is two columns, and the Stats page gets the same wide container as Home (`Shell wide`, lg:max-w-5xl); the Words list (`#/progress/words`) keeps the normal width.
 - Headings: group h2, section h3, Reading's sub-parts h4.
+
+## 2026-11-06: Design loop 1 — kept changes (approved by Mikkel)
+Built on the design-loop branch over 4 rounds of blind reviews (lowest score 6.5 → 7), merged as a whole. Don't undo these in later reviews:
+- **Answer sheet motion:** the scroll that keeps the right option visible happens before the sheet's first frame (one movement); the session header is sticky. Continue (button or Enter) plays a 150 ms exit before the next question (`components/sheetLeave.ts`; none with reduced motion). Sheet content staggers in (verdict, answer, actions). The +XP chip springs in, holds and floats away (0.9 s). Shared duration tokens `--dur-micro/std/sheet/exit` and `--ease-in`.
+- **Answer reaction:** the picked option takes its right/wrong colour at once, then pops (0.24 s spring) or shakes (0.3 s); after a wrong pick the right option lights up after 60 ms. Sessions and Tone Gym.
+- **Colours (light mode, same hues and meanings):** T1 #c5301f, T2 #a65500, T3 #26781f, T5 #646e77, gold #8f6000 (all ≥ 4.5:1 on white and the page background). New `--edge` (light #83928e, dark #5b6d6a) for things you press: answer options, round audio buttons, pinyin input, tone keys, quiet buttons. Separators keep `--line`. (IDEAS #24.)
+- **Type scale:** xs 12 · sm 14 · base 16 · lg 18 · xl 20 · 2xl 24 · display 28 (`--text-display`); nothing under 12px and no one-off sizes. Tabular digits on `body`. One small-caps `.label` style (Stats tiles, group eyebrows, Library sections, Level on Home).
+- **Pinyin roles:** `.py-hero` 2rem / 2.5rem from 768px, weight 600 (the sentence you're asked about); in the answer sheet `.py-context` (1.125rem, the sentence) and `.py-answer` (1.75rem, the word to learn), meaning text-lg in full ink, verdict text-lg.
+- **Right answers lead with their reward:** +XP and combo chips in the sheet's title row; the review-grade line moves under More (still one tap to change). Wrong answers keep the grade line in view.
+- Tone matrix corner header on two lines ("Right ↓" / "You →").
