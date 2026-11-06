@@ -20,6 +20,8 @@ const SAMPLE = [
   '中国人 中国人 [Zhong1 guo2 ren2] /Chinese person/',
   '人 人 [ren2] /person/people/',
   '舊 旧 [jiu4] /old variant of something/',
+  '說 说 [shui4] /to persuade/',
+  '說 说 [shuo1] /to speak/to say/',
 ].join('\n');
 
 const dict = parseDict(parseCedict(SAMPLE, new Map([['你好', 1], ['你', 1]])).join('\n'));
@@ -71,6 +73,26 @@ describe('dictionary search', () => {
 
 import { guessHanzi, isPinyinSentence, romanKey } from './dict';
 import { looksLikeRomanization } from './translate';
+
+describe('polyphones', () => {
+  it('picks the reading the exercise already knows', () => {
+    // Without a hint the first-listed reading wins; with the sentence's pinyin, the right one.
+    expect(segment(dict, '你说')[1].entries[0].pinyin).toBe('shuì');
+    expect(segment(dict, '你说', 'nǐ shuō')[1].entries[0].pinyin).toBe('shuō');
+    expect(segment(dict, '你说', 'ni3shuo1')[1].entries[0].pinyin).toBe('shuō');
+    const r = search(dict, '说', 40, 'shuō');
+    expect(r.mode === 'words' && r.entries[0].pinyin).toBe('shuō');
+  });
+  it('ignores pinyin that does not line up with the characters', () => {
+    expect(segment(dict, '你说', 'nǐ')[1].entries[0].pinyin).toBe('shuì');
+  });
+  it('gives the HSK level only to the reading the HSK list uses', () => {
+    const lines = parseCedict(SAMPLE, new Map([['说', 1]]), new Map([['说', new Map([['shuō', 1]])]]));
+    const lvl = (py: string) => lines.find((l) => l.startsWith(`说\t${py}\t`))?.split('\t')[4];
+    expect(lvl('shuō')).toBe('1');
+    expect(lvl('shuì')).toBe('0');
+  });
+});
 
 describe('pinyin sentences and translation sanity', () => {
   it('guesses characters for a pinyin sentence', () => {

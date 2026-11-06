@@ -2,7 +2,7 @@
  * In-app dictionary (CC-CEDICT, built by scripts/build-dictionary.ts).
  * Loaded on first use and cached by the service worker for offline use.
  */
-import { hanziOnly, isHanzi, toLetters, segmentLetters, rangeTone } from '../../lib/pinyin';
+import { alignToHanzi, hanziOnly, isHanzi, toLetters, segmentLetters, rangeTone } from '../../lib/pinyin';
 
 export interface Entry {
   hanzi: string;
@@ -79,8 +79,33 @@ export type SearchResult =
   | { mode: 'words'; entries: Entry[] }
   | { mode: 'sentence'; tokens: Array<{ text: string; entries: Entry[] }> };
 
-/** Greedy longest-match segmentation of Chinese text into dictionary words. */
-export function segment(dict: Dict, text: string): Array<{ text: string; entries: Entry[] }> {
+/**
+ * The reading per character when the pinyin of `text` is already known (from an exercise):
+ * `[toneless letters, tone digit]` per hanzi, or null if the pinyin doesn't line up.
+ */
+function knownReadings(text: string, pinyin?: string): Array<[string, string]> | null {
+  if (!pinyin) return null;
+  const al = alignToHanzi(text, pinyin);
+  if (!al || al.syls.some((s) => s.erhua)) return null;
+  return al.charSyl.map((si) => [al.syls[si].base, String(al.syls[si].tone)]);
+}
+
+/** Put the entries whose reading is the known one first (stable otherwise). */
+function preferReading(entries: Entry[], want: Array<[string, string]> | undefined): Entry[] {
+  if (!want?.length) return entries;
+  const key = want.map((w) => w[0]).join('');
+  const tones = want.map((w) => w[1]).join('');
+  const hit = (e: Entry) => (e.key === key && e.tones === tones ? 0 : e.key === key ? 1 : 2);
+  return [...entries].sort((a, b) => hit(a) - hit(b));
+}
+
+/**
+ * Greedy longest-match segmentation of Chinese text into dictionary words.
+ * With the sentence's known `pinyin`, each word's matching reading comes first (你说 → shuō).
+ */
+export function segment(dict: Dict, text: string, pinyin?: string): Array<{ text: string; entries: Entry[] }> {
+  const known = knownReadings(text, pinyin);
+  let hz = 0; // hanzi seen so far, to find each word's syllables
   const chars = [...text];
   const out: Array<{ text: string; entries: Entry[] }> = [];
   let i = 0;
@@ -101,13 +126,16 @@ export function segment(dict: Dict, text: string): Array<{ text: string; entries
       }
     }
     const t = chars.slice(i, i + found).join('');
-    out.push({ text: t, entries: [...(dict.byHanzi.get(t) ?? [])].sort((a, b) => rank(a) - rank(b)) });
+    const ranked = [...(dict.byHanzi.get(t) ?? [])].sort((a, b) => rank(a) - rank(b));
+    out.push({ text: t, entries: preferReading(ranked, known?.slice(hz, hz + found)) });
+    hz += found;
     i += found;
   }
   return out;
 }
 
-export function search(dict: Dict, raw: string, limit = 40): SearchResult {
+/** `pinyin`: the known reading of `raw` (from an exercise's "Look up"), to pick the right reading of polyphones. */
+export function search(dict: Dict, raw: string, limit = 40, pinyin?: string): SearchResult {
   const q = raw.trim();
   if (!q) return { mode: 'empty' };
 
@@ -117,9 +145,10 @@ export function search(dict: Dict, raw: string, limit = 40): SearchResult {
     const exact = dict.byHanzi.get(hz);
     if (exact || [...hz].length === 1) {
       const starts = dict.entries.filter((e) => e.hanzi !== hz && e.hanzi.startsWith(hz));
-      return { mode: 'words', entries: [...(exact ?? []), ...starts.sort((a, b) => rank(a) - rank(b))].slice(0, limit) };
+      const own = preferReading([...(exact ?? [])].sort((a, b) => rank(a) - rank(b)), knownReadings(hz, pinyin) ?? undefined);
+      return { mode: 'words', entries: [...own, ...starts.sort((a, b) => rank(a) - rank(b))].slice(0, limit) };
     }
-    return { mode: 'sentence', tokens: segment(dict, q) };
+    return { mode: 'sentence', tokens: segment(dict, q, pinyin) };
   }
 
   // Pinyin (letters with optional tone marks / numbers)

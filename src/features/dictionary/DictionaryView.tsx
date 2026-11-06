@@ -108,7 +108,7 @@ function useWide(): boolean {
   return wide;
 }
 
-export function DictionarySheet({ query, onClose }: { query: string; onClose: () => void }) {
+export function DictionarySheet({ query, pinyin, onClose }: { query: string; pinyin?: string; onClose: () => void }) {
   const [q, setQ] = useState(query);
   const box = useRef<HTMLDivElement>(null);
   const side = useWide();
@@ -149,7 +149,7 @@ export function DictionarySheet({ query, onClose }: { query: string; onClose: ()
               <Close className="h-4 w-4" /> Back to the exercise
             </button>
           </div>
-          <DictionarySearch q={q} setQ={setQ} />
+          <DictionarySearch q={q} setQ={setQ} pinyin={q === query ? pinyin : undefined} />
         </div>
       </div>
     </SearchCtx.Provider>,
@@ -157,7 +157,7 @@ export function DictionarySheet({ query, onClose }: { query: string; onClose: ()
   );
 }
 
-function DictionarySearch({ q, setQ }: { q: string; setQ: (q: string) => void }) {
+function DictionarySearch({ q, setQ, pinyin }: { q: string; setQ: (q: string) => void; pinyin?: string }) {
   const [dict, setDict] = useState<Dict | null | 'loading'>('loading');
   const dq = useDebounced(q, 200);
   const input = useRef<HTMLInputElement>(null);
@@ -168,7 +168,7 @@ function DictionarySearch({ q, setQ }: { q: string; setQ: (q: string) => void })
     void loadDict().then(setDict);
   }, []);
 
-  const result = useMemo(() => (dict && dict !== 'loading' ? search(dict, dq) : null), [dict, dq]);
+  const result = useMemo(() => (dict && dict !== 'loading' ? search(dict, dq, 40, pinyin) : null), [dict, dq, pinyin]);
   const toToken = (i: number) => document.getElementById(`tok-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
   return (

@@ -355,7 +355,7 @@ function ReadMeaning({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult:
             <PlayButton d={d} it={it} />
           </div>
           {match !== null && <p className={`mt-1 text-sm ${match ? 'text-jade' : 'text-muted'}`}>{match ? 'Your guess matches.' : `You wrote “${typed.trim()}”.`}</p>}
-          <LookUp text={it.hanzi} className="mt-1" />
+          <LookUp text={it.hanzi} pinyin={it.pinyin} className="mt-1" />
           <div className="mt-4 border-t border-line pt-3">
             <Details d={d} it={it} example />
           </div>

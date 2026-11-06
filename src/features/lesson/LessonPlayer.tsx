@@ -401,7 +401,7 @@ function Feedback({
               More <span className="transition-transform group-open:rotate-180" aria-hidden>▾</span>
             </summary>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pb-1">
-              {a.hanzi && <LookUp text={a.hanzi} />}
+              {a.hanzi && <LookUp text={a.hanzi} pinyin={a.pinyin} />}
               {audioId && <ReportAudio id={audioId} hanzi={a.hanzi ?? ''} pinyin={a.pinyin} />}
             </div>
           </details>

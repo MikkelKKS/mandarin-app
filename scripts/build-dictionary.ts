@@ -59,8 +59,26 @@ export function tradToSimp(text: string): Record<string, string> {
   return map;
 }
 
-export function parseCedict(text: string, hsk: Map<string, number>): string[] {
+const normPy = (p: string) => p.toLowerCase().replace(/[\s'·-]/g, '');
+
+/**
+ * `readingLevels`: the HSK level of each reading of a word (characters → pinyin → level, from
+ * content/data/words.json). When one of a word's CEDICT readings is listed there, each reading
+ * gets its own level and unlisted ones get none (说 shuō is HSK 1, 说 shuì is not), so the app
+ * ranks the common reading of a polyphone first. Otherwise `hsk` (per word) is used.
+ */
+export function parseCedict(text: string, hsk: Map<string, number>, readingLevels = new Map<string, Map<string, number>>()): string[] {
   const out: string[] = [];
+  const readings = new Map<string, string[]>(); // simp → its CEDICT readings (normalised)
+  for (const line of text.split('\n')) {
+    const m = line.match(/^\S+ (\S+) \[([^\]]*)\] \//);
+    if (m) readings.set(m[1], [...(readings.get(m[1]) ?? []), normPy(cedictPinyin(m[2]))]);
+  }
+  const level = (simp: string, marked: string) => {
+    const lv = readingLevels.get(simp);
+    if (lv && readings.get(simp)?.some((r) => lv.has(r))) return lv.get(normPy(marked)) ?? 0;
+    return hsk.get(simp) ?? 0;
+  };
   const seen = new Set<string>();
   for (const line of text.split('\n')) {
     if (!line || line.startsWith('#')) continue;
@@ -74,7 +92,7 @@ export function parseCedict(text: string, hsk: Map<string, number>): string[] {
     if (seen.has(key)) continue;
     seen.add(key);
     const clean = (s: string) => s.replace(/[\t\n]/g, ' ');
-    out.push([simp, cedictPinyin(py), tonelessKey(py), clean(defs.join(' / ')), String(hsk.get(simp) ?? 0)].join('\t'));
+    out.push([simp, cedictPinyin(py), tonelessKey(py), clean(defs.join(' / ')), String(level(simp, cedictPinyin(py)))].join('\t'));
   }
   return out;
 }
@@ -94,7 +112,19 @@ export async function buildDictionary(from = fromFile) {
   if (existsSync(hskFile)) {
     for (const w of JSON.parse(readFileSync(hskFile, 'utf8')).words as Array<{ h: string; l: number }>) if (!hsk.has(w.h)) hsk.set(w.h, w.l);
   }
-  const lines = parseCedict(text, hsk);
+  // Per-reading HSK levels from the course's word list (看 kàn is HSK 1, kān is HSK 6).
+  const readingLevels = new Map<string, Map<string, number>>();
+  const wordsFile = join(root, 'content/data/words.json');
+  if (existsSync(wordsFile)) {
+    const raw = JSON.parse(readFileSync(wordsFile, 'utf8'));
+    for (const w of (raw.words ?? raw) as Array<{ hanzi: string; pinyin: string; level: number }>) {
+      const lv = readingLevels.get(w.hanzi) ?? new Map<string, number>();
+      const key = normPy(w.pinyin);
+      if (!lv.has(key) || w.level < lv.get(key)!) lv.set(key, w.level);
+      readingLevels.set(w.hanzi, lv);
+    }
+  }
+  const lines = parseCedict(text, hsk, readingLevels);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'cedict.tsv'), lines.join('\n') + '\n');
   const t2s = tradToSimp(text);

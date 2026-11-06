@@ -479,7 +479,10 @@ function Feedback({
   const replayVoices = audioId && !result.context?.id && data.byId.get(audioId) ? wordVoices(data.byId.get(audioId)!.pinyin, import.meta.env.BASE_URL) : [];
   const replay = () => void (audioId && play(audioId, replayVoices.length ? { url: replayVoices[Math.floor(Math.random() * replayVoices.length)].url } : {}));
   // Look up: the sentence the word was heard in, else the answer's characters (or the reading item's).
-  const lookup = (result.context?.id && data.sentences.get(result.context.id)?.hanzi) || a?.hanzi || result.lookup || '';
+  const ctxSentence = result.context?.id ? data.sentences.get(result.context.id) : undefined;
+  const lookup = ctxSentence?.hanzi || a?.hanzi || result.lookup || '';
+  // Its known pinyin, so the dictionary shows the right reading of polyphones (你说 → shuō).
+  const lookupPinyin = ctxSentence?.hanzi ? ctxSentence.pinyin : a?.hanzi ? a.pinyin : undefined;
   return (
     <div ref={sheet} role="status" aria-live="polite" className={`${leaving ? 'anim-sheet-out' : 'anim-rise'} fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
       <div className={`sheet-stagger mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
@@ -572,7 +575,7 @@ function Feedback({
             </summary>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pb-1">
               {quietGrade && grade && <div className="w-full text-center [&>*]:mt-0">{grade}</div>}
-              {lookup && <LookUp text={lookup} />}
+              {lookup && <LookUp text={lookup} pinyin={lookupPinyin} />}
               {a && audioId &&
                 (result.context?.id ? (
                   <ReportAudio id={audioId} hanzi={data.sentences.get(audioId)?.hanzi ?? ''} pinyin={data.sentences.get(audioId)?.pinyin} />

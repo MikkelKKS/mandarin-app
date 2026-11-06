@@ -359,7 +359,7 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
           <TonePinyin pinyin={w.pinyin} className="text-3xl font-semibold" /> <Hanzi text={w.hanzi} className="ml-2 text-2xl text-muted" />
           <p className="mt-1 text-lg">{glossOf(w)}</p>
           {c && <p className="mt-1 text-sm text-muted">The sentence: {c.sentence.english[0]}</p>}
-          <LookUp text={c ? c.sentence.hanzi : w.hanzi} className="mt-1" />
+          <LookUp text={c ? c.sentence.hanzi : w.hanzi} pinyin={c ? c.sentence.pinyin : w.pinyin} className="mt-1" />
           {match !== null && <p className={`mt-1 text-sm ${match ? 'text-jade' : 'text-muted'}`}>{match ? 'Your answer matches.' : `You wrote “${typed.trim()}”.`}</p>}
           <SelfGrade onGrade={grade} suggest={match === true ? 'good' : match === false ? 'again' : undefined} />
           <DontKnow onUnknown={onUnknown} />
@@ -555,7 +555,7 @@ function SentenceMeaning({ data, sentence, onResult }: ItemProps & { sentence: s
           <TonePinyin pinyin={s.pinyin} className="block text-xl" />
           <Hanzi text={s.hanzi} className="block text-lg text-muted" />
           <p className="mt-1">{s.english[0]}</p>
-          <LookUp text={s.hanzi} className="mt-1" />
+          <LookUp text={s.hanzi} pinyin={s.pinyin} className="mt-1" />
           <div className="mt-4 grid grid-cols-3 gap-2">
             <button onClick={() => answer('wrong')} className="h-14 rounded-2xl border border-line bg-surface font-semibold">
               Not really
