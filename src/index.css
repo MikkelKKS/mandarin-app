@@ -302,7 +302,7 @@ h1, h2, h3 {
 }
 :root { --dict-w: 28rem; }
 .anim-sheet { animation: sheet 0.26s var(--ease-out) both; }
-.anim-shake { animation: shake 0.34s var(--ease-out); }
+.anim-shake { animation: shake 0.3s var(--ease-out); }
 .anim-breathe { animation: breathe 1.8s ease-in-out infinite; }
 .anim-fade { animation: fade 0.2s ease-out both; }
 /* backwards (not both): a transform kept on the page would break position: fixed sheets inside it. */
@@ -312,8 +312,8 @@ h1, h2, h3 {
 .anim-ring { animation: ring-fill 0.8s var(--ease-out) 0.1s both; }
 .anim-grow-x { transform-origin: left; animation: grow-x 0.6s var(--ease-out) both; }
 .anim-grow-y { transform-origin: bottom; animation: grow-y 0.5s var(--ease-out) both; }
-.anim-nudge { animation: nudge 0.32s var(--ease-spring); }
-[role='listbox']:has([data-state='wrong']) [data-state='right'] { animation: reveal-right 0.35s var(--ease-out) 0.15s both; }
+.anim-nudge { animation: nudge 0.24s var(--ease-spring); }
+[role='listbox']:has([data-state='wrong']) [data-state='right'] { animation: reveal-right 0.25s var(--ease-out) 0.06s both; }
 .anim-draw path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: draw 0.3s var(--ease-out) 0.1s forwards; }
 .anim-xp { animation: xp 0.9s var(--ease-out) both; }
 .anim-tile { animation: tile-in 0.18s var(--ease-out) backwards; }

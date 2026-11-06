@@ -278,7 +278,7 @@ function Round({ mode }: { mode: GymMode }) {
                       aria-label={`${TONE_WORD[t]} tone`}
                       aria-pressed={chosen}
                       className={`flex h-16 flex-col items-center justify-center rounded-2xl border text-xl font-semibold transition active:scale-95 ${TONE_TEXT[t]} ${
-                        isRight ? 'border-jade bg-jade-soft anim-nudge' : isWrongPick ? 'border-cinnabar bg-cinnabar-soft anim-shake' : chosen ? 'border-ink bg-surface' : 'border-edge bg-surface'
+                        isRight ? 'border-jade bg-jade-soft anim-nudge !duration-0' : isWrongPick ? 'border-cinnabar bg-cinnabar-soft anim-shake !duration-0' : chosen ? 'border-ink bg-surface' : 'border-edge bg-surface'
                       }`}
                     >
                       {markSyllable({ base: item!.bases[slot], tone: t })}

@@ -158,10 +158,11 @@ export function optionClass(state: OptionState): string {
   switch (state) {
     case 'selected':
       return 'border-jade bg-jade-soft ring-1 ring-jade';
+    // Right and wrong change colour at once (no fade), then pop or shake.
     case 'right':
-      return 'border-jade bg-jade-soft anim-nudge';
+      return 'border-jade bg-jade-soft anim-nudge !duration-0';
     case 'wrong':
-      return 'border-cinnabar bg-cinnabar-soft anim-shake';
+      return 'border-cinnabar bg-cinnabar-soft anim-shake !duration-0';
     default:
       return 'border-edge bg-surface shadow-sm hover:border-muted';
   }
