@@ -5,12 +5,12 @@ Memory of `/design-loop` (reviewers never read this file). Each loop: state bloc
 ## Loop 1 (started 2026-11-06)
 
 ```
-State: running
+State: stopped (max)
 Round: 4
-Phase: review
+Phase: show
 Max rounds: 4
 Best lowest: 7
-Rounds without progress: 0
+Rounds without progress: 1
 Confirming: no
 Notes: do a maximum of 4 loops (read as: at most 4 rounds)
 ```
@@ -20,6 +20,7 @@ Notes: do a maximum of 4 loops (read as: at most 4 rounds)
 | 1 | 7 | 7 | 6.5 | 7 | 7 | 6.5 | start: main after design review 2026-11-06 |
 | 2 | 7.5 | 6.5 | 7 | 7 | 6.5 | 6.5 | colour and motion up after round 1; T and O down 0.5 (reviewer variance, nothing changed there) |
 | 3 | 7.5 | 7 | 7 | 7 | 7 | 7 | lowest up 6.5 → 7 (typography and overall back to 7) |
+| 4 | 7.5 | 7 | 7 | 7 | 7 | 7 | no change after round 3; stopped: max rounds (4) |
 
 ### Round 1
 
@@ -83,3 +84,14 @@ Plan (all four 7s; Home/PC-shell layout ideas = Mikkel's rejected P5, not used; 
 - [x] (807b30d3b) Faster, distinct answer reaction: the picked option reacts at once (right pops, wrong shakes), the right option lights up sooner after a wrong pick. Motion.
 - [x] (b40cd6f60) Answer sheet with clear roles: verdict smaller, the word to learn is the big line, the sentence and the meta lines quieter. Typography, overall.
 - [x] (11629acc1) Stats numbers that read as data: one small-caps label style for tile labels and section eyebrows, tabular numbers, larger Stats microtext, one-line matrix header. Typography, overall, layout.
+
+### Round 4
+
+Scores (blind, shots blind-0feea8bca):
+- Colour 7.5: disciplined palette, nearly all AA; T5/T2 at the limit on tinted sheets; T2 orange and gold too close; dark feedback sheets muddy; --line very faint.
+- Typography 7: short deliberate scale, pinyin hero reads well; Stats small text still uniform; grey neutral-tone syllables and the bordered target pill weaken the hero; card titles 18/20/24 too close.
+- Motion 7: coherent tokens, stagger, exits; right vs wrong still mainly colour; sheet fades over the options while the right one lights up; reduced motion snaps instead of fading.
+- Layout 7: one main action, consistent cards; PC content edge differs per tab and Home/Library/Settings leave empty space (P5-type, rejected); phone session bottom third empty.
+- Overall 7: clean and coherent but restrained; seal personality appears once; reward and progress understated (Home streak, Stats); width contradictions (deliberate: Quick big on phone, Deep big on PC).
+
+Stopped: max rounds (4). Lowest stuck at 7 for rounds 3–4.
