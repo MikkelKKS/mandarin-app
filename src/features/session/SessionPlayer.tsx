@@ -484,13 +484,13 @@ function Feedback({
     <div ref={sheet} role="status" aria-live="polite" className={`${leaving ? 'anim-sheet-out' : 'anim-rise'} fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
       <div className={`sheet-stagger mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
         <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-        <p className={`flex items-center gap-2 text-xl font-semibold ${o.note?.startsWith('Moved back') ? '' : o.verdict === 'wrong' ? 'text-cinnabar' : o.verdict === 'correct' || o.verdict === 'typo' ? 'text-jade' : ''}`}>
+        <p className={`flex items-center gap-2 text-lg font-semibold ${o.note?.startsWith('Moved back') ? '' : o.verdict === 'wrong' ? 'text-cinnabar' : o.verdict === 'correct' || o.verdict === 'typo' ? 'text-jade' : ''}`}>
           {o.note?.startsWith('Moved back') ? null : o.verdict === 'wrong' ? (
-            <svg className="anim-draw h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
+            <svg className="anim-draw h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
               <path d="M7 7l10 10M17 7L7 17" />
             </svg>
           ) : o.verdict === 'correct' || o.verdict === 'typo' ? (
-            <svg className="anim-draw h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <svg className="anim-draw h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M5 12.5l4.5 4.5L19 7.5" />
             </svg>
           ) : null}
@@ -523,7 +523,7 @@ function Feedback({
         )}
         {result.context && (
           <div className="mt-2">
-            <ContextLine c={result.context} className="py-md !text-left" />
+            <ContextLine c={result.context} className="py-context !text-left" />
             {result.context.english && <p className="text-sm opacity-80">{result.context.english}</p>}
           </div>
         )}
@@ -540,14 +540,14 @@ function Feedback({
         {a && (
           <div className="mt-3 flex items-start gap-3">
             <div className="min-w-0 flex-1">
-              {a.pinyin && <TonePinyin pinyin={a.pinyin} className="py-md block" />}
+              {a.pinyin && <TonePinyin pinyin={a.pinyin} className="py-answer block" />}
               <SandhiNote hanzi={a.hanzi} pinyin={a.pinyin} />
               {showHanzi && a.hanzi && (
                 <span className="han block text-lg opacity-70" lang="zh-CN">
                   {a.hanzi}
                 </span>
               )}
-              {a.english && <p className="opacity-80">{a.english}</p>}
+              {a.english && <p className="mt-0.5 text-lg leading-snug">{a.english}</p>}
             </div>
             {audioId && (
               <button onClick={replay} aria-label="Play again" className="rounded-full bg-surface/70 p-3 active:scale-90">

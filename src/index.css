@@ -136,12 +136,19 @@ h1, h2, h3 {
 @media (min-width: 768px) {
   .py-hero { font-size: 2.5rem; }
 }
-/* Pinyin in the answer sheet: the sentence and the answer word at one size, a step below the hero. */
-.py-md {
-  font-size: 1.375rem;
-  line-height: 1.3;
+/* Pinyin in the answer sheet, in two clear roles: the word to learn (.py-answer, the sheet's big line)
+   and the sentence it was heard in (.py-context, quieter context above it). */
+.py-answer {
+  font-size: 1.75rem;
+  line-height: 1.2;
   font-weight: 600;
   word-spacing: 0.12em;
+}
+.py-context {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 500;
+  word-spacing: 0.1em;
 }
 
 :focus-visible {
