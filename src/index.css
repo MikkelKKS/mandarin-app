@@ -127,13 +127,21 @@ h1, h2, h3 {
 
 /* Pinyin is the star of an exercise: the sentence or word you're asked about. */
 .py-hero {
-  font-size: 1.75rem;
-  line-height: 1.3;
-  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   word-spacing: 0.12em;
 }
 @media (min-width: 768px) {
-  .py-hero { font-size: 2rem; }
+  .py-hero { font-size: 2.5rem; }
+}
+/* Pinyin in the answer sheet: the sentence and the answer word at one size, a step below the hero. */
+.py-md {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-weight: 600;
+  word-spacing: 0.12em;
 }
 
 :focus-visible {
