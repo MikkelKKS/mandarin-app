@@ -6,7 +6,7 @@ Memory of `/design-loop` (reviewers never read this file). Each loop: state bloc
 
 ```
 State: running
-Round: 0
+Round: 1
 Phase: review
 Max rounds: 4
 Best lowest: –
