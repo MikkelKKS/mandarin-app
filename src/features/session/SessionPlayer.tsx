@@ -16,6 +16,7 @@ import { Speaker } from '../../components/icons';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { SandhiNote } from '../../components/SandhiNote';
 import { sheetPadding, useSheetSpace } from '../../components/sheetSpace';
+import { useLeave } from '../../components/sheetLeave';
 import { db } from '../../db/db';
 import { comboMultiplier, xpFor, XP } from '../../lib/gamify';
 import { play, prefetchForOffline, stop } from '../../lib/audio';
@@ -333,12 +334,14 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
     [result],
   );
 
+  const [leaving, leave] = useLeave();
+
   // Keyboard: Enter checks or continues, space replays.
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        if (result) advance();
+        if (result) leave(advance);
         else checkRef.current?.();
       } else if (e.key === ' ' && (e.target as HTMLElement)?.tagName !== 'INPUT') {
         e.preventDefault();
@@ -416,7 +419,8 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           result={result}
           item={item!}
           data={data}
-          onContinue={advance}
+          onContinue={() => leave(advance)}
+          leaving={leaving}
           onOverride={override}
           grade={graded ? <GradeChip rating={graded.rating} onChange={(r) => void regradeAll([graded.card], r).then(() => setGraded({ ...graded, rating: r }))} /> : null}
         />
@@ -430,6 +434,7 @@ function Feedback({
   item,
   data,
   onContinue,
+  leaving = false,
   onOverride,
   grade,
 }: {
@@ -437,6 +442,7 @@ function Feedback({
   item: SItem;
   data: VocabData;
   onContinue: () => void;
+  leaving?: boolean;
   onOverride?: () => void;
   grade: React.ReactNode;
 }) {
@@ -466,8 +472,8 @@ function Feedback({
   // Look up: the sentence the word was heard in, else the answer's characters (or the reading item's).
   const lookup = (result.context?.id && data.sentences.get(result.context.id)?.hanzi) || a?.hanzi || result.lookup || '';
   return (
-    <div ref={sheet} role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
-      <div className={`mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
+    <div ref={sheet} role="status" aria-live="polite" className={`${leaving ? 'anim-sheet-out' : 'anim-rise'} fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
+      <div className={`sheet-stagger mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
         <p className={`flex items-center gap-2 text-xl font-semibold ${o.note?.startsWith('Moved back') ? '' : o.verdict === 'wrong' ? 'text-cinnabar' : o.verdict === 'correct' || o.verdict === 'typo' ? 'text-jade' : ''}`}>
           {o.note?.startsWith('Moved back') ? null : o.verdict === 'wrong' ? (
             <svg className="anim-draw h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
