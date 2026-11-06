@@ -37,5 +37,5 @@ Weakest points per reviewer:
 
 Plan (target: motion 6.5, then the 7s; P5 Home/PC-layout is rejected by Mikkel, so not used):
 - [x] (40c3d5449) Sheet without the page jump: scroll before the sheet's first paint (one movement), session header stays visible (sticky). Motion.
-- [ ] Sheet that enters in steps and leaves before the next question; +XP chip floats up and fades; shared duration tokens. Motion.
+- [x] (940dfe359) Sheet that enters in steps and leaves before the next question; +XP chip floats up and fades; shared duration tokens. Motion.
 - [ ] Readable tone colours, gold and visible control edges in light mode (same hues and meanings). Colour, typography.
