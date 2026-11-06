@@ -78,6 +78,7 @@ async function playSession(page: Page, dir: string) {
   let asked = false;
   for (let i = 0; i < 250; i++) {
     if (await page.getByText(/session done/).isVisible().catch(() => false)) {
+      await page.waitForTimeout(2500); // the end screen's XP count-up, level bar and achievements play in over ~2 s
       await shot(page, dir, 'session-end');
       return;
     }
