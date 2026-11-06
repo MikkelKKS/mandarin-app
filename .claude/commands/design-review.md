@@ -12,7 +12,7 @@ The reviewers run on sonnet (set in their agent files). Combining, previews and 
 `<date>` = today as YYYY-MM-DD. `<run>` = `design-review/<date>` (git-ignored; if it already exists, add `-2`, `-3`…).
 
 ## 1. Start
-1. `git pull --rebase`. If it conflicts, stop and explain simply.
+1. Work on main: if the current branch is `design-loop` (a /design-loop run was interrupted), commit and push it as it is, then `git checkout main`. `git pull --rebase`. If it conflicts, stop and explain simply.
 2. Make a to-do list for steps 2–8 and keep it updated.
 3. If `node_modules` is missing, `npm install`. Clean up leftovers from an earlier run: `git worktree list`; for any `.design-worktrees/<name>`, run `npx tsx scripts/design-preview.ts remove <name>`.
 
@@ -25,7 +25,8 @@ The reviewers run on sonnet (set in their agent files). Combining, previews and 
 Start **design-colour**, **design-typography**, **design-motion**, **design-layout** and **design-overall** in one message (five Agent calls, so they run in parallel). Give each:
 - the screenshot folder `<run>/current` (motion frames are in `<run>/current/motion`),
 - Mikkel's notes, if any ("cover this first and most thoroughly"),
-- a reminder: report only, don't edit app files, don't commit; use its own port for extra shots.
+- a reminder: report only, don't edit app files, don't commit; use its own port for extra shots;
+- permission: "You may read the latest entry in `DESIGN_SCORES.md`, so you don't re-propose rejected ideas." (Never DESIGN_LOOP.md.)
 Don't pass one reviewer's output to another.
 
 ## 4. Combine into at most 5 proposals

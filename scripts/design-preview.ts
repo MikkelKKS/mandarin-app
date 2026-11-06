@@ -7,8 +7,8 @@
  *       (home, session, tone-gym, library, stats, settings, music). Needs a fresh `npm run build` in that dir.
  *   npx tsx scripts/design-preview.ts motion <outDir> [--dir <path>] [--port <n>]
  *       Frame sequences of key interactions (qa/design-motion.spec.ts), normal and reduced motion.
- *   npx tsx scripts/design-preview.ts worktree <name>
- *       A temporary git worktree at .design-worktrees/<name> (detached at HEAD, never on main),
+ *   npx tsx scripts/design-preview.ts worktree <name> [ref]
+ *       A temporary git worktree at .design-worktrees/<name> (detached at <ref>, default HEAD; never on a branch),
  *       without public/audio (55k files, not needed for screenshots), sharing node_modules and the dictionary.
  *   npx tsx scripts/design-preview.ts build <name>
  *       npm run build inside that worktree.
@@ -83,11 +83,11 @@ switch (cmd) {
     process.exit(playwright('qa/design-motion.spec.ts', outDir));
   }
   case 'worktree': {
-    const [name] = rest;
+    const [name, ref = 'HEAD'] = rest;
     if (!name) throw new Error('usage: worktree <name>');
     const p = wtPath(name);
     if (existsSync(p)) throw new Error(`${p} already exists: run "remove ${name}" first`);
-    git('worktree', 'add', '--no-checkout', '--detach', p, 'HEAD');
+    git('worktree', 'add', '--no-checkout', '--detach', p, ref);
     git('-C', p, 'sparse-checkout', 'set', '--no-cone', '/*', '!/public/audio/');
     git('-C', p, 'checkout', '--detach', 'HEAD');
     symlinkSync(join(root, 'node_modules'), join(p, 'node_modules'), 'junction');
