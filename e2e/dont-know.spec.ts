@@ -38,6 +38,8 @@ test('a session: every question after the new-word cards has I don’t know', as
     const cont = page.getByRole('button', { name: /^(Continue|Got it)$/ }).first();
     if (await cont.isVisible().catch(() => false)) {
       await cont.click();
+      // The feedback sheet plays a short exit before the next question: wait until it is gone.
+      await expect(page.getByRole('status').getByRole('button', { name: 'Continue' })).toBeHidden();
       continue;
     }
     const dk = page.getByRole('button', { name: /^I don't know/ }).first();
