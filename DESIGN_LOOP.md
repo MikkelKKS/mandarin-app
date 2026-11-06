@@ -80,6 +80,6 @@ Weakest points per reviewer:
 - Overall: seal only at the edges · progress not the hero · Stats like documentation.
 
 Plan (all four 7s; Home/PC-shell layout ideas = Mikkel's rejected P5, not used; the scroll on sheet open stays because it keeps the right option visible, IDEAS #13):
-- [ ] Faster, distinct answer reaction: the picked option reacts at once (right pops, wrong shakes), the right option lights up sooner after a wrong pick. Motion.
+- [x] (807b30d3b) Faster, distinct answer reaction: the picked option reacts at once (right pops, wrong shakes), the right option lights up sooner after a wrong pick. Motion.
 - [ ] Answer sheet with clear roles: verdict smaller, the word to learn is the big line, the sentence and the meta lines quieter. Typography, overall.
 - [ ] Stats numbers that read as data: one small-caps label style for tile labels and section eyebrows, tabular numbers, larger Stats microtext, one-line matrix header. Typography, overall, layout.
