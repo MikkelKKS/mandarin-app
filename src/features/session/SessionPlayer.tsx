@@ -384,7 +384,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           <span className="min-w-16 text-right text-sm font-semibold tabular-nums text-gold" aria-label={`${st.xp} XP this session`}>
             {st.xp} XP
           </span>
-          {gained !== null && (
+          {gained !== null && !result && (
             <span key={`${st.block}-${st.item}-${gained}`} className="anim-xp pointer-events-none absolute right-9 top-full z-30 mt-1 rounded-full bg-gold px-3 py-1 text-sm font-semibold text-ink shadow" aria-hidden>
               +{gained} XP
             </span>
@@ -421,6 +421,8 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           data={data}
           onContinue={() => leave(advance)}
           leaving={leaving}
+          xp={gained}
+          combo={st.combo}
           onOverride={override}
           grade={graded ? <GradeChip rating={graded.rating} onChange={(r) => void regradeAll([graded.card], r).then(() => setGraded({ ...graded, rating: r }))} /> : null}
         />
@@ -435,6 +437,8 @@ function Feedback({
   data,
   onContinue,
   leaving = false,
+  xp = null,
+  combo = 0,
   onOverride,
   grade,
 }: {
@@ -443,6 +447,9 @@ function Feedback({
   data: VocabData;
   onContinue: () => void;
   leaving?: boolean;
+  /** XP this answer earned and the combo after it: shown in the title row of a right answer. */
+  xp?: number | null;
+  combo?: number;
   onOverride?: () => void;
   grade: React.ReactNode;
 }) {
@@ -461,6 +468,8 @@ function Feedback({
         : ['bg-jade-soft', 'md:bg-jade-soft'];
   const sheet = useRef<HTMLDivElement>(null);
   useSheetSpace(sheet);
+  // A right answer leads with its reward; its review grade (rarely changed) waits under More.
+  const quietGrade = (o.verdict === 'correct' || o.verdict === 'typo') && !o.note?.startsWith('Moved back');
   const title = o.note?.startsWith('Moved back') ? "Here's the word" : o.verdict === 'wrong' ? 'Not quite' : o.verdict === 'almost' ? 'Almost' : o.verdict === 'typo' ? 'Right, with a typo' : 'Right';
   // A word heard in a sentence is replayed in that sentence.
   const own = 'sentence' in item && item.sentence.startsWith('m-') && !data.sentences.get(item.sentence)?.azure;
@@ -474,6 +483,7 @@ function Feedback({
   return (
     <div ref={sheet} role="status" aria-live="polite" className={`${leaving ? 'anim-sheet-out' : 'anim-rise'} fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
       <div className={`sheet-stagger mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
         <p className={`flex items-center gap-2 text-xl font-semibold ${o.note?.startsWith('Moved back') ? '' : o.verdict === 'wrong' ? 'text-cinnabar' : o.verdict === 'correct' || o.verdict === 'typo' ? 'text-jade' : ''}`}>
           {o.note?.startsWith('Moved back') ? null : o.verdict === 'wrong' ? (
             <svg className="anim-draw h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
@@ -486,6 +496,13 @@ function Feedback({
           ) : null}
           {title}
         </p>
+        {quietGrade && !!xp && (
+          <span className="flex shrink-0 items-center gap-1.5 text-sm font-semibold tabular-nums">
+            <span className="anim-pop rounded-full bg-amber-soft px-2.5 py-0.5 text-gold">+{xp} XP</span>
+            {combo >= 2 && <span className="anim-pop rounded-full bg-amber-soft px-2.5 py-0.5 text-gold [animation-delay:80ms]">{combo} in a row</span>}
+          </span>
+        )}
+        </div>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}
         {o.syllables && o.verdict !== 'correct' && <SyllableBreakdown syllables={o.syllables} extra={o.extra} />}
         {o.twin && (
@@ -539,7 +556,7 @@ function Feedback({
             )}
           </div>
         )}
-        {grade}
+        {!quietGrade && grade}
         <button ref={btn} onClick={onContinue} className="press mt-4 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink">
           Continue
         </button>
@@ -548,12 +565,13 @@ function Feedback({
             {result.panel ? "I was right" : "I was right: my answer means the same"}
           </button>
         )}
-        {((a && audioId) || lookup || ('word' in item && a?.hanzi)) && (
+        {((a && audioId) || lookup || ('word' in item && a?.hanzi) || (quietGrade && grade)) && (
           <details className="group mt-2 text-sm">
             <summary className="flex h-10 cursor-pointer list-none items-center justify-center gap-1 rounded-xl font-medium opacity-80 hover:opacity-100 [&::-webkit-details-marker]:hidden">
               More <span className="transition-transform group-open:rotate-180" aria-hidden>▾</span>
             </summary>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pb-1">
+              {quietGrade && grade && <div className="w-full text-center [&>*]:mt-0">{grade}</div>}
               {lookup && <LookUp text={lookup} />}
               {a && audioId &&
                 (result.context?.id ? (
