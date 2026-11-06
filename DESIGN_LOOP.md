@@ -7,10 +7,10 @@ Memory of `/design-loop` (reviewers never read this file). Each loop: state bloc
 ```
 State: running
 Round: 3
-Phase: review
+Phase: build
 Max rounds: 4
-Best lowest: 6.5
-Rounds without progress: 1
+Best lowest: 7
+Rounds without progress: 0
 Confirming: no
 Notes: do a maximum of 4 loops (read as: at most 4 rounds)
 ```
@@ -19,6 +19,7 @@ Notes: do a maximum of 4 loops (read as: at most 4 rounds)
 |-------|--------|------------|--------|--------|---------|--------|------|
 | 1 | 7 | 7 | 6.5 | 7 | 7 | 6.5 | start: main after design review 2026-11-06 |
 | 2 | 7.5 | 6.5 | 7 | 7 | 6.5 | 6.5 | colour and motion up after round 1; T and O down 0.5 (reviewer variance, nothing changed there) |
+| 3 | 7.5 | 7 | 7 | 7 | 7 | 7 | lowest up 6.5 → 7 (typography and overall back to 7) |
 
 ### Round 1
 
@@ -61,3 +62,24 @@ Plan (lowest: typography 6.5 and overall 6.5; Home/Tone Gym layout ideas = Mikke
 - [x] (784762e48) One type scale: nothing under 12px, arbitrary sizes folded into named steps, question prompt smaller so the pinyin wins. Typography.
 - [x] (5c3c815ad) Pinyin bigger and consistent: hero larger on phone and PC, the feedback sheet shows the sentence and the answer word at one size. Typography.
 - [x] (0a7c08361) Right answers feel like a reward: the sheet's title row shows +XP and the combo; on right answers the review-grade line moves under More (still one tap to change). Overall, motion.
+
+### Round 3
+
+Scores (blind, shots blind-f39af8c54):
+- Colour 7.5: coherent, nearly all AA; T5/T2 marginal on tinted sheets; gold/amber carry five meanings next to T2 orange; dark feedback surfaces dim.
+- Typography 7: hero pinyin is the star; answer sheet a flat ladder (verdict, sentence, word, gloss, grade all similar); Stats labels tiny and uniform, numbers not data-grade.
+- Motion 7: coherent and fast; page still moves ~32px when the sheet opens (the deliberate scroll that keeps the right option visible); option reaction and right reveal slow; right vs wrong still alike.
+- Layout 7: clear hierarchy, good sidebar; PC content edge differs per tab and Home is lopsided (P5-type, rejected); question screens use space badly.
+- Overall 7: clean and consistent; seal personality only at session end; progress not the hero on Home; Stats and matrix feel like data dumps.
+
+Weakest points per reviewer:
+- Colour: tints vs T5/T2 · dark feedback surfaces · gold overloaded.
+- Typography: Stats tiny/uniform · answer-sheet ladder flat · hanzi weight vs Latin.
+- Motion: jump on sheet open · slow option reaction · right/wrong alike.
+- Layout: PC content edge · phone Home rhythm · question screen space.
+- Overall: seal only at the edges · progress not the hero · Stats like documentation.
+
+Plan (all four 7s; Home/PC-shell layout ideas = Mikkel's rejected P5, not used; the scroll on sheet open stays because it keeps the right option visible, IDEAS #13):
+- [ ] Faster, distinct answer reaction: the picked option reacts at once (right pops, wrong shakes), the right option lights up sooner after a wrong pick. Motion.
+- [ ] Answer sheet with clear roles: verdict smaller, the word to learn is the big line, the sentence and the meta lines quieter. Typography, overall.
+- [ ] Stats numbers that read as data: one small-caps label style for tile labels and section eyebrows, tabular numbers, larger Stats microtext, one-line matrix header. Typography, overall, layout.
