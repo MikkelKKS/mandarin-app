@@ -7,12 +7,15 @@ import { Speaker } from '../../components/icons';
 import { wordByHanzi } from '../../content';
 import { azureUrl, dictAudioUrl, hasChineseVoice, play, playUrl, speak } from '../../lib/audio';
 import { loadVocab } from '../../lib/vocabData';
-import { guessHanzi, isPinyinSentence, loadDict, plecoLink, romanKey, search, segment, type Dict, type Entry } from './dict';
+import { guessHanzi, isPinyinSentence, loadDict, setPreferredReading, plecoLink, romanKey, search, segment, type Dict, type Entry } from './dict';
 import { looksLikeEnglishSentence, translate } from './translate';
 import { MySentenceList, SaveSentenceCard } from './MySentences';
 import { useQueuedWords } from './mywords';
 import { LearnNext } from '../../components/LearnNext';
 import { PageHeader } from '../../components/PageHeader';
+
+// Polyphones: rank the reading the course teaches first (说 shuō, not shuì).
+setPreferredReading((h) => wordByHanzi(h)?.pinyin);
 
 let showNoVoice: (v: boolean) => void = () => {};
 

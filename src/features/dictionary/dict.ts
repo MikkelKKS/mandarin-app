@@ -61,9 +61,17 @@ export function loadDict(): Promise<Dict | null> {
   return loading;
 }
 
-/** Common, short words first; HSK words before rare ones. */
+/** The reading the app's own word list uses for some characters (e.g. 说 → shuō), if any. */
+let preferred: (hanzi: string) => string | undefined = () => undefined;
+export function setPreferredReading(fn: (hanzi: string) => string | undefined) {
+  preferred = fn;
+}
+const norm = (p: string) => p.toLowerCase().replace(/[\s']/g, '');
+
+/** Common, short words first; HSK words before rare ones; the reading the course teaches before other readings. */
 function rank(e: Entry): number {
-  return (e.hsk ? e.hsk : 9) * 10 + [...e.hanzi].length + (/^[A-Z]/.test(e.pinyin) ? 5 : 0) + (e.defs[0].startsWith('surname') ? 4 : 0);
+  const want = preferred(e.hanzi);
+  return (want && norm(want) !== norm(e.pinyin) ? 3 : 0) + (e.hsk ? e.hsk : 9) * 10 + [...e.hanzi].length + (/^[A-Z]/.test(e.pinyin) ? 5 : 0) + (e.defs[0].startsWith('surname') ? 4 : 0);
 }
 
 export type SearchResult =
