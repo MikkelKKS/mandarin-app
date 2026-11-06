@@ -43,7 +43,7 @@
   --jade-soft: #dcede6;
   --gold: #a8740e;
   --cinnabar: #b3362a;
-  --cinnabar-soft: #f6dfdb;
+  --cinnabar-soft: #fbe8e5;
   --amber-soft: #f7eed8;
   /* Tone colours (Pleco-style): 1 red, 2 orange, 3 green, 4 blue, neutral grey. */
   --t1: #d33a2c;
@@ -185,8 +185,10 @@ h1, h2, h3 {
 }
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  60% { transform: translateX(3px); }
+  20% { transform: translateX(-6px); }
+  45% { transform: translateX(5px); }
+  70% { transform: translateX(-3px); }
+  85% { transform: translateX(2px); }
 }
 @keyframes breathe {
   0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 30%, transparent); }
@@ -214,7 +216,18 @@ h1, h2, h3 {
   from { transform: scaleY(0); }
 }
 @keyframes nudge {
-  40% { transform: scale(1.04); }
+  45% { transform: scale(1.05); }
+}
+/* After a wrong pick, the right option lights up a beat later, so the eye goes from your answer to the right one. */
+@keyframes reveal-right {
+  from { background-color: var(--surface); border-color: var(--line); }
+}
+/* Feedback icons (tick, cross) draw themselves in. */
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes xp {
+  from { opacity: 0; transform: translateY(8px) scale(0.8); }
 }
 @keyframes tile-in {
   from { opacity: 0; transform: scale(0.92); }
@@ -241,7 +254,7 @@ h1, h2, h3 {
 }
 :root { --dict-w: 28rem; }
 .anim-sheet { animation: sheet 0.26s var(--ease-out) both; }
-.anim-shake { animation: shake 0.3s ease-in-out; }
+.anim-shake { animation: shake 0.34s ease-in-out; }
 .anim-breathe { animation: breathe 1.8s ease-in-out infinite; }
 .anim-fade { animation: fade 0.2s ease-out both; }
 /* backwards (not both): a transform kept on the page would break position: fixed sheets inside it. */
@@ -251,7 +264,10 @@ h1, h2, h3 {
 .anim-ring { animation: ring-fill 0.8s var(--ease-out) 0.1s both; }
 .anim-grow-x { transform-origin: left; animation: grow-x 0.6s var(--ease-out) both; }
 .anim-grow-y { transform-origin: bottom; animation: grow-y 0.5s var(--ease-out) both; }
-.anim-nudge { animation: nudge 0.25s var(--ease-out); }
+.anim-nudge { animation: nudge 0.32s var(--ease-spring); }
+[role='listbox']:has([data-state='wrong']) [data-state='right'] { animation: reveal-right 0.35s var(--ease-out) 0.15s both; }
+.anim-draw path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: draw 0.3s var(--ease-out) 0.1s forwards; }
+.anim-xp { animation: xp 0.4s var(--ease-spring) both; }
 .anim-tile { animation: tile-in 0.18s var(--ease-out) backwards; }
 .anim-stamp { animation: stamp 0.5s var(--ease-out) 0.15s both; }
 

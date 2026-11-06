@@ -382,7 +382,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             {st.xp} XP
           </span>
           {gained !== null && (
-            <span key={`${st.block}-${st.item}-${gained}`} className="anim-pop pointer-events-none absolute right-9 top-full z-30 mt-1 rounded-full bg-gold px-3 py-1 text-sm font-semibold text-ink shadow" aria-hidden>
+            <span key={`${st.block}-${st.item}-${gained}`} className="anim-xp pointer-events-none absolute right-9 top-full z-30 mt-1 rounded-full bg-gold px-3 py-1 text-sm font-semibold text-ink shadow" aria-hidden>
               +{gained} XP
             </span>
           )}
@@ -468,7 +468,18 @@ function Feedback({
   return (
     <div ref={sheet} role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl ${tone} px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] md:bg-bg md:pt-0 md:shadow-none`}>
       <div className={`mx-auto max-w-xl md:rounded-3xl md:p-5 md:shadow-lg lg:max-w-2xl ${card}`}>
-        <p className="text-xl font-semibold">{title}</p>
+        <p className={`flex items-center gap-2 text-xl font-semibold ${o.note?.startsWith('Moved back') ? '' : o.verdict === 'wrong' ? 'text-cinnabar' : o.verdict === 'correct' || o.verdict === 'typo' ? 'text-jade' : ''}`}>
+          {o.note?.startsWith('Moved back') ? null : o.verdict === 'wrong' ? (
+            <svg className="anim-draw h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden>
+              <path d="M7 7l10 10M17 7L7 17" />
+            </svg>
+          ) : o.verdict === 'correct' || o.verdict === 'typo' ? (
+            <svg className="anim-draw h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M5 12.5l4.5 4.5L19 7.5" />
+            </svg>
+          ) : null}
+          {title}
+        </p>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}
         {o.syllables && o.verdict !== 'correct' && <SyllableBreakdown syllables={o.syllables} extra={o.extra} />}
         {o.twin && (

@@ -14,13 +14,19 @@ export function useSheetSpace(ref: RefObject<HTMLElement | null>) {
     if (!el) return;
     const root = document.documentElement;
     const started = performance.now();
+    let target = -1;
     const reveal = () => {
       const right = document.querySelector<HTMLElement>('[data-state="right"]');
       if (!right) return;
       const h = el.getBoundingClientRect().height;
       const r = right.getBoundingClientRect();
       const limit = window.innerHeight - h - 12;
-      if (r.bottom > limit) window.scrollBy({ top: r.bottom - limit, behavior: 'auto' });
+      if (r.bottom <= limit) return;
+      // One smooth scroll per new target: re-requesting it every frame would restart it and stutter.
+      const top = Math.round(window.scrollY + r.bottom - limit);
+      if (Math.abs(top - target) < 2) return;
+      target = top;
+      window.scrollTo({ top, behavior: 'smooth' });
     };
     const update = () => {
       root.style.setProperty('--sheet-h', `${Math.round(el.getBoundingClientRect().height)}px`);
