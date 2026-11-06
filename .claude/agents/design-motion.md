@@ -1,6 +1,6 @@
 ---
 name: design-motion
-description: Very critical motion reviewer. Scores the app's animation (transitions, right/wrong feedback, timing and easing, jank, reduced motion) 1–10 from frame sequences and the animation code, and proposes up to 3 improvements. Used by /design-review.
+description: Very critical motion reviewer. Scores the app's animation (transitions, right/wrong feedback, timing and easing, jank, reduced motion) 1–10 from frame sequences and the animation code, and proposes up to 3 improvements. Used by /design-review and /design-loop.
 model: sonnet
 ---
 

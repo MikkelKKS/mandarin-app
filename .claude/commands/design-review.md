@@ -1,5 +1,5 @@
 ---
-description: Design review. Three critical reviewers (colour, typography, motion) score the app; up to 5 proposals with before/after previews; Mikkel approves; approved ones are built
+description: Design review. Five critical reviewers (colour, typography, motion, layout, overall) score the app; up to 5 proposals with before/after previews; Mikkel approves; approved ones are built
 argument-hint: "[your notes, e.g. focus on the session screen]"
 model: claude-opus-5-5
 effort: medium
@@ -22,18 +22,18 @@ The reviewers run on sonnet (set in their agent files). Combining, previews and 
 3. Check a couple of the images exist; if a run failed, fix the spec (`qa/design.spec.ts`, `qa/design-motion.spec.ts`) before going on.
 
 ## 3. Review (in parallel)
-Start **design-colour**, **design-typography** and **design-motion** in one message (three Agent calls, so they run in parallel). Give each:
+Start **design-colour**, **design-typography**, **design-motion**, **design-layout** and **design-overall** in one message (five Agent calls, so they run in parallel). Give each:
 - the screenshot folder `<run>/current` (motion frames are in `<run>/current/motion`),
 - Mikkel's notes, if any ("cover this first and most thoroughly"),
 - a reminder: report only, don't edit app files, don't commit; use its own port for extra shots.
 Don't pass one reviewer's output to another.
 
 ## 4. Combine into at most 5 proposals
-From the three reports (up to 9 improvements):
-- Note the three scores and one-line reasons.
+From the five reports (up to 15 improvements):
+- Note the five scores and one-line reasons.
 - Merge overlaps (e.g. two reviewers both asking for stronger feedback colours → one proposal).
 - Drop anything that conflicts with `DECISIONS.md`, with CLAUDE.md, or with a proposal `DESIGN_SCORES.md` lists as rejected (unless the reviewer gave a new reason).
-- Make sure the proposals work **together**: a new palette and a new font, or a new motion style and a colour change, must not clash; if they would, combine them into one proposal or pick one.
+- Make sure the proposals work **together**: a new palette and a new font, a new spacing scale and a new card style, or a new motion style and a colour change, must not clash; if they would, combine them into one proposal or pick one.
 - Rank by expected gain ÷ size, keep the best **5 or fewer**. Number them P1…Pn. For each: title, one-line summary, which reviewer(s) and score area it targets, expected gain, size (S/M/L), files, affected screens.
 
 ## 5. Preview each proposal (never on main)
@@ -76,12 +76,14 @@ If tests can't be made to pass, revert that proposal, mark it "not built (why)" 
    | Colour | N/10 | one line |
    | Typography | N/10 | one line |
    | Motion | N/10 | one line |
+   | Layout | N/10 | one line |
+   | Overall | N/10 | one line |
 
    | # | Proposal | Area | Size | Decision |
    |---|----------|------|------|----------|
    | P1 | title | colour | S | built / approved, not built (why) / rejected / decide later (IDEAS #n) |
    ```
-   Also keep the **Score history** table at the top of the file up to date (one row per review: date, colour, typography, motion).
+   Also keep the **Score history** table at the top of the file up to date (one row per review: date, colour, typography, motion, layout, overall; older rows without layout/overall show "–").
 2. **IDEAS.md**: each "Decide later" proposal becomes a row: next free ID, title, status `proposed`, type `design`, one-line why (including the target score), size, source `design-review`, today's date.
-3. Commit (`Design review <date>: scores C/T/M, built N`) and push. Check `git status` is clean (the `design-review/` folder is git-ignored and stays on disk for Mikkel).
-4. End with a short plain-language summary: the three scores (and the change since the last review, if any), what was built and where to see it in the app, what's waiting in IDEAS.md (run `/ideas` to decide, `/build` to build), and the path to `<run>` for the previews.
+3. Commit (`Design review <date>: scores C/T/M/L/O, built N`) and push. Check `git status` is clean (the `design-review/` folder is git-ignored and stays on disk for Mikkel).
+4. End with a short plain-language summary: the five scores (and the change since the last review, if any), what was built and where to see it in the app, what's waiting in IDEAS.md (run `/ideas` to decide, `/build` to build), and the path to `<run>` for the previews.

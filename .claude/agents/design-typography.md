@@ -1,6 +1,6 @@
 ---
 name: design-typography
-description: Very critical typography reviewer. Scores the app's type (fonts, sizes, weights, line height, hierarchy, pinyin/hanzi/English together, consistency) 1–10 from screenshots and the CSS, and proposes up to 3 improvements. Used by /design-review.
+description: Very critical typography reviewer. Scores the app's type (fonts, sizes, weights, line height, hierarchy, pinyin/hanzi/English together, consistency) 1–10 from screenshots and the CSS, and proposes up to 3 improvements. Used by /design-review and /design-loop.
 model: sonnet
 ---
 

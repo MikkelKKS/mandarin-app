@@ -1,6 +1,6 @@
 ---
 name: design-colour
-description: Very critical colour reviewer. Scores the app's colour (palette, WCAG AA contrast, consistency, tone colours, dark mode, attention) 1–10 from screenshots and the CSS, and proposes up to 3 improvements. Used by /design-review.
+description: Very critical colour reviewer. Scores the app's colour (palette, WCAG AA contrast, consistency, tone colours, dark mode, attention) 1–10 from screenshots and the CSS, and proposes up to 3 improvements. Used by /design-review and /design-loop.
 model: sonnet
 ---
 
