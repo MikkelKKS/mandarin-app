@@ -7,10 +7,10 @@ Memory of `/design-loop` (reviewers never read this file). Each loop: state bloc
 ```
 State: running
 Round: 2
-Phase: review
+Phase: build
 Max rounds: 4
 Best lowest: 6.5
-Rounds without progress: 0
+Rounds without progress: 1
 Confirming: no
 Notes: do a maximum of 4 loops (read as: at most 4 rounds)
 ```
@@ -18,6 +18,7 @@ Notes: do a maximum of 4 loops (read as: at most 4 rounds)
 | Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
 |-------|--------|------------|--------|--------|---------|--------|------|
 | 1 | 7 | 7 | 6.5 | 7 | 7 | 6.5 | start: main after design review 2026-11-06 |
+| 2 | 7.5 | 6.5 | 7 | 7 | 6.5 | 6.5 | colour and motion up after round 1; T and O down 0.5 (reviewer variance, nothing changed there) |
 
 ### Round 1
 
@@ -39,3 +40,24 @@ Plan (target: motion 6.5, then the 7s; P5 Home/PC-layout is rejected by Mikkel, 
 - [x] (40c3d5449) Sheet without the page jump: scroll before the sheet's first paint (one movement), session header stays visible (sticky). Motion.
 - [x] (940dfe359) Sheet that enters in steps and leaves before the next question; +XP chip floats up and fades; shared duration tokens. Motion.
 - [x] (a3fa93d05) Readable tone colours, gold and visible control edges in light mode (same hues and meanings). Colour, typography.
+
+### Round 2
+
+Scores (blind, shots blind-2dde6bba9):
+- Colour 7.5: coherent, AA mostly met; dark primary is a glowing pastel mint; tone colours only just pass on tinted sheets; gold and T2 both ochre.
+- Typography 6.5: no real scale (9/10/10.5/11/13/15px plus Tailwind steps), text-sm everywhere; prompt competes with the pinyin; one word at three sizes in the feedback sheet.
+- Motion 7: shared tokens, stagger, exits, reduced motion fine; right/wrong still mostly colour; sheet grows after appearing; XP chip lingers.
+- Layout 7: consistent rhythm and sheet; mixed left/centre axes on exercises; Home empty areas (P5-type, rejected); Stats long.
+- Overall 6.5: identity is there; rewards still thin (grade admin line first on Right); Home duplicates numbers; Stats feels like another product.
+
+Weakest points per reviewer:
+- Colour: dark mint primary · tone colours near the floor on tinted sheets · edge/gold/T2 muddy.
+- Typography: no scale · pinyin not dominant / prompt competes · hanzi weight and tiny Stats labels.
+- Motion: right vs wrong alike · sheet drifts as it grows · XP chip lingers.
+- Layout: mixed axes on exercises · Home empty areas · Stats long and ragged on PC.
+- Overall: rewards thin · Home hierarchy · screens feel built at different times.
+
+Plan (lowest: typography 6.5 and overall 6.5; Home/Tone Gym layout ideas = Mikkel's rejected P5, not used):
+- [ ] One type scale: nothing under 12px, arbitrary sizes folded into named steps, question prompt smaller so the pinyin wins. Typography.
+- [ ] Pinyin bigger and consistent: hero larger on phone and PC, the feedback sheet shows the sentence and the answer word at one size. Typography.
+- [ ] Right answers feel like a reward: the sheet's title row shows +XP and the combo; on right answers the review-grade line moves under More (still one tap to change). Overall, motion.
