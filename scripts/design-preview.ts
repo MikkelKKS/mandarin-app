@@ -16,12 +16,13 @@
  *       Deletes the worktree again (the shared node_modules link is removed first, so the real one is untouched).
  *   npx tsx scripts/design-preview.ts compare <dir> [title]
  *       Writes <dir>/compare.html: every <dir>/before/**.png next to the same file in <dir>/after/,
- *       so Mikkel opens one file in his browser and sees before | after side by side.
+ *       so Mikkel opens one file in his browser and sees before | after side by side. Only screens that
+ *       changed are shown; identical pairs are left out and named at the end.
  *
  * Browsers are always headless and muted (playwright.qa.config.ts → e2e/launch.ts).
  */
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, existsSync, lstatSync, mkdirSync, readdirSync, rmdirSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmdirSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
@@ -121,9 +122,14 @@ switch (cmd) {
       existsSync(d)
         ? readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? pngs(join(d, e.name)) : e.name.endsWith('.png') ? [join(d, e.name)] : []))
         : [];
-    const rows = pngs(join(dir, 'before'))
+    const all = pngs(join(dir, 'before'))
       .map((f) => relative(join(dir, 'before'), f).split('\\').join('/'))
-      .sort()
+      .sort();
+    // Only screens that changed: identical before/after files are left out and listed by name at the end.
+    const same = (r: string) => existsSync(join(dir, 'after', r)) && readFileSync(join(dir, 'before', r)).equals(readFileSync(join(dir, 'after', r)));
+    const unchanged = all.filter(same);
+    const rows = all
+      .filter((r) => !same(r))
       .map((r) => {
         const after = existsSync(join(dir, 'after', r)) ? `<img src="after/${r}">` : '<p>(no after shot)</p>';
         return `<h2>${r.replace(/\.png$/, '')}</h2><div class="pair"><figure><figcaption>Before</figcaption><img src="before/${r}"></figure><figure><figcaption>After</figcaption>${after}</figure></div>`;
@@ -132,8 +138,8 @@ switch (cmd) {
     const css =
       'body{font:16px system-ui;margin:16px;background:#f4f4f4;color:#111}h2{font-size:15px;margin:28px 0 8px}' +
       '.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}figure{margin:0}figcaption{font-weight:600;margin-bottom:4px}img{width:100%;border:1px solid #ccc}';
-    writeFileSync(join(dir, 'compare.html'), `<!doctype html><meta charset="utf-8"><title>${name}</title><style>${css}</style><h1>${name}</h1>${rows.join('')}`);
-    console.log(`Wrote ${join(dir, 'compare.html')} (${rows.length} screens)`);
+    writeFileSync(join(dir, 'compare.html'), `<!doctype html><meta charset="utf-8"><title>${name}</title><style>${css}</style><h1>${name}</h1>${rows.length ? rows.join('') : '<p>No screen changed.</p>'}${unchanged.length ? `<h2>Unchanged (not shown)</h2><p>${unchanged.map((r) => r.replace(/\.png$/, '')).join(', ')}</p>` : ''}`);
+    console.log(`Wrote ${join(dir, 'compare.html')} (${rows.length} changed screens, ${unchanged.length} unchanged left out)`);
     break;
   }
   default:

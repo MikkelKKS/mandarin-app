@@ -46,7 +46,7 @@ For each proposal Pn, one at a time (say "Preview X of Y: <title>"):
    - after: `npx tsx scripts/design-preview.ts shots <run>/pN/after <screens> --dir .design-worktrees/pN`
    - before: `npx tsx scripts/design-preview.ts shots <run>/pN/before <screens>` (main's build from step 2).
    - Motion proposals: also `motion <run>/pN/after --dir .design-worktrees/pN` and `motion <run>/pN/before`, and describe the difference in words in the question, since stills can't show it.
-5. `npx tsx scripts/design-preview.ts compare <run>/pN "Pn: <title>"` → `<run>/pN/compare.html` (before | after side by side).
+5. `npx tsx scripts/design-preview.ts compare <run>/pN "Pn: <title>"` → `<run>/pN/compare.html` (before | after side by side; only pages that changed: identical pairs are left out, and pairs that differ only by noise are deleted before re-running `compare`, as Mikkel asked on 2026-11-07).
 6. Look at a few before/after pairs yourself with Read. If the preview looks broken or doesn't show the change, fix it in the worktree and re-shoot.
 7. Keep the diff for building later: `git -C .design-worktrees/pN diff > <run>/pN/change.diff`.
 8. `npx tsx scripts/design-preview.ts remove pN` (always, even if something failed). Confirm `git status` on main shows no changes from the preview.
