@@ -195,7 +195,7 @@ export function ContextLine({ c, blank = false, className = '' }: { c: Parts & {
           {blank ? (
             <span className="mx-1 inline-block w-10 border-b-2 border-ink align-baseline" aria-label={pinyin ? undefined : 'missing word'} aria-hidden={pinyin || undefined} />
           ) : (
-            <mark className="rounded-md bg-amber-soft px-0.5 text-inherit">{han.target}</mark>
+            <mark className="rounded-md bg-sunk px-0.5 text-inherit ring-1 ring-edge">{han.target}</mark>
           )}
           {han.after}
         </p>
@@ -211,7 +211,7 @@ function PinyinContext({ c, blank }: { c: Parts; blank: boolean }) {
       {blank ? (
         <span className="mx-0.5 inline-block w-14 border-b-2 border-ink align-baseline" aria-label="missing word" />
       ) : (
-        <mark className="rounded-lg bg-amber-soft px-1.5 font-semibold text-inherit ring-1 ring-gold/50">
+        <mark className="rounded-lg bg-sunk px-1.5 font-semibold text-inherit ring-1 ring-edge">
           <TonePinyin pinyin={c.target} />
         </mark>
       )}
@@ -666,7 +666,7 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
                     onClick={() => pick(slot, t)}
                     disabled={done}
                     aria-label={`${TONE_WORD[t]} tone${gym.tones.length > 1 ? `, syllable ${slot + 1}` : ''}`}
-                    className={`h-14 rounded-2xl border text-lg font-semibold ${TONE_TEXT[t]} ${right ? 'border-jade bg-jade-soft' : done && chosen ? 'border-cinnabar bg-cinnabar-soft' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'}`}
+                    className={`h-14 rounded-2xl border text-lg font-semibold ${TONE_TEXT[t]} ${right ? 'border-jade bg-jade-soft' : done && chosen ? 'opt-miss' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'}`}
                   >
                     {markSyllable({ base: gym.bases[slot], tone: t })}
                   </button>

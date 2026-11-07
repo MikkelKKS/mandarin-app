@@ -162,7 +162,7 @@ export function optionClass(state: OptionState): string {
     case 'right':
       return 'border-jade bg-jade-soft anim-nudge !duration-0';
     case 'wrong':
-      return 'border-cinnabar bg-cinnabar-soft anim-shake !duration-0';
+      return 'opt-miss anim-shake !duration-0';
     default:
       return 'border-edge bg-surface shadow-sm hover:border-muted';
   }

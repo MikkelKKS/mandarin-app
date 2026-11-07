@@ -1,6 +1,6 @@
 /**
  * Study calendar (IDEAS #5): one square per day, shaded by how much of the
- * daily XP goal was reached; a gold ring marks a day a streak freeze saved.
+ * daily XP goal was reached; a violet ring marks a day a streak freeze saved.
  * Tap or focus a day for its XP, minutes and accuracy. About half a year on a
  * phone, a full year on a PC. Columns are weeks, Monday on top.
  */
@@ -74,7 +74,7 @@ export function StudyCalendar({ logs, goal, streak, now }: { logs: ReviewLogRow[
                       onFocus={() => setPicked(d)}
                       aria-label={describe(d)}
                       aria-selected={shown?.day === d.day}
-                      className={`aspect-square w-full rounded-[3px] outline-none focus-visible:ring-2 focus-visible:ring-ink ${shown?.day === d.day ? 'ring-1 ring-ink' : frozen.has(d.day) ? 'ring-[1.5px] ring-inset ring-gold' : ''}`}
+                      className={`aspect-square w-full rounded-[3px] outline-none focus-visible:ring-2 focus-visible:ring-ink ${shown?.day === d.day ? 'ring-1 ring-ink' : frozen.has(d.day) ? 'ring-[1.5px] ring-inset ring-imperial' : ''}`}
                       style={{ background: SHADE[goalLevel(d.xp, goal)] }}
                     />
                   ) : (
@@ -95,7 +95,7 @@ export function StudyCalendar({ logs, goal, streak, now }: { logs: ReviewLogRow[
           </li>
         ))}
         <li className="flex items-center gap-1">
-          <span className="h-2.5 w-2.5 rounded-sm ring-[1.5px] ring-inset ring-gold" aria-hidden />
+          <span className="h-2.5 w-2.5 rounded-sm ring-[1.5px] ring-inset ring-imperial" aria-hidden />
           Freeze
         </li>
       </ul>

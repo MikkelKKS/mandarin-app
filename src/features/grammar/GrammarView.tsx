@@ -68,7 +68,7 @@ function GrammarList() {
                     <span className="min-w-0 flex-1">
                       <span className="block font-semibold">{t.title}</span>
                       <span className="block text-sm leading-snug text-muted">{t.summary}</span>
-                      {cards && <span className={`mt-0.5 block text-xs ${st.due ? 'font-semibold text-gold' : 'text-muted'}`}>{st.text}</span>}
+                      {cards && <span className={`mt-0.5 block text-xs ${st.due ? 'font-semibold text-jade' : 'text-muted'}`}>{st.text}</span>}
                     </span>
                     <ChevronRight className="h-5 w-5 shrink-0 text-muted" />
                   </button>
@@ -92,7 +92,7 @@ function TopicPage({ topic }: { topic: Topic }) {
       <PageHeader back={{ label: 'Grammar', to: 'grammar' }} title={topic.title}>
         {topic.summary}
       </PageHeader>
-      <p className="mt-4 rounded-2xl border border-gold/40 bg-amber-soft/60 px-4 py-3 font-medium">{topic.pattern}</p>
+      <p className="mt-4 rounded-2xl border border-line bg-sunk px-4 py-3 font-medium">{topic.pattern}</p>
       <div className="mt-5 flex flex-col gap-3 text-lg leading-relaxed">
         {topic.text.map((p, k) => (
           <p key={k}>{p}</p>
@@ -236,7 +236,7 @@ function PracticeFeedback({ result, onNext, last }: { result: ItemResult; onNext
   const o = result.outcome;
   const ok = o.verdict === 'correct';
   return (
-    <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] ${ok ? 'bg-jade-soft' : 'bg-cinnabar-soft'}`}>
+    <div role="status" aria-live="polite" className={`anim-rise fixed inset-x-0 bottom-0 z-20 rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 shadow-[0_-8px_24px_rgb(0_0_0/0.08)] ${ok ? 'bg-jade-soft' : 'sheet-miss'}`}>
       <div className="mx-auto max-w-xl">
         <p className="text-xl font-semibold">{ok ? 'Right' : 'Not quite'}</p>
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}

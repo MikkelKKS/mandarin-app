@@ -35,7 +35,7 @@ export function SyncSection() {
         <p className="mt-1 text-sm text-muted">
           {st.state === 'syncing' ? 'Syncing…' : `Last synced ${ago(st.lastSynced)}`}
         </p>
-        {st.state === 'error' && <p className="mt-2 rounded-xl bg-amber-soft p-3 text-sm">{st.error}</p>}
+        {st.state === 'error' && <p className="mt-2 rounded-xl bg-sunk p-3 text-sm">{st.error}</p>}
         <div className="mt-3 flex flex-wrap gap-2">
           <button className={primary} disabled={st.state === 'syncing'} onClick={() => void syncNow()}>
             Sync now

@@ -4,6 +4,8 @@
 
 @theme {
   --font-sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Numbers that are the point (XP, streak, level, Stats hero): Instrument Sans at its condensed width. */
+  --font-num: 'Instrument Sans Variable', 'Instrument Sans', system-ui, sans-serif;
   --font-han: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'Source Han Sans SC', sans-serif;
 
   --color-bg: var(--bg);
@@ -16,10 +18,12 @@
   --color-jade: var(--jade);
   --color-jade-ink: var(--jade-ink);
   --color-jade-soft: var(--jade-soft);
-  --color-gold: var(--gold);
+  --color-imperial: var(--imperial);
+  --color-imperial-soft: var(--imperial-soft);
+  --color-plate: var(--plate);
+  --color-plate-ink: var(--plate-ink);
   --color-cinnabar: var(--cinnabar);
   --color-cinnabar-soft: var(--cinnabar-soft);
-  --color-amber-soft: var(--amber-soft);
   --color-t1: var(--t1);
   --color-t2: var(--t2);
   --color-t3: var(--t3);
@@ -30,32 +34,54 @@
   --shadow-lg: var(--shadow-lg);
   --spacing-13: 3.25rem;
 
-  /* Type scale: xs 12 · sm 14 · base 16 · lg 18 · xl 20 · 2xl 24 · display 28 · 3xl+ for page numbers.
-     Nothing smaller than xs; no one-off sizes. Pinyin heroes use .py-hero. */
+  /* One type scale: xs 12 caption · sm 14 small · base 16 body · lead 18 · title 22 · heading 28 ·
+     hero 36 (pinyin) · numeral 48 · numeral-xl 72. Pinyin roles (.py-*) map onto it; no one-off sizes.
+     (lg/xl/2xl stay as Tailwind steps for older screens: 18/20/24.) */
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.45;
+  --text-title: 1.375rem;
+  --text-title--line-height: 1.25;
   --text-display: 1.75rem;
   --text-display--line-height: 1.2;
+  --text-heading: 1.75rem;
+  --text-heading--line-height: 1.2;
+  --text-hero: 2.25rem;
+  --text-hero--line-height: 1.2;
+  --text-numeral: 3rem;
+  --text-numeral--line-height: 1;
+  --text-numeral-xl: 4.5rem;
+  --text-numeral-xl--line-height: 0.95;
+  /* Radius by role: hero plates, cards, controls (chips are full pills). */
+  --radius-plate: 28px;
+  --radius-card: 16px;
+  --radius-control: 12px;
 }
 
 :root {
-  /* Porcelain and ink: cool, quiet surfaces; jade for action; tone colours are the only other bright colours. */
-  --bg: #f2f4f3;
+  /* Four colours mean sound: red, orange, green and blue appear only for tones. Everything else is
+     porcelain and ink, plus three colours with one meaning each: jade = go / right, imperial violet
+     (紫禁城) = something you earned, cinnabar = a miss (a mark, never a wash). */
+  --bg: #f1f3f2;
   --surface: #ffffff;
   --sunk: #e9eeec;
-  --ink: #142120;
-  --muted: #5b6866;
+  --ink: #14201f;
+  --muted: #56635f;
   --line: #dde4e1;
   /* Edge of things you press (answer options, round audio buttons, quiet buttons): stronger than a separator. */
-  --edge: #83928e;
+  --edge: #6f7f7a;
   --jade: #0e6b54;
   --jade-ink: #ffffff;
   --jade-soft: #dcede6;
-  --gold: #8f6000;
+  --imperial: #6a3fb0;
+  --imperial-soft: #efe8fa;
+  /* The hero plate (Home's Today block): filled jade in light mode. */
+  --plate: #0e6b54;
+  --plate-ink: #ffffff;
   --cinnabar: #b3362a;
   --cinnabar-soft: #fbe8e5;
-  --amber-soft: #f7eed8;
   /* Tone colours (Pleco-style): 1 red, 2 orange, 3 green, 4 blue, neutral grey. */
-  --t1: #c5301f;
-  --t2: #a65500;
+  --t1: #c42a1c;
+  --t2: #9c5000;
   --t3: #26781f;
   --t4: #1f62c4;
   --t5: #646e77;
@@ -66,20 +92,23 @@
 }
 
 .dark {
-  --bg: #0d1413;
-  --surface: #151e1d;
+  --bg: #0e1514;
+  --surface: #202b29;
   --sunk: #0a100f;
-  --ink: #e4ece9;
-  --muted: #94a39f;
-  --line: #263231;
-  --edge: #5b6d6a;
+  --ink: #e6edea;
+  --muted: #9aa8a4;
+  --line: #2f3b39;
+  --edge: #6d807c;
   --jade: #43b08b;
   --jade-ink: #04221a;
   --jade-soft: #163a30;
-  --gold: #e9b04a;
+  --imperial: #b394f2;
+  --imperial-soft: #2a2140;
+  /* Dark mode: a deep jade plate with light text, not a bright mint slab. */
+  --plate: #173b31;
+  --plate-ink: #e6edea;
   --cinnabar: #ef7464;
   --cinnabar-soft: #3a2422;
-  --amber-soft: #352c14;
   --t1: #ff6b5e;
   --t2: #f5a442;
   --t3: #6cc865;
@@ -127,37 +156,44 @@ h1, h2, h3 {
   font-family: var(--font-han);
 }
 
-/* One small label style: stat tile labels, section eyebrows, "Level". */
+/* One small label style: stat tile labels, section headings, "Level". Sentence case. */
 .label {
-  font-size: 0.75rem;
-  line-height: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   color: var(--muted);
+}
+
+/* Numbers that are the point: condensed, bold, tabular. */
+.num {
+  font-family: var(--font-num);
+  font-stretch: 75%;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Pinyin is the star of an exercise: the sentence or word you're asked about. */
 .py-hero {
-  font-size: 2rem;
+  font-size: var(--text-hero);
   line-height: 1.25;
   font-weight: 600;
   letter-spacing: -0.005em;
   word-spacing: 0.12em;
 }
 @media (min-width: 768px) {
-  .py-hero { font-size: 2.5rem; }
+  .py-hero { font-size: 2.75rem; }
 }
 /* Pinyin in the answer sheet, in two clear roles: the word to learn (.py-answer, the sheet's big line)
    and the sentence it was heard in (.py-context, quieter context above it). */
 .py-answer {
-  font-size: 1.75rem;
+  font-size: var(--text-heading);
   line-height: 1.2;
   font-weight: 600;
   word-spacing: 0.12em;
 }
 .py-context {
-  font-size: 1.125rem;
+  font-size: var(--text-lead);
   line-height: 1.4;
   font-weight: 500;
   word-spacing: 0.1em;
@@ -173,7 +209,7 @@ h1, h2, h3 {
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   box-shadow: var(--shadow-sm);
 }
 /* Rows grouped in one container (settings, lists). */
@@ -181,7 +217,7 @@ h1, h2, h3 {
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   box-shadow: var(--shadow-sm);
 }
 .group-list > * + * {
@@ -192,7 +228,7 @@ h1, h2, h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
+  border-radius: var(--radius-control);
   font-weight: 600;
   transition: transform 0.16s var(--ease-out), background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
@@ -212,6 +248,39 @@ h1, h2, h3 {
   font-weight: 500;
 }
 .btn-quiet:hover:not(:disabled) { border-color: color-mix(in srgb, var(--ink) 25%, var(--line)); }
+
+/* A miss is a mark, never a wash: the wrong pick keeps its surface, gets a cinnabar outline and a
+   small cross badge, so a red tone-1 label stays readable. The wrong sheet is the normal surface
+   with a cinnabar rule along its top. "Almost" sheets are quiet sunk grey. */
+@utility opt-miss {
+  position: relative;
+  background: var(--surface);
+  border-color: var(--cinnabar);
+  box-shadow: 0 0 0 1px var(--cinnabar);
+  &::after {
+    content: '✕';
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    display: grid;
+    place-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 999px;
+    background: var(--cinnabar);
+    color: var(--surface);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+@utility sheet-miss {
+  background: var(--surface);
+  box-shadow: inset 0 3px 0 var(--cinnabar), var(--shadow-lg);
+}
+@utility sheet-near {
+  background: var(--sunk);
+}
 
 /* ---------- Motion ----------
    One easing curve, short durations, and motion only where something changes.

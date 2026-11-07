@@ -228,7 +228,7 @@ export function StatsView() {
         <Section title="XP" note={`Per day, last 30 days. Daily goal ${settings.dailyGoal} XP.`}>
           <Columns
             caption="XP per day, last 30 days"
-            color="var(--gold)"
+            color="var(--imperial)"
             labelEvery={7}
             data={days.map((d) => ({ key: d.day, label: dom(d.day), value: d.xp, detail: `${dayLabel(d.day)}: ${d.xp} XP${d.xp >= settings.dailyGoal ? ' · goal met' : ''}` }))}
           />
@@ -258,7 +258,7 @@ export function StatsView() {
               return (
                 <li key={a.id} className={`card flex items-center gap-3 p-3 ${at ? '' : 'shadow-none'}`}>
                   <span
-                    className={`han flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xs font-medium ${at ? 'border-[1.5px] border-gold bg-amber-soft text-gold' : 'border border-line text-muted'}`}
+                    className={`han flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xs font-medium ${at ? 'border-[1.5px] border-imperial bg-imperial-soft text-imperial' : 'border border-line text-muted'}`}
                     aria-hidden
                   >
                     {a.hanzi}
@@ -269,7 +269,7 @@ export function StatsView() {
                       <span className="text-xs tabular-nums text-muted">{at ? new Date(at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : `${Math.round(p * 100)}%`}</span>
                     </span>
                     <span className="block text-xs text-muted">{a.detail}</span>
-                    {!at && <ProgressBar value={p} label={`${a.title} progress`} tone="gold" className="mt-1.5" />}
+                    {!at && <ProgressBar value={p} label={`${a.title} progress`} tone="imperial" className="mt-1.5" />}
                   </span>
                 </li>
               );

@@ -146,8 +146,8 @@ export function Tile({ label, value, note }: { label: string; value: string; not
   return (
     <div className="rounded-2xl bg-surface p-4 border border-line">
       <p className="label">{label}</p>
-      <p className="mt-1 text-3xl font-semibold tabular-nums">{value}</p>
-      {note && <p className="mt-0.5 text-xs text-muted">{note}</p>}
+      <p className="num mt-1 text-4xl">{value}</p>
+      {note && <p className="mt-0.5 text-sm text-muted">{note}</p>}
     </div>
   );
 }

@@ -37,7 +37,7 @@ export function GrammarQuestion({ topic, index, onResult }: { topic: Topic; inde
   };
   return (
     <div>
-      <p className="mb-1 text-sm font-medium text-gold">Grammar · {topic.title}</p>
+      <p className="mb-1 text-sm font-medium text-muted">Grammar · {topic.title}</p>
       {ex.type === 'order' ? <Order ex={ex} key={index} onAnswer={report} /> : <Choice ex={ex} onAnswer={report} />}
     </div>
   );

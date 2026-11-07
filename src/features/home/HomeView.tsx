@@ -35,7 +35,7 @@ function GoalRing({ value, goal }: { value: number; goal: number }) {
         cy="32"
         r={r}
         fill="none"
-        stroke={frac >= 1 ? 'var(--jade)' : 'var(--gold)'}
+        stroke={frac >= 1 ? 'var(--jade)' : 'var(--imperial)'}
         strokeWidth="5"
         strokeLinecap="round"
         strokeDasharray={`${c * frac} ${c}`}
@@ -114,7 +114,7 @@ export function HomeView() {
           <div className="w-16 shrink-0 text-right">
             <p className="label">Level</p>
             <p className="text-2xl font-semibold tabular-nums">{game.level.level}</p>
-            <ProgressBar value={game.level.into / game.level.span} label="Progress to the next level" tone="gold" className="mt-1" />
+            <ProgressBar value={game.level.into / game.level.span} label="Progress to the next level" tone="imperial" className="mt-1" />
             <p className="mt-0.5 whitespace-nowrap text-xs tabular-nums text-muted">
               {game.level.into}/{game.level.span} XP
             </p>
@@ -123,7 +123,7 @@ export function HomeView() {
       </section>
 
       {resumable && (
-        <button onClick={() => go('session/resume')} className="press card mt-3 flex w-full items-center gap-4 border-gold/40 bg-amber-soft p-4 text-left">
+        <button onClick={() => go('session/resume')} className="press card mt-3 flex w-full items-center gap-4 border-line bg-sunk p-4 text-left">
           <span className="min-w-0 flex-1">
             <span className="block font-semibold">Resume your {resumable.plan.mode} session</span>
             <span className="block text-sm text-muted">
@@ -212,7 +212,7 @@ export function HomeView() {
         {nextAch && (
           <li>
             <button onClick={() => go('progress')} className="flex w-full items-center gap-4 px-4 py-4 text-left hover:bg-sunk/50">
-              <span className="han flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/50 text-xs font-medium text-gold" aria-hidden>
+              <span className="han flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-imperial/50 text-xs font-medium text-imperial" aria-hidden>
                 {nextAch.a.hanzi}
               </span>
               <span className="min-w-0 flex-1">
@@ -220,7 +220,7 @@ export function HomeView() {
                   <span className="font-semibold">Next: {nextAch.a.title}</span>
                   <span className="text-xs tabular-nums text-muted">{Math.round(nextAch.p * 100)}%</span>
                 </span>
-                <ProgressBar value={nextAch.p} label={`${nextAch.a.title} progress`} tone="gold" className="mt-2" />
+                <ProgressBar value={nextAch.p} label={`${nextAch.a.title} progress`} tone="imperial" className="mt-2" />
               </span>
               <ChevronRight className="h-5 w-5 text-muted" />
             </button>

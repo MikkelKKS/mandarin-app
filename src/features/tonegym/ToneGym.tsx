@@ -46,7 +46,7 @@ function GymHome() {
         Rounds of {ROUND}. Single tones come from six native speakers (Tone Perfect, Michigan State), so you learn the tone, not one voice.
       </PageHeader>
       {weak && (
-        <p className="mt-4 rounded-2xl bg-amber-soft p-4">
+        <p className="mt-4 rounded-2xl bg-sunk p-4">
           Weakest pair this week: <span className="font-semibold tabular-nums">{patternLabel(weak.pattern)}</span>, missed {Math.round(weak.error * 100)}% of the time.
           Workouts drill it more often.
         </p>
@@ -275,7 +275,7 @@ function Round({ mode }: { mode: GymMode }) {
                       aria-label={`${TONE_WORD[t]} tone`}
                       aria-pressed={chosen}
                       className={`flex h-16 flex-col items-center justify-center rounded-2xl border text-xl font-semibold transition active:scale-95 ${TONE_TEXT[t]} ${
-                        isRight ? 'border-jade bg-jade-soft anim-nudge !duration-0' : isWrongPick ? 'border-cinnabar bg-cinnabar-soft anim-shake !duration-0' : chosen ? 'border-ink bg-surface' : 'border-edge bg-surface'
+                        isRight ? 'border-jade bg-jade-soft anim-nudge !duration-0' : isWrongPick ? 'opt-miss anim-shake !duration-0' : chosen ? 'border-ink bg-surface' : 'border-edge bg-surface'
                       }`}
                     >
                       {markSyllable({ base: item!.bases[slot], tone: t })}
@@ -313,7 +313,7 @@ function Feedback({ answer, pool, voice, onNext, leaving = false, onReplay }: { 
     btn.current?.focus({ preventScroll: true });
   }, []);
   return (
-    <div role="status" aria-live="polite" className={`${leaving ? 'anim-sheet-out' : 'anim-rise'} fixed inset-x-0 bottom-0 z-20 rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 ${right ? 'bg-jade-soft' : 'bg-cinnabar-soft'}`}>
+    <div role="status" aria-live="polite" className={`${leaving ? 'anim-sheet-out' : 'anim-rise'} fixed inset-x-0 bottom-0 z-20 rounded-t-3xl px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-5 ${right ? 'bg-jade-soft' : 'sheet-miss'}`}>
       <div className="sheet-stagger mx-auto max-w-xl">
         <p className="text-xl font-semibold">{right ? 'Right' : given.length ? `It was ${patternLabel(item.pattern)}, not ${patternLabel(given.join('-'))}` : `It was ${patternLabel(item.pattern)}`}</p>
         <p className="mt-2 flex flex-wrap items-baseline gap-x-3">
@@ -366,13 +366,13 @@ function RoundEnd({ mode, answers, ms, onAgain }: { mode: GymMode; answers: Answ
       </p>
       <p className="mt-2 text-center text-muted">
         {prevBest !== null && score > prevBest ? (
-          <span className="anim-pop inline-block font-semibold text-gold [animation-delay:200ms]">New personal best!</span>
+          <span className="anim-pop inline-block font-semibold text-imperial [animation-delay:200ms]">New personal best!</span>
         ) : (
           `Personal best ${Math.max(prevBest ?? 0, score)}`
         )}{' '}
         · {Math.round(ms / 1000)} s
       </p>
-      {weak && <p className="mt-4 rounded-2xl bg-amber-soft p-4 text-center">Weakest pair this round: <span className="font-semibold">{patternLabel(weak.pattern)}</span></p>}
+      {weak && <p className="mt-4 rounded-2xl bg-sunk p-4 text-center">Weakest pair this round: <span className="font-semibold">{patternLabel(weak.pattern)}</span></p>}
       {missed.length > 0 && (
         <section className="mt-6">
           <h2 className="font-semibold">Missed</h2>

@@ -381,11 +381,11 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
               );
             })}
           </div>
-          <span className="min-w-16 text-right text-sm font-semibold tabular-nums text-gold" aria-label={`${st.xp} XP this session`}>
+          <span className="min-w-16 text-right text-sm font-semibold tabular-nums text-imperial" aria-label={`${st.xp} XP this session`}>
             {st.xp} XP
           </span>
           {gained !== null && !result && (
-            <span key={`${st.block}-${st.item}-${gained}`} className="anim-xp pointer-events-none absolute right-9 top-full z-30 mt-1 rounded-full bg-gold px-3 py-1 text-sm font-semibold text-ink shadow" aria-hidden>
+            <span key={`${st.block}-${st.item}-${gained}`} className="anim-xp pointer-events-none absolute right-9 top-full z-30 mt-1 rounded-full bg-imperial px-3 py-1 text-sm font-semibold text-surface shadow" aria-hidden>
               +{gained} XP
             </span>
           )}
@@ -397,7 +397,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             {st.plan.blocks.length > 1 && <span className="text-xs"> · part {st.block + 1} of {st.plan.blocks.length}</span>}
           </span>
           {st.combo >= 2 && (
-            <span key={st.combo} className="anim-pop rounded-full bg-amber-soft px-2.5 py-0.5 font-semibold tabular-nums text-gold" aria-label={`Combo ${st.combo}`}>
+            <span key={st.combo} className="anim-pop rounded-full bg-imperial-soft px-2.5 py-0.5 font-semibold tabular-nums text-imperial" aria-label={`Combo ${st.combo}`}>
               {st.combo} in a row · ×{comboMultiplier(st.combo).toFixed(1)}
             </span>
           )}
@@ -462,9 +462,9 @@ function Feedback({
   // Phone: a full-width sheet in the verdict colour. PC (md+): a card in that colour, centred over the content.
   const [tone, card] =
     o.verdict === 'wrong'
-      ? ['bg-cinnabar-soft', 'md:bg-cinnabar-soft']
+      ? ['sheet-miss', 'md:sheet-miss']
       : o.verdict === 'almost' || o.verdict === 'typo'
-        ? ['bg-amber-soft', 'md:bg-amber-soft']
+        ? ['sheet-near', 'md:sheet-near']
         : ['bg-jade-soft', 'md:bg-jade-soft'];
   const sheet = useRef<HTMLDivElement>(null);
   useSheetSpace(sheet);
@@ -501,8 +501,8 @@ function Feedback({
         </p>
         {quietGrade && !!xp && (
           <span className="flex shrink-0 items-center gap-1.5 text-sm font-semibold tabular-nums">
-            <span className="anim-pop rounded-full bg-amber-soft px-2.5 py-0.5 text-gold">+{xp} XP</span>
-            {combo >= 2 && <span className="anim-pop rounded-full bg-amber-soft px-2.5 py-0.5 text-gold [animation-delay:80ms]">{combo} in a row</span>}
+            <span className="anim-pop rounded-full bg-imperial-soft px-2.5 py-0.5 text-imperial">+{xp} XP</span>
+            {combo >= 2 && <span className="anim-pop rounded-full bg-imperial-soft px-2.5 py-0.5 text-imperial [animation-delay:80ms]">{combo} in a row</span>}
           </span>
         )}
         </div>

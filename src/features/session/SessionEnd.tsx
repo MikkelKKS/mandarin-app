@@ -60,7 +60,7 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
       <p className="anim-up mt-4 text-center text-sm text-muted [animation-delay:250ms]">
         {st.plan.mode === 'quick' ? 'Quick session' : st.plan.mode === 'reading' ? 'Reading round' : 'Deep session'} done · {verdict.title}
       </p>
-      <p className="anim-up mt-1 text-center text-5xl font-semibold tabular-nums text-gold [animation-delay:300ms]" aria-label={`+${st.xp} XP`}>
+      <p className="anim-up mt-1 num text-center text-numeral text-imperial [animation-delay:300ms]" aria-label={`+${st.xp} XP`}>
         +{xpShown} XP
       </p>
       {game && (
@@ -89,16 +89,16 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
               {lvl.into} / {lvl.span} XP
             </span>
           </div>
-          <ProgressBar value={barIn ? lvl.into / lvl.span : Math.max(0, lvl.into - st.xp) / lvl.span} label="Progress to the next level" tone="gold" className="mt-2" />
+          <ProgressBar value={barIn ? lvl.into / lvl.span : Math.max(0, lvl.into - st.xp) / lvl.span} label="Progress to the next level" tone="imperial" className="mt-2" />
         </div>
       )}
       {fresh.length > 0 && (
-        <section className="card anim-up mt-6 border-gold/60 bg-amber-soft p-4 shadow-md [animation-delay:700ms]">
+        <section className="card anim-up mt-6 border-imperial/60 bg-imperial-soft p-4 shadow-md [animation-delay:700ms]">
           <h2 className="font-semibold">New achievement{fresh.length > 1 ? 's' : ''}</h2>
           <ul className="mt-2 flex flex-col gap-2">
             {fresh.map((a, i) => (
               <li key={a.id} className="anim-pop flex items-center gap-3" style={{ animationDelay: `${850 + i * 120}ms` }}>
-                <span className="han flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold text-sm font-semibold text-ink shadow-[0_0_0_3px_var(--surface),0_0_0_4.5px_var(--gold)]">{a.hanzi}</span>
+                <span className="han flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-imperial text-sm font-semibold text-surface shadow-[0_0_0_3px_var(--surface),0_0_0_4.5px_var(--imperial)]">{a.hanzi}</span>
                 <span>
                   <span className="block font-semibold">{a.title}</span>
                   <span className="block text-sm text-muted">{a.detail}</span>
