@@ -402,7 +402,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             </span>
           )}
         </div>
-        <div key={`${st.block}-${st.item}`} className="anim-slide mt-6 flex-1 md:flex md:flex-col md:justify-center">
+        <div key={`${st.block}-${st.item}`} className="anim-slide mt-6 flex flex-1 flex-col justify-center">
           {item!.retry && <p className="mb-3 text-sm font-medium text-cinnabar">One more time</p>}
           <SessionItem
             item={item!}

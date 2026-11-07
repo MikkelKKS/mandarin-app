@@ -182,6 +182,10 @@ h1, h2, h3 {
 @media (min-width: 768px) {
   .py-hero { font-size: var(--text-numeral); }
 }
+/* PC: the exercise is read from further away; the pinyin grows one more step. */
+@media (min-width: 1024px) {
+  .py-hero { font-size: 3.5rem; }
+}
 /* Pinyin in the answer sheet, in two clear roles: the word to learn (.py-answer, the sheet's big line)
    and the sentence it was heard in (.py-context, quieter context above it). */
 .py-answer {

@@ -272,7 +272,7 @@ function Round({ mode }: { mode: GymMode }) {
           )}
           <VolumeSlider compact />
         </div>
-        <p className="mt-4 text-hero font-semibold tracking-wide" aria-label="Syllables">
+        <p className="mt-4 text-hero font-semibold tracking-wide lg:text-numeral" aria-label="Syllables">
           {item!.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}
         </p>
       </div>

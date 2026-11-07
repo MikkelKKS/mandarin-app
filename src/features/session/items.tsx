@@ -653,7 +653,7 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
             Another voice
           </button>
         )}
-        <p className="mt-3 text-hero font-semibold">{gym.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}</p>
+        <p className="mt-3 text-hero font-semibold lg:text-numeral">{gym.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}</p>
       </div>
       <div className="mt-6 flex flex-col gap-3">
         {gym.tones.map((_, slot) => (
