@@ -251,3 +251,19 @@ Plan (round 2; the last build round, since round 3 only scores with max 3 rounds
 Stopped after round 2 at Mikkel's request (max rounds set to 2). Round 2's moves were judged but not re-scored.
 
 Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-07.
+
+## Loop 4 (started 2026-11-07)
+
+```
+State: running
+Round: 1
+Phase: review
+Max rounds: 3
+Best lowest: –
+Rounds without improvement: 0
+Confirming: no
+Notes: 3 rounds (builds in rounds 1–2; round 3 scores the result)
+```
+
+| Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
+|-------|--------|------------|--------|--------|---------|--------|------|
