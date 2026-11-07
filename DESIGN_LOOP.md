@@ -191,7 +191,7 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 ## Loop 3 (started 2026-11-07)
 
 ```
-State: stopped (max)
+State: merged
 Round: 2
 Phase: show
 Max rounds: 2
@@ -249,3 +249,5 @@ Plan (round 2; the last build round, since round 3 only scores with max 3 rounds
 - QA: qa:screens 28/28, the four Stats e2e specs 40/40; two small fixes (first-day button alignment, "HSK 2 to 7–9"). Level-up band and badge grid not seen in the run (no level crossed, no badge unlocked).
 
 Stopped after round 2 at Mikkel's request (max rounds set to 2). Round 2's moves were judged but not re-scored.
+
+Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-07.

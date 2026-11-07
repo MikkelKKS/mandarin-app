@@ -11,8 +11,22 @@ Each review adds a section below (newest first) with the scores, a one-line reas
 |------|--------|------------|--------|--------|---------|
 | 2026-11-06 | 7 | 7 | 6.5 | 6 | 6.5 |
 | 2026-11-06 (design loop 1, round 4) | 7.5 | 7 | 7 | 7 | 7 |
+| 2026-11-07 (design loop 3, round 2, before round 2 changes) | 7.5 | 7.5 | 6.5 | 7 | 7 |
 
 ## Reviews
+
+## 2026-11-07: design loop 3 (merged)
+Notes: new team (design-visual, design-experience, Opus director, blind judge), lived-in screenshot profile; stopped after round 2 at Mikkel's request; all 5 changes approved. Round 2 changes (Stats, rewards) were judged better but not re-scored.
+
+| Area | Score | Reason (last scored round) |
+|------|-------|--------|
+| Colour | 7.5/10 | No second tone cue in running pinyin; dark elevation weak |
+| Typography | 7.5/10 | Legacy steps beside the new scale; busy Tone Gym sheet; small secondary text |
+| Motion | 6.5/10 | Right answer had no beat; reduced motion snaps; session end thin (rewards built after this score) |
+| Layout | 7/10 | Stats wall (restructured after this score); PC Home stretched; exercises top-heavy |
+| Overall | 7/10 | Stats and Tone Gym plainer than Home; rewards not celebrated (built after this score) |
+
+Built (all kept): new colours and type · tone contours and a still question · Home redesign · Stats restructure · reward moments.
 
 ## 2026-11-06: design loop 1 (merged)
 Notes: at most 4 rounds. Blind reviewers each round; log in `DESIGN_LOOP.md`. Stopped at the round limit (lowest 6.5 → 7); Mikkel approved all 9 changes.
