@@ -25,6 +25,7 @@ import { loadSession, remainingItems } from '../session/state';
 import { InstallBanner } from '../settings/install';
 import { ChevronRight, Flame } from '../../components/icons';
 import { PatternContour, ToneContour } from '../../components/ToneContour';
+import { PitchStaff } from '../../components/PitchStaff';
 import { ProgressBar } from '../../components/ProgressBar';
 
 const WEEK = 7 * 864e5;
@@ -145,6 +146,16 @@ export function HomeView() {
                 </div>
                 <GoalRing value={todayXp} goal={settings.dailyGoal} />
               </div>
+              {weak && (
+                <div className="mt-4 flex items-center gap-3 rounded-control bg-plate-ink/10 px-3 py-2">
+                  {weak.pattern.split('-').map((t, k) => (
+                    <PitchStaff key={k} tone={Number(t)} aspect={1.6} className="h-10 w-16 [&_line]:stroke-plate-ink/30" />
+                  ))}
+                  <span className="text-sm">
+                    <span className="num text-2xl">{patternLabel(weak.pattern)}</span> weakest pair, missed {Math.round(weak.error * 100)}%
+                  </span>
+                </div>
+              )}
               {game && (
                 <div className="mt-4 flex items-center gap-3 text-sm">
                   <span className="shrink-0 font-semibold">Level {game.level.level}</span>
