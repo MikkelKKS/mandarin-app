@@ -323,3 +323,20 @@ After scoring: fixed the jump (531b60eda): the centred column keeps its height; 
 Stopped: max rounds (3). Lowest 7 in all three rounds; the judge kept 5 of 5 moves (two small details undone) and preferred the new screens 18 to 1.
 
 Mikkel approved all changes but kept the 学 logo (restored before merging); merged into main on 2026-11-07.
+
+## Review 2026-11-07 (loop 5)
+
+```
+State: running
+Round: 0
+Phase: direct
+Max rounds: 1
+Best lowest: –
+Rounds without improvement: 0
+Confirming: no
+Baseline: bf617c008
+Notes: none
+```
+
+| Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
+|-------|--------|------------|--------|--------|---------|--------|------|
