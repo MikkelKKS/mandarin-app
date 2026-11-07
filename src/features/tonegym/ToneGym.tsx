@@ -8,6 +8,7 @@ import { VolumeSlider } from '../../components/VolumeSlider';
 import { PageHeader } from '../../components/PageHeader';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Speaker } from '../../components/icons';
+import { ToneContour } from '../../components/ToneContour';
 import { TonePinyin } from '../../components/Hanzi';
 import { db, uuid } from '../../db/db';
 import { playUrl, stop } from '../../lib/audio';
@@ -279,7 +280,10 @@ function Round({ mode }: { mode: GymMode }) {
                       }`}
                     >
                       {markSyllable({ base: item!.bases[slot], tone: t })}
-                      <span className="text-xs font-normal text-muted">{t}</span>
+                      <span className="mt-0.5 flex items-center gap-1 text-xs font-normal text-muted">
+                        <ToneContour tone={t} className={`h-2.5 w-5 ${TONE_TEXT[t]}`} />
+                        {t}
+                      </span>
                     </button>
                   );
                 })}
@@ -289,7 +293,7 @@ function Round({ mode }: { mode: GymMode }) {
       </div>
 
       {!answer && (
-        <button onClick={() => submit([])} className="mt-4 h-11 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
+        <button onClick={() => submit([])} className="btn btn-quiet mt-4 h-12 w-full text-base">
           I don't know
         </button>
       )}
