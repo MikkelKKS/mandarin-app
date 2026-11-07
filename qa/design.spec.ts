@@ -100,7 +100,7 @@ async function seedProfile(page: Page) {
   })`);
   await page.reload();
   // Let Home unlock the achievements this history has already earned, so the session end only shows new ones.
-  await expect(page.getByText(/day streak/)).toBeVisible({ timeout: 20000 });
+  await expect(page.getByText(/day streak/).first()).toBeVisible({ timeout: 20000 });
   await page.waitForTimeout(1500);
 }
 

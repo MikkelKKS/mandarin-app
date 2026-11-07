@@ -328,8 +328,8 @@ Mikkel approved all changes but kept the 学 logo (restored before merging); mer
 
 ```
 State: running
-Round: 0
-Phase: direct
+Round: 1
+Phase: build
 Max rounds: 1
 Best lowest: –
 Rounds without improvement: 0
@@ -350,3 +350,9 @@ Scores (blind, shots blind-82351eef2; all key screens opened):
 - Layout 7 (fails 2.5: L4 PC session/Home/Tone Gym empty halves, L5 Settings wall, L1 side card on another edge and jumps, L3 phone question high).
 - Motion 7.5 (fails 1.5: item 4 prompt shifts ~14 px, header re-lays out when the +XP chip leaves, exit frame with Check/I-don't-know/Continue overlapping; item 2 the wrong pick can sit under the sheet).
 - Overall 7 (fails 2.5: item 6 stats-new dashes and PC like a stretched phone, item 2 Stats/Settings generic, item 4 thin game layer (no week row, no quests, session end lacks new words / weakest pair), item 1 Settings and Tone Gym top bars differ).
+
+Direction: Mikkel tried live previews of three directions (A Jade Studio finished, B Pitch Staff, C Tone Arcade) and picked **B: Pitch Staff** (written to DESIGN_DIRECTION.md). He also asked for the missing "Optimise my scheduler" button to be built after the review (on main).
+
+Plan (round 1; the only build round):
+- [ ] Ink, indigo and a serif: xuan-paper and indigo tokens (go, plate, right without a green wash), brick misses, Newsreader for titles and numbers, Noto Serif SC for seals, a PitchStaff component. Colour 6, typography 6, overall 2; all screens.
+- [ ] The stage as a score: session and Tone Gym tone questions on a staff band, tiles as mini staves, the right stroke draws itself after answering (wrong: yours dashed, the right one drawn over it), the weakest pair drawn on the Home plate, phone answer sheet without re-centring. Motion 2/5, overall 2/4, layout 3; session, Tone Gym, Home.
