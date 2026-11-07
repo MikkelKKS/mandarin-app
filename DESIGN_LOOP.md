@@ -257,9 +257,9 @@ Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-
 ```
 State: running
 Round: 1
-Phase: review
+Phase: direct
 Max rounds: 3
-Best lowest: –
+Best lowest: 7
 Rounds without improvement: 0
 Confirming: no
 Notes: 3 rounds (builds in rounds 1–2; round 3 scores the result)
@@ -267,3 +267,15 @@ Notes: 3 rounds (builds in rounds 1–2; round 3 scores the result)
 
 | Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
 |-------|--------|------------|--------|--------|---------|--------|------|
+| 1 | 8 | 7.5 | 7.5 | 7 | 7.5 | 7 | start: main after loop 3 merge |
+
+### Round 1
+
+Scores (blind, shots blind-51653f6c1):
+- Colour 8 (C3 miss, C1/C2 small): tone colour alone in sentences and the answer sheet, T1/T2 close in lightness; T5 4.28 on jade-soft; violet both reward and progress; Library/Settings/Tone Gym have no colour lead.
+- Typography 7.5 (T1, T2 on Tone Gym, T3, T4 small): display = heading duplicate, 2.75rem hero one-off; Tone Gym question title competes with the syllable; wrong sheet 5 levels; Settings small muted text.
+- Layout 7 (L1, L4, L5, L6 partial): PC left edge jumps (Home/Stats x≈315, others x≈513); PC session/Tone Gym/Library/Settings narrow columns with dead space; XP toast overlaps combo chip on PC; Stats tab bar under the matrix, PC tab content far down; summary cards in three styles; sparse first-day screens.
+- Motion 7.5 (no clear fails; item 2 weakest, 6 at risk): right answer has no beat on the option; several movements start together; reduced motion snaps.
+- Overall 7.5 (1, 6 partial; 4, 5): identity strong on Home/Tone Gym, generic in session/Stats/Library; placement card still on a lived-in Home; empty lower thirds; first day shows no game.
+
+Weakest: PC width and left edge · exercise first read · Stats order · tone cue without colour · first-day screens · right-answer beat · reduced-motion snaps.
