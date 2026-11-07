@@ -255,9 +255,9 @@ Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-
 ## Loop 4 (started 2026-11-07)
 
 ```
-State: running
+State: stopped (max)
 Round: 3
-Phase: review
+Phase: show
 Max rounds: 3
 Best lowest: 7
 Rounds without improvement: 0
@@ -307,3 +307,17 @@ Plan (round 2; the last build round):
 - [x] (5b0d0162b) Home tells the story: "This week" on phones too, placement row hidden once 50 words are started, the ring shows today's XP once the goal is passed, a first-day preview (streak, level, empty matrix) under the welcome plate. Layout 4, overall 4/6; home, home-new.
 - Judge (pairs-2, 10 screens × 2 orders): better on 8 (Home ×3, home-new ×2, session question phone light and dark, reduced-motion answer-wrong), same on 2 (PC session question, answer-right motion), worse on none. Kept all three moves. Rounds without improvement: 0. Judge note: "XP today" sits close to the ring stroke.
 - QA: qa:screens 28/28, session/placement/dont-know e2e 22/22; one fix: the This round card sits above the answer sheet's backing on wide PC screens.
+| 3 | 8 | 7.5 | 7 | 7 | 7.5 | 7 | judge: 3 kept; final round |
+
+### Round 3 (scores only)
+
+Scores (blind, shots blind-704054e9b):
+- Colour 8 (1, 5 small): T2 on jade-soft 4.30 on the Tone Gym right option; colour leads only on the plate.
+- Typography 7.5 (1, 3, 6 partial): hero 36/48/56 steps plus legacy steps; Home Deep row and Stats matrix card many levels; neutral voice beyond numerals.
+- Layout 7 (4, 1, 5, 6): PC session narrow with a detached side card; PC Home dead zone; Stats tabs below the matrix; Settings wall; row styles differ.
+- Motion 7 (1 partly, 3, 4): the centred question jumped ~37 px when the sheet opened (side effect of round 2's centring); exit frame where sheet, action bar and Continue overlap; blank frame in tab changes.
+- Overall 7.5 (1, 2, 3 partly, 6): identity strong on Home, Stats, session end, first day; quiet screens generic; PC Home not a dashboard.
+
+After scoring: fixed the jump (531b60eda): the centred column keeps its height; extra room for a tall sheet sits after it. Re-recorded: ~14 px left, from the "browser's voice" note that only appears because tests block audio.
+
+Stopped: max rounds (3). Lowest 7 in all three rounds; the judge kept 5 of 5 moves (two small details undone) and preferred the new screens 18 to 1.
