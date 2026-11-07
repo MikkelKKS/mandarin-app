@@ -19,11 +19,18 @@
  *       so Mikkel opens one file in his browser and sees before | after side by side. Only screens that
  *       changed are shown; identical pairs are left out and named at the end.
  *
+ *   npx tsx scripts/design-preview.ts pairs <beforeDir> <afterDir> <outDir> [--only a,b]
+ *       Blind A/B pairs for the design-judge agent: every screenshot (and motion interaction folder)
+ *       that exists in both and differs becomes two pair folders, <outDir>/pair-NN/{A,B}, once in
+ *       each order, shuffled; <outDir>/pairs.txt names the screen of each pair. Which side is the
+ *       "after" goes ONLY to design-review/keys/<outDir name>.json (the judge never reads it).
+ *       --only: comma list of path prefixes (e.g. phone/light/home,motion/phone/full/answer-right).
+ *
  * Browsers are always headless and muted (playwright.qa.config.ts → e2e/launch.ts).
  */
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmdirSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
-import { join, relative, resolve } from 'node:path';
+import { copyFileSync, cpSync, existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmdirSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
+import { basename, join, relative, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
 const [cmd, ...rest] = process.argv.slice(2);
@@ -112,6 +119,49 @@ switch (cmd) {
     if (existsSync(p)) git('worktree', 'remove', '--force', p);
     git('worktree', 'prune');
     console.log(`Removed ${p}`);
+    break;
+  }
+  case 'pairs': {
+    const only = (flag('only') ?? '').split(',').map((x) => x.trim()).filter(Boolean);
+    const [beforeArg, afterArg, outArg] = rest;
+    if (!beforeArg || !afterArg || !outArg) throw new Error('usage: pairs <beforeDir> <afterDir> <outDir> [--only a,b]');
+    const [before, after, out] = [beforeArg, afterArg, outArg].map((p) => resolve(root, p));
+    // Units to compare: still PNGs, and motion interaction folders (the ones holding frames.txt).
+    const units = (d: string, rel = ''): string[] =>
+      readdirSync(join(d, rel), { withFileTypes: true }).flatMap((e) => {
+        const r = rel ? `${rel}/${e.name}` : e.name;
+        if (e.isDirectory()) return existsSync(join(d, r, 'frames.txt')) ? [r] : units(d, r);
+        return e.name.endsWith('.png') ? [r] : [];
+      });
+    // Stills: only if the pixels changed. Motion frames always differ in timing, so they're kept (narrow them with --only).
+    const differs = (r: string) => !r.endsWith('.png') || !readFileSync(join(before, r)).equals(readFileSync(join(after, r)));
+    const list = units(before)
+      .filter((r) => existsSync(join(after, r)) && (!only.length || only.some((o) => r.startsWith(o))))
+      .filter(differs);
+    const jobs = list.flatMap((r) => [{ r, afterIs: 'A' }, { r, afterIs: 'B' }]);
+    for (let i = jobs.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [jobs[i], jobs[j]] = [jobs[j], jobs[i]];
+    }
+    mkdirSync(out, { recursive: true });
+    const key: Record<string, { screen: string; after: string }> = {};
+    const lines: string[] = [];
+    jobs.forEach((job, i) => {
+      const id = `pair-${String(i + 1).padStart(2, '0')}`;
+      const ext = job.r.endsWith('.png') ? '.png' : '';
+      const [a, b] = job.afterIs === 'A' ? [after, before] : [before, after];
+      mkdirSync(join(out, id), { recursive: true });
+      cpSync(join(a, job.r), join(out, id, `A${ext}`), { recursive: true });
+      cpSync(join(b, job.r), join(out, id, `B${ext}`), { recursive: true });
+      key[id] = { screen: job.r.replace(/\.png$/, ''), after: job.afterIs };
+      lines.push(`${id}: ${job.r.replace(/\.png$/, '')}`);
+    });
+    writeFileSync(join(out, 'pairs.txt'), lines.join('\n') + '\n');
+    const keys = join(root, 'design-review', 'keys');
+    mkdirSync(keys, { recursive: true });
+    const keyFile = join(keys, `${basename(out)}.json`);
+    writeFileSync(keyFile, JSON.stringify(key, null, 2));
+    console.log(`Wrote ${jobs.length} pairs (${list.length} screens, both orders) to ${out}; key: ${keyFile}`);
     break;
   }
   case 'compare': {

@@ -44,6 +44,6 @@ Notes: none
 | P2 | Clearer right and wrong feedback (coloured titles with drawn tick/cross, spring pop, stronger shake, right option lit after a wrong pick, smooth scroll) | motion, colour | M | built |
 | P3 | Pinyin as the star of exercises; fonts served by the app (Fontsource) instead of Google Fonts | typography | M | built |
 | P4 | Stats grouped (Words / Tones / Habits / Scheduler & badges) with a jump bar, two columns on PC | layout, overall | M | built |
-| P5 | Even 16px rhythm on Home, aligned cards, pill-style "No mic" button, Tone Gym side by side on PC | layout | M | rejected |
+| P5 | Even 16px rhythm on Home, aligned cards, pill-style "No mic" button, Tone Gym side by side on PC | layout | M | rejected (Home layout opened again by Mikkel on 2026-11-07, DECISIONS.md "Design freedoms") |
 
 Dropped before proposing: the same main session button on phone and PC (DECISIONS: Quick big on phones, Deep big on wide screens), an end-screen rebuild (its "empty" achievement card and level bar were a screenshot taken mid-animation; the spec now waits), and a site-wide type-scale rewrite (too big for one round).

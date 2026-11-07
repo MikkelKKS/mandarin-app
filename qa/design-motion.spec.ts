@@ -2,7 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
 
 /**
- * Motion capture for the design-motion reviewer (/design-review). Run with
+ * Motion capture for the design-experience reviewer and the design-judge (/design-review, /design-loop). Run with
  * `npm run design:motion -- <outDir>` (scripts/design-preview.ts sets DESIGN_REVIEW=1).
  *
  * Screenshots can't show motion, and Playwright's recordVideo needs its own ffmpeg download

@@ -1,12 +1,15 @@
 import { expect, test, type Page } from '@playwright/test';
+import { demoProfile } from './demoProfile';
 
 /**
  * Design review screenshots (/design-review). Not part of the normal QA tour: run it with
  * `npm run design:shots -- <outDir> [screens]` (scripts/design-preview.ts), which sets DESIGN_REVIEW=1.
  *
  * For each width (phone 412px, pc 1440px, from playwright.qa.config.ts) and each colour scheme
- * (light, dark) it plays one quick session (screenshotting a question, a wrong and a right answer
- * and the end screen), so the screens visited after it show some real data.
+ * (light, dark) it first shoots Home and Stats of a brand-new account (home-new, stats-new), then
+ * loads a lived-in profile (qa/demoProfile.ts: ~6 weeks of history, a streak, a real tone matrix)
+ * and plays one quick session on it (a question, a wrong and a right answer, the end screen), so
+ * reviewers judge the app as it is used day to day.
  *
  * Output: <DESIGN_OUT>/<phone|pc>/<light|dark>/<screen>.png
  * DESIGN_SCREENS (comma list, optional) limits which screens are taken, e.g. "session,stats".
@@ -74,6 +77,29 @@ async function shot(page: Page, dir: string, name: string, fullPage = true) {
   await page.screenshot({ path: `${dir}/${name}.png`, fullPage });
 }
 
+/** Replace the review cards and log with the lived-in profile, then reload so the app reads it. */
+async function seedProfile(page: Page) {
+  const data = JSON.stringify(demoProfile());
+  // A string, because the spec is type-checked without the browser's types.
+  await page.evaluate(`new Promise((done, fail) => {
+    const d = ${data};
+    const req = indexedDB.open('mandarin');
+    req.onerror = () => fail(req.error);
+    req.onsuccess = () => {
+      const tx = req.result.transaction(['reviewItems', 'reviewLogs'], 'readwrite');
+      const items = tx.objectStore('reviewItems');
+      const logs = tx.objectStore('reviewLogs');
+      items.clear();
+      logs.clear();
+      for (const r of d.items) items.put(r);
+      for (const r of d.logs) logs.put(r);
+      tx.oncomplete = () => { req.result.close(); done(); };
+      tx.onerror = () => fail(tx.error);
+    };
+  })`);
+  await page.reload();
+}
+
 async function playSession(page: Page, dir: string) {
   await page.goto('./#/session/quick');
   await expect(page.getByRole('progressbar', { name: 'Session progress' })).toBeVisible({ timeout: 20000 });
@@ -133,6 +159,15 @@ for (const scheme of ['light', 'dark'] as const) {
       await page.route('**/audio/**', (r) => r.abort());
       const dir = `${OUT}/${info.project.name}/${scheme}`;
       await page.goto('./');
+      for (const [name, hash] of [['home-new', ''], ['stats-new', 'progress']] as const) {
+        if (!want(name)) continue;
+        await page.goto(`./#/${hash}`);
+        await page.waitForLoadState('networkidle');
+        await shot(page, dir, name);
+      }
+      await page.goto('./');
+      await expect(page.getByRole('main')).toBeVisible({ timeout: 20000 });
+      await seedProfile(page);
       if (!ONLY.length || ONLY.some((o) => o.startsWith('session') || ['home', 'stats'].includes(o))) await playSession(page, dir);
       if (want('tone-gym-question') || want('tone-gym-feedback')) await toneGym(page, dir);
       for (const [name, hash] of SCREENS) {
