@@ -17,7 +17,7 @@ concurrency:
 jobs:
   # Recordings are made by the azure-audio workflow and committed; the build uses what's in the repo.
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -42,6 +42,7 @@ jobs:
         run: npm run build
       - name: Smoke tests (375px phone + desktop)
         run: |
+          # Pinned to Ubuntu 24.04: on the newer ubuntu-latest image (Ubuntu 26) this install step failed at once.
           npx playwright install --with-deps chromium
           npm run test:e2e
       - uses: actions/upload-pages-artifact@v3
@@ -50,7 +51,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
