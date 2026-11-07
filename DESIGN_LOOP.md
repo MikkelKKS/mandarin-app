@@ -354,5 +354,5 @@ Scores (blind, shots blind-82351eef2; all key screens opened):
 Direction: Mikkel tried live previews of three directions (A Jade Studio finished, B Pitch Staff, C Tone Arcade) and picked **B: Pitch Staff** (written to DESIGN_DIRECTION.md). He also asked for the missing "Optimise my scheduler" button to be built after the review (on main).
 
 Plan (round 1; the only build round):
-- [ ] Ink, indigo and a serif: xuan-paper and indigo tokens (go, plate, right without a green wash), brick misses, Newsreader for titles and numbers, Noto Serif SC for seals, a PitchStaff component. Colour 6, typography 6, overall 2; all screens.
+- [x] (38cf8c992) Ink, indigo and a serif: xuan-paper and indigo tokens (go, plate, right without a green wash), brick misses, Newsreader for titles and numbers, Noto Serif SC for seals, a PitchStaff component. Colour 6, typography 6, overall 2; all screens.
 - [ ] The stage as a score: session and Tone Gym tone questions on a staff band, tiles as mini staves, the right stroke draws itself after answering (wrong: yours dashed, the right one drawn over it), the weakest pair drawn on the Home plate, phone answer sheet without re-centring. Motion 2/5, overall 2/4, layout 3; session, Tone Gym, Home.
