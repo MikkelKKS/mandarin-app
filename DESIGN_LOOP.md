@@ -257,7 +257,7 @@ Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-
 ```
 State: running
 Round: 2
-Phase: build
+Phase: judge
 Max rounds: 3
 Best lowest: 7
 Rounds without improvement: 0
@@ -304,4 +304,4 @@ Weakest: exercise layout (thumb reach, PC scale) · walls (Settings, Music, Stat
 Plan (round 2; the last build round):
 - [x] (feb21c3c6) Exercise layout: question vertically centred on phones too (answers lower, nearer the thumb), bigger pinyin hero and syllable on PC. Layout 3/4, typography 2; session and Tone Gym screens.
 - [x] (befbcf853) Right-answer moment and reduced motion: sheet contents slide without fading (no half-faded text over the options), a jade ring pulse on the right pick; reduced motion keeps an instant sheet and fades only its contents (a different execution from the fade that was judged worse). Motion 2/4/6; session-right, answer motion.
-- [ ] Home tells the story: "This week" on phones too, placement row hidden once 50 words are started, the ring shows today's XP once the goal is passed, a first-day preview (streak, level, empty matrix) under the welcome plate. Layout 4, overall 4/6; home, home-new.
+- [x] (5b0d0162b) Home tells the story: "This week" on phones too, placement row hidden once 50 words are started, the ring shows today's XP once the goal is passed, a first-day preview (streak, level, empty matrix) under the welcome plate. Layout 4, overall 4/6; home, home-new.
