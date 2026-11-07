@@ -13,6 +13,7 @@ import { VolumeSlider } from '../../components/VolumeSlider';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
+import { ToneContour } from '../../components/ToneContour';
 import { play, playUrl, rememberText } from '../../lib/audio';
 import { markSyllable, type Tone } from '../../lib/pinyin';
 import { useSettings } from '../../lib/settings';
@@ -73,7 +74,7 @@ export function DontKnow({ onUnknown, onGiveUp }: { onUnknown?: () => void; onGi
   const fn = onUnknown ?? onGiveUp;
   if (!fn) return null;
   return (
-    <button onClick={fn} className="mt-3 h-11 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
+    <button onClick={fn} className="btn btn-quiet mt-3 h-12 w-full text-base">
       {onUnknown ? "I don't know this word" : "I don't know"}
     </button>
   );
@@ -195,7 +196,7 @@ export function ContextLine({ c, blank = false, className = '' }: { c: Parts & {
           {blank ? (
             <span className="mx-1 inline-block w-10 border-b-2 border-ink align-baseline" aria-label={pinyin ? undefined : 'missing word'} aria-hidden={pinyin || undefined} />
           ) : (
-            <mark className="rounded-md bg-amber-soft px-0.5 text-inherit">{han.target}</mark>
+            <mark className="rounded-md bg-sunk px-0.5 text-inherit ring-1 ring-edge">{han.target}</mark>
           )}
           {han.after}
         </p>
@@ -211,7 +212,7 @@ function PinyinContext({ c, blank }: { c: Parts; blank: boolean }) {
       {blank ? (
         <span className="mx-0.5 inline-block w-14 border-b-2 border-ink align-baseline" aria-label="missing word" />
       ) : (
-        <mark className="rounded-lg bg-amber-soft px-1.5 font-semibold text-inherit ring-1 ring-gold/50">
+        <mark className="rounded-lg bg-sunk px-1.5 font-semibold text-inherit ring-1 ring-edge">
           <TonePinyin pinyin={c.target} />
         </mark>
       )}
@@ -654,10 +655,8 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
       </div>
       <div className="mt-6 flex flex-col gap-3">
         {gym.tones.map((_, slot) => (
-          <div key={slot} className={`grid gap-2 ${slot === 1 ? 'grid-cols-5' : 'grid-cols-4'}`}>
-            {([1, 2, 3, 4, 5] as Tone[])
-              .filter((t) => t !== 5 || slot === 1)
-              .map((t) => {
+          <div key={slot} className="grid grid-cols-4 gap-2">
+            {([1, 2, 3, 4] as Tone[]).map((t) => {
                 const chosen = picked[slot] === t;
                 const right = done && gym.tones[slot] === t;
                 return (
@@ -666,9 +665,10 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
                     onClick={() => pick(slot, t)}
                     disabled={done}
                     aria-label={`${TONE_WORD[t]} tone${gym.tones.length > 1 ? `, syllable ${slot + 1}` : ''}`}
-                    className={`h-14 rounded-2xl border text-lg font-semibold ${TONE_TEXT[t]} ${right ? 'border-jade bg-jade-soft' : done && chosen ? 'border-cinnabar bg-cinnabar-soft' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'}`}
+                    className={`flex h-16 flex-col items-center justify-center rounded-xl border text-lg font-semibold ${TONE_TEXT[t]} ${right ? 'border-jade bg-jade-soft' : done && chosen ? 'opt-miss' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'}`}
                   >
                     {markSyllable({ base: gym.bases[slot], tone: t })}
+                    <ToneContour tone={t} className="mt-0.5 h-2.5 w-5" />
                   </button>
                 );
               })}

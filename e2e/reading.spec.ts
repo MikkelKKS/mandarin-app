@@ -30,6 +30,7 @@ test('Reading tab: choose a direction, meet characters, then read them', async (
   await expect(page.getByRole('radio', { name: /Character → meaning/ })).toHaveAttribute('aria-checked', 'true');
   // Stats has a Reading section, and the word stage is untouched.
   await page.goto('./#/progress');
+  await page.getByRole('tab', { name: 'Words' }).click();
   await expect(page.getByRole('heading', { name: 'Reading', exact: true })).toBeVisible();
   await expect(page.getByText('Reading retention, 30 days')).toBeVisible();
 });

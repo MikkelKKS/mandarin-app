@@ -248,7 +248,7 @@ function StoryReader({ id }: { id: string }) {
                     <button
                       key={ti}
                       onClick={(ev) => pick(t.text, ev.currentTarget.getBoundingClientRect())}
-                      className={`group inline-flex flex-col items-center rounded px-0.5 leading-none hover:bg-sunk ${extra.has(t.text) ? 'border-b-2 border-dotted border-gold' : ''}`}
+                      className={`group inline-flex flex-col items-center rounded px-0.5 leading-none hover:bg-sunk ${extra.has(t.text) ? 'border-b-2 border-dotted border-muted' : ''}`}
                     >
                       <span>{t.text}</span>
                       {!charsOnly && <TonePinyin pinyin={reading || ' '} className="mt-1 font-sans text-[0.5em] leading-none" />}
@@ -274,7 +274,7 @@ function StoryReader({ id }: { id: string }) {
 
       {story.extra.length > 0 && (
         <p className="mt-6 text-sm text-muted">
-          <span className="border-b-2 border-dotted border-gold">Dotted</span> words aren't in the HSK list.
+          <span className="border-b-2 border-dotted border-muted">Dotted</span> words aren't in the HSK list.
         </p>
       )}
 

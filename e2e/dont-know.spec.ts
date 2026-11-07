@@ -30,7 +30,7 @@ test('Tone Gym: I don’t know tells you the tone', async ({ page }) => {
 test('a session: every question after the new-word cards has I don’t know', async ({ page }) => {
   await page.route('**/audio/**', (r) => r.abort());
   await page.goto('./');
-  await page.getByRole('button', { name: /Quick session/ }).click();
+  await page.getByRole('button', { name: /Quick session|Start with HSK 1/ }).first().click();
   await expect(page.getByRole('progressbar', { name: 'Session progress' })).toBeVisible({ timeout: 15000 });
   let gaveUp = 0;
   for (let i = 0; i < 200; i++) {

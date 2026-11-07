@@ -10,9 +10,9 @@ export function GrammarNoteCard({ note, className = '' }: { note: GrammarNote; c
   const { showHanzi } = useSettings();
   rememberText(note.id, note.zh);
   return (
-    <section className={`rounded-2xl border border-gold/40 bg-amber-soft/60 p-4 text-left ${className}`} aria-label={`Grammar: ${note.title}`}>
+    <section className={`rounded-2xl border border-line bg-sunk p-4 text-left ${className}`} aria-label={`Grammar: ${note.title}`}>
       <p className="flex items-center gap-1.5 text-sm font-semibold">
-        <Lightbulb className="h-4 w-4 text-gold" />
+        <Lightbulb className="h-4 w-4 text-ink" />
         {note.title}
       </p>
       <p className="mt-1.5 text-base leading-relaxed">{note.note}</p>
@@ -42,7 +42,7 @@ export function GrammarToggle({ word, className = '' }: { word: { hanzi: string;
   return (
     <>
       <button onClick={() => setOpen(!open)} aria-expanded={open} className={`inline-flex h-9 items-center gap-1.5 rounded-xl border border-line bg-surface px-3 text-sm font-medium hover:border-ink/30 ${className}`}>
-        <Lightbulb className="h-4 w-4 text-gold" />
+        <Lightbulb className="h-4 w-4 text-ink" />
         Grammar
       </button>
       {open && <GrammarNoteCard note={note} className="anim-fade mt-2 w-full basis-full" />}

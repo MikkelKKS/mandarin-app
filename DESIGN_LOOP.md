@@ -98,3 +98,154 @@ Stopped: max rounds (4). Lowest stuck at 7 for rounds 3–4.
 
 Mikkel chose **Stop** (2026-11-06): branch parked, nothing merged. The next /design-loop resumes from here.
 Merged into main on 2026-11-06 (all 9 changes approved).
+
+## Loop 2 (started 2026-11-07)
+
+```
+State: rejected
+Round: 3
+Phase: show
+Max rounds: 6
+Best lowest: 7
+Rounds without improvement: 0
+Confirming: no
+Notes: 3 rounds (resumed 2026-11-07 with the new team: 2 reviewers, director, judge; 3 more rounds)
+```
+
+| Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
+|-------|--------|------------|--------|--------|---------|--------|------|
+| 1 | 7 | 7 | 7 | 7 | 7 | 7 | start: main after loop 1 merge |
+| 2 | 7.5 | 7 | 7 | 7 | 7 | 7 | colour up; others unchanged |
+| 3 | 8 | 7 | 7 | 7 | 7 | 7 | colour up again; stopped: plateau |
+
+### Round 1
+
+Scores (blind, shots blind-639d2faa9):
+- Colour 7: tight jade/cinnabar/gold palette, real dark mode; light T5 fails on --sunk and the pink sheet, T1/T2 close; gold muddy and overloaded; --line/--edge faint.
+- Typography 7: real scale, tabular digits; neutral grey weak in the hero (marked word grey on a warm pill); question title competes with the pinyin; small grey text in Stats and a six-role answer sheet.
+- Motion 7: tokens, stagger, exits, reduced motion good; wrong pick hard to see; sheet + stagger slow (Continue at ~340 ms); nudge 1.05 overflows the gutter; XP chip a separate slow track.
+- Layout 7: phone clean; PC Home empty (P5-type, rejected); PC session/Tone Gym mix left and centre axes, sheet content on another edge; Stats phone long.
+- Overall 7: clean, coherent, quiet; rewards flat (end screen leads with a bare low accuracy, no streak flame); one card language for everything; Stats/Settings long documents with many empty states.
+
+Weakest points per reviewer:
+- Colour: light tone colours marginal on tints · gold muddy and overloaded · faint lines/edges.
+- Typography: weak neutral grey · flat hierarchy on question screens · small grey Stats text and busy sheet.
+- Motion: wrong pick unclear, pick+sheet compete · slow stagger · XP chip detached.
+- Layout: PC Home (rejected P5) · PC session axes and sheet edge · Stats phone long.
+- Overall: rewards flat · one card language · Stats/Settings documents.
+
+Plan (all five at 7; PC Home grid and shared PC container = rejected P5, not used; marked-word amber pill kept, DECISIONS):
+- [x] (6b1887409) Contrast tune: light T5 darker (AA on --sunk and the wrong sheet), --line and --edge a step stronger in both themes, dark jade-soft lifted. Colour, typography.
+- [x] (e68bd14a6) One axis on PC exercise screens: question title, pinyin and options on one column, the answer sheet's content on that same column. Layout, overall.
+- [x] (cdd186b88) Quicker, clearer pick: nudge 1.02 (stays in the gutter), wrong pick colour visible, tighter sheet stagger so Continue lands sooner. Motion.
+- QA (one run for the round): nothing to fix.
+
+### Round 2
+
+Scores (blind, shots blind-b512b1bef):
+- Colour 7.5: coherent, nearly all AA; tone colours and jade/cinnabar near 4.5 on tinted sheets (dark T1 on jade-soft 4.47); T2 brown close to gold; dark surfaces flat.
+- Typography 7: crisp tone marks, real scale; prompt still competes with the pinyin, neutral grey drops out; answer sheet five sizes; Stats/Home small grey captions.
+- Motion 7: fast, consistent tokens; 32 px shift when the sheet opens (deliberate scroll, IDEAS #13); right vs wrong mostly colour; reduced motion snaps instead of fading.
+- Layout 7: consistent cards; PC Home empty (rejected P5); phone Home uneven gaps, small "No mic" target; PC session header inset from the content column, eyebrow left while question centred.
+- Overall 7: well-made tool, not a game; end screen leads with flat tiles (low accuracy), achievement card flat with muddy gold badge; Stats inventory; generic cards.
+
+Weakest points per reviewer:
+- Colour: tints vs tone colours · T2 vs gold · flat dark surfaces.
+- Typography: prompt vs pinyin, grey neutral · answer-sheet sizes · small captions.
+- Motion: shift on sheet open (kept) · right/wrong alike · reduced motion snaps.
+- Layout: PC Home (rejected) · phone Home rhythm · session header edges.
+- Overall: rewards flat · Stats inventory · generic cards.
+
+Plan (lowest 7 for typography, motion, layout, overall; the scroll on sheet open stays, IDEAS #13; PC Home = rejected P5):
+- [x] (6efc541ff) Exercise header and prompt on one axis: close and search icons flush with the content column, block label centred, question prompt quieter (text-base, medium, muted) so the pinyin leads, light neutral tone a step darker. Typography, layout.
+- [x] (9dfa7353d) Reduced motion fades instead of snapping: keep short opacity fades, drop only movement. Motion.
+- [x] (4c7cb4821) End screen leads with the reward: session numbers in one quiet strip instead of three big tiles, achievement badge readable (light hanzi on gold). Overall.
+- QA (one run for the round): nothing to fix.
+
+### Round 3
+
+Scores (blind, shots blind-2e54ab9f2):
+- Colour 8: deliberate limited palette, all tone colours AA in both themes; light gold reads brown and close to T2; light feedback tints thin; dark primary jade glows, dark feedback tints muddy.
+- Typography 7: real scale, pinyin hero good; the answer word (often neutral grey) loses to the context line; Stats/PC secondary text 12px grey everywhere; session eyebrow/prompt/options near-equal weight.
+- Motion 7: coherent tokens, reduced motion now fades; ~30 px content shift when the sheet opens (deliberate scroll, IDEAS #13); sheet text settles ~300 ms; right vs wrong mainly colour; tab change too subtle.
+- Layout 7: consistent cards; PC Home half empty (rejected P5); Stats long, chips clip on phone, ragged PC columns; session audio block tall, answers mid-screen.
+- Overall 7: restrained, real identity; Home not game-like ("Start a streak today", brown ring, no weakest pair); rewards under-delivered beyond the seal; Stats/Tone Gym look like another product.
+
+Weakest points per reviewer:
+- Colour: gold brown/close to T2 · light tints thin, colour-only right/wrong · dark primary loud, tints muddy.
+- Typography: answer word loses to context · small grey secondary text · flat session hierarchy.
+- Motion: shift on sheet open (kept) · slow sheet text · right/wrong alike.
+- Layout: PC Home (rejected) · Stats length/chips · session vertical space.
+- Overall: Home not a game · rewards thin · Stats/Tone Gym unfinished.
+
+Stopped: plateau (lowest 7 for rounds 1–3, no progress for 2 rounds). Colour rose 7 → 7.5 → 8; the other four stayed at 7.
+
+Mikkel chose **Stop** (2026-11-07): branch parked, nothing merged. The next /design-loop resumes from here.
+
+Resumed 2026-11-07 with notes "3 rounds": rounds 4–6 with the new process (design-visual, design-experience, director, judge, lived-in profile).
+
+Mikkel stopped the resume on 2026-11-07 before round 4 began (nothing reviewed or built). Parked again.
+
+Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2 discarded, design-loop branch deleted, none of its changes merged.
+
+## Loop 3 (started 2026-11-07)
+
+```
+State: stopped (max)
+Round: 2
+Phase: show
+Max rounds: 2
+Best lowest: 6.5
+Rounds without improvement: 0
+Confirming: no
+Notes: max 3 rounds (fresh loop with the new team)
+```
+
+| Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
+|-------|--------|------------|--------|--------|---------|--------|------|
+| 1 | 7.5 | 7 | 6.5 | 6.5 | 7 | 6.5 | start: fresh loop on main, new team |
+| 2 | 7.5 | 7.5 | 6.5 | 7 | 7 | 6.5 | judge: 3 kept, 0 reverted |
+
+### Round 1
+
+Scores (blind, shots blind-a945beb91; lived-in profile):
+- Colour 7.5 (fails 3, 4, 5): gold/XP and T2 share a hue, T1 close to wrong-red; dark surface 1.1:1, loud mint card; Stats/Settings have no lead; --edge 2.94:1.
+- Typography 7 (fails 1, 3, 4): one-off pinyin sizes beside the scale; Home streak card and Tone Gym sheet 4–5 levels; 12px secondary text on Stats/Settings; voice light.
+- Layout 6.5 (fails 1, 4, 5, 6): XP text overflows the Home card; PC Home/session/Tone Gym half empty; Stats 15,000 px and Settings 9,600 px walls; row patterns differ.
+- Motion 6.5 (fails 4, 6, half 5): ~30 px jump when the sheet opens; reduced motion snaps with no fades; no beat for level up / goal / achievement.
+- Overall 7 (fails 1, 2 partly, 5): Stats in another register, identity weak on Stats and questions; no Stats payoff, matrix buried.
+Note: reviewers opened fewer screens than asked (experience: 5 stills, a few frames).
+
+Weakest points:
+- Visual: PC dead space · Stats/Settings walls · gold = T2, T1 ≈ wrong · crowded Home card/sheet · tone colour-only cues in sessions.
+- Experience: Stats wall without payoff · sheet jump · reduced motion snaps · quiet rewards · Home flat stack, XP text clipped.
+
+Direction (design-director, opus): "four colours mean sound": tone hues only for tones; jade = go/right, imperial violet = reward (gold retired), cinnabar = a miss as a mark only; tone-contour glyph as the signature; condensed numerals; one type scale; Home Today plate (+ PC "This week" column); Stats hero + matrix + tabs; reward beats; PC "This round" rail. See DESIGN_DIRECTION.md.
+
+Plan (round 1; director's moves 1–3):
+- [x] (37e25f20a) Token swap: imperial reward colour replaces gold, wrong answers without pink wash (outline + cross, sheet with cinnabar top rule), dark surface/edge/hero plate, one type scale with pinyin aliases, sentence-case labels, role radii, condensed numerals. Colour, typography; all screens.
+- [x] (fd3618d7a) Tone contours and a still question: contour glyph on every tone option (sessions, Tone Gym, matrix headers), no page scroll when the sheet opens (sheet shows the answer), "I don't know" as a full-width quiet button. Colour 3, motion 4, layout 3; session, Tone Gym, stats.
+- [x] (1e5d5a2d6) Home redesign: Today plate (streak numeral, ring, one-line level) with the session buttons; quiet rows; PC two-thirds plate + "This week" column; welcome plate for a new account. Layout, overall, typography; home, home-new.
+- Judge (pairs-1, 13 screens × 2 orders): better on all 13 (home phone light: better + one unopened pair); answer-wrong motion better. Kept: all 3 moves. Note from judge: six stacked achievement medals on the session end nearly touch.
+- QA: qa:screens 28/28, the three Home e2e specs 14/14 after one test fix (session.spec waited for the old Home text). Nothing else found.
+
+### Round 2
+
+Scores (blind, shots blind-349a8c53b):
+- Colour 7.5 (fails 3, 4, 5 small; 6 partial): no second tone cue in running pinyin; cinnabar ≈ T1, jade ≈ T3; dark elevation 1.27:1; plate has two first reads.
+- Typography 7.5 (fails 1, 3, 4 small): legacy lg/xl steps and a 2.75rem PC hero; Tone Gym sheet five levels; 12px secondary text on Stats/Settings.
+- Layout 7 (fails 1, 3, 4, 5, 6): PC session edges; Tone Gym question top-heavy (bottom half empty); PC Home plate stretched with empty space; Stats 15,000 px, Settings flat; icon tiles and card styles differ.
+- Motion 6.5 (fails 2, 4, 5; 6 half; 3 small): right answer has no beat; answer-right frames show the picked option with a red cross under "Right" (recording artefact: the test forces the verdict); no goal/level/streak beat at session end; reduced motion snaps.
+- Overall 7 (fails 1, 4, 5, 6): Stats/Tone Gym in a plainer style than Home; rewards not celebrated; Stats wall, matrix far down; stats-new a wall of empty cards; "First session" badge on a 23-day streak (profile artefact).
+
+Weakest points: Stats wall · PC Home stretched · exercise screens top-heavy · dark elevation · Settings flat · right-answer beat · session-end payoff · reduced-motion snaps.
+
+Plan (round 2; the last build round, since round 3 only scores with max 3 rounds):
+- [x] Screenshot harness: right-answer shots on a typed question (a forced "right" can't move a multiple-choice pick), and badges unlocked before the session (not a design move).
+- [x] (71fbf5e09) Stats restructure: summary hero (condensed numbers) with the tone matrix right under it, sticky tabs (Overview, Words, Tones, Habits, Badges) showing one panel at a time, HSK levels not started folded into one line, one line for a new account. Layout 5, overall 1/5/6, typography 4; stats, stats-new.
+- [x] (40c348032) Reward beats and gentle reduced motion: right pick pulses with a jade glow, combo chip pulses at 3/5/10, session end stamps 达标 when the goal was reached and shows a level-up band, achievements as a medallion grid that stamps in one by one; reduced motion keeps 150 ms fades. Motion 2/5/6, overall 4; session-right, session-end, answer-right.
+- Judge (pairs-2, 10 screens × 2 orders, before re-shot from the round's start with the fixed harness): Stats better on phone light, PC light, stats-new; phone dark same. Session end better ×3, answer-right motion better. Worse: reduced-motion answer-wrong (the 150 ms fading sheet ghosts over the options) and the session-right still (different state: only the before shot caught a combo chip; layouts identical, not caused by the move).
+- Kept: Stats restructure; reward beats. Reduced-motion fades taken out again (8a508aadf) instead of reverting the whole reward move (their part was the only thing judged worse). Rounds without improvement: 0.
+- QA: qa:screens 28/28, the four Stats e2e specs 40/40; two small fixes (first-day button alignment, "HSK 2 to 7–9"). Level-up band and badge grid not seen in the run (no level crossed, no badge unlocked).
+
+Stopped after round 2 at Mikkel's request (max rounds set to 2). Round 2's moves were judged but not re-scored.

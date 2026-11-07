@@ -72,7 +72,7 @@ function row(id: string, c: Card, now: number, word: string, facet: string): Row
   };
 }
 
-export function demoProfile(now = Date.now()): { items: Row[]; logs: Row[] } {
+export function demoProfile(now = Date.now()): { items: Row[]; logs: Row[]; sessions: Row } {
   const r = rng(20261107);
   const f = fsrs(generatorParameters({ enable_fuzz: false, request_retention: 0.9 }));
   const words = (JSON.parse(readFileSync('content/data/words.json', 'utf8')) as Word[])
@@ -139,5 +139,7 @@ export function demoProfile(now = Date.now()): { items: Row[]; logs: Row[] } {
     }
   }
   const items = [...cards.entries()].map(([k, c]) => row(k, c.card, now, c.word.id, c.facet));
-  return { items, logs };
+  // About one and a half sessions a study day (the session count drives the "sessions" badges).
+  const sessions = { id: 'sessions', best: 320, plays: 58, updatedAt: now };
+  return { items, logs, sessions };
 }

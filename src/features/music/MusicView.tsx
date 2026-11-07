@@ -44,7 +44,7 @@ function writeJson(key: string, v: unknown): void {
 
 const BAND: Record<Band, { label: string; cls: string; blurb: string }> = {
   comfortable: { label: 'Comfortable', cls: 'bg-jade-soft text-jade', blurb: '95%+ of the words known' },
-  stretch: { label: 'Stretch', cls: 'bg-amber-soft text-gold', blurb: '85–95% known' },
+  stretch: { label: 'Stretch', cls: 'bg-sunk text-ink', blurb: '85–95% known' },
   tough: { label: 'Tough', cls: 'bg-cinnabar-soft text-cinnabar', blurb: 'under 85% known' },
 };
 

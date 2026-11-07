@@ -292,7 +292,7 @@ export function LessonPlayer({
         </header>
 
         <main className="anim-slide flex-1 px-4 pt-4" style={sheetPadding('12rem')} key={current.ex.key}>
-          {current.retry > 0 && !outcome && <p className="mb-3 text-sm font-medium text-gold">Another go at one you missed</p>}
+          {current.retry > 0 && !outcome && <p className="mb-3 text-sm font-medium text-cinnabar">Another go at one you missed</p>}
           <ExerciseView ex={current.ex} />
         </main>
 
@@ -333,8 +333,8 @@ export function LessonPlayer({
 const TONE: Record<Verdict, { title: string; cls: string; card: string; btn: string; badge: string }> = {
   correct: { title: 'Correct!', cls: 'bg-jade-soft', card: 'md:bg-jade-soft', btn: 'bg-jade text-jade-ink', badge: 'bg-jade text-jade-ink' },
   typo: { title: 'Correct, but mind the typo', cls: 'bg-jade-soft', card: 'md:bg-jade-soft', btn: 'bg-jade text-jade-ink', badge: 'bg-jade text-jade-ink' },
-  almost: { title: 'Almost!', cls: 'bg-amber-soft', card: 'md:bg-amber-soft', btn: 'bg-gold text-white dark:text-black', badge: 'bg-gold text-white dark:text-black' },
-  wrong: { title: 'Not quite', cls: 'bg-cinnabar-soft', card: 'md:bg-cinnabar-soft', btn: 'bg-cinnabar text-white dark:text-black', badge: 'bg-cinnabar text-white dark:text-black' },
+  almost: { title: 'Almost!', cls: 'sheet-near', card: 'md:sheet-near', btn: 'bg-ink text-surface', badge: 'bg-ink text-surface' },
+  wrong: { title: 'Not quite', cls: 'sheet-miss', card: 'md:sheet-miss', btn: 'bg-cinnabar text-white dark:text-black', badge: 'bg-cinnabar text-white dark:text-black' },
 };
 
 function Feedback({

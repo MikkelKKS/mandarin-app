@@ -2,6 +2,7 @@
  * Tone confusion matrix: rows are the tone that was right, columns the tone
  * you heard or typed, tones 1–4 (no neutral tone). Each row adds up to 100%. Below it, the tone-pair mix-ups.
  */
+import { ToneContour } from '../../components/ToneContour';
 import { pairConfusions, patternLabel, toneMatrix, TONE_WORD, type ToneLog } from './model';
 
 const TONE_TEXT = ['', 'text-t1', 'text-t2', 'text-t3', 'text-t4', 'text-t5'];
@@ -25,7 +26,10 @@ export function ToneMatrix({ logs, caption }: { logs: ToneLog[]; caption?: strin
               </th>
               {[1, 2, 3, 4].map((g) => (
                 <th key={g} scope="col" className={`font-semibold ${TONE_TEXT[g]}`}>
-                  {g}
+                  <span className="inline-flex flex-col items-center gap-0.5">
+                    <ToneContour tone={g} className="h-2.5 w-5" />
+                    {g}
+                  </span>
                 </th>
               ))}
               <th className="text-xs font-medium text-muted">n</th>
@@ -38,7 +42,10 @@ export function ToneMatrix({ logs, caption }: { logs: ToneLog[]; caption?: strin
               return (
                 <tr key={e}>
                   <th scope="row" className={`text-left font-semibold ${TONE_TEXT[e]}`}>
-                    {TONE_WORD[e]}
+                    <span className="inline-flex items-center gap-1.5">
+                      <ToneContour tone={e} className="h-2.5 w-5" />
+                      {TONE_WORD[e]}
+                    </span>
                   </th>
                   {[1, 2, 3, 4].map((g) => {
                     const share = n ? row[g] / n : 0;

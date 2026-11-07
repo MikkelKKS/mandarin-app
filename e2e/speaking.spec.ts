@@ -22,7 +22,7 @@ const SEED = `new Promise((done) => {
 
 test('speaking in a deep session: record, see both pitch curves, grade', async ({ page }) => {
   await page.goto('./');
-  await expect(page.getByText(/day streak|Start a streak/)).toBeVisible();
+  await expect(page.getByText(/day streak|Mandarin by ear/)).toBeVisible();
   await page.evaluate(SEED);
   await page.goto('./#/session/deep');
   await expect(page.getByRole('progressbar', { name: 'Session progress' })).toBeVisible({ timeout: 20000 });
@@ -62,7 +62,7 @@ test('speaking in a deep session: record, see both pitch curves, grade', async (
 
 test('"No mic right now" takes speaking out of the session', async ({ page }) => {
   await page.goto('./');
-  await expect(page.getByText(/day streak|Start a streak/)).toBeVisible();
+  await expect(page.getByText(/day streak|Mandarin by ear/)).toBeVisible();
   await page.evaluate(SEED);
   await page.getByRole('button', { name: 'No mic right now' }).click();
   await expect(page.getByText(/Speaking paused until/)).toBeVisible();

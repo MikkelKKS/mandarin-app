@@ -61,6 +61,24 @@ async function toQuestion(page: Page) {
   }
 }
 
+/**
+ * A right answer is forced with __e2eVerdict, which can't move a multiple-choice pick onto the right
+ * option, so a forced "right" on a choice question shows the picked option crossed out under "Right".
+ * For the right-answer recording, step on (answering normally) until a typed-pinyin question comes up.
+ */
+async function toTypedQuestion(page: Page) {
+  for (let i = 0; i < 25; i++) {
+    await toQuestion(page);
+    if (await page.getByLabel('Your answer in pinyin').isVisible().catch(() => false)) return;
+    await setVerdict(page, undefined);
+    await answerNow(page);
+    const cont = page.getByRole('status').getByRole('button', { name: 'Continue' });
+    if (!(await cont.waitFor({ timeout: 3000 }).then(() => true, () => false))) continue;
+    await cont.click();
+    await expect(cont).toBeHidden();
+  }
+}
+
 async function answerNow(page: Page) {
   const input = page.getByLabel('Your answer in pinyin');
   if (await input.isVisible().catch(() => false)) {
@@ -90,7 +108,7 @@ for (const motion of ['full', 'reduced'] as const) {
       await record(page, `${base}/answer-wrong`, () => answerNow(page));
       await page.getByRole('button', { name: 'Continue' }).first().click();
       await expect(page.getByRole('status').getByRole('button', { name: 'Continue' })).toBeHidden();
-      await toQuestion(page);
+      await toTypedQuestion(page);
       await setVerdict(page, 'correct');
       await record(page, `${base}/answer-right`, () => answerNow(page));
       // 4. Next question coming in.

@@ -20,6 +20,7 @@ import { TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { TONE_WORD } from '../tonegym/model';
 import { ToneMatrix } from '../tonegym/ToneMatrix';
+import { ToneContour } from '../../components/ToneContour';
 import { Columns, Legend, StackBar, TableView, Tile } from './charts';
 import { ReviewCards } from '../progress/ReviewCards';
 import { StudyCalendar } from './StudyCalendar';
@@ -54,33 +55,64 @@ function Section({ title, note, children }: { title: string; note?: string; chil
   );
 }
 
-const GROUPS: [string, string][] = [
-  ['stats-words', 'Words'],
-  ['stats-tones', 'Tones'],
-  ['stats-habits', 'Habits'],
-  ['stats-more', 'Scheduler & badges'],
-];
+const TABS = [
+  ['overview', 'Overview'],
+  ['words', 'Words'],
+  ['tones', 'Tones'],
+  ['habits', 'Habits'],
+  ['badges', 'Badges'],
+] as const;
+type Tab = (typeof TABS)[number][0];
+const TAB_KEY = 'stats-tab';
+function savedTab(): Tab {
+  try {
+    const t = localStorage.getItem(TAB_KEY);
+    return TABS.some(([id]) => id === t) ? (t as Tab) : 'overview';
+  } catch {
+    return 'overview';
+  }
+}
 
-/** A group of related sections; side by side on a wide screen. */
-function Group({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+/** One panel's sections; side by side on a wide screen. */
+function Panel({ id, children }: { id: Tab; children: React.ReactNode }) {
   return (
-    <div id={id} className="scroll-mt-16">
-      <h2 className="label mt-14 border-t border-line pt-6">{title}</h2>
-      <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-10 [&>section:first-child]:mt-4 lg:[&>section:nth-child(2)]:mt-4">{children}</div>
+    <div id={`stats-${id}`} role="tabpanel" aria-labelledby={`tab-${id}`} className="anim-fade lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-10 [&>section:first-child]:mt-6 lg:[&>section:nth-child(2)]:mt-6">
+      {children}
     </div>
   );
 }
 
-/** Jump to a group (the app's routes use the URL hash, so these are buttons, not links). */
-function JumpBar() {
+/** Sticky segmented tabs: one panel at a time instead of one long page. */
+function TabBar({ tab, onTab }: { tab: Tab; onTab: (t: Tab) => void }) {
   return (
-    <nav aria-label="Stats sections" className="sticky top-0 z-10 -mx-4 mt-6 flex gap-2 overflow-x-auto bg-bg/95 px-4 py-2 backdrop-blur md:mx-0 md:px-0">
-      {GROUPS.map(([id, label]) => (
-        <button key={id} onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })} className="press h-9 shrink-0 rounded-full border border-line bg-surface px-4 text-sm font-medium">
-          {label}
-        </button>
-      ))}
-    </nav>
+    <div className="sticky top-0 z-10 -mx-4 mt-8 bg-bg/95 px-4 py-2 backdrop-blur md:mx-0 md:px-0">
+      <div role="tablist" aria-label="Stats" className="flex gap-1 overflow-x-auto rounded-control bg-sunk p-1">
+        {TABS.map(([id, label]) => (
+          <button
+            key={id}
+            id={`tab-${id}`}
+            role="tab"
+            aria-selected={tab === id}
+            aria-controls={`stats-${id}`}
+            onClick={() => onTab(id)}
+            className={`h-10 min-w-[4.5rem] flex-1 shrink-0 rounded-[9px] px-3 text-sm font-semibold transition-colors ${tab === id ? 'bg-surface text-ink shadow-sm' : 'text-muted hover:text-ink'}`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** The lead numbers: condensed, side by side. */
+function Lead({ label, value, note }: { label: string; value: string; note?: string }) {
+  return (
+    <div className="px-1 py-2 sm:px-4">
+      <p className="text-sm font-semibold text-muted">{label}</p>
+      <p className="num mt-1 text-5xl leading-none">{value}</p>
+      {note && <p className="mt-1.5 text-sm text-muted">{note}</p>}
+    </div>
   );
 }
 
@@ -91,6 +123,7 @@ export function StatsView() {
   const logs = useLive(() => db.reviewLogs.toArray(), [], null);
   const game = useGameStats(settings.dailyGoal);
   const [allAch, setAllAch] = useState(false);
+  const [tab, setTab] = useState<Tab>(savedTab);
   const now = useMemo(() => Date.now(), [logs]);
 
   const levels = useMemo(() => (vocab && cards ? wordsByLevel(vocab, cards) : null), [vocab, cards]);
@@ -99,7 +132,6 @@ export function StatsView() {
   const toneLogs = useMemo(() => (logs ?? []).filter((l) => l.tones && !l.replaced), [logs]);
   if (!logs || !cards) return <p className="p-8 text-center text-muted">Loading…</p>;
 
-  const r7 = retention(logs, now, 7);
   const r30 = retention(logs, now, 30);
   const target = settings.retention;
   const started = levels?.reduce((n, l) => n + l.total - l.counts.new, 0) ?? 0;
@@ -108,178 +140,239 @@ export function StatsView() {
   const fsrsReviews = optimiserReviews(logs);
   const minutes30 = days.reduce((n, d) => n + d.minutes, 0);
 
+  const fresh = logs.length === 0 && cards.length === 0;
+  const pick = (t: Tab) => {
+    setTab(t);
+    try {
+      localStorage.setItem(TAB_KEY, t);
+    } catch {
+      /* private mode: the tab just isn't remembered */
+    }
+  };
+  const startedLevels = levels?.filter((l) => l.total - l.counts.new > 0) ?? [];
+  const idleLevels = levels?.filter((l) => l.total - l.counts.new === 0) ?? [];
+  const lvlName = (n: number) => (n === 7 ? '7–9' : String(n));
+
   return (
     <div className="pb-10">
       <PageHeader title="Stats" />
 
-      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Tile label="Words started" value={started.toLocaleString('en-GB')} note={`${mature.toLocaleString('en-GB')} mature`} />
-        <Tile label="Retention, 7 days" value={pct(r7.rate)} note={r7.n ? `${r7.n} reviews · target ${pct(target)}` : 'No long-term reviews yet'} />
-        <Tile label="Retention, 30 days" value={pct(r30.rate)} note={r30.n ? `${r30.n} reviews · target ${pct(target)}` : 'No long-term reviews yet'} />
-        <Tile label="XP" value={(game?.xp ?? 0).toLocaleString('en-GB')} note={game ? `Level ${game.level.level} · best streak ${game.streak.best}` : undefined} />
-      </div>
-      {r30.rate !== null && r30.n >= 20 && (
-        <p className="mt-3 text-sm text-muted">
-          {r30.rate < target - 0.03
-            ? `Retention is below your ${pct(target)} target: reviews are coming back a little too late for you, which the scheduler optimiser will be able to correct.`
-            : r30.rate > target + 0.03
-              ? `Retention is above your ${pct(target)} target: you could lower the target in Settings to get fewer reviews.`
-              : `Right on your ${pct(target)} target.`}
-        </p>
-      )}
-
-      <PaceForecast logs={logs} now={now} mature={mature} levels={levels} game={game} />
-
-      <JumpBar />
-
-      <Group id="stats-words" title="Words">
-        <Section title="Words by HSK level" note="A word counts as far as its weakest skill (listening or typing). Mature: next review 21 or more days away.">
-          <Legend items={STATES.map((s) => ({ label: STATE_LABEL[s], color: STATE_COLOR[s] }))} />
-          <ul className="mt-3 flex flex-col gap-3">
-            {levels?.map((l) => (
-              <li key={l.level}>
-                <div className="mb-1 flex items-baseline justify-between text-sm">
-                  <span className="font-medium">{l.level === 7 ? 'HSK 7–9' : `HSK ${l.level}`}</span>
-                  <span className="tabular-nums text-muted">
-                    {(l.total - l.counts.new).toLocaleString('en-GB')} / {l.total.toLocaleString('en-GB')} started · {l.counts.mature} mature
-                  </span>
-                </div>
-                <StackBar
-                  total={l.total}
-                  label={`HSK ${l.level}: ${STATES.map((s) => `${l.counts[s]} ${s}`).join(', ')}`}
-                  segments={(['mature', 'young', 'learning', 'new'] as const).map((s) => ({ key: s, value: l.counts[s], color: STATE_COLOR[s], label: STATE_LABEL[s] }))}
-                />
-              </li>
-            ))}
-          </ul>
-          {levels && (
-            <TableView
-              caption="Words by HSK level and state"
-              head={['Level', 'New', 'Learning', 'Young', 'Mature']}
-              rows={levels.map((l) => [l.level === 7 ? '7–9' : String(l.level), l.counts.new, l.counts.learning, l.counts.young, l.counts.mature])}
-            />
-          )}
-          <button onClick={() => go('words')} className="mt-3 h-11 w-full rounded-2xl border border-line font-medium">
+      <section className="card mt-4 grid grid-cols-2 gap-y-3 p-4 sm:grid-cols-4 sm:divide-x sm:divide-line md:p-5" aria-label="Lead numbers">
+        <Lead label="Words started" value={fresh ? '–' : started.toLocaleString('en-GB')} note={fresh ? undefined : `${mature.toLocaleString('en-GB')} mature`} />
+        <Lead label="Kept, 30 days" value={pct(r30.rate)} note={r30.n ? `target ${pct(target)}` : fresh ? undefined : 'after your first long-term reviews'} />
+        <Lead label="Streak" value={fresh ? '–' : String(game?.streak.current ?? 0)} note={game && !fresh ? `best ${game.streak.best} days` : undefined} />
+        <Lead label="Level" value={fresh ? '–' : String(game?.level.level ?? 1)} note={game && !fresh ? `${game.xp.toLocaleString('en-GB')} XP` : undefined} />
+      </section>
+      {fresh ? (
+        <div className="mt-4 rounded-card bg-sunk p-5 [&_.btn]:mr-2">
+          <p className="font-semibold">Your numbers appear after your first session.</p>
+          <p className="mt-1 text-sm text-muted">Words, retention, your streak and the tone matrix all fill in from your answers.</p>
+          <button onClick={() => go('session/quick')} className="btn btn-primary mt-4 h-12 px-5 text-base">
+            Start a quick session
+          </button>
+          <button onClick={() => go('words')} className="btn btn-quiet mt-4 h-12 px-5 text-base">
             Browse the words
           </button>
-        </Section>
+        </div>
+      ) : (
+        <>
+          {r30.rate !== null && r30.n >= 20 && (
+            <p className="mt-3 text-sm text-muted">
+              {r30.rate < target - 0.03
+                ? `Retention is below your ${pct(target)} target: reviews are coming back a little too late for you, which the scheduler optimiser will be able to correct.`
+                : r30.rate > target + 0.03
+                  ? `Retention is above your ${pct(target)} target: you could lower the target in Settings to get fewer reviews.`
+                  : `Right on your ${pct(target)} target (${r30.n} reviews in 30 days).`}
+            </p>
+          )}
 
-        <Section title="Reviews coming up" note="Cards due each day for the next two weeks. Today includes anything overdue.">
-          <Columns
-            caption="Reviews due per day, next 14 days"
-            data={fc.map((d, i) => ({ key: d.day, label: weekday(d.day, i), value: d.count, detail: `${i === 0 ? 'Today' : dayLabel(d.day)}: ${d.count} due` }))}
-            labelEvery={1}
-          />
-        </Section>
-
-        <ReviewCards />
-
-        <ReadingStats cards={cards} logs={logs} />
-
-      </Group>
-
-      <Group id="stats-tones" title="Tones">
-        <Section title="Tones" note="From the Tone Gym, tone exercises and every typed answer. Rows are the right tone, columns what you heard or typed.">
-          <div className="mb-4 grid grid-cols-5 gap-2 text-center">
-            {tones.map((t) => (
-              <div key={t.tone} className="rounded-xl bg-surface p-2">
-                <p className={`text-xs font-semibold ${TONE_TEXT[t.tone]}`}>{TONE_WORD[t.tone]}</p>
-                <p className="text-lg font-semibold tabular-nums">{pct(t.rate)}</p>
-                <p className="text-xs text-muted">{t.n} heard</p>
-              </div>
-            ))}
-          </div>
-          <ToneMatrix logs={toneLogs} />
-        </Section>
-
-        <ToneTwins vocab={vocab} logs={toneLogs} hanzi={settings.showHanzi} />
-
-      </Group>
-
-      <Group id="stats-habits" title="Habits">
-        <Section title="Study calendar" note={`Each square is a day, shaded by how much of your ${settings.dailyGoal} XP goal you reached. Tap a day for details.`}>
-          <StudyCalendar logs={logs} goal={settings.dailyGoal} streak={game?.streak ?? null} now={now} />
-        </Section>
-
-        <Section title="Time studied" note={`Minutes answering per day, last 30 days: ${minutes30} in all.`}>
-          <Columns
-            caption="Minutes studied per day, last 30 days"
-            color="var(--jade)"
-            labelEvery={7}
-            data={days.map((d) => ({ key: d.day, label: dom(d.day), value: d.minutes, detail: `${dayLabel(d.day)}: ${d.minutes} min, ${d.answers} answers` }))}
-          />
-        </Section>
-
-        <Section title="Accuracy" note="Share of answers right (or nearly right) per day, last 30 days.">
-          <Columns
-            caption="Accuracy per day, last 30 days"
-            color="var(--jade)"
-            labelEvery={7}
-            format={(v) => `${v}%`}
-            data={days.map((d) => ({
-              key: d.day,
-              label: dom(d.day),
-              value: d.accuracy === null ? 0 : Math.round(d.accuracy * 100),
-              detail: `${dayLabel(d.day)}: ${d.accuracy === null ? 'no answers' : `${pct(d.accuracy)} of ${d.answers}`}`,
-            }))}
-          />
-        </Section>
-
-        <Section title="XP" note={`Per day, last 30 days. Daily goal ${settings.dailyGoal} XP.`}>
-          <Columns
-            caption="XP per day, last 30 days"
-            color="var(--gold)"
-            labelEvery={7}
-            data={days.map((d) => ({ key: d.day, label: dom(d.day), value: d.xp, detail: `${dayLabel(d.day)}: ${d.xp} XP${d.xp >= settings.dailyGoal ? ' · goal met' : ''}` }))}
-          />
-        </Section>
-
-      </Group>
-
-      <Group id="stats-more" title="Scheduler & badges">
-        <Section title="Scheduler" note="FSRS learns how fast you forget once it has enough of your reviews; it then fits its parameters to you.">
-          <div className="card p-4">
-            <div className="flex justify-between text-sm">
-              <span>Reviews with full data</span>
-              <span className="tabular-nums">
-                {Math.min(fsrsReviews, OPTIMISE_AFTER).toLocaleString('en-GB')} / {OPTIMISE_AFTER.toLocaleString('en-GB')}
-              </span>
+          <section className="card mt-4 p-4 md:p-5" aria-label="Tone matrix">
+            <h2 className="text-title font-semibold">Tone matrix</h2>
+            <p className="mt-0.5 text-sm text-muted">Rows: the tone it really was. Columns: what you heard or typed.</p>
+            <div className="mt-3">
+              <ToneMatrix logs={toneLogs} />
             </div>
-            <ProgressBar value={fsrsReviews / OPTIMISE_AFTER} label="Reviews towards the scheduler optimiser" className="mt-2" />
-            <p className="mt-2 text-xs text-muted">"Optimise my scheduler" appears here at {OPTIMISE_AFTER.toLocaleString('en-GB')} reviews.</p>
-          </div>
-        </Section>
+          </section>
 
-        <Section title="Achievements" note={`${game?.unlocked.size ?? 0} of ${ACHIEVEMENTS.length} unlocked.${allAch ? '' : ' Closest to done:'}`}>
-          <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {(allAch ? ACHIEVEMENTS : closestAchievements(game?.stats ?? null, game?.unlocked ?? new Set<string>(), 4)).map((a) => {
-              const at = game?.unlocked.get(a.id);
-              const p = game ? a.progress(game.stats) : 0;
-              return (
-                <li key={a.id} className={`card flex items-center gap-3 p-3 ${at ? '' : 'shadow-none'}`}>
-                  <span
-                    className={`han flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xs font-medium ${at ? 'border-[1.5px] border-gold bg-amber-soft text-gold' : 'border border-line text-muted'}`}
-                    aria-hidden
-                  >
-                    {a.hanzi}
+          <TabBar tab={tab} onTab={pick} />
+
+          {tab === 'overview' && (
+            <Panel id="overview">
+              <section className="mt-6">
+                <PaceForecast logs={logs} now={now} mature={mature} levels={levels} game={game} />
+              </section>
+            <Section title="Reviews coming up" note="Cards due each day for the next two weeks. Today includes anything overdue.">
+              <Columns
+                caption="Reviews due per day, next 14 days"
+                data={fc.map((d, i) => ({ key: d.day, label: weekday(d.day, i), value: d.count, detail: `${i === 0 ? 'Today' : dayLabel(d.day)}: ${d.count} due` }))}
+                labelEvery={1}
+              />
+            </Section>
+
+
+            </Panel>
+          )}
+
+          {tab === 'words' && (
+            <Panel id="words">
+            <Section title="Words by HSK level" note="A word counts as far as its weakest skill (listening or typing). Mature: next review 21 or more days away.">
+              <Legend items={STATES.map((s) => ({ label: STATE_LABEL[s], color: STATE_COLOR[s] }))} />
+              <ul className="mt-3 flex flex-col gap-3">
+                {startedLevels.map((l) => (
+                  <li key={l.level}>
+                    <div className="mb-1 flex items-baseline justify-between text-sm">
+                      <span className="font-medium">{l.level === 7 ? 'HSK 7–9' : `HSK ${l.level}`}</span>
+                      <span className="tabular-nums text-muted">
+                        {(l.total - l.counts.new).toLocaleString('en-GB')} / {l.total.toLocaleString('en-GB')} started · {l.counts.mature} mature
+                      </span>
+                    </div>
+                    <StackBar
+                      total={l.total}
+                      label={`HSK ${l.level}: ${STATES.map((s) => `${l.counts[s]} ${s}`).join(', ')}`}
+                      segments={(['mature', 'young', 'learning', 'new'] as const).map((s) => ({ key: s, value: l.counts[s], color: STATE_COLOR[s], label: STATE_LABEL[s] }))}
+                    />
+                  </li>
+                ))}
+              </ul>
+              {idleLevels.length > 0 && (
+                <p className="mt-3 text-sm text-muted">
+                  HSK {lvlName(idleLevels[0].level)}
+                  {idleLevels.length > 1 ? ` to ${lvlName(idleLevels[idleLevels.length - 1].level)}` : ''}: not started yet.
+                </p>
+              )}
+              {levels && (
+                <TableView
+                  caption="Words by HSK level and state"
+                  head={['Level', 'New', 'Learning', 'Young', 'Mature']}
+                  rows={levels.map((l) => [l.level === 7 ? '7–9' : String(l.level), l.counts.new, l.counts.learning, l.counts.young, l.counts.mature])}
+                />
+              )}
+              <button onClick={() => go('words')} className="mt-3 h-11 w-full rounded-2xl border border-line font-medium">
+                Browse the words
+              </button>
+            </Section>
+
+
+              <ReviewCards />
+              <ReadingStats cards={cards} logs={logs} />
+            </Panel>
+          )}
+
+          {tab === 'tones' && (
+            <Panel id="tones">
+              <Section title="Accuracy per tone" note="From the Tone Gym, tone exercises and every typed answer.">
+                <div className="grid grid-cols-4 gap-2 text-center">
+                  {tones
+                    .filter((t) => t.tone <= 4)
+                    .map((t) => (
+                      <div key={t.tone} className="rounded-control border border-line bg-surface p-2">
+                        <p className={`flex items-center justify-center gap-1 text-sm font-semibold ${TONE_TEXT[t.tone]}`}>
+                          <ToneContour tone={t.tone} className="h-2.5 w-5" />
+                          {TONE_WORD[t.tone]}
+                        </p>
+                        <p className="num mt-1 text-3xl">{pct(t.rate)}</p>
+                        <p className="text-sm text-muted">{t.n} heard</p>
+                      </div>
+                    ))}
+                </div>
+              </Section>
+              <ToneTwins vocab={vocab} logs={toneLogs} hanzi={settings.showHanzi} />
+            </Panel>
+          )}
+
+          {tab === 'habits' && (
+            <Panel id="habits">
+            <Section title="Study calendar" note={`Each square is a day, shaded by how much of your ${settings.dailyGoal} XP goal you reached. Tap a day for details.`}>
+              <StudyCalendar logs={logs} goal={settings.dailyGoal} streak={game?.streak ?? null} now={now} />
+            </Section>
+
+            <Section title="Time studied" note={`Minutes answering per day, last 30 days: ${minutes30} in all.`}>
+              <Columns
+                caption="Minutes studied per day, last 30 days"
+                color="var(--jade)"
+                labelEvery={7}
+                data={days.map((d) => ({ key: d.day, label: dom(d.day), value: d.minutes, detail: `${dayLabel(d.day)}: ${d.minutes} min, ${d.answers} answers` }))}
+              />
+            </Section>
+
+            <Section title="Accuracy" note="Share of answers right (or nearly right) per day, last 30 days.">
+              <Columns
+                caption="Accuracy per day, last 30 days"
+                color="var(--jade)"
+                labelEvery={7}
+                format={(v) => `${v}%`}
+                data={days.map((d) => ({
+                  key: d.day,
+                  label: dom(d.day),
+                  value: d.accuracy === null ? 0 : Math.round(d.accuracy * 100),
+                  detail: `${dayLabel(d.day)}: ${d.accuracy === null ? 'no answers' : `${pct(d.accuracy)} of ${d.answers}`}`,
+                }))}
+              />
+            </Section>
+
+            <Section title="XP" note={`Per day, last 30 days. Daily goal ${settings.dailyGoal} XP.`}>
+              <Columns
+                caption="XP per day, last 30 days"
+                color="var(--imperial)"
+                labelEvery={7}
+                data={days.map((d) => ({ key: d.day, label: dom(d.day), value: d.xp, detail: `${dayLabel(d.day)}: ${d.xp} XP${d.xp >= settings.dailyGoal ? ' · goal met' : ''}` }))}
+              />
+            </Section>
+
+
+            </Panel>
+          )}
+
+          {tab === 'badges' && (
+            <Panel id="badges">
+            <Section title="Achievements" note={`${game?.unlocked.size ?? 0} of ${ACHIEVEMENTS.length} unlocked.${allAch ? '' : ' Closest to done:'}`}>
+              <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {(allAch ? ACHIEVEMENTS : closestAchievements(game?.stats ?? null, game?.unlocked ?? new Set<string>(), 4)).map((a) => {
+                  const at = game?.unlocked.get(a.id);
+                  const p = game ? a.progress(game.stats) : 0;
+                  return (
+                    <li key={a.id} className={`card flex items-center gap-3 p-3 ${at ? '' : 'shadow-none'}`}>
+                      <span
+                        className={`han flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xs font-medium ${at ? 'border-[1.5px] border-imperial bg-imperial-soft text-imperial' : 'border border-line text-muted'}`}
+                        aria-hidden
+                      >
+                        {a.hanzi}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="flex items-baseline justify-between gap-2">
+                          <span className="font-medium">{a.title}</span>
+                          <span className="text-xs tabular-nums text-muted">{at ? new Date(at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : `${Math.round(p * 100)}%`}</span>
+                        </span>
+                        <span className="block text-xs text-muted">{a.detail}</span>
+                        {!at && <ProgressBar value={p} label={`${a.title} progress`} tone="imperial" className="mt-1.5" />}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <button onClick={() => setAllAch(!allAch)} aria-expanded={allAch} className="mt-3 h-11 w-full rounded-2xl border border-line font-medium">
+                {allAch ? 'Show fewer' : `Show all ${ACHIEVEMENTS.length}`}
+              </button>
+            </Section>
+
+            <Section title="Scheduler" note="FSRS learns how fast you forget once it has enough of your reviews; it then fits its parameters to you.">
+              <div className="card p-4">
+                <div className="flex justify-between text-sm">
+                  <span>Reviews with full data</span>
+                  <span className="tabular-nums">
+                    {Math.min(fsrsReviews, OPTIMISE_AFTER).toLocaleString('en-GB')} / {OPTIMISE_AFTER.toLocaleString('en-GB')}
                   </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="flex items-baseline justify-between gap-2">
-                      <span className="font-medium">{a.title}</span>
-                      <span className="text-xs tabular-nums text-muted">{at ? new Date(at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) : `${Math.round(p * 100)}%`}</span>
-                    </span>
-                    <span className="block text-xs text-muted">{a.detail}</span>
-                    {!at && <ProgressBar value={p} label={`${a.title} progress`} tone="gold" className="mt-1.5" />}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
-          <button onClick={() => setAllAch(!allAch)} aria-expanded={allAch} className="mt-3 h-11 w-full rounded-2xl border border-line font-medium">
-            {allAch ? 'Show fewer' : `Show all ${ACHIEVEMENTS.length}`}
-          </button>
-        </Section>
-      </Group>
+                </div>
+                <ProgressBar value={fsrsReviews / OPTIMISE_AFTER} label="Reviews towards the scheduler optimiser" className="mt-2" />
+                <p className="mt-2 text-xs text-muted">"Optimise my scheduler" appears here at {OPTIMISE_AFTER.toLocaleString('en-GB')} reviews.</p>
+              </div>
+            </Section>
+
+
+            </Panel>
+          )}
+        </>
+      )}
     </div>
   );
 }

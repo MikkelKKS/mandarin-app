@@ -13,7 +13,7 @@ import { meaningOf, useVocab, type VocabRow } from '../../lib/vocabData';
 const GROUPS: Array<{ id: WordState; title: string; note: string; cls: string }> = [
   { id: 'mature', title: 'Mature', note: 'Every skill 21+ days out', cls: 'border-jade bg-jade-soft' },
   { id: 'young', title: 'Young', note: 'In review, still settling', cls: 'border-jade/50 bg-surface' },
-  { id: 'learning', title: 'Learning', note: 'Met, coming back often', cls: 'border-gold/60 bg-amber-soft' },
+  { id: 'learning', title: 'Learning', note: 'Met, coming back often', cls: 'border-edge bg-sunk' },
   { id: 'new', title: 'Not started', note: 'Still ahead', cls: 'border-line bg-surface' },
 ];
 const LEVELS = [1, 2, 3, 4, 5, 6, 7];
