@@ -193,7 +193,7 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 ```
 State: running
 Round: 2
-Phase: judge
+Phase: qa
 Max rounds: 3
 Best lowest: 6.5
 Rounds without improvement: 0
@@ -244,3 +244,5 @@ Plan (round 2; the last build round, since round 3 only scores with max 3 rounds
 - [x] Screenshot harness: right-answer shots on a typed question (a forced "right" can't move a multiple-choice pick), and badges unlocked before the session (not a design move).
 - [x] (71fbf5e09) Stats restructure: summary hero (condensed numbers) with the tone matrix right under it, sticky tabs (Overview, Words, Tones, Habits, Badges) showing one panel at a time, HSK levels not started folded into one line, one line for a new account. Layout 5, overall 1/5/6, typography 4; stats, stats-new.
 - [x] (40c348032) Reward beats and gentle reduced motion: right pick pulses with a jade glow, combo chip pulses at 3/5/10, session end stamps 达标 when the goal was reached and shows a level-up band, achievements as a medallion grid that stamps in one by one; reduced motion keeps 150 ms fades. Motion 2/5/6, overall 4; session-right, session-end, answer-right.
+- Judge (pairs-2, 10 screens × 2 orders, before re-shot from the round's start with the fixed harness): Stats better on phone light, PC light, stats-new; phone dark same. Session end better ×3, answer-right motion better. Worse: reduced-motion answer-wrong (the 150 ms fading sheet ghosts over the options) and the session-right still (different state: only the before shot caught a combo chip; layouts identical, not caused by the move).
+- Kept: Stats restructure; reward beats. Reduced-motion fades taken out again (8a508aadf) instead of reverting the whole reward move (their part was the only thing judged worse). Rounds without improvement: 0.
