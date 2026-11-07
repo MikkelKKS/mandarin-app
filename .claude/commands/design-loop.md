@@ -66,9 +66,10 @@ Write the plan in the round's subsection as a checklist (`- [ ] <title>: what, w
 For each planned change:
 1. Implement it cleanly (ARCHITECTURE.md style; both themes, both widths, `prefers-reduced-motion`).
 2. `npm test` and `npm run build` until both pass; update tests if labels or behaviour changed.
-3. Run the **qa** subagent: what changed (in plain design terms, no loop/score talk) and which screens to check. Fix anything it finds (review its own small fixes); re-run `npm test` and the build.
-4. Commit **only that change** (`Design loop: <title>`) so it can be reverted on its own, tick it in the plan with the short commit hash, update the state block, commit the log (or include it in the same commit) and `git push`.
+3. Commit **only that change** (`Design loop: <title>`) so it can be reverted on its own, tick it in the plan with the short commit hash, update the state block, commit the log (or include it in the same commit) and `git push`.
 If a change can't be made to pass tests, revert it, note "dropped (why)" in the plan and move on.
+
+Then **one qa run per round** (Mikkel, 2026-11-07: saves the wait after every change): run the **qa** subagent once, after the round's last change, listing every change (in plain design terms, no loop/score talk) and **only the screens those changes touch**; tell it to use `npm run qa:screens` plus at most a few targeted extra shots, and to keep it short. Fix anything it finds (review its own small fixes) in a separate commit (`Design loop: QA fixes`), or revert the change that caused it and mark it "dropped (why)"; re-run `npm test` and the build, then push.
 
 ### f) Next round
 Set `Phase: review`, commit, push, and start the next round.
