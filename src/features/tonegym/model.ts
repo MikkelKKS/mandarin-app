@@ -269,7 +269,7 @@ export function pickRound(pool: GymItem[], mode: GymMode, stats: Map<string, Pat
 // ---------------------------------------------------------------------------
 // The confusion matrix
 
-/** counts[expected][given] for tones 1–5 (index 0 unused). */
+/** counts[expected][given] for tones 1–4 (index 0 unused; the neutral tone is left out, Mikkel 2026-11-07). */
 export function toneMatrix(logs: ToneLog[]): number[][] {
   const m = Array.from({ length: 6 }, () => Array(6).fill(0));
   for (const l of logs) {
@@ -278,7 +278,7 @@ export function toneMatrix(logs: ToneLog[]): number[][] {
     const giv = l.tones.given.split('-').map(Number);
     exp.forEach((e, i) => {
       const g = giv[i];
-      if (!g || e < 1 || e > 5 || g < 1 || g > 5) return;
+      if (!g || e < 1 || e > 4 || g < 1 || g > 4) return;
       // 3+3 → 2+3 counts as right.
       m[e][sameTone(exp, giv, i) ? e : g]++;
     });
@@ -294,7 +294,7 @@ export function pairConfusions(logs: ToneLog[], top = 5): Array<{ expected: stri
     const exp = l.tones.expected.split('-').map(Number);
     const giv = l.tones.given.split('-').map(Number);
     for (let i = 0; i + 1 < exp.length; i++) {
-      if (!giv[i] || !giv[i + 1] || exp[i] === 5) continue;
+      if (!giv[i] || !giv[i + 1] || [exp[i], exp[i + 1], giv[i], giv[i + 1]].includes(5)) continue;
       if (sameTone(exp, giv, i) && sameTone(exp, giv, i + 1)) continue;
       const k = `${exp[i]}-${exp[i + 1]}>${giv[i]}-${giv[i + 1]}`;
       counts.set(k, (counts.get(k) ?? 0) + 1);

@@ -1,6 +1,6 @@
 /**
  * Tone confusion matrix: rows are the tone that was right, columns the tone
- * you heard or typed. Each row adds up to 100%. Below it, the tone-pair mix-ups.
+ * you heard or typed, tones 1–4 (no neutral tone). Each row adds up to 100%. Below it, the tone-pair mix-ups.
  */
 import { pairConfusions, patternLabel, toneMatrix, TONE_WORD, type ToneLog } from './model';
 
@@ -23,16 +23,16 @@ export function ToneMatrix({ logs, caption }: { logs: ToneLog[]; caption?: strin
                 <span className="block">Right ↓</span>
                 <span className="block">You →</span>
               </th>
-              {[1, 2, 3, 4, 5].map((g) => (
+              {[1, 2, 3, 4].map((g) => (
                 <th key={g} scope="col" className={`font-semibold ${TONE_TEXT[g]}`}>
-                  {g === 5 ? '0' : g}
+                  {g}
                 </th>
               ))}
               <th className="text-xs font-medium text-muted">n</th>
             </tr>
           </thead>
           <tbody>
-            {[1, 2, 3, 4, 5].map((e) => {
+            {[1, 2, 3, 4].map((e) => {
               const row = m[e];
               const n = row.reduce((a, b) => a + b, 0);
               return (
@@ -40,7 +40,7 @@ export function ToneMatrix({ logs, caption }: { logs: ToneLog[]; caption?: strin
                   <th scope="row" className={`text-left font-semibold ${TONE_TEXT[e]}`}>
                     {TONE_WORD[e]}
                   </th>
-                  {[1, 2, 3, 4, 5].map((g) => {
+                  {[1, 2, 3, 4].map((g) => {
                     const share = n ? row[g] / n : 0;
                     const right = g === e;
                     // Shade by share of the row: jade on the diagonal, cinnabar for mix-ups.
