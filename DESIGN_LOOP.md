@@ -257,7 +257,7 @@ Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-
 ```
 State: running
 Round: 1
-Phase: build
+Phase: judge
 Max rounds: 3
 Best lowest: 7
 Rounds without improvement: 0
@@ -285,4 +285,4 @@ Direction (design-director, opus, revised): same concept; tone colour never alon
 Plan (round 1; director's moves 1–2, plus a harness fix):
 - [x] (ee0494dca) Harness: the wrong-answer shot is a genuinely wrong pick (a forced "wrong" on a right pick showed no cross).
 - [x] (fcd0cba93) Colours, type and one PC frame: new T1/T2/T5, violet stamps, jade logo seal with contours, one type scale (no duplicate/off-scale/one-offs), sunk boxes retired, one PC frame for every page, Tone Gym Workout plate with the weakest pair's contours, Settings groups with short lines, dark plate button. Colour 1/2/3/5, typography 1/4, layout 1/4/6; all screens.
-- [ ] Exercise screen and PC "This round" column: small prompt, one quiet voice/volume row, pinyin the only big thing, tone glyphs in the answer sheet, three-level wrong sheet, PC side column with result dots, combo, XP and keys. Typography 2/3, layout 4, colour 3; session and Tone Gym screens.
+- [x] (17783a676) Exercise screen and PC "This round" column: small prompt, one quiet voice/volume row, pinyin the only big thing, tone glyphs in the answer sheet, three-level wrong sheet, PC side column with result dots, combo, XP and keys. Typography 2/3, layout 4, colour 3; session and Tone Gym screens.
