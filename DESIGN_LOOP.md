@@ -257,7 +257,7 @@ Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-
 ```
 State: running
 Round: 2
-Phase: review
+Phase: build
 Max rounds: 3
 Best lowest: 7
 Rounds without improvement: 0
@@ -288,3 +288,15 @@ Plan (round 1; director's moves 1–2, plus a harness fix):
 - [x] (17783a676) Exercise screen and PC "This round" column: small prompt, one quiet voice/volume row, pinyin the only big thing, tone glyphs in the answer sheet, three-level wrong sheet, PC side column with result dots, combo, XP and keys. Typography 2/3, layout 4, colour 3; session and Tone Gym screens.
 - Judge (pairs-1, 12 screens × 2 orders; before re-shot from the round start with the fixed harness): better on 10 (Library, Settings, Tone Gym ×3, session question ×2, session wrong ×2, Tone Gym question); phone light Home same; phone dark Home worse (the outlined dark session button reads weaker than the light one). Kept both moves; the dark button part taken out (2c8efc787). Rounds without improvement: 0.
 - QA: qa:screens 28/28, session/tone-gym/lesson e2e 24/24; nothing fixed. Notes: the Tone Gym round has no prompt line (never had); PC Home on a new account leaves the right two-thirds empty (for move 4).
+| 2 | 8 | 7.5 | 7.5 | 7 | 7.5 | 7 | judge: 2 kept (one detail undone) |
+
+### Round 2
+
+Scores (blind, shots blind-d9489b933): unchanged although the judge preferred the round-1 screens 10 to 1.
+- Colour 8 (2, 4 partial): jade = action and right; dark plate barely separates from the rows.
+- Typography 7.5 (3, 4 in places, 6): Home plate 6+ levels; Music/Settings/Stats captions small; thin voice beyond the numerals; PC hero only ~40px.
+- Layout 7 (1, 3, 4, 5): the This round card hangs off-axis; phone exercises sit in the top 55% (answers not in thumb reach); PC Home empty lower half; Settings and Music walls; Stats range text wraps.
+- Motion 7.5 (2, 5, 6): right answer only pop + tick + chip; sheet text half-faded mid-slide; session end reads as one flourish; reduced motion snaps.
+- Overall 7.5 (1, 4, 6): identity on Home only; reward layer thin outside Home; first day blank below the welcome.
+
+Weakest: exercise layout (thumb reach, PC scale) · walls (Settings, Music, Stats) · Home plate overloaded · PC Home empty · right-answer and session-end beats · reduced motion.
