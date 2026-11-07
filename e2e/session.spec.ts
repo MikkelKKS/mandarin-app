@@ -63,6 +63,7 @@ test('a quick session from the home screen earns XP and counts towards the goal'
   await expect(page.getByText(/\d+ XP to today's goal|Goal reached today/)).toBeVisible();
   // The new words now have review cards.
   await page.goto('./#/progress');
+  await page.getByRole('tab', { name: 'Words' }).click();
   await expect(page.getByRole('region', { name: 'Review cards' }).getByText(/^Today:/)).toBeVisible({ timeout: 15000 });
 });
 

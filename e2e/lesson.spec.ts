@@ -71,6 +71,7 @@ test('complete the first lesson: it counts in Conversations and in Stats', async
 
   // The same words are now in the HSK system: Stats and today's queue show them.
   await page.goto('./#/progress');
+  await page.getByRole('tab', { name: 'Words' }).click();
   await expect(page.getByRole('heading', { name: 'Stats' })).toBeVisible();
   await expect(page.getByText(/^[1-9]\d* \/ 511 started/)).toBeVisible({ timeout: 15000 });
   const cards = page.getByRole('region', { name: 'Review cards' });
