@@ -164,7 +164,7 @@ export function StatsView() {
         <Lead label="Level" value={fresh ? '–' : String(game?.level.level ?? 1)} note={game && !fresh ? `${game.xp.toLocaleString('en-GB')} XP` : undefined} />
       </section>
       {fresh ? (
-        <div className="mt-4 rounded-card bg-sunk p-5 [&_.btn]:mr-2">
+        <div className="card mt-4 p-5 [&_.btn]:mr-2">
           <p className="font-semibold">Your numbers appear after your first session.</p>
           <p className="mt-1 text-sm text-muted">Words, retention, your streak and the tone matrix all fill in from your answers.</p>
           <button onClick={() => go('session/quick')} className="btn btn-primary mt-4 h-12 px-5 text-base">
@@ -485,7 +485,7 @@ function ToneTwins({ vocab, logs, hanzi }: { vocab: VocabRow[] | null; logs: Rev
           ))}
         </ul>
       ) : (
-        <p className="rounded-2xl bg-sunk p-4 text-sm text-muted">None yet.</p>
+        <p className="card p-4 text-sm text-muted">None yet.</p>
       )}
     </Section>
   );

@@ -12,7 +12,7 @@ export function ToneMatrix({ logs, caption }: { logs: ToneLog[]; caption?: strin
   const total = m.flat().reduce((a, b) => a + b, 0);
   const pairs = pairConfusions(logs);
   if (!total)
-    return <p className="rounded-2xl bg-sunk p-4 text-sm text-muted">The matrix fills in as you answer tone questions and type pinyin.</p>;
+    return <p className="card p-4 text-sm text-muted">The matrix fills in as you answer tone questions and type pinyin.</p>;
   return (
     <div>
       <div className="overflow-x-auto">

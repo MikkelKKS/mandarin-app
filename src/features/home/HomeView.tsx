@@ -53,7 +53,7 @@ function GoalRing({ value, goal }: { value: number; goal: number }) {
       </svg>
       <span className="absolute inset-0 flex flex-col items-center justify-center leading-none">
         <span className="num text-2xl">{Math.min(999, value)}</span>
-        <span className="mt-1 text-xs opacity-80">of {goal}</span>
+        <span className="mt-1 text-xs opacity-80">{value >= goal ? 'XP today' : `of ${goal}`}</span>
       </span>
     </div>
   );
@@ -200,7 +200,7 @@ export function HomeView() {
                 )
               }
             />
-            {!settings.placedAt && !fresh0 && (
+            {!settings.placedAt && !fresh0 && cards < 150 && (
               <Row
                 onClick={() => go('placement')}
                 title="Know some Chinese already?"
@@ -233,7 +233,7 @@ export function HomeView() {
           {micLink}
         </div>
 
-        {wide && !fresh0 && <ThisWeek weak={weak} toneLogs={toneLogs} />}
+        {fresh0 ? <FirstDay /> : <ThisWeek weak={weak} toneLogs={toneLogs} />}
       </div>
     </div>
   );
@@ -274,6 +274,52 @@ function Welcome() {
         </button>
       </div>
     </section>
+  );
+}
+
+/** A brand-new account: what builds up as you study (streak, level, the tone matrix), shown empty. */
+function FirstDay() {
+  return (
+    <aside className="card mt-6 p-5 lg:mt-0" aria-label="What you'll build">
+      <h2 className="text-lg font-semibold">What you'll build</h2>
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        <div className="rounded-control border border-dashed border-edge p-3">
+          <p className="text-sm text-muted">Streak</p>
+          <p className="num mt-1 text-3xl">Day 1</p>
+        </div>
+        <div className="rounded-control border border-dashed border-edge p-3">
+          <p className="text-sm text-muted">Level</p>
+          <p className="num mt-1 text-3xl">1</p>
+          <p className="text-xs text-muted">0 of 100 XP</p>
+        </div>
+      </div>
+      <p className="mt-4 text-sm text-muted">Your tone matrix: which tones you mix up</p>
+      <div className="mt-2 grid grid-cols-5 gap-1 text-center" aria-hidden>
+        <span />
+        {[1, 2, 3, 4].map((t) => (
+          <span key={t} className={`flex justify-center ${TONE_TEXT[t]}`}>
+            <ToneContour tone={t} className="h-2.5 w-5" />
+          </span>
+        ))}
+        {[1, 2, 3, 4].map((r) => (
+          <FirstDayRow key={r} r={r} />
+        ))}
+      </div>
+      <p className="mt-3 text-sm text-muted">It fills in from your answers, so the Tone Gym knows what to drill.</p>
+    </aside>
+  );
+}
+
+function FirstDayRow({ r }: { r: number }) {
+  return (
+    <>
+      <span className={`flex items-center justify-center ${TONE_TEXT[r]}`}>
+        <ToneContour tone={r} className="h-2.5 w-5" />
+      </span>
+      {[1, 2, 3, 4].map((c) => (
+        <span key={c} className={`h-7 rounded-md border border-dashed ${c === r ? 'border-jade/60' : 'border-edge/60'}`} />
+      ))}
+    </>
   );
 }
 

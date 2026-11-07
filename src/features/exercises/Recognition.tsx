@@ -22,7 +22,7 @@ export function PickCharacter({ ex }: { ex: Of<'pick-character'> }) {
   return (
     <div>
       <Prompt>Pick the characters</Prompt>
-      <div className="mb-6 rounded-2xl bg-sunk p-4">
+      <div className="mb-6 card p-4">
         <TonePinyin pinyin={w.pinyin} className="text-2xl font-semibold" />
         <p className="mt-1 text-muted">{w.english.join('; ')}</p>
       </div>
@@ -49,7 +49,7 @@ export function ReadSentence({ ex }: { ex: Of<'read-sentence'> }) {
   return (
     <div>
       <Prompt>What does this say?</Prompt>
-      <div className="mb-6 rounded-2xl bg-sunk p-4">
+      <div className="mb-6 card p-4">
         <SentenceText sentence={s} pinyin={locked} size="text-3xl" />
         {!locked && <p className="mt-2 text-xs text-muted">Stuck? Tap a word to look it up.</p>}
       </div>
@@ -150,7 +150,7 @@ export function Intro({ ex }: { ex: Of<'intro'> }) {
       <div className="mt-8">
         <AudioControls id={w.id} />
       </div>
-      {w.note && <p className="mx-auto mt-8 max-w-sm rounded-2xl bg-sunk p-4 text-left text-sm text-muted">{w.note}</p>}
+      {w.note && <p className="mx-auto mt-8 max-w-sm card p-4 text-left text-sm text-muted">{w.note}</p>}
       {example && (
         <div className="mt-6">
           <SentenceText sentence={example} size="text-2xl" />

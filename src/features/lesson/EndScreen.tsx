@@ -16,7 +16,7 @@ export function verdictText(firstTry: number): { hanzi: string; pinyin: string; 
 export function Seal({ hanzi, small = false }: { hanzi: string; small?: boolean }) {
   return (
     <div className={`relative mx-auto ${small ? 'h-28 w-28' : 'h-36 w-36'}`} aria-hidden>
-      <div className="anim-stamp relative flex h-full w-full items-center justify-center rounded-full border-[3px] border-cinnabar bg-surface text-cinnabar shadow-[inset_0_0_0_4px_var(--surface),inset_0_0_0_5px_var(--cinnabar)]">
+      <div className="anim-stamp relative flex h-full w-full items-center justify-center rounded-full border-[3px] border-imperial bg-surface text-imperial shadow-[inset_0_0_0_4px_var(--surface),inset_0_0_0_5px_var(--imperial)]">
         <span className={`han font-semibold leading-tight ${small ? 'text-3xl' : 'text-4xl'}`}>{hanzi}</span>
       </div>
     </div>

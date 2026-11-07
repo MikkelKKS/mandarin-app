@@ -261,7 +261,7 @@ export function BuildSentence({ ex }: { ex: Of<'build-sentence'> }) {
   return (
     <div>
       <Prompt>Say this in Chinese</Prompt>
-      <p className="mb-6 rounded-2xl bg-sunk p-4 text-xl">{s.english}</p>
+      <p className="mb-6 card p-4 text-xl">{s.english}</p>
       <TilesOrTyping sentenceId={ex.sentenceId} tiles={ex.tiles} />
     </div>
   );
@@ -277,7 +277,7 @@ export function EnToPinyin({ ex }: { ex: Of<'en-to-pinyin'> }) {
   return (
     <div>
       <Prompt>Write this in pinyin</Prompt>
-      <p className="mb-2 rounded-2xl bg-sunk p-4 text-xl">{w ? w.english.join(' / ') : s!.english}</p>
+      <p className="mb-2 card p-4 text-xl">{w ? w.english.join(' / ') : s!.english}</p>
       {w?.pos === 'name' && <p className="mb-2 text-sm text-muted">(a name)</p>}
       <div className="mt-4">
         <PinyinInput value={text} onChange={setText} />
@@ -309,7 +309,7 @@ export function FillGap({ ex }: { ex: Of<'fill-gap'> }) {
   return (
     <div>
       <Prompt>Fill the gap in pinyin</Prompt>
-      <div className="mb-3 rounded-2xl bg-sunk p-4">
+      <div className="mb-3 card p-4">
         {locked ? (
           <SentenceText sentence={s} size="text-2xl" />
         ) : (

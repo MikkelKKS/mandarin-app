@@ -82,7 +82,7 @@ function LinkRow({ title, hint, to }: { title: string; hint?: string; to: string
 
 function Group({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="mt-8" aria-label={title}>
+    <section className="mt-8 break-inside-avoid lg:mt-0 lg:mb-8" aria-label={title}>
       <h2 className="mb-2 px-1 text-sm font-medium text-muted">{title}</h2>
       <div className="group-list">{children}</div>
     </section>
@@ -99,6 +99,8 @@ export function SettingsView() {
     <div className="pb-10">
       <PageHeader title="Settings" />
 
+      {/* On a PC the groups flow in two columns. */}
+      <div className="lg:mt-8 lg:columns-2 lg:gap-8">
       <Group title="Learning">
         <Row title="New words per day">
           <Segmented label="New words per day" value={String(s.newPerDay)} onChange={(v) => set({ newPerDay: Number(v) })} options={['5', '10', '15', '20'].map((v) => ({ v, label: v }))} />
@@ -256,6 +258,7 @@ export function SettingsView() {
         )}
         <LinkRow title="Credits and licences" to="about" />
       </Group>
+      </div>
       <p className="mt-6 text-center text-xs text-muted">
         Version from{' '}
         {new Date(__BUILD_TIME__).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}

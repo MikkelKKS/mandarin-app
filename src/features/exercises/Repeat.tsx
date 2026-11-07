@@ -33,7 +33,7 @@ export function Repeat({ ex }: { ex: Of<'repeat'> }) {
   return (
     <div>
       <Prompt>Repeat after me</Prompt>
-      <div className="mb-4 rounded-2xl bg-sunk p-4">
+      <div className="mb-4 card p-4">
         {'words' in item && Array.isArray(item.words) ? <SentenceText sentence={item as never} size="text-3xl" pinyin /> : <span className="han text-4xl">{hanzi}</span>}
         <p className="mt-2 text-muted">{'english' in item ? (Array.isArray(item.english) ? item.english[0] : item.english) : ''}</p>
       </div>

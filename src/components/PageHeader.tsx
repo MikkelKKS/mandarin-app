@@ -13,7 +13,7 @@ export function PageHeader({ title, back, children, action }: { title: string; b
         </button>
       )}
       <div className="flex items-start justify-between gap-4">
-        <h1 className="text-display font-semibold leading-tight">{title}</h1>
+        <h1 className="text-heading font-semibold leading-tight">{title}</h1>
         {action}
       </div>
       {children && <p className="mt-1.5 max-w-prose text-base leading-relaxed text-muted">{children}</p>}

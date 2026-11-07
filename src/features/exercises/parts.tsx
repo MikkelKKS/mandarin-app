@@ -12,7 +12,7 @@ import { Speaker, Turtle } from '../../components/icons';
 import { useLesson, useNumberKeys, useReplay } from '../lesson/context';
 
 export function Prompt({ children }: { children: ReactNode }) {
-  return <h2 className="mb-5 text-lg font-semibold text-ink">{children}</h2>;
+  return <h2 className="mb-5 text-center text-base font-medium text-muted">{children}</h2>;
 }
 
 /**
@@ -100,6 +100,7 @@ export function AudioControls({
           {LADDER[step]}×
         </button>
       )}
+      <VolumeSlider compact />
     </div>
     {/* A person, not Azure (IDEAS #20, #21); the turtle slows the same recording down. */}
     {speaker && (
@@ -112,7 +113,6 @@ export function AudioControls({
         )}
       </p>
     )}
-    <VolumeSlider />
     </div>
   );
 }

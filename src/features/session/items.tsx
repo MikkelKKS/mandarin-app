@@ -582,11 +582,11 @@ export function ToneCompare({ gym, given, heard }: { gym: GymItem; given: Tone[]
   const guessed = given.map((t, k) => markSyllable({ base: gym.bases[k], tone: t })).join(' ');
   return (
     <div className="mt-3 flex flex-wrap gap-2">
-      <button onClick={() => void playUrl(heard)} className="flex h-11 items-center gap-2 rounded-xl bg-surface/70 px-3 font-medium">
+      <button onClick={() => void playUrl(heard)} className="flex h-11 items-center gap-2 rounded-xl border border-edge bg-surface px-3 font-medium">
         <Speaker className="h-5 w-5" /> Right: {gym.pinyin}
       </button>
       {guess && (
-        <button onClick={() => void playUrl(guess)} className="flex h-11 items-center gap-2 rounded-xl bg-surface/70 px-3 font-medium">
+        <button onClick={() => void playUrl(guess)} className="flex h-11 items-center gap-2 rounded-xl border border-edge bg-surface px-3 font-medium">
           <Speaker className="h-5 w-5" /> Your guess: {guessed}
         </button>
       )}
@@ -640,18 +640,20 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
   });
   return (
     <div>
-      <Prompt>Tone Gym: which tone{gym.tones.length > 1 ? 's' : ''}?</Prompt>
+      <Prompt>Which tone{gym.tones.length > 1 ? 's' : ''}?</Prompt>
       <div className="flex flex-col items-center">
-        <button onClick={() => say()} aria-label="Play again" className="press flex h-20 w-20 items-center justify-center rounded-full bg-jade text-jade-ink">
-          <Speaker className="h-9 w-9" />
-        </button>
+        <div className="flex items-center gap-3">
+          <button onClick={() => say()} aria-label="Play again" className="press flex h-20 w-20 items-center justify-center rounded-full bg-jade text-jade-ink">
+            <Speaker className="h-9 w-9" />
+          </button>
+          <VolumeSlider compact />
+        </div>
         {gym.sources.length > 1 && (
-          <button onClick={() => say(speaker + 1)} className="mt-2 text-sm font-medium text-jade">
+          <button onClick={() => say(speaker + 1)} className="mt-1 px-2 py-2 text-sm font-medium text-jade">
             Another voice
           </button>
         )}
-        <VolumeSlider className="mt-2" />
-        <p className="mt-4 text-3xl font-semibold">{gym.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}</p>
+        <p className="mt-3 text-hero font-semibold lg:text-numeral">{gym.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}</p>
       </div>
       <div className="mt-6 flex flex-col gap-3">
         {gym.tones.map((_, slot) => (

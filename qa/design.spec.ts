@@ -128,16 +128,16 @@ async function playSession(page: Page, dir: string) {
         asked = true;
       }
       const v = todo[0];
-      // A forced "right" can't move a multiple-choice pick onto the right option (the pick would show
-      // crossed out under "Right"), so the right-answer shot is a genuinely right answer: answer
-      // normally until one comes out right (typed questions are forced, as typing can't be crossed out).
-      if (v === 'correct' && skips < 40 && !(await page.getByLabel('Your answer in pinyin').isVisible().catch(() => false))) {
+      // A forced verdict can't move a multiple-choice pick (a forced "right" shows the pick crossed out,
+      // a forced "wrong" shows no cross), so on choice questions the shots wait for a genuinely right or
+      // wrong answer; typed questions are forced, as a typed answer has no option state.
+      if (skips < 40 && !(await page.getByLabel('Your answer in pinyin').isVisible().catch(() => false))) {
         skips++;
         await setVerdict(page, undefined);
         await answer(page);
-        const right = page.getByRole('status').filter({ hasText: /^Right/ });
-        if (await right.first().waitFor({ timeout: 2500 }).then(() => true, () => false)) {
-          await shot(page, dir, 'session-right', false);
+        const hit = page.getByRole('status').filter({ hasText: v === 'wrong' ? 'Not quite' : /^Right/ });
+        if (await hit.first().waitFor({ timeout: 2500 }).then(() => true, () => false)) {
+          await shot(page, dir, v === 'wrong' ? 'session-wrong' : 'session-right', false);
           todo.shift();
         }
         continue;

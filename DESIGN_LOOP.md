@@ -251,3 +251,73 @@ Plan (round 2; the last build round, since round 3 only scores with max 3 rounds
 Stopped after round 2 at Mikkel's request (max rounds set to 2). Round 2's moves were judged but not re-scored.
 
 Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-07.
+
+## Loop 4 (started 2026-11-07)
+
+```
+State: stopped (max)
+Round: 3
+Phase: show
+Max rounds: 3
+Best lowest: 7
+Rounds without improvement: 0
+Confirming: no
+Notes: 3 rounds (builds in rounds 1–2; round 3 scores the result)
+```
+
+| Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
+|-------|--------|------------|--------|--------|---------|--------|------|
+| 1 | 8 | 7.5 | 7.5 | 7 | 7.5 | 7 | start: main after loop 3 merge |
+
+### Round 1
+
+Scores (blind, shots blind-51653f6c1):
+- Colour 8 (C3 miss, C1/C2 small): tone colour alone in sentences and the answer sheet, T1/T2 close in lightness; T5 4.28 on jade-soft; violet both reward and progress; Library/Settings/Tone Gym have no colour lead.
+- Typography 7.5 (T1, T2 on Tone Gym, T3, T4 small): display = heading duplicate, 2.75rem hero one-off; Tone Gym question title competes with the syllable; wrong sheet 5 levels; Settings small muted text.
+- Layout 7 (L1, L4, L5, L6 partial): PC left edge jumps (Home/Stats x≈315, others x≈513); PC session/Tone Gym/Library/Settings narrow columns with dead space; XP toast overlaps combo chip on PC; Stats tab bar under the matrix, PC tab content far down; summary cards in three styles; sparse first-day screens.
+- Motion 7.5 (no clear fails; item 2 weakest, 6 at risk): right answer has no beat on the option; several movements start together; reduced motion snaps.
+- Overall 7.5 (1, 6 partial; 4, 5): identity strong on Home/Tone Gym, generic in session/Stats/Library; placement card still on a lived-in Home; empty lower thirds; first day shows no game.
+
+Weakest: PC width and left edge · exercise first read · Stats order · tone cue without colour · first-day screens · right-answer beat · reduced-motion snaps.
+
+Direction (design-director, opus, revised): same concept; tone colour never alone at answer size (contours), T1 crimson / T2 amber / neutral passing on jade-soft, violet stamps and a jade logo seal, two card looks only, one PC frame (same left edge, 1080 max), exercise screen with the pinyin as the only big thing and a PC "This round" column, right-answer moment, reduced motion = instant panel + content fade, Home/Stats story incl. day one.
+
+Plan (round 1; director's moves 1–2, plus a harness fix):
+- [x] (ee0494dca) Harness: the wrong-answer shot is a genuinely wrong pick (a forced "wrong" on a right pick showed no cross).
+- [x] (fcd0cba93) Colours, type and one PC frame: new T1/T2/T5, violet stamps, jade logo seal with contours, one type scale (no duplicate/off-scale/one-offs), sunk boxes retired, one PC frame for every page, Tone Gym Workout plate with the weakest pair's contours, Settings groups with short lines, dark plate button. Colour 1/2/3/5, typography 1/4, layout 1/4/6; all screens.
+- [x] (17783a676) Exercise screen and PC "This round" column: small prompt, one quiet voice/volume row, pinyin the only big thing, tone glyphs in the answer sheet, three-level wrong sheet, PC side column with result dots, combo, XP and keys. Typography 2/3, layout 4, colour 3; session and Tone Gym screens.
+- Judge (pairs-1, 12 screens × 2 orders; before re-shot from the round start with the fixed harness): better on 10 (Library, Settings, Tone Gym ×3, session question ×2, session wrong ×2, Tone Gym question); phone light Home same; phone dark Home worse (the outlined dark session button reads weaker than the light one). Kept both moves; the dark button part taken out (2c8efc787). Rounds without improvement: 0.
+- QA: qa:screens 28/28, session/tone-gym/lesson e2e 24/24; nothing fixed. Notes: the Tone Gym round has no prompt line (never had); PC Home on a new account leaves the right two-thirds empty (for move 4).
+| 2 | 8 | 7.5 | 7.5 | 7 | 7.5 | 7 | judge: 2 kept (one detail undone) |
+
+### Round 2
+
+Scores (blind, shots blind-d9489b933): unchanged although the judge preferred the round-1 screens 10 to 1.
+- Colour 8 (2, 4 partial): jade = action and right; dark plate barely separates from the rows.
+- Typography 7.5 (3, 4 in places, 6): Home plate 6+ levels; Music/Settings/Stats captions small; thin voice beyond the numerals; PC hero only ~40px.
+- Layout 7 (1, 3, 4, 5): the This round card hangs off-axis; phone exercises sit in the top 55% (answers not in thumb reach); PC Home empty lower half; Settings and Music walls; Stats range text wraps.
+- Motion 7.5 (2, 5, 6): right answer only pop + tick + chip; sheet text half-faded mid-slide; session end reads as one flourish; reduced motion snaps.
+- Overall 7.5 (1, 4, 6): identity on Home only; reward layer thin outside Home; first day blank below the welcome.
+
+Weakest: exercise layout (thumb reach, PC scale) · walls (Settings, Music, Stats) · Home plate overloaded · PC Home empty · right-answer and session-end beats · reduced motion.
+
+Plan (round 2; the last build round):
+- [x] (feb21c3c6) Exercise layout: question vertically centred on phones too (answers lower, nearer the thumb), bigger pinyin hero and syllable on PC. Layout 3/4, typography 2; session and Tone Gym screens.
+- [x] (befbcf853) Right-answer moment and reduced motion: sheet contents slide without fading (no half-faded text over the options), a jade ring pulse on the right pick; reduced motion keeps an instant sheet and fades only its contents (a different execution from the fade that was judged worse). Motion 2/4/6; session-right, answer motion.
+- [x] (5b0d0162b) Home tells the story: "This week" on phones too, placement row hidden once 50 words are started, the ring shows today's XP once the goal is passed, a first-day preview (streak, level, empty matrix) under the welcome plate. Layout 4, overall 4/6; home, home-new.
+- Judge (pairs-2, 10 screens × 2 orders): better on 8 (Home ×3, home-new ×2, session question phone light and dark, reduced-motion answer-wrong), same on 2 (PC session question, answer-right motion), worse on none. Kept all three moves. Rounds without improvement: 0. Judge note: "XP today" sits close to the ring stroke.
+- QA: qa:screens 28/28, session/placement/dont-know e2e 22/22; one fix: the This round card sits above the answer sheet's backing on wide PC screens.
+| 3 | 8 | 7.5 | 7 | 7 | 7.5 | 7 | judge: 3 kept; final round |
+
+### Round 3 (scores only)
+
+Scores (blind, shots blind-704054e9b):
+- Colour 8 (1, 5 small): T2 on jade-soft 4.30 on the Tone Gym right option; colour leads only on the plate.
+- Typography 7.5 (1, 3, 6 partial): hero 36/48/56 steps plus legacy steps; Home Deep row and Stats matrix card many levels; neutral voice beyond numerals.
+- Layout 7 (4, 1, 5, 6): PC session narrow with a detached side card; PC Home dead zone; Stats tabs below the matrix; Settings wall; row styles differ.
+- Motion 7 (1 partly, 3, 4): the centred question jumped ~37 px when the sheet opened (side effect of round 2's centring); exit frame where sheet, action bar and Continue overlap; blank frame in tab changes.
+- Overall 7.5 (1, 2, 3 partly, 6): identity strong on Home, Stats, session end, first day; quiet screens generic; PC Home not a dashboard.
+
+After scoring: fixed the jump (531b60eda): the centred column keeps its height; extra room for a tall sheet sits after it. Re-recorded: ~14 px left, from the "browser's voice" note that only appears because tests block audio.
+
+Stopped: max rounds (3). Lowest 7 in all three rounds; the judge kept 5 of 5 moves (two small details undone) and preferred the new screens 18 to 1.

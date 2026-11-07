@@ -208,7 +208,7 @@ function NodeSheet({ nodeId, state, known, onClose }: { nodeId: string; state: N
         {tips && (
           <div className="mt-5 flex flex-col gap-3">
             {notes.map((g) => (
-              <article key={g.id} className="rounded-2xl bg-sunk p-4">
+              <article key={g.id} className="card p-4">
                 <h3 className="font-semibold">{g.title}</h3>
                 {g.body.split('\n').map((line, i) => (
                   <p key={i} className="han mt-2 text-sm leading-relaxed">

@@ -233,11 +233,11 @@ export function MusicView() {
       {cat && cat !== 'error' && k && <UnlockPanel cat={cat} filters={filters} k={k} />}
 
       {cat === 'error' ? (
-        <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">The song list couldn't load. Check your connection and open Music again.</p>
+        <p className="mt-6 card p-4 text-muted">The song list couldn't load. Check your connection and open Music again.</p>
       ) : !ranked ? (
         <p className="mt-6 text-muted">Loading songs…</p>
       ) : cat && cat.songs.length === 0 ? (
-        <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">The song list is being built. It's ready after the next update.</p>
+        <p className="mt-6 card p-4 text-muted">The song list is being built. It's ready after the next update.</p>
       ) : (
         <section className="mt-6">
           <div className="flex items-baseline justify-between">
@@ -394,7 +394,7 @@ function LyricsError({ retry, down, what = 'the lyrics' }: { retry: () => void; 
     return () => clearInterval(t);
   }, [retry]);
   return (
-    <div className="mt-4 rounded-2xl bg-sunk p-4">
+    <div className="mt-4 card p-4">
       <p className="text-muted">
         {down
           ? `Couldn't load ${what}: LRCLIB, the free lyrics service the app uses, is down right now (for everyone, not just you). The app tries again every minute while this page is open.`
@@ -729,7 +729,7 @@ function NowPlaying() {
       <PageHeader back={{ label: 'Music', to: 'music' }} title="Follow along" />
       {error && <p className="mt-3 rounded-2xl bg-cinnabar-soft p-4 text-sm text-cinnabar">{error}</p>}
       {!sp.isConnected() ? (
-        <div className="mt-4 rounded-2xl bg-sunk p-4">
+        <div className="mt-4 card p-4">
           <p className="text-muted">Follow along reads what's playing on your Spotify.</p>
           {sp.clientId() && (
             <button onClick={() => void sp.login()} className="mt-3 h-11 rounded-full bg-jade px-5 font-semibold text-jade-ink">
@@ -740,7 +740,7 @@ function NowPlaying() {
       ) : now === null ? (
         <p className="mt-4 text-muted">Checking Spotify…</p>
       ) : now === 'idle' ? (
-        <p className="mt-4 rounded-2xl bg-sunk p-4 text-muted">Play a song on Spotify (your playlist works well), and its lyrics follow along here.</p>
+        <p className="mt-4 card p-4 text-muted">Play a song on Spotify (your playlist works well), and its lyrics follow along here.</p>
       ) : (
         <>
           <div className="mt-4 flex items-center gap-3">
@@ -757,7 +757,7 @@ function NowPlaying() {
           ) : reader === 'nodict' ? (
             <p className="mt-6 text-muted">The dictionary hasn't downloaded yet. Open the app with internet and try again.</p>
           ) : lyrics.kind === 'none' ? (
-            <p className="mt-6 rounded-2xl bg-sunk p-4 text-muted">No lyrics found for this song on LRCLIB, under this title or artist.</p>
+            <p className="mt-6 card p-4 text-muted">No lyrics found for this song on LRCLIB, under this title or artist.</p>
           ) : (
             <>
               {synced ? (

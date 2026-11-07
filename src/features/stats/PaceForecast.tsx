@@ -54,7 +54,7 @@ export function PaceForecast({ logs, now, mature, levels, game }: { logs: Review
       <h2 className="text-lg font-semibold">When do I get there?</h2>
       <p className="mt-0.5 text-sm leading-snug text-muted">At your pace over the last 4 weeks; the range is your best and your slowest week.</p>
       {!weeks ? (
-        <p className="mt-3 rounded-2xl bg-sunk p-4 text-sm text-muted">Not enough data yet: forecasts start after {MIN_HISTORY_DAYS} days of practice.</p>
+        <p className="mt-3 card p-4 text-sm text-muted">Not enough data yet: forecasts start after {MIN_HISTORY_DAYS} days of practice.</p>
       ) : (
         <ul className="group-list mt-3">
           {rows.map((r) => (

@@ -37,7 +37,7 @@ export function Columns({
   if (data.every((d) => !d.value))
     return (
       <figure>
-        <p className="rounded-2xl bg-sunk p-4 text-sm text-muted">No data yet.</p>
+        <p className="card p-4 text-sm text-muted">No data yet.</p>
       </figure>
     );
   return (

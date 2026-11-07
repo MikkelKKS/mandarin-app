@@ -41,8 +41,6 @@
   --text-lead--line-height: 1.45;
   --text-title: 1.375rem;
   --text-title--line-height: 1.25;
-  --text-display: 1.75rem;
-  --text-display--line-height: 1.2;
   --text-heading: 1.75rem;
   --text-heading--line-height: 1.2;
   --text-hero: 2.25rem;
@@ -80,11 +78,11 @@
   --cinnabar: #b3362a;
   --cinnabar-soft: #fbe8e5;
   /* Tone colours (Pleco-style): 1 red, 2 orange, 3 green, 4 blue, neutral grey. */
-  --t1: #c42a1c;
-  --t2: #9c5000;
+  --t1: #c8102e;
+  --t2: #a35a00;
   --t3: #26781f;
   --t4: #1f62c4;
-  --t5: #646e77;
+  --t5: #58626a;
   --shadow-sm: 0 1px 2px rgb(20 33 32 / 0.05);
   --shadow-md: 0 1px 2px rgb(20 33 32 / 0.04), 0 6px 20px -8px rgb(20 33 32 / 0.14);
   --shadow-lg: 0 2px 6px rgb(20 33 32 / 0.06), 0 24px 48px -16px rgb(20 33 32 / 0.25);
@@ -109,7 +107,7 @@
   --plate-ink: #e6edea;
   --cinnabar: #ef7464;
   --cinnabar-soft: #3a2422;
-  --t1: #ff6b5e;
+  --t1: #ff6b7a;
   --t2: #f5a442;
   --t3: #6cc865;
   --t4: #62a6ff;
@@ -182,7 +180,11 @@ h1, h2, h3 {
   word-spacing: 0.12em;
 }
 @media (min-width: 768px) {
-  .py-hero { font-size: 2.75rem; }
+  .py-hero { font-size: var(--text-numeral); }
+}
+/* PC: the exercise is read from further away; the pinyin grows one more step. */
+@media (min-width: 1024px) {
+  .py-hero { font-size: 3.5rem; }
 }
 /* Pinyin in the answer sheet, in two clear roles: the word to learn (.py-answer, the sheet's big line)
    and the sentence it was heard in (.py-context, quieter context above it). */
@@ -338,7 +340,8 @@ h1, h2, h3 {
   from { transform: scaleY(0); }
 }
 @keyframes nudge {
-  45% { transform: scale(1.05); box-shadow: 0 0 0 6px color-mix(in srgb, var(--jade) 28%, transparent); }
+  45% { transform: scale(1.06); box-shadow: 0 0 0 7px color-mix(in srgb, var(--jade) 30%, transparent); }
+  100% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--jade) 0%, transparent); }
 }
 /* A combo milestone (3, 5, 10 in a row): the chip springs bigger with a violet glow. */
 @keyframes combo-pulse {
@@ -390,7 +393,11 @@ h1, h2, h3 {
 /* The feedback sheet leaving before the next question (components/sheetLeave.ts). */
 .anim-sheet-out { animation: sheet-out var(--dur-exit) var(--ease-in) forwards; }
 /* Feedback sheet content arrives in order: verdict, answer, then actions. */
-.sheet-stagger > * { animation: up var(--dur-std) var(--ease-out) both; }
+/* The sheet's contents slide in their order but stay fully opaque, so no half-faded text sits over the options. */
+@keyframes up-move {
+  from { transform: translateY(8px); }
+}
+.sheet-stagger > * { animation: up-move var(--dur-std) var(--ease-out) both; }
 .sheet-stagger > :nth-child(2) { animation-delay: 40ms; }
 .sheet-stagger > :nth-child(3) { animation-delay: 70ms; }
 .sheet-stagger > :nth-child(n + 4) { animation-delay: 100ms; }
@@ -440,6 +447,10 @@ h1, h2, h3 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  /* The sheet itself appears at once (nothing fades over the options); only its contents fade in. */
+  .sheet-stagger > * {
+    animation: fade 120ms ease-out both !important;
   }
 }
 
