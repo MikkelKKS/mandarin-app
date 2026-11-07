@@ -12,6 +12,9 @@
  *       without public/audio (55k files, not needed for screenshots), sharing node_modules and the dictionary.
  *   npx tsx scripts/design-preview.ts build <name>
  *       npm run build inside that worktree.
+ *   npx tsx scripts/design-preview.ts serve <name|.> [port]
+ *       Serves a built preview on localhost for Mikkel to click through (motion included), with
+ *       demo.html to load the lived-in profile and demo.html?fresh for a new account.
  *   npx tsx scripts/design-preview.ts remove <name>
  *       Deletes the worktree again (the shared node_modules link is removed first, so the real one is untouched).
  *   npx tsx scripts/design-preview.ts compare <dir> [title]
@@ -111,6 +114,20 @@ switch (cmd) {
     const [name] = rest;
     process.exit(run('npm', ['run', 'build'], { cwd: wtPath(name) }));
   }
+  case 'serve': {
+    // A built preview (a worktree name, or "." for this checkout) served for Mikkel to click through in
+    // his own browser, with demo.html to load the lived-in profile (and demo.html?fresh for a new account).
+    const [name, port = '4181'] = rest;
+    if (!name) throw new Error('usage: serve <name|.> [port]');
+    const dir = name === '.' ? root : wtPath(name);
+    const dist = join(dir, 'dist');
+    if (!existsSync(dist)) throw new Error(`No build in ${dir}: run "build ${name}" first`);
+    const { demoProfile } = await import('../qa/demoProfile.ts');
+    writeFileSync(join(dist, 'demo.json'), JSON.stringify(demoProfile()));
+    writeFileSync(join(dist, 'demo.html'), demoPage());
+    console.log(`Preview: http://localhost:${port}/mandarin-app/demo.html (lived-in profile) · /demo.html?fresh (new account)`);
+    process.exit(run('npx', ['vite', 'preview', '--port', port, '--strictPort'], { cwd: dir }));
+  }
   case 'remove': {
     const [name] = rest;
     if (!name) throw new Error('usage: remove <name>');
@@ -195,4 +212,42 @@ switch (cmd) {
   default:
     console.log('usage: design-preview.ts shots|motion|worktree|build|remove|compare … (see the comment at the top)');
     process.exit(1);
+}
+
+/** Loads the lived-in demo profile into this origin's database (or wipes it with ?fresh), then opens the app. */
+function demoPage() {
+  return `<!doctype html><meta charset="utf-8"><title>Demo data</title>
+<body style="font:16px system-ui;padding:2rem"><p id="m">Loading the demo profile…</p>
+<script type="module">
+const m = document.getElementById('m');
+if (location.search.includes('fresh')) {
+  await new Promise((r) => { const q = indexedDB.deleteDatabase('mandarin'); q.onsuccess = q.onerror = q.onblocked = r; });
+  location.href = './';
+} else {
+  // The app creates the database the first time it opens; load it once in the background if needed.
+  const has = (await indexedDB.databases?.())?.some((d) => d.name === 'mandarin');
+  if (!has) {
+    const f = document.createElement('iframe');
+    f.src = './'; f.style.display = 'none'; document.body.append(f);
+    await new Promise((r) => setTimeout(r, 4000)); f.remove();
+  }
+  const d = await (await fetch('./demo.json')).json();
+  await new Promise((res, rej) => {
+    const q = indexedDB.open('mandarin');
+    q.onerror = () => rej(q.error);
+    q.onsuccess = () => {
+      const db = q.result;
+      const tx = db.transaction(['reviewItems', 'reviewLogs', 'gameScores'], 'readwrite');
+      tx.objectStore('reviewItems').clear(); tx.objectStore('reviewLogs').clear();
+      for (const r of d.items) tx.objectStore('reviewItems').put(r);
+      for (const r of d.logs) tx.objectStore('reviewLogs').put(r);
+      tx.objectStore('gameScores').put(d.sessions);
+      tx.oncomplete = () => { db.close(); res(); };
+      tx.onerror = () => rej(tx.error);
+    };
+  });
+  m.textContent = 'Done. Opening the app…';
+  location.href = './';
+}
+</script>`;
 }
