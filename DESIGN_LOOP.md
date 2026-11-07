@@ -340,3 +340,13 @@ Notes: none
 
 | Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
 |-------|--------|------------|--------|--------|---------|--------|------|
+| 0 | 7.5 | 7.5 | 7.5 | 7 | 7 | 7 | baseline · fails 10 (C1.5 T2 L2.5 M1.5 O2.5) |
+
+### Round 0 (baseline review)
+
+Scores (blind, shots blind-82351eef2; all key screens opened):
+- Colour 7.5 (fails 1.5: C1 tints/disabled button, C3 T1 ≈ cinnabar, C6 generic kit): nothing in the palette ties to Mandarin beyond the tone hues.
+- Typography 7.5 (fails 2: T1 small labels/one-offs on PC, T4 side card 12–13px, T6 no display voice).
+- Layout 7 (fails 2.5: L4 PC session/Home/Tone Gym empty halves, L5 Settings wall, L1 side card on another edge and jumps, L3 phone question high).
+- Motion 7.5 (fails 1.5: item 4 prompt shifts ~14 px, header re-lays out when the +XP chip leaves, exit frame with Check/I-don't-know/Continue overlapping; item 2 the wrong pick can sit under the sheet).
+- Overall 7 (fails 2.5: item 6 stats-new dashes and PC like a stretched phone, item 2 Stats/Settings generic, item 4 thin game layer (no week row, no quests, session end lacks new words / weakest pair), item 1 Settings and Tone Gym top bars differ).
