@@ -447,7 +447,7 @@ function ThisRound({ st }: { st: SessionState }) {
         <span className="text-sm text-muted">XP</span>
       </p>
       <div className="mt-4 flex items-baseline justify-between text-sm">
-        <span className="text-muted">Right</span>
+        <span className="text-muted">Right answers</span>
         <span className="num text-2xl">
           {st.right}/{st.answered}
         </span>
