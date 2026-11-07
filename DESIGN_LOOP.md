@@ -255,7 +255,7 @@ Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-
 ## Loop 4 (started 2026-11-07)
 
 ```
-State: stopped (max)
+State: merged
 Round: 3
 Phase: show
 Max rounds: 3
@@ -321,3 +321,5 @@ Scores (blind, shots blind-704054e9b):
 After scoring: fixed the jump (531b60eda): the centred column keeps its height; extra room for a tall sheet sits after it. Re-recorded: ~14 px left, from the "browser's voice" note that only appears because tests block audio.
 
 Stopped: max rounds (3). Lowest 7 in all three rounds; the judge kept 5 of 5 moves (two small details undone) and preferred the new screens 18 to 1.
+
+Mikkel approved all changes but kept the 学 logo (restored before merging); merged into main on 2026-11-07.

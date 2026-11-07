@@ -12,8 +12,22 @@ Each review adds a section below (newest first) with the scores, a one-line reas
 | 2026-11-06 | 7 | 7 | 6.5 | 6 | 6.5 |
 | 2026-11-06 (design loop 1, round 4) | 7.5 | 7 | 7 | 7 | 7 |
 | 2026-11-07 (design loop 3, round 2, before round 2 changes) | 7.5 | 7.5 | 6.5 | 7 | 7 |
+| 2026-11-07 (design loop 4, round 3) | 8 | 7.5 | 7 | 7 | 7.5 |
 
 ## Reviews
+
+## 2026-11-07: design loop 4 (merged)
+Notes: 3 rounds; all 5 changes approved, the 学 logo kept. The judge preferred the new screens 18 to 1 while the 1–10 scores stayed flat.
+
+| Area | Score | Reason (round 3) |
+|------|-------|--------|
+| Colour | 8/10 | Disciplined tone system with contour cues; colour leads only on the plate |
+| Typography | 7.5/10 | Named scale and condensed numerals; neutral voice beyond them; busy rows |
+| Motion | 7/10 | Good answer feedback; question jump on sheet open (fixed after scoring); exit overlap frame; blank tab change |
+| Layout | 7/10 | PC session narrow with a detached side card; PC Home dead zone; Stats tabs below the matrix; Settings long |
+| Overall | 7.5/10 | Strong Home, Stats, session end and first day; quiet screens generic |
+
+Built (all kept): new look and PC frame · exercise screen and This round card · question centred, bigger PC pinyin · right-answer moment and reduced motion · Home tells the story.
 
 ## 2026-11-07: design loop 3 (merged)
 Notes: new team (design-visual, design-experience, Opus director, blind judge), lived-in screenshot profile; stopped after round 2 at Mikkel's request; all 5 changes approved. Round 2 changes (Stats, rewards) were judged better but not re-scored.
