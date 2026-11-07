@@ -16,8 +16,9 @@ Judge only the app in front of you. **Never read `DESIGN_LOOP.md`**; read `DESIG
 
 ## Walk the path (same set every time)
 - Stills: `<shots>/<phone|pc>/<light|dark>/<screen>.png` (home, home-new, session-intro, session-question, session-wrong, session-right, session-end, tone-gym, tone-gym-question, tone-gym-feedback, library, stats, stats-new, settings, music). `home-new`/`stats-new` are a brand-new account; the rest a lived-in profile (about six weeks of study).
+- **Key screens: open every one of these, every time** (earlier reviews skipped most of them and scored from a sample): phone light: home, home-new, session-question, session-wrong, session-right, session-end, tone-gym, tone-gym-question, stats, settings, library · PC light: home, session-question, session-wrong, stats, tone-gym, settings · phone dark: home, session-wrong, stats. Open others as needed. If a key screen is missing from the folder, say so.
 - Go through them **as Mikkel's day**: phone light home → session (intro, question, wrong, right, end) → Tone Gym → Stats; then the same path on PC light; then phone dark home, session-right and stats; then home-new and stats-new (first-day experience).
-- Motion: `<shots>/motion/<phone|pc>/<full|reduced>/<interaction>/` (page-transition, answer-wrong, answer-right, next-question, tone-gym-answer); frames are `<ms>.jpg`, listed in `frames.txt`. For **each interaction on phone full**, open the first frame, two or three in the middle and the last; check PC full and phone reduced for answer-wrong at least.
+- Motion: `<shots>/motion/<phone|pc>/<full|reduced>/<interaction>/` (page-transition, answer-wrong, answer-right, next-question, tone-gym-answer); frames are `<ms>.jpg`, listed in `frames.txt`. For **each interaction on phone full** (answer-right, answer-wrong, next-question, page-transition, tone-gym-answer) open the first frame, two or three in the middle and the last, and compare the positions of the content between them (a jump of the question when the sheet opens counts against item 4); always open phone reduced answer-wrong.
 - Read the motion code you criticise: `src/index.css` (`@keyframes`, `anim-*`, reduced-motion block), `src/lib/countUp.ts`, `src/components/sheet*.ts`.
 - Need another interaction or state? Write `qa/tmp-design-experience.spec.ts` (copy `record()` from `qa/design-motion.spec.ts`), run it on your own port (`QA_PORT=4177 npx playwright test -c playwright.qa.config.ts qa/tmp-design-experience.spec.ts`), output under `<shots>/../extra-experience/`, delete the spec afterwards.
 
@@ -41,10 +42,10 @@ Calibration: 1–3 broken · 4–5 amateurish · 6–7 solid but generic · 8 po
 6. The first day (home-new, stats-new) is inviting, not empty or confusing; PC feels designed for PC, not a stretched phone.
 
 ## Report (this exact shape)
-1. **Motion N/10 · Overall N/10**, each with the failed checklist items (by number) and a one-line reason.
+1. **Motion N/10 · Overall N/10** and **Failed items: M n · O n** (how many of each area's six checklist items fail; a partial miss counts as 0.5), each with the failed items by number and a one-line reason.
 2. **Weakest points** (up to 5, worst first): what, which screens or frame paths, why it matters to Mikkel.
 3. **What works** (short).
 4. **Up to 4 improvements**, ranked by score gain: **What** (concrete), **Where** (files), **Which checklist items it fixes**, **Expected gain** (area +N), **Size** S/M/L, **Screens affected** (and which motion interactions to re-record). Bold ideas are welcome; new features or content are allowed if they serve the design (e.g. a streak flame, a Stats summary). Changes to how learning works (grading, scheduling, exercises) are out of scope.
-5. Files and frame folders opened.
+5. Files and frame folders opened (confirm every key screen and motion folder is in the list).
 
 **Test browsers must always be silent.** Launch options live in `e2e/launch.ts` (headless, `--mute-audio`); use `-c playwright.qa.config.ts`, `mutedLaunch('--arg')` in a spec, `launchMuted()` in a script; never `chromium.launch()` directly or `headless: false`.

@@ -467,3 +467,11 @@ Three rounds (builds in rounds 1–2, round 3 scored). The blind judge preferred
 - **This round** card beside a session on screens 1400px+ (XP, right answers, combo meter to the next milestone, blocks, keys); the +XP chip sits beside the header XP.
 - **Answer feedback:** the sheet's contents slide in fully opaque (no half-faded text over the options); a right pick pops with a jade ring. Reduced motion: the sheet appears at once and only its contents fade in (120 ms).
 - **Home:** "This week" (weakest pair, accuracy per tone, 30-day retention, 14-day reviews) on phones too; the placement row hides once ~50 words are started; the goal ring says "N XP today" once the goal is passed; a new account sees "What you'll build" (streak, level, an empty tone matrix) under or beside the welcome plate.
+
+## 2026-11-07: Design loop and review, new format (asked)
+- **Why:** two loops left the 1–10 scores at 7–8 while the blind judge preferred the new screens 18 to 1. Fresh reviewers always find two or three partial misses, so absolute scores barely move; reviewers also opened only part of the screenshots. The remaining 7s are whole-screen problems (PC session, PC Home, Stats, Settings, quiet screens) that small moves can't fix.
+- **Mikkel picks the direction:** at the start the director writes 2–3 clearly different directions (one must take a real risk), the main session previews each on Home and a session screen, and Mikkel chooses (he allowed breaking "ask nothing until it stops" for this).
+- **Bolder moves:** one or two whole-screen or whole-system moves per round instead of several tweaks.
+- **Progress measured differently:** reviewers count failed checklist items on a fixed list of key screens they must all open; the round judge keeps or undoes moves (including motion pairs whenever layout or sheets change, after a centring change made the question jump unnoticed); a baseline judge compares the loop's start and end. The 1–10 scores are kept as a record. Default 4 rounds; the last round is followed by one review for the record.
+- **/design-review is exactly /design-loop with one round** (its command file points at the loop's), so the two never drift apart.
+- An approved merge runs `npm run test:e2e` (what the deploy runs) and checks the deploy run went green: the side card's "Right" label once broke a smoke test and blocked the deploy.

@@ -16,7 +16,7 @@ Judge only the app in front of you. **Never read `DESIGN_LOOP.md`**; read `DESIG
 
 ## Look at everything (same set every time)
 Screenshots in `<shots>/<phone|pc>/<light|dark>/<screen>.png`: home, home-new, session-intro, session-question, session-wrong, session-right, session-end, tone-gym, tone-gym-question, tone-gym-feedback, library, stats, stats-new, settings, music. `home-new` and `stats-new` are a brand-new account; the rest show a lived-in profile (about six weeks of study).
-- **Open every screen in phone light and PC light, and every screen in phone dark** (PC dark: Home, a session screen and Stats are enough). Don't score from a sample: list at the end which files you opened.
+- **Key screens: open every one of these, every time** (earlier reviews skipped most of them and scored from a sample): phone light: home, home-new, session-question, session-wrong, session-right, session-end, tone-gym, tone-gym-question, stats, settings, library · PC light: home, session-question, session-wrong, stats, tone-gym, settings · phone dark: home, session-wrong, stats. Open others as needed. If a key screen is missing from the folder, say so. List at the end which files you opened.
 - Read the sources you criticise: `src/index.css` (tokens, type scale, dark mode), the components behind a problem.
 - Need another state? Write `qa/tmp-design-visual.spec.ts` (patterns from `qa/design.spec.ts`), run it on your own port (`QA_PORT=4175 npx playwright test -c playwright.qa.config.ts qa/tmp-design-visual.spec.ts`), shots under `<shots>/../extra-visual/`, delete the spec afterwards.
 - Compute contrast from hex values (a Node one-liner) instead of guessing.
@@ -49,10 +49,10 @@ Calibration: 1–3 broken · 4–5 amateurish · 6–7 solid but generic · 8 po
 6. The same kind of thing looks the same on every screen (cards, rows, chips, empty states).
 
 ## Report (this exact shape)
-1. **Colour N/10 · Typography N/10 · Layout N/10**, each with the checklist items that failed (by number) and a one-line reason.
+1. **Colour N/10 · Typography N/10 · Layout N/10** and **Failed items: C n · T n · L n** (how many of each area's six checklist items fail on the key screens; a partial miss counts as 0.5), each area with the failed items by number and a one-line reason.
 2. **Weakest points** (up to 5 across the three areas, worst first): what, which screens (paths), why it matters to Mikkel.
 3. **What works** (short).
 4. **Up to 4 improvements**, ranked by score gain: **What** (concrete: values, components, layout), **Where** (files), **Which checklist items it fixes**, **Expected gain** (area +N), **Size** S/M/L, **Screens affected**. Bold ideas are welcome where the checklist calls for them (identity, hierarchy, PC layout); new features or content are allowed if they serve the design.
-5. Files opened.
+5. Files opened (confirm every key screen is in the list).
 
 **Test browsers must always be silent.** Launch options live in `e2e/launch.ts` (headless, `--mute-audio`); use `-c playwright.qa.config.ts`, `mutedLaunch('--arg')` in a spec, `launchMuted()` in a script; never `chromium.launch()` directly or `headless: false`.
