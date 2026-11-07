@@ -1,5 +1,4 @@
 import { useEffect, type ReactNode } from 'react';
-import { ToneContour } from './components/ToneContour';
 import { WordPopupProvider } from './components/Hanzi';
 import { Chart, Cog, Glyph, Home, Library, Waves } from './components/icons';
 import { ReadingView } from './features/reading/ReadingView';
@@ -144,15 +143,9 @@ const TAB_OF: Record<string, string> = {
   placement: '',
 };
 
-/** The app's mark: a jade seal holding the four tone contours. */
+/** The app's mark: the 学 seal (Mikkel kept it, 2026-11-07). */
 function LogoSeal() {
-  return (
-    <span className="grid h-9 w-9 grid-cols-2 place-items-center gap-px rounded-[10px] bg-jade p-1.5 text-jade-ink" aria-hidden>
-      {[1, 2, 3, 4].map((t) => (
-        <ToneContour key={t} tone={t} className="h-2 w-3" />
-      ))}
-    </span>
-  );
+  return <span className="han flex h-9 w-9 items-center justify-center rounded-[10px] bg-cinnabar text-lg font-semibold text-white">学</span>;
 }
 
 function Shell({ active, wide = false, children }: { active: string; wide?: boolean; children: ReactNode }) {
