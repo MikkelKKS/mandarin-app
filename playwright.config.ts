@@ -13,6 +13,8 @@ export default defineConfig({
   testDir: 'e2e',
   timeout: 240_000,
   retries: process.env.CI ? 1 : 0,
+  // On GitHub, failures also show as annotations on the run (readable without the full log).
+  reporter: process.env.CI ? [['github'], ['list']] : 'list',
   use: { baseURL: 'http://localhost:4173/mandarin-app/', launchOptions },
   webServer: {
     command: 'npx vite preview --port 4173 --strictPort',
