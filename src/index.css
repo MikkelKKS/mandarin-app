@@ -340,7 +340,8 @@ h1, h2, h3 {
   from { transform: scaleY(0); }
 }
 @keyframes nudge {
-  45% { transform: scale(1.05); box-shadow: 0 0 0 6px color-mix(in srgb, var(--jade) 28%, transparent); }
+  45% { transform: scale(1.06); box-shadow: 0 0 0 7px color-mix(in srgb, var(--jade) 30%, transparent); }
+  100% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--jade) 0%, transparent); }
 }
 /* A combo milestone (3, 5, 10 in a row): the chip springs bigger with a violet glow. */
 @keyframes combo-pulse {
@@ -392,7 +393,11 @@ h1, h2, h3 {
 /* The feedback sheet leaving before the next question (components/sheetLeave.ts). */
 .anim-sheet-out { animation: sheet-out var(--dur-exit) var(--ease-in) forwards; }
 /* Feedback sheet content arrives in order: verdict, answer, then actions. */
-.sheet-stagger > * { animation: up var(--dur-std) var(--ease-out) both; }
+/* The sheet's contents slide in their order but stay fully opaque, so no half-faded text sits over the options. */
+@keyframes up-move {
+  from { transform: translateY(8px); }
+}
+.sheet-stagger > * { animation: up-move var(--dur-std) var(--ease-out) both; }
 .sheet-stagger > :nth-child(2) { animation-delay: 40ms; }
 .sheet-stagger > :nth-child(3) { animation-delay: 70ms; }
 .sheet-stagger > :nth-child(n + 4) { animation-delay: 100ms; }
@@ -442,6 +447,10 @@ h1, h2, h3 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  /* The sheet itself appears at once (nothing fades over the options); only its contents fade in. */
+  .sheet-stagger > * {
+    animation: fade 120ms ease-out both !important;
   }
 }
 
