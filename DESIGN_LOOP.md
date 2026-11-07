@@ -193,7 +193,7 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 ```
 State: running
 Round: 2
-Phase: build
+Phase: judge
 Max rounds: 3
 Best lowest: 6.5
 Rounds without improvement: 0
@@ -243,4 +243,4 @@ Weakest points: Stats wall · PC Home stretched · exercise screens top-heavy ·
 Plan (round 2; the last build round, since round 3 only scores with max 3 rounds):
 - [x] Screenshot harness: right-answer shots on a typed question (a forced "right" can't move a multiple-choice pick), and badges unlocked before the session (not a design move).
 - [x] (71fbf5e09) Stats restructure: summary hero (condensed numbers) with the tone matrix right under it, sticky tabs (Overview, Words, Tones, Habits, Badges) showing one panel at a time, HSK levels not started folded into one line, one line for a new account. Layout 5, overall 1/5/6, typography 4; stats, stats-new.
-- [ ] Reward beats and gentle reduced motion: right pick pulses with a jade glow, combo chip pulses at 3/5/10, session end stamps 达标 when the goal was reached and shows a level-up band, achievements as a medallion grid that stamps in one by one; reduced motion keeps 150 ms fades. Motion 2/5/6, overall 4; session-right, session-end, answer-right.
+- [x] (40c348032) Reward beats and gentle reduced motion: right pick pulses with a jade glow, combo chip pulses at 3/5/10, session end stamps 达标 when the goal was reached and shows a level-up band, achievements as a medallion grid that stamps in one by one; reduced motion keeps 150 ms fades. Motion 2/5/6, overall 4; session-right, session-end, answer-right.
