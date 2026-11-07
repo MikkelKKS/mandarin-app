@@ -300,3 +300,8 @@ Scores (blind, shots blind-d9489b933): unchanged although the judge preferred th
 - Overall 7.5 (1, 4, 6): identity on Home only; reward layer thin outside Home; first day blank below the welcome.
 
 Weakest: exercise layout (thumb reach, PC scale) · walls (Settings, Music, Stats) · Home plate overloaded · PC Home empty · right-answer and session-end beats · reduced motion.
+
+Plan (round 2; the last build round):
+- [ ] Exercise layout: question vertically centred on phones too (answers lower, nearer the thumb), bigger pinyin hero and syllable on PC. Layout 3/4, typography 2; session and Tone Gym screens.
+- [ ] Right-answer moment and reduced motion: sheet contents slide without fading (no half-faded text over the options), a jade ring pulse on the right pick; reduced motion keeps an instant sheet and fades only its contents (a different execution from the fade that was judged worse). Motion 2/4/6; session-right, answer motion.
+- [ ] Home tells the story: "This week" on phones too, placement row hidden once 50 words are started, the ring shows today's XP once the goal is passed, a first-day preview (streak, level, empty matrix) under the welcome plate. Layout 4, overall 4/6; home, home-new.
