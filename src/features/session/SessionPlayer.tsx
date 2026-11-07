@@ -438,7 +438,7 @@ function ThisRound({ st }: { st: SessionState }) {
   const next = steps.find((n) => n > st.combo) ?? st.combo + 10;
   const prev = [...steps].reverse().find((n) => n <= st.combo) ?? 0;
   return (
-    <aside aria-label="This round" className="card fixed top-24 hidden w-60 p-5 min-[1400px]:block" style={{ left: 'calc(50% + 23rem)' }}>
+    <aside aria-label="This round" className="card fixed top-24 z-30 hidden w-60 p-5 min-[1400px]:block" style={{ left: 'calc(50% + 23rem)' }}>
       <p className="text-sm font-semibold text-muted">This round</p>
       <p className="mt-2 flex items-baseline gap-2">
         <span className="num text-numeral leading-none text-imperial">{st.xp}</span>
