@@ -193,9 +193,9 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 ```
 State: running
 Round: 1
-Phase: review
+Phase: direct
 Max rounds: 3
-Best lowest: –
+Best lowest: 6.5
 Rounds without improvement: 0
 Confirming: no
 Notes: max 3 rounds (fresh loop with the new team)
@@ -203,3 +203,18 @@ Notes: max 3 rounds (fresh loop with the new team)
 
 | Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
 |-------|--------|------------|--------|--------|---------|--------|------|
+| 1 | 7.5 | 7 | 6.5 | 6.5 | 7 | 6.5 | start: fresh loop on main, new team |
+
+### Round 1
+
+Scores (blind, shots blind-a945beb91; lived-in profile):
+- Colour 7.5 (fails 3, 4, 5): gold/XP and T2 share a hue, T1 close to wrong-red; dark surface 1.1:1, loud mint card; Stats/Settings have no lead; --edge 2.94:1.
+- Typography 7 (fails 1, 3, 4): one-off pinyin sizes beside the scale; Home streak card and Tone Gym sheet 4–5 levels; 12px secondary text on Stats/Settings; voice light.
+- Layout 6.5 (fails 1, 4, 5, 6): XP text overflows the Home card; PC Home/session/Tone Gym half empty; Stats 15,000 px and Settings 9,600 px walls; row patterns differ.
+- Motion 6.5 (fails 4, 6, half 5): ~30 px jump when the sheet opens; reduced motion snaps with no fades; no beat for level up / goal / achievement.
+- Overall 7 (fails 1, 2 partly, 5): Stats in another register, identity weak on Stats and questions; no Stats payoff, matrix buried.
+Note: reviewers opened fewer screens than asked (experience: 5 stills, a few frames).
+
+Weakest points:
+- Visual: PC dead space · Stats/Settings walls · gold = T2, T1 ≈ wrong · crowded Home card/sheet · tone colour-only cues in sessions.
+- Experience: Stats wall without payoff · sheet jump · reduced motion snaps · quiet rewards · Home flat stack, XP text clipped.
