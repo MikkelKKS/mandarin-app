@@ -191,10 +191,10 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 ## Loop 3 (started 2026-11-07)
 
 ```
-State: running
+State: stopped (max)
 Round: 2
-Phase: qa
-Max rounds: 3
+Phase: show
+Max rounds: 2
 Best lowest: 6.5
 Rounds without improvement: 0
 Confirming: no
@@ -246,3 +246,6 @@ Plan (round 2; the last build round, since round 3 only scores with max 3 rounds
 - [x] (40c348032) Reward beats and gentle reduced motion: right pick pulses with a jade glow, combo chip pulses at 3/5/10, session end stamps 达标 when the goal was reached and shows a level-up band, achievements as a medallion grid that stamps in one by one; reduced motion keeps 150 ms fades. Motion 2/5/6, overall 4; session-right, session-end, answer-right.
 - Judge (pairs-2, 10 screens × 2 orders, before re-shot from the round's start with the fixed harness): Stats better on phone light, PC light, stats-new; phone dark same. Session end better ×3, answer-right motion better. Worse: reduced-motion answer-wrong (the 150 ms fading sheet ghosts over the options) and the session-right still (different state: only the before shot caught a combo chip; layouts identical, not caused by the move).
 - Kept: Stats restructure; reward beats. Reduced-motion fades taken out again (8a508aadf) instead of reverting the whole reward move (their part was the only thing judged worse). Rounds without improvement: 0.
+- QA: qa:screens 28/28, the four Stats e2e specs 40/40; two small fixes (first-day button alignment, "HSK 2 to 7–9"). Level-up band and badge grid not seen in the run (no level crossed, no badge unlocked).
+
+Stopped after round 2 at Mikkel's request (max rounds set to 2). Round 2's moves were judged but not re-scored.
