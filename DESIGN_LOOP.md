@@ -194,11 +194,11 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 State: running
 Round: 1
 Phase: review
-Max rounds: 8
+Max rounds: 3
 Best lowest: –
 Rounds without improvement: 0
 Confirming: no
-Notes: none (fresh loop with the new team)
+Notes: max 3 rounds (fresh loop with the new team)
 ```
 
 | Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
