@@ -7,3 +7,5 @@
 import '@fontsource/noto-sans-sc/400.css';
 import '@fontsource/noto-sans-sc/500.css';
 import '@fontsource/noto-sans-sc/700.css';
+// Noto Serif SC (700) for the seal stamps, loaded the same lazy way.
+import '@fontsource/noto-serif-sc/700.css';

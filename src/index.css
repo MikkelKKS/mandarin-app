@@ -5,7 +5,8 @@
 @theme {
   --font-sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   /* Numbers that are the point (XP, streak, level, Stats hero): Instrument Sans at its condensed width. */
-  --font-num: 'Instrument Sans Variable', 'Instrument Sans', system-ui, sans-serif;
+  --font-num: 'Newsreader', Georgia, serif;
+  --font-display: 'Newsreader', Georgia, serif;
   --font-han: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', 'Source Han Sans SC', sans-serif;
 
   --color-bg: var(--bg);
@@ -59,23 +60,23 @@
   /* Four colours mean sound: red, orange, green and blue appear only for tones. Everything else is
      porcelain and ink, plus three colours with one meaning each: jade = go / right, imperial violet
      (紫禁城) = something you earned, cinnabar = a miss (a mark, never a wash). */
-  --bg: #f1f3f2;
-  --surface: #ffffff;
+  --bg: #f3f4f0;
+  --surface: #fbfbf8;
   --sunk: #e9eeec;
-  --ink: #14201f;
+  --ink: #1a2230;
   --muted: #56635f;
-  --line: #dde4e1;
+  --line: #d6dad6;
   /* Edge of things you press (answer options, round audio buttons, quiet buttons): stronger than a separator. */
   --edge: #6f7f7a;
-  --jade: #0e6b54;
+  --jade: #2b3f72;
   --jade-ink: #ffffff;
-  --jade-soft: #dcede6;
+  --jade-soft: #e3e8f4;
   --imperial: #6a3fb0;
   --imperial-soft: #efe8fa;
   /* The hero plate (Home's Today block): filled jade in light mode. */
-  --plate: #0e6b54;
+  --plate: #2b3f72;
   --plate-ink: #ffffff;
-  --cinnabar: #b3362a;
+  --cinnabar: #a8432f;
   --cinnabar-soft: #fbe8e5;
   /* Tone colours (Pleco-style): 1 red, 2 orange, 3 green, 4 blue, neutral grey. */
   --t1: #c8102e;
@@ -90,22 +91,22 @@
 }
 
 .dark {
-  --bg: #0e1514;
-  --surface: #202b29;
+  --bg: #11151d;
+  --surface: #1b212c;
   --sunk: #0a100f;
   --ink: #e6edea;
   --muted: #9aa8a4;
   --line: #2f3b39;
   --edge: #6d807c;
-  --jade: #43b08b;
-  --jade-ink: #04221a;
-  --jade-soft: #163a30;
+  --jade: #8fa6e6;
+  --jade-ink: #11151d;
+  --jade-soft: #232c40;
   --imperial: #b394f2;
   --imperial-soft: #2a2140;
   /* Dark mode: a deep jade plate with light text, not a bright mint slab. */
-  --plate: #173b31;
+  --plate: #1f2b4d;
   --plate-ink: #e6edea;
-  --cinnabar: #ef7464;
+  --cinnabar: #e8806b;
   --cinnabar-soft: #3a2422;
   --t1: #ff6b7a;
   --t2: #f5a442;
@@ -146,9 +147,15 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3 {
-  letter-spacing: -0.012em;
+h1, h2, h3, .text-heading, .text-title {
+  letter-spacing: -0.005em;
+  font-family: var(--font-display);
+  font-weight: 600;
 }
+.seal-serif { font-family: 'Noto Serif SC', serif; }
+/* The stroke of a tone drawing itself along the staff. */
+@keyframes staff-draw { from { stroke-dasharray: 1; stroke-dashoffset: 1; } to { stroke-dasharray: 1; stroke-dashoffset: 0; } }
+.staff-draw { animation: staff-draw 420ms var(--ease-out) both; }
 
 .han {
   font-family: var(--font-han);
@@ -165,8 +172,7 @@ h1, h2, h3 {
 /* Numbers that are the point: condensed, bold, tabular. */
 .num {
   font-family: var(--font-num);
-  font-stretch: 75%;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
 }

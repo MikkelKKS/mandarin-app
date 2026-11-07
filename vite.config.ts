@@ -43,7 +43,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
         // Noto Sans SC comes as ~100 small files per weight (one per block of characters):
         // they're cached as the browser asks for them (below) instead of all up front.
-        globIgnores: ['**/noto-sans-sc-*'],
+        globIgnores: ['**/noto-sans-sc-*', '**/noto-serif-sc-*'],
         // The HSK word list and example sentences are big chunks, needed offline.
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: 'index.html',
@@ -76,7 +76,7 @@ export default defineConfig({
             options: { cacheName: 'songs', expiration: { maxEntries: 3 }, cacheableResponse: { statuses: [200] } },
           },
           {
-            urlPattern: ({ url }) => url.pathname.includes('/assets/noto-sans-sc-'),
+            urlPattern: ({ url }) => url.pathname.includes('/assets/noto-sans-sc-') || url.pathname.includes('/assets/noto-serif-sc-'),
             handler: 'CacheFirst',
             options: { cacheName: 'fonts-han', expiration: { maxEntries: 400 }, cacheableResponse: { statuses: [200] } },
           },
