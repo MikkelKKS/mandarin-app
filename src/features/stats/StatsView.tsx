@@ -164,13 +164,13 @@ export function StatsView() {
         <Lead label="Level" value={fresh ? '–' : String(game?.level.level ?? 1)} note={game && !fresh ? `${game.xp.toLocaleString('en-GB')} XP` : undefined} />
       </section>
       {fresh ? (
-        <div className="mt-4 rounded-card bg-sunk p-5">
+        <div className="mt-4 rounded-card bg-sunk p-5 [&_.btn]:mr-2">
           <p className="font-semibold">Your numbers appear after your first session.</p>
           <p className="mt-1 text-sm text-muted">Words, retention, your streak and the tone matrix all fill in from your answers.</p>
           <button onClick={() => go('session/quick')} className="btn btn-primary mt-4 h-12 px-5 text-base">
             Start a quick session
           </button>
-          <button onClick={() => go('words')} className="btn btn-quiet ml-2 mt-4 h-12 px-5 text-base">
+          <button onClick={() => go('words')} className="btn btn-quiet mt-4 h-12 px-5 text-base">
             Browse the words
           </button>
         </div>
@@ -237,7 +237,7 @@ export function StatsView() {
               {idleLevels.length > 0 && (
                 <p className="mt-3 text-sm text-muted">
                   HSK {lvlName(idleLevels[0].level)}
-                  {idleLevels.length > 1 ? `–${lvlName(idleLevels[idleLevels.length - 1].level)}` : ''}: not started yet.
+                  {idleLevels.length > 1 ? ` to ${lvlName(idleLevels[idleLevels.length - 1].level)}` : ''}: not started yet.
                 </p>
               )}
               {levels && (
