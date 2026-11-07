@@ -41,45 +41,61 @@ function GymHome() {
   const scores = useLive(() => db.gameScores.where('id').startsWith('tonegym:').toArray(), [], []);
   const best = new Map(scores.map((s) => [s.id, s.best]));
   const weak = logs ? weakestPair(patternStats(logs.filter((l) => l.at > weekAgo))) : null;
+  const workout = MODES[0];
+  const others = MODES.slice(1);
+  const bestOf = (id: string) => (best.has(`tonegym:${id}`) ? `${best.get(`tonegym:${id}`)}/${ROUND}` : '–');
   return (
     <div className="pb-10">
-      <PageHeader title="Tone Gym">
-        Rounds of {ROUND}. Single tones come from six native speakers (Tone Perfect, Michigan State), so you learn the tone, not one voice.
-      </PageHeader>
-      {weak && (
-        <p className="mt-4 rounded-2xl bg-sunk p-4">
-          Weakest pair this week: <span className="font-semibold tabular-nums">{patternLabel(weak.pattern)}</span>, missed {Math.round(weak.error * 100)}% of the time.
-          Workouts drill it more often.
-        </p>
-      )}
-      <ul className="mt-5 flex flex-col gap-3">
-        {MODES.map((m, i) => (
-          <li key={m.id}>
-            <button
-              onClick={() => go(`tone-gym/${m.id}`)}
-              className={`press flex w-full items-center gap-4 rounded-2xl p-4 text-left ${i === 0 ? 'bg-jade text-jade-ink' : 'border border-line bg-surface'}`}
-            >
-              <span className="flex-1">
-                <span className="block font-semibold">{m.title}</span>
-                <span className={`block text-sm ${i === 0 ? 'opacity-90' : 'text-muted'}`}>{m.blurb}</span>
+      <PageHeader title="Tone Gym">Rounds of {ROUND}, from six native speakers.</PageHeader>
+      <div className="mt-5 lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
+        <div>
+          <button onClick={() => go(`tone-gym/${workout.id}`)} className="press w-full rounded-plate bg-plate p-5 text-left text-plate-ink shadow-md dark:border dark:border-jade/40 md:p-6">
+            <span className="flex items-baseline justify-between gap-3">
+              <span className="text-title font-semibold">{workout.title}</span>
+              <span className="text-sm opacity-85">
+                Best <span className="num text-xl">{bestOf(workout.id)}</span>
               </span>
-              <span className="text-right">
-                <span className={`block text-xs ${i === 0 ? 'opacity-80' : 'text-muted'}`}>Best</span>
-                <span className="block text-xl font-semibold tabular-nums">
-                  {best.has(`tonegym:${m.id}`) ? `${best.get(`tonegym:${m.id}`)}/${ROUND}` : '–'}
+            </span>
+            {weak ? (
+              <span className="mt-4 flex items-center gap-4">
+                <span className="flex items-center gap-2 rounded-control bg-surface px-3 py-2" aria-hidden>
+                  {weak.pattern.split('-').map((t, k) => (
+                    <ToneContour key={k} tone={Number(t)} className={`h-6 w-10 ${TONE_TEXT[Number(t)]}`} />
+                  ))}
+                </span>
+                <span className="min-w-0">
+                  <span className="num block text-4xl leading-none">{patternLabel(weak.pattern)}</span>
+                  <span className="block text-sm opacity-85">your weakest pair, missed {Math.round(weak.error * 100)}%</span>
                 </span>
               </span>
-            </button>
-          </li>
-        ))}
-      </ul>
-      <h2 className="mt-8 text-lg font-semibold">Your tone matrix</h2>
-      {logs && toneMatrix(logs).flat().some(Boolean) && (
-        <p className="mb-3 text-sm text-muted">
-          Each row is the tone it really was; the columns show what you heard or typed. Mix-ups are red. From the Tone Gym, tone exercises and every typed answer.
-        </p>
-      )}
-      {logs ? <ToneMatrix logs={logs} /> : <p className="text-muted">Loading…</p>}
+            ) : (
+              <span className="mt-2 block opacity-85">{workout.blurb}</span>
+            )}
+            <span className="mt-4 block text-sm opacity-85">{weak ? 'Workouts drill it more often.' : 'Start a round'}</span>
+          </button>
+          <ul className="group-list mt-4">
+            {others.map((m) => (
+              <li key={m.id}>
+                <button onClick={() => go(`tone-gym/${m.id}`)} className="flex w-full items-center gap-4 px-4 py-4 text-left hover:bg-sunk/50">
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-semibold">{m.title}</span>
+                    <span className="block text-sm text-muted">{m.blurb}</span>
+                  </span>
+                  <span className="text-right text-sm text-muted">
+                    Best <span className="num block text-xl text-ink">{bestOf(m.id)}</span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <section className="card mt-6 p-4 md:p-5 lg:mt-0" aria-label="Your tone matrix">
+          <h2 className="text-title font-semibold">Your tone matrix</h2>
+          {logs && toneMatrix(logs).flat().some(Boolean) && <p className="mb-3 mt-0.5 text-sm text-muted">Rows: the tone it really was. Columns: what you heard or typed.</p>}
+          {logs ? <ToneMatrix logs={logs} /> : <p className="text-muted">Loading…</p>}
+          <p className="mt-4 text-sm text-muted">Single tones are recorded by six native speakers (Tone Perfect, Michigan State University Libraries).</p>
+        </section>
+      </div>
     </div>
   );
 }
@@ -376,7 +392,7 @@ function RoundEnd({ mode, answers, ms, onAgain }: { mode: GymMode; answers: Answ
         )}{' '}
         · {Math.round(ms / 1000)} s
       </p>
-      {weak && <p className="mt-4 rounded-2xl bg-sunk p-4 text-center">Weakest pair this round: <span className="font-semibold">{patternLabel(weak.pattern)}</span></p>}
+      {weak && <p className="mt-4 card p-4 text-center">Weakest pair this round: <span className="font-semibold">{patternLabel(weak.pattern)}</span></p>}
       {missed.length > 0 && (
         <section className="mt-6">
           <h2 className="font-semibold">Missed</h2>

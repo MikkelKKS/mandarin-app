@@ -47,6 +47,8 @@ export function LibraryView() {
         />
       </form>
 
+      <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
+      <section>
       <h2 className="label mb-2 mt-6 px-1">Practise</h2>
       <ul className="group-list">
         <Row to="conversations" glyph="对话" title="Conversations" detail={conv ? `${units.length} units of everyday dialogues. You know ${conv.known} of their ${conv.total} words.` : `${units.length} units of everyday dialogues`} />
@@ -54,11 +56,15 @@ export function LibraryView() {
         <Row to="grammar" glyph="语法" title="Grammar" detail={`${TOPICS.length} topics on how sentences are built, with practice`} />
         <Row to="music" glyph="音乐" title="Music" detail="Mandarin songs at your level, from Spotify" />
       </ul>
-      <h2 className="label mb-2 mt-5 px-1">Look up</h2>
+      </section>
+      <section>
+      <h2 className="label mb-2 mt-5 px-1 lg:mt-6">Look up</h2>
       <ul className="group-list">
         <Row to="words" glyph="词汇" title="HSK words" detail={started !== null && vocab ? `${started.toLocaleString('en-GB')} of ${vocab.length.toLocaleString('en-GB')} started. Browse them, or move words between stages.` : 'Every word by level'} />
         <Row to="dictionary" glyph="词典" title="Dictionary" detail="Characters, pinyin or English, with sentence breakdown" />
       </ul>
+      </section>
+      </div>
     </div>
   );
 }

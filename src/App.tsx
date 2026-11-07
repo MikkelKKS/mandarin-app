@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode } from 'react';
+import { ToneContour } from './components/ToneContour';
 import { WordPopupProvider } from './components/Hanzi';
 import { Chart, Cog, Glyph, Home, Library, Waves } from './components/icons';
 import { ReadingView } from './features/reading/ReadingView';
@@ -111,7 +112,7 @@ export default function App() {
   }
   return (
     <WordPopupProvider>
-      <Shell active={page ?? ''} wide={!page || (page === 'progress' && !arg)}>
+      <Shell active={page ?? ''} wide={!arg && ['', 'progress', 'library', 'settings', 'tone-gym'].includes(page ?? '')}>
         <div key={route.join('/')} className="anim-page">
           {body}
         </div>
@@ -143,6 +144,17 @@ const TAB_OF: Record<string, string> = {
   placement: '',
 };
 
+/** The app's mark: a jade seal holding the four tone contours. */
+function LogoSeal() {
+  return (
+    <span className="grid h-9 w-9 grid-cols-2 place-items-center gap-px rounded-[10px] bg-jade p-1.5 text-jade-ink" aria-hidden>
+      {[1, 2, 3, 4].map((t) => (
+        <ToneContour key={t} tone={t} className="h-2 w-3" />
+      ))}
+    </span>
+  );
+}
+
 function Shell({ active, wide = false, children }: { active: string; wide?: boolean; children: ReactNode }) {
   const current = TAB_OF[active] ?? active;
   return (
@@ -152,7 +164,7 @@ function Shell({ active, wide = false, children }: { active: string; wide?: bool
         className="fixed inset-x-0 bottom-0 z-30 flex border-t border-line bg-surface/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:sticky md:top-0 md:h-dvh md:w-60 md:flex-col md:gap-0.5 md:border-r md:border-t-0 md:bg-transparent md:px-4 md:py-8 md:backdrop-blur-none"
       >
         <a href="#/" className="mb-8 hidden items-center gap-3 px-3 md:flex">
-          <span className="han flex h-9 w-9 items-center justify-center rounded-[10px] bg-cinnabar text-lg font-semibold text-white">学</span>
+          <LogoSeal />
           <span className="text-lg font-semibold">Mandarin</span>
         </a>
         {TABS.map((t) => {
@@ -170,7 +182,7 @@ function Shell({ active, wide = false, children }: { active: string; wide?: bool
           );
         })}
       </nav>
-      <main className={`mx-auto w-full max-w-xl px-4 pb-28 pt-[max(1.5rem,env(safe-area-inset-top))] md:max-w-2xl md:px-8 md:pb-12 md:pt-12 ${wide ? 'lg:max-w-5xl' : ''}`}>{children}</main>
+      <main className={`mx-auto w-full max-w-xl px-4 pb-28 pt-[max(1.5rem,env(safe-area-inset-top))] md:max-w-2xl md:px-8 md:pb-12 md:pt-12 ${wide ? 'lg:max-w-[1080px]' : ''}`}>{children}</main>
     </div>
   );
 }

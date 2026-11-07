@@ -188,13 +188,13 @@ function DictionarySearch({ q, setQ, pinyin }: { q: string; setQ: (q: string) =>
       </div>
 
       {noVoice && (
-        <p className="mt-2 rounded-2xl bg-sunk p-3 text-sm" role="status">
+        <p className="mt-2 card p-3 text-sm" role="status">
           No recording for this one, and your browser has no Chinese voice. On Windows, add one in Settings → Time &amp; language → Speech → Add voices → Chinese (Simplified), then restart the browser.
         </p>
       )}
       {dict === 'loading' && <p className="mt-6 text-muted">Loading the dictionary…</p>}
       {dict === null && (
-        <p className="mt-6 rounded-2xl bg-sunk p-4 text-sm">
+        <p className="mt-6 card p-4 text-sm">
           The dictionary couldn't be loaded. Check your connection. After the first load it works offline.
         </p>
       )}

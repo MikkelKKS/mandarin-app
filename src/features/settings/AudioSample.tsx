@@ -54,7 +54,7 @@ export function AudioSample() {
         same way.
       </p>
       {data === null && <p className="mt-6 text-muted">Loading…</p>}
-      {data === 'missing' && <p className="mt-6 rounded-2xl bg-sunk p-4">The sample hasn't been made yet. Check back in a few minutes.</p>}
+      {data === 'missing' && <p className="mt-6 card p-4">The sample hasn't been made yet. Check back in a few minutes.</p>}
       {data && data !== 'missing' && (
         <ul className="mt-6 flex flex-col gap-3">
           {data.items.map((it, i) => (

@@ -207,7 +207,7 @@ function ExchangePrompt({ exchangeId, voice }: { exchangeId: string; voice: Of<'
   const prompt = sentences.get(x.prompt)!;
   const { quiet, locked } = useLesson();
   return (
-    <div className="mb-6 rounded-2xl bg-sunk p-4">
+    <div className="mb-6 card p-4">
       {x.context && <p className="mb-3 text-sm text-muted">{x.context}</p>}
       {quiet ? (
         <SentenceText sentence={prompt} size="text-2xl" />

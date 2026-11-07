@@ -141,7 +141,7 @@ function TopicPage({ topic }: { topic: Topic }) {
         </>
       )}
 
-      <section className="mt-8 rounded-2xl bg-sunk p-4">
+      <section className="mt-8 card p-4">
         <p className="font-semibold">Practice</p>
         <p className="mt-0.5 text-sm text-muted">
           {topic.exercises.length} questions: put words in order, choose the missing word, spot the right sentence. {cards ? st.text + '.' : ''}
