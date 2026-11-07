@@ -179,7 +179,7 @@ function Round({ mode }: { mode: GymMode }) {
   const next = useCallback(() => setI((x) => x + 1), []);
   const [leaving, leave] = useLeave();
 
-  // Keyboard: space replays, digits pick tones (1–4, 5 or 0 neutral), Enter continues.
+  // Keyboard: space replays, digits 1–4 pick tones, Enter continues.
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
       if (!item) return;
@@ -189,9 +189,8 @@ function Round({ mode }: { mode: GymMode }) {
       } else if (e.key === 'Enter' && answer) {
         e.preventDefault();
         leave(next);
-      } else if (/^[0-5]$/.test(e.key) && !answer) {
-        const t = (e.key === '0' ? 5 : Number(e.key)) as Tone;
-        if (t === 5 && (item.tones.length === 1 || picked[0] === null)) return;
+      } else if (/^[1-4]$/.test(e.key) && !answer) {
+        const t = Number(e.key) as Tone;
         pick(picked[0] === null ? 0 : 1, t);
       }
     };
@@ -263,10 +262,8 @@ function Round({ mode }: { mode: GymMode }) {
         {item!.tones.map((_, slot) => (
           <div key={slot}>
             {item!.tones.length > 1 && <p className="mb-1.5 text-sm text-muted">{slot === 0 ? 'First syllable' : 'Second syllable'}</p>}
-            <div className={`grid gap-2 ${slot === 1 ? 'grid-cols-5' : 'grid-cols-4'}`}>
-              {([1, 2, 3, 4, 5] as Tone[])
-                .filter((t) => t !== 5 || slot === 1)
-                .map((t) => {
+            <div className="grid grid-cols-4 gap-2">
+              {([1, 2, 3, 4] as Tone[]).map((t) => {
                   const chosen = picked[slot] === t;
                   const isRight = answer && item!.tones[slot] === t;
                   const isWrongPick = answer && chosen && !isRight;
@@ -282,7 +279,7 @@ function Round({ mode }: { mode: GymMode }) {
                       }`}
                     >
                       {markSyllable({ base: item!.bases[slot], tone: t })}
-                      <span className="text-xs font-normal text-muted">{t === 5 ? '0' : t}</span>
+                      <span className="text-xs font-normal text-muted">{t}</span>
                     </button>
                   );
                 })}

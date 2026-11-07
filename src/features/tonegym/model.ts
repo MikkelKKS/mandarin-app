@@ -74,14 +74,13 @@ export function sandhiOf(hanzi: string, bases: string[], tones: Tone[]): GymItem
   return undefined;
 }
 
-/** A word becomes a Tone Gym item if it has recordings and one or two plain syllables. */
+/** A word becomes a Tone Gym item if it has recordings and one or two plain syllables in tones 1–4 (no neutral tone: Tone Perfect has none, so the Tone Gym asks only 1–4). */
 export function toItem(w: VocabRow, base: string): GymItem | null {
   const sources = sourcesFor(w, base);
   if (!sources.length) return null;
   const syl = parsePinyin(w.pinyin.replace(/\s+/g, ''), [...w.hanzi].length);
   if (!syl || syl.some((s) => s.erhua) || syl.length !== [...w.hanzi].length) return null;
-  if (syl.length === 1 && syl[0].tone === 5) return null;
-  if (syl.length === 2 && syl[0].tone === 5) return null;
+  if (syl.some((s) => s.tone === 5)) return null;
   if (syl.length > 2) return null;
   const bases = syl.map((s) => s.base);
   const tones = syl.map((s) => s.tone);

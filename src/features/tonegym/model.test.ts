@@ -26,11 +26,11 @@ describe('Tone Gym items', () => {
     expect(it).toMatchObject({ bases: ['ma'], tones: [1], pattern: '1' });
     expect(it.sources).toEqual([{ url: '/audio/az/ma1.mp3', speaker: 'Xiaoxiao' }]);
     expect(toItem(w('lv', '绿', 'lǜ'), '/')!.bases).toEqual(['lv']);
-    expect(toItem(w('pengyou', '朋友', 'péng you'), '/')!.pattern).toBe('2-5');
   });
-  it('skips words without recordings, neutral-first words, erhua and long words', () => {
+  it('skips words without recordings, neutral tones, erhua and long words', () => {
     expect(toItem(w('x', '妈', 'mā', { azure: false }), '/')).toBeNull();
     expect(toItem(w('x', '吗', 'ma'), '/')).toBeNull();
+    expect(toItem(w('pengyou', '朋友', 'péng you'), '/')).toBeNull();
     expect(toItem(w('x', '哪儿', 'nǎr'), '/')).toBeNull();
     expect(toItem(w('x', '图书馆', 'tú shū guǎn'), '/')).toBeNull();
   });
