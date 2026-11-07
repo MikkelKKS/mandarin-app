@@ -257,7 +257,7 @@ Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-
 ```
 State: running
 Round: 1
-Phase: direct
+Phase: build
 Max rounds: 3
 Best lowest: 7
 Rounds without improvement: 0
@@ -279,3 +279,10 @@ Scores (blind, shots blind-51653f6c1):
 - Overall 7.5 (1, 6 partial; 4, 5): identity strong on Home/Tone Gym, generic in session/Stats/Library; placement card still on a lived-in Home; empty lower thirds; first day shows no game.
 
 Weakest: PC width and left edge · exercise first read · Stats order · tone cue without colour · first-day screens · right-answer beat · reduced-motion snaps.
+
+Direction (design-director, opus, revised): same concept; tone colour never alone at answer size (contours), T1 crimson / T2 amber / neutral passing on jade-soft, violet stamps and a jade logo seal, two card looks only, one PC frame (same left edge, 1080 max), exercise screen with the pinyin as the only big thing and a PC "This round" column, right-answer moment, reduced motion = instant panel + content fade, Home/Stats story incl. day one.
+
+Plan (round 1; director's moves 1–2, plus a harness fix):
+- [ ] Harness: the wrong-answer shot is a genuinely wrong pick (a forced "wrong" on a right pick showed no cross).
+- [ ] Colours, type and one PC frame: new T1/T2/T5, violet stamps, jade logo seal with contours, one type scale (no duplicate/off-scale/one-offs), sunk boxes retired, one PC frame for every page, Tone Gym Workout plate with the weakest pair's contours, Settings groups with short lines, dark plate button. Colour 1/2/3/5, typography 1/4, layout 1/4/6; all screens.
+- [ ] Exercise screen and PC "This round" column: small prompt, one quiet voice/volume row, pinyin the only big thing, tone glyphs in the answer sheet, three-level wrong sheet, PC side column with result dots, combo, XP and keys. Typography 2/3, layout 4, colour 3; session and Tone Gym screens.
