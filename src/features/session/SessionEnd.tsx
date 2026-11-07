@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { TonePinyin } from '../../components/Hanzi';
 import { db } from '../../db/db';
 import { loadGameStats, unlockAchievements, type GameStats } from '../../lib/gameStats';
-import type { Achievement } from '../../lib/gamify';
+import { levelFor, type Achievement } from '../../lib/gamify';
 import { go } from '../../lib/router';
 import { useSettings } from '../../lib/settings';
 import { sfx } from '../../lib/sfx';
@@ -39,6 +39,8 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
   const weak = weakestPair(patternStats(st.tones.map((t) => ({ tones: t }))));
   const minutes = Math.max(1, Math.round((st.updatedAt - st.startedAt) / 60000));
   const lvl = game?.level;
+  // This session crossed into a new level.
+  const leveledUp = !!game && levelFor(Math.max(0, game.xp - st.xp)).level < game.level.level;
   const verdict = verdictText(accuracy / 100);
   // The XP counts up after the seal lands; the level bar fills from where this session started.
   const xpShown = useCountUp(st.xp, 700, 350);
@@ -65,10 +67,11 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
       </p>
       {game && (
         goalNow ? (
-          <p className="mt-3 text-center">
-            <span className="anim-pop inline-flex items-center gap-1.5 rounded-full bg-jade px-3 py-1 text-sm font-semibold text-jade-ink shadow-sm [animation-delay:900ms]">
-              Daily goal reached · {game.streak.current}-day streak
+          <p className="mt-3 flex items-center justify-center gap-3">
+            <span className="anim-medal han grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-imperial text-sm font-bold text-imperial [animation-delay:900ms]" aria-hidden>
+              达标
             </span>
+            <span className="anim-up text-base font-semibold [animation-delay:1000ms]">Daily goal reached: {game.streak.current}-day streak</span>
           </p>
         ) : (
         <p className="anim-up mt-2 text-center text-base text-muted [animation-delay:360ms]">
@@ -81,6 +84,12 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
         <Stat label="Best combo" value={String(st.bestCombo)} delay={480} />
         <Stat label="Minutes" value={String(minutes)} delay={540} />
       </div>
+      {lvl && leveledUp && (
+        <div className="anim-band mt-6 rounded-card bg-imperial px-5 py-4 text-center text-surface shadow-md [animation-delay:1100ms]" role="status">
+          <p className="text-sm font-semibold opacity-90">Level up</p>
+          <p className="num text-numeral">Level {lvl.level}</p>
+        </div>
+      )}
       {lvl && (
         <div className="anim-up mt-6 [animation-delay:600ms]">
           <div className="flex justify-between text-sm">
@@ -93,16 +102,20 @@ export function SessionEnd({ st, onAgain }: { st: SessionState; onAgain: () => v
         </div>
       )}
       {fresh.length > 0 && (
-        <section className="card anim-up mt-6 border-imperial/60 bg-imperial-soft p-4 shadow-md [animation-delay:700ms]">
-          <h2 className="font-semibold">New achievement{fresh.length > 1 ? 's' : ''}</h2>
-          <ul className="mt-2 flex flex-col gap-2">
+        <section className="card anim-up mt-6 bg-imperial-soft p-4 shadow-md [animation-delay:700ms]">
+          <h2 className="font-semibold">New badge{fresh.length > 1 ? 's' : ''}</h2>
+          <ul className="mt-3 grid grid-cols-3 gap-x-3 gap-y-4">
             {fresh.map((a, i) => (
-              <li key={a.id} className="anim-pop flex items-center gap-3" style={{ animationDelay: `${850 + i * 120}ms` }}>
-                <span className="han flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-imperial text-sm font-semibold text-surface shadow-[0_0_0_3px_var(--surface),0_0_0_4.5px_var(--imperial)]">{a.hanzi}</span>
-                <span>
-                  <span className="block font-semibold">{a.title}</span>
-                  <span className="block text-sm text-muted">{a.detail}</span>
+              <li key={a.id} className="flex flex-col items-center text-center" title={a.detail}>
+                <span
+                  className="anim-medal han flex h-14 w-14 items-center justify-center rounded-full bg-imperial text-sm font-semibold text-surface shadow-[0_0_0_3px_var(--imperial-soft),0_0_0_4.5px_var(--imperial)]"
+                  style={{ animationDelay: `${850 + i * 120}ms` }}
+                  aria-hidden
+                >
+                  {a.hanzi}
                 </span>
+                <span className="mt-2 text-sm font-semibold leading-tight">{a.title}</span>
+                <span className="mt-0.5 text-xs leading-tight text-muted">{a.detail}</span>
               </li>
             ))}
           </ul>

@@ -397,7 +397,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             {st.plan.blocks.length > 1 && <span className="text-xs"> · part {st.block + 1} of {st.plan.blocks.length}</span>}
           </span>
           {st.combo >= 2 && (
-            <span key={st.combo} className="anim-pop rounded-full bg-imperial-soft px-2.5 py-0.5 font-semibold tabular-nums text-imperial" aria-label={`Combo ${st.combo}`}>
+            <span key={st.combo} className={`${[3, 5, 10].includes(st.combo) || st.combo % 10 === 0 ? 'anim-combo' : 'anim-pop'} rounded-full bg-imperial-soft px-2.5 py-0.5 font-semibold tabular-nums text-imperial`} aria-label={`Combo ${st.combo}`}>
               {st.combo} in a row · ×{comboMultiplier(st.combo).toFixed(1)}
             </span>
           )}

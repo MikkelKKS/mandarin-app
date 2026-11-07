@@ -338,7 +338,24 @@ h1, h2, h3 {
   from { transform: scaleY(0); }
 }
 @keyframes nudge {
-  45% { transform: scale(1.05); }
+  45% { transform: scale(1.05); box-shadow: 0 0 0 6px color-mix(in srgb, var(--jade) 28%, transparent); }
+}
+/* A combo milestone (3, 5, 10 in a row): the chip springs bigger with a violet glow. */
+@keyframes combo-pulse {
+  0% { opacity: 0; transform: scale(0.8); }
+  45% { opacity: 1; transform: scale(1.22); box-shadow: 0 0 0 6px color-mix(in srgb, var(--imperial) 25%, transparent); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
+}
+/* Level up on the session end: a violet band drops in. */
+@keyframes band {
+  0% { opacity: 0; transform: translateY(-14px) scaleY(0.7); }
+  100% { opacity: 1; transform: none; }
+}
+/* An achievement medallion or the goal seal is pressed on like a chop. */
+@keyframes medal-in {
+  0% { opacity: 0; transform: scale(1.45) rotate(-14deg); }
+  70% { opacity: 1; transform: scale(0.95) rotate(2deg); }
+  100% { opacity: 1; transform: none; }
 }
 /* After a wrong pick, the right option lights up a beat later, so the eye goes from your answer to the right one. */
 @keyframes reveal-right {
@@ -403,6 +420,9 @@ h1, h2, h3 {
 .anim-nudge { animation: nudge 0.24s var(--ease-spring); }
 [role='listbox']:has([data-state='wrong']) [data-state='right'] { animation: reveal-right 0.25s var(--ease-out) 0.06s both; }
 .anim-draw path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: draw 0.3s var(--ease-out) 0.1s forwards; }
+.anim-combo { animation: combo-pulse 0.5s var(--ease-spring) both; }
+.anim-band { animation: band 0.45s var(--ease-spring) both; }
+.anim-medal { animation: medal-in 0.5s var(--ease-out) both; }
 .anim-xp { animation: xp 0.9s var(--ease-out) both; }
 .anim-tile { animation: tile-in 0.18s var(--ease-out) backwards; }
 .anim-stamp { animation: stamp 0.5s var(--ease-out) 0.15s both; }
@@ -420,6 +440,12 @@ h1, h2, h3 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  /* No movement, but things that appear still fade in (150 ms) instead of snapping. */
+  .anim-pop, .anim-rise, .anim-dict, .anim-sheet, .anim-fade, .anim-page, .anim-slide, .anim-up, .anim-tile, .anim-combo, .anim-band, .anim-medal, .sheet-stagger > * {
+    animation-name: fade !important;
+    animation-duration: 150ms !important;
+    animation-timing-function: ease-out !important;
   }
 }
 
