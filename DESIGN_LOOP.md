@@ -193,7 +193,7 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 ```
 State: running
 Round: 1
-Phase: judge
+Phase: qa
 Max rounds: 3
 Best lowest: 6.5
 Rounds without improvement: 0
@@ -225,3 +225,4 @@ Plan (round 1; director's moves 1–3):
 - [x] (37e25f20a) Token swap: imperial reward colour replaces gold, wrong answers without pink wash (outline + cross, sheet with cinnabar top rule), dark surface/edge/hero plate, one type scale with pinyin aliases, sentence-case labels, role radii, condensed numerals. Colour, typography; all screens.
 - [x] (fd3618d7a) Tone contours and a still question: contour glyph on every tone option (sessions, Tone Gym, matrix headers), no page scroll when the sheet opens (sheet shows the answer), "I don't know" as a full-width quiet button. Colour 3, motion 4, layout 3; session, Tone Gym, stats.
 - [x] (1e5d5a2d6) Home redesign: Today plate (streak numeral, ring, one-line level) with the session buttons; quiet rows; PC two-thirds plate + "This week" column; welcome plate for a new account. Layout, overall, typography; home, home-new.
+- Judge (pairs-1, 13 screens × 2 orders): better on all 13 (home phone light: better + one unopened pair); answer-wrong motion better. Kept: all 3 moves. Note from judge: six stacked achievement medals on the session end nearly touch.
