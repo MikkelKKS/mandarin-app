@@ -193,7 +193,7 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 ```
 State: running
 Round: 2
-Phase: review
+Phase: build
 Max rounds: 3
 Best lowest: 6.5
 Rounds without improvement: 0
@@ -204,6 +204,7 @@ Notes: max 3 rounds (fresh loop with the new team)
 | Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
 |-------|--------|------------|--------|--------|---------|--------|------|
 | 1 | 7.5 | 7 | 6.5 | 6.5 | 7 | 6.5 | start: fresh loop on main, new team |
+| 2 | 7.5 | 7.5 | 6.5 | 7 | 7 | 6.5 | judge: 3 kept, 0 reverted |
 
 ### Round 1
 
@@ -227,3 +228,19 @@ Plan (round 1; director's moves 1–3):
 - [x] (1e5d5a2d6) Home redesign: Today plate (streak numeral, ring, one-line level) with the session buttons; quiet rows; PC two-thirds plate + "This week" column; welcome plate for a new account. Layout, overall, typography; home, home-new.
 - Judge (pairs-1, 13 screens × 2 orders): better on all 13 (home phone light: better + one unopened pair); answer-wrong motion better. Kept: all 3 moves. Note from judge: six stacked achievement medals on the session end nearly touch.
 - QA: qa:screens 28/28, the three Home e2e specs 14/14 after one test fix (session.spec waited for the old Home text). Nothing else found.
+
+### Round 2
+
+Scores (blind, shots blind-349a8c53b):
+- Colour 7.5 (fails 3, 4, 5 small; 6 partial): no second tone cue in running pinyin; cinnabar ≈ T1, jade ≈ T3; dark elevation 1.27:1; plate has two first reads.
+- Typography 7.5 (fails 1, 3, 4 small): legacy lg/xl steps and a 2.75rem PC hero; Tone Gym sheet five levels; 12px secondary text on Stats/Settings.
+- Layout 7 (fails 1, 3, 4, 5, 6): PC session edges; Tone Gym question top-heavy (bottom half empty); PC Home plate stretched with empty space; Stats 15,000 px, Settings flat; icon tiles and card styles differ.
+- Motion 6.5 (fails 2, 4, 5; 6 half; 3 small): right answer has no beat; answer-right frames show the picked option with a red cross under "Right" (recording artefact: the test forces the verdict); no goal/level/streak beat at session end; reduced motion snaps.
+- Overall 7 (fails 1, 4, 5, 6): Stats/Tone Gym in a plainer style than Home; rewards not celebrated; Stats wall, matrix far down; stats-new a wall of empty cards; "First session" badge on a 23-day streak (profile artefact).
+
+Weakest points: Stats wall · PC Home stretched · exercise screens top-heavy · dark elevation · Settings flat · right-answer beat · session-end payoff · reduced-motion snaps.
+
+Plan (round 2; the last build round, since round 3 only scores with max 3 rounds):
+- [x] Screenshot harness: right-answer shots on a typed question (a forced "right" can't move a multiple-choice pick), and badges unlocked before the session (not a design move).
+- [ ] Stats restructure: summary hero (condensed numbers) with the tone matrix right under it, sticky tabs (Overview, Words, Tones, Habits, Badges) showing one panel at a time, HSK levels not started folded into one line, one line for a new account. Layout 5, overall 1/5/6, typography 4; stats, stats-new.
+- [ ] Reward beats and gentle reduced motion: right pick pulses with a jade glow, combo chip pulses at 3/5/10, session end stamps 达标 when the goal was reached and shows a level-up band, achievements as a medallion grid that stamps in one by one; reduced motion keeps 150 ms fades. Motion 2/5/6, overall 4; session-right, session-end, answer-right.

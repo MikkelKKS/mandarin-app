@@ -98,6 +98,9 @@ async function seedProfile(page: Page) {
     };
   })`);
   await page.reload();
+  // Let Home unlock the achievements this history has already earned, so the session end only shows new ones.
+  await expect(page.getByText(/day streak/)).toBeVisible({ timeout: 20000 });
+  await page.waitForTimeout(1500);
 }
 
 async function playSession(page: Page, dir: string) {
@@ -105,6 +108,7 @@ async function playSession(page: Page, dir: string) {
   await expect(page.getByRole('progressbar', { name: 'Session progress' })).toBeVisible({ timeout: 20000 });
   const todo: Verdict[] = ['wrong', 'correct'];
   let asked = false;
+  let skips = 0;
   for (let i = 0; i < 250; i++) {
     if (await page.getByText(/session done/).isVisible().catch(() => false)) {
       await page.waitForTimeout(2500); // the end screen's XP count-up, level bar and achievements play in over ~2 s
@@ -123,6 +127,14 @@ async function playSession(page: Page, dir: string) {
         asked = true;
       }
       const v = todo[0];
+      // A forced "right" can't move a multiple-choice pick onto the right option (the pick would show
+      // crossed out under "Right"), so the right-answer shot waits for a typed-pinyin question.
+      if (v === 'correct' && skips < 25 && !(await page.getByLabel('Your answer in pinyin').isVisible().catch(() => false))) {
+        skips++;
+        await setVerdict(page, undefined);
+        await answer(page);
+        continue;
+      }
       await setVerdict(page, v);
       await answer(page);
       const status = page.getByRole('status').filter({ hasText: v === 'wrong' ? 'Not quite' : /^Right/ });
