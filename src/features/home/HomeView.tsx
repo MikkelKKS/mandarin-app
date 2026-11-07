@@ -158,7 +158,7 @@ export function HomeView() {
               )}
 
               {resumable ? (
-                <button onClick={() => go('session/resume')} className="press mt-5 flex w-full items-center gap-4 rounded-control bg-plate-ink p-4 text-left text-plate dark:bg-bg/40 dark:text-ink dark:ring-1 dark:ring-jade">
+                <button onClick={() => go('session/resume')} className="press mt-5 flex w-full items-center gap-4 rounded-control bg-plate-ink p-4 text-left text-plate">
                   <span className="min-w-0 flex-1">
                     <span className="block text-lg font-semibold">Resume your {resumable.plan.mode} session</span>
                     <span className="block text-sm opacity-80">
@@ -168,7 +168,7 @@ export function HomeView() {
                   <ChevronRight className="h-6 w-6" />
                 </button>
               ) : (
-                <button onClick={() => go(`session/${main.mode}`)} className="press group mt-5 flex w-full items-center gap-4 rounded-control bg-plate-ink p-4 text-left text-plate dark:bg-bg/40 dark:text-ink dark:ring-1 dark:ring-jade md:p-5">
+                <button onClick={() => go(`session/${main.mode}`)} className="press group mt-5 flex w-full items-center gap-4 rounded-control bg-plate-ink p-4 text-left text-plate md:p-5">
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline justify-between gap-3">
                       <span className="text-title font-semibold">{main.title}</span>
