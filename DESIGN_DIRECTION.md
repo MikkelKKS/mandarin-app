@@ -130,7 +130,7 @@ Shell left edge, 720px content. Settings: four groups (Learning, Sound & display
 
 ## 6. Avoid
 - Red, orange, green or blue for anything but tones; tone colour without its contour at answer size.
-- Cinnabar for logos, stamps or decoration; violet for anything that isn't earned.
+- Cinnabar for stamps or decoration (the 学 logo is the one exception: Mikkel kept it); violet for anything that isn't earned.
 - A third card look (sunk grey boxes) or a stack of equal white cards as a whole screen.
 - Prompts in bold heading weight competing with the pinyin; controls between the audio and the syllable.
 - PC pages with different left edges, a column floating centred in 1440px, or a session using half the width with nothing beside it.
