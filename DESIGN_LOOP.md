@@ -256,8 +256,8 @@ Mikkel saw the before/after and kept all 5 changes; merged into main on 2026-11-
 
 ```
 State: running
-Round: 2
-Phase: qa
+Round: 3
+Phase: review
 Max rounds: 3
 Best lowest: 7
 Rounds without improvement: 0
@@ -306,3 +306,4 @@ Plan (round 2; the last build round):
 - [x] (befbcf853) Right-answer moment and reduced motion: sheet contents slide without fading (no half-faded text over the options), a jade ring pulse on the right pick; reduced motion keeps an instant sheet and fades only its contents (a different execution from the fade that was judged worse). Motion 2/4/6; session-right, answer motion.
 - [x] (5b0d0162b) Home tells the story: "This week" on phones too, placement row hidden once 50 words are started, the ring shows today's XP once the goal is passed, a first-day preview (streak, level, empty matrix) under the welcome plate. Layout 4, overall 4/6; home, home-new.
 - Judge (pairs-2, 10 screens × 2 orders): better on 8 (Home ×3, home-new ×2, session question phone light and dark, reduced-motion answer-wrong), same on 2 (PC session question, answer-right motion), worse on none. Kept all three moves. Rounds without improvement: 0. Judge note: "XP today" sits close to the ring stroke.
+- QA: qa:screens 28/28, session/placement/dont-know e2e 22/22; one fix: the This round card sits above the answer sheet's backing on wide PC screens.
