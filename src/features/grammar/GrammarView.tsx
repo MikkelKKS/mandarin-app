@@ -251,7 +251,7 @@ function PracticeFeedback({ result, onNext, last }: { result: ItemResult; onNext
               )}
             </div>
             {result.audio && (
-              <button onClick={result.audio} aria-label="Play again" className="rounded-full bg-surface/70 p-3 active:scale-90">
+              <button onClick={result.audio} aria-label="Play again" className="rounded-full border border-edge bg-surface p-3 active:scale-90">
                 <Speaker className="h-6 w-6" />
               </button>
             )}

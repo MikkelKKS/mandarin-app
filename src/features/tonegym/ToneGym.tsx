@@ -264,13 +264,15 @@ function Round({ mode }: { mode: GymMode }) {
         >
           <Speaker className="h-10 w-10" />
         </button>
-        {item!.sources.length > 1 && (
-          <button onClick={() => item && void playSource(item, (speaker + 1) % item.sources.length)} className="mt-3 text-sm font-medium text-jade">
-            Another voice ({item!.sources.length} voices)
-          </button>
-        )}
-        <VolumeSlider className="mt-3" />
-        <p className="mt-6 text-3xl font-semibold tracking-wide" aria-label="Syllables">
+        <div className="mt-2 flex items-center gap-2">
+          {item!.sources.length > 1 && (
+            <button onClick={() => item && void playSource(item, (speaker + 1) % item.sources.length)} className="px-2 py-2 text-sm font-medium text-jade">
+              Another voice ({item!.sources.length} voices)
+            </button>
+          )}
+          <VolumeSlider compact />
+        </div>
+        <p className="mt-4 text-hero font-semibold tracking-wide" aria-label="Syllables">
           {item!.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}
         </p>
       </div>
@@ -346,11 +348,11 @@ function Feedback({ answer, pool, voice, onNext, leaving = false, onReplay }: { 
           </p>
         )}
         <div className="mt-3 flex flex-wrap gap-2">
-          <button onClick={onReplay} className="flex h-11 items-center gap-2 rounded-xl bg-surface/70 px-3 font-medium">
+          <button onClick={onReplay} className="flex h-11 items-center gap-2 rounded-xl border border-edge bg-surface px-3 font-medium">
             <Speaker className="h-5 w-5" /> Hear it again
           </button>
           {yours && (
-            <button onClick={() => void playUrl((yours.sources.find((x) => x.speaker === voice) ?? yours.sources[0]).url)} className="flex h-11 items-center gap-2 rounded-xl bg-surface/70 px-3 font-medium">
+            <button onClick={() => void playUrl((yours.sources.find((x) => x.speaker === voice) ?? yours.sources[0]).url)} className="flex h-11 items-center gap-2 rounded-xl border border-edge bg-surface px-3 font-medium">
               <Speaker className="h-5 w-5" /> What {patternLabel(given.join('-'))} sounds like ({yours.pinyin})
             </button>
           )}

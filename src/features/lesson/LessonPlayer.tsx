@@ -380,7 +380,7 @@ function Feedback({
               {a.text && <p>{a.text}</p>}
             </div>
             {audioId && (
-              <button onClick={() => play(audioId, { voice })} aria-label="Play again" className="rounded-full bg-surface/70 p-3 transition active:scale-90">
+              <button onClick={() => play(audioId, { voice })} aria-label="Play again" className="rounded-full border border-edge bg-surface p-3 transition active:scale-90">
                 <Speaker className="h-6 w-6" />
               </button>
             )}

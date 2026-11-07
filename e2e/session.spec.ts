@@ -50,7 +50,7 @@ test('a quick session from the home screen earns XP and counts towards the goal'
   let done = false;
   let toneQuestions = 0;
   for (let i = 0; i < 200 && !done; i++) {
-    if (await page.getByText(/^Tone Gym: which tone/).isVisible()) toneQuestions++;
+    if (await page.getByText(/^Which tones?\?/).isVisible()) toneQuestions++;
     done = await step(page);
   }
   expect(done).toBe(true);

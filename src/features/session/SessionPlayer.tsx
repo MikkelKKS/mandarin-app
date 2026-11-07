@@ -381,14 +381,14 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
               );
             })}
           </div>
-          <span className="min-w-16 text-right text-sm font-semibold tabular-nums text-imperial" aria-label={`${st.xp} XP this session`}>
+          <span className="relative min-w-16 text-right text-sm font-semibold tabular-nums text-imperial" aria-label={`${st.xp} XP this session`}>
             {st.xp} XP
+            {gained !== null && !result && (
+              <span key={`${st.block}-${st.item}-${gained}`} className="anim-xp pointer-events-none absolute right-full top-[-0.2rem] z-30 mr-2 whitespace-nowrap rounded-full bg-imperial px-3 py-1 text-sm font-semibold text-surface shadow" aria-hidden>
+                +{gained} XP
+              </span>
+            )}
           </span>
-          {gained !== null && !result && (
-            <span key={`${st.block}-${st.item}-${gained}`} className="anim-xp pointer-events-none absolute right-9 top-full z-30 mt-1 rounded-full bg-imperial px-3 py-1 text-sm font-semibold text-surface shadow" aria-hidden>
-              +{gained} XP
-            </span>
-          )}
           <DictionaryButton className="-mr-2" />
         </header>
         <div className="mt-2 flex items-center justify-between text-sm">
@@ -397,7 +397,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             {st.plan.blocks.length > 1 && <span className="text-xs"> · part {st.block + 1} of {st.plan.blocks.length}</span>}
           </span>
           {st.combo >= 2 && (
-            <span key={st.combo} className={`${[3, 5, 10].includes(st.combo) || st.combo % 10 === 0 ? 'anim-combo' : 'anim-pop'} rounded-full bg-imperial-soft px-2.5 py-0.5 font-semibold tabular-nums text-imperial`} aria-label={`Combo ${st.combo}`}>
+            <span key={st.combo} className={`${[3, 5, 10].includes(st.combo) || st.combo % 10 === 0 ? 'anim-combo' : 'anim-pop'} min-[1400px]:hidden rounded-full bg-imperial-soft px-2.5 py-0.5 font-semibold tabular-nums text-imperial`} aria-label={`Combo ${st.combo}`}>
               {st.combo} in a row · ×{comboMultiplier(st.combo).toFixed(1)}
             </span>
           )}
@@ -413,6 +413,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           />
           {browserVoice && <p className="mt-3 text-center text-xs text-muted">No recording yet, so this was your browser's voice.</p>}
         </div>
+        <ThisRound st={st} />
       </div>
       {result && (
         <Feedback
@@ -428,6 +429,50 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
         />
       )}
     </LessonCtx.Provider>
+  );
+}
+
+/** Wide screens: the round at a glance beside the exercise (XP, right answers, combo, blocks, keys). */
+function ThisRound({ st }: { st: SessionState }) {
+  const steps = [3, 5, 10, 20];
+  const next = steps.find((n) => n > st.combo) ?? st.combo + 10;
+  const prev = [...steps].reverse().find((n) => n <= st.combo) ?? 0;
+  return (
+    <aside aria-label="This round" className="card fixed top-24 hidden w-60 p-5 min-[1400px]:block" style={{ left: 'calc(50% + 23rem)' }}>
+      <p className="text-sm font-semibold text-muted">This round</p>
+      <p className="mt-2 flex items-baseline gap-2">
+        <span className="num text-numeral leading-none text-imperial">{st.xp}</span>
+        <span className="text-sm text-muted">XP</span>
+      </p>
+      <div className="mt-4 flex items-baseline justify-between text-sm">
+        <span className="text-muted">Right</span>
+        <span className="num text-2xl">
+          {st.right}/{st.answered}
+        </span>
+      </div>
+      <div className="mt-3">
+        <div className="flex items-baseline justify-between text-sm">
+          <span className="text-muted">Combo</span>
+          <span key={st.combo} className={`num text-2xl text-imperial ${st.combo >= 2 ? 'anim-pop' : ''}`}>
+            {st.combo} <span className="text-base">×{comboMultiplier(st.combo).toFixed(1)}</span>
+          </span>
+        </div>
+        <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-sunk" aria-hidden>
+          <div className="h-full rounded-full bg-imperial transition-[width] duration-300" style={{ width: `${((st.combo - prev) / Math.max(1, next - prev)) * 100}%` }} />
+        </div>
+        <p className="mt-1 text-xs text-muted">{next - st.combo} more for {next} in a row</p>
+      </div>
+      {st.plan.blocks.length > 1 && (
+        <ol className="mt-4 flex flex-col gap-1 border-t border-line pt-3 text-sm">
+          {st.plan.blocks.map((b, k) => (
+            <li key={k} className={k === st.block ? 'font-semibold text-ink' : k < st.block ? 'text-muted line-through decoration-line' : 'text-muted'}>
+              {BLOCK_TITLE[b.id]}
+            </li>
+          ))}
+        </ol>
+      )}
+      <p className="mt-4 border-t border-line pt-3 text-xs leading-relaxed text-muted">Space replays · 1–4 picks · Enter continues</p>
+    </aside>
   );
 }
 
@@ -509,7 +554,7 @@ function Feedback({
         {o.note && <p className="mt-1 text-sm">{o.note}</p>}
         {o.syllables && o.verdict !== 'correct' && <SyllableBreakdown syllables={o.syllables} extra={o.extra} />}
         {o.twin && (
-          <div className="mt-2 flex items-center gap-3 rounded-2xl bg-surface/60 px-3 py-2">
+          <div className="mt-2 flex items-center gap-3 rounded-2xl border border-line bg-surface px-3 py-2">
             <p className="min-w-0 flex-1 text-sm">
               Those tones make another word: <TonePinyin pinyin={o.twin.pinyin} className="font-semibold" />
               {showHanzi && (
@@ -519,7 +564,7 @@ function Feedback({
               )}
               , “{o.twin.english}”.
             </p>
-            <button onClick={() => void play(o.twin!.id)} aria-label={`Play ${o.twin.pinyin}`} className="shrink-0 rounded-full bg-surface/70 p-2 active:scale-90">
+            <button onClick={() => void play(o.twin!.id)} aria-label={`Play ${o.twin.pinyin}`} className="shrink-0 rounded-full border border-edge bg-surface p-2 active:scale-90">
               <Speaker className="h-5 w-5" />
             </button>
           </div>
@@ -534,7 +579,7 @@ function Feedback({
           <div className="flex items-start gap-3">
             <div className="min-w-0 flex-1">{result.panel}</div>
             {result.audio && (
-              <button onClick={result.audio} aria-label="Play again" className="mt-3 rounded-full bg-surface/70 p-3 active:scale-90">
+              <button onClick={result.audio} aria-label="Play again" className="mt-3 rounded-full border border-edge bg-surface p-3 active:scale-90">
                 <Speaker className="h-6 w-6" />
               </button>
             )}
@@ -553,7 +598,7 @@ function Feedback({
               {a.english && <p className="mt-0.5 text-lg leading-snug">{a.english}</p>}
             </div>
             {audioId && (
-              <button onClick={replay} aria-label="Play again" className="rounded-full bg-surface/70 p-3 active:scale-90">
+              <button onClick={replay} aria-label="Play again" className="rounded-full border border-edge bg-surface p-3 active:scale-90">
                 <Speaker className="h-6 w-6" />
               </button>
             )}
