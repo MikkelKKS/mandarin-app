@@ -193,7 +193,7 @@ Mikkel asked for a completely fresh loop with the new setup (2026-11-07): loop 2
 ```
 State: running
 Round: 1
-Phase: direct
+Phase: build
 Max rounds: 3
 Best lowest: 6.5
 Rounds without improvement: 0
@@ -218,3 +218,10 @@ Note: reviewers opened fewer screens than asked (experience: 5 stills, a few fra
 Weakest points:
 - Visual: PC dead space · Stats/Settings walls · gold = T2, T1 ≈ wrong · crowded Home card/sheet · tone colour-only cues in sessions.
 - Experience: Stats wall without payoff · sheet jump · reduced motion snaps · quiet rewards · Home flat stack, XP text clipped.
+
+Direction (design-director, opus): "four colours mean sound": tone hues only for tones; jade = go/right, imperial violet = reward (gold retired), cinnabar = a miss as a mark only; tone-contour glyph as the signature; condensed numerals; one type scale; Home Today plate (+ PC "This week" column); Stats hero + matrix + tabs; reward beats; PC "This round" rail. See DESIGN_DIRECTION.md.
+
+Plan (round 1; director's moves 1–3):
+- [ ] Token swap: imperial reward colour replaces gold, wrong answers without pink wash (outline + cross, sheet with cinnabar top rule), dark surface/edge/hero plate, one type scale with pinyin aliases, sentence-case labels, role radii, condensed numerals. Colour, typography; all screens.
+- [ ] Tone contours and a still question: contour glyph on every tone option (sessions, Tone Gym, matrix headers), no page scroll when the sheet opens (sheet shows the answer), "I don't know" as a full-width quiet button. Colour 3, motion 4, layout 3; session, Tone Gym, stats.
+- [ ] Home redesign: Today plate (streak numeral, ring, one-line level) with the session buttons; quiet rows; PC two-thirds plate + "This week" column; welcome plate for a new account. Layout, overall, typography; home, home-new.
