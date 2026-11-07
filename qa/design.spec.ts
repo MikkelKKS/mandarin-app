@@ -86,13 +86,14 @@ async function seedProfile(page: Page) {
     const req = indexedDB.open('mandarin');
     req.onerror = () => fail(req.error);
     req.onsuccess = () => {
-      const tx = req.result.transaction(['reviewItems', 'reviewLogs'], 'readwrite');
+      const tx = req.result.transaction(['reviewItems', 'reviewLogs', 'gameScores'], 'readwrite');
       const items = tx.objectStore('reviewItems');
       const logs = tx.objectStore('reviewLogs');
       items.clear();
       logs.clear();
       for (const r of d.items) items.put(r);
       for (const r of d.logs) logs.put(r);
+      tx.objectStore('gameScores').put(d.sessions);
       tx.oncomplete = () => { req.result.close(); done(); };
       tx.onerror = () => fail(tx.error);
     };
@@ -128,11 +129,17 @@ async function playSession(page: Page, dir: string) {
       }
       const v = todo[0];
       // A forced "right" can't move a multiple-choice pick onto the right option (the pick would show
-      // crossed out under "Right"), so the right-answer shot waits for a typed-pinyin question.
-      if (v === 'correct' && skips < 25 && !(await page.getByLabel('Your answer in pinyin').isVisible().catch(() => false))) {
+      // crossed out under "Right"), so the right-answer shot is a genuinely right answer: answer
+      // normally until one comes out right (typed questions are forced, as typing can't be crossed out).
+      if (v === 'correct' && skips < 40 && !(await page.getByLabel('Your answer in pinyin').isVisible().catch(() => false))) {
         skips++;
         await setVerdict(page, undefined);
         await answer(page);
+        const right = page.getByRole('status').filter({ hasText: /^Right/ });
+        if (await right.first().waitFor({ timeout: 2500 }).then(() => true, () => false)) {
+          await shot(page, dir, 'session-right', false);
+          todo.shift();
+        }
         continue;
       }
       await setVerdict(page, v);
