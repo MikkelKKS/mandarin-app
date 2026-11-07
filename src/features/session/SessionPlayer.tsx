@@ -15,7 +15,7 @@ import { plecoLink } from '../dictionary/dict';
 import { Speaker } from '../../components/icons';
 import { SyllableBreakdown } from '../../components/SyllableBreakdown';
 import { SandhiNote } from '../../components/SandhiNote';
-import { sheetPadding, useSheetSpace } from '../../components/sheetSpace';
+import { useSheetSpace } from '../../components/sheetSpace';
 import { useLeave } from '../../components/sheetLeave';
 import { db } from '../../db/db';
 import { comboMultiplier, xpFor, XP } from '../../lib/gamify';
@@ -366,7 +366,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
   const doneCount = st.plan.blocks.slice(0, st.block).reduce((n, b) => n + b.items.length, 0) + st.item;
   return (
     <LessonCtx.Provider value={api}>
-      <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8" style={sheetPadding()}>
+      <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8" style={{ paddingBottom: '18rem' }}>
         <header className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-bg/95 px-4 py-1 backdrop-blur">
           <button onClick={() => go(home)} aria-label="Leave the session (it's saved)" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted hover:bg-sunk">
             ✕
@@ -415,6 +415,8 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
         </div>
         <ThisRound st={st} />
       </div>
+      {/* Extra room for a tall answer sheet, outside the centred column: the question never re-centres (jumps) when the sheet opens. */}
+      <div aria-hidden style={{ height: 'max(0px, calc(var(--sheet-h, 0px) - 16.5rem))' }} />
       {result && (
         <Feedback
           result={result}
