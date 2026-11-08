@@ -327,7 +327,7 @@ Mikkel approved all changes but kept the 学 logo (restored before merging); mer
 ## Review 2026-11-07 (loop 5)
 
 ```
-State: stopped (max)
+State: merged
 Round: 1
 Phase: final
 Max rounds: 1
@@ -372,3 +372,5 @@ Scores (blind, shots blind-23fe112ef):
 Stopped: max rounds (1).
 
 Baseline judge (main bf617c008 vs the branch, 22 key screens × 2 orders): the branch is better on all 22 in both orders. Before/after: design-review/2026-11-08-final/compare.html.
+
+Mikkel approved all changes; merged into main on 2026-11-08.

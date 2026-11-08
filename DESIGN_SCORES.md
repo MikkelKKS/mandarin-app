@@ -13,8 +13,22 @@ Each review adds a section below (newest first) with the scores, a one-line reas
 | 2026-11-06 (design loop 1, round 4) | 7.5 | 7 | 7 | 7 | 7 |
 | 2026-11-07 (design loop 3, round 2, before round 2 changes) | 7.5 | 7.5 | 6.5 | 7 | 7 |
 | 2026-11-07 (design loop 4, round 3) | 8 | 7.5 | 7 | 7 | 7.5 |
+| 2026-11-08 (design review, loop 5, round 1) | 7.5 | 7.5 | 7.5 | 6.5 | 7.5 |
 
 ## Reviews
+
+## 2026-11-08: design review, loop 5 (merged)
+Notes: direction Pitch Staff (picked by Mikkel); 1 round, 2 moves plus a PC fix, all approved. Failed checklist items 10 → 9.5; baseline judge: better on 22 of 22 key screens.
+
+| Area | Score | Reason (round 1) |
+|------|-------|--------|
+| Colour | 7.5/10 | Clear ink/indigo/violet identity, contour as second tone cue; dark cards barely lift; navy action near T4 blue |
+| Typography | 7.5/10 | Serif display voice, pinyin first read; many 12–14px roles, busy Home rows |
+| Motion | 7.5/10 | Staff stroke draws on answer; typed question shifts ~14px with the voice note; exit overlap; thin right-answer beat |
+| Layout | 6.5/10 | PC Home/session/Tone Gym dead zones; Stats tabs mid-page; Settings wall |
+| Overall | 7.5/10 | Strong identity and wrong-answer teaching; thin game layer; stats-new empty |
+
+Built (all kept): ink, indigo and a serif · the stage as a score (pitch staff) · PC tone question clears the sheet.
 
 ## 2026-11-07: design loop 4 (merged)
 Notes: 3 rounds; all 5 changes approved, the 学 logo kept. The judge preferred the new screens 18 to 1 while the 1–10 scores stayed flat.
