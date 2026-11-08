@@ -5,6 +5,7 @@ import { registerSW } from 'virtual:pwa-register';
 import App from './App';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { startSync } from './sync';
+import { startKeyboardMode } from './lib/keyboard';
 import { runLegacyMigration } from './lib/review';
 import { startAudioReports } from './lib/audioReports';
 import { loadSpeakPause, migrateSettings } from './lib/settings';
@@ -28,6 +29,7 @@ void migrateSettings();
 void runLegacyMigration();
 void migrateMyWords();
 startAudioReports();
+startKeyboardMode();
 void startSync();
 
 createRoot(document.getElementById('root')!).render(

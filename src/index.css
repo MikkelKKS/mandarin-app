@@ -500,3 +500,28 @@ h1, h2, h3, .text-heading, .text-title {
 .volume:focus-visible {
   outline-offset: 4px;
 }
+
+/* Typing on a phone (lib/keyboard.ts sets data-kb while a text field has the on-screen keyboard):
+   the bottom bar folds into one row (Check, with "I don't know" as a quiet link beside it), the
+   session header and the question shrink, and the field with its tone row stays above the bar. */
+html[data-kb='open'] .kb-bar { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+html[data-kb='open'] .kb-row { display: flex; flex-direction: row-reverse; align-items: center; gap: 0.5rem; }
+html[data-kb='open'] .kb-row > * { margin-top: 0 !important; }
+html[data-kb='open'] .kb-row > :first-child { flex: 1 1 auto; height: 3rem; font-size: 1rem; }
+html[data-kb='open'] .kb-row > .dont-know {
+  flex: none; width: auto; height: 2.75rem; padding: 0 0.5rem;
+  border-color: transparent; background: transparent; box-shadow: none;
+  font-size: 0.875rem; color: var(--muted); text-decoration: underline; text-underline-offset: 2px;
+}
+html[data-kb='open'] .kb-hide { display: none; }
+html[data-kb='open'] .kb-page { padding-bottom: 5rem !important; }
+html[data-kb='open'] .kb-stage { margin-top: 0.5rem; justify-content: flex-start; }
+html[data-kb='open'] .prompt { margin-bottom: 0.5rem; }
+html[data-kb='open'] .py-hero { font-size: var(--text-heading); }
+html[data-kb='open'] .audio-big { width: 3.5rem; height: 3.5rem; }
+html[data-kb='open'] .audio-big svg { width: 1.75rem; height: 1.75rem; }
+html[data-kb='open'] .kb-mt { margin-top: 0.75rem; }
+html[data-kb='open'] [data-typebox] { scroll-margin-bottom: 4.75rem; }
+html[data-kb='open'] .kb-card { padding: 0.75rem 1rem; }
+html[data-kb='open'] .kb-card-ex { margin-top: 0.5rem; padding-top: 0.5rem; }
+html[data-kb='open'] .kb-clamp { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }

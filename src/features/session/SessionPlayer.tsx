@@ -366,7 +366,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
   const doneCount = st.plan.blocks.slice(0, st.block).reduce((n, b) => n + b.items.length, 0) + st.item;
   return (
     <LessonCtx.Provider value={api}>
-      <div className="mx-auto flex min-h-dvh max-w-xl flex-col px-4 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8" style={{ paddingBottom: '18rem' }}>
+      <div className="kb-page mx-auto flex min-h-dvh max-w-xl flex-col px-4 pt-[max(0.75rem,env(safe-area-inset-top))] lg:max-w-2xl lg:pt-8" style={{ paddingBottom: '18rem' }}>
         <header className="sticky top-0 z-10 -mx-4 flex items-center gap-3 bg-bg/95 px-4 py-1 backdrop-blur">
           <button onClick={() => go(home)} aria-label="Leave the session (it's saved)" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted hover:bg-sunk">
             ✕
@@ -391,7 +391,7 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
           </span>
           <DictionaryButton className="-mr-2" />
         </header>
-        <div className="mt-2 flex items-center justify-between text-sm">
+        <div className="kb-hide mt-2 flex items-center justify-between text-sm">
           <span className="font-medium text-muted">
             {BLOCK_TITLE[block.id]}
             {st.plan.blocks.length > 1 && <span className="text-xs"> · part {st.block + 1} of {st.plan.blocks.length}</span>}
@@ -402,8 +402,8 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
             </span>
           )}
         </div>
-        <div key={`${st.block}-${st.item}`} className="anim-slide mt-6 flex flex-1 flex-col justify-center lg:pb-24">
-          {item!.retry && <p className="mb-3 text-sm font-medium text-cinnabar">One more time</p>}
+        <div key={`${st.block}-${st.item}`} className="kb-stage anim-slide mt-6 flex flex-1 flex-col justify-center lg:pb-24">
+          {item!.retry && <p className="kb-hide mb-3 text-sm font-medium text-cinnabar">One more time</p>}
           <SessionItem
             item={item!}
             data={data}

@@ -12,7 +12,7 @@ import { Speaker, Turtle } from '../../components/icons';
 import { useLesson, useNumberKeys, useReplay } from '../lesson/context';
 
 export function Prompt({ children }: { children: ReactNode }) {
-  return <h2 className="mb-5 text-center text-base font-medium text-muted">{children}</h2>;
+  return <h2 className="prompt mb-5 text-center text-base font-medium text-muted">{children}</h2>;
 }
 
 /**
@@ -73,7 +73,7 @@ export function AudioControls({
         type="button"
         onClick={() => go(false)}
         aria-label="Play audio (space)"
-        className={`press flex items-center justify-center rounded-full bg-jade text-jade-ink ${big ? 'h-24 w-24' : 'h-14 w-14'} ${playing ? 'anim-breathe' : ''}`}
+        className={`press flex items-center justify-center rounded-full bg-jade text-jade-ink ${big ? 'audio-big h-24 w-24' : 'h-14 w-14'} ${playing ? 'anim-breathe' : ''}`}
       >
         <Speaker className={big ? 'h-11 w-11' : 'h-7 w-7'} />
       </button>
@@ -145,8 +145,8 @@ export function ActionBar({ children }: { children: ReactNode }) {
   return createPortal(
     // Column-reverse: the main button (first child) is always the bottom row, so it sits in exactly
     // the same spot whether or not an "I don't know" link is shown (that goes above it).
-    <div className="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-bg/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur">
-      <div className="mx-auto flex max-w-xl flex-col-reverse gap-1 lg:max-w-2xl [&>*]:mt-0">{children}</div>
+    <div className="kb-bar fixed inset-x-0 bottom-0 z-10 border-t border-line bg-bg/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur">
+      <div className="kb-row mx-auto flex max-w-xl flex-col-reverse gap-1 lg:max-w-2xl [&>*]:mt-0">{children}</div>
     </div>,
     document.body,
   );
@@ -279,7 +279,7 @@ export function PinyinInput({
     });
   };
   return (
-    <div>
+    <div data-typebox>
       <input
         ref={ref}
         value={value}

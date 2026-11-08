@@ -297,8 +297,8 @@ export function LessonPlayer({
         </main>
 
         {!outcome && (
-          <footer className="fixed inset-x-0 bottom-0 border-t border-line bg-bg/95 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur">
-            <div className="mx-auto max-w-xl">
+          <footer className="kb-bar fixed inset-x-0 bottom-0 border-t border-line bg-bg/95 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur">
+            <div className="kb-row mx-auto max-w-xl">
               {current.ex.kind !== 'match-pairs' && (
                 <button
                   onClick={doCheck}
@@ -309,7 +309,7 @@ export function LessonPlayer({
                 </button>
               )}
               {!NO_GIVE_UP.has(current.ex.kind) && (
-                <button onClick={() => handleOutcome(giveUpOutcome(current.ex))} className="mt-1 h-10 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
+                <button onClick={() => handleOutcome(giveUpOutcome(current.ex))} className="dont-know mt-1 h-10 w-full rounded-2xl text-sm font-medium text-muted underline underline-offset-2 hover:text-ink">
                   I don't know
                 </button>
               )}

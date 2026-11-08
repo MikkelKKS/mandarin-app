@@ -74,7 +74,7 @@ export function DontKnow({ onUnknown, onGiveUp }: { onUnknown?: () => void; onGi
   const fn = onUnknown ?? onGiveUp;
   if (!fn) return null;
   return (
-    <button onClick={fn} className="btn btn-quiet mt-3 h-12 w-full text-base">
+    <button onClick={fn} className="dont-know btn btn-quiet mt-3 h-12 w-full text-base">
       {onUnknown ? "I don't know this word" : "I don't know"}
     </button>
   );
@@ -298,7 +298,7 @@ function ChooseMeaning({ data, word, options, ctx, onResult }: ItemProps & { wor
       <Prompt>{c ? 'What does the marked word mean here?' : 'What does it mean?'}</Prompt>
       <AudioControls id={c?.sentence.id ?? w.id} ladder voices={useWordVoices(w, c)} />
       {c && <ContextLine c={c} className="mt-5" />}
-      <div className="mt-8">
+      <div className="kb-mt mt-8">
         <Options
           count={opts.length}
           selected={picked}
@@ -338,7 +338,7 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
       <AudioControls id={c?.sentence.id ?? w.id} ladder voices={useWordVoices(w, c)} />
       {c && <ContextLine c={c} className="mt-5" />}
       {!shown ? (
-        <div className="mt-8">
+        <div className="kb-mt mt-8">
           <input
             value={typed}
             onChange={(e) => setTyped(e.target.value)}
@@ -433,7 +433,7 @@ export function useTyped(expected: { pinyin: string; hanzi: string; english?: st
 
 export function TypeBox({ text, setText, check, giveUp, onUnknown }: ReturnType<typeof useTyped> & { onUnknown?: () => void }) {
   return (
-    <div className="mt-8">
+    <div className="kb-mt mt-8">
       <PinyinInput value={text} onChange={setText} />
       <ActionBar>
         <button onClick={check} disabled={!text.trim()} className="press mt-3 h-14 w-full rounded-2xl bg-jade text-lg font-semibold text-jade-ink disabled:bg-sunk disabled:text-muted">
@@ -487,13 +487,13 @@ function MeaningToPinyin({ data, word, onResult, onUnknown }: ItemProps & { word
   return (
     <div>
       <Prompt>How do you say it? Type the pinyin with tones</Prompt>
-      <div className="rounded-2xl border border-line bg-surface p-5 text-center">
+      <div className="kb-card rounded-2xl border border-line bg-surface p-5 text-center">
         <p className="text-2xl font-semibold">{glossOf(w)}</p>
         {pos && <p className="mt-1 text-sm text-muted">{pos}</p>}
         {c && (
-          <div className="mt-4 border-t border-line pt-3">
+          <div className="kb-card-ex mt-4 border-t border-line pt-3">
             <ContextLine c={c} blank className="!text-lg" />
-            <p className="mt-1 text-sm text-muted">{c.sentence.english[0]}</p>
+            <p className="kb-clamp mt-1 text-sm text-muted">{c.sentence.english[0]}</p>
           </div>
         )}
       </div>
