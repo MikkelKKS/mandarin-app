@@ -334,6 +334,11 @@ export function PinyinInput({
           ü
         </button>
       </div>
+      {/\p{Script=Han}/u.test(value) && (
+        <p role="status" className="mt-2 text-sm text-muted">
+          That's a Chinese keyboard. Switch it to English (the 🌐 key) to type pinyin like ni3 hao3.
+        </p>
+      )}
     </div>
   );
 }
