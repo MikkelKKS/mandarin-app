@@ -327,11 +327,11 @@ Mikkel approved all changes but kept the 学 logo (restored before merging); mer
 ## Review 2026-11-07 (loop 5)
 
 ```
-State: running
+State: stopped (max)
 Round: 1
-Phase: review
+Phase: final
 Max rounds: 1
-Best lowest: –
+Best lowest: 7
 Rounds without improvement: 0
 Confirming: no
 Baseline: bf617c008
@@ -341,6 +341,7 @@ Notes: none
 | Round | Colour | Typography | Motion | Layout | Overall | Lowest | Note |
 |-------|--------|------------|--------|--------|---------|--------|------|
 | 0 | 7.5 | 7.5 | 7.5 | 7 | 7 | 7 | baseline · fails 10 (C1.5 T2 L2.5 M1.5 O2.5) |
+| 1 | 7.5 | 7.5 | 7.5 | 6.5 | 7.5 | 6.5 | fails 9.5 (was 10) · judge 2 kept (PC sheet overlap fixed) |
 
 ### Round 0 (baseline review)
 
@@ -358,3 +359,14 @@ Plan (round 1; the only build round):
 - [x] (3a63ce78e) The stage as a score: session and Tone Gym tone questions on a staff band, tiles as mini staves, the right stroke draws itself after answering (wrong: yours dashed, the right one drawn over it), the weakest pair drawn on the Home plate, phone answer sheet without re-centring. Motion 2/5, overall 2/4, layout 3; session, Tone Gym, Home.
 - Judge (pairs-1, 13 screens × 2 orders): better on 10 (Home phone light, dark and PC; session question; session wrong phone light and dark; Stats; Tone Gym PC; Tone Gym question; Tone Gym answer motion), same on 2 (session end, answer-wrong motion), worse on 1 (PC session wrong: the answer sheet covered the tone tiles at 1440×900). Kept both moves; the PC overlap fixed (fbc025c44: shorter staff and a higher column on PC). One judge letter (Tone Gym question) contradicted its own reasoning; counted by the reasoning. Rounds without improvement: 0.
 - QA: qa:screens 28/28, no console errors; the PC sheet clears the tiles in both themes; nothing fixed. Small notes: "XP today" close to the ring edge, "Reviews, next 14 days" wraps on PC Home, the next-badge title wraps near its percentage.
+
+### Round 1 (scores only)
+
+Scores (blind, shots blind-23fe112ef):
+- Colour 7.5 (fails 1.5: C1/C4 dark card edge 1.13:1, C2 navy action next to T4 blue).
+- Typography 7.5 (fails 1.5: T1 off-scale PC hero and many 12–14px roles, T3 Home rows and Stats cards many levels, T4 small secondary text).
+- Layout 6.5 (fails 2.5: L4 PC Home/session/Tone Gym dead zones, L5 Stats tabs mid-page and Settings wall, L1 PC sheet wider than the column, L2 uneven gaps, L3 small slow buttons).
+- Motion 7.5 (fails 2: item 4 the typed question shifts ~14 px when the browser-voice note appears, item 3 exit frame overlaps Continue and the next bar, item 5 thin right-answer beat on typed cards).
+- Overall 7.5 (fails 2: item 4 thin game layer, item 6 stats-new empty and PC like a stretched phone).
+
+Stopped: max rounds (1).
