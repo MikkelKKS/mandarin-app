@@ -655,12 +655,12 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
         )}
         <p className="mt-3 text-center text-hero font-semibold lg:text-numeral">{gym.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}</p>
         {/* The pitch staff: after answering, the right tone draws itself on it (a wrong guess shows dashed underneath). */}
-        <div className="relative mt-1 h-14 w-full max-w-[16rem]" aria-hidden>
+        <div className="relative mt-1 h-14 w-full max-w-[16rem] lg:h-10" aria-hidden>
           {done && picked[0] !== null && picked[0] !== gym.tones[0] && <PitchStaff tone={picked[0]} dashed lines={false} aspect={256 / 56} className="absolute inset-0 h-full w-full" />}
           <PitchStaff tone={done ? gym.tones[0] : undefined} draw={done} aspect={256 / 56} className="absolute inset-0 h-full w-full" />
         </div>
       </div>
-      <div className="mt-6 flex flex-col gap-3">
+      <div className="mt-6 flex flex-col gap-3 lg:mt-3">
         {gym.tones.map((_, slot) => (
           <div key={slot} className="grid grid-cols-4 gap-2">
             {([1, 2, 3, 4] as Tone[]).map((t) => {
