@@ -329,7 +329,7 @@ Mikkel approved all changes but kept the 学 logo (restored before merging); mer
 ```
 State: running
 Round: 1
-Phase: judge
+Phase: qa
 Max rounds: 1
 Best lowest: –
 Rounds without improvement: 0
@@ -356,3 +356,4 @@ Direction: Mikkel tried live previews of three directions (A Jade Studio finishe
 Plan (round 1; the only build round):
 - [x] (38cf8c992) Ink, indigo and a serif: xuan-paper and indigo tokens (go, plate, right without a green wash), brick misses, Newsreader for titles and numbers, Noto Serif SC for seals, a PitchStaff component. Colour 6, typography 6, overall 2; all screens.
 - [x] (3a63ce78e) The stage as a score: session and Tone Gym tone questions on a staff band, tiles as mini staves, the right stroke draws itself after answering (wrong: yours dashed, the right one drawn over it), the weakest pair drawn on the Home plate, phone answer sheet without re-centring. Motion 2/5, overall 2/4, layout 3; session, Tone Gym, Home.
+- Judge (pairs-1, 13 screens × 2 orders): better on 10 (Home phone light, dark and PC; session question; session wrong phone light and dark; Stats; Tone Gym PC; Tone Gym question; Tone Gym answer motion), same on 2 (session end, answer-wrong motion), worse on 1 (PC session wrong: the answer sheet covered the tone tiles at 1440×900). Kept both moves; the PC overlap fixed (fbc025c44: shorter staff and a higher column on PC). One judge letter (Tone Gym question) contradicted its own reasoning; counted by the reasoning. Rounds without improvement: 0.
