@@ -346,6 +346,7 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
             placeholder="Type the meaning (optional)"
             aria-label="The meaning in English"
             autoComplete="off"
+            inputMode="email"
             className="w-full rounded-2xl border border-line bg-surface px-4 py-4 text-lg outline-none focus:border-jade"
           />
           <ActionBar>

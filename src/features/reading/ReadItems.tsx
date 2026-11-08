@@ -329,6 +329,7 @@ function ReadMeaning({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult:
             placeholder="Type your guess (optional)"
             aria-label="Your guess in English"
             autoComplete="off"
+            inputMode="email"
             className="w-full rounded-2xl border border-line bg-surface px-4 py-4 text-lg outline-none focus:border-jade"
           />
           <ActionBar>

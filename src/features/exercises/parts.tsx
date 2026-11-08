@@ -304,7 +304,9 @@ export function PinyinInput({
         autoCorrect="off"
         autoComplete="off"
         spellCheck={false}
-        inputMode="text"
+        // Asking for the email keyboard makes most Android keyboards (Samsung, Gboard) start in
+        // English letters instead of Chinese pinyin mode; the field itself stays plain text.
+        inputMode="email"
         enterKeyHint="done"
         aria-label="Your answer in pinyin"
         className="w-full rounded-2xl border border-edge bg-surface px-4 py-4 text-xl outline-none transition-[border-color,box-shadow] duration-200 focus:border-jade focus:shadow-[0_0_0_4px_var(--jade-soft)] disabled:opacity-80"
