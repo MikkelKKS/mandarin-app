@@ -370,3 +370,5 @@ Scores (blind, shots blind-23fe112ef):
 - Overall 7.5 (fails 2: item 4 thin game layer, item 6 stats-new empty and PC like a stretched phone).
 
 Stopped: max rounds (1).
+
+Baseline judge (main bf617c008 vs the branch, 22 key screens × 2 orders): the branch is better on all 22 in both orders. Before/after: design-review/2026-11-08-final/compare.html.
