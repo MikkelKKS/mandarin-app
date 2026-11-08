@@ -1,6 +1,7 @@
 /** Building blocks shared by exercise components. */
 import { createPortal } from 'react-dom';
 import { VolumeSlider } from '../../components/VolumeSlider';
+import { OneLineField } from '../../components/OneLineField';
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import type { Voice } from '../../content/audioPaths';
 import { play, realOf } from '../../lib/audio';
@@ -258,7 +259,7 @@ export function PinyinInput({
   autoFocus?: boolean;
 }) {
   const { locked } = useLesson();
-  const ref = useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLTextAreaElement>(null);
   // Cursor position to restore right after a live tone-mark change (before the next key).
   const pendingCaret = useRef<number | null>(null);
   useLayoutEffect(() => {
@@ -280,13 +281,11 @@ export function PinyinInput({
   };
   return (
     <div data-typebox>
-      <input
+      <OneLineField
         ref={ref}
         value={value}
         disabled={locked}
-        onChange={(e) => {
-          const el = e.target;
-          const next = el.value;
+        onChange={(next, el) => {
           // One key typed (not pasted, not an IME): turn "ni3" into "nǐ" right away.
           if (next.length === value.length + 1 && el.selectionStart !== null && !/\p{Script=Han}/u.test(next)) {
             const r = liveToneMarks(next, el.selectionStart);

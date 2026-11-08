@@ -7,6 +7,7 @@
  * After every answer the item's recording plays, so the shape links to the sound.
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { OneLineField } from '../../components/OneLineField';
 import { TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
 import { isKnownState, isStartedState, useWordStates } from '../../lib/knowledge';
@@ -322,9 +323,9 @@ function ReadMeaning({ d, it, onResult }: { d: ReadData; it: ReadItem; onResult:
       </div>
       {!shown ? (
         <div className="mt-6">
-          <input
+          <OneLineField
             value={typed}
-            onChange={(e) => setTyped(e.target.value)}
+            onChange={setTyped}
             onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), reveal())}
             placeholder="Type your guess (optional)"
             aria-label="Your guess in English"

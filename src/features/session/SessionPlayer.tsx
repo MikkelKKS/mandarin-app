@@ -343,10 +343,10 @@ function Player({ data, initial }: { data: VocabData; initial: SessionState }) {
         e.preventDefault();
         if (result) leave(advance);
         else checkRef.current?.();
-      } else if (e.key === ' ' && (e.target as HTMLElement)?.tagName !== 'INPUT') {
+      } else if (e.key === ' ' && !/^(INPUT|TEXTAREA)$/.test((e.target as HTMLElement)?.tagName ?? '')) {
         e.preventDefault();
         replayRef.current?.();
-      } else if (e.key.toLowerCase() === 's' && (e.target as HTMLElement)?.tagName !== 'INPUT' && item) {
+      } else if (e.key.toLowerCase() === 's' && !/^(INPUT|TEXTAREA)$/.test((e.target as HTMLElement)?.tagName ?? '') && item) {
         // s = slow (PC shortcut)
         const id = 'word' in item ? item.word : 'sentence' in item ? item.sentence : null;
         if (id) {

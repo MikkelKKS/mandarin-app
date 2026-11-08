@@ -195,7 +195,7 @@ export function LessonPlayer({
   // Keyboard: Enter = check / continue; space = replay audio.
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      const typing = (e.target as HTMLElement)?.tagName === 'INPUT';
+      const typing = /^(INPUT|TEXTAREA)$/.test((e.target as HTMLElement)?.tagName ?? '');
       if (e.key === 'Enter') {
         e.preventDefault();
         if (outcome) advance();

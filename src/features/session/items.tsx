@@ -4,6 +4,7 @@
  * Pinyin first: characters only when "Characters: Show" is on.
  */
 import { glossTerms, samePinyin } from '../../lib/gloss';
+import { OneLineField } from '../../components/OneLineField';
 import { isPass } from '../../lib/pinyinAnswer';
 import { inContext, type InContext } from '../../lib/context';
 import { bestExample, MAX_UNKNOWN_IN_EXAMPLE, unknownIn } from '../../lib/examples';
@@ -339,9 +340,9 @@ function ListenMeaning({ data, word, ctx, onResult, onUnknown }: ItemProps & { w
       {c && <ContextLine c={c} className="mt-5" />}
       {!shown ? (
         <div className="kb-mt mt-8">
-          <input
+          <OneLineField
             value={typed}
-            onChange={(e) => setTyped(e.target.value)}
+            onChange={setTyped}
             onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), setShown(true))}
             placeholder="Type the meaning (optional)"
             aria-label="The meaning in English"
@@ -380,7 +381,7 @@ export function SelfGrade({ onGrade, suggest }: { onGrade: (r: RatingName) => vo
   ];
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement)?.tagName === 'INPUT') return;
+      if (/^(INPUT|TEXTAREA)$/.test((e.target as HTMLElement)?.tagName ?? '')) return;
       const n = Number(e.key);
       if (n >= 1 && n <= 4) {
         e.preventDefault();

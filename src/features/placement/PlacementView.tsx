@@ -189,7 +189,7 @@ function PlacementTest({ vocab, onDone, onStop }: { vocab: VocabRow[]; onDone: (
   };
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      if (options && !answer && /^[1-4]$/.test(e.key) && !(e.target instanceof HTMLInputElement)) {
+      if (options && !answer && /^[1-4]$/.test(e.key) && !(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement)) {
         const id = options[Number(e.key) - 1];
         if (id) pick(id);
         return;
