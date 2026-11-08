@@ -145,7 +145,7 @@ const TAB_OF: Record<string, string> = {
 
 /** The app's mark: the 学 seal (Mikkel kept it, 2026-11-07). */
 function LogoSeal() {
-  return <span className="han flex h-9 w-9 items-center justify-center rounded-[10px] bg-cinnabar text-lg font-semibold text-white">学</span>;
+  return <span className="han flex h-9 w-9 items-center justify-center rounded-[10px] bg-[#b3362a] text-lg font-semibold text-white">学</span>;
 }
 
 function Shell({ active, wide = false, children }: { active: string; wide?: boolean; children: ReactNode }) {

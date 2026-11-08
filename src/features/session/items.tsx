@@ -13,7 +13,7 @@ import { VolumeSlider } from '../../components/VolumeSlider';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { TonePinyin } from '../../components/Hanzi';
 import { Speaker } from '../../components/icons';
-import { ToneContour } from '../../components/ToneContour';
+import { PitchStaff } from '../../components/PitchStaff';
 import { play, playUrl, rememberText } from '../../lib/audio';
 import { markSyllable, type Tone } from '../../lib/pinyin';
 import { useSettings } from '../../lib/settings';
@@ -653,9 +653,14 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
             Another voice
           </button>
         )}
-        <p className="mt-3 text-hero font-semibold lg:text-numeral">{gym.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}</p>
+        <p className="mt-3 text-center text-hero font-semibold lg:text-numeral">{gym.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}</p>
+        {/* The pitch staff: after answering, the right tone draws itself on it (a wrong guess shows dashed underneath). */}
+        <div className="relative mt-1 h-14 w-full max-w-[16rem] lg:h-10" aria-hidden>
+          {done && picked[0] !== null && picked[0] !== gym.tones[0] && <PitchStaff tone={picked[0]} dashed lines={false} aspect={256 / 56} className="absolute inset-0 h-full w-full" />}
+          <PitchStaff tone={done ? gym.tones[0] : undefined} draw={done} aspect={256 / 56} className="absolute inset-0 h-full w-full" />
+        </div>
       </div>
-      <div className="mt-6 flex flex-col gap-3">
+      <div className="mt-6 flex flex-col gap-3 lg:mt-3">
         {gym.tones.map((_, slot) => (
           <div key={slot} className="grid grid-cols-4 gap-2">
             {([1, 2, 3, 4] as Tone[]).map((t) => {
@@ -670,7 +675,7 @@ function ToneQuestion({ gym, onResult }: ItemProps & { gym: GymItem }) {
                     className={`flex h-16 flex-col items-center justify-center rounded-xl border text-lg font-semibold ${TONE_TEXT[t]} ${right ? 'border-jade bg-jade-soft' : done && chosen ? 'opt-miss' : chosen ? 'border-ink bg-surface' : 'border-line bg-surface'}`}
                   >
                     {markSyllable({ base: gym.bases[slot], tone: t })}
-                    <ToneContour tone={t} className="mt-0.5 h-2.5 w-5" />
+                    <PitchStaff tone={t} aspect={56 / 24} className="mt-1 h-6 w-14" />
                   </button>
                 );
               })}

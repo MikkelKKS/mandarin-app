@@ -16,6 +16,8 @@ import '@fontsource/instrument-sans/600.css';
 import '@fontsource/instrument-sans/700.css';
 // The same family at its condensed width, for numbers that are the point (.num).
 import '@fontsource-variable/instrument-sans/wdth.css';
+import '@fontsource/newsreader/500.css';
+import '@fontsource/newsreader/600.css';
 import './index.css';
 
 void import('./fontsHan');

@@ -9,6 +9,7 @@ import { PageHeader } from '../../components/PageHeader';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Speaker } from '../../components/icons';
 import { ToneContour } from '../../components/ToneContour';
+import { PitchStaff } from '../../components/PitchStaff';
 import { TonePinyin } from '../../components/Hanzi';
 import { db, uuid } from '../../db/db';
 import { playUrl, stop } from '../../lib/audio';
@@ -272,9 +273,13 @@ function Round({ mode }: { mode: GymMode }) {
           )}
           <VolumeSlider compact />
         </div>
-        <p className="mt-4 text-hero font-semibold tracking-wide lg:text-numeral" aria-label="Syllables">
+        <p className="mt-4 text-center text-hero font-semibold tracking-wide lg:text-numeral" aria-label="Syllables">
           {item!.bases.map((b) => b.replace(/v/g, 'ü')).join(' ')}
         </p>
+        <div className="relative mt-1 h-14 w-full max-w-[16rem]" aria-hidden>
+          {answer && item!.tones.length === 1 && answer.given[0] && answer.given[0] !== item!.tones[0] && <PitchStaff tone={answer.given[0]} dashed lines={false} aspect={256 / 56} className="absolute inset-0 h-full w-full" />}
+          <PitchStaff tone={answer && item!.tones.length === 1 ? item!.tones[0] : undefined} draw={!!answer} aspect={256 / 56} className="absolute inset-0 h-full w-full" />
+        </div>
       </div>
 
       <div className="mt-8 flex flex-col gap-4">
@@ -299,7 +304,7 @@ function Round({ mode }: { mode: GymMode }) {
                     >
                       {markSyllable({ base: item!.bases[slot], tone: t })}
                       <span className="mt-0.5 flex items-center gap-1 text-xs font-normal text-muted">
-                        <ToneContour tone={t} className={`h-2.5 w-5 ${TONE_TEXT[t]}`} />
+                        <PitchStaff tone={t} aspect={2} className="h-5 w-10" />
                         {t}
                       </span>
                     </button>
